@@ -1,12 +1,20 @@
 {
+  "name": "b2portal-common-components",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "lerna bootstrap --hoist && lerna publish --yes",
+    "storybook": "start-storybook -p 9001 -c storybook"
+  },
     "publishConfig": {
         "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
-    "devDependencies": {
-        "lerna": "^2.4.0"
-    },
-    "dependencies": {},
-    "scripts": {
-        "build": "lerna bootstrap --hoist && lerna publish --yes"
-    }
+  "devDependencies": {
+    "@storybook/react": "^3.2.12",
+    "lerna": "^2.4.0"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
 }
