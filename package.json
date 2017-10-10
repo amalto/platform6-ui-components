@@ -7,6 +7,6 @@
     },
     "dependencies": {},
     "scripts": {
-        "build": "lerna bootstrap --hoist && lerna publish"
+        "build": "lerna bootstrap --hoist && lerna publish --yes"
     }
 }
