@@ -1,0 +1,9 @@
+{
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "devDependencies": {
+        "lerna": "^2.4.0"
+    },
+    "dependencies": {}
+}
