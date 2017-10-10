@@ -1,6 +1,6 @@
 {
     "name": "action-button",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "main": "index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
