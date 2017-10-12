@@ -15,8 +15,8 @@ module.exports = {
         // the output bundle
         filename: 'index.js',
         path: resolve(__dirname),
-        // necessary for HMR to know where to load the hot update chunks
-        publicPath: '/'
+        libraryTarget: 'umd',
+        library: 'ActionButton'
     },
 
     externals: {
