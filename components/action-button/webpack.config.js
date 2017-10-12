@@ -43,12 +43,6 @@ module.exports = {
         inline: true
     },
 
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'classnames': 'classNames'
-    },
-
     resolve: {
         extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json', '.scss', '.css']
     },
