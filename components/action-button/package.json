@@ -1,37 +1,22 @@
 {
-    "name": "action-button",
-    "version": "1.0.4",
-    "main": "./build/index.js",
-    "typings": "./build/index.d.ts",
-    "author": "Amalto Technologies",
-    "publishConfig": {
-        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
-    },
-    "scripts": {
-        "prepublish": "tsc -d",
-        "dev": "webpack-dev-server -d --config webpack.config.js"
-    },
-    "devDependencies": {
-        "@types/classnames": "0.0.32",
-        "@types/react": "15.0.21",
-        "@types/react-dom": "0.14.23",
-        "css-loader": "0.28.0",
-        "enhanced-resolve": "3.1.0",
-        "extract-text-webpack-plugin": "2.1.0",
-        "file-loader": "0.11.1",
-        "json-loader": "0.5.4",
-        "node-sass": "4.5.2",
-        "react-hot-loader": "^3.0.0-beta.6",
-        "sass-loader": "6.0.3",
-        "style-loader": "0.16.1",
-        "ts-loader": "2.0.3",
-        "typescript": "2.2.2",
-        "webpack": "2.3.3",
-        "webpack-dev-server": "2.4.2"
-    },
-    "dependencies": {
-        "classnames": "2.2.5",
-        "react": "^15.4.2",
-        "react-dom": "15.4.2"
-    }
+	"name": "action-button",
+	"displayName": "ActionButton",
+	"description": "Button that does magic things",
+	"version": "1.0.4",
+	"main": "./build/index.js",
+	"typings": "./build/index.d.ts",
+	"author": "Amalto Technologies",
+	"publishConfig": {
+		"registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+	},
+	"scripts": {
+		"start": "npm run storybook",
+		"build": "npm run build:typescript && npm run build:storybook",
+		"prepublish": "npm run build",
+		"storybook": "../../node_modules/.bin/start-storybook -p 6006 -c .",
+		"build:typescript": "../../node_modules/.bin/tsc",
+		"build:storybook": "../../node_modules/.bin/build-storybook -c . -o static"
+	},
+	"dependencies": {},
+	"devDependencies": {}
 }

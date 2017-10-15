@@ -1,6 +1,10 @@
-node_modules
-build/
+*.iml
 *.DS_Store
 npm-debug.log
-.baseDir.ts
-.tscache
+lerna-debug.log
+
+.idea/
+.vscode/
+node_modules/
+build/
+static/

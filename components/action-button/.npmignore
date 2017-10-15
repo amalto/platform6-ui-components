@@ -1,10 +1,6 @@
 *.iml
-.idea
-node_modules
-*.DS_Store
-npm-debug.log
-typescript
-sass
-build/**/*.js.map
-build/**/*.js
-.vscode
+.idea/
+.vscode/
+typescript/
+sass/
+static/
