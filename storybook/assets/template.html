@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Components - Platform 6</title>
+</head>
+<body>
+	<h1>Components</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Version</th>
+			</tr>
+		</thead>
+		<tbody id="components"></tbody>
+	</table>
+
+	<template id="component">
+		<tr>
+			<td class="name"><a href=""></a></td>
+			<td class="description"></td>
+			<td class="version"></td>
+		</tr>
+	</template>
+
+	<script>
+		const components = [] // #components
+		const template = document.getElementById('component')
+		const container = document.getElementById('components')
+
+		components.forEach(component => {
+			const row = document.importNode(template.content, true)
+			const link = row.querySelector('.name a')
+
+			row.querySelector('.description').textContent = component.description
+			row.querySelector('.version').textContent = component.version
+			link.textContent = component.displayName
+			link.href = `../../components/${component.name}/static/index.html`
+
+			container.appendChild(row)
+		})
+	</script>
+</body>
+</html>
