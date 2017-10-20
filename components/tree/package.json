@@ -1,0 +1,24 @@
+{
+  "name": "tree",
+  "displayName": "Tree",
+  "description": "A tree component to display data like an organisation tree.",
+  "version": "1.0.0",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "author": "Amalto Technologies",
+  "publishConfig": {
+    "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+  },
+  "scripts": {
+    "start": "npm run storybook",
+    "build": "npm run build:typescript && npm run build:storybook",
+    "prepublish": "npm run build:typescript",
+    "storybook": "../../node_modules/.bin/start-storybook -p 6006 -c .",
+    "build:typescript": "../../node_modules/.bin/tsc",
+    "build:storybook": "../../node_modules/.bin/build-storybook -c . -o static"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jstree": "^3.3.35"
+  }
+}

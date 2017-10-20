@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "rootDir": "typescript",
+        "outDir": "build",
+        "jsx": "react",
+        "noImplicitAny": false,
+        "inlineSourceMap": true,
+        "declaration": true
+    },
+    "include": ["typescript"]
+}
