@@ -1,8 +1,8 @@
 {
-    "name": "action-button",
-    "displayName": "ActionButton",
-    "description": "Customizable action button.",
-    "version": "1.0.4",
+    "name": "helpers",
+    "displayName": "Helpers",
+    "description": "Helpers functions used across b2portal core and components.",
+    "version": "1.0.0",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -17,6 +17,13 @@
         "build:typescript": "../../node_modules/.bin/tsc",
         "build:storybook": "../../node_modules/.bin/build-storybook -c . -o static"
     },
-    "dependencies": {},
-    "devDependencies": {}
+    "dependencies": {
+        "base-64": "^0.1.0"
+    },
+    "devDependencies": {
+        "@types/base-64": "^0.1.2",
+        "@types/bootstrap": "^3.3.36",
+        "@types/jquery": "^3.2.15",
+        "@types/modernizr": "^3.5.1"
+    }
 }
