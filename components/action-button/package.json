@@ -10,12 +10,10 @@
         "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
     "scripts": {
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "start": "npm run storybook",
-        "build": "npm run build:typescript && npm run build:storybook",
-        "prepublish": "npm run build:typescript",
-        "storybook": "../../node_modules/.bin/start-storybook -p 6006 -c .",
-        "build:typescript": "../../node_modules/.bin/tsc",
-        "build:storybook": "../../node_modules/.bin/build-storybook -c . -o static"
+        "storybook": "start-storybook -p 6006 -c .",
+        "build:storybook": "build-storybook -c . -o static"
     },
     "dependencies": {},
     "devDependencies": {}

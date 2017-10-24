@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "bootstrap": "lerna bootstrap --hoist",
-        "build": "lerna run build && node ./storybook/compile.js",
+        "build": "lerna run build",
         "publish": "lerna publish",
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
     },
