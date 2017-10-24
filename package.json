@@ -5,7 +5,7 @@
     "scripts": {
         "bootstrap": "lerna bootstrap --hoist",
         "build": "lerna run build",
-        "publish": "lerna publish",
+        "publish": "lerna publish --yes --exact",
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
     },
     "publishConfig": {
