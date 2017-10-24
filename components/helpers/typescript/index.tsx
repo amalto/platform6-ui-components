@@ -2,8 +2,6 @@ import * as base64 from 'base-64'
 
 import * as classNames from 'classnames'
 
-const { webStorage } = window['b2portal']
-
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const COLOR_CODE_REGEX = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
 export const SCOPE_KEYWORD_REGEX = /^[a-zA-Z0-9-_~@$£|€¥§&]+$/
@@ -11,8 +9,8 @@ export const MAP_PROPERTY_KEY_REGEX = /^[a-zA-Z0-9-_]+$/
 export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
 export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
 
-export function compileWordings( wordings: { [key: string]: any } ): { [key: string]: string } {
-    let locale = webStorage.locale
+export function compileWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string } {
+    locale = locale || "en-US"
 
     var res = Object.keys( wordings ).reduce(
         ( dic, key ) => {
@@ -219,56 +217,6 @@ function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: b
     link.click()
 
     URL.revokeObjectURL( url )
-}
-
-export function hasRequiredResource( appInstanceName: string, featureId: string ): boolean {
-
-    const appEndpoints = webStorage.appEndpoints
-
-    //search for an existing endpoint for this feature on the current instance
-    if ( appEndpoints && appEndpoints[appInstanceName] ) {
-        if ( appEndpoints[appInstanceName][featureId] ) {
-            return true
-        }
-    }
-
-    return false
-}
-
-export function getI18nLabel( labelMap: { [language: string]: string; }, noRegion?: boolean, upper?: boolean ): string {
-
-    let res = null
-
-    let language = webStorage.locale
-
-    if ( noRegion ) {
-        language = language.substr( 0, 2 )
-    }
-
-    if ( upper ) {
-        language = language.toUpperCase()
-    }
-
-    if ( labelMap ) {
-        if ( labelMap[language] ) {
-            res = labelMap[language]
-        }
-
-        if ( !res && language !== 'EN' ) {
-            res = labelMap['EN']
-        }
-
-        if ( !res && language !== 'en' ) {
-            res = labelMap['en']
-        }
-
-        if ( !res && language !== 'en-US' ) {
-            res = labelMap['en-US']
-        }
-    }
-
-    return res
-
 }
 
 export function loadTooltips( element: Element ): void {
