@@ -2,7 +2,7 @@
     "name": "tree",
     "displayName": "Tree",
     "description": "A tree component to display data like an organisation tree.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -12,7 +12,6 @@
     "scripts": {
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
     },
-    "dependencies": {},
     "devDependencies": {
         "@types/jstree": "^3.3.35"
     }
