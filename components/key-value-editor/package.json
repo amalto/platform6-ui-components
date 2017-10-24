@@ -13,7 +13,7 @@
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
     },
     "dependencies": {
-        "helpers": "1.0.0"
+        "helpers": "1.0.5"
     },
     "devDependencies": {}
 }
