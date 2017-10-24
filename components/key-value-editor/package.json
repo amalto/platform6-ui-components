@@ -2,7 +2,7 @@
     "name": "key-value-editor",
     "displayName": "KeyValueEditor",
     "description": "A form input that can build a custom key-value object.",
-    "version": "1.0.0",
+    "version": "1.0.6",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -13,7 +13,6 @@
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
     },
     "dependencies": {
-        "helpers": "1.0.5"
-    },
-    "devDependencies": {}
+        "helpers": "^1.0.6"
+    }
 }
