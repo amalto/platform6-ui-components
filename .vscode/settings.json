@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/build": true
+    }
+}

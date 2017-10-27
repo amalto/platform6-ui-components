@@ -61,7 +61,7 @@ namespace KeyValueEditor {
     export interface Props extends React.Props<KeyValueEditor> {
         handleChange: ( keyValues: KeyValDef ) => void;
         keyValues: KeyValDef
-        locale?: string;
+        locale: string;
     }
 
     export interface State {
