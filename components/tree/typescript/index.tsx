@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 //utils
-import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips } from 'helpers'
+import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips, base64Decode } from 'helpers'
 
 //components
 import { KeyValueEditor, KeyValDef } from 'key-value-editor'
@@ -88,6 +88,7 @@ module Tree {
         displayEmptyValsError?: ( emptyVals: string[] ) => void;
         selectCallback?: ( node: TreeNodeModel ) => void;
         defaultSelectedNodeId?: string;
+        locale: string;
     }
 
     export interface State {
@@ -110,7 +111,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             formOpened: null,
             editedNode: null,
             maxTreeHeight: 0,
-            wordings: compileWordings( WORDINGS )
+            wordings: compileWordings( WORDINGS, props.locale )
         }
     }
 
@@ -569,7 +570,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
             for ( const key in nodeKeyValues ) {
                 if ( nodeKeyValues[key].contentType === 'text/plain' ) {
-                    nodeKeyValues[key].contentBytes = base64.decode( nodeKeyValues[key].contentBytes )
+                    nodeKeyValues[key].contentBytes = base64Decode( nodeKeyValues[key].contentBytes )
                 }
             }
 
