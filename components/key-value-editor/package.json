@@ -2,7 +2,7 @@
     "name": "key-value-editor",
     "displayName": "KeyValueEditor",
     "description": "A form input that can build a custom key-value object.",
-    "version": "1.0.6",
+    "version": "1.1.0",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -17,6 +17,6 @@
         "build:storybook": "build-storybook -c . -o static"
     },
     "dependencies": {
-        "helpers": "1.0.6"
+        "helpers": "1.1.0"
     }
 }
