@@ -20,7 +20,7 @@
         "@types/jstree": "3.3.35"
     },
     "dependencies": {
-        "key-value-editor": "1.0.6",
-        "helpers": "1.0.6"
+        "key-value-editor": "1.1.0",
+        "helpers": "1.1.0"
     }
 }
