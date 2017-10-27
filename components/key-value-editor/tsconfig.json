@@ -1,13 +1,20 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "es2015",
-        "rootDir": "typescript",
+        "module": "commonjs",
+        "removeComments": true,
         "outDir": "build",
         "jsx": "react",
-        "noImplicitAny": false,
-        "inlineSourceMap": true,
-        "declaration": true
+        "sourceMap": true,
+        "experimentalDecorators": true
     },
-    "include": ["typescript"]
+    "exclude": [
+        ".tscache",
+        ".vscode",
+        ".build",
+        "node_modules",
+        "build",
+        "public",
+        "sass"
+    ]
 }

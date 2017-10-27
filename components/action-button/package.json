@@ -11,6 +11,7 @@
     },
     "scripts": {
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "prepublish": "tsc -d",
         "start": "npm run storybook",
         "storybook": "start-storybook -p 6006 -c .",
         "build:storybook": "build-storybook -c . -o static"
