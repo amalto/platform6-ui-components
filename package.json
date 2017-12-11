@@ -31,13 +31,13 @@
         "typescript": "2.2.2"
     },
     "dependencies": {
-        "action-button": "1.1.1",
+        "action-button": "1.1.4",
         "base-64": "0.1.0",
         "classnames": "2.2.5",
-        "helpers": "1.1.1",
-        "key-value-editor": "1.1.1",
+        "helpers": "1.1.4",
+        "key-value-editor": "1.1.4",
         "react": "15.4.2",
         "react-dom": "15.4.2",
-        "tree": "1.1.1"
+        "tree": "1.1.4"
     }
 }
