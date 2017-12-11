@@ -2,7 +2,7 @@
     "name": "tree",
     "displayName": "Tree",
     "description": "A tree component to display data like an organisation tree.",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -13,14 +13,21 @@
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "prepare": "tsc -d",
         "start": "npm run storybook",
-        "storybook": "start-storybook -p 6006 -c .",
-        "build:storybook": "build-storybook -c . -o static"
+        "storybook": "start-storybook -p 6006 -c ./stories",
+        "build:storybook": "build-storybook -c ./stories -o static"
     },
     "devDependencies": {
-        "@types/jstree": "3.3.35"
+        "@storybook/react": "3.2.17",
+        "@types/jquery": "2.0.41",
+        "@types/jstree": "3.3.35",
+        "@types/react": "15.0.21",
+        "@types/react-dom": "0.14.23",
+        "ts-loader": "3.2.0"
     },
     "dependencies": {
-        "helpers": "1.1.1",
-        "key-value-editor": "1.1.1"
+        "helpers": "1.1.2",
+        "key-value-editor": "1.1.2",
+        "react": "15.4.2",
+        "react-dom": "15.4.2"
     }
 }

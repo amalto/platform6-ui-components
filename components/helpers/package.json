@@ -2,7 +2,7 @@
     "name": "helpers",
     "displayName": "Helpers",
     "description": "Helpers functions used across b2portal core and components.",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -13,16 +13,21 @@
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "prepare": "tsc -d",
         "start": "npm run storybook",
-        "storybook": "start-storybook -p 6006 -c .",
-        "build:storybook": "build-storybook -c . -o static"
+        "storybook": "start-storybook -p 6006 -c ./stories",
+        "build:storybook": "build-storybook -c ./stories -o static"
     },
     "dependencies": {
-        "base-64": "0.1.0"
+        "base-64": "0.1.0",
+        "react": "15.4.2",
+        "react-dom": "15.4.2"
     },
     "devDependencies": {
+        "@storybook/react": "3.2.17",
         "@types/base-64": "0.1.2",
         "@types/bootstrap": "3.3.36",
-        "@types/jquery": "3.2.15",
-        "@types/modernizr": "3.5.1"
+        "@types/jquery": "2.0.41",
+        "@types/modernizr": "3.5.1",
+        "@types/react": "15.0.21",
+        "@types/react-dom": "0.14.23"
     }
 }
