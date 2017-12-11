@@ -1,10 +1,13 @@
 import * as React from 'react'
-import * as classnames from 'classnames'
+import * as ReactDOM from 'react-dom'
+import * as classNames from 'classnames'
+
+import { unloadTooltips, loadTooltips } from 'helpers'
 
 
 module ActionButton {
     export interface Props extends React.Props<ActionButton> {
-        onClick?: React.EventHandler<React.MouseEvent<Element>>
+        clickAction?: React.EventHandler<React.MouseEvent<Element>>
         iconClass?: string
         colorClass?: string
         disabled?: boolean
@@ -13,31 +16,35 @@ module ActionButton {
     }
 }
 
-
 class ActionButton extends React.Component<ActionButton.Props, any> {
-    render () {
-        const { props } = this
-        const { disabled } = props
+    constructor( props: ActionButton.Props ) {
+        super( props )
+    }
+
+    render() {
+        var handleClick = null
+        if ( this.props.disabled ) {
+            handleClick = ''
+        }
+        else {
+            handleClick = this.props.clickAction
+        }
 
         return (
-			<span
-				className={classnames('action-icon-button', props.btnClass, { 'disabled': disabled })}
-				style={{
-					backgroundColor: disabled ? '#eee' : '#ea5648',
-					color: disabled ? '#444' : '#eee',
-					padding: '5px 20px',
-					minWidth: '180px',
-					textAlign: 'center'
-				}}
-				onClick={!disabled && props.onClick}
-				data-toggle="tooltip"
-				data-original-title={props.disabled ? null : props.tooltipText}>
-				<span className={classnames('fa', props.iconClass, props.colorClass)}>
-					{props.children}
-				</span>
-			</span>
-		)
-	}
+            <span className={classNames( 'action-icon-button', this.props.btnClass, { 'disabled': this.props.disabled } )}
+                onClick={handleClick} data-toggle="tooltip" data-original-title={this.props.disabled ? null : this.props.tooltipText}>
+                <span className={classNames( 'fa', this.props.iconClass, this.props.colorClass )}></span>
+            </span>
+        )
+    }
+
+    componentDidMount() {
+        loadTooltips( ReactDOM.findDOMNode( this ) )
+    }
+
+    componentWillUnmount() {
+        unloadTooltips( ReactDOM.findDOMNode( this ) )
+    }
 }
 
 
