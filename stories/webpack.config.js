@@ -9,11 +9,17 @@ const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/w
 module.exports = (baseConfig, env) => {
     const config = genDefaultConfig(baseConfig, env)
 
-    config.module.rules.push({
-        test: /\.(ts|tsx)$/,
-        include: path.resolve(__dirname, '../typescript/'),
-        loaders: ['ts-loader']
-    })
+    config.module.rules.push(
+        {
+            test: /\.(ts|tsx)$/,
+            include: path.resolve(__dirname, '../typescript/'),
+            loaders: ['ts-loader']
+        },
+        {
+            test: /\.md$/,
+            use: "raw-loader"
+        }
+    )
 
     config.resolve.extensions.push('.ts', '.tsx')
 
