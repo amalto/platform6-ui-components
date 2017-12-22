@@ -1,13 +1,11 @@
-# ActionButton
+# KeyValueEditor
 
 ### Import
 ```javascript
-import ActionButton from 'action-button'
+import KeyValueEditor from 'key-value-editor'
 ```
 
 ### Properties
-
-<!-- STORY -->
 
 Props | PropType | description | default |required
 --- | --- | --- | :---: | :---:
@@ -20,7 +18,7 @@ btnClass | string | Any available Portal CSS class names you want to apply to th
 
 ### Exemple
 ```javascript
-<ActionButton clickAction={e => deleteItem( e )}
+<KeyValueEditor clickAction={e => deleteItem( e )}
     iconClass='fa-trash'
     tooltipText='Delete item'
     btnClass='btn-trans btn-danger'

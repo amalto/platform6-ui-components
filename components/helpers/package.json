@@ -18,8 +18,8 @@
     },
     "dependencies": {
         "base-64": "0.1.0",
-        "react": "15.4.2",
-        "react-dom": "15.4.2"
+        "react": "15.6.2",
+        "react-dom": "15.6.2"
     },
     "devDependencies": {
         "@storybook/react": "3.2.17",
@@ -27,7 +27,7 @@
         "@types/bootstrap": "3.3.36",
         "@types/jquery": "2.0.41",
         "@types/modernizr": "3.5.1",
-        "@types/react": "15.0.21",
-        "@types/react-dom": "0.14.23"
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6"
     }
 }
