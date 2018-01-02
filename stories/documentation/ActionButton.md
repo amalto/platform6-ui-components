@@ -7,7 +7,7 @@
 import ActionButton from 'action-button'
 ```
 
-### Information
+### Informations
 
 This component is the button used in the amalto portal. You are able to play with the exemple above with the __KNOBS__ panel by changing the `iconClass`, `colorClass`, `disabled`, `tooltipText` and `btnClass` props.
 

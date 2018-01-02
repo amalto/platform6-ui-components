@@ -1,0 +1,32 @@
+{
+    "name": "code-editor",
+    "displayName": "CodeEditor",
+    "description": "Customizable code editor (non-form version).",
+    "version": "1.1.6",
+    "main": "./build/index.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "scripts": {
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "prepare": "tsc -d",
+        "start": "npm run storybook",
+        "storybook": "start-storybook -p 6006 -c ./stories",
+        "build:storybook": "build-storybook -c ./stories -o static"
+    },
+    "devDependencies": {
+        "@storybook/addon-actions": "3.2.17",
+        "@storybook/react": "3.2.17",
+        "@types/jquery": "2.0.41",
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6",
+        "ts-loader": "3.2.0"
+    },
+    "dependencies": {
+        "helpers": "1.1.6",
+        "react": "15.6.2",
+        "react-dom": "15.6.2"
+    }
+}

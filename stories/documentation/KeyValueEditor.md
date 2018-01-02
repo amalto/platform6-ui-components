@@ -1,20 +1,23 @@
 # KeyValueEditor
 
-### Import
+<!-- STORY -->
+
+### Usage
 ```javascript
 import KeyValueEditor from 'key-value-editor'
 ```
 
-### Properties
+## Informations
+The __KeyValueEditor__ component allow you to generate a map where the value can be a `text` or `file`. If the value is a file, you will be able to download it.
 
-Props | PropType | description | default |required
---- | --- | --- | :---: | :---:
-clickAction | ( event?: any ) => void | The method you want to trigger when the button is clicked | - | false
-iconClass | string | Any FontAwesome icon CSS class names like "fa-info" or "fa-info fa-lg" | - | false
-colorClass | string | Any available Portal CSS class names. Usually used to change the color of the icon | - | false
-disabled | boolean | You can disable the button with this props. It will be greyed and not clickable | false | false
-tooltipText | string | A text that will be displayed in the "title" HTML attribute of the button | - | false
-btnClass | string | Any available Portal CSS class names you want to apply to the icon wrapper <div/>. This can be used to space the icon from any other content | - | false
+### Interfaces
+- KeyValDef
+    - [key: string]: { contentType: string; contentBytes: string; }
+
+### Properties
+- **handleChange**: Detect change on the data and return them as a parameter which allow you to handle them.
+- **keyValues**: Map of `KeyValDef` to be displayed.
+- **locale**: Locale to be used by the __KeyValueEditor__ component.
 
 ### Exemple
 ```javascript

@@ -27,7 +27,10 @@ const data = require('./data.json')
 /**
  * Readme files
  */
+import todoReadme from './documentation/Todo.md'
 import actionButtonReadme from './documentation/ActionButton.md'
+import codeEditorReadme from './documentation/CodeEditor.md'
+import keyValueEditorReadme from './documentation/KeyValueEditor.md'
 import treeReadme from './documentation/Tree.md'
 import { prototype } from 'events';
 
@@ -45,6 +48,10 @@ const centerDecorator = (storyFn) => (
     </div>
 )
 
+const EmptyPreview = ({ children }) => {
+    return null
+}
+
 /**
  * Styles
  */
@@ -60,6 +67,7 @@ const headerTitle = {
 storiesOf('Components', module)
     .addDecorator(withKnobs)
     .addDecorator(centerDecorator)
+    .add('Todo', withDocs({ PreviewComponent: EmptyPreview })(todoReadme, () => <div></div>))
     .add('ActionButton', withDocs(actionButtonReadme, () => {
         const btnType = select('button type', {
             'btn-info': 'info',
@@ -87,6 +95,21 @@ storiesOf('Components', module)
             tooltipText={text('tooltipText', 'Click on me')}
             disabled={boolean('disabled', false)}
             clickAction={action('transparent info button')}
+        />
+    }))
+    .add('CodeEditor', withDocs(codeEditorReadme, () => {
+        return <div></div>
+    }))
+    .add('KeyValueEditor', withDocs(keyValueEditorReadme, () => {
+        const values = {
+            'first_key': { contentType: 'string', contentBytes: base64.encode('my first key') },
+            'second_key': { contentType: 'string', contentBytes: base64.encode('my second key') }
+        }
+
+        return <KeyValueEditor id="treeComponentExemple"
+            handleChange={keyValues => action('handleChange')}
+            keyValues={values}
+            locale='en-US'
         />
     }))
     // .add('Tree', withDocs(treeReadme, () => {
