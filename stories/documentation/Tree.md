@@ -7,8 +7,6 @@ import Tree from 'tree'
 
 ### Interfaces
 
-<div>Toto</div>
-
 ```typescript
 interface TreeNodeModel {
     id: string;                         // Unique node ID in the tree, required
@@ -33,6 +31,8 @@ interface TreeNodeModel {
     }
 }
 ```
+
+<!-- STORY -->
 
 ### Properties
 

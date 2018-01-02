@@ -1,28 +1,34 @@
 # ActionButton
 
-### Import
+<!-- STORY -->
+
+### Usage
 ```javascript
 import ActionButton from 'action-button'
 ```
 
-### Properties
+### Information
 
-<!-- STORY -->
+This component is the button used in the amalto portal. You are able to play with the exemple above with the __KNOBS__ panel by changing the `iconClass`, `colorClass`, `disabled`, `tooltipText` and `btnClass` props.
 
-Props | PropType | description | default |required
---- | --- | --- | :---: | :---:
-clickAction | ( event?: any ) => void | The method you want to trigger when the button is clicked | - | false
-iconClass | string | Any FontAwesome icon CSS class names like "fa-info" or "fa-info fa-lg" | - | false
-colorClass | string | Any available Portal CSS class names. Usually used to change the color of the icon | - | false
-disabled | boolean | You can disable the button with this props. It will be greyed and not clickable | false | false
-tooltipText | string | A text that will be displayed in the "title" HTML attribute of the button | - | false
-btnClass | string | Any available Portal CSS class names you want to apply to the icon wrapper <div/>. This can be used to space the icon from any other content | - | false
+> You can found all the font-awesome icons [here!](http://fontawesome.io/icons/)
+
+### Props
+
+> None of these props are required
+
+- **clickAction**: The method you want to trigger when the button is clicked.
+- **iconClass**: Any FontAwesome icon CSS class names like "fa-info" or "fa-info fa-lg".
+- **colorClass**: Any available Portal CSS class names. Usually used to change the color of the icon.
+- **disabled**: You can disable the button with this props. It will be greyed and not clickable.
+- **tooltipText**: A text that will be displayed in the "title" HTML attribute of the button.
+- **btnClass**: Any available Portal CSS class names you want to apply to the icon wrapper `<div/>`. This can be used to space the icon from any other content.
 
 ### Exemple
-```javascript
-<ActionButton clickAction={e => deleteItem( e )}
-    iconClass='fa-trash'
-    tooltipText='Delete item'
-    btnClass='btn-trans btn-danger'
+~~~js
+<ActionButton btnClass='btn btn-info btn-trans mgt-10'
+    iconClass='fa-info'
+    tooltipText='Click on me'
+    clickAction={(e) => console.info('Clicked on')}
 />
-```
+~~~
