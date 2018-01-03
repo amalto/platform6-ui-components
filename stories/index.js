@@ -86,7 +86,7 @@ storiesOf('Components', module)
             'danger-color': 'danger',
             'font-color': 'font',
             'default-color': 'default'
-        }, 'none')
+        }, '')
 
         return <ActionButton btnClass={classNames(`btn ${btnType} mgt-10`, {
             'btn-trans': boolean('transparent button', true)
@@ -99,50 +99,19 @@ storiesOf('Components', module)
         />
     }))
     .add('CodeEditor', withDocs(codeEditorReadme, () => {
-        const theme = select('theme', {
-            'brace/theme/ambiance': 'ambiance',
-            'brace/theme/chaos': 'chaos',
-            'brace/theme/chrome': 'chrome',
-            'brace/theme/clouds': 'clouds',
-            'brace/theme/clouds_midnight': 'clouds_midnight',
-            'brace/theme/cobalt': 'cobalt',
-            'brace/theme/crimson_editor': 'crimson_editor',
-            'brace/theme/dawn': 'dawn',
-            'brace/theme/dracula': 'dracula',
-            'brace/theme/dreamweaver': 'dreamweaver',
-            'brace/theme/eclipse': 'eclipse',
-            'brace/theme/github': 'github',
-            'brace/theme/gob': 'gob',
-            'brace/theme/gruvbox': 'gruvbox',
-            'brace/theme/idle_fingers': 'idle_fingers',
-            'brace/theme/iplastic': 'iplastic',
-            'brace/theme/katzenmilch': 'katzenmilch',
-            'brace/theme/kr_theme': 'kr_theme',
-            'brace/theme/kuroir': 'kuroir',
-            'brace/theme/merbivore': 'merbivore',
-            'brace/theme/merbivore_soft': 'merbivore_soft',
-            'brace/theme/mono_industrial': 'mono_industrial',
-            'brace/theme/monokai': 'monokai',
-            'brace/theme/pastel_on_dark': 'pastel_on_dark',
-            'brace/theme/solarized_dark': 'solarized_dark',
-            'brace/theme/solarized_light': 'solarized_light',
-            'brace/theme/sqlserver': 'sqlserver',
-            'brace/theme/terminal': 'terminal',
-            'brace/theme/textmate': 'textmate',
-            'brace/theme/tomorrow': 'tomorrow',
-            'brace/theme/tomorrow_night': 'tomorrow_night',
-            'brace/theme/tomorrow_night_blue': 'tomorrow_night_blue',
-            'brace/theme/tomorrow_night_bright': 'tomorrow_night_bright',
-            'brace/theme/tomorrow_night_eighties': 'tomorrow_night_eighties',
-            'brace/theme/twilight': 'twilight',
-            'brace/theme/vibrant_ink': 'vibrant_ink',
-            'brace/theme/xcode': 'xcode'
-        }, 'tomorrow_night_eighties')
-        return <div className='mgt-10' style={{ height: 200 }}>
+        const codeEditorData = data.codeEditor
+
+        const theme = select('theme', codeEditorData.themes, codeEditorData.defaultTheme)
+        const mode = select('mode', codeEditorData.modes, codeEditorData.defaultMode)
+
+        return <div style={{ height: 200 }}>
             <CodeEditor value='test'
-                mode='ace/mode/groovy'
+                mode={mode}
                 loadTime={-1}
                 docId='code-editor'
+                displaySettings={{
+                    theme
+                }}
             />
         </div>
     }))

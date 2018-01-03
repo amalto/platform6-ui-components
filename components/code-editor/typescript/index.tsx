@@ -183,7 +183,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         return doUpdate
     }
 
-    componentDidUpdate() {
+    componentDidUpdate( prevProps: CodeEditor.Props, prevState: CodeEditor.state ) {
+        if ( prevProps.mode !== this.props.mode && this.props.mode ) {
+            this._editor.getSession().setMode( this.props.mode )
+        }
         !this.props.readonly && this.focus( this.props.aceSession )
     }
 
