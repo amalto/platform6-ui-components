@@ -166,6 +166,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             !nextProps.readonly && this.focus( nextProps.aceSession )
         }
 
+        if ( this.props.readonly !== nextProps.readonly ) {
+            this._editor.setReadOnly( nextProps.readonly )
+        }
+
         if ( this.props.mode !== nextProps.mode && nextProps.mode ) {
             this._editor.getSession().setMode( nextProps.mode )
         }

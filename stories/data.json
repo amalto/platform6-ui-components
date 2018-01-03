@@ -66,6 +66,7 @@
         }
     },
     "codeEditor": {
+        "value": "const test = 'test';",
         "defaultTheme": "ace/theme/tomorrow_night_eighties",
         "themes": {
             "ace/theme/ambiance": "ambiance",
@@ -118,6 +119,14 @@
             "ace/mode/typescript": "typescript",
             "ace/mode/tsx": "tsx",
             "ace/mode/xml": "xml"
+        },
+        "defaultFontSize": "12px",
+        "fontSizes": {
+            "10px": "10px",
+            "11px": "11px",
+            "12px": "12px",
+            "13px": "13px",
+            "14px": "14px"
         }
     }
 }

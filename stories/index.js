@@ -8,6 +8,8 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/react'
 import { withDocs } from 'storybook-readme'
 
+let resetTick = -1
+
 /**
  * External modules
  */
@@ -101,17 +103,32 @@ storiesOf('Components', module)
     .add('CodeEditor', withDocs(codeEditorReadme, () => {
         const codeEditorData = data.codeEditor
 
-        const theme = select('theme', codeEditorData.themes, codeEditorData.defaultTheme)
-        const mode = select('mode', codeEditorData.modes, codeEditorData.defaultMode)
+        const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
+        const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
+        const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
+        const showInvisibles = boolean('Show invisible characters', false)
+        const showGutter = boolean('Show gutter', true)
+        const showIndent = boolean('Show indentations', true)
+        const wrap = boolean('Wrap', false)
+        const readonly = boolean('Readonly', true)
+
+        resetTick = resetTick + 1
 
         return <div style={{ height: 200 }}>
-            <CodeEditor value='test'
+            <CodeEditor value={codeEditorData.value}
                 mode={mode}
                 loadTime={-1}
                 docId='code-editor'
+                readonly={readonly}
                 displaySettings={{
-                    theme
+                    theme,
+                    fontSize,
+                    showInvisibles,
+                    showGutter,
+                    showIndent,
+                    wrap
                 }}
+                resetTick={resetTick}
             />
         </div>
     }))
