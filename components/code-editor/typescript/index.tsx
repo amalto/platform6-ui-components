@@ -166,6 +166,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             !nextProps.readonly && this.focus( nextProps.aceSession )
         }
 
+        if ( this.props.mode !== nextProps.mode && nextProps.mode ) {
+            this._editor.getSession().setMode( nextProps.mode )
+        }
+
         if ( this.props.saveSession && newDoc ) {
             //save previous ACE Session
             this.props.saveSession( this.getAceSession( this._editor ) )
@@ -183,10 +187,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         return doUpdate
     }
 
-    componentDidUpdate( prevProps: CodeEditor.Props, prevState: CodeEditor.state ) {
-        if ( prevProps.mode !== this.props.mode && this.props.mode ) {
-            this._editor.getSession().setMode( this.props.mode )
-        }
+    componentDidUpdate() {
         !this.props.readonly && this.focus( this.props.aceSession )
     }
 
