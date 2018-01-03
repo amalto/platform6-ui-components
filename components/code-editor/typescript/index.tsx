@@ -10,11 +10,66 @@ import { UserModel, getUserJson } from './models/UserModel'
 
 import { Model } from './models/Messages'
 import AceSession from './models/AceSession'
-import Ace = AceAjax.Ace;
-import Editor = AceAjax.Editor;
-const Range = ace.require( 'ace/range' ).Range;
+import * as ace from 'brace'
 
-type AceEditor = AceAjax.Editor
+/**
+ * Ace editor mode
+ */
+import 'brace/mode/csharp'
+import 'brace/mode/dockerfile'
+import 'brace/mode/groovy'
+import 'brace/mode/html'
+import 'brace/mode/java'
+import 'brace/mode/javascript'
+import 'brace/mode/json'
+import 'brace/mode/typescript'
+import 'brace/mode/tsx'
+import 'brace/mode/xml'
+
+/**
+ * Ace editor theme
+ */
+import 'brace/theme/ambiance'
+import 'brace/theme/chaos'
+import 'brace/theme/chrome'
+import 'brace/theme/clouds'
+import 'brace/theme/clouds_midnight'
+import 'brace/theme/cobalt'
+import 'brace/theme/crimson_editor'
+import 'brace/theme/drawn'
+import 'brace/theme/dracula'
+import 'brace/theme/dreamweaver'
+import 'brace/theme/eclipse'
+import 'brace/theme/github'
+import 'brace/theme/gob'
+import 'brace/theme/gruvbox'
+import 'brace/theme/idle_fingers'
+import 'brace/theme/iplastic'
+import 'brace/theme/katzenmilch'
+import 'brace/theme/kr_theme'
+import 'brace/theme/kuroir'
+import 'brace/theme/merbivore'
+import 'brace/theme/merbivore_soft'
+import 'brace/theme/mono_industrial'
+import 'brace/theme/monokai'
+import 'brace/theme/pastel_on_dark'
+import 'brace/theme/solarized_dark'
+import 'brace/theme/solarized_light'
+import 'brace/theme/sqlserver'
+import 'brace/theme/terminal'
+import 'brace/theme/textmate'
+import 'brace/theme/tomorrow'
+import 'brace/theme/tomorrow_night'
+import 'brace/theme/tomorrow_night_blue'
+import 'brace/theme/tomorrow_night_bright'
+import 'brace/theme/tomorrow_night_eighties'
+import 'brace/theme/twilight'
+import 'brace/theme/vibrant_ink'
+import 'brace/theme/xcode'
+
+const Range = ace.acequire( 'ace/range' ).Range
+
+type AceEditor = ace.Editor
 
 module CodeEditor {
     export interface Props extends React.Props<CodeEditor> {
@@ -99,7 +154,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         this.props.saveSession && this.props.saveSession( this.getAceSession( this._editor ) )
 
         //destroy the editor
-        this._editor.destroy()
+        this._editor && this._editor.destroy()
     }
 
     shouldComponentUpdate( nextProps: CodeEditor.Props ) {
@@ -145,7 +200,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         this._editor.resize( true )
     }
 
-    private setEditorSession( editor: AceAjax.Editor, props: CodeEditor.Props ) {
+    private setEditorSession( editor: AceEditor, props: CodeEditor.Props ) {
 
         //set new session
         if ( props.aceSession ) {
@@ -221,7 +276,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         editor.setSession( session )
     }
 
-    private setEditorOptions = ( editor: AceAjax.Editor, props: CodeEditor.Props ) => {
+    private setEditorOptions = ( editor: AceEditor, props: CodeEditor.Props ) => {
 
         const userJson = props.userJson || {}
 
@@ -284,7 +339,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         if ( displaySettings.marker ) {
             const range = displaySettings.marker
 
-            this._markerId = this._editor.getSession().addMarker( new Range( range.row, range.column, range.row, range.column + 1 ), 'ace_error-marker', 'fullLine', false )
+            // this._markerId = this._editor.getSession().addMarker( new Range( range.row, range.column, range.row, range.column + 1 ), 'ace_error-marker', 'fullLine', false )
         }
     }
 
