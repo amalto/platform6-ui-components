@@ -107,7 +107,7 @@ storiesOf('Components', module)
             'brace/theme/clouds_midnight': 'clouds_midnight',
             'brace/theme/cobalt': 'cobalt',
             'brace/theme/crimson_editor': 'crimson_editor',
-            'brace/theme/drawn': 'drawn',
+            'brace/theme/dawn': 'dawn',
             'brace/theme/dracula': 'dracula',
             'brace/theme/dreamweaver': 'dreamweaver',
             'brace/theme/eclipse': 'eclipse',
