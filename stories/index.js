@@ -110,9 +110,11 @@ storiesOf('Components', module)
         const showGutter = boolean('Show gutter', true)
         const showIndent = boolean('Show indentations', true)
         const wrap = boolean('Wrap', false)
-        const readonly = boolean('Readonly', true)
+        const readonly = boolean('Readonly', false)
 
         resetTick = resetTick + 1
+
+        console.info('readonly => ', readonly)
 
         return <div style={{ height: 200 }}>
             <CodeEditor value={codeEditorData.value}

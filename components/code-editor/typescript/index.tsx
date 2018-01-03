@@ -160,14 +160,13 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     shouldComponentUpdate( nextProps: CodeEditor.Props ) {
         const newDoc = nextProps.docId !== this.props.docId
 
+        // FIXME: Handle multiple editor with readonly and write mode
+        this._editor.setReadOnly( this.props.readonly )
+
         if ( this.props.resetTick !== nextProps.resetTick && nextProps.resetTick ) {
             $( this._editorPanel ).height( '100%' )
             this._editor.resize( true )
             !nextProps.readonly && this.focus( nextProps.aceSession )
-        }
-
-        if ( this.props.readonly !== nextProps.readonly ) {
-            this._editor.setReadOnly( nextProps.readonly )
         }
 
         if ( this.props.mode !== nextProps.mode && nextProps.mode ) {
@@ -182,8 +181,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
         const doUpdate = ( newDoc || nextProps.loadTime > this._firstChangeTime )
 
-        // FIXME: Handle multiple editor with readonly and write mode
-        this._editor.setReadOnly( this.props.readonly )
         doUpdate && this.setEditorSession( this._editor, nextProps )
         displaySettingsChanged && this._markerId && this._editor.getSession().removeMarker( this._markerId )
         displaySettingsChanged && this.setEditorOptions( this._editor, nextProps )
@@ -232,7 +229,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             }
 
             //BGR: If this is too colstly/slow we will have to get smarter there
-            // CHRIS: Needed to be able to save the complete history
+            //CHRIS: setTimeout Needed to be able to save the complete history
             setTimeout( () => {
                 props.saveSession && props.saveSession( $.extend( {}, this.getAceSession( editor ), {
                     cursorPosition: e.end
