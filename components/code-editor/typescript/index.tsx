@@ -160,9 +160,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     shouldComponentUpdate( nextProps: CodeEditor.Props ) {
         const newDoc = nextProps.docId !== this.props.docId
 
-        // FIXME: Handle multiple editor with readonly and write mode
-        this._editor.setReadOnly( this.props.readonly )
-
         if ( this.props.resetTick !== nextProps.resetTick && nextProps.resetTick ) {
             $( this._editorPanel ).height( '100%' )
             this._editor.resize( true )
@@ -181,6 +178,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
         const doUpdate = ( newDoc || nextProps.loadTime > this._firstChangeTime )
 
+        // FIXME: Handle multiple editor with readonly and write mode
+        this._editor.setReadOnly( nextProps.readonly )
         doUpdate && this.setEditorSession( this._editor, nextProps )
         displaySettingsChanged && this._markerId && this._editor.getSession().removeMarker( this._markerId )
         displaySettingsChanged && this.setEditorOptions( this._editor, nextProps )
