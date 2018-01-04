@@ -8,8 +8,6 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/react'
 import { withDocs } from 'storybook-readme'
 
-let resetTick = -1
-
 /**
  * External modules
  */
@@ -33,6 +31,8 @@ const data = require('./data.json')
 import todoReadme from './documentation/Todo.md'
 import actionButtonReadme from './documentation/ActionButton.md'
 import codeEditorReadme from './documentation/CodeEditor.md'
+import codeEditorProps from './documentation/CodeEditor/Props.md'
+import codeEditorInterfaces from './documentation/CodeEditor/Interfaces.md'
 import keyValueEditorReadme from './documentation/KeyValueEditor.md'
 import treeReadme from './documentation/Tree.md'
 import { prototype } from 'events';
@@ -52,7 +52,7 @@ const centerDecorator = (storyFn) => (
 )
 
 const EmptyPreview = ({ children }) => {
-    return null
+    return children
 }
 
 /**
@@ -100,40 +100,155 @@ storiesOf('Components', module)
             clickAction={action('transparent info button')}
         />
     }))
-    .add('CodeEditor', withDocs(codeEditorReadme, () => {
-        const codeEditorData = data.codeEditor
+    // .add('CodeEditor', withDocs(codeEditorReadme, () => {
+    //     const codeEditorData = data.codeEditor
+    //     const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
+    //     const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
+    //     const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
+    //     const showInvisibles = boolean('Show invisible characters', false)
+    //     const showGutter = boolean('Show gutter', true)
+    //     const showIndent = boolean('Show indentations', true)
+    //     const wrap = boolean('Wrap', false)
+    //     const readonly = boolean('Readonly', false)
 
-        const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
-        const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
-        const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
-        const showInvisibles = boolean('Show invisible characters', false)
-        const showGutter = boolean('Show gutter', true)
-        const showIndent = boolean('Show indentations', true)
-        const wrap = boolean('Wrap', false)
-        const readonly = boolean('Readonly', false)
+    //     return <div style={{ height: 200 }}>
+    //         <CodeEditor value={codeEditorData.value}
+    //             mode={mode}
+    //             loadTime={-1}
+    //             docId='code-editor'
+    //             readonly={readonly}
+    //             displaySettings={{
+    //                 theme,
+    //                 fontSize,
+    //                 showInvisibles,
+    //                 showGutter,
+    //                 showIndent,
+    //                 wrap
+    //             }}
+    //         />
+    //     </div>
+    // }))
+    .addWithChapters('CodeEditor', {
+        chapters: [
+            {
+                sections: [
+                    {
+                        sectionFn: withDocs({
+                            PreviewComponent: EmptyPreview
+                        })(codeEditorReadme, () => {
+                            const codeEditorData = data.codeEditor
+                            const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
+                            const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
+                            const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
+                            const showInvisibles = boolean('Show invisible characters', false)
+                            const showGutter = boolean('Show gutter', true)
+                            const showIndent = boolean('Show indentations', true)
+                            const wrap = boolean('Wrap', false)
+                            const readonly = boolean('Readonly', false)
 
-        resetTick = resetTick + 1
+                            return <div style={{ height: 200 }}>
+                                <CodeEditor value={codeEditorData.value}
+                                    mode={mode}
+                                    loadTime={-1}
+                                    docId='code-editor'
+                                    readonly={readonly}
+                                    displaySettings={{
+                                        theme,
+                                        fontSize,
+                                        showInvisibles,
+                                        showGutter,
+                                        showIndent,
+                                        wrap
+                                    }}
+                                />
+                            </div>
+                        }),
+                        options: {
+                            showSource: false
+                        }
+                    },
+                    {
+                        sectionFn: withDocs({
+                            PreviewComponent: EmptyPreview
+                        })(codeEditorInterfaces, () => {
+                            const codeEditorData = data.codeEditor
 
-        console.info('readonly => ', readonly)
+                            return <div style={{ height: 260 }} className='mgb-20'>
+                                <CodeEditor value={
+                                    `export interface Settings {
+    theme?: string;
+    fontSize?: string;
+    fontFamily?: string;
+    showInvisibles?: boolean;
+    showGutter?: boolean;
+    showIndent?: boolean;
+    wrap?: boolean;
+    highlight?: boolean;
+    marker?: Marker;
+};
 
-        return <div style={{ height: 200 }}>
-            <CodeEditor value={codeEditorData.value}
-                mode={mode}
-                loadTime={-1}
-                docId='code-editor'
-                readonly={readonly}
-                displaySettings={{
-                    theme,
-                    fontSize,
-                    showInvisibles,
-                    showGutter,
-                    showIndent,
-                    wrap
-                }}
-                resetTick={resetTick}
-            />
-        </div>
-    }))
+export interface Marker {
+    row: number;
+    column: number;
+};`
+                                }
+                                    mode={'ace/mode/typescript'}
+                                    loadTime={-1}
+                                    docId='code-editor-interfaces'
+                                    readonly={true}
+                                    displaySettings={{
+                                        theme: codeEditorData.defaultTheme,
+                                        showGutter: false
+                                    }}
+                                />
+                            </div>
+                        }),
+                        options: {
+                            showSource: false
+                        }
+                    },
+                    {
+                        sectionFn: withDocs({
+                            PreviewComponent: EmptyPreview
+                        })(codeEditorProps, () => {
+                            const codeEditorData = data.codeEditor
+
+                            return <div style={{ height: 230 }}>
+                                <CodeEditor value={
+                                    `export interface Props extends React.Props<CodeEditor> {
+    value: string;
+    mode: string;
+    readonly?: boolean;
+    editorHeightOffset?: number;
+    displaySettings?: Settings;
+    loadTime: number;
+    resetTick?: number;
+    aceSession?: AceSession;
+    docId: string;
+    userJson?: UserModel.JsonContent;
+    saveSession?: ( session: AceSession ) => void;
+    saveContent?: ( session: AceSession ) => void;
+};`
+                                }
+                                    mode={'ace/mode/typescript'}
+                                    loadTime={-1}
+                                    docId='code-editor-props'
+                                    readonly={true}
+                                    displaySettings={{
+                                        theme: codeEditorData.defaultTheme,
+                                        showGutter: false
+                                    }}
+                                />
+                            </div>
+                        }),
+                        options: {
+                            showSource: false
+                        }
+                    }
+                ]
+            }
+        ]
+    })
     .add('KeyValueEditor', withDocs(keyValueEditorReadme, () => {
         const values = {
             'first_key': { contentType: 'string', contentBytes: base64.encode('my first key') },
