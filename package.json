@@ -8,13 +8,17 @@
         "publish": "lerna publish --yes --exact",
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "start": "npm run storybook",
-        "storybook": "start-storybook -p 6006 -c ./stories",
-        "build:storybook": "build-storybook -c ./stories -o static"
+        "storybook": "start-storybook -p 6006 -c ./stories -s ./public",
+        "build:storybook": "build-storybook -c ./stories -s ./public -o static"
     },
     "publishConfig": {
         "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
     "devDependencies": {
+        "@storybook/addon-knobs": "3.3.3",
+        "@storybook/addon-links": "3.2.12",
+        "@storybook/addon-options": "3.2.18",
+        "@storybook/react": "3.2.12",
         "@types/ace": "0.0.36",
         "@types/base-64": "0.1.2",
         "@types/bootstrap": "3.3.36",
@@ -24,20 +28,19 @@
         "@types/modernizr": "3.5.1",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
+        "css-loader": "0.28.7",
+        "extract-text-webpack-plugin": "^3.0.2",
+        "html-loader": "0.5.1",
         "lerna": "2.4.0",
-        "raw-loader": "0.5.1",
-        "react-storybook-addon-chapters": "2.1.1",
+        "node-sass": "4.7.2",
+        "path": "0.12.7",
+        "sass-loader": "6.0.6",
         "storybook-readme": "3.1.1",
+        "style-loader": "0.19.1",
         "ts-loader": "3.2.0",
         "typescript": "2.6.2"
     },
     "dependencies": {
-        "@storybook/addon-actions": "3.2.12",
-        "@storybook/addon-info": "3.2.17",
-        "@storybook/addon-knobs": "3.3.3",
-        "@storybook/addon-links": "3.2.12",
-        "@storybook/addon-options": "3.2.18",
-        "@storybook/react": "3.2.12",
         "action-button": "1.1.4",
         "base-64": "0.1.0",
         "brace": "0.11.0",
@@ -47,7 +50,6 @@
         "key-value-editor": "1.1.4",
         "react": "15.6.2",
         "react-dom": "15.6.2",
-        "react-markdown": "3.1.4",
         "tree": "1.1.4"
     }
 }

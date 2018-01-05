@@ -3,11 +3,11 @@
  * https://storybook.js.org/configurations/custom-webpack-config
  */
 
-const path = require('path')
+const path = require('path');
 const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
 
 module.exports = (baseConfig, env) => {
-    const config = genDefaultConfig(baseConfig, env)
+    const config = genDefaultConfig(baseConfig, env);
 
     config.module.rules.push(
         {
@@ -17,13 +17,26 @@ module.exports = (baseConfig, env) => {
         },
         {
             test: /\.md$/,
-            use: "raw-loader"
+            use: [
+                {
+                    loader: 'raw-loader',
+                }
+            ]
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                { loader: 'style-loader' },
+                { loader: 'css-loader' },
+                { loader: 'sass-loader' }
+            ],
+            include: path.resolve(__dirname, '../public/sass/')
         }
-    )
+    );
 
-    config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.extensions.push('.scss', '.css', '.md', '.ts', '.tsx');
 
-    config.devtool = 'eval'
+    config.devtool = 'eval';
 
     return config
-}
+};

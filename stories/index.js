@@ -28,14 +28,12 @@ const data = require('./data.json')
 /**
  * Readme files
  */
-import todoReadme from './documentation/Todo.md'
-import actionButtonReadme from './documentation/ActionButton.md'
-import codeEditorReadme from './documentation/CodeEditor.md'
-import codeEditorProps from './documentation/CodeEditor/Props.md'
-import codeEditorInterfaces from './documentation/CodeEditor/Interfaces.md'
-import keyValueEditorReadme from './documentation/KeyValueEditor.md'
-import treeReadme from './documentation/Tree.md'
-import { prototype } from 'events';
+import codeEditorPlayground from './documentation/CodeEditor.md'
+
+/**
+ * Styles
+ */
+import '../public/sass/markdown'
 
 /**
  * Decorators
@@ -46,7 +44,7 @@ import { prototype } from 'events';
  * @param { () => void } storyFn Method rendering children added to the storybook
  */
 const centerDecorator = (storyFn) => (
-    <div className='container-fluid'>
+    <div className='container'>
         {storyFn()}
     </div>
 )
@@ -70,197 +68,90 @@ const headerTitle = {
 storiesOf('Components', module)
     .addDecorator(withKnobs)
     .addDecorator(centerDecorator)
-    .add('Todo', withDocs({ PreviewComponent: EmptyPreview })(todoReadme, () => <div></div>))
-    .add('ActionButton', withDocs(actionButtonReadme, () => {
-        const btnType = select('button type', {
-            'btn-info': 'info',
-            'btn-primary': 'primary',
-            'btn-warning': 'warning',
-            'btn-danger': 'danger',
-            'btn-font': 'font',
-            'btn-default': 'default'
-        }, 'btn-info')
-        const colorClass = select('button color', {
-            '': 'none',
-            'info-color': 'info',
-            'primary-color': 'primary',
-            'warning-color': 'warning',
-            'danger-color': 'danger',
-            'font-color': 'font',
-            'default-color': 'default'
-        }, '')
+    .add('CodeEditor', () => {
+        const codeEditorData = data.codeEditor
+        const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
+        const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
+        const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
+        const showInvisibles = boolean('Show invisible characters', false)
+        const showGutter = boolean('Show gutter', true)
+        const showIndent = boolean('Show indentations', true)
+        const wrap = boolean('Wrap', false)
+        const readonly = boolean('Readonly', false)
 
-        return <ActionButton btnClass={classNames(`btn ${btnType} mgt-10`, {
-            'btn-trans': boolean('transparent button', true)
-        })}
-            iconClass={text('iconClass', 'fa-info')}
-            colorClass={colorClass}
-            tooltipText={text('tooltipText', 'Click on me')}
-            disabled={boolean('disabled', false)}
-            clickAction={action('transparent info button')}
-        />
-    }))
-    // .add('CodeEditor', withDocs(codeEditorReadme, () => {
-    //     const codeEditorData = data.codeEditor
-    //     const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
-    //     const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
-    //     const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
-    //     const showInvisibles = boolean('Show invisible characters', false)
-    //     const showGutter = boolean('Show gutter', true)
-    //     const showIndent = boolean('Show indentations', true)
-    //     const wrap = boolean('Wrap', false)
-    //     const readonly = boolean('Readonly', false)
-
-    //     return <div style={{ height: 200 }}>
-    //         <CodeEditor value={codeEditorData.value}
-    //             mode={mode}
-    //             loadTime={-1}
-    //             docId='code-editor'
-    //             readonly={readonly}
-    //             displaySettings={{
-    //                 theme,
-    //                 fontSize,
-    //                 showInvisibles,
-    //                 showGutter,
-    //                 showIndent,
-    //                 wrap
-    //             }}
-    //         />
-    //     </div>
-    // }))
-    .addWithChapters('CodeEditor', {
-        chapters: [
-            {
-                sections: [
-                    {
-                        sectionFn: withDocs({
-                            PreviewComponent: EmptyPreview
-                        })(codeEditorReadme, () => {
-                            const codeEditorData = data.codeEditor
-                            const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
-                            const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
-                            const fontSize = select('Font size', codeEditorData.fontSizes, codeEditorData.defaultFontSize)
-                            const showInvisibles = boolean('Show invisible characters', false)
-                            const showGutter = boolean('Show gutter', true)
-                            const showIndent = boolean('Show indentations', true)
-                            const wrap = boolean('Wrap', false)
-                            const readonly = boolean('Readonly', false)
-
-                            return <div style={{ height: 200 }}>
-                                <CodeEditor value={codeEditorData.value}
-                                    mode={mode}
-                                    loadTime={-1}
-                                    docId='code-editor'
-                                    readonly={readonly}
-                                    displaySettings={{
-                                        theme,
-                                        fontSize,
-                                        showInvisibles,
-                                        showGutter,
-                                        showIndent,
-                                        wrap
-                                    }}
-                                />
-                            </div>
-                        }),
-                        options: {
-                            showSource: false
-                        }
-                    },
-                    {
-                        sectionFn: withDocs({
-                            PreviewComponent: EmptyPreview
-                        })(codeEditorInterfaces, () => {
-                            const codeEditorData = data.codeEditor
-
-                            return <div style={{ height: 260 }} className='mgb-20'>
-                                <CodeEditor value={
-                                    `export interface Settings {
-    theme?: string;
-    fontSize?: string;
-    fontFamily?: string;
-    showInvisibles?: boolean;
-    showGutter?: boolean;
-    showIndent?: boolean;
-    wrap?: boolean;
-    highlight?: boolean;
-    marker?: Marker;
-};
-
-export interface Marker {
-    row: number;
-    column: number;
-};`
-                                }
-                                    mode={'ace/mode/typescript'}
-                                    loadTime={-1}
-                                    docId='code-editor-interfaces'
-                                    readonly={true}
-                                    displaySettings={{
-                                        theme: codeEditorData.defaultTheme,
-                                        showGutter: false
-                                    }}
-                                />
-                            </div>
-                        }),
-                        options: {
-                            showSource: false
-                        }
-                    },
-                    {
-                        sectionFn: withDocs({
-                            PreviewComponent: EmptyPreview
-                        })(codeEditorProps, () => {
-                            const codeEditorData = data.codeEditor
-
-                            return <div style={{ height: 230 }}>
-                                <CodeEditor value={
-                                    `export interface Props extends React.Props<CodeEditor> {
-    value: string;
-    mode: string;
-    readonly?: boolean;
-    editorHeightOffset?: number;
-    displaySettings?: Settings;
-    loadTime: number;
-    resetTick?: number;
-    aceSession?: AceSession;
-    docId: string;
-    userJson?: UserModel.JsonContent;
-    saveSession?: ( session: AceSession ) => void;
-    saveContent?: ( session: AceSession ) => void;
-};`
-                                }
-                                    mode={'ace/mode/typescript'}
-                                    loadTime={-1}
-                                    docId='code-editor-props'
-                                    readonly={true}
-                                    displaySettings={{
-                                        theme: codeEditorData.defaultTheme,
-                                        showGutter: false
-                                    }}
-                                />
-                            </div>
-                        }),
-                        options: {
-                            showSource: false
-                        }
-                    }
-                ]
-            }
-        ]
+        return <div className='documentation' style={{ height: 200 }}>
+            <h1>CodeEditor</h1>
+            <h2>Informations</h2>
+            <p>This component is the same one as <span className='bold'>CodeEditorInput</span> except that it is not used in a form. It is mainly used to display readonly content or content that wont be submitted.</p>
+            <h2>Usage</h2>
+            <table className='full-width mgt-20 mbg-20 text-medium'>
+                <tr>
+                    <td>install</td><td><code>npm install --save code-editor</code></td>
+                </tr>
+                <tr>
+                    <td>import</td><td><code>import CodeEditor from 'code-editor'</code></td>
+                </tr>
+            </table>
+            <h2>Playground</h2>
+            <p>You can change the props with the KNOBS panel.</p>
+            <CodeEditor value={codeEditorData.value}
+                mode={mode}
+                loadTime={-1}
+                docId='code-editor-playground'
+                readonly={readonly}
+                displaySettings={{
+                    theme,
+                    fontSize,
+                    showInvisibles,
+                    showGutter,
+                    showIndent,
+                    wrap
+                }}
+            />
+        </div>
     })
-    .add('KeyValueEditor', withDocs(keyValueEditorReadme, () => {
-        const values = {
-            'first_key': { contentType: 'string', contentBytes: base64.encode('my first key') },
-            'second_key': { contentType: 'string', contentBytes: base64.encode('my second key') }
-        }
+    // .add('Todo', withDocs({PreviewComponent: EmptyPreview })(todoReadme, () => <div></div>))
+    // .add('ActionButton', withDocs(actionButtonReadme, () => {
+    //     const btnType = select('button type', {
+    //         'btn-info': 'info',
+    //         'btn-primary': 'primary',
+    //         'btn-warning': 'warning',
+    //         'btn-danger': 'danger',
+    //         'btn-font': 'font',
+    //         'btn-default': 'default'
+    //     }, 'btn-info')
+    //     const colorClass = select('button color', {
+    //         '': 'none',
+    //         'info-color': 'info',
+    //         'primary-color': 'primary',
+    //         'warning-color': 'warning',
+    //         'danger-color': 'danger',
+    //         'font-color': 'font',
+    //         'default-color': 'default'
+    //     }, '')
 
-        return <KeyValueEditor id="treeComponentExemple"
-            handleChange={keyValues => action('handleChange')}
-            keyValues={values}
-            locale='en-US'
-        />
-    }))
+    //     return <ActionButton btnClass={classNames(`btn ${btnType} mgt-10`, {
+    //         'btn-trans': boolean('transparent button', true)
+    //     })}
+    //         iconClass={text('iconClass', 'fa-info')}
+    //         colorClass={colorClass}
+    //         tooltipText={text('tooltipText', 'Click on me')}
+    //         disabled={boolean('disabled', false)}
+    //         clickAction={action('transparent info button')}
+    //     />
+    // }))
+    // .add('KeyValueEditor', withDocs(keyValueEditorReadme, () => {
+    //     const values = {
+    //         'first_key': { contentType: 'string', contentBytes: base64.encode('my first key') },
+    //         'second_key': { contentType: 'string', contentBytes: base64.encode('my second key') }
+    //     }
+
+    //     return <KeyValueEditor id="treeComponentExemple"
+    //         handleChange={keyValues => action('handleChange')}
+    //         keyValues={values}
+    //         locale='en-US'
+    //     />
+    // }))
     // .add('Tree', withDocs(treeReadme, () => {
     //     return (
     //         <div className='mgt-10'>
