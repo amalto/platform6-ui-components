@@ -4,6 +4,7 @@
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/react'
+import { withState } from '@dump247/storybook-state'
 
 /**
  * External modules
@@ -68,7 +69,7 @@ const headerTitle = {
 storiesOf('Components', module)
     .addDecorator(withKnobs)
     .addDecorator(centerDecorator)
-    .add('CodeEditor', () => {
+    .add('CodeEditor', withState({ codePreview: false }, (store) => {
         const codeEditorData = data.codeEditor
         const mode = select('Mode', codeEditorData.modes, codeEditorData.defaultMode)
         const theme = select('Theme', codeEditorData.themes, codeEditorData.defaultTheme)
@@ -79,7 +80,7 @@ storiesOf('Components', module)
         const wrap = boolean('Wrap', false)
         const readonly = boolean('Readonly', false)
 
-        return <div className='documentation' style={{ height: 200 }}>
+        return <div className='documentation'>
             <h1>CodeEditor</h1>
 
             <h2>Informations</h2>
@@ -102,20 +103,31 @@ storiesOf('Components', module)
             <h2>Playground</h2>
 
             <p>You can change the props with the KNOBS panel.</p>
-            <CodeEditor value={codeEditorData.value}
-                mode={mode}
-                loadTime={-1}
-                docId='code-editor-playground'
-                readonly={readonly}
-                displaySettings={{
-                    theme,
-                    fontSize,
-                    showInvisibles,
-                    showGutter,
-                    showIndent,
-                    wrap
-                }}
-            />
+            <div className='tile code-preview'>
+                <i className='fa fa-code mgb-10 text-large source-preview'
+                    onClick={e => store.set({ codePreview: !store.state.codePreview })} />
+                <div style={{ height: 200 }}>
+                    {
+                        !store.codePreview ? <CodeEditor value={codeEditorData.value}
+                            mode={mode}
+                            loadTime={-1}
+                            docId='code-editor-playground'
+                            readonly={readonly}
+                            displaySettings={{
+                                theme,
+                                fontSize,
+                                showInvisibles,
+                                showGutter,
+                                showIndent,
+                                wrap
+                            }}
+                        /> : <CodePreview name='code-editor-source-preview'
+                            mode='typescript'
+                            value={`Test`}
+                            />
+                    }
+                </div>
+            </div>
 
             <h2>Props</h2>
             <PropsLine name='docId'
@@ -180,7 +192,7 @@ storiesOf('Components', module)
                 value={codeEditorPlayground}
             />
         </div>
-    })
+    }))
     // .add('Todo', withDocs({PreviewComponent: EmptyPreview })(todoReadme, () => <div></div>))
     // .add('ActionButton', withDocs(actionButtonReadme, () => {
     //     const btnType = select('button type', {

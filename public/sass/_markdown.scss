@@ -15,11 +15,31 @@
         margin-bottom: 20px;
     }
 
+    h3 {
+        font-size: $size18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
     .separator {
         height: 1px;
         width: 100%;
         background-color: $defaultColorLightest;
         margin-bottom: 10px;
+    }
+
+    .code-preview {
+        display: grid;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: $defaultColorLightest;
+        }
+
+        .source-preview {
+            text-align: right;
+            cursor: pointer;
+        }
     }
 
     .prop-pastille {
