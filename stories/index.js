@@ -1,22 +1,22 @@
-import React from 'react'
-
 /**
  * Storybook addons
  */
-import { storiesOf, configure } from '@storybook/react'
+import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/react'
-import { withDocs } from 'storybook-readme'
 
 /**
  * External modules
  */
+import React from 'react'
 import * as base64 from 'base-64'
 import * as classNames from 'classnames'
 
 /**
  * Components
  */
+import CodePreview from './typescript/CodePreview'
+import PropsLine from './typescript/PropsLine'
 import ActionButton from 'action-button'
 import CodeEditor from 'code-editor'
 import { Tree } from 'tree'
@@ -33,7 +33,7 @@ import codeEditorPlayground from './documentation/CodeEditor.md'
 /**
  * Styles
  */
-import '../public/sass/markdown'
+import '../public/sass/main'
 
 /**
  * Decorators
@@ -81,18 +81,26 @@ storiesOf('Components', module)
 
         return <div className='documentation' style={{ height: 200 }}>
             <h1>CodeEditor</h1>
+
             <h2>Informations</h2>
+
             <p>This component is the same one as <span className='bold'>CodeEditorInput</span> except that it is not used in a form. It is mainly used to display readonly content or content that wont be submitted.</p>
+
             <h2>Usage</h2>
+
             <table className='full-width mgt-20 mbg-20 text-medium'>
-                <tr>
-                    <td>install</td><td><code>npm install --save code-editor</code></td>
-                </tr>
-                <tr>
-                    <td>import</td><td><code>import CodeEditor from 'code-editor'</code></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>install</td><td><code>npm install --save code-editor</code></td>
+                    </tr>
+                    <tr>
+                        <td>import</td><td><code>import CodeEditor from 'code-editor'</code></td>
+                    </tr>
+                </tbody>
             </table>
+
             <h2>Playground</h2>
+
             <p>You can change the props with the KNOBS panel.</p>
             <CodeEditor value={codeEditorData.value}
                 mode={mode}
@@ -107,6 +115,69 @@ storiesOf('Components', module)
                     showIndent,
                     wrap
                 }}
+            />
+
+            <h2>Props</h2>
+            <PropsLine name='docId'
+                type='string'
+                defaultValue={true}
+                required={true}
+                description='Unique ID.'
+            />
+            <PropsLine name='value'
+                type='string'
+                description='Initial content of the CodeEditor component.'
+            />
+            <PropsLine name='mode'
+                type='string'
+                defaultValue='ace/mode/javascript'
+                description='A valid Ace Editor mode (language).'
+            />
+            <PropsLine name='displaySettings'
+                type='Settings'
+                description={
+                    <p>
+                        <span>Configuration of your CodeEditor preferences.</span><br />
+                        <span>e.g: changing the theme.</span>
+                    </p>
+                }
+            />
+            <PropsLine name='readonly'
+                type='boolean'
+                defaultValue='false'
+                description='Whether or not the input is readonly.'
+            />
+            <PropsLine name='loadTime'
+                type='number'
+                required={true}
+                description='Initial time of when the CodeEditor has loaded in milliseconds. Force the rendering of the component by using an higher value than the preview one.'
+            />
+            <PropsLine name='resetTick'
+                type='number'
+                deprecated={true}
+                description={
+                    <span>Force rendering by changing the value. Will be removed in the net release in favor of <code>loadTime</code> props.</span>
+                }
+            />
+            <PropsLine name='aceSession'
+                type='AceSession'
+                description='Initial Ace session object of your component.'
+            />
+            <PropsLine name='saveSession'
+                type='(session: AceSession) => void'
+                description='Save your ace session after each updated or before unmounting.'
+            />
+            <PropsLine name='saveContent'
+                type='(session: AceSession) => void'
+                description={
+                    <span>Save your ace session after hitting the shortcut <code>Ctrl + s</code>/<code>Cmd + s</code>.</span>
+                }
+            />
+
+            <h2>Interfaces</h2>
+            <CodePreview id='code-editor-interface'
+                mode='typescript'
+                value={codeEditorPlayground}
             />
         </div>
     })

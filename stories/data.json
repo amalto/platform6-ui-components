@@ -66,7 +66,7 @@
         }
     },
     "codeEditor": {
-        "value": "const test = 'test';",
+        "value": "\/\/ A helloWorld method to start with.\r\n\r\nfunction helloWorld() {\r\n    console.info('Hello wolrd!');\r\n}",
         "defaultTheme": "ace/theme/tomorrow_night_eighties",
         "themes": {
             "ace/theme/ambiance": "ambiance",

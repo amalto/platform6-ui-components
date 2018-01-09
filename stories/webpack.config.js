@@ -12,7 +12,7 @@ module.exports = (baseConfig, env) => {
     config.module.rules.push(
         {
             test: /\.(ts|tsx)$/,
-            include: path.resolve(__dirname, '../typescript/'),
+            include: path.resolve(__dirname, './typescript/'),
             loaders: ['ts-loader']
         },
         {
@@ -34,7 +34,7 @@ module.exports = (baseConfig, env) => {
         }
     );
 
-    config.resolve.extensions.push('.scss', '.css', '.md', '.ts', '.tsx');
+    config.resolve.extensions.push('.scss', '.css', '.md', 'js', '.ts', '.tsx');
 
     config.devtool = 'eval';
 

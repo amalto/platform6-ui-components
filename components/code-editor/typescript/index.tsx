@@ -4,9 +4,8 @@
  */
 
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
-import { UserModel, getUserJson } from './models/UserModel'
+import { UserModel } from './models/UserModel'
 
 import { Model } from './models/Messages'
 import AceSession from './models/AceSession'
