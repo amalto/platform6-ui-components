@@ -105,7 +105,6 @@ module CodeEditor {
 }
 
 class CodeEditor extends React.Component<CodeEditor.Props, any> {
-
     private _markerId: number = null
     private _firstChangeTime: number
     private _editorPanel: HTMLDivElement
@@ -144,7 +143,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         this.resizeEditor()
         !this.props.readonly && this.focus( this.props.aceSession )
     }
-
 
     componentWillUnmount() {
         window.removeEventListener( 'resize', () => this.resizeEditor() )
@@ -374,6 +372,5 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         } )
     }
 }
-
 
 export default CodeEditor

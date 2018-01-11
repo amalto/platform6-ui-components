@@ -11,13 +11,9 @@
     },
     "scripts": {
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
-        "prepare": "tsc -d",
-        "start": "npm run storybook",
-        "storybook": "start-storybook -p 6006 -c ./stories",
-        "build:storybook": "build-storybook -c ./stories -o static"
+        "prepare": "tsc -d"
     },
     "devDependencies": {
-        "@storybook/react": "3.2.17",
         "@types/jquery": "2.0.41",
         "@types/jstree": "3.3.35",
         "@types/react": "15.6.10",

@@ -1,0 +1,60 @@
+.documentation {
+    
+    .toggle-sidebar-out {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        cursor: pointer;
+    }
+
+    .sidebar {
+        
+        position: relative;
+        padding: 5px 10px;
+
+        .toggle-sidebar-in {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: $size14px;
+            margin-top: 10px;
+        }
+
+        h2 {
+            font-size: $size13px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        ul {
+
+            padding: 0;
+
+            li.link {
+                font-size: $size12px;
+                width: 100%;
+                padding: 5px 20px;
+                list-style-type: none;
+                color: $infoColor;
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: $bodyColor;
+                }
+
+                &.selected {
+                    color: white;
+                    background-color: $infoColor;
+                }
+            }
+        }
+    }
+
+    .container {
+        overflow: auto !important;
+    }
+}
