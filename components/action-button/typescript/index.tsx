@@ -3,16 +3,37 @@ import * as ReactDOM from 'react-dom'
 import * as classNames from 'classnames'
 
 import { unloadTooltips, loadTooltips } from 'helpers'
+import { Ref } from 'react';
 
 
 module ActionButton {
+    /**
+     * ActionButton properties
+     */
     export interface Props extends React.Props<ActionButton> {
+        /** onClick method. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
+        /** FontAwesome icons. e.g: 'fa-info'. */
         iconClass?: string
+        /** Set the icon color class. Do not use if you don't need it, otherwise btnClass will have trouble handeling hover color. */
         colorClass?: string
+        /** Disabling button if true. */
         disabled?: boolean
+        /** Tooltip text appearing when hovering the button. */
         tooltipText?: string
+        /** Button class determining his type, size and color. */
         btnClass?: string
+
+        /**
+         * Hide props from documentation
+         */
+
+        /** @ignore */
+        children: React.ReactNode;
+        /** @ignore */
+        key: React.ReactText;
+        /** @ignore */
+        ref: Ref<ActionButton>;
     }
 }
 

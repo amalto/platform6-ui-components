@@ -65,25 +65,55 @@ import 'brace/theme/tomorrow_night_eighties'
 import 'brace/theme/twilight'
 import 'brace/theme/vibrant_ink'
 import 'brace/theme/xcode'
+import { Ref } from 'react';
 
 const Range = ace.acequire( 'ace/range' ).Range
 
 type AceEditor = ace.Editor
 
 module CodeEditor {
+
+    /**
+     * CodeEditor properties
+     */
     export interface Props extends React.Props<CodeEditor> {
+        /** Initial content of the editor */
         value: string;
+        /** 
+         * Editor language mode
+         * @default javascript
+         */
         mode: string;
+        /** If true don't allow user to edit content */
         readonly?: boolean;
         editorHeightOffset?: number;
+        /** Editor visual settings */
         displaySettings?: Settings;
+        /** Initial load time of editor. If the new loadTime is at a later date, the editor will be updated */
         loadTime: number;
+        /** @deprecated loadTime property will be used instead in next release */
         resetTick?: number;
+        /** Set inital ace session. Useful when you want to keep track of your history */
         aceSession?: AceSession;
+        /** Unique editor id */
         docId: string;
+        /** Preferred user's displaySettings */
         userJson?: UserModel.JsonContent;
+        /** Save ace session after each update */
         saveSession?: ( session: AceSession ) => void;
+        /** Force save with keyboard shortcuts Ctrl + s or Cmd + s */
         saveContent?: ( session: AceSession ) => void;
+
+        /**
+         * Hide props from documentation
+         */
+
+        /** @ignore */
+        children: React.ReactNode;
+        /** @ignore */
+        key: React.ReactText;
+        /** @ignore */
+        ref: Ref<CodeEditor>;
     }
 
     export interface Settings {

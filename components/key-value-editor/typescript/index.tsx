@@ -8,6 +8,7 @@ import { compileWordings, isValidKeyChar, downloadDataFile } from 'helpers'
 
 //modules
 import * as classNames from 'classnames'
+import { Ref } from 'react';
 
 const WORDINGS = {
 
@@ -59,9 +60,23 @@ export interface KeyValStoreDef {
 
 namespace KeyValueEditor {
     export interface Props extends React.Props<KeyValueEditor> {
+        /** Handle values changes */
         handleChange: ( keyValues: KeyValDef ) => void;
+        /** Current keyValues data */
         keyValues: KeyValDef
+        /** Locale to be used */
         locale: string;
+
+        /**
+         * Hide props from documentation
+         */
+
+        /** @ignore */
+        children: React.ReactNode;
+        /** @ignore */
+        key: React.ReactText;
+        /** @ignore */
+        ref: Ref<KeyValueEditor>;
     }
 
     export interface State {
@@ -296,4 +311,4 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 }
 
 
-export { KeyValueEditor }
+export default KeyValueEditor
