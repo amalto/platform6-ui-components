@@ -65,7 +65,6 @@ import 'brace/theme/tomorrow_night_eighties'
 import 'brace/theme/twilight'
 import 'brace/theme/vibrant_ink'
 import 'brace/theme/xcode'
-import { Ref } from 'react';
 
 const Range = ace.acequire( 'ace/range' ).Range
 
@@ -93,11 +92,11 @@ module CodeEditor {
         loadTime: number;
         /** @deprecated loadTime property will be used instead in next release */
         resetTick?: number;
-        /** Set inital ace session. Useful when you want to keep track of your history */
+        /** Set ace session. */
         aceSession?: AceSession;
         /** Unique editor id */
         docId: string;
-        /** Preferred user's displaySettings */
+        /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. */
         userJson?: UserModel.JsonContent;
         /** Save ace session after each update */
         saveSession?: ( session: AceSession ) => void;
@@ -113,7 +112,7 @@ module CodeEditor {
         /** @ignore */
         key: React.ReactText;
         /** @ignore */
-        ref: Ref<CodeEditor>;
+        ref: React.Ref<CodeEditor>;
     }
 
     export interface Settings {

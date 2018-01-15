@@ -14,7 +14,10 @@ module.exports = {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
-                include: path.resolve(__dirname, './components'),
+                include: [
+                    path.resolve(__dirname, './components'),
+                    path.resolve(__dirname, './readme')
+                ],
                 loaders: ['ts-loader'],
                 exclude: /node_modules/
             },

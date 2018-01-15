@@ -8,7 +8,6 @@ import { compileWordings, isValidKeyChar, downloadDataFile } from 'helpers'
 
 //modules
 import * as classNames from 'classnames'
-import { Ref } from 'react';
 
 const WORDINGS = {
 
@@ -43,23 +42,24 @@ const WORDINGS = {
 
 }
 
-export interface KeyValDef {
-    [key: string]: {
-        contentType: string;
-        contentBytes: string;
-    };
-}
-
-export interface KeyValStoreDef {
-    [idx: string]: {
-        key: string;
-        contentType: string;
-        contentBytes: string
-    }
-}
-
 namespace KeyValueEditor {
-    export interface Props extends React.Props<KeyValueEditor> {
+
+    export interface KeyValDef {
+        [key: string]: {
+            contentType: string;
+            contentBytes: string;
+        };
+    }
+
+    export interface KeyValStoreDef {
+        [idx: string]: {
+            key: string;
+            contentType: string;
+            contentBytes: string
+        }
+    }
+
+    export interface Props extends React.ClassAttributes<KeyValueEditor> {
         /** Handle values changes */
         handleChange: ( keyValues: KeyValDef ) => void;
         /** Current keyValues data */
@@ -67,22 +67,23 @@ namespace KeyValueEditor {
         /** Locale to be used */
         locale: string;
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children: React.ReactNode;
         /** @ignore */
         key: React.ReactText;
         /** @ignore */
-        ref: Ref<KeyValueEditor>;
+        ref: React.Ref<KeyValueEditor>;
     }
 
     export interface State {
         wordings?: { [key: string]: string };
     }
 }
+
+declare type KeyValDef = KeyValueEditor.KeyValDef
+declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef
 
 class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
 
@@ -199,7 +200,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
     }
 
     private removeKeyValue = ( event: any ) => {
-        let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
+        let keyValuesUpdate: KeyValueEditor.KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
         const key: string = event.currentTarget.getAttribute( 'data-key' )
 
         delete keyValuesUpdate[key]

@@ -80,15 +80,35 @@ const WORDINGS = {
 
 module Tree {
     export interface Props extends React.Props<Tree> {
+        /** Tree unique id. */
         id: string;
+        /** Data used to display the tree. */
         data: TreeNodeModel;
+        /** Manage node creation. */
         createNode?: ( parentId: string, elementName: string, description: string, propertiesMap?: KeyValDef ) => void;
+        /** Manage node edition. */
         editNode?: ( id: string, elementName: string, description: string, propertiesMap?: KeyValDef, parentNodeId?: string ) => void;
+        /** Manage node deletion. */
         deleteNode?: ( id: string, elementName: string, parentNodeId?: string ) => void;
+        /** Manage errors display. */
         displayEmptyValsError?: ( emptyVals: string[] ) => void;
+        /** Manage node selection. */
         selectCallback?: ( node: TreeNodeModel ) => void;
+        /** Set default selected node. */
         defaultSelectedNodeId?: string;
+        /** Locale to be used. */
         locale: string;
+
+        /**
+         * Hide props from documentation
+         */
+
+        /** @ignore */
+        children: React.ReactNode;
+        /** @ignore */
+        key: React.ReactText;
+        /** @ignore */
+        ref: React.Ref<Tree>;
     }
 
     export interface State {
@@ -583,4 +603,4 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
 }
 
-export { Tree }
+export default Tree

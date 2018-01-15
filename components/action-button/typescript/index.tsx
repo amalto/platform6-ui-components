@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom'
 import * as classNames from 'classnames'
 
 import { unloadTooltips, loadTooltips } from 'helpers'
-import { Ref } from 'react';
 
 
 module ActionButton {
@@ -33,7 +32,7 @@ module ActionButton {
         /** @ignore */
         key: React.ReactText;
         /** @ignore */
-        ref: Ref<ActionButton>;
+        ref: React.Ref<ActionButton>;
     }
 }
 

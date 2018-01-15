@@ -1,4 +1,5 @@
 const path = require('path');
+const changeCase = require('change-case');
 
 module.exports = {
 
@@ -6,17 +7,21 @@ module.exports = {
 
     assetsDir: 'public/',
 
-    resolver: require('react-docgen').resolver.findAllComponentDefinitions,
+    require: [
+        path.resolve(__dirname, 'public/sass/main.scss')
+    ],
+
+    resolver: require('react-docgen').resolver.findExportedComponentDefinition,
 
     getComponentPathLine(componentPath) {
-        // const name = path.basename(componentPath, '.tsx')
-        // const dir = path.dirname(componentPath).split('/')[1]
+        const type = componentPath.split('/')[0]
+        const componentName = componentPath.split('/')[1]
+        const name = changeCase.pascalCase(componentName)
+        const dir = componentName
 
-        // return `import ${name} from '${dir}';`
-        return componentPath;
+        return type === 'components' ? `import ${name} from '${dir}';` : null
     },
 
-    // components: 'components/**/*.tsx',
     template: path.resolve(__dirname, './public/index.html'),
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
     webpackConfig: require('./webpack.config.js'),
@@ -24,7 +29,7 @@ module.exports = {
     showUsage: true,
     showCode: true,
 
-    ignore: ['**/node_modules/**/*.*'],
+    ignore: ['**/node_modules/**/*.*', 'components/helpers/**/*.*'],
 
     skipComponentsWithoutExample: true,
 
@@ -36,8 +41,13 @@ module.exports = {
         {
             name: 'Components',
             description: 'All the components provided by platform-6',
-            ignore: ['components/helpers/typescript/index.tsx'],
-            components: 'components/**/*.tsx',
+            components: 'components/**/*.tsx'
+        },
+        {
+            name: 'Interfaces',
+            description: 'Interfaces used by b2-common-components',
+            components: 'readme/**/*.tsx',
+            showCode: false
         }
     ]
 }

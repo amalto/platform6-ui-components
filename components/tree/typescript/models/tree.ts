@@ -13,23 +13,25 @@ interface OrgModel {
     children?: OrgModel[];
 }
 
+interface TreeNodeDataModel {
+    description?: string;
+    propertiesMap?: {
+        [key: string]: {
+            contentType: string;
+            contentBytes: string;
+        };
+    };
+    parentId?: string;
+    childNames?: string[];
+}
+
 //as used by jsTree
 interface TreeNodeModel {
     id: string;
     text: string;
     children?: TreeNodeModel[];
     icon?: string;
-    data?: {
-        description?: string;
-        propertiesMap?: {
-            [key: string]: {
-                contentType: string;
-                contentBytes: string;
-            };
-        };
-        parentId?: string;
-        childNames?: string[];
-    };
+    data?: TreeNodeDataModel;
     state?: {
         opened?: boolean;
         disabled?: boolean;
