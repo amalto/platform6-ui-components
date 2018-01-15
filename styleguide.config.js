@@ -48,6 +48,17 @@ module.exports = {
             description: 'Interfaces used by b2-common-components',
             components: 'readme/**/*.tsx',
             showCode: false
+        },
+        {
+            name: 'Utils',
+            description: 'Utils used by b2-common-components',
+            showCode: false,
+            sections: [
+                {
+                    name: 'Helpers',
+                    content: 'readme/Helpers/Helpers.md',
+                }
+            ]
         }
     ]
 }
