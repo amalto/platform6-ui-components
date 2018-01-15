@@ -45,13 +45,11 @@ function formatFileSize( size: number ): string;
 /** Returns a key-value object from a query string like ?test=value&other=something */
 function getQueryParams( searchString: string ): any;
 
-
 /**
  * Adds a query parameter to a URI (string)
  * returns an HTMLAnchorElement
  */
 function addQueryParam( uri: string, key: string, value: any ): HTMLAnchorElement;
-
 
 /**
  * Inverts search and fragment of a RFC 3986 URL , allowing react router to properly get query params...
