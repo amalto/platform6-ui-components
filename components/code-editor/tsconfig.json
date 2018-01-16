@@ -4,7 +4,7 @@
         "module": "commonjs",
         "noImplicitAny": false,
         "removeComments": true,
-        "outDir": "./",
+        "outDir": "build",
         "jsx": "react",
         "declaration": true,
         "sourceMap": true,

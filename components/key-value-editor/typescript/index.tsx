@@ -42,22 +42,22 @@ const WORDINGS = {
 
 }
 
-export interface KeyValDef {
-    [key: string]: {
-        contentType: string;
-        contentBytes: string;
-    };
-}
-
-export interface KeyValStoreDef {
-    [idx: string]: {
-        key: string;
-        contentType: string;
-        contentBytes: string
-    }
-}
-
 namespace KeyValueEditor {
+
+    export interface KeyValDef {
+        [key: string]: {
+            contentType: string;
+            contentBytes: string;
+        };
+    }
+
+    export interface KeyValStoreDef {
+        [idx: string]: {
+            key: string;
+            contentType: string;
+            contentBytes: string
+        }
+    }
 
     export interface Props extends React.ClassAttributes<KeyValueEditor> {
         /** Handle values changes */
@@ -81,6 +81,9 @@ namespace KeyValueEditor {
         wordings?: { [key: string]: string };
     }
 }
+
+declare type KeyValDef = KeyValueEditor.KeyValDef
+declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef
 
 class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
 
@@ -197,7 +200,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
     }
 
     private removeKeyValue = ( event: any ) => {
-        let keyValuesUpdate: KeyValueEditor.KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
+        let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
         const key: string = event.currentTarget.getAttribute( 'data-key' )
 
         delete keyValuesUpdate[key]

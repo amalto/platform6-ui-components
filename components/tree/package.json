@@ -1,30 +1,29 @@
 {
-  "name": "tree",
-  "displayName": "Tree",
-  "description": "A tree component to display data like an organisation tree.",
-  "version": "1.1.8",
-  "main": "./build/bundle.js",
-  "typings": "./build/index.d.ts",
-  "author": "Amalto Technologies",
-  "publishConfig": {
-    "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
-  },
-  "scripts": {
-    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
-    "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
-    "prepare": "tsc -d"
-  },
-  "devDependencies": {
-    "@types/jquery": "2.0.41",
-    "@types/jstree": "3.3.35",
-    "@types/react": "15.6.10",
-    "@types/react-dom": "15.5.6",
-    "ts-loader": "3.2.0"
-  },
-  "dependencies": {
-    "helpers": "^1.1.7",
-    "key-value-editor": "^1.1.7",
-    "react": "15.6.2",
-    "react-dom": "15.6.2"
-  }
+    "name": "tree",
+    "displayName": "Tree",
+    "description": "A tree component to display data like an organisation tree.",
+    "version": "1.1.8",
+    "main": "./build/bundle.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "scripts": {
+        "build": "tsc -d",
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
+    },
+    "devDependencies": {
+        "@types/jquery": "2.0.41",
+        "@types/jstree": "3.3.35",
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6",
+        "ts-loader": "3.2.0"
+    },
+    "dependencies": {
+        "helpers": "^1.1.7",
+        "key-value-editor": "^1.1.7",
+        "react": "15.6.2",
+        "react-dom": "15.6.2"
+    }
 }

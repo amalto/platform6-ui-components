@@ -5,10 +5,10 @@ import * as ReactDOM from 'react-dom'
 import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips, base64Decode } from 'helpers'
 
 //components
-import { KeyValueEditor, KeyValDef } from 'key-value-editor'
+import KeyValueEditor from 'key-value-editor'
 
 //models
-import { TreeNodeModel, OrgModel } from './models/tree'
+import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tree'
 
 //modules
 import * as classNames from 'classnames'

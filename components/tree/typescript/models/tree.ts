@@ -38,3 +38,18 @@ export interface TreeNodeModel {
         selected?: boolean;
     }
 }
+
+export interface KeyValDef {
+    [key: string]: {
+        contentType: string;
+        contentBytes: string;
+    };
+}
+
+export interface KeyValStoreDef {
+    [idx: string]: {
+        key: string;
+        contentType: string;
+        contentBytes: string
+    };
+}
