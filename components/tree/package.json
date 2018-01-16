@@ -2,7 +2,7 @@
     "name": "tree",
     "displayName": "Tree",
     "description": "A tree component to display data like an organisation tree.",
-    "version": "1.1.12",
+    "version": "1.1.13",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
