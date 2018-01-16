@@ -26,6 +26,8 @@ module.exports = {
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
     webpackConfig: require('./webpack.config.js'),
 
+    highlightTheme: 'tomorrow-night-eighties',
+
     showUsage: true,
     showCode: true,
 
@@ -46,8 +48,24 @@ module.exports = {
         {
             name: 'Interfaces',
             description: 'Interfaces used by b2-common-components',
-            components: 'readme/**/*.tsx',
-            showCode: false
+            sections: [
+                {
+                    name: 'AceSession',
+                    content: 'readme/AceSession.md'
+                },
+                {
+                    name: 'KeyValDef',
+                    content: 'readme/KeyValDef.md'
+                },
+                {
+                    name: 'TreeNodeDataModel',
+                    content: 'readme/TreeNodeDataModel.md'
+                },
+                {
+                    name: 'TreeNodeModel',
+                    content: 'readme/TreeNodeModel.md'
+                }
+            ]
         },
         {
             name: 'Utils',
@@ -56,7 +74,7 @@ module.exports = {
             sections: [
                 {
                     name: 'Helpers',
-                    content: 'readme/Helpers/Helpers.md',
+                    content: 'readme/Helpers.md',
                 }
             ]
         }
