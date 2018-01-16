@@ -13,11 +13,11 @@ module ColorPicker {
         /** Hide props from documentation */
 
         /** @ignore */
-        children: React.ReactNode;
+        children?: React.ReactNode;
         /** @ignore */
-        key: React.ReactText;
+        key?: React.ReactText;
         /** @ignore */
-        ref: React.Ref<ColorPicker>;
+        ref?: React.Ref<ColorPicker>;
     }
 }
 

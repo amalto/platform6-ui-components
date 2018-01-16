@@ -4,12 +4,7 @@ export interface OrgModel {
     parentId?: string;
     elementName?: string;
     description?: string;
-    propertiesMap?: {
-        [key: string]: {
-            contentType: string;
-            contentBytes: string;
-        };
-    };
+    propertiesMap?: KeyValDef;
     children?: OrgModel[];
 }
 

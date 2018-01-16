@@ -28,11 +28,11 @@ module ActionButton {
          */
 
         /** @ignore */
-        children: React.ReactNode;
+        children?: React.ReactNode;
         /** @ignore */
-        key: React.ReactText;
+        key?: React.ReactText;
         /** @ignore */
-        ref: React.Ref<ActionButton>;
+        ref?: React.Ref<ActionButton>;
     }
 }
 

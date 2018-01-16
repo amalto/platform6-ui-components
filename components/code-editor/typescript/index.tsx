@@ -108,11 +108,11 @@ module CodeEditor {
          */
 
         /** @ignore */
-        children: React.ReactNode;
+        children?: React.ReactNode;
         /** @ignore */
-        key: React.ReactText;
+        key?: React.ReactText;
         /** @ignore */
-        ref: React.Ref<CodeEditor>;
+        ref?: React.Ref<CodeEditor>;
     }
 
     export interface Settings {

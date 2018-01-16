@@ -104,11 +104,11 @@ module Tree {
          */
 
         /** @ignore */
-        children: React.ReactNode;
+        children?: React.ReactNode;
         /** @ignore */
-        key: React.ReactText;
+        key?: React.ReactText;
         /** @ignore */
-        ref: React.Ref<Tree>;
+        ref?: React.Ref<Tree>;
     }
 
     export interface State {

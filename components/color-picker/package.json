@@ -10,8 +10,9 @@
         "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
     "scripts": {
-        "build": "tsc -d",
-        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/"
+        "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "prepare": "tsc -d"
     },
     "dependencies": {
         "react": "15.6.2",
