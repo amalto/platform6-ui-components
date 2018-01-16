@@ -2,7 +2,7 @@
     "name": "code-editor",
     "displayName": "CodeEditor",
     "description": "Customizable code editor (non-form version).",
-    "version": "1.1.18",
+    "version": "1.1.19",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -24,7 +24,7 @@
     },
     "dependencies": {
         "brace": "0.11.0",
-        "helpers": "1.1.10",
+        "helpers": "1.1.11",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     }
