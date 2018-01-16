@@ -123,6 +123,9 @@ module Tree {
 
 
 class Tree extends React.Component<Tree.Props, Tree.State> {
+
+    private _tree: HTMLDivElement = null
+
     constructor( props: Tree.Props ) {
         super( props )
         this.state = {
@@ -311,7 +314,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                 </div>
 
                 <div style={{ maxHeight: this.state.maxTreeHeight || 'none', overflow: 'auto' }}>
-                    <div ref={this.props.id} />
+                    <div ref={dom => this._tree = dom} id={this.props.id} />
                 </div>
 
                 <div className="tree-details-container">
@@ -370,7 +373,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         if ( this.state.treeInstance ) {
             this.state.treeInstance.destroy()
         }
-        let treeContainer = ReactDOM.findDOMNode( this.refs[this.props.id] ) as HTMLElement
+        let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
         $( treeContainer ).off()
         unloadTooltips( ReactDOM.findDOMNode( this ) )
     }
@@ -531,7 +534,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     }
 
     private setUpTree = ( id: string, data: TreeNodeModel ): JSTree => {
-        let treeContainer = ReactDOM.findDOMNode( this.refs[id] ) as HTMLElement
+        let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
 
         let tree = $.jstree.create( treeContainer, {
             core: {
