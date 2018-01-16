@@ -77,6 +77,11 @@ module.exports = {
                     content: 'readme/Helpers.md',
                 }
             ]
+        },
+        {
+            name: 'Todo',
+            description: 'Todo list of what\'s left to be done',
+            content: 'readme/Todo.md'
         }
     ]
 }
