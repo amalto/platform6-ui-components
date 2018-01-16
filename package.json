@@ -47,18 +47,18 @@
     "webpack-dev-server": "2.10.1"
   },
   "dependencies": {
-    "action-button": "1.1.7",
+    "action-button": "^1.1.7",
     "base-64": "0.1.0",
     "brace": "0.11.0",
     "change-case": "3.0.1",
     "classnames": "2.2.5",
-    "code-editor": "1.1.15",
-    "helpers": "1.1.7",
-    "key-value-editor": "1.1.7",
+    "code-editor": "^1.1.15",
+    "helpers": "^1.1.7",
+    "key-value-editor": "^1.1.7",
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-intl": "2.4.0",
     "react-sidebar": "2.3.2",
-    "tree": "1.1.7"
+    "tree": "^1.1.7"
   }
 }
