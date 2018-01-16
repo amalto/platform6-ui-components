@@ -3,7 +3,7 @@
     "displayName": "ColorPicker",
     "description": "Component to pick a color.",
     "version": "1.0.4",
-    "main": "./build/bundle.js",
+    "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
     "publishConfig": {
