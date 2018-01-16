@@ -53,6 +53,7 @@
     "change-case": "3.0.1",
     "classnames": "2.2.5",
     "code-editor": "^1.1.15",
+    "color-picker": "^1.0.1",
     "helpers": "^1.1.7",
     "key-value-editor": "^1.1.7",
     "react": "15.6.2",

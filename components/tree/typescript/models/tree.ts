@@ -1,5 +1,5 @@
 
-interface OrgModel {
+export interface OrgModel {
     id?: string;
     parentId?: string;
     elementName?: string;
@@ -13,7 +13,7 @@ interface OrgModel {
     children?: OrgModel[];
 }
 
-interface TreeNodeDataModel {
+export interface TreeNodeDataModel {
     description?: string;
     propertiesMap?: {
         [key: string]: {
@@ -26,7 +26,7 @@ interface TreeNodeDataModel {
 }
 
 //as used by jsTree
-interface TreeNodeModel {
+export interface TreeNodeModel {
     id: string;
     text: string;
     children?: TreeNodeModel[];
@@ -38,5 +38,3 @@ interface TreeNodeModel {
         selected?: boolean;
     }
 }
-
-export { OrgModel, TreeNodeModel }

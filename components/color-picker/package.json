@@ -3,13 +3,14 @@
     "displayName": "ColorPicker",
     "description": "Component to pick a color.",
     "version": "1.0.1",
-    "main": "./build/index.js",
+    "main": "./build/bundle.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
     "publishConfig": {
         "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
     "scripts": {
+        "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "prepare": "tsc -d"
     },
@@ -20,6 +21,10 @@
     "devDependencies": {
         "@types/bootstrap": "3.3.36",
         "@types/react": "15.6.10",
-        "@types/react-dom": "15.5.6"
+        "@types/react-dom": "15.5.6",
+        "path": "0.12.7",
+        "ts-loader": "3.2.0",
+        "typescript": "2.6.2",
+        "webpack": "3.10.0"
     }
 }

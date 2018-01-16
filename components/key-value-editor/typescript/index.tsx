@@ -42,22 +42,22 @@ const WORDINGS = {
 
 }
 
+export interface KeyValDef {
+    [key: string]: {
+        contentType: string;
+        contentBytes: string;
+    };
+}
+
+export interface KeyValStoreDef {
+    [idx: string]: {
+        key: string;
+        contentType: string;
+        contentBytes: string
+    }
+}
+
 namespace KeyValueEditor {
-
-    export interface KeyValDef {
-        [key: string]: {
-            contentType: string;
-            contentBytes: string;
-        };
-    }
-
-    export interface KeyValStoreDef {
-        [idx: string]: {
-            key: string;
-            contentType: string;
-            contentBytes: string
-        }
-    }
 
     export interface Props extends React.ClassAttributes<KeyValueEditor> {
         /** Handle values changes */
@@ -81,9 +81,6 @@ namespace KeyValueEditor {
         wordings?: { [key: string]: string };
     }
 }
-
-declare type KeyValDef = KeyValueEditor.KeyValDef
-declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef
 
 class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
 
