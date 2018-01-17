@@ -8,8 +8,7 @@ module.exports = {
     assetsDir: 'public/',
 
     require: [
-        path.resolve(__dirname, 'public/sass/main.scss'),
-        'moment'
+        path.resolve(__dirname, 'public/sass/main.scss')
     ],
 
     resolver: require('react-docgen').resolver.findExportedComponentDefinition,
@@ -32,7 +31,7 @@ module.exports = {
     showUsage: true,
     showCode: true,
 
-    ignore: ['**/node_modules/**/*.*', 'components/helpers/**/*.*'],
+    ignore: ['**/node_modules/**/*.*'],
 
     skipComponentsWithoutExample: true,
 
