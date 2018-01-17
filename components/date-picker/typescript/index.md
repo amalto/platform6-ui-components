@@ -1,9 +1,9 @@
 ```javascript
 const moment = require('moment');
 
-const min = new moment().subtract(1, 'month').format('YYYY-MM-DD').toString();
-const max = new moment().add(1, 'month').format('YYYY-MM-DD').toString();
-const today = new Date().toString();
+const today = new Date().toISOString();
+const min = new moment(today).subtract(1, 'month').format('YYYY-MM-DD');
+const max = new moment(today).add(1, 'month').format('YYYY-MM-DD');
 
 <DatePicker name='datepickerInputName'
     defaultValue={today}
@@ -11,7 +11,7 @@ const today = new Date().toString();
     maxDate={max}
     mandatory={true}
     label='DatePicker component'
-    help={`Date between ${min} and ${max}`}
+    help={`Select date between ${min} and ${max}`}
     containerClass='info-color'
 />
 ```
