@@ -2,7 +2,7 @@
   "name": "date-picker",
   "displayName": "DatePicker",
   "description": "DatePicker components.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "author": "Amalto Technologies",
