@@ -1,5 +1,3 @@
-Tree exemple:
-
 ```javascript
 const data = require('./data.json');
 

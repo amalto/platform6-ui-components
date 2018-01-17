@@ -1,5 +1,3 @@
-ActionButton exemple:
-
 ```javascript
 <ActionButton clickAction={e => window.alert('click on button')}
     iconClass='fa-info'

@@ -1,5 +1,3 @@
-KeyValueEditor exemple:
-
 ```javascript
 <KeyValueEditor handleChange={keyValues => window.alert('handleChange')}
     keyValues={{

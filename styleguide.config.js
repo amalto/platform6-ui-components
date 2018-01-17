@@ -8,7 +8,8 @@ module.exports = {
     assetsDir: 'public/',
 
     require: [
-        path.resolve(__dirname, 'public/sass/main.scss')
+        path.resolve(__dirname, 'public/sass/main.scss'),
+        'moment'
     ],
 
     resolver: require('react-docgen').resolver.findExportedComponentDefinition,

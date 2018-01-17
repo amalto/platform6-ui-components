@@ -2,7 +2,7 @@ List of what's left to be documented.
 
 ### Components
 
-- [ ] ColorPicker
+- [x] ColorPicker
 - [ ] DatePicker
 - [ ] TimePicker
 - [ ] ValidatedInput
