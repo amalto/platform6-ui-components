@@ -1,0 +1,28 @@
+{
+  "name": "validated-input",
+  "displayName": "ValidatedInput",
+  "description": "Input component with validation control.",
+  "version": "1.0.0",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "author": "Amalto Technologies",
+  "publishConfig": {
+    "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+  },
+  "scripts": {
+    "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+    "prepare": "tsc -d"
+  },
+  "dependencies": {
+    "helpers": "1.1.11",
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "3.3.36",
+    "@types/jquery": "2.0.41",
+    "@types/react": "15.6.10",
+    "@types/react-dom": "15.5.6",
+    "classnames": "2.2.5"
+  }
+}

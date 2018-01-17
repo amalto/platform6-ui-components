@@ -12,6 +12,6 @@ const max = new moment(today).add(1, 'month').format('YYYY-MM-DD');
     mandatory={true}
     label='DatePicker component'
     help={`Select date between ${min} and ${max}`}
-    containerClass='info-color'
+    containerClass='info-color position-relative'
 />
 ```
