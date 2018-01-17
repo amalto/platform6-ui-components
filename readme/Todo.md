@@ -2,10 +2,12 @@ List of what's left to be documented.
 
 ### Components
 
+- [x] ActionButton
 - [x] ColorPicker
 - [x] DatePicker
 - [x] TimePicker
-- [ ] ValidatedInput
+- [x] ValidatedInput
+- [x] KeyValueEditor
 - [ ] FileInput
 - [ ] PdfViewer
 - [ ] FileImporter
@@ -31,12 +33,13 @@ List of what's left to be documented.
 - [ ] Tabs
 - [ ] Tab
 - [ ] ButtonsBar
-- [ ] Tree
+- [x] Tree
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
 - [ ] Restricted
 
 ### Utils
 
+- [x] helpers
 - [ ] validationUtils
 - [ ] scopesHelpers
