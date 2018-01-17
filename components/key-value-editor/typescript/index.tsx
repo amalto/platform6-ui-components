@@ -60,11 +60,11 @@ namespace KeyValueEditor {
     }
 
     export interface Props extends React.ClassAttributes<KeyValueEditor> {
-        /** Handle values changes */
+        /** Handle values changes. */
         handleChange: ( keyValues: KeyValDef ) => void;
-        /** Current keyValues data */
+        /** Current keyValues data. */
         keyValues: KeyValDef
-        /** Locale to be used */
+        /** Locale to be used. */
         locale: string;
 
         /** Hide props from documentation */

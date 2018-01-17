@@ -19,7 +19,7 @@ module DatePicker {
     export interface Props extends React.Props<DatePicker> {
         /** Input name. */
         name: string;
-        /** Default date value ( YYYY-MM-DD ) */
+        /** Default date value ( YYYY-MM-DD ). */
         defaultValue: string;
         /** Date change event. */
         handleDateChangeEvent?: ( event: DateInputEvent ) => void;

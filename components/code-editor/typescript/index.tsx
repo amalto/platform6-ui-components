@@ -76,31 +76,31 @@ module CodeEditor {
      * CodeEditor properties
      */
     export interface Props extends React.Props<CodeEditor> {
-        /** Initial content of the editor */
+        /** Initial content of the editor. */
         value: string;
         /** 
-         * Editor language mode
+         * Editor language mode.
          * @default javascript
          */
         mode: string;
-        /** If true don't allow user to edit content */
+        /** If true don't allow user to edit content. */
         readonly?: boolean;
         editorHeightOffset?: number;
-        /** Editor visual settings */
+        /** Editor visual settings. */
         displaySettings?: Settings;
-        /** Initial load time of editor. If the new loadTime is at a later date, the editor will be updated */
+        /** Initial load time of editor. If the new loadTime is at a later date, the editor will be updated. */
         loadTime: number;
-        /** @deprecated loadTime property will be used instead in next release */
+        /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
         /** Set ace session. */
         aceSession?: AceSession;
-        /** Unique editor id */
+        /** Unique editor id. */
         docId: string;
         /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. */
         userJson?: UserModel.JsonContent;
-        /** Save ace session after each update */
+        /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
-        /** Force save with keyboard shortcuts Ctrl + s or Cmd + s */
+        /** Force save with keyboard shortcuts Ctrl + s or Cmd + s. */
         saveContent?: ( session: AceSession ) => void;
 
         /**

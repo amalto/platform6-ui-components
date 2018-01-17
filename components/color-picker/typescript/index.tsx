@@ -5,9 +5,9 @@ import * as classNames from 'classnames'
 
 module ColorPicker {
     export interface Props extends React.Props<ColorPicker> {
-        /** Current hexa string color */
+        /** Current hexadecimal string color. */
         color: string
-        /** Manage color changes */
+        /** Manage color changes. */
         handleColorChange: ( color: string ) => void
 
         /** Hide props from documentation */
