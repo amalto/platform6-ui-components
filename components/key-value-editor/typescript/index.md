@@ -1,11 +1,21 @@
 ```javascript
-<KeyValueEditor handleChange={keyValues => window.alert('handleChange')}
-    keyValues={{
+const base64 = require('base-64');
+
+initialState = ({
+    keyValues: {
         'key_1': {
-            contentType: 'first key',
-            contentBytes: 'first key'
+            contentType: 'plain/text',
+            contentBytes: base64.encode('first key')
         }
-    }}
+    }
+});
+
+function handleChange( keyValues ) {
+    setState({ keyValues })
+}
+
+<KeyValueEditor handleChange={handleChange}
+    keyValues={state.keyValues}
     locale='en-US'
 />
 ```
