@@ -1,0 +1,32 @@
+{
+  "name": "date-picker",
+  "displayName": "DatePicker",
+  "description": "DatePicker components.",
+  "version": "1.0.0",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "author": "Amalto Technologies",
+  "publishConfig": {
+    "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+  },
+  "scripts": {
+    "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+    "prepare": "tsc -d"
+  },
+  "dependencies": {
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
+  },
+  "devDependencies": {
+    "@types/base-64": "0.1.2",
+    "@types/bootstrap": "3.3.36",
+    "@types/jquery": "2.0.41",
+    "@types/modernizr": "3.5.1",
+    "@types/moment": "^2.13.0",
+    "@types/pikaday": "1.6.3",
+    "@types/react": "15.6.10",
+    "@types/react-dom": "15.5.6",
+    "moment": "2.20.1",
+    "pikaday": "1.7.0"
+  }
+}
