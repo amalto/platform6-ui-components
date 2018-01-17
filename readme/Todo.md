@@ -4,7 +4,7 @@ List of what's left to be documented.
 
 - [x] ColorPicker
 - [x] DatePicker
-- [ ] TimePicker
+- [x] TimePicker
 - [ ] ValidatedInput
 - [ ] FileInput
 - [ ] PdfViewer
