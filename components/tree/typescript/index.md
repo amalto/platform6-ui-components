@@ -32,7 +32,7 @@ function addNodeNoDup( currentNode, newNode ) {
 
 function createNode( parentId, elementName, description, propertiesMap ) {
     const data = JSON.parse( JSON.stringify( state.data ) );
-    const encodedProppertiesMap = JSON.parse( JSON.stringify( propertiesMap ) );
+    const encodedProppertiesMap = propertiesMap && JSON.parse( JSON.stringify( propertiesMap ) ) || {};
 
     Object.keys( encodedProppertiesMap ).forEach( key => {
         encodedProppertiesMap[key].contentBytes = base64.encode(encodedProppertiesMap[key].contentBytes)
@@ -51,7 +51,7 @@ function createNode( parentId, elementName, description, propertiesMap ) {
         }
     };
 
-    setState({ data: addNodeNoDup( data, newNode ) });
+    setState({ data: addNodeNoDup( data, newNode ), defaultSelectedNodeId: newNode.id });
 }
 
 /** Recursively go throught all the tree and update the node */
@@ -102,7 +102,7 @@ function removeNode( currentNode, id, elementName, parentNodeId ) {
          * In this exemple we won't allow you to remove the root node.
          * Instead we will remove all his children.
          */
-        return !currentNode.data.parent ? $.extend({}, currentNode, { children: []}) : null;
+        return !currentNode.data.parentId ? $.extend({}, currentNode, { children: []}) : null;
     } else {
         let children = currentNode.children && JSON.parse( JSON.stringify( currentNode.children ) ) || [];
 
