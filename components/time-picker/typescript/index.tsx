@@ -28,7 +28,7 @@ module TimePicker {
         minHour?: number;
         /** Maximum hour that can be selected. */
         maxHour?: number;
-        /** CSS class names applied to the input <div/> container. */
+        /** CSS class names applied to the input <strong>div</strong> container. */
         containerClass?: string;
         /** Will show a mandatory asterisk on the input label. */
         mandatory?: boolean;

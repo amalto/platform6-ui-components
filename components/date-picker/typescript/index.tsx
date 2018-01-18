@@ -38,7 +38,7 @@ module DatePicker {
         label?: string | JSX.Element;
         /** Tooltip help displayed when hovering the "?" icon next to label. */
         help?: string;
-        /** CSS class names applied to the input <div/> container. */
+        /** CSS class names applied to the input <strong>div</strong> container. */
         containerClass?: string;
 
         /**

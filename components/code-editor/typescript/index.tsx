@@ -97,7 +97,9 @@ module CodeEditor {
         userJson?: UserModel.JsonContent;
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
-        /** Force save with keyboard shortcuts Ctrl + s or Cmd + s. */
+        /**
+         * Force save with keyboard shortcuts <strong>Ctrl + s</strong> or <strong>Cmd + s</strong>.
+         */
         saveContent?: ( session: AceSession ) => void;
 
         /**
