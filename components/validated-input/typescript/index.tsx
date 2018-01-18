@@ -17,7 +17,7 @@ module ValidatedInput {
         value: string;
         /** Callback function executed on user input. */
         handleFieldChange: ( fieldValue: string, fieldName: string, isInvalid: boolean ) => void;
-        /** If given, ValidatedInput will be a <select /> instead of an <input />. */
+        /** If given, ValidatedInput will be a select balise instead of an input balise. */
         choices?: {
             value: string;
             label?: string;

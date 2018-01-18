@@ -1,3 +1,6 @@
+Simplified object containing the [CodeEditor](http://localhost:6060/#typescript-1)'s ace session.
+It allow you to maintain the history of your current CodeEditor instance.
+
 ```typescript
 interface AceSession {
 

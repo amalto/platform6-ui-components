@@ -78,10 +78,7 @@ module CodeEditor {
     export interface Props extends React.Props<CodeEditor> {
         /** Initial content of the editor. */
         value: string;
-        /** 
-         * Editor language mode.
-         * @default javascript
-         */
+        /** Editor language mode. Default value is <strong>javascript</strong>. */
         mode: string;
         /** If true don't allow user to edit content. */
         readonly?: boolean;

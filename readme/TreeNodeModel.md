@@ -1,3 +1,5 @@
+Node object for the [Tree](http://localhost:6060/#typescript-7) component.
+
 ```typescript
 interface TreeNodeModel {
 

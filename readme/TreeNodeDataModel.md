@@ -1,3 +1,5 @@
+Data displayed after selecting a node on the [Tree](http://localhost:6060/#typescript-7) component.
+
 ```typescript
 interface TreeNodeDataModel {
     
@@ -8,12 +10,7 @@ interface TreeNodeDataModel {
      * Properties attached to the node.
      * Can be text or file. If it's a file, can be downloaded.
      */
-    propertiesMap?: {
-        [key: string]: {
-            contentType: string;
-            contentBytes: string;
-        };
-    };
+    propertiesMap?: KeyValDef;
     
     /** TreeNodeModel node id. */
     parentId?: string;
