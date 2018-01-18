@@ -7,7 +7,7 @@ module ColorPicker {
     export interface Props extends React.Props<ColorPicker> {
         /** Current hexadecimal string color. */
         color: string
-        /** Manage color changes. */
+        /** Callback function executed when the user selects a color. */
         handleColorChange: ( color: string ) => void
 
         /** Hide props from documentation */

@@ -33,11 +33,11 @@ function atLeast5( fieldValue ) {
     return fieldValue && fieldValue.length >= 5
 }
 
-<div className='row'>
+<div>
     <ValidatedInput name='validateinput-exemple-1'
         key='validateinput-exemple-1'
         label='ValidateInput exemple 1'
-        containerClass='info-color col-xs-12'
+        containerClass='info-color pos-relative'
         value={state['validateinput-exemple-1'].value}
         handleFieldChange={handleFieldChange}
         help='Value must contain at least 5 characters.'
@@ -53,7 +53,7 @@ function atLeast5( fieldValue ) {
     <ValidatedInput name='validateinput-exemple-2'
         key='validateinput-exemple-2'
         label='ValidateInput exemple 2'
-        containerClass='primary-color col-xs-12'
+        containerClass='primary-color pos-relative'
         value={state['validateinput-exemple-2'].value}
         handleFieldChange={handleFieldChange}
         regex={/hello/i}
@@ -69,12 +69,12 @@ function atLeast5( fieldValue ) {
     <ValidatedInput name='validateinput-exemple-3'
         key='validateinput-exemple-3'
         label='ValidateInput exemple 3'
-        containerClass='warning-color col-xs-12'
+        containerClass='warning-color pos-relative'
         value={state['validateinput-exemple-3'].value}
         choices={state['validateinput-exemple-3'].choices}
         handleFieldChange={handleFieldChange}
         help={`No validation here.`}
-        mandatory={true}
+        mandatory={false}
         disabled={false}
     />
 </div>

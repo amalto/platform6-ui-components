@@ -12,15 +12,15 @@ module ActionButton {
     export interface Props extends React.Props<ActionButton> {
         /** onClick method. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
-        /** FontAwesome icons. e.g: 'fa-info'. */
+        /** Any FontAwesome icon CSS class names like "fa-info" or "fa-info fa-lg". */
         iconClass?: string
         /** Set the icon color class. Do not use if you don't need it, otherwise btnClass will have trouble handeling hover color. */
         colorClass?: string
         /** Disabling button if true. */
         disabled?: boolean
-        /** Tooltip text appearing when hovering the button. */
+        /** A text that will be displayed in the "title" HTML attribute of the button. */
         tooltipText?: string
-        /** Button class determining his type, size and color. */
+        /** Any available Portal CSS class names you want to apply to the icon wrapper <div/>. This can be used to space the icon from any other content. */
         btnClass?: string
 
         /**

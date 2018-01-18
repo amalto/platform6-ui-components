@@ -17,25 +17,28 @@ module DatePicker {
     }
 
     export interface Props extends React.Props<DatePicker> {
-        /** Input name. */
+        /** Input name in the DOM. */
         name: string;
-        /** Default date value ( YYYY-MM-DD ). */
+        /** Default value of the date picker. You can put the current value in here, usually stored in the state of the parent component. */
         defaultValue: string;
         /** Date change event. */
         handleDateChangeEvent?: ( event: DateInputEvent ) => void;
-        /** Manage date update. */
+        /** Callback function executed on user input. */
         handleDateChange?: ( date: string ) => void;
-        /** Lower date limit. */
+        /** All dates before this one will be disabled in the date picker. */
         minDate?: string;
-        /** Upper date limit. */
+        /** All dates after this one will be disabled in the date picker. */
         maxDate?: string;
-        /** If true, date must be defined and can't be cleared. */
+        /**
+         * Will show a mandatory asterisk on the input label. Will disable the "clear selected date" button.
+         * Warning: a default value for the date will be required otherwise the input will not be displayed.
+         */
         mandatory?: boolean;
-        /** Input label. */
+        /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip help displayed when hovering the "?" icon next to label. */
         help?: string;
-        /** Input and label parent class. */
+        /** CSS class names applied to the input <div/> container. */
         containerClass?: string;
 
         /**

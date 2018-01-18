@@ -7,13 +7,13 @@ import * as classNames from 'classnames'
 
 module TimePicker {
     export interface Props extends React.Props<TimePicker> {
-        /** Input name. */
+        /** Input name in the DOM. */
         name: string;
         /** Time value. */
         value: string;
-        /** Manage each part of time. */
+        /** Callback function executed on user input. */
         handleFieldChange: ( fieldValue: string, fieldName: string ) => void;
-        /** If true, don't allow update. */
+        /** Whether or not the input is disabled. */
         disabled?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
@@ -24,13 +24,13 @@ module TimePicker {
          * @default 30
          */
         minutesInterval?: number;
-        /** Lower time limit. */
+        /** Minimum hour that can be selected. */
         minHour?: number;
-        /** Upper time limit. */
+        /** Maximum hour that can be selected. */
         maxHour?: number;
-        /** Input and label parent class. */
+        /** CSS class names applied to the input <div/> container. */
         containerClass?: string;
-        /** If true, date must be defined and can't be cleared. */
+        /** Will show a mandatory asterisk on the input label. */
         mandatory?: boolean;
 
         /**

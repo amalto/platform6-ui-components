@@ -80,11 +80,15 @@ const WORDINGS = {
 
 module Tree {
     export interface Props extends React.Props<Tree> {
-        /** Tree unique id. */
+        /** Any unique DOM ID. */
         id: string;
-        /** Data used to display the tree. */
+        /** Data to render as a tree. See below for the required data model behind the TreeNodeModel interface */
         data: TreeNodeModel;
-        /** Manage node creation. */
+        /**
+         * Function to create a node.
+         * Data update logic needs to be implemented based on the provided parameters.
+         * See below for the required data model behind the KeyValDef interface.
+         */
         createNode?: ( parentId: string, elementName: string, description: string, propertiesMap?: KeyValDef ) => void;
         /** Manage node edition. */
         editNode?: ( id: string, elementName: string, description: string, propertiesMap?: KeyValDef, parentNodeId?: string ) => void;

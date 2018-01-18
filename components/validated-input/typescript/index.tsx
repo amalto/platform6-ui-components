@@ -11,36 +11,43 @@ import * as classNames from 'classnames'
 
 module ValidatedInput {
     export interface Props extends React.Props<ValidatedInput> {
-        /** Input name. */
+        /** Input name in the DOM. */
         name: string;
         /** Input value. */
         value: string;
-        /** Manage input values and validation state. */
+        /** Callback function executed on user input. */
         handleFieldChange: ( fieldValue: string, fieldName: string, isInvalid: boolean ) => void;
-        /** If given, ValidatedInput will be a select instead of an input. */
+        /** If given, ValidatedInput will be a <select /> instead of an <input />. */
         choices?: {
             value: string;
             label?: string;
         }[];
-        /** Regex used to validate the input. */
+        /**
+         * Regular expression to validate the user input against.
+         * If the user input does not match the regex, it will take an invalid appearance.
+         */
         regex?: RegExp;
-        /** Method to validate input value. */
+        /**
+         * A callback function to validate the user input against.
+         * If the user input (fieldValue) is not valid, this function should return false.
+         * It can be used in place or in combination with the regex validation.
+         */
         validate?: ( fieldValue: string ) => boolean;
-        /** Error message to be displayed when an error occured. */
+        /** Custom error message displayed when the user input is invalid. */
         errorMessage?: string;
-        /** If true, don't alow update. */
+        /** Whether or not the input is disabled. */
         disabled?: boolean;
         /** If true, value must be defined and can't be cleared. */
         mandatory?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
-        /** If provided, check input when component mount. */
+        /** Forces the input to be validated (regex/mandatory validation) on first load - before the user starts to type anything. */
         validateOnLoad?: string;
-        /** If provided, check input when props is updated. */
+        /** Whether or not the form has been submitted. Will force an input validation if it goes from false to true. */
         formSubmitted?: boolean;
-        /** Input placeholder. */
+        /** Placeholder HTML attribute. */
         placeholder?: string;
-        /** Allow autocomplete on input which allow autocomplete from previews value. */
+        /** Autocomplete HTML attribute. */
         autoComplete?: string;
         /** Tooltip help displayed when hovering the "?" icon next to label. */
         help?: string;
