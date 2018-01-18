@@ -22,7 +22,7 @@
     "@types/bootstrap": "3.3.36",
     "@types/jquery": "2.0.41",
     "@types/modernizr": "3.5.1",
-    "@types/moment": "^2.13.0",
+    "@types/moment": "2.13.0",
     "@types/pikaday": "1.6.3",
     "@types/react": "15.6.10",
     "@types/react-dom": "15.5.6",

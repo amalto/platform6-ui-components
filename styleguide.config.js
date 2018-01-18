@@ -61,6 +61,10 @@ module.exports = {
                     content: 'readme/AceSession.md'
                 },
                 {
+                    name: 'FileWrapper',
+                    content: 'readme/FileWrapper.md'
+                },
+                {
                     name: 'KeyValDef',
                     content: 'readme/KeyValDef.md'
                 },

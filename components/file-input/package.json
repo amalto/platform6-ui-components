@@ -1,31 +1,31 @@
 {
-  "name": "file-input",
-  "displayName": "FileInput",
-  "description": "Input allowing you to select a file.",
-  "version": "1.0.1",
-  "main": "./build/index.js",
-  "typings": "./build/index.d.ts",
-  "author": "Amalto Technologies",
-  "publishConfig": {
-    "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
-  },
-  "scripts": {
-    "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
-    "prepare": "tsc -d"
-  },
-  "dependencies": {
-    "helpers": "^1.1.11",
-    "react": "15.6.2",
-    "react-dom": "15.6.2"
-  },
-  "devDependencies": {
-    "@types/bootstrap": "3.3.36",
-    "@types/jquery": "2.0.41",
-    "@types/moment": "2.13.0",
-    "@types/react": "15.6.10",
-    "@types/react-dom": "15.5.6",
-    "classnames": "2.2.5",
-    "moment": "2.20.1",
-    "react-dropzone": "4.2.5"
-  }
+    "name": "file-input",
+    "displayName": "FileInput",
+    "description": "Input allowing you to select a file.",
+    "version": "1.0.1",
+    "main": "./build/index.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "scripts": {
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "prepare": "tsc -d"
+    },
+    "dependencies": {
+        "helpers": "^1.1.11",
+        "react": "15.6.2",
+        "react-dom": "15.6.2"
+    },
+    "devDependencies": {
+        "@types/bootstrap": "3.3.36",
+        "@types/jquery": "2.0.41",
+        "@types/moment": "2.13.0",
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6",
+        "classnames": "2.2.5",
+        "moment": "2.20.1",
+        "react-dropzone": "4.2.5"
+    }
 }

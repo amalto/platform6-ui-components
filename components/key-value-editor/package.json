@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "base-64": "0.1.0",
-        "helpers": "1.1.11",
+        "helpers": "^1.1.11",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     }
