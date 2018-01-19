@@ -1,9 +1,6 @@
 import * as base64 from 'base-64'
 
-const Modernizr = require( 'modernizr' )
 import * as classNames from 'classnames'
-
-console.info( 'Modernizr => ', Modernizr )
 
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const COLOR_CODE_REGEX = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/

@@ -58,8 +58,11 @@ class ActionButton extends React.Component<ActionButton.Props, any> {
         )
     }
 
+    /**
+     * FIXME: To remove and do it on the parent
+     */
     componentDidMount() {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
+        loadTooltips( 'body' as any )
     }
 
     componentWillUnmount() {
