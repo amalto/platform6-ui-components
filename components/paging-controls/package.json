@@ -1,7 +1,7 @@
 {
-    "name": "spinner",
-    "displayName": "Spinner",
-    "description": "Loading spinner.",
+    "name": "paging-controls",
+    "displayName": "PagingControls",
+    "description": "Toolbar managing paging.",
     "version": "1.0.0",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -16,13 +16,15 @@
     "dependencies": {
         "helpers": "^1.1.12",
         "react": "15.6.2",
-        "react-dom": "15.6.2"
+        "react-dom": "15.6.2",
+        "react-intl": "2.4.0"
     },
     "devDependencies": {
         "@types/bootstrap": "3.3.36",
         "@types/jquery": "2.0.41",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
-        "classnames": "2.2.5"
+        "@types/react-intl": "2.3.3",
+        "prop-types": "15.6.0"
     }
 }
