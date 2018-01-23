@@ -58,7 +58,11 @@ module DatePicker {
     }
 }
 
-
+/**
+ * Datepicker which display a calendar when being click on.
+ * There is a few customizations like a minimum and a maximum date range
+ * of date available.
+ */
 class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
 
     private _nameInput = HTMLInputElement = null

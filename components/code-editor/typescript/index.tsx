@@ -133,9 +133,8 @@ module CodeEditor {
 }
 
 /**
- * <div className='component-description'>
- * Editor used outside a form, it is lighter has it does not save state at each input unless you ask him to. Principally used to display readable only exemple.
- * </div>
+ * Editor used outside a form. Principally used to display readable only exemple,
+ * but can also keep current editor state if needed.
  */
 class CodeEditor extends React.Component<CodeEditor.Props, any> {
     private _markerId: number = null

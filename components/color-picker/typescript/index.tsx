@@ -22,9 +22,7 @@ module ColorPicker {
 }
 
 /**
- * <div className='component-description'>
- * Allow you to choose a color within a list and save it in your state.
- * </div>
+ * Allow you to choose a color within a list.
  */
 class ColorPicker extends React.Component<ColorPicker.Props, any> {
     constructor( props: ColorPicker.Props ) {

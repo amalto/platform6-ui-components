@@ -125,7 +125,10 @@ module Tree {
     }
 }
 
-
+/**
+ * Organize custom tree allowing you to manage nodes and attached data to it.
+ * Attached data can be either texts or files.
+ */
 class Tree extends React.Component<Tree.Props, Tree.State> {
 
     private _tree: HTMLDivElement = null

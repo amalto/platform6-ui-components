@@ -73,6 +73,9 @@ module ValidatedInput {
     }
 }
 
+/**
+ * Simple select or input with a validation by regular expression or method check.
+ */
 class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInput.State> {
 
     constructor( props: ValidatedInput.Props ) {

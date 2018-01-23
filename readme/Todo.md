@@ -8,7 +8,7 @@ List of what's left to be documented.
 - [x] TimePicker
 - [x] ValidatedInput
 - [x] KeyValueEditor
-- [ ] FileInput
+- [x] FileInput
 - [ ] PdfViewer
 - [ ] FileImporter
 - [ ] LanguageWrapper

@@ -1,3 +1,5 @@
+State of each files selected from the FileInput component.
+
 ```typescript
 interface FileWrapper {
    

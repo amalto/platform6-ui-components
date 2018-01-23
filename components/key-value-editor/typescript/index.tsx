@@ -85,6 +85,9 @@ namespace KeyValueEditor {
 declare type KeyValDef = KeyValueEditor.KeyValDef
 declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef
 
+/**
+ * Map component where you can assiociate keys with texts or files.
+ */
 class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
 
     constructor( props: KeyValueEditor.Props ) {

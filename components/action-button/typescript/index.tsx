@@ -39,7 +39,7 @@ module ActionButton {
 }
 
 /**
- * <div className='component-description'>Button usually used when you don't need to put text on to understand his behavior.</div>
+ * Small button with an icon instead of text.
  */
 class ActionButton extends React.Component<ActionButton.Props, any> {
     constructor( props: ActionButton.Props ) {

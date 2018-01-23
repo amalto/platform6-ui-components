@@ -52,6 +52,9 @@ module TimePicker {
     }
 }
 
+/**
+ * Timepicker with few customizations like a minimum and a maximum time range of time available.
+ */
 class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
 
     constructor( props: TimePicker.Props ) {
