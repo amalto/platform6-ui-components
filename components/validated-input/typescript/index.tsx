@@ -56,9 +56,7 @@ module ValidatedInput {
         /** Input class. */
         inputClass?: string;
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children?: React.ReactNode;

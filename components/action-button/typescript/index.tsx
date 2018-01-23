@@ -25,9 +25,7 @@ module ActionButton {
          */
         btnClass?: string
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children?: React.ReactNode;

@@ -103,9 +103,7 @@ module Tree {
         /** Locale to be used. */
         locale: string;
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children?: React.ReactNode;

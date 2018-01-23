@@ -37,6 +37,7 @@ List of what's left to be documented.
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
 - [ ] Restricted
+- [ ] Spinner
 
 ### Utils
 

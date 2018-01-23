@@ -102,9 +102,7 @@ module CodeEditor {
          */
         saveContent?: ( session: AceSession ) => void;
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children?: React.ReactNode;

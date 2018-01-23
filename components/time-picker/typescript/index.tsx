@@ -33,9 +33,7 @@ module TimePicker {
         /** Will show a mandatory asterisk on the input label. */
         mandatory?: boolean;
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children?: React.ReactNode;

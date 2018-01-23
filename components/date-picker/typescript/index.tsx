@@ -41,9 +41,7 @@ module DatePicker {
         /** CSS class names applied to the input <strong>div</strong> container. */
         containerClass?: string;
 
-        /**
-         * Hide props from documentation
-         */
+        /** Hide props from documentation */
 
         /** @ignore */
         children?: React.ReactNode;
