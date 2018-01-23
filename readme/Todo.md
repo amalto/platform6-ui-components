@@ -9,7 +9,9 @@ List of what's left to be documented.
 - [x] ValidatedInput
 - [x] KeyValueEditor
 - [x] FileInput
-- [ ] PdfViewer
+- [x] Spinner
+- [x] PagingControls
+- [x] PdfViewer
 - [ ] FileImporter
 - [ ] LanguageWrapper
 - [ ] RadioInput
@@ -37,7 +39,6 @@ List of what's left to be documented.
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
 - [ ] Restricted
-- [x] Spinner
 
 ### Utils
 
