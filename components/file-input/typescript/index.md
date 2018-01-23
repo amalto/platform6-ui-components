@@ -1,6 +1,3 @@
-FileInput allow you to upload several files in one time by drag and dropping them into the box.
-You can also click on the box to add a file.
-
 In this exemple most of the props are randomly set in order to show most of the component functionality.
 
 ```javascript

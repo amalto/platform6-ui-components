@@ -45,6 +45,7 @@ const WORDINGS = {
 }
 
 module FileInput {
+
     export interface Props extends React.ClassAttributes<FileInput> {
         /**
          * Uploaded files list.
@@ -95,6 +96,10 @@ module FileInput {
     }
 }
 
+/**
+ * FileInput allow you to upload several files.
+ * You can click or drag and drop inside the block to do so.
+ */
 class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 
     constructor( props: FileInput.Props ) {

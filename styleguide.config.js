@@ -26,7 +26,12 @@ module.exports = {
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
     webpackConfig: require('./webpack.config.js'),
 
+    // Will be remove when editorConfig.theme property is fixed for all theme except default one 
     highlightTheme: 'tomorrow-night-eighties',
+
+    // editorConfig: {
+    //     theme: 'base16-light' // should be tomorrow-night-eighties, but not working for now
+    // },
 
     theme: {
         color: {

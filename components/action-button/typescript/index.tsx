@@ -4,7 +4,6 @@ import * as classNames from 'classnames'
 
 import { unloadTooltips, loadTooltips } from 'helpers'
 
-
 module ActionButton {
     /**
      * ActionButton properties
@@ -20,7 +19,10 @@ module ActionButton {
         disabled?: boolean
         /** A text that will be displayed in the "title" HTML attribute of the button. */
         tooltipText?: string
-        /** Any available Portal CSS class names you want to apply to the icon wrapper <strong>div</strong>. This can be used to space the icon from any other content. */
+        /**
+         * Any available Portal CSS class names you want to apply to the icon wrapper <strong>div</strong>.
+         * This can be used to space the icon from any other content.
+         */
         btnClass?: string
 
         /**
@@ -36,6 +38,9 @@ module ActionButton {
     }
 }
 
+/**
+ * <div className='component-description'>Button usually used when you don't need to put text on to understand his behavior.</div>
+ */
 class ActionButton extends React.Component<ActionButton.Props, any> {
     constructor( props: ActionButton.Props ) {
         super( props )
