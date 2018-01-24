@@ -16,7 +16,8 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 include: [
                     path.resolve(__dirname, './components'),
-                    path.resolve(__dirname, './readme')
+                    path.resolve(__dirname, './readme'),
+                    path.resolve(__dirname, './examples')
                 ],
                 loaders: ['ts-loader'],
                 exclude: /node_modules/
