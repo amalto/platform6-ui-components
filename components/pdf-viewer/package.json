@@ -2,7 +2,7 @@
   "name": "pdf-viewer",
   "displayName": "PdfViewer",
   "description": "Display pdf.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "author": "Amalto Technologies",
