@@ -1,2 +1,2 @@
-import ColorPicker from 'amalto-color-picker'
+import ColorPicker from 'color-picker'
 export default ColorPicker

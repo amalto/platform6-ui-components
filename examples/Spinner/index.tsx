@@ -1,2 +1,2 @@
-import Spinner from 'amalto-spinner'
+import Spinner from 'spinner'
 export default Spinner

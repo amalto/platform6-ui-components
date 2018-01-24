@@ -1,5 +1,5 @@
 {
-    "name": "amalto-paging-controls",
+    "name": "paging-controls",
     "displayName": "PagingControls",
     "description": "Toolbar managing paging.",
     "version": "1.0.3",
@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "classnames": "2.2.5",
-        "amalto-helpers": "^1.1.14",
+        "helpers": "^1.1.14",
         "react": "15.6.2",
         "react-dom": "15.6.2",
         "react-intl": "2.4.0"

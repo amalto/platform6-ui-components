@@ -1,3 +1,3 @@
-import ActionButton from 'amalto-action-button'
+import ActionButton from 'action-button'
 
 export default ActionButton

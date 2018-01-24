@@ -1,5 +1,5 @@
 {
-    "name": "amalto-tree",
+    "name": "tree",
     "displayName": "Tree",
     "description": "A tree component to display data like an organisation tree.",
     "version": "1.1.17",
@@ -23,8 +23,8 @@
         "uuid": "3.2.1"
     },
     "dependencies": {
-        "amalto-helpers": "^1.1.14",
-        "amalto-key-value-editor": "^1.1.15",
+        "helpers": "^1.1.14",
+        "key-value-editor": "^1.1.15",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     }

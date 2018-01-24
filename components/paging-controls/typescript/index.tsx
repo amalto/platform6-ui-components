@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { compileWordings } from 'amalto-helpers'
+import { compileWordings } from 'helpers'
 
 //modules
 import { FormattedNumber } from 'react-intl'

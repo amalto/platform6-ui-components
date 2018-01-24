@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 //utils & stores
-import { compileWordings } from 'amalto-helpers'
+import { compileWordings } from 'helpers'
 
 //components & models
 import Help from './components/Help'

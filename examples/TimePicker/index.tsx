@@ -1,2 +1,2 @@
-import TimePicker from 'amalto-time-picker'
+import TimePicker from 'time-picker'
 export default TimePicker

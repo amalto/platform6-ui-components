@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 //utils & stores
-import { compileWordings, isValidKeyChar, downloadDataFile } from 'amalto-helpers'
+import { compileWordings, isValidKeyChar, downloadDataFile } from 'helpers'
 
 //components & models
 

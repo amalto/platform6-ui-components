@@ -1,2 +1,2 @@
-import FileInput from 'amalto-file-input'
+import FileInput from '@amalto/file-input'
 export default FileInput

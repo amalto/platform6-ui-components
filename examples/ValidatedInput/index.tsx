@@ -1,2 +1,2 @@
-import ValidatedInput from 'amalto-validated-input'
+import ValidatedInput from 'validated-input'
 export default ValidatedInput

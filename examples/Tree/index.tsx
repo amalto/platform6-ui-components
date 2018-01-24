@@ -1,2 +1,2 @@
-import Tree from 'amalto-tree'
+import Tree from 'tree'
 export default Tree
