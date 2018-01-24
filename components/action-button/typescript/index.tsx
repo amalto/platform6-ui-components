@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as classNames from 'classnames'
 
-import { unloadTooltips, loadTooltips } from 'helpers'
+import { unloadTooltips, loadTooltips } from '@amalto/helpers'
 
 module ActionButton {
     /**

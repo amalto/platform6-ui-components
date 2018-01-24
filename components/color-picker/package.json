@@ -1,5 +1,5 @@
 {
-    "name": "color-picker",
+    "name": "@amalto/color-picker",
     "displayName": "ColorPicker",
     "description": "Component to pick a color.",
     "version": "1.0.9",

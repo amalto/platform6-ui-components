@@ -1,2 +1,2 @@
-import PdfViewer from 'pdf-viewer'
+import PdfViewer from '@amalto/pdf-viewer'
 export default PdfViewer
