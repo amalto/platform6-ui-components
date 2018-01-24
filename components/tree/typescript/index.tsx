@@ -2,10 +2,10 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 //utils
-import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips, base64Decode } from '@amalto/helpers'
+import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips, base64Decode } from 'amalto-helpers'
 
 //components
-import KeyValueEditor from '@amalto/key-value-editor'
+import KeyValueEditor from 'amalto-key-value-editor'
 
 //models
 import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tree'

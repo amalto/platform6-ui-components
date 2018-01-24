@@ -4,11 +4,11 @@ import * as ReactDOM from 'react-dom'
 import * as PDFJS from 'pdfjs-dist'
 
 //utils
-import { compileWordings } from '@amalto/helpers'
+import { compileWordings } from 'amalto-helpers'
 
 //components
-import Spinner from '@amalto/spinner'
-import PagingControls from '@amalto/paging-controls'
+import Spinner from 'amalto-spinner'
+import PagingControls from 'amalto-paging-controls'
 
 const WORDINGS = {
 

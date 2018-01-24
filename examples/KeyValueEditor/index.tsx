@@ -1,2 +1,2 @@
-import KeyValueEditor from '@amalto/key-value-editor'
+import KeyValueEditor from 'amalto-key-value-editor'
 export default KeyValueEditor

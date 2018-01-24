@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 //utils & stores
-import { compileWordings, formatFileSize } from '@amalto/helpers'
+import { compileWordings, formatFileSize } from 'amalto-helpers'
 
 //components & models
 import FileWrapper from './models/FileWrapper'
