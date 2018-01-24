@@ -49,27 +49,24 @@
     "webpack-dev-server": "2.10.1"
   },
   "dependencies": {
-    "@amalto/file-input": "^1.0.5",
+    "@amalto/action-button": "^1.1.19",
+    "@amalto/code-editor": "^1.1.26",
+    "@amalto/color-picker": "^1.0.12",
+    "@amalto/date-picker": "^1.0.7",
+    "@amalto/file-input": "^1.0.7",
     "@amalto/helpers": "^1.1.17",
-    "action-button": "^1.1.12",
+    "@amalto/key-value-editor": "^1.1.18",
+    "@amalto/paging-controls": "^1.0.6",
+    "@amalto/pdf-viewer": "^1.0.6",
+    "@amalto/tree": "^1.1.20",
+    "@amalto/validated-input": "^1.0.7",
     "base-64": "0.1.0",
     "brace": "0.11.0",
     "change-case": "3.0.1",
     "classnames": "2.2.5",
-    "code-editor": "^1.1.20",
-    "color-picker": "^1.0.6",
-    "date-picker": "^1.0.4",
-    "helpers": "^1.1.11",
-    "key-value-editor": "^1.1.12",
-    "paging-controls": "^1.0.2",
-    "pdf-viewer": "^1.0.2",
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-intl": "2.4.0",
-    "react-sidebar": "2.3.2",
-    "spinner": "^1.0.1",
-    "time-picker": "^1.0.3",
-    "tree": "^1.1.14",
-    "validated-input": "^1.0.1"
+    "react-sidebar": "2.3.2"
   }
 }
