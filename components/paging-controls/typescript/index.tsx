@@ -1,10 +1,10 @@
 import * as React from 'react'
-import * as ReactDOM from 'reactdom'
+import * as ReactDOM from 'react-dom'
 
-import { compileWordings } from 'helpers'
+import { compileWordings } from '@amalto/helpers'
 
 //modules
-import { FormattedNumber } from 'reactintl'
+import { FormattedNumber } from 'react-intl'
 import * as classNames from 'classnames'
 
 const WORDINGS = {
