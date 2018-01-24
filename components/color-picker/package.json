@@ -2,7 +2,7 @@
     "name": "color-picker",
     "displayName": "ColorPicker",
     "description": "Component to pick a color.",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

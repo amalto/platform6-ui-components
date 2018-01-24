@@ -2,7 +2,7 @@
   "name": "pdf-viewer",
   "displayName": "PdfViewer",
   "description": "Display pdf.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "author": "Amalto Technologies",
@@ -14,12 +14,12 @@
     "prepare": "tsc -d"
   },
   "dependencies": {
-    "helpers": "^1.1.12",
-    "paging-controls": "1.0.2",
+    "helpers": "1.1.14",
+    "paging-controls": "1.0.3",
     "pdfjs-dist": "2.0.288",
     "react": "15.6.2",
     "react-dom": "15.6.2",
-    "spinner": "^1.0.1"
+    "spinner": "1.0.2"
   },
   "devDependencies": {
     "@types/bootstrap": "3.3.36",
