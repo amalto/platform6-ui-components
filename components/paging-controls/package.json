@@ -2,7 +2,7 @@
     "name": "paging-controls",
     "displayName": "PagingControls",
     "description": "Toolbar managing paging.",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "classnames": "2.2.5",
-        "helpers": "^1.1.14",
+        "helpers": "1.1.16",
         "react": "15.6.2",
         "react-dom": "15.6.2",
         "react-intl": "2.4.0"
