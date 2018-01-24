@@ -1,5 +1,5 @@
 {
-    "name": "code-editor",
+    "name": "@amalto/code-editor",
     "displayName": "CodeEditor",
     "description": "Customizable code editor (non-form version).",
     "version": "1.1.25",

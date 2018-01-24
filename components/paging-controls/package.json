@@ -1,5 +1,5 @@
 {
-    "name": "paging-controls",
+    "name": "@amalto/paging-controls",
     "displayName": "PagingControls",
     "description": "Toolbar managing paging.",
     "version": "1.0.5",

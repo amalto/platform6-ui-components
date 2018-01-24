@@ -1,5 +1,5 @@
 {
-    "name": "pdf-viewer",
+    "name": "@amalto/pdf-viewer",
     "displayName": "PdfViewer",
     "description": "Display pdf.",
     "version": "1.0.5",
