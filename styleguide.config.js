@@ -55,7 +55,7 @@ module.exports = {
         {
             name: 'Components',
             description: 'All the components provided by platform-6',
-            components: 'components/**/*.tsx'
+            components: 'examples/**/*.tsx'
         },
         {
             name: 'Interfaces',

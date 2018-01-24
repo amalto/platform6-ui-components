@@ -1,6 +1,6 @@
 ```javascript
 const { IntlProvider } = require('react-intl');
-const data = require('../example/pdf.ts');
+const data = require('./pdf.ts');
 
 <IntlProvider locale='en-US'>
     <PdfViewer pdfSource={{

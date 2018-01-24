@@ -60,11 +60,14 @@
     "file-input": "^3.0.1",
     "helpers": "^1.1.11",
     "key-value-editor": "^1.1.12",
+    "paging-controls": "^1.0.2",
+    "pdf-viewer": "^1.0.2",
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-intl": "2.4.0",
     "react-sidebar": "2.3.2",
-    "time-picker": "^1.0.1",
+    "spinner": "^1.0.1",
+    "time-picker": "^1.0.3",
     "tree": "^1.1.14",
     "validated-input": "^1.0.1"
   }
