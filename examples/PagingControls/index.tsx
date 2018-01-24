@@ -1,2 +1,2 @@
-import PagingControls from '@amalto/paging-controls'
+import PagingControls from 'paging-controls'
 export default PagingControls

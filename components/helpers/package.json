@@ -1,0 +1,30 @@
+{
+    "name": "@amalto/helpers",
+    "displayName": "Helpers",
+    "description": "Helpers functions used across b2portal core and components.",
+    "version": "1.1.17",
+    "main": "./build/index.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npmamalto/"
+    },
+    "scripts": {
+        "setup": "npm install registry http://repo.amalto.com:8081/repository/npmall/",
+        "prepare": "tsc d"
+    },
+    "dependencies": {
+        "base64": "0.1.0",
+        "react": "15.6.2",
+        "reactdom": "15.6.2"
+    },
+    "devDependencies": {
+        "@types/base64": "0.1.2",
+        "@types/bootstrap": "3.3.36",
+        "@types/jquery": "2.0.41",
+        "@types/modernizr": "3.5.1",
+        "@types/react": "15.6.10",
+        "@types/reactdom": "15.5.6",
+        "modernizr": "3.5.0"
+    }
+}
