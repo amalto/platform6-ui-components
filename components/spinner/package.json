@@ -7,10 +7,10 @@
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
     "publishConfig": {
-        "registry": "http://repo.amalto.com:8081/repository/npmamalto/"
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
     "scripts": {
-        "setup": "npm install registry http://repo.amalto.com:8081/repository/npmall/",
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "prepare": "tsc d"
     },
     "dependencies": {

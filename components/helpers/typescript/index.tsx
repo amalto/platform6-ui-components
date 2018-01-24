@@ -1,4 +1,4 @@
-import * as base64 from 'base64'
+import * as base64 from 'base-64'
 
 import * as classNames from 'classnames'
 

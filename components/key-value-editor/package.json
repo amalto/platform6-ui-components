@@ -1,27 +1,27 @@
 {
-    "name": "@amalto/keyvalueeditor",
+    "name": "@amalto/key-value-editor",
     "displayName": "KeyValueEditor",
-    "description": "A form input that can build a custom keyvalue object.",
+    "description": "A form input that can build a custom key value object.",
     "version": "1.1.19",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
     "publishConfig": {
-        "registry": "http://repo.amalto.com:8081/repository/npmamalto/"
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
     },
     "scripts": {
-        "setup": "npm install registry http://repo.amalto.com:8081/repository/npmall/",
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
         "prepare": "tsc d"
     },
     "devDependencies": {
+        "@types/base-64": "0.1.2",
         "@types/jquery": "2.0.41",
         "@types/react": "15.6.10",
-        "@types/react-dom": "15.5.6",
-        "tsloader": "3.2.0"
+        "@types/react-dom": "15.5.6"
     },
     "dependencies": {
         "@amalto/helpers": "^1.1.17",
-        "base64": "0.1.0",
+        "base-64": "0.1.0",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     }
