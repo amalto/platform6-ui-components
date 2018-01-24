@@ -2,7 +2,7 @@
     "name": "@amalto/spinner",
     "displayName": "Spinner",
     "description": "Loading spinner.",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

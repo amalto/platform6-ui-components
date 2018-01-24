@@ -2,7 +2,7 @@
     "name": "@amalto/keyvalueeditor",
     "displayName": "KeyValueEditor",
     "description": "A form input that can build a custom keyvalue object.",
-    "version": "1.1.18",
+    "version": "1.1.19",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

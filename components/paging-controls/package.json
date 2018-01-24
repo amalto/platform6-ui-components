@@ -2,7 +2,7 @@
     "name": "@amalto/pagingcontrols",
     "displayName": "PagingControls",
     "description": "Toolbar managing paging.",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
