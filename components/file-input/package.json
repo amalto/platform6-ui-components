@@ -1,5 +1,5 @@
 {
-    "name": "file-input",
+    "name": "@amalto/file-input",
     "displayName": "FileInput",
     "description": "Input allowing you to select a file.",
     "version": "1.0.4",

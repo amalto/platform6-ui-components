@@ -80,10 +80,6 @@ module.exports = {
                 {
                     name: 'TreeNodeModel',
                     content: 'readme/TreeNodeModel.md'
-                },
-                {
-                    name: 'Test ActionButton',
-                    components: 'examples/ActionButton/index.tsx'
                 }
             ]
         },
