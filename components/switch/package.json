@@ -2,7 +2,7 @@
 	"name": "@amalto/switch",
 	"displayName": "Switch",
 	"description": "Switch button.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "./build/index.js",
 	"typings": "./build/index.d.ts",
 	"author": "Amalto Technologies",

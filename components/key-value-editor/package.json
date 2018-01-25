@@ -2,7 +2,7 @@
 	"name": "@amalto/key-value-editor",
 	"displayName": "KeyValueEditor",
 	"description": "A form input that can build a custom key value object.",
-	"version": "1.1.24",
+	"version": "1.1.25",
 	"main": "./build/index.js",
 	"typings": "./build/index.d.ts",
 	"author": "Amalto Technologies",
@@ -20,7 +20,7 @@
 		"@types/react-dom": "15.5.6"
 	},
 	"dependencies": {
-		"@amalto/helpers": "1.1.21",
+		"@amalto/helpers": "1.1.22",
 		"base-64": "0.1.0",
 		"react": "15.6.2",
 		"react-dom": "15.6.2"
