@@ -110,7 +110,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
                     <div className="formgroup colxs2 textcenter" style={{ paddingRight: 0 }}>
                         <span className="fa faminuscircle dangercolor controlalign clickpointer"
-                            datakey={keyVal.key} onClick={this.removeKeyValue} />
+                            data-key={keyVal.key} onClick={this.removeKeyValue} />
                     </div>
 
                     <div className="formgroup colxs5">
@@ -119,7 +119,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                                 <input type="text" className="formcontrol"
                                     value={keyVal.key}
                                     onChange={this.handleKeyChange}
-                                    dataidx={idx}
+                                    data-idx={idx}
                                     placeholder={this.state.wordings['keyvalueeditor.key']}
                                 />
                             ) : (
@@ -136,12 +136,12 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                                 <textarea className="formcontrol"
                                     value={keyVal.contentBytes}
                                     onChange={this.handleValueChange}
-                                    datakey={keyVal.key}
+                                    data-key={keyVal.key}
                                     placeholder={this.state.wordings['keyvalueeditor.value']}
                                 />
                             ) : (
                                     keyVal.contentBytes ? (
-                                        <button className="btn btninfo btntrans" datakey={keyVal.key} onClick={this.downloadFile}>
+                                        <button className="btn btninfo btntrans" data-key={keyVal.key} onClick={this.downloadFile}>
                                             <span className="fa fadownload rightspaced" />
                                             <span>{this.state.wordings['keyvalueeditor.download.file']}</span>
                                         </button>
@@ -149,7 +149,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                                             <span className="btn btnblock uploadbtn btndefault btntrans">
                                                 <span className="fa faupload rightspaced" />
                                                 <span>{this.state.wordings['keyvalueeditor.upload.file']}</span>
-                                                <input type="file" className="uploadinput" onChange={this.handleFileUpload} dataidx={idx} datakey={keyVal.key} />
+                                                <input type="file" className="uploadinput" onChange={this.handleFileUpload} data-idx={idx} data-key={keyVal.key} />
                                             </span>
                                         )
                                 )
@@ -167,12 +167,12 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
                 <div>
                     <button className="btn btntrans btninfo rightmargin" onClick={this.addKeyValue.bind( this )}
-                        datatoggle="tooltip" dataoriginaltitle={this.state.wordings['keyvalueeditor.add.text.btn']}>
+                        data-toggle="tooltip" data-original-title={this.state.wordings['keyvalueeditor.add.text.btn']}>
                         <span className="fa faplus rightspaced" />
                         <span className="fa fafont" />
                     </button>
                     <button className="btn btntrans btninfo" onClick={this.addKeyValue.bind( this, true )}
-                        datatoggle="tooltip" dataoriginaltitle={this.state.wordings['keyvalueeditor.add.file.btn']}>
+                        data-toggle="tooltip" data-original-title={this.state.wordings['keyvalueeditor.add.file.btn']}>
                         <span className="fa faplus rightspaced" />
                         <span className="fa fafileo" />
                     </button>
@@ -314,6 +314,4 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
 }
 
-
-Add a comment to this line
 export default KeyValueEditor

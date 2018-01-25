@@ -145,7 +145,7 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
             handlePageChange( byContext.prevContextToken )
         }
         else {
-            handlePageChange( this.props.currentPage  1 )
+            handlePageChange( this.props.currentPage - 1 )
         }
 
     }

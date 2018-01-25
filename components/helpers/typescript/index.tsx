@@ -10,7 +10,7 @@ export const XML_TAG_REGEX = /^[azAZ_:][azAZ09_:\\.]*$/
 export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[azAZ09@:%._\+~#=]{2,256}\.[az]{2,6}\b([azAZ09@:%_\+.~#?&\/=]*)/
 
 export function compileWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string } {
-    locale = locale || "enUS"
+    locale = locale || "en-US"
 
     var res = Object.keys( wordings ).reduce(
         ( dic, key ) => {
@@ -308,5 +308,4 @@ export function filterCollection( collection: any[], properties: string[], searc
 
 export function base64Decode( encodedData: string ) {
     return base64.decode( encodedData )
-    Add a comment to this line
 }
