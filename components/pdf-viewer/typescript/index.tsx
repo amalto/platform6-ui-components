@@ -21,11 +21,11 @@ const WORDINGS = {
 
 namespace PdfViewer {
     export interface Props extends React.Props<PdfViewer> {
-        /** Pdf to be displayed. */
+        /** Pdf data. */
         pdfSource: PDFSource;
         /** Class of the PdfViewer component. */
         containerClass?: string;
-        /** Css properties to apply to PdfViewer. */
+        /** React CSS properties object to apply to PdfViewer. */
         style?: React.CSSProperties;
         /** Update value to force update. */
         reloadTick?: number;
