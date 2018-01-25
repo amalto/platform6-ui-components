@@ -1,21 +1,19 @@
 # Platform 6 Components
 
-Build every components, their storybooks and list them in [the following page](storybook/static/index.html):
+## Demo
 
-```console
-npm run build
+First of all you will have to install all the dependencies.
+
+```shell
+npm run boostrap
 ```
 
-In a component package :
-
-- Compile the TypeScript sources and generate the storybook in the folder `./static`
-
-```console
-npm run build
+To run the documentation locally use:
+```shell
+npm run styleguide
 ```
 
-- Launch the storybook in development mode (live editing, etc.)
-
-```console
-npm start
+To build static files use:
+```shell
+npm run styleguide:build
 ```

@@ -82,33 +82,33 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
 
                     {
                         byContext ? null : (
-                            <button type="button" disabled={prevDisabled} className="btn btnprimary btntrans" onClick={this.goToFirstPage}>
-                                <span className="fa fafw fafastbackward"></span>
+                            <button type="button" disabled={prevDisabled} className="btn btn-primary btn-trans" onClick={this.goToFirstPage}>
+                                <span className="fa fa-fw fa-fast-backward"></span>
                             </button>
                         )
                     }
 
-                    <button type="button" disabled={prevDisabled} className="btn btnprimary btntrans" onClick={this.goToPrevPage}>
-                        <span className="fa fafw fabackward"></span>
+                    <button type="button" disabled={prevDisabled} className="btn btn-primary btn-trans" onClick={this.goToPrevPage}>
+                        <span className="fa fa-fw fa-backward"></span>
                     </button>
 
-                    <span className="btn btnprimary btntrans textelement noborderright">
-                        <span className="rightspaced">{this.state.wordings['pagingcontrols.page']}</span>
-                        <strong className="rightspaced">
+                    <span className="btn btn-primary btn-trans text-element no-border-right">
+                        <span className="right-spaced">{this.state.wordings['pagingcontrols.page']}</span>
+                        <strong className="right-spaced">
                             <FormattedNumber value={currentPage} />
                         </strong>
-                        <span className="rightspaced">{this.state.wordings['pagingcontrols.page.of']}</span>
+                        <span className="right-spaced">{this.state.wordings['pagingcontrols.page.of']}</span>
                         <span><FormattedNumber value={totalPages} /></span>
                     </span>
 
-                    <button type="button" disabled={nextDisabled} className="btn btnprimary btntrans" onClick={this.goToNextPage}>
-                        <span className="fa fafw faforward"></span>
+                    <button type="button" disabled={nextDisabled} className="btn btn-primary btn-trans" onClick={this.goToNextPage}>
+                        <span className="fa fa-fw fa-forward"></span>
                     </button>
 
                     {
                         byContext ? null : (
-                            <button type="button" disabled={nextDisabled} className="btn btnprimary btntrans" onClick={this.goToLastPage}>
-                                <span className="fa fafw fafastforward"></span>
+                            <button type="button" disabled={nextDisabled} className="btn btn-primary btn-trans" onClick={this.goToLastPage}>
+                                <span className="fa fa-fw fa-fast-forward"></span>
                             </button>
                         )
                     }
