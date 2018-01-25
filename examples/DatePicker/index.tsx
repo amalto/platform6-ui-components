@@ -1,2 +1,2 @@
-import ColorPicker from '@amalto/color-picker'
-export default ColorPicker
+import DatePicker from '@amalto/date-picker'
+export default DatePicker
