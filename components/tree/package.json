@@ -2,7 +2,7 @@
 	"name": "@amalto/tree",
 	"displayName": "Tree",
 	"description": "A tree component to display data like an organisation tree.",
-	"version": "1.1.23",
+	"version": "1.1.24",
 	"main": "./build/index.js",
 	"typings": "./build/index.d.ts",
 	"author": "Amalto Technologies",
@@ -23,8 +23,8 @@
 		"uuid": "3.2.1"
 	},
 	"dependencies": {
-		"@amalto/helpers": "^1.1.17",
-		"@amalto/key-value-editor": "^1.1.18",
+		"@amalto/helpers": "1.1.21",
+		"@amalto/key-value-editor": "1.1.22",
 		"helpers": "1.1.16",
 		"key-value-editor": "1.1.17",
 		"react": "15.6.2",
