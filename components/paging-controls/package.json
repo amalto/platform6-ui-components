@@ -1,31 +1,31 @@
 {
-  "name": "@amalto/paging-controls",
-  "displayName": "PagingControls",
-  "description": "Toolbar managing paging.",
-  "version": "1.0.7",
-  "main": "./build/index.js",
-  "typings": "./build/index.d.ts",
-  "author": "Amalto Technologies",
-  "publishConfig": {
-    "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
-  },
-  "scripts": {
-    "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
-    "prepare": "tsc d"
-  },
-  "dependencies": {
-    "@amalto/helpers": "^1.1.17",
-    "classnames": "2.2.5",
-    "react": "15.6.2",
-    "react-dom": "15.6.2",
-    "react-intl": "2.4.0"
-  },
-  "devDependencies": {
-    "@types/bootstrap": "3.3.36",
-    "@types/jquery": "2.0.41",
-    "@types/react": "15.6.10",
-    "@types/react-dom": "15.5.6",
-    "@types/react-intl": "2.3.3",
-    "proptypes": "1.1.0"
-  }
+	"name": "@amalto/paging-controls",
+	"displayName": "PagingControls",
+	"description": "Toolbar managing paging.",
+	"version": "1.0.7",
+	"main": "./build/index.js",
+	"typings": "./build/index.d.ts",
+	"author": "Amalto Technologies",
+	"publishConfig": {
+		"registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+	},
+	"scripts": {
+		"setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+		"prepare": "tsc -d"
+	},
+	"dependencies": {
+		"@amalto/helpers": "^1.1.17",
+		"classnames": "2.2.5",
+		"react": "15.6.2",
+		"react-dom": "15.6.2",
+		"react-intl": "2.4.0"
+	},
+	"devDependencies": {
+		"@types/bootstrap": "3.3.36",
+		"@types/jquery": "2.0.41",
+		"@types/react": "15.6.10",
+		"@types/react-dom": "15.5.6",
+		"@types/react-intl": "2.3.3",
+		"proptypes": "1.1.0"
+	}
 }

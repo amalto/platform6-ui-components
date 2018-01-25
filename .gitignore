@@ -6,3 +6,4 @@ lerna-debug.log
 node_modules/
 build/
 static/
+styleguide/

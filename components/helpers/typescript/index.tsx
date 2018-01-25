@@ -221,7 +221,7 @@ function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: b
 
 export function loadTooltips( element: Element ): void {
     if ( !Modernizr.touchevents ) {
-        let $elementTooltips = $( element ).find( '[datatoggle="tooltip"]' )
+        let $elementTooltips = $( element ).find( '[data-toggle="tooltip"]' )
         $elementTooltips.tooltip( {
             container: 'body',
             placement: 'auto top'
@@ -235,7 +235,7 @@ export function loadTooltips( element: Element ): void {
 
 export function unloadTooltips( element: Element ): void {
     if ( !Modernizr.touchevents ) {
-        let $elementTooltips = $( element ).find( '[datatoggle="tooltip"]' )
+        let $elementTooltips = $( element ).find( '[data-toggle="tooltip"]' )
         $elementTooltips.tooltip( 'hide' )
         $elementTooltips.tooltip( 'destroy' )
         $( 'div.tooltip' ).remove()
