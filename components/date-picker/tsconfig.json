@@ -19,6 +19,9 @@
             "es2017"
         ]
     },
+    "include": [
+        "typescript/"
+    ],
     "exclude": [
         "node_modules"
     ]
