@@ -9,12 +9,12 @@ import * as classNames from 'classnames'
 
 const WORDINGS = {
     'pagingcontrols.page': {
-        'enUS': 'Page',
-        'frFR': 'Page'
+        'en-US': 'Page',
+        'fr-FR': 'Page'
     },
     'pagingcontrols.page.of': {
-        'enUS': 'of',
-        'frFR': 'sur'
+        'en-US': 'of',
+        'fr-FR': 'sur'
     }
 }
 

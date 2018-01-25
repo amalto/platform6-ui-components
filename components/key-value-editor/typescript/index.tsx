@@ -12,32 +12,32 @@ import * as classNames from 'classnames'
 const WORDINGS = {
 
     'keyvalueeditor.key': {
-        'enUS': 'Key',
-        'frFR': 'Clé'
+        'en-US': 'Key',
+        'fr-FR': 'Clé'
     },
     'keyvalueeditor.value': {
-        'enUS': 'Value',
-        'frFR': 'Valeur'
+        'en-US': 'Value',
+        'fr-FR': 'Valeur'
     },
     'keyvalueeditor.add.text.btn': {
-        'enUS': 'Add a text property',
-        'frFR': 'Ajouter une valeur de type texte'
+        'en-US': 'Add a text property',
+        'fr-FR': 'Ajouter une valeur de type texte'
     },
     'keyvalueeditor.add.file.btn': {
-        'enUS': 'Add a file property',
-        'frFR': 'Ajouter un fichier'
+        'en-US': 'Add a file property',
+        'fr-FR': 'Ajouter un fichier'
     },
     'keyvalueeditor.select.file': {
-        'enUS': 'Select a file:',
-        'frFR': 'Ajouter un fichier :'
+        'en-US': 'Select a file:',
+        'fr-FR': 'Ajouter un fichier :'
     },
     'keyvalueeditor.download.file': {
-        'enUS': 'Download',
-        'frFR': 'Télécharger'
+        'en-US': 'Download',
+        'fr-FR': 'Télécharger'
     },
     'keyvalueeditor.upload.file': {
-        'enUS': 'Upload a file',
-        'frFR': 'Envoyer un fichier'
+        'en-US': 'Upload a file',
+        'fr-FR': 'Envoyer un fichier'
     }
 
 }
