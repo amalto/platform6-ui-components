@@ -14,11 +14,19 @@
 		"prepare": "tsc -d"
 	},
 	"devDependencies": {
+		"@ava/babel-preset-stage-4": "1.1.0",
 		"@types/ace": "0.0.36",
 		"@types/bootstrap": "3.3.36",
 		"@types/jquery": "2.0.41",
 		"@types/react": "15.6.10",
 		"@types/react-dom": "15.5.6",
+		"ava": "0.24.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-register": "6.26.0",
+		"enzyme": "3.3.0",
+		"enzyme-adapter-react-15": "1.0.5",
+		"react-addons-test-utils": "15.6.2",
+		"react-test-renderer": "15.6.2",
 		"ts-loader": "3.2.0",
 		"typescript": "2.6.2"
 	},

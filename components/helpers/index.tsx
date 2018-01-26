@@ -3,11 +3,11 @@ import * as base64 from 'base-64'
 import * as classNames from 'classnames'
 
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
-export const COLOR_CODE_REGEX = /^#([AFaf09]{6}|[AFaf09]{3})$/
-export const SCOPE_KEYWORD_REGEX = /^[azAZ09_~@$£|€¥§&]+$/
-export const MAP_PROPERTY_KEY_REGEX = /^[azAZ09_]+$/
-export const XML_TAG_REGEX = /^[azAZ_:][azAZ09_:\\.]*$/
-export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[azAZ09@:%._\+~#=]{2,256}\.[az]{2,6}\b([azAZ09@:%_\+.~#?&\/=]*)/
+export const COLOR_CODE_REGEX = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
+export const SCOPE_KEYWORD_REGEX = /^[a-zA-Z0-9-_~@$£|€¥§&]+$/
+export const MAP_PROPERTY_KEY_REGEX = /^[a-zA-Z0-9-_]+$/
+export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
+export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
 
 export function compileWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string } {
     locale = locale || "en-US"
@@ -33,7 +33,7 @@ export function isValidColorCode( color: string ): boolean {
 }
 
 export function isNotEmpty( value: string ): boolean {
-    return value && value.trim().length > 0
+    return !!value && value.trim().length > 0
 }
 
 //check for a valid scope keyword value (see "Scopes and Permissions" page on confluence)
@@ -76,12 +76,16 @@ export function escapeXml( xml: string ): string {
 export function utf8JSON_to_b64URI( json ) {
     //use of unescape (deprecated) is needed to decode hexadecimal escape sequence
     //do not replace it with decodeURI, they don't have the same effect
-    return encodeURIComponent( base64.encode( window['unescape']( encodeURIComponent( JSON.stringify( json ) ) ) ) );
+    // return encodeURIComponent( base64.encode( window['unescape']( encodeURIComponent( JSON.stringify( json ) ) ) ) );
+
+    // New implementation giving the same result, keep old implementation until we are sure of it.
+    return encodeURIComponent( base64.encode( decodeURIComponent( encodeURIComponent( JSON.stringify( json ) ) ) ) );
 }
 
 export function URIb64_to_utf8JSON( str ) {
     try {
-        return JSON.parse( decodeURIComponent( window['escape']( base64.decode( decodeURIComponent( str ) ) ) ) );
+        // return JSON.parse( decodeURIComponent( window['escape']( base64.decode( decodeURIComponent( str ) ) ) ) );
+        return JSON.parse( decodeURIComponent( encodeURIComponent( base64.decode( decodeURIComponent( str ) ) ) ) );
     }
     catch ( error ) {
         console.log( 'JSON parsing error: ', error );
@@ -114,7 +118,7 @@ export function formatFileSize( size: number ): string {
 }
 
 /**
- * Returns a keyvalue object from a query string like ?test=value&other=something
+ * Returns a key-value object from a query string like ?test=value&other=something
  */
 export function getQueryParams( searchString: string ): any {
     if ( !searchString ) {
@@ -252,7 +256,7 @@ export function groupByProperty( list: any[], propertyName: string ): { [propVal
 }
 
 export function addValToArrayNoDup( array: string[], value: string ): string[] {
-    if ( array.indexOf( value ) === 1 ) {
+    if ( array.indexOf( value ) === -1 ) {
         return array.concat( value )
     }
     return array.slice()
@@ -296,7 +300,7 @@ export function filterCollection( collection: any[], properties: string[], searc
             }
         } ).join().toLowerCase()
 
-        const matches = searchElements.map( search => data.indexOf( search ) !== 1 )
+        const matches = searchElements.map( search => data.indexOf( search ) !== -1 )
 
         return matches.filter( matched => !matched ).length === 0
 

@@ -1,31 +1,40 @@
 {
-	"name": "@amalto/helpers",
-	"displayName": "Helpers",
-	"description": "Helpers functions used across b2portal core and components.",
-	"version": "1.1.22",
-	"main": "./build/index.js",
-	"typings": "./build/index.d.ts",
-	"author": "Amalto Technologies",
-	"publishConfig": {
-		"registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
-	},
-	"scripts": {
-		"setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
-		"prepare": "tsc -d"
-	},
-	"dependencies": {
-		"base-64": "0.1.0",
-		"classnames": "2.2.5",
-		"modernizr": "3.5.0",
-		"react": "15.6.2",
-		"react-dom": "15.6.2"
-	},
-	"devDependencies": {
-		"@types/base-64": "0.1.2",
-		"@types/bootstrap": "3.3.36",
-		"@types/jquery": "2.0.41",
-		"@types/modernizr": "3.5.1",
-		"@types/react": "15.6.10",
-		"@types/react-dom": "15.5.6"
-	}
+    "name": "@amalto/helpers",
+    "displayName": "Helpers",
+    "description": "Helpers functions used across b2portal core and components.",
+    "version": "1.1.22",
+    "main": "./build/index.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "scripts": {
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "test": "ava --verbose",
+        "prepare": "tsc -d"
+    },
+    "dependencies": {
+        "base-64": "0.1.0",
+        "classnames": "2.2.5",
+        "modernizr": "3.5.0",
+        "react": "15.6.2",
+        "react-dom": "15.6.2"
+    },
+    "devDependencies": {
+        "@ava/babel-preset-stage-4": "1.1.0",
+        "@types/base-64": "0.1.2",
+        "@types/bootstrap": "3.3.36",
+        "@types/jquery": "2.0.41",
+        "@types/modernizr": "3.5.1",
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6",
+        "ava": "0.24.0",
+        "babel-preset-react": "6.24.1",
+        "babel-register": "6.26.0",
+        "enzyme": "3.3.0",
+        "enzyme-adapter-react-15": "1.0.5",
+        "react-addons-test-utils": "15.6.2",
+        "react-test-renderer": "15.6.2"
+    }
 }
