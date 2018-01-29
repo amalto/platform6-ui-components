@@ -3,97 +3,101 @@ const changeCase = require('change-case');
 
 module.exports = {
 
-	title: 'b2-common-components',
+    title: 'b2-common-components',
 
-	assetsDir: 'public/',
+    assetsDir: 'public/',
 
-	require: [
-		path.resolve(__dirname, 'public/sass/main.scss')
-	],
+    require: [
+        path.resolve(__dirname, 'public/sass/main.scss')
+    ],
 
-	resolver: require('react-docgen').resolver.findExportedComponentDefinition,
+    resolver: require('react-docgen').resolver.findExportedComponentDefinition,
 
-	getComponentPathLine(componentPath) {
-		const type = componentPath.split('/')[0]
-		const componentName = componentPath.split('/')[1]
-		const name = changeCase.pascalCase(componentName)
-		const dir = componentName
+    styleguideComponents: {
+        Wrapper: path.join(__dirname, 'typescript/Wrapper')
+    },
 
-		return type === 'components' ? `import ${name} from '${dir}';` : null
-	},
+    getComponentPathLine(componentPath) {
+        const type = componentPath.split('/')[0]
+        const componentName = componentPath.split('/')[1]
+        const name = changeCase.pascalCase(componentName)
+        const dir = componentName
 
-	template: path.resolve(__dirname, './public/index.html'),
-	propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
-	webpackConfig: require('./webpack.config.js'),
+        return type === 'components' ? `import ${name} from '${dir}';` : null
+    },
 
-	// Will be remove when editorConfig.theme property is fixed for all theme except default one 
-	highlightTheme: 'tomorrow-night-eighties',
+    template: path.resolve(__dirname, './public/index.html'),
+    propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
+    webpackConfig: require('./webpack.config.js'),
 
-	// editorConfig: {
-	//     theme: 'base16-light' // should be tomorrow-night-eighties, but not working for now
-	// },
+    // Will be remove when editorConfig.theme property is fixed for all theme except default one 
+    highlightTheme: 'tomorrow-night-eighties',
 
-	theme: {
-		color: {
-			sidebarBackground: '#F0F3F3'
-		},
-		sidebarWidth: 300
-	},
+    // editorConfig: {
+    //     theme: 'base16-light' // should be tomorrow-night-eighties, but not working for now
+    // },
 
-	showUsage: true,
-	showCode: true,
+    theme: {
+        color: {
+            sidebarBackground: '#F0F3F3'
+        },
+        sidebarWidth: 300
+    },
 
-	ignore: ['**/node_modules/**/*.*'],
+    showUsage: true,
+    showCode: true,
 
-	skipComponentsWithoutExample: true,
+    ignore: ['**/node_modules/**/*.*'],
 
-	sections: [{
-			name: 'Introduction',
-			content: 'readme/Introduction.md'
-		},
-		{
-			name: 'Components',
-			description: 'All the components provided by platform-6',
-			components: 'components/**/*.tsx'
-		},
-		{
-			name: 'Interfaces',
-			description: 'Interfaces used by b2-common-components',
-			sections: [{
-					name: 'AceSession',
-					content: 'readme/AceSession.md'
-				},
-				{
-					name: 'FileWrapper',
-					content: 'readme/FileWrapper.md'
-				},
-				{
-					name: 'KeyValDef',
-					content: 'readme/KeyValDef.md'
-				},
-				{
-					name: 'TreeNodeDataModel',
-					content: 'readme/TreeNodeDataModel.md'
-				},
-				{
-					name: 'TreeNodeModel',
-					content: 'readme/TreeNodeModel.md'
-				}
-			]
-		},
-		{
-			name: 'Utils',
-			description: 'Utils used by b2-common-components',
-			showCode: false,
-			sections: [{
-				name: 'Helpers',
-				content: 'readme/Helpers.md',
-			}]
-		},
-		{
-			name: 'Todo',
-			description: 'Todo list of what\'s left to be done',
-			content: 'readme/Todo.md'
-		}
-	]
+    skipComponentsWithoutExample: true,
+
+    sections: [{
+        name: 'Introduction',
+        content: 'readme/Introduction.md'
+    },
+    {
+        name: 'Components',
+        description: 'All the components provided by platform-6',
+        components: 'components/**/*.tsx'
+    },
+    {
+        name: 'Interfaces',
+        description: 'Interfaces used by b2-common-components',
+        sections: [{
+            name: 'AceSession',
+            content: 'readme/AceSession.md'
+        },
+        {
+            name: 'FileWrapper',
+            content: 'readme/FileWrapper.md'
+        },
+        {
+            name: 'KeyValDef',
+            content: 'readme/KeyValDef.md'
+        },
+        {
+            name: 'TreeNodeDataModel',
+            content: 'readme/TreeNodeDataModel.md'
+        },
+        {
+            name: 'TreeNodeModel',
+            content: 'readme/TreeNodeModel.md'
+        }
+        ]
+    },
+    {
+        name: 'Utils',
+        description: 'Utils used by b2-common-components',
+        showCode: false,
+        sections: [{
+            name: 'Helpers',
+            content: 'readme/Helpers.md',
+        }]
+    },
+    {
+        name: 'Todo',
+        description: 'Todo list of what\'s left to be done',
+        content: 'readme/Todo.md'
+    }
+    ]
 }

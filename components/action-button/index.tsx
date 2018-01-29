@@ -2,8 +2,6 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as classNames from 'classnames'
 
-import { unloadTooltips, loadTooltips } from '@amalto/helpers'
-
 module ActionButton {
     /**
      * ActionButton properties
@@ -59,17 +57,6 @@ class ActionButton extends React.Component<ActionButton.Props, any> {
                 <span className={classNames( 'fa', this.props.iconClass, this.props.colorClass )}></span>
             </span>
         )
-    }
-
-    /**
-     * FIXME: To remove and do it on the parent
-     */
-    componentDidMount() {
-        loadTooltips( 'body' as any )
-    }
-
-    componentWillUnmount() {
-        unloadTooltips( ReactDOM.findDOMNode( this ) )
     }
 }
 

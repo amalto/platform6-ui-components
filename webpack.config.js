@@ -17,7 +17,8 @@ module.exports = {
                 include: [
                     path.resolve(__dirname, './components'),
                     path.resolve(__dirname, './readme'),
-                    path.resolve(__dirname, './examples')
+                    path.resolve(__dirname, './examples'),
+                    path.resolve(__dirname, './typescript')
                 ],
                 loaders: ['ts-loader'],
                 exclude: /node_modules/

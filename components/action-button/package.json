@@ -11,6 +11,7 @@
     },
     "scripts": {
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
     "devDependencies": {
@@ -28,7 +29,6 @@
         "ts-loader": "3.2.0"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.23",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
