@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import * as extend from 'just-extend'
+
 module Spinner {
     export interface Props extends React.Props<Spinner> {
         /** Top position. */
@@ -42,7 +44,7 @@ class Spinner extends React.Component<Spinner.Props, any> {
             textAlign: 'center'
         }
 
-        $.extend( spinnerStyle, this.props )
+        extend( spinnerStyle, this.props )
 
         return (
 
