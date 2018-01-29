@@ -74,17 +74,11 @@ export function escapeXml( xml: string ): string {
 }
 
 export function utf8JSON_to_b64URI( json ) {
-    //use of unescape (deprecated) is needed to decode hexadecimal escape sequence
-    //do not replace it with decodeURI, they don't have the same effect
-    // return encodeURIComponent( base64.encode( window['unescape']( encodeURIComponent( JSON.stringify( json ) ) ) ) );
-
-    // New implementation giving the same result, keep old implementation until we are sure of it.
     return encodeURIComponent( base64.encode( decodeURIComponent( encodeURIComponent( JSON.stringify( json ) ) ) ) );
 }
 
 export function URIb64_to_utf8JSON( str ) {
     try {
-        // return JSON.parse( decodeURIComponent( window['escape']( base64.decode( decodeURIComponent( str ) ) ) ) );
         return JSON.parse( decodeURIComponent( encodeURIComponent( base64.decode( decodeURIComponent( str ) ) ) ) );
     }
     catch ( error ) {
@@ -263,9 +257,7 @@ export function addValToArrayNoDup( array: string[], value: string ): string[] {
 }
 
 export function removeValFromArrayNoDup( array: string[], value: string ): string[] {
-    return array.filter( ( element ) => {
-        return element !== value
-    } )
+    return array.filter( element => element !== value )
 }
 
 export function getNestedValue( obj: any, keyPath: string ): any {

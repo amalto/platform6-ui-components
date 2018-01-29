@@ -11,7 +11,7 @@
     },
     "scripts": {
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
-        "test": "ava --verbose",
+        "test": "ava ./test/test.js --tap --verbose | tap-nyan",
         "prepare": "tsc -d"
     },
     "dependencies": {
@@ -35,6 +35,7 @@
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
         "react-addons-test-utils": "15.6.2",
-        "react-test-renderer": "15.6.2"
+        "react-test-renderer": "15.6.2",
+        "tap-nyan": "^1.1.0"
     }
 }
