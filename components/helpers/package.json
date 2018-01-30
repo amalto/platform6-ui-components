@@ -36,7 +36,7 @@
         "jsdom": "11.6.2",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
-        "sinon": "^4.2.2",
+        "sinon": "4.2.2",
         "tap-nyan": "^1.1.0"
     },
     "ava": {
