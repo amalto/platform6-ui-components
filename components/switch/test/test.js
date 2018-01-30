@@ -36,11 +36,11 @@ test('should work will all props', t => {
     t.true(wrapper.children().hasClass('onoffswitch'));
 
     // check input
-    t.is(wrapper.children().children().at(0).prop('id'), 'id-test-swipe-component');
-    t.is(wrapper.children().children().at(0).prop('checked'), true);
-    t.is(wrapper.children().children().at(0).prop('name'), 'name-test-swipe-component');
+    t.is(wrapper.children().childAt(0).prop('id'), 'id-test-swipe-component');
+    t.is(wrapper.children().childAt(0).prop('checked'), true);
+    t.is(wrapper.children().childAt(0).prop('name'), 'name-test-swipe-component');
 
     // triggering onchange event on input
-    wrapper.children().children().at(0).props().onChange({ target: { checked: true } });
+    wrapper.children().childAt(0).props().onChange({ target: { checked: true } });
     t.true(spy.called);
 });

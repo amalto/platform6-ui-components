@@ -26,6 +26,6 @@ test('props should be assigned', t => {
     const wrapper = shallow(<ColorPicker color={color} handleColorChange={spy} />);
     const mock = { currentTarget: { getAttribute: () => { } } };
 
-    wrapper.children().children().at(0).props().onClick(mock);
+    wrapper.children().childAt(0).props().onClick(mock);
     t.true(spy.called);
 });

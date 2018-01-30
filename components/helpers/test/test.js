@@ -310,15 +310,15 @@ test('should filter collection by properties and search value', t => {
     ];
     const filterOne = filterCollection(data, ['one'], '');
 
-    t.true(filterOne[0].one === 'sheep');
-    t.true(filterOne[1].one === 'wolf');
-    t.true(filterOne[2].one === 'lion');
+    t.is(filterOne[0].one, 'sheep');
+    t.is(filterOne[1].one, 'wolf');
+    t.is(filterOne[2].one, 'lion');
 
     const filterOneInvalidProperty = filterCollection(data, ['one', 'toto'], '');
 
-    t.true(filterOneInvalidProperty[0].one === 'sheep');
-    t.true(filterOneInvalidProperty[1].one === 'wolf');
-    t.true(filterOneInvalidProperty[2].one === 'lion');
+    t.is(filterOneInvalidProperty[0].one, 'sheep');
+    t.is(filterOneInvalidProperty[1].one, 'wolf');
+    t.is(filterOneInvalidProperty[2].one, 'lion');
 
     /**
      * Should return the original data without any changes.
@@ -326,19 +326,19 @@ test('should filter collection by properties and search value', t => {
      */
     const filterInvalidProperty = filterCollection(data, ['toto'], '');
 
-    t.true(filterOneInvalidProperty[0].one === 'sheep');
-    t.true(filterOneInvalidProperty[1].one === 'wolf');
-    t.true(filterOneInvalidProperty[2].one === 'lion');
+    t.is(filterOneInvalidProperty[0].one, 'sheep');
+    t.is(filterOneInvalidProperty[1].one, 'wolf');
+    t.is(filterOneInvalidProperty[2].one, 'lion');
 
     const filterSearchValue = filterCollection(data, ['one', 'two', 'three'], 's');
 
-    t.true(filterSearchValue.length === 2);
-    t.true(filterSearchValue[0].one === 'sheep');
-    t.true(filterSearchValue[1].three === 'snake');
+    t.is(filterSearchValue.length, 2);
+    t.is(filterSearchValue[0].one, 'sheep');
+    t.is(filterSearchValue[1].three, 'snake');
 
     const filterUnfindable = filterCollection(data, ['one', 'two', 'three'], 'you can\'t find me');
 
-    t.true(filterUnfindable.length === 0);
+    t.is(filterUnfindable.length, 0);
 });
 
 // base64Decode
