@@ -75,6 +75,10 @@ export function escapeXml( xml: string ): string {
 
 export function utf8JSON_to_b64URI( json ) {
     return encodeURIComponent( base64.encode( decodeURIComponent( encodeURIComponent( JSON.stringify( json ) ) ) ) );
+
+    //use of unescape (deprecated) is needed to decode hexadecimal escape sequence
+    //do not replace it with decodeURI, they don't have the same effect
+    // return encodeURIComponent( base64.encode( window['unescape']( encodeURIComponent( JSON.stringify( json ) ) ) ) );
 }
 
 export function URIb64_to_utf8JSON( str ) {
@@ -151,19 +155,6 @@ export function addQueryParam( uri: string, key: string, value: any ): HTMLAncho
     }
 
     return link
-}
-
-
-/**
- * Inverts search and fragment of a RFC 3986 URL , allowing react router to properly get query params...
- */
-export function buildReactRouterUri( uri: string ) {
-    let link = document.createElement( 'a' )
-    link.href = uri
-
-    let baseUri = link.href.split( link.hash )[0].split( link.search )[0]
-
-    return baseUri + link.hash + link.search
 }
 
 //return the same object passed as param but with ASC ordered keys

@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import * as sinon from 'sinon';
 import test from 'ava';
 import base64 from 'base-64';
 import Adapter from 'enzyme-adapter-react-15';
-import { shallow, mount, configure } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import {
     compileWordings,
     isValidEmail,
@@ -22,7 +23,6 @@ import {
     formatFileSize,
     getQueryParams,
     addQueryParam,
-    buildReactRouterUri,
     orderAsc,
     orderDesc,
     saveDataAsJSONFile,
@@ -183,13 +183,32 @@ test('should return { "test": "value", "other": "something" }', t => {
 });
 
 // addQueryParam
-test.skip('addQueryParam: need to mock document and windows to test', t => {
-    t.pass();
-});
+test('addQueryParam: need to mock document and windows to test', t => {
+    class MockClass extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {};
+        }
 
-// buildReactRouterUri
-test.skip('buildReactRouterUri: need to mock document and windows to test', t => {
-    t.pass();
+        render() {
+            const link = addQueryParam(this.props.url, this.props.paramKey, this.props.paramValue);
+
+            return <a href={link.href} search={link.search} />
+        }
+    }
+
+    const wrapper1 = shallow(
+        <MockClass url='https://www.test.com' paramKey='key1' paramValue='value1' />
+    );
+    const wrapper2 = shallow(
+        <MockClass url='https://www.test.com?key1=value1' paramKey='key2' paramValue='value2' />
+    );
+
+    t.is(wrapper1.prop('href'), 'https://www.test.com/?key1=value1');
+    t.not(wrapper1.prop('href'), 'https://www.test.com/&key1=value1');
+
+    t.is(wrapper2.prop('href'), 'https://www.test.com/?key1=value1&key2=value2');
+    t.not(wrapper2.prop('href'), 'https://www.test.com/&key2=value2');
 });
 
 // orderAsc
@@ -209,29 +228,19 @@ test('should order by desc key-value', t => {
 });
 
 // saveDataAsJSONFile
-test.skip('saveDataAsJSONFile: need to mock document and windows to test', t => {
-    t.pass();
-});
+test.skip('saveDataAsJSONFile: can\'t be test as it doesn\'t return anything', t => { });
 
 // downloadDataFile
-test.skip('downloadDataFile: need to mock document and windows to test', t => {
-    t.pass();
-});
+test.skip('downloadDataFile: can\'t be test as it doesn\'t return anything', t => { });
 
 // triggerDataDownload
-test.skip('triggerDataDownload: need to mock document and windows to test', t => {
-    t.pass();
-});
+test.skip('triggerDataDownload: can\'t be test as it doesn\'t return anything', t => { });
 
 // loadTooltips
-test.skip('loadTooltips: need to mock document and windows to test', t => {
-    t.pass();
-});
+test.skip('loadTooltips: can\'t be test as it doesn\'t return anything', t => { });
 
 // unloadTooltips
-test.skip('unloadTooltips: need to mock document and windows to test', t => {
-    t.pass();
-});
+test.skip('unloadTooltips: can\'t be test as it doesn\'t return anything', t => { });
 
 // groupByProperty
 test('should store content of array into object array at property name', t => {
