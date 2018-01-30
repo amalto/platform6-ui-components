@@ -33,6 +33,7 @@
 		"moment": "2.20.1",
 		"react-addons-test-utils": "15.6.2",
 		"react-dropzone": "4.2.5",
-		"react-test-renderer": "15.6.2"
+		"react-test-renderer": "15.6.2",
+		"sinon": "^4.2.2"
 	}
 }

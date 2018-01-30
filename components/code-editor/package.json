@@ -27,6 +27,7 @@
         "enzyme-adapter-react-15": "1.0.5",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
+        "sinon": "^4.2.2",
         "ts-loader": "3.2.0",
         "typescript": "2.6.2"
     },

@@ -32,7 +32,8 @@
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
         "react-addons-test-utils": "15.6.2",
-        "react-test-renderer": "15.6.2"
+        "react-test-renderer": "15.6.2",
+        "sinon": "^4.2.2"
     },
     "ava": {
         "concurrency": 5,
