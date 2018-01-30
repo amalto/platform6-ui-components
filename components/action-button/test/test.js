@@ -1,4 +1,5 @@
 import React from 'react';
+import * as sinon from 'sinon';
 import test from 'ava';
 import Adapter from 'enzyme-adapter-react-15';
 
@@ -44,14 +45,10 @@ test('should display a tooltip', t => {
 });
 
 test('should trigger clickAction', t => {
-    let count = 0;
-    const clickAction = e => {
-        // Do something here
-        count += 1;
-    };
-    const wrapper = shallow(<ActionButton clickAction={clickAction} />);
+    const clickAction = e => { console.info('clickAction called') };
+    const spy = sinon.spy(clickAction);
+    const wrapper = shallow(<ActionButton clickAction={spy} />);
 
     wrapper.simulate('click');
-    t.is(count, 1);
-    t.not(count, 0);
+    t.true(spy.called);
 })
