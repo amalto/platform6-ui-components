@@ -42,7 +42,7 @@ module ValidatedInput {
         /** Input label. */
         label?: string | JSX.Element;
         /** Forces the input to be validated (regex/mandatory validation) on first load - before the user starts to type anything. */
-        validateOnLoad?: string;
+        validateOnLoad?: boolean;
         /** Whether or not the form has been submitted. Will force an input validation if it goes from false to true. */
         formSubmitted?: boolean;
         /** Placeholder HTML attribute. */
@@ -85,7 +85,7 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
 
     render() {
 
-        const { label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = this.props
+        const { name, label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = this.props
 
         const inputDisplay = this.props.choices ? (
             <select className={classNames( 'form-control', inputClass )}
