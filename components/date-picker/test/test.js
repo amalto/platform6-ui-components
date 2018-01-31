@@ -11,7 +11,7 @@ import DatePicker from '../build/index.js';
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('Component should exist', t => {
+test.beforeEach('DatePicker component should exist', t => {
     const wrapper = shallow(<DatePicker />);
 
     t.true(wrapper.exists());

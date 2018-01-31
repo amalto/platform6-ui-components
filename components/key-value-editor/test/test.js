@@ -10,7 +10,7 @@ import KeyValueEditor from '../build/index.js';
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('component should exist', t => {
+test.beforeEach('KeyValueEditor component should exist', t => {
     const wrapper = shallow(<KeyValueEditor />);
 
     t.true(wrapper.exists());

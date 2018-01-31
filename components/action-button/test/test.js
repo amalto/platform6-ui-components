@@ -12,7 +12,7 @@ import {
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('should component exist', t => {
+test.beforeEach('ActionButton component should exist', t => {
     const wrapper = shallow(<ActionButton />);
 
     t.true(wrapper.exists());

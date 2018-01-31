@@ -11,7 +11,7 @@ import ColorPicker from '../build/index.js';
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('Component should exist', t => {
+test.beforeEach('ColorPicker component should exist', t => {
     const wrapper = shallow(<ColorPicker />);
 
     t.true(wrapper.exists());

@@ -9,7 +9,7 @@ import PagingControls from '../build/index.js';
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('component should exist', t => {
+test.beforeEach('PagingControls component should exist', t => {
     const wrapper = shallow(
         <PagingControls containerClass='padded'
             currentPage={1}

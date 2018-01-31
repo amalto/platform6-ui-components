@@ -10,7 +10,7 @@ import {
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('should component exist', t => {
+test.beforeEach('Spinner should component exist', t => {
     const wrapper = shallow(<Spinner />);
 
     t.true(wrapper.exists());

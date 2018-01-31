@@ -9,7 +9,7 @@ import FileInput from '../build/index.js';
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('component should exist', t => {
+test.beforeEach('FileInput component should exist', t => {
     const wrapper = shallow(<FileInput />);
 
     t.true(wrapper.exists());

@@ -11,7 +11,7 @@ import {
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('component should exist', t => {
+test.beforeEach('Switch component should exist', t => {
     const wrapper = shallow(<Switch />);
 
     t.true(wrapper.exists());
