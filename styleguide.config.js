@@ -76,6 +76,10 @@ module.exports = {
             content: 'readme/KeyValDef.md'
         },
         {
+            name: 'Marker',
+            content: 'readme/Marker.md'
+        },
+        {
             name: 'Settings',
             content: 'readme/Settings.md'
         },
