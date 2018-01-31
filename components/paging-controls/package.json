@@ -11,6 +11,7 @@
     },
     "scripts": {
         "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
     "dependencies": {
@@ -32,9 +33,27 @@
         "babel-register": "6.26.0",
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
+        "jquery": "3.3.1",
+        "jsdom": "11.6.2",
         "proptypes": "1.1.0",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
         "sinon": "4.2.2"
+    },
+    "ava": {
+        "concurrency": 5,
+        "failFast": true,
+        "failWithoutAssertions": false,
+        "powerAssert": true,
+        "require": [
+            "babel-register",
+            "./test/utils.js"
+        ],
+        "babel": {
+            "presets": [
+                "@ava/stage-4",
+                "react"
+            ]
+        }
     }
 }
