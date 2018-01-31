@@ -65,7 +65,7 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
 
     render() {
 
-        const { value, label, help, containerClass, mandatory } = this.props
+        const { name, value, label, help, containerClass, mandatory } = this.props
 
         return (
             <div className={classNames( 'form-group', containerClass, {
