@@ -82,7 +82,6 @@ module CodeEditor {
         mode: string;
         /** If true don't allow user to edit content. */
         readonly?: boolean;
-        editorHeightOffset?: number;
         /** Editor visual settings. */
         displaySettings?: Settings;
         /** Initial load time of editor. If the new loadTime is at a later date, the editor will be updated. */
@@ -187,14 +186,14 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     shouldComponentUpdate( nextProps: CodeEditor.Props ) {
         const newDoc = nextProps.docId !== this.props.docId
 
-        if ( this.props.resetTick !== nextProps.resetTick && nextProps.resetTick ) {
-            $( this._editorPanel ).height( '100%' )
-            this._editor.resize( true )
-            !nextProps.readonly && this.focus( nextProps.aceSession )
-        }
+        // if ( this.props.resetTick !== nextProps.resetTick && nextProps.resetTick ) {
+        //     $( this._editorPanel ).height( '100%' )
+        //     this._editor.resize( true )
+        //     !nextProps.readonly && this.focus( nextProps.aceSession )
+        // }
 
         if ( this.props.mode !== nextProps.mode && nextProps.mode ) {
-            this._editor.getSession().setMode( nextProps.mode )
+            this._editor.getSession().setMode( `ace/mode/${ nextProps.mode }` )
         }
 
         if ( this.props.saveSession && newDoc ) {
@@ -207,6 +206,12 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         // FIXME: Handle multiple editor with readonly and write mode
         this._editor.setReadOnly( nextProps.readonly )
+        if ( doUpdate ) {
+            $( this._editorPanel ).height( '100%' )
+            this._editor.resize( true )
+            !nextProps.readonly && this.focus( nextProps.aceSession )
+            this.setEditorSession( this._editor, nextProps )
+        }
         doUpdate && this.setEditorSession( this._editor, nextProps )
         displaySettingsChanged && this._markerId && this._editor.getSession().removeMarker( this._markerId )
         displaySettingsChanged && this.setEditorOptions( this._editor, nextProps )
@@ -247,7 +252,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             props.saveSession && props.saveSession( this.getAceSession( editor ) )
         }
 
-        editor.getSession().setMode( props.mode || 'ace/mode/javascript' )
+        editor.getSession().setMode( `ace/mode${ props.mode }` || 'ace/mode/javascript' )
 
         editor.getSession().on( 'change', e => {
             if ( this._firstChangeTime <= props.loadTime ) {

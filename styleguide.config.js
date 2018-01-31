@@ -76,14 +76,17 @@ module.exports = {
             content: 'readme/KeyValDef.md'
         },
         {
+            name: 'Settings',
+            content: 'readme/Settings.md'
+        },
+        {
             name: 'TreeNodeDataModel',
             content: 'readme/TreeNodeDataModel.md'
         },
         {
             name: 'TreeNodeModel',
             content: 'readme/TreeNodeModel.md'
-        }
-        ]
+        }]
     },
     {
         name: 'Utils',
