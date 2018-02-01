@@ -197,7 +197,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         // }
 
         if ( this.props.mode !== nextProps.mode && nextProps.mode ) {
-            this._editor.getSession().setMode( `ace/mode/${ nextProps.mode }` )
+            this._editor.getSession().setMode( nextProps.mode && `ace/mode/${ nextProps.mode }` )
         }
 
         if ( this.props.saveSession && newDoc ) {
@@ -256,7 +256,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             props.saveSession && props.saveSession( this.getAceSession( editor ) )
         }
 
-        editor.getSession().setMode( `ace/mode/${ props.mode }` || 'ace/mode/javascript' )
+        editor.getSession().setMode( props.mode && `ace/mode/${ props.mode }` || 'ace/mode/javascript' )
 
         editor.getSession().on( 'change', e => {
             if ( this._firstChangeTime <= props.loadTime ) {
