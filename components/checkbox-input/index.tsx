@@ -10,22 +10,17 @@ import Help from './components/Help'
 //utils
 import * as classNames from 'classnames'
 
-namespace RadioInput {
+namespace CheckboxInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
         name: string;
         /** Input's label. */
-        label?: string | JSX.Element;
-        /** Input's list. */
-        options: {
-            value: string;
-            label?: string;
-        }[];
+        label: string | JSX.Element;
         /** Disable input. */
         disabled?: boolean;
         /** Tooltip text displayed when hovering "?" icon. */
         help?: string;
-        /** Radio group CSS class. */
+        /** CheckboxInput group CSS class. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
@@ -42,7 +37,7 @@ namespace RadioInput {
         /** @ignore */
         key?: React.ReactText;
         /** @ignore */
-        ref?: React.Ref<RadioInput>;
+        ref?: React.Ref<CheckboxInput>;
     }
 
     export interface State {
@@ -50,18 +45,18 @@ namespace RadioInput {
     }
 }
 
-class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
+class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.State> {
 
-    constructor( props: RadioInput.Props ) {
+    constructor( props: CheckboxInput.Props ) {
         super( props )
         this.state = {
 
         }
     }
 
-    private renderRadio = ( field: WrappedFieldProps<{}> ) => {
+    private renderCheckbox = ( field: WrappedFieldProps<any> ) => {
 
-        const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
+        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
 
         const { input, meta } = field
 
@@ -69,35 +64,29 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
             <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error
             } )}>
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                {
-                    options.map( ( opt, idx ) => (
-                        <span key={idx} className="form-radio-wrapper right-margin">
-                            <input {...input as any}
-                                disabled={disabled}
-                                type="radio"
-                                id={input.name + '_' + idx}
-                                value={opt.value}
-                                className={classNames( 'form-radio', inputClass )}
-                                checked={input.value === opt.value} />
+                <span className={classNames( 'form-checkbox-wrapper', inputClass )}>
+                    <input {...input as any}
+                        type="checkbox"
+                        disabled={disabled}
+                        id={input.name}
+                        className="form-checkbox"
+                        checked={input.value} />
 
-                            <label htmlFor={input.name + '_' + idx}
-                                className="form-radio-label">
-                                {opt.label || opt.value}
-                            </label>
-                        </span>
-                    ) )
-                }
+                    <label className="form-checkbox-label" htmlFor={input.name}>{label}</label>
+
+                    {help && <Help text={help} containerClass='pos-absolute' />}
+                </span>
 
                 {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
+
             </div>
         )
     }
 
     render() {
 
-        const { options, name, format, normalize, parse, validate, warn } = this.props
+        const { name, label, format, normalize, parse, validate, warn } = this.props
 
         let baseFieldProps: BaseFieldProps = {
             name,
@@ -108,9 +97,9 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
             warn
         }
 
-        return options && options.length ? (
+        return label ? (
 
-            <Field {...baseFieldProps} component={this.renderRadio} />
+            <Field {...baseFieldProps} component={this.renderCheckbox} />
 
         ) : null
 
@@ -119,4 +108,4 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
 }
 
 
-export default RadioInput
+export default CheckboxInput

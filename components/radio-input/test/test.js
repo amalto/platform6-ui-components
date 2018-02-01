@@ -20,7 +20,7 @@ test.beforeEach('RadioInput component should exist', t => {
     t.true(wrapper.exists());
 });
 
-test('RadioInput: put in hold because jQuery choose the wrong definition of map method', t => {
+test('RadioInput props should be defined', t => {
     const ExampleRadioInput = reduxForm({
         form: 'form-radio-input-example',
         enableReinitialize: true

@@ -14,7 +14,7 @@ List of what's left to be documented.
 - [x] PdfViewer
 - [x] FileImporter
 - [x] LanguageWrapper
-- [ ] RadioInput
+- [x] RadioInput => State doesn't update
 - [ ] CheckboxInput
 - [ ] CheckboxesInput
 - [ ] SelectInput
@@ -39,6 +39,7 @@ List of what's left to be documented.
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
 - [ ] Restricted
+- [ ] Help
 
 ### Utils
 
