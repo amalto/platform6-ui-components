@@ -1,8 +1,9 @@
 ```javascript
-<div style={{ height: 200}}>
+<div>
     <CodeEditor value={`const value = 'test';`}
+        height={200}
         mode='javascript'
-        loadTime={-1}
+        loadTime={new Date().valueOf()}
         docId='code-editor-playground'
         readonly={false}
     />

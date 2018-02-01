@@ -76,6 +76,8 @@ module CodeEditor {
      * CodeEditor properties
      */
     export interface Props extends React.Props<CodeEditor> {
+        /** Editor height */
+        height?: number | string;
         /** Initial content of the editor. */
         value: string;
         /** Editor language mode. Default value is <strong>javascript</strong>. */
@@ -145,8 +147,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     render() {
+        const height: number | string = this.props.height || 300
+
         return (
-            <div style={{ width: '100%', position: 'relative' }}
+            <div style={{ height, width: '100%', position: 'relative' }}
                 id={this.props.docId}
                 ref={( c ) => this._editorPanel = c}>
             </div>
@@ -207,7 +211,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         // FIXME: Handle multiple editor with readonly and write mode
         this._editor.setReadOnly( nextProps.readonly )
         if ( doUpdate ) {
-            $( this._editorPanel ).height( '100%' )
+            $( this._editorPanel ).height( this.props.height || 300 )
             this._editor.resize( true )
             !nextProps.readonly && this.focus( nextProps.aceSession )
             this.setEditorSession( this._editor, nextProps )
@@ -232,7 +236,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         let h = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 )
 
-        $( this._editorPanel ).height( '100%' )
+        $( this._editorPanel ).height( this.props.height || 300 )
         this._editor.resize( true )
     }
 
@@ -252,7 +256,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             props.saveSession && props.saveSession( this.getAceSession( editor ) )
         }
 
-        editor.getSession().setMode( `ace/mode${ props.mode }` || 'ace/mode/javascript' )
+        editor.getSession().setMode( `ace/mode/${ props.mode }` || 'ace/mode/javascript' )
 
         editor.getSession().on( 'change', e => {
             if ( this._firstChangeTime <= props.loadTime ) {
@@ -320,7 +324,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         const displaySettings = props.displaySettings || {}
 
-        editor.setTheme( displaySettings.theme || userSettings.theme || 'ace/theme/tomorrow_night_eighties' )
+        editor.setTheme( displaySettings.theme && `ace/theme/${ displaySettings.theme }` || userSettings.theme || 'ace/theme/tomorrow_night_eighties' )
 
         editor.setFontSize( displaySettings.fontSize || userSettings.fontSize || '12px' )
 

@@ -10,12 +10,19 @@ import FileImporter from '../build/index.js';
 configure({ adapter: new Adapter() });
 
 test.beforeEach('FileImporter component should exist', t => {
-    const wrapper = shallow(<FileImporter />);
+    const wrapper = shallow(
+        <FileImporter locale='en-US'
+            fileData={{ name: 'test_file', size: 100 }}
+            cancelHandler={() => { }}
+            submitHandler={() => { }}
+            spinnerSrc={'/images/spinner.gif'}
+        />
+    )
 
     t.true(wrapper.exists());
 });
 
-test.skip('FileImporter props should be defined', t => {
+test('FileImporter props should be defined', t => {
     const cancelHandler = () => {
         console.info('cancelHandler triggered');
     };
@@ -24,25 +31,14 @@ test.skip('FileImporter props should be defined', t => {
         console.info('submitHandler triggered');
     };
     const spySubmitHandler = sinon.spy(submitHandler);
-    // const wrapper = shallow(
-    //     <FileImporter locale='en-US'
-    //         mimeTypeAccepted={'text/plain, text/html'}
-    //         maxBytesSize={1000}
-    //         filesQueue={{
-    //             fileTest: {
-    //                 sourceFile: {
-    //                     name: 'test',
-    //                     size: 100
-    //                 },
-    //                 uploadStarted: true,
-    //                 uploadProgress: 50,
-    //                 uploadEnded: false
-    //             }
-    //         }}
-    //         addFilesToQueue={spyAddFilesToQueue}
-    //         deleteUploadedFile={spyDeleteUploadedFile}
-    //         cancelSubmit={spyCancelSubmit}
-    //     />
-    // );
+    const wrapper = shallow(
+        <FileImporter locale='en-US'
+            fileData={{ name: 'test_file', size: 100 }}
+            cancelHandler={spyCancelHandler}
+            submitHandler={spySubmitHandler}
+            processing={true}
+            spinnerSrc={'/images/spinner.gif'}
+        />
+    );
     t.pass();
 });
