@@ -12,7 +12,7 @@ List of what's left to be documented.
 - [x] Spinner
 - [x] PagingControls
 - [x] PdfViewer
-- [ ] FileImporter => WIP
+- [x] FileImporter
 - [ ] LanguageWrapper
 - [ ] RadioInput
 - [ ] CheckboxInput

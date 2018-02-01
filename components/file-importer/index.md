@@ -1,45 +1,31 @@
-In this exemple most of the props are randomly set in order to show most of the component functionality.
+Click on the button to display the file importer modal.
 
 ```javascript
-initialState = { filesQueue: {} };
+initialState = { open: false, fileData: {name: 'test_file', size: 100} };
 
-function addFilesToQueue( files ) {
-    const filesQueue = state.filesQueue;
+<div>
 
-    files.forEach( file => {
-        const progress = Math.round( Math.random() * 100 )
+    <ActionButton iconClass='fa-upload'
+        btnClass='btn btn-trans btn-info'
+        clickAction={() => { setState( {open: !state.open} )}}
+        tooltipText='Display the modal'
+    />
 
-        filesQueue[file.name] = {
-            sourceFile: file,
-            message: 'MESSAGE',
-            createdMessagesIds: file.name,
-            uploadStarted: true,
-            uploadProgress: progress,
-            uploadEnded: progress >= 50,
-            processSuccess: progress >= 75,
-            processState: progress >= 75
-                ? '' : progress >= 50
-                ? 'WARNING' : 'ERROR'
-        }
-    } );
-    setState({ filesQueue });
-}
-
-function deleteUploadedFile( filename ) {
-    const filesQueue = state.filesQueue;
-
-    delete filesQueue[filename];
-    setState({ filesQueue });
-}
-
-function cancelSubmit() {
-    setState({ filesQueue: {} });
-}
-
-<FileInput filesQueue={state.filesQueue}
-    addFilesToQueue={addFilesToQueue}
-    deleteUploadedFile={deleteUploadedFile}
-    cancelSubmit={cancelSubmit}
-    locale='en-US'
-/>
+    {
+        state.open ? <FileImporter fileData={state.fileData}
+            cancelHandler={() => { setState( {open: false} ) }}
+            submitHandler={() => { setState( {open: false} ) }}
+            hideControls={{
+                fileType: false,
+                separator: false,
+                quoteChar: false,
+                encoding: false,
+                headers: false,
+                overwrite: false
+            }}
+            spinnerSrc='/images/spinneer.gif'
+            locale='en-US'
+        /> : null
+    }
+</div>
 ```

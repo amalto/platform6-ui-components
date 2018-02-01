@@ -74,9 +74,13 @@ const WORDINGS = {
 
 module FileImporter {
     export interface Props extends React.Props<FileImporter> {
+        /** File to be imported. */
         fileData: File;
+        /** Close the modal. */
         cancelHandler: () => void;
+        /** Submit your file. */
         submitHandler: ( fileType: string, hasHeaders: boolean, overwrite: boolean, fileEncoding: string, fileSeparator: string, fileQuoteChar: string ) => void;
+        /** Display file's specifications. */
         hideControls?: {
             fileType?: boolean;
             separator?: boolean;
@@ -85,9 +89,21 @@ module FileImporter {
             headers?: boolean;
             overwrite?: boolean;
         }
+        /** Is being processed, if true display the spinner. */
         processing?: boolean;
+        /** Spinner image's source. */
         spinnerSrc: string;
+        /** Locale to be used. */
         locale: string;
+
+        /** Hide props from documentation */
+
+        /** @ignore */
+        children?: React.ReactNode;
+        /** @ignore */
+        key?: React.ReactText;
+        /** @ignore */
+        ref?: React.Ref<FileImporter>;
     }
 
     export interface State {
