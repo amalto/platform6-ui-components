@@ -190,12 +190,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     shouldComponentUpdate( nextProps: CodeEditor.Props ) {
         const newDoc = nextProps.docId !== this.props.docId
 
-        // if ( this.props.resetTick !== nextProps.resetTick && nextProps.resetTick ) {
-        //     $( this._editorPanel ).height( '100%' )
-        //     this._editor.resize( true )
-        //     !nextProps.readonly && this.focus( nextProps.aceSession )
-        // }
-
         if ( this.props.mode !== nextProps.mode && nextProps.mode ) {
             this._editor.getSession().setMode( nextProps.mode && `ace/mode/${ nextProps.mode }` )
         }
