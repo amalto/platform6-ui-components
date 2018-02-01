@@ -13,7 +13,7 @@ List of what's left to be documented.
 - [x] PagingControls
 - [x] PdfViewer
 - [x] FileImporter
-- [ ] LanguageWrapper
+- [x] LanguageWrapper
 - [ ] RadioInput
 - [ ] CheckboxInput
 - [ ] CheckboxesInput

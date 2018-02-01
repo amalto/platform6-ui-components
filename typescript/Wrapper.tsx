@@ -1,6 +1,9 @@
 import * as React from 'react'
+import { Provider } from 'react-redux'
 
 import { loadTooltips, unloadTooltips } from '@amalto/helpers'
+
+import { store } from '../Store'
 
 module Wrapper {
     export interface Props extends React.ClassAttributes<Wrapper> { }
@@ -26,7 +29,11 @@ class Wrapper extends React.Component<Wrapper.Props, Wrapper.State> {
     }
 
     render() {
-        return <div ref={dom => this._body = dom}>{this.props.children}</div>
+        return <Provider store={store}>
+            <div ref={dom => this._body = dom}>
+                {this.props.children}
+            </div>
+        </Provider>
     }
 }
 
