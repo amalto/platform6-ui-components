@@ -16,7 +16,7 @@ List of what's left to be documented.
 - [x] RadioInput => State doesn't update
 - [x] CheckboxInput
 - [x] CheckboxesInput
-- [ ] SelectInput
+- [x] SelectInput
 - [ ] TextInput
 - [ ] ReadOnlyInput
 - [ ] SwitchInput
