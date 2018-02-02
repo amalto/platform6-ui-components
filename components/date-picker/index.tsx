@@ -6,7 +6,7 @@ import * as Pikaday from 'pikaday'
 
 import * as classNames from 'classnames'
 
-import Help from './components/Help'
+import Help from '@amalto/help'
 
 module DatePicker {
     export interface DateInputEvent {

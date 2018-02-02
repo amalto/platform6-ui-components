@@ -15,6 +15,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
+        "@amalto/help": "^1.0.1",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },

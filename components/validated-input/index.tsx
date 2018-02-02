@@ -4,7 +4,7 @@ import * as React from 'react'
 import { compileWordings } from '@amalto/helpers'
 
 //components & models
-import Help from './components/Help'
+import Help from '@amalto/help'
 
 //modules
 import * as classNames from 'classnames'

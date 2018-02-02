@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import Help from './components/Help'
+import Help from '@amalto/help'
 
 //modules
 import * as classNames from 'classnames'

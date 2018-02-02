@@ -53,6 +53,7 @@
     "webpack-dev-server": "2.10.1"
   },
   "dependencies": {
+    "@amalto/help": "^1.0.1",
     "@amalto/helpers": "^1.1.22",
     "babel-preset-react": "6.24.1",
     "bootstrap": "4.0.0",

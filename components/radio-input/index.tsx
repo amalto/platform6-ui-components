@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 
 //components
-import Help from './components/Help'
+import Help from '@amalto/help'
 
 //utils
 import * as classNames from 'classnames'
