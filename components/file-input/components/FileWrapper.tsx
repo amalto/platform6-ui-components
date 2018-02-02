@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 //utils & stores
-import { formatFileSize } from 'helpers'
+import { formatFileSize } from '@amalto/helpers'
 
 //modules
 import * as classNames from 'classnames'

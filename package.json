@@ -55,10 +55,12 @@
   "dependencies": {
     "@amalto/helpers": "^1.1.22",
     "babel-preset-react": "6.24.1",
+    "bootstrap": "4.0.0",
     "change-case": "3.0.1",
     "classnames": "2.2.5",
     "jquery": "3.3.1",
     "just-extend": "1.1.27",
+    "popper": "1.0.1",
     "prop-types": "15.6.0",
     "react": "15.6.2",
     "react-dom": "15.6.2",
