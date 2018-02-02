@@ -2,7 +2,7 @@
     "name": "@amalto/checkbox-input",
     "displayName": "CheckboxInput",
     "description": "Checkbox input used on platform6.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -15,7 +15,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/help": "^1.0.1",
+        "@amalto/help": "1.0.2",
         "jquery": "3.3.1",
         "react": "15.6.2",
         "react-dom": "15.6.2",
