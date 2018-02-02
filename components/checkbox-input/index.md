@@ -7,7 +7,7 @@ const ExampleCheckboxInput = reduxForm({
 })(CheckboxInput);
 
 <ExampleCheckboxInput name='checkbox-input-example'
-    label='CheckboxInput example looooooooong'
+    label='CheckboxInput example'
     disabled={false}
     help='Helper text'
     containerClass='padded'

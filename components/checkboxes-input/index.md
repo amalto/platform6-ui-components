@@ -2,7 +2,7 @@
 const { reduxForm } = require('redux-form');
 
 const ExampleCheckboxes = reduxForm({
-    form: 'form-checkbox-input-example',
+    form: 'form-checkboxes-input-example',
     enableReinitialize: true
 })(CheckboxesInput);
 
@@ -11,7 +11,7 @@ const options = [
     { value: 'second', label: 'second' }
 ];
 
-<ExampleCheckboxes name='checkbox-input-example'
+<ExampleCheckboxes name='checkboxes-input-example'
     label='CheckboxesInput example'
     options={options}
     disabled={false}

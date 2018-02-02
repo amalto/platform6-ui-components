@@ -1,9 +1,7 @@
-import { createStore, Store } from 'redux'
+import { combineReducers, createStore, Store } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 
-const todos = ( state = [], action ) => {
-    return state
-}
-
-const store = createStore( todos )
+const reducer = combineReducers( { form: formReducer } )
+const store = createStore( reducer )
 
 export { store }
