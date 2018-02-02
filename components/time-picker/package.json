@@ -16,6 +16,8 @@
     },
     "dependencies": {
         "@amalto/help": "1.0.2",
+        "classnames": "2.2.5",
+        "moment": "2.20.1",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
@@ -28,10 +30,8 @@
         "ava": "0.24.0",
         "babel-preset-react": "6.24.1",
         "babel-register": "6.26.0",
-        "classnames": "2.2.5",
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
-        "moment": "2.20.1",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
         "sinon": "4.2.2"

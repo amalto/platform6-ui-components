@@ -18,6 +18,7 @@
         "@amalto/helpers": "1.1.24",
         "@amalto/paging-controls": "1.0.15",
         "@amalto/spinner": "1.0.12",
+        "classnames": "2.2.5",
         "pdfjs-dist": "2.0.288",
         "react": "15.6.2",
         "react-dom": "15.6.2"
@@ -32,7 +33,6 @@
         "ava": "0.24.0",
         "babel-preset-react": "6.24.1",
         "babel-register": "6.26.0",
-        "classnames": "2.2.5",
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
         "react-addons-test-utils": "15.6.2",
