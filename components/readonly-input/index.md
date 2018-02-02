@@ -5,7 +5,7 @@ const { reduxForm } = require('redux-form');
 
 const ExampleReadOnlyInput = reduxForm({
     initialValues: {
-        'text-input-example': 'readonly input value'
+        'readonly-input-example': 'readonly input value'
     },
     form: 'form-readonly-input-example',
     enableReinitialize: true

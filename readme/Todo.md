@@ -21,7 +21,7 @@ List of what's left to be documented.
 - [x] ReadOnlyInput
 - [x] SwitchInput
 - [x] TextareaInput
-- [ ] DateInput
+- [x] DateInput
 - [ ] TimeInput
 - [ ] CodeEditorInput
 - [x] CodeEditor
