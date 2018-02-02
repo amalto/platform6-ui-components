@@ -4,7 +4,7 @@ See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) docum
 const { reduxForm } = require('redux-form');
 
 const ExampleSelectInput = reduxForm({
-    form: 'form-checkbox-input-example',
+    form: 'form-select-input-example',
     enableReinitialize: true
 })(SelectInput);
 

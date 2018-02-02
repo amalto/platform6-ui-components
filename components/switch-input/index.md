@@ -3,19 +3,17 @@ See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) docum
 ```javascript
 const { reduxForm } = require('redux-form');
 
-const ExampleReadOnlyInput = reduxForm({
-    initialValues: {
-        'text-input-example': 'readonly input value'
-    },
-    form: 'form-readonly-input-example',
+const ExampleSwitchInput = reduxForm({
+    form: 'form-switch-input-example',
     enableReinitialize: true
-})(ReadOnlyInput);
+})(SwitchInput);
 
-<ExampleReadOnlyInput name='readonly-input-example'
-    label='ReadOnlyInput example'
+<ExampleSwitchInput name='text-input-example'
+    label='SwitchInput example'
     help='Helper text'
     containerClass='padded'
     inputClass='text-large'
+    alignLeft={false}
     collapseErrorSpace={true}
 />
 ```
