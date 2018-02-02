@@ -1,8 +1,15 @@
+import md5 from 'md5'
 import * as base64 from 'base-64'
 
 import * as classNames from 'classnames'
 
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+
+import { Endpoints } from './models/AppEndpointsModel'
+import { OrgModel, TreeNodeModel } from './models/Organisation'
+
+import { AVAILABLE_LANGUAGES } from './constants/Config'
+import { flagsDef } from './constants/Data'
 
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const COLOR_CODE_REGEX = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
@@ -33,6 +40,35 @@ export function compileWordings( wordings: { [key: string]: any }, locale: strin
         {} as { [key: string]: string; }
     )
     return res
+}
+
+/** Return gravater linked to use email. */
+export function getGravatarUrl( email: string ): string {
+    var baseUrl = 'https://secure.gravatar.com/avatar/'
+    var queryParams = '?s=200&d=mm'
+    return baseUrl + md5( email.trim().toLowerCase() ) + queryParams
+}
+
+export function isValidPassword( password: string ): boolean {
+    var minMaxLength = /^[\s\S]{8,32}$/,
+        upper = /[A-Z]/,
+        lower = /[a-z]/,
+        number = /[0-9]/,
+        count = 0;
+
+    if ( minMaxLength.test( password ) ) {
+        if ( upper.test( password ) ) {
+            count++
+        }
+        if ( lower.test( password ) ) {
+            count++
+        }
+        if ( number.test( password ) ) {
+            count++
+        }
+    }
+
+    return count >= 2;
 }
 
 //at least it has an "@" and a "." in it...
@@ -88,10 +124,6 @@ export function escapeXml( xml: string ): string {
 
 export function utf8JSON_to_b64URI( json ) {
     return encodeURIComponent( base64.encode( decodeURIComponent( encodeURIComponent( JSON.stringify( json ) ) ) ) );
-
-    //use of unescape (deprecated) is needed to decode hexadecimal escape sequence
-    //do not replace it with decodeURI, they don't have the same effect
-    // return encodeURIComponent( base64.encode( window['unescape']( encodeURIComponent( JSON.stringify( json ) ) ) ) );
 }
 
 export function URIb64_to_utf8JSON( str ) {
@@ -219,6 +251,150 @@ function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: b
     link.click()
 
     URL.revokeObjectURL( url )
+}
+
+export function hasRequiredResource( appEndpoints: Endpoints, appInstanceName: string, featureId: string ): boolean {
+
+    //search for an existing endpoint for this feature on the current instance
+    if ( appEndpoints && appEndpoints[appInstanceName] ) {
+        if ( appEndpoints[appInstanceName][featureId] ) {
+            return true
+        }
+    }
+
+    return false
+}
+
+export function replaceTemplateViewName( templatedHtml: string, viewName: string ): string {
+    return templatedHtml.replace( /{{VIEWNAME}}/g, viewName )
+}
+
+//SPECIAL TRANSFORMERS/ADPATERS HELPERS
+
+export function replaceTemplateFlags( templatedHtml: string, locale: string ): string {
+    let flagsRegex = /{{FLAGS\=(.*)}}/g
+
+    let matchRes = flagsRegex.exec( templatedHtml )
+
+    if ( matchRes && matchRes.length === 2 ) {
+        let flags = matchRes[1].split( ',' )
+        let flagsHtml = ''
+
+        for ( let flagName in flagsDef ) {
+            const flagDef = flagsDef[flagName]
+
+            if ( flagName !== 'eunread' ) {
+
+                if ( ( flagDef.inversed && flags.indexOf( flagName ) === -1 ) || ( !flagDef.inversed && flags.indexOf( flagName ) !== -1 ) ) {
+                    flagsHtml += '<span class="fa fa-fw right-spaced text-xlarge ' + flagDef.iconColor + ' ' + flagDef.iconShape + '" title="' + flagDef.flagLabel[locale] + '"></span>'
+                }
+
+            }
+        }
+
+        return templatedHtml.replace( flagsRegex, flagsHtml )
+
+    }
+    else {
+        return templatedHtml
+    }
+
+}
+
+export function getStyleDef( styleConf: string ): { icon: string, btn: string, color: string } {
+    let styles = styleConf.split( ',' )
+    let res = {
+        icon: null,
+        btn: null,
+        color: null
+    } as { icon: string, btn: string, color: string };
+    styles.forEach( style => {
+        if ( style.indexOf( 'icon:' ) !== -1 ) {
+            res.icon = style.replace( 'icon:', '' )
+        }
+        if ( style.indexOf( 'btn:' ) !== -1 ) {
+            res.btn = style.replace( 'btn:', '' )
+        }
+        if ( style.indexOf( 'color:' ) !== -1 ) {
+            res.color = style.replace( 'color:', '' )
+        }
+    } )
+    return res
+}
+
+export function getAcceptLanguageHeader( locale: string ): string {
+    let notSelected = AVAILABLE_LANGUAGES.filter( ( language, idx ) => {
+        //limit to 3 languages max
+        return language.locale !== locale && idx < 3
+    } ).map( ( language, idx ) => {
+        //decreasing priority for each not selected language
+        return language.locale.substr( 0, 2 ).toLowerCase() + ';q=' + ( 0.8 - ( idx / 10 ) ).toString()
+    } )
+
+    return locale.substr( 0, 2 ).toLowerCase() + ',' + notSelected.join( ',' )
+}
+
+export function getI18nLabel( locale: string, labelMap: { [language: string]: string; }, noRegion?: boolean, upper?: boolean ): string {
+
+    let res = null
+
+    let language = locale
+
+    if ( noRegion ) {
+        language = language.substr( 0, 2 )
+    }
+
+    if ( upper ) {
+        language = language.toUpperCase()
+    }
+
+    if ( labelMap ) {
+        if ( labelMap[language] ) {
+            res = labelMap[language]
+        }
+
+        if ( !res && language !== 'EN' ) {
+            res = labelMap['EN']
+        }
+
+        if ( !res && language !== 'en' ) {
+            res = labelMap['en']
+        }
+
+        if ( !res && language !== 'en-US' ) {
+            res = labelMap['en-US']
+        }
+    }
+
+    return res
+
+}
+
+export function getJSTreeData( orgTreeData: OrgModel, openedNodes?: string[] ): TreeNodeModel {
+
+    return orgTreeData ? {
+        id: orgTreeData.id,
+        text: orgTreeData.id === '0' ? '' : orgTreeData.elementName,
+        data: {
+            description: orgTreeData.description,
+            propertiesMap: orgTreeData.propertiesMap,
+            parentId: orgTreeData.parentId,
+            childNames: orgTreeData.children ? orgTreeData.children.map( child => child.elementName ) : []
+        },
+        children: orgTreeData.children ? orgTreeData.children.map( child => {
+            return getJSTreeData( child, openedNodes )
+        } ) : null,
+        icon: classNames( 'fa fa-fw', {
+            'fa-th-large font-color-lighter': orgTreeData.id !== '0',
+            'fa-terminal black-color': orgTreeData.id === '0',
+        } ),
+        state: {
+            opened: openedNodes ? openedNodes.indexOf( orgTreeData.id ) !== -1 : false,
+            //fake root node created when the user has multiple positions at the same level should be disabled
+            disabled: orgTreeData.id === '-1'
+        }
+    } : null
+
 }
 
 export function loadTooltips( element: Element ): void {
