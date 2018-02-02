@@ -9,14 +9,13 @@ List of what's left to be documented.
 - [x] ValidatedInput
 - [x] KeyValueEditor
 - [x] FileInput
-- [x] Spinner
 - [x] PagingControls
 - [x] PdfViewer
 - [x] FileImporter
 - [x] LanguageWrapper
 - [x] RadioInput => State doesn't update
-- [ ] CheckboxInput
-- [ ] CheckboxesInput
+- [x] CheckboxInput
+- [x] CheckboxesInput
 - [ ] SelectInput
 - [ ] TextInput
 - [ ] ReadOnlyInput
@@ -29,7 +28,7 @@ List of what's left to be documented.
 - [ ] CronInput
 - [ ] TypeaheadInput
 - [ ] TogglePanel
-- [ ] Spinner
+- [x] Spinner
 - [ ] DataGrid
 - [ ] DataLine
 - [ ] Tabs
@@ -39,7 +38,7 @@ List of what's left to be documented.
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
 - [ ] Restricted
-- [ ] Help
+- [x] Help
 
 ### Utils
 
