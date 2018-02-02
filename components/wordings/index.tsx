@@ -2,6 +2,73 @@ import * as React from 'react'
 
 export const MULTILANGUAGE_WORDINGS = {
 
+    /** Common wordings. */
+    'save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'email': {
+        'en-US': 'Email',
+        'fr-FR': 'Email'
+    },
+    'submit': {
+        'en-US': 'Submit',
+        'fr-FR': 'Valider'
+    },
+    'confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
+    'enabled': {
+        'en-US': 'Enabled',
+        'fr-FR': 'Actif'
+    },
+    'permissions': {
+        'en-US': 'Permissions',
+        'fr-FR': 'Permissions'
+    },
+    'description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'no.data.found': {
+        'en-US': 'No data found',
+        'fr-FR': 'Aucune donnée'
+    },
+    'firstname': {
+        'en-US': 'First name',
+        'fr-FR': 'Prénom'
+    },
+    'loading.error': {
+        'en-US': 'Loading error',
+        'fr-FR': 'Erreur de chargement'
+    },
+    'details': {
+        'en-US': 'Details',
+        'fr-FR': 'Détails'
+    },
+    'lastname': {
+        'en-US': 'Last name',
+        'fr-FR': 'Nom'
+    },
+    'error': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+
+    /** Custom wordings. */
     'register.registration': {
         'en-US': 'Registration',
         'fr-FR': 'Enregistrement'

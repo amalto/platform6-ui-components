@@ -2,12 +2,25 @@ import * as base64 from 'base-64'
 
 import * as classNames from 'classnames'
 
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const COLOR_CODE_REGEX = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
 export const SCOPE_KEYWORD_REGEX = /^[a-zA-Z0-9-_~@$£|€¥§&]+$/
 export const MAP_PROPERTY_KEY_REGEX = /^[a-zA-Z0-9-_]+$/
 export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
 export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
+
+export function getWordingsInUserLanguage( locale: string ): { [key: string]: string } {
+    var res = Object.keys( MULTILANGUAGE_WORDINGS ).reduce(
+        ( dic, key ) => {
+            dic[key] = MULTILANGUAGE_WORDINGS[key][locale]
+            return dic
+        },
+        {} as { [key: string]: string; }
+    )
+    return res
+}
 
 export function compileWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string } {
     locale = locale || "en-US"
