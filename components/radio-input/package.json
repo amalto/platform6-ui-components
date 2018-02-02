@@ -2,7 +2,7 @@
     "name": "@amalto/radio-input",
     "displayName": "RadioInput",
     "description": "Radio input used on platform6.",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@amalto/help": "1.0.3",
-        "@amalto/helpers": "1.1.25",
+        "@amalto/helpers": "1.1.26",
         "classnames": "2.2.5",
         "jquery": "3.3.1",
         "react": "15.6.2",
