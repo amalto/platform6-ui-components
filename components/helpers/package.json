@@ -18,6 +18,7 @@
     "@amalto/wordings": "1.0.3",
     "base-64": "0.1.0",
     "classnames": "2.2.5",
+    "md5": "2.2.1",
     "react": "15.6.2",
     "react-dom": "15.6.2"
   },
