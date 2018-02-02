@@ -17,8 +17,8 @@ List of what's left to be documented.
 - [x] CheckboxInput
 - [x] CheckboxesInput
 - [x] SelectInput
-- [ ] TextInput
-- [ ] ReadOnlyInput
+- [x] TextInput
+- [x] ReadOnlyInput
 - [ ] SwitchInput
 - [ ] TextareaInput
 - [ ] DateInput
