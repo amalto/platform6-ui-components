@@ -2,7 +2,7 @@
     "name": "@amalto/date-picker",
     "displayName": "DatePicker",
     "description": "DatePicker components.",
-    "version": "1.0.15",
+    "version": "1.0.16",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -15,7 +15,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/help": "1.0.2",
+        "@amalto/help": "1.0.3",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },

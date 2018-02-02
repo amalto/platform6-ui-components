@@ -2,7 +2,7 @@
     "name": "@amalto/file-importer",
     "displayName": "FileImporter",
     "description": "Modal used to import a file.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@amalto/helpers": "1.1.24",
-        "@amalto/spinner": "1.0.12",
+        "@amalto/spinner": "1.0.13",
         "@amalto/switch": "1.0.5",
         "classnames": "2.2.5",
         "jquery": "3.3.1",
