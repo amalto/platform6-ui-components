@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import md5 from 'md5';
+
 import * as sinon from 'sinon';
 import test from 'ava';
 import base64 from 'base-64';
 import Adapter from 'enzyme-adapter-react-15';
 import { shallow, configure } from 'enzyme';
 import {
+    getWordingsInUserLanguage,
     compileWordings,
+    getGravatarUrl,
+    isValidPassword,
     isValidEmail,
     isValidColorCode,
     isNotEmpty,
@@ -28,6 +33,13 @@ import {
     saveDataAsJSONFile,
     downloadDataFile,
     triggerDataDownload,
+    hasRequiredResource,
+    replaceTemplateViewName,
+    replaceTemplateFlags,
+    getStyleDef,
+    getAcceptLanguageHeader,
+    getI18nLabel,
+    getJSTreeData,
     loadTooltips,
     unloadTooltips,
     groupByProperty,
@@ -47,96 +59,101 @@ const WORDINGS = {
     }
 };
 
-// compileWordings
-test('should return [Hello World!]', t => {
-    const wordings = compileWordings(WORDINGS, 'en-US');
+// getWordingsInUserLanguage
+test('getWordingsInUserLanguage should return right wordings', t => {
+    const enWordings = getWordingsInUserLanguage('en-US');
+    const frWordings = getWordingsInUserLanguage('fr-FR');
 
-    t.deepEqual(wordings['hello'], 'Hello World!');
+    t.is(enWordings['save'], 'Save');
+    t.is(frWordings['save'], 'Sauvegarder');
 });
 
-test('should not return [Hello World!]', t => {
-    const wordings = compileWordings(WORDINGS, 'fr-FR');
+// compileWordings
+test('compileWordings should return right wording', t => {
+    const enWordings = compileWordings(WORDINGS, 'en-US');
+    const frWordings = compileWordings(WORDINGS, 'fr-FR');
 
-    t.notDeepEqual(wordings['hello'], 'Hello World!');
+    t.is(enWordings['hello'], 'Hello World!');
+    t.is(frWordings['hello'], 'Bonjour le monde !');
+});
+
+// getGravatarUrl
+test.skip('getGravatarUrl should return gravatar url with md5 encoded email', t => {
+    const email = 'test@gmail.com';
+    const md5EncodedEmail = md5(email);
+    const gravatarUrl = getGravatarUrl(email);
+
+    t.is(gravatarUrl, `https://secure.gravatar.com/avatar/${md5EncodedEmail}?s=200&d=mm`)
+});
+
+// isValidPassword
+test('isValidPassword: password with at least 2 of lowercase/uppercase alphabetics characters and numbers. It can contain specials caracters and must have between 8 and 32 characters.', t => {
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz'
+    const uppercase = lowercase.toLocaleUpperCase()
+    const num = '0123456789'
+
+    t.false(isValidPassword(lowercase));
+    t.false(isValidPassword(uppercase));
+    t.false(isValidPassword(num));
+    t.false(isValidPassword(lowercase + uppercase));
+    t.false(isValidPassword(lowercase + num));
+    t.true(isValidPassword('pwdWith_special-characters@?9'));
 });
 
 // isValidEmail
-test('should be a valid email', t => {
+test('isValidEmail: email format', t => {
     t.true(isValidEmail('valid-email@gmail.com'));
-});
-
-test('should be an invalid email', t => {
     t.false(isValidEmail('valid-email@gmail'));
 });
 
 // isValidColorCode
-test('should be a valid hexadecimal color', t => {
+test('isValidColorCode: hexadecimal color string value', t => {
     t.true(isValidColorCode('#FFFFFF'));
     t.true(isValidColorCode('#abc'));
-});
-
-test('should be an invalid hexadecimal color', t => {
     t.false(isValidColorCode('#FFFFFZ'));
     t.false(isValidColorCode('#abcd'));
+    t.false(isValidColorCode('#ab?'));
 });
 
 // isNotEmpty
-test('shouldn\'t be an empty string', t => {
+test('isNotEmpty: string empty state', t => {
     t.true(isNotEmpty('I am not empty'));
-});
-
-test('should be an empty string', t => {
     t.false(isNotEmpty(''));
     t.false(isNotEmpty());
 });
 
 // isValidScopeKeyword
-test('should be a valid scope keyword', t => {
-    t.true(isValidScopeKeyword('permission'));
-});
-
-test('should be an invalid scope keyword', t => {
+test('isValidScopeKeyword: scope keyword format', t => {
+    t.true(isValidScopeKeyword('permission-_~@$£|€¥§&'));
     t.false(isValidScopeKeyword('permission.'));
 });
 
 // isValidKeyChar
-test('should be a valid key character', t => {
+test('isValidKeyChar: key character validation', t => {
     t.true(isValidKeyChar('abcdefghijklmnopqrstuvwxyz-ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'));
-});
-
-test('should be an invalid key character', t => {
     t.false(isValidKeyChar('abcdefghijklmnopqrstuvwxyz-ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789.'));
 });
 
 // isValidXMLTag
-test('should be a valid XML tag', t => {
+test('isValidXMLTag: XML tag validation', t => {
     t.true(isValidXMLTag(':valid-XML.Tag'));
-});
-
-test('should be an invalid XML tag', t => {
     t.false(isValidXMLTag(':invalid-XML.Tag&'));
 });
 
 // isValidHttpsUrl
-test('should be a valid https url', t => {
+test('isValidHttpsUrl: https url validation', t => {
     t.true(isValidHttpsUrl('https://www.localhost:6060.com/whatever/after'));
-});
-
-test('should be an invalid https url', t => {
     t.false(isValidHttpsUrl('https://www.localhost:6060/wrong/cause/incomplete/domain/name'));
 });
 
 // escapeXml
-test('should return [&lt&amp&apos&quot&gt]', t => {
+test('escapeXml: test escaping of string', t => {
     t.deepEqual(escapeXml('[<&\'">]'), '[&lt&amp&apos&quot&gt]');
-});
-
-test('shouldn\'t return [&lt&amp&apos&quot&gt]', t => {
     t.notDeepEqual(escapeXml('[<>]', '[&lt&amp&apos&quot&gt]'));
 });
 
 // utf8JSON_to_b64URI and URIb64_to_utf8JSON
-test('should return { "test": "test\\n" } after encode and decode', t => {
+test('utf8JSON_to_b64URI and URIb64_to_utf8JSON: encoding and decoding JSON object', t => {
     const json = { 'test': 'test\n' };
     const encoded = utf8JSON_to_b64URI(json);
     const decoded = URIb64_to_utf8JSON(encoded)
@@ -145,45 +162,33 @@ test('should return { "test": "test\\n" } after encode and decode', t => {
 });
 
 // arrayMin
-test('should return 5', t => {
+test('arrayMin: should return minimal value whi is 5', t => {
     t.true(arrayMin([10, 6, 116, 5, 47, 11, 34]) === 5);
 });
 
 // arrayMax
-test('should return 116', t => {
+test('arrayMax: should return maximal value which is 116', t => {
     t.true(arrayMax([10, 6, 116, 5, 47, 11, 34]) === 116);
 });
 
 // formatFileSize
-test('should return 10.0 B', t => {
+test('formatFileSize: return size format depending of size in bytes', t => {
     t.true(formatFileSize(10) === '10.0 B');
-});
-
-test('should return 1.0 KB', t => {
     t.true(formatFileSize(1000) === '1.0 KB');
-});
-
-test('should return 1.0 MB', t => {
     t.true(formatFileSize(1000000) === '1.0 MB');
-});
-
-test('should return 1.0 GB', t => {
     t.true(formatFileSize(1000000000) === '1.0 GB');
-});
-
-test('should return 1.0 TB', t => {
     t.true(formatFileSize(1000000000000) === '1.0 TB');
 });
 
 // getQueryParams
-test('should return { "test": "value", "other": "something" }', t => {
+test('getQueryParams: should return query param as a map object of key and value', t => {
     const result = getQueryParams('?test=value&other=something');
 
     t.deepEqual(result, { "test": "value", "other": "something" });
 });
 
 // addQueryParam
-test('addQueryParam: need to mock document and windows to test', t => {
+test('addQueryParam: generating DOM link with validate url format', t => {
     class MockClass extends React.Component {
         constructor(props) {
             super(props);
@@ -212,7 +217,7 @@ test('addQueryParam: need to mock document and windows to test', t => {
 });
 
 // orderAsc
-test('should order by asc key-value', t => {
+test('orderAsc: should order by asc key-value', t => {
     const object = { c: 'c', b: 'b', a: 'a' };
 
     t.deepEqual(Object.keys(orderAsc(object)), Object.keys({ a: 'a', b: 'b', c: 'c' }));
@@ -220,7 +225,7 @@ test('should order by asc key-value', t => {
 });
 
 // orderDesc
-test('should order by desc key-value', t => {
+test('orderDesc: should order by desc key-value', t => {
     const object = { a: 'a', b: 'b', c: 'c' };
 
     t.deepEqual(Object.keys(orderDesc(object)), Object.keys({ c: 'c', b: 'b', a: 'a' }));
@@ -236,6 +241,145 @@ test.skip('downloadDataFile: can\'t be test as it doesn\'t return anything', t =
 // triggerDataDownload
 test.skip('triggerDataDownload: can\'t be test as it doesn\'t return anything', t => { });
 
+// hasRequiredResource
+test('hasRequiredResource: check resource access', t => {
+    const endpoints = {
+        'app': {
+            'home': { id: 'home' },
+            'reports': { id: 'reports' }
+        },
+        'other-app': {
+            'dashboard': { id: 'dashboard' },
+            'counters': { id: 'counters' }
+        }
+    };
+
+    t.true(hasRequiredResource(endpoints, 'app', 'home'));
+    t.true(hasRequiredResource(endpoints, 'app', 'reports'));
+    t.true(hasRequiredResource(endpoints, 'other-app', 'dashboard'));
+    t.true(hasRequiredResource(endpoints, 'other-app', 'counters'));
+    t.false(hasRequiredResource(endpoints, 'app', 'dashboard'));
+    t.false(hasRequiredResource(endpoints, 'other-app', 'home'));
+});
+
+// replaceTemplateViewName
+test('replaceTemplateViewName: replace tag inside a html template', t => {
+    const template = '<!DOCTYPE <html><head></head><body>{{VIEWNAME}}</body></html>';
+    const proccessedTemplate = replaceTemplateViewName(template, 'Hello world!');
+
+
+    t.is(proccessedTemplate, '<!DOCTYPE <html><head></head><body>Hello world!</body></html>');
+    t.not(proccessedTemplate, template);
+});
+
+// replaceTemplateFlags
+test('replaceTemplateFlags', t => {
+    const template = '{{FLAGS=dwarning,cimportant}}';
+    const proccessedTemplate = replaceTemplateFlags(template, 'en-US');
+
+    t.is(proccessedTemplate, '<span class="fa fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span><span class="fa fa-fw right-spaced text-xlarge warning-color fa-star" title="Important"></span><span class="fa fa-fw right-spaced text-xlarge font-color-lighter fa-archive" title="Archived"></span>');
+    t.not(proccessedTemplate, template);
+    t.not(proccessedTemplate, '<span class="fa fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span>');
+});
+
+// getStyleDef
+test('getStyleDef: generate style object from string', t => {
+    const styleConf = 'icon:fa fa-info,btn:btn btn-trans btn-info,color:info-color';
+    const styleObject = getStyleDef(styleConf);
+
+    t.deepEqual(styleObject, {
+        icon: 'fa fa-info',
+        btn: 'btn btn-trans btn-info',
+        color: 'info-color'
+    });
+    t.notDeepEqual(styleObject, {
+        icon: 'fa fa-danger',
+        btn: 'btn btn-trans btn-trash',
+        color: 'danger-color'
+    });
+});
+
+// getAcceptLanguageHeader
+test('getAcceptLanguageHeader: generate accepted language header from locale', t => {
+    const acceptedLanguageHeaderEN = getAcceptLanguageHeader('en-US');
+    const acceptedLanguageHeaderFR = getAcceptLanguageHeader('fr-FR');
+
+    t.is(acceptedLanguageHeaderEN, 'en,fr;q=0.8');
+    t.is(acceptedLanguageHeaderFR, 'fr,en;q=0.8');
+});
+
+// getI18nLabel
+test('getI18nLabel: get wanted translation', t => {
+    const wordings = {
+        'hello': {
+            'en-US': 'Hello World!',
+            'en-EN': 'Hello le monde!',
+            'fr-FR': 'Bonjour le monde !',
+            'es-ES': 'Hola mundo!'
+        }
+    }
+    t.is(getI18nLabel('en-US', wordings['hello']), 'Hello World!');
+    t.not(getI18nLabel('en-EN', wordings['hello']), 'Hello World!');
+    t.is(getI18nLabel('en-EN', wordings['hello'], true), 'Hello World!');
+    t.is(getI18nLabel('en-EN', wordings['hello'], true, true), 'Hello World!');
+    t.is(getI18nLabel('en-EN', wordings['hello']), 'Hello le monde!');
+    t.is(getI18nLabel('fr-FR', wordings['hello']), 'Bonjour le monde !');
+    t.is(getI18nLabel('es-ES', wordings['hello']), 'Hola mundo!');
+    t.is(getI18nLabel('pt-PT', wordings['hello']), 'Hello World!');
+});
+
+// getJSTreeData
+test('getJSTreeData: generate JSTree data from orgModel object', t => {
+    const org = {
+        id: '0',
+        parentId: '#',
+        elementName: 'org',
+        description: 'Root org name',
+        children: [
+            {
+                id: '1',
+                parentId: '0',
+                elementName: 'child',
+                description: 'Child from 0',
+            }
+        ]
+    }
+    t.deepEqual(
+        getJSTreeData(org, ['0']),
+        {
+            id: '0',
+            text: '',
+            data: {
+                description: 'Root org name',
+                propertiesMap: undefined,
+                parentId: org.parentId,
+                childNames: ['child']
+            },
+            children: [{
+                id: '1',
+                text: 'child',
+                data: {
+                    description: 'Child from 0',
+                    propertiesMap: undefined,
+                    parentId: '0',
+                    childNames: []
+                },
+                children: null,
+                icon: 'fa fa-fw fa-th-large font-color-lighter',
+                state: {
+                    opened: false,
+                    disabled: false
+                },
+            }],
+            icon: 'fa fa-fw fa-terminal black-color',
+            state: {
+                opened: true,
+                disabled: false
+            }
+        }
+    );
+});
+
 // loadTooltips
 test.skip('loadTooltips: can\'t be test as it doesn\'t return anything', t => { });
 
@@ -243,7 +387,7 @@ test.skip('loadTooltips: can\'t be test as it doesn\'t return anything', t => { 
 test.skip('unloadTooltips: can\'t be test as it doesn\'t return anything', t => { });
 
 // groupByProperty
-test('should store content of array into object array at property name', t => {
+test('groupByProperty: should store content of array into object array at property name', t => {
     const list = [
         {
             id: 1,
@@ -276,7 +420,7 @@ test('should store content of array into object array at property name', t => {
 });
 
 // addValToArrayNoDup
-test('should add element to array only if there a no duplicate', t => {
+test('addValToArrayNoDup: should add element to array only if there a no duplicate', t => {
     const data = ['1', '2', '3'];
 
     t.deepEqual(addValToArrayNoDup(data, '4'), ['1', '2', '3', '4']);
@@ -285,7 +429,7 @@ test('should add element to array only if there a no duplicate', t => {
 });
 
 // removeValFromArrayNoDup
-test('should remove element from array', t => {
+test('removeValFromArrayNoDup: should remove element from array', t => {
     const data = ['1', '2', '3'];
 
     t.deepEqual(removeValFromArrayNoDup(data, '3'), ['1', '2']);
@@ -294,7 +438,7 @@ test('should remove element from array', t => {
 });
 
 // getNestedValue
-test('should get nested value from object', t => {
+test('getNestedValue: should get nested value from object', t => {
     const data = {
         node: {
             nested: 1
@@ -311,7 +455,7 @@ test('should get nested value from object', t => {
 });
 
 // filterCollection
-test('should filter collection by properties and search value', t => {
+test('filterCollection: should filter collection by properties and search value', t => {
     const data = [
         { one: 'sheep', two: 'chicken', three: 'cow' },
         { one: 'wolf', two: 'deer', three: 'snake' },
