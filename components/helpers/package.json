@@ -15,7 +15,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/wordings": "1.0.2",
+        "@amalto/wordings": "^1.0.2",
         "base-64": "0.1.0",
         "classnames": "2.2.5",
         "md5": "2.2.1",

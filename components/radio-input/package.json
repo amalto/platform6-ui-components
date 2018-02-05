@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@amalto/help": "1.0.3",
-        "@amalto/helpers": "1.1.26",
+        "@amalto/helpers": "^1.1.26",
         "classnames": "2.2.5",
         "jquery": "3.3.1",
         "react": "15.6.2",

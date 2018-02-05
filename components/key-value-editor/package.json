@@ -30,7 +30,7 @@
         "sinon": "4.2.2"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.26",
+        "@amalto/helpers": "^1.1.26",
         "base-64": "0.1.0",
         "react": "15.6.2",
         "react-dom": "15.6.2"
