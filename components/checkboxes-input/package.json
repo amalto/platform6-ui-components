@@ -2,7 +2,7 @@
     "name": "@amalto/checkboxes-input",
     "displayName": "CheckboxesInput",
     "description": "Checkboxes input used on platform6.",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
