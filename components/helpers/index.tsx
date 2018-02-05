@@ -46,10 +46,6 @@ export function compileWordings( wordings: { [key: string]: any }, locale: strin
 export function getGravatarUrl( email: string ): string {
     var baseUrl = 'https://secure.gravatar.com/avatar/'
     var queryParams = '?s=200&d=mm'
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a6c4dfc06000f2a5cc1ce205f93a7956cfe5361
     return baseUrl + md5( email.trim().toLowerCase() ) + queryParams
 }
 
