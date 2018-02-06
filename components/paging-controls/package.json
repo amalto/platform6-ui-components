@@ -2,7 +2,7 @@
     "name": "@amalto/paging-controls",
     "displayName": "PagingControls",
     "description": "Toolbar managing paging.",
-    "version": "1.0.21",
+    "version": "1.0.22",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -15,7 +15,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.29",
+        "@amalto/helpers": "1.1.30",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",

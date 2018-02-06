@@ -2,7 +2,7 @@
     "name": "@amalto/input-validation",
     "displayName": "InputValidation",
     "description": "Common input's validation methods.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -15,8 +15,8 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.29",
-        "@amalto/wordings": "1.0.5",
+        "@amalto/helpers": "1.1.30",
+        "@amalto/wordings": "1.0.6",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2"
