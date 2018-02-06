@@ -1,8 +1,8 @@
 {
-    "name": "@amalto/radio-input",
-    "displayName": "RadioInput",
-    "description": "Radio input used on platform6.",
-    "version": "1.0.10",
+    "name": "@amalto/time-input",
+    "displayName": "TimeInput",
+    "description": "Time input used on platform6.",
+    "version": "1.0.0",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -16,9 +16,9 @@
     },
     "dependencies": {
         "@amalto/help": "1.0.3",
-        "@amalto/helpers": "1.1.30",
+        "@amalto/input-validation": "^1.0.4",
+        "@amalto/time-picker": "^1.0.16",
         "classnames": "2.2.5",
-        "jquery": "3.3.1",
         "react": "15.6.2",
         "react-dom": "15.6.2",
         "react-redux": "5.0.6",
@@ -27,8 +27,6 @@
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
-        "@types/bootstrap": "3.3.36",
-        "@types/jquery": "3.3.0",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
         "@types/redux-form": "6.6.1",
@@ -37,6 +35,8 @@
         "babel-register": "6.26.0",
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
+        "jsdom": "11.6.2",
+        "moment": "2.20.1",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
         "sinon": "4.2.2"
@@ -47,7 +47,8 @@
         "failWithoutAssertions": false,
         "powerAssert": true,
         "require": [
-            "babel-register"
+            "babel-register",
+            "./test/utils.js"
         ],
         "babel": {
             "presets": [

@@ -45,5 +45,5 @@ List of what's left to be documented.
 - [x] helpers
 - [ ] validationUtils
 - [ ] scopesHelpers
-- [ ] wordings
-- [ ] inputValidation
+- [x] wordings
+- [x] inputValidation

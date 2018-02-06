@@ -3,7 +3,7 @@ const changeCase = require('change-case');
 
 module.exports = {
 
-    title: 'b2-common-components',
+    title: 'platform6-ui-components',
 
     assetsDir: 'public/',
 
@@ -57,12 +57,12 @@ module.exports = {
     },
     {
         name: 'Components',
-        description: 'All the components provided by platform-6',
-        components: 'components/**/*.tsx'
+        description: 'All the components provided by platform6',
+        components: 'components/**/index.tsx'
     },
     {
         name: 'Interfaces',
-        description: 'Interfaces used by b2-common-components',
+        description: 'Interfaces used by platform6-ui-components',
         sections: [{
             name: 'AceSession',
             content: 'readme/AceSession.md'
