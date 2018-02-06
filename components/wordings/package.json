@@ -1,0 +1,22 @@
+{
+    "name": "@amalto/wordings",
+    "displayName": "Wordings",
+    "description": "Wordings used on platform6.",
+    "version": "1.0.4",
+    "main": "./build/index.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "scripts": {
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "prepare": "tsc -d"
+    },
+    "dependencies": {
+        "react": "15.6.2"
+    },
+    "devDependencies": {
+        "@types/react": "15.6.10"
+    }
+}
