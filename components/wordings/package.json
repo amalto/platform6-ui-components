@@ -2,7 +2,7 @@
     "name": "@amalto/wordings",
     "displayName": "Wordings",
     "description": "Wordings used on platform6.",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
