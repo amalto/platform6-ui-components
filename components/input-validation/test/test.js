@@ -18,13 +18,13 @@ import {
     compileWordings
 } from '@amalto/helpers';
 
-import * as WORDINGS from '@amalto/wordings';
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';
 
 configure({ adapter: new Adapter() });
 
 test('InputValidation: testing validation methods', t => {
-    const enWordings = compileWordings(WORDINGS, 'en-US');
-    const frWordings = compileWordings(WORDINGS, 'fr-FR');
+    const enWordings = compileWordings(MULTILANGUAGE_WORDINGS, 'en-US');
+    const frWordings = compileWordings(MULTILANGUAGE_WORDINGS, 'fr-FR');
 
     t.is(checked('existing string', 'en-US'), enWordings['inputvalidation.required']);
     t.is(checked('existing string', 'fr-FR'), frWordings['inputvalidation.required']);

@@ -1,12 +1,12 @@
 import { isValidEmail, isNotEmpty, isValidHttpsUrl, compileWordings } from '@amalto/helpers'
 
 //wordings
-import * as WORDINGS from '@amalto/wordings'
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 
 //get error message giving the locale data string ID
 const error = ( id: string, locale: string ) => {
-    const wordings = compileWordings( WORDINGS, locale )
+    const wordings = compileWordings( MULTILANGUAGE_WORDINGS, locale )
 
     return wordings[id] || wordings['inputvalidation.invalid'] || 'Error'
 }
