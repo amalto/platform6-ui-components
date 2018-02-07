@@ -2,10 +2,6 @@
 
 initialState = {
     'validateinput-exemple-1': {
-        value: '',
-        isInvalid: false
-    },
-    'validateinput-exemple-2': {
         value: 'HelloWorld',
         isInvalid: false
     },
@@ -37,24 +33,8 @@ function atLeast5( fieldValue ) {
     <ValidatedInput name='validateinput-exemple-1'
         key='validateinput-exemple-1'
         label='ValidateInput exemple 1'
-        containerClass='info-color pos-relative'
-        value={state['validateinput-exemple-1'].value}
-        handleFieldChange={handleFieldChange}
-        help='Value must contain at least 5 characters.'
-        validate={atLeast5}
-        errorMessage='Need at least 5 characters.'
-        placeholder='Your value here'
-        mandatory={true}
-        validateOnLoad='true'
-        formSubmitted={true}
-        disabled={false}
-    />
-
-    <ValidatedInput name='validateinput-exemple-2'
-        key='validateinput-exemple-2'
-        label='ValidateInput exemple 2'
         containerClass='primary-color pos-relative'
-        value={state['validateinput-exemple-2'].value}
+        value={state['validateinput-exemple-1'].value}
         handleFieldChange={handleFieldChange}
         regex={/hello/i}
         help={`Value must contain "hello".`}

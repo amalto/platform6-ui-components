@@ -10,9 +10,7 @@ const min = new moment(today).subtract(1, 'month').format('YYYY-MM-DD');
 const max = new moment(today).add(1, 'month').format('YYYY-MM-DD');
 
 const ExampleDateInput = reduxForm({
-    initialValues: {
-        'date-input-example': today
-    },
+    initialValues: {'date-input-example': today},
     form: 'form-date-input-example',
     enableReinitialize: true
 })(DateInput);
@@ -23,6 +21,6 @@ const ExampleDateInput = reduxForm({
     maxDate={max}
     mandatory={true}
     help='Helper text'
-    containerClass='padded'
+    containerClass='padded pos-relative'
 />
 ```

@@ -22,7 +22,7 @@ List of what's left to be documented.
 - [x] SwitchInput
 - [x] TextareaInput
 - [x] DateInput
-- [ ] TimeInput
+- [ ] TimeInput => Very slow when added to styleguide
 - [ ] CodeEditorInput
 - [x] CodeEditor
 - [ ] CronInput

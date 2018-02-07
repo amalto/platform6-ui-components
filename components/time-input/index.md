@@ -7,13 +7,11 @@ const moment = require('moment');
 
 const today = new Date().toISOString();
 const now = new moment(today).format('HH:mm');
-const min = new moment(today).subtract(1, 'hour').format('HH:mm');
-const max = new moment(today).add(1, 'hour').format('HH:mm');
+const min = new moment(today).subtract(2, 'hours').minute(0);
+const max = new moment(today).add(2, 'hours').minute(0);
 
 const ExampleTimeInput = reduxForm({
-    initialValues: {
-        'time-input-example': now
-    },
+    initialValues: {'time-input-example': now},
     form: 'form-time-input-example',
     enableReinitialize: true
 })(TimeInput);
@@ -23,9 +21,9 @@ const ExampleTimeInput = reduxForm({
     label='DateInput example'
     help='Helper text'
     minutesInterval={10}
-    minHour={min}
-    maxHour={max}
-    containerClass='padded'
+    minHour={min.hours()}
+    maxHour={max.hours()}
+    containerClass='padded pos-relative'
     mandatory={true}
 />
 ```

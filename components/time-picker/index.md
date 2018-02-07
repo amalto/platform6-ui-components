@@ -4,7 +4,6 @@ const moment = require('moment');
 const today = new Date().toISOString();
 const now = new moment(today).format('HH:mm');
 
-/** Used only for help display as minHour and maxHour are numbers */
 const min = new moment(today).subtract(2, 'hours').minute(0);
 const max = new moment(today).add(2, 'hours').minute(0);
 

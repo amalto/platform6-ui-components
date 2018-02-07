@@ -30,6 +30,34 @@ namespace DateInput {
          * Warning: a default value for the date will be required otherwise the input will not be displayed.
          */
         mandatory?: boolean;
+
+        /** Hide props from documentation */
+
+        /** @ignore */
+        children?: React.ReactNode;
+        /** @ignore */
+        key?: React.ReactText;
+        /** @ignore */
+        ref?: React.Ref<any>;
+
+        /** redux-form props */
+
+        /** @ignore */
+        component?: any,
+        /** @ignore */
+        format?: any,
+        /** @ignore */
+        normalize?: any,
+        /** @ignore */
+        props?: any,
+        /** @ignore */
+        parse?: any,
+        /** @ignore */
+        validate?: any,
+        /** @ignore */
+        warn?: any,
+        /** @ignore */
+        withRef?: any
     }
 
     export interface State {

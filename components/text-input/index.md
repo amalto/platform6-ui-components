@@ -16,7 +16,7 @@ const ExampleTextInput = reduxForm({
     containerClass='padded'
     inputClass='text-large'
     type='text'
-    autofocus={true}
+    autofocus={false}
     randomGenerator={true}
     collapseErrorSpace={true}
 />

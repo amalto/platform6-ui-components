@@ -43,6 +43,25 @@ namespace RadioInput {
         key?: React.ReactText;
         /** @ignore */
         ref?: React.Ref<RadioInput>;
+
+        /** redux-form props */
+
+        /** @ignore */
+        component?: any,
+        /** @ignore */
+        format?: any,
+        /** @ignore */
+        normalize?: any,
+        /** @ignore */
+        props?: any,
+        /** @ignore */
+        parse?: any,
+        /** @ignore */
+        validate?: any,
+        /** @ignore */
+        warn?: any,
+        /** @ignore */
+        withRef?: any
     }
 
     export interface State {

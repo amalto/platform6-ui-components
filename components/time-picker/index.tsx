@@ -69,7 +69,7 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
 
         return (
             <div className={classNames( 'form-group', containerClass, {
-                'mandatory': mandatory
+                'mandatory pos-relative': mandatory
             } )}>
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}

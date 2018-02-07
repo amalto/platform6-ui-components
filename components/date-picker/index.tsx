@@ -49,6 +49,25 @@ module DatePicker {
         key?: React.ReactText;
         /** @ignore */
         ref?: React.Ref<DatePicker>;
+
+        /** redux-form props */
+
+        /** @ignore */
+        component?: any,
+        /** @ignore */
+        format?: any,
+        /** @ignore */
+        normalize?: any,
+        /** @ignore */
+        props?: any,
+        /** @ignore */
+        parse?: any,
+        /** @ignore */
+        validate?: any,
+        /** @ignore */
+        warn?: any,
+        /** @ignore */
+        withRef?: any
     }
 
     export interface State {
@@ -90,7 +109,7 @@ class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
         return (
             <div className={classNames( this.props.containerClass, {
                 'form-group': this.props.mandatory || !!this.props.label,
-                'mandatory': this.props.mandatory
+                'mandatory pos-relative': this.props.mandatory
             } )}>
 
                 {this.props.label ? <label>{this.props.label}{this.props.help && <Help text={this.props.help} />}</label> : null}
