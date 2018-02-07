@@ -1,0 +1,57 @@
+{
+    "name": "@amalto/textahead-input",
+    "displayName": "TextaheadInput",
+    "description": "Textahead input combine a simple input and a select dropdown which allow you to select a value from the keyboard depending on your inputs.",
+    "version": "1.0.0",
+    "main": "./build/index.js",
+    "typings": "./build/index.d.ts",
+    "author": "Amalto Technologies",
+    "publishConfig": {
+        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+    },
+    "scripts": {
+        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "test": "ava ./test/test.js --verbose",
+        "prepare": "tsc -d"
+    },
+    "dependencies": {
+        "@amalto/help": "1.0.3",
+        "classnames": "2.2.5",
+        "jquery": "3.3.1",
+        "react": "15.6.2",
+        "react-dom": "15.6.2",
+        "typeahead.js": "0.11.1"
+    },
+    "devDependencies": {
+        "@ava/babel-preset-stage-4": "1.1.0",
+        "@types/jquery": "3.3.0",
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6",
+        "@types/typeahead": "0.11.32",
+        "ava": "0.24.0",
+        "babel-preset-react": "6.24.1",
+        "babel-register": "6.26.0",
+        "enzyme": "3.3.0",
+        "enzyme-adapter-react-15": "1.0.5",
+        "jsdom": "11.6.2",
+        "react-addons-test-utils": "15.6.2",
+        "react-test-renderer": "15.6.2",
+        "sinon": "4.2.2"
+    },
+    "ava": {
+        "concurrency": 5,
+        "failFast": true,
+        "failWithoutAssertions": false,
+        "powerAssert": true,
+        "require": [
+            "babel-register",
+            "./test/utils.js"
+        ],
+        "babel": {
+            "presets": [
+                "@ava/stage-4",
+                "react"
+            ]
+        }
+    }
+}
