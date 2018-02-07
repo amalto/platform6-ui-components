@@ -2,15 +2,10 @@
 const collection = ['first','second','third']
 
 const handleInputChange = ( value ) => {
-    console.info('handleInputChange :: value => ', value);
+    // Handle input onchange event
 };
-const display = ( value ) => {
-    return value;
-};
-
-const datumTokenizer = ( datum ) => {
-    return [datum];
-}
+const display = value => value;
+const datumTokenizer = datum => [datum];
 
 <TypeaheadInput id='typeahead-input-example'
     collection={collection}

@@ -27,6 +27,7 @@ List of what's left to be documented.
 - [x] CodeEditor
 - [ ] CronInput
 - [x] TypeaheadInput
+- [ ] TypeaheadFormInput
 - [ ] TogglePanel
 - [x] Spinner
 - [ ] DataGrid
