@@ -2,7 +2,7 @@
     "name": "@amalto/time-picker",
     "displayName": "TimePicker",
     "description": "TimePicker component",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

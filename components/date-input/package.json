@@ -2,7 +2,7 @@
     "name": "@amalto/date-input",
     "displayName": "DateInput",
     "description": "Date input used on platform6.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -15,7 +15,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/date-picker": "1.0.16",
+        "@amalto/date-picker": "1.0.17",
         "@amalto/help": "1.0.3",
         "classnames": "2.2.5",
         "react": "15.6.2",
