@@ -47,7 +47,12 @@ module.exports = {
     showUsage: true,
     showCode: true,
 
-    ignore: ['**/node_modules/**/*.*'],
+    ignore: [
+        '**/node_modules/**/*.*',
+        '**/test/**/*.*',
+        '**/readme/**/*.*',
+        '**/public/**/*.*'
+    ],
 
     skipComponentsWithoutExample: true,
 
