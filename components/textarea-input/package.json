@@ -2,7 +2,7 @@
     "name": "@amalto/textarea-input",
     "displayName": "TextareaInput",
     "description": "Textarea input used on platform6.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
