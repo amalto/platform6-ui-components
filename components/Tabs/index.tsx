@@ -6,7 +6,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 //utils & stores
-import { loadTooltips, unloadTooltips, compileWordings } from '@amalto/helpers'
+import { compileWordings } from '@amalto/helpers'
 
 //wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -18,7 +18,7 @@ import * as classNames from 'classnames'
 import * as uuid from 'uuid'
 import * as PerfectScrollbar from 'react-perfect-scrollbar'
 
-namespace Tabs {
+module Tabs {
 
     export interface Props extends React.Props<Tabs> {
         /** Close tab method. */
@@ -60,17 +60,17 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
         super( props )
     }
 
-    componentDidMount() {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
-    }
+    // componentDidMount() {
+    //     loadTooltips( ReactDOM.findDOMNode( this ) )
+    // }
 
-    componentDidUpdate() {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
-    }
+    // componentDidUpdate() {
+    //     loadTooltips( ReactDOM.findDOMNode( this ) )
+    // }
 
-    componentWillUnmount() {
-        unloadTooltips( ReactDOM.findDOMNode( this ) )
-    }
+    // componentWillUnmount() {
+    //     unloadTooltips( ReactDOM.findDOMNode( this ) )
+    // }
 
     render() {
 
