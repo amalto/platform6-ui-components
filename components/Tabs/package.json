@@ -2,7 +2,7 @@
   "name": "@amalto/tabs",
   "displayName": "Tabs",
   "description": "Tabs component used in platform6.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "author": "Amalto Technologies",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@amalto/helpers": "^1.1.30",
-    "@amalto/tab": "^1.0.1",
+    "@amalto/tab": "1.0.2",
     "@amalto/wordings": "^1.0.6",
     "classnames": "2.2.5",
     "react": "15.6.2",
@@ -25,7 +25,7 @@
     "uuid": "3.2.1"
   },
   "devDependencies": {
-    "@amalto/tab": "^1.0.1",
+    "@amalto/tab": "1.0.2",
     "@ava/babel-preset-stage-4": "1.1.0",
     "@types/bootstrap": "3.3.36",
     "@types/react": "15.6.10",
