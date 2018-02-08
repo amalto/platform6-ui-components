@@ -25,7 +25,7 @@ List of what's left to be documented.
 - [x] TimeInput => Very slow when added to styleguide
 - [ ] CodeEditorInput
 - [x] CodeEditor
-- [ ] CronInput
+- [x] CronInput
 - [x] TypeaheadInput
 - [x] TypeaheadFormInput
 - [ ] TogglePanel
