@@ -38,7 +38,7 @@ List of what's left to be documented.
 - [x] Tree
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
-- [ ] Restricted
+- [x] Restricted
 - [x] Help
 
 ### Utils
