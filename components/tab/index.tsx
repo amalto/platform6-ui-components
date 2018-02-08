@@ -56,7 +56,7 @@ class Tab extends React.Component<Tab.Props, Tab.State> {
     }
 
     render() {
-        return <div>{this.props.children}</div>
+        return <div>this.props.children</div>
     }
 
 }

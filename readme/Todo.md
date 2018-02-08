@@ -32,8 +32,8 @@ List of what's left to be documented.
 - [x] Spinner
 - [ ] DataGrid
 - [ ] DataLine
-- [ ] Tabs
-- [ ] Tab
+- [x] Tabs
+- [x] Tab
 - [x] ButtonsBar
 - [x] Tree
 - [ ] DynamicComponent
