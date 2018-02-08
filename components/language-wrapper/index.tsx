@@ -18,13 +18,29 @@ import * as classNames from 'classnames'
 
 module LanguageWrapper {
     export interface Props extends React.Props<LanguageWrapper> {
+        /** Current selected language. */
         selectedLanguage: string;
+        /** Array of language selected. */
         supportedLanguages: string[];
+        /** Select language event. */
         handleLanguageChange: ( language: string ) => void;
+        /** Add language event. */
         handleAddedLanguage: ( language: string ) => void;
+        /** Remove language event. */
         handleRemovedLanguage: ( language: string ) => void;
+        /** CSS Class of the div root component. */
         containerClass?: string;
+        /** Language selected. */
         locale: string;
+
+        /** Hide props from documentation */
+
+        /** @ignore */
+        children?: React.ReactNode;
+        /** @ignore */
+        key?: React.ReactText;
+        /** @ignore */
+        ref?: React.Ref<LanguageWrapper>;
     }
 
     export interface State {
