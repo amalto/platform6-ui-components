@@ -34,7 +34,7 @@ List of what's left to be documented.
 - [ ] DataLine
 - [ ] Tabs
 - [ ] Tab
-- [ ] ButtonsBar
+- [x] ButtonsBar
 - [x] Tree
 - [ ] DynamicComponent
 - [ ] CustomFormDialog
