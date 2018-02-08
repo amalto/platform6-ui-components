@@ -2,7 +2,7 @@
     "name": "@amalto/language-wrapper",
     "displayName": "LanguageWrapper",
     "description": "Used to select language.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -17,7 +17,7 @@
     "dependencies": {
         "@amalto/help": "^1.0.3",
         "@amalto/helpers": "^1.1.30",
-        "@amalto/typeahead-input": "^1.0.1",
+        "@amalto/typeahead-input": "1.0.2",
         "@amalto/wordings": "^1.0.6",
         "classnames": "2.2.5",
         "react": "15.6.2",
