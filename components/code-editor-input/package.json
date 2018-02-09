@@ -1,8 +1,8 @@
 {
-    "name": "@amalto/code-editor",
-    "displayName": "CodeEditor",
-    "description": "Customizable code editor (non-form version).",
-    "version": "1.1.40",
+    "name": "@amalto/code-editor-input",
+    "displayName": "CodeEditorInput",
+    "description": "Editor used in form.",
+    "version": "1.0.0",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
@@ -17,26 +17,29 @@
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
         "@types/ace": "0.0.36",
-        "@types/bootstrap": "3.3.36",
         "@types/jquery": "3.3.0",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
+        "@types/redux-form": "6.6.1",
         "ava": "0.24.0",
         "babel-preset-react": "6.24.1",
         "babel-register": "6.26.0",
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
-        "jquery": "3.3.1",
-        "jsdom": "11.6.2",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
-        "sinon": "4.2.2",
-        "typescript": "2.6.2"
+        "sinon": "4.2.2"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.30",
+        "@amalto/help": "^1.0.3",
+        "brace": "0.11.0",
+        "classnames": "2.2.5",
         "react": "15.6.2",
-        "react-dom": "15.6.2"
+        "react-dom": "15.6.2",
+        "react-redux": "5.0.6",
+        "redux": "3.7.2",
+        "redux-form": "6.6.1",
+        "uuid": "3.2.1"
     },
     "ava": {
         "concurrency": 5,

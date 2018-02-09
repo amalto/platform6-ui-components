@@ -76,7 +76,7 @@ module CodeEditor {
      * CodeEditor properties
      */
     export interface Props extends React.Props<CodeEditor> {
-        /** Editor height */
+        /** Editor height. */
         height?: number | string;
         /** Initial content of the editor. */
         value: string;

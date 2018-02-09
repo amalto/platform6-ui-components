@@ -23,7 +23,7 @@ List of what's left to be documented.
 - [x] TextareaInput
 - [x] DateInput
 - [x] TimeInput => Very slow when added to styleguide
-- [ ] CodeEditorInput
+- [x] CodeEditorInput
 - [x] CodeEditor
 - [x] CronInput
 - [x] TypeaheadInput
