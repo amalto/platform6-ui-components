@@ -31,7 +31,7 @@ List of what's left to be documented.
 - [x] TogglePanel
 - [x] Spinner
 - [ ] DataGrid
-- [ ] DataLine
+- [x] DataLine
 - [x] Tabs
 - [x] Tab
 - [x] ButtonsBar

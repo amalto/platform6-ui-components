@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es2015",
+        "target": "es5",
         "module": "commonjs",
         "noImplicitAny": false,
-        "removeComments": true,
+        "removeComments": false,
         "outDir": "build",
         "jsx": "react",
+        "declaration": true,
         "sourceMap": true,
         "experimentalDecorators": true,
         "lib": [
@@ -19,6 +20,7 @@
         ]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "build"
     ]
 }

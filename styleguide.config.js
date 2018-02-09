@@ -23,7 +23,7 @@ module.exports = {
         const name = changeCase.pascalCase(componentName)
         const dir = componentName
 
-        return type === 'components' ? `import ${name} from '${dir}';` : null
+        return type === 'components' ? `import ${name} from '@amalto/${dir}';` : null
     },
 
     template: path.resolve(__dirname, './public/index.html'),
