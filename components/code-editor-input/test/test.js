@@ -51,13 +51,13 @@ test('CodeEditorInput props should be defined', t => {
         />
     );
 
-    t.is(wrapper.prop('name'), 'code-editor-input-example');
-    t.is(wrapper.prop('label'), 'CodeEditorInput example');
-    t.is(wrapper.prop('help'), 'CodeEditorInput help');
-    t.is(wrapper.prop('mode'), 'ace/mode/javascript');
-    t.is(wrapper.prop('height'), 300);
-    t.is(wrapper.prop('initSession'), null);
-    t.deepEqual(wrapper.prop('displaySettings'), {});
-    t.is(wrapper.prop('resetTick'), 0);
-    t.is(wrapper.prop('user'), null);
+    t.is(wrapper.props('name'), 'code-editor-input-example');
+    t.is(wrapper.props('label'), 'CodeEditorInput example');
+    t.is(wrapper.props('help'), 'CodeEditorInput help');
+    t.is(wrapper.props('mode'), 'ace/mode/javascript');
+    t.is(wrapper.props('height'), 300);
+    t.is(wrapper.props('initSession'), null);
+    t.deepEqual(wrapper.props('displaySettings'), {});
+    t.is(wrapper.props('resetTick'), 0);
+    t.is(wrapper.props('user'), null);
 });

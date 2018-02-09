@@ -28,7 +28,7 @@ List of what's left to be documented.
 - [x] CronInput
 - [x] TypeaheadInput
 - [x] TypeaheadFormInput
-- [ ] TogglePanel
+- [x] TogglePanel
 - [x] Spinner
 - [ ] DataGrid
 - [ ] DataLine
