@@ -2,12 +2,6 @@
 
 > :construction: This project is currently in development. :construction:
 
-## Requirements
-
-Platform 6 depends on:
-
-- [Node.js](https://nodejs.org/en/) (version `>= 4`)
-
 ## Installation
 
 Use the following command in your terminal to install the project:
@@ -17,6 +11,10 @@ git clone https://github.com/amalto/platform6-ui-components.git
 ```
 
 If you want to install a specific component use instead:
+
+### With npm
+
+You need to install [Node.Js](https://nodejs.org/en/).
 
 ```terminal
 npm install --save @amalto/{component_name}
@@ -28,7 +26,9 @@ You must replace `{component_name}` with the wanted component:
 npm install --save @amalto/spinner
 ```
 
-## Demo
+## Documentation
+
+In order to install the documentation you need [Node.Js](https://nodejs.org/en/).
 
 To read the documentation you need to install the project dependencies:
 
