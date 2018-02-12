@@ -1,6 +1,8 @@
 # Platform 6 Components
 
-This project works for [platform 6](https://github.com/amalto/platform6-wiki) and won't to work with others projects.
+> :construction: This project is currently in development. :construction:
+
+:warning: This project works for [platform 6](https://github.com/amalto/platform6-wiki) and won't to work with others projects.
 
 ## Requirements
 
