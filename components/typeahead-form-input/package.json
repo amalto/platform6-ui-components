@@ -2,7 +2,7 @@
     "name": "@amalto/typeahead-form-input",
     "displayName": "TypeaheadFormInput",
     "description": "Typeahead form input used on platform6.",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -16,8 +16,8 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/help": "^1.0.5",
-        "@amalto/typeahead-input": "^1.0.4",
+        "@amalto/help": "1.0.6",
+        "@amalto/typeahead-input": "1.0.5",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",

@@ -2,7 +2,7 @@
     "name": "@amalto/tabs",
     "displayName": "Tabs",
     "description": "Tabs component used in platform6.",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -16,9 +16,9 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/helpers": "^1.1.32",
-        "@amalto/tab": "^1.0.4",
-        "@amalto/wordings": "^1.0.8",
+        "@amalto/helpers": "1.1.33",
+        "@amalto/tab": "1.0.5",
+        "@amalto/wordings": "1.0.9",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",

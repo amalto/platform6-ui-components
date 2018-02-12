@@ -2,7 +2,7 @@
     "name": "@amalto/file-input",
     "displayName": "FileInput",
     "description": "Input allowing you to select a file.",
-    "version": "1.0.24",
+    "version": "1.0.25",
     "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -16,7 +16,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/helpers": "^1.1.32",
+        "@amalto/helpers": "1.1.33",
         "classnames": "2.2.5",
         "jquery": "3.3.1",
         "react": "15.6.2",
