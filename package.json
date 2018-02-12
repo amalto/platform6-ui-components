@@ -1,6 +1,8 @@
 {
     "name": "@amalto/platform6-ui-components",
     "version": "1.0.0",
+    "license": "MIT",
+    "url": "https://github.com/amalto/platform6-ui-components",
     "scripts": {
         "bootstrap": "lerna bootstrap --hoist --registry",
         "build": "lerna run build",
