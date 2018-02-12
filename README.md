@@ -16,7 +16,7 @@ Platform 6 depends on:
 Use the following command in your terminal to install the project:
 
 ```terminal
-npm install --save @amalto/platform6-ui-components
+git clone https://github.com/amalto/platform6-ui-components.git
 ```
 
 If you want to install a specific component use instead:
