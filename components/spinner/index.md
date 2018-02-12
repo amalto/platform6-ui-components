@@ -6,6 +6,5 @@ Props are set to null except the url source to get the default Spinner.
     right={null}
     left={null}
     size={null}
-    src='images/spinner.gif'
 />
 ```

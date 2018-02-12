@@ -23,7 +23,6 @@ test('should have the style applied', t => {
         right={20}
         left='15px'
         size={30}
-        src='/images/spinner.gif'
     />);
 
     t.true(wrapper.hasClass('spinner'));
@@ -32,5 +31,4 @@ test('should have the style applied', t => {
     t.is(wrapper.props().style.right, 20);
     t.is(wrapper.props().style.left, '15px');
     t.is(wrapper.props().style.size, 30);
-    t.is(wrapper.props().style.src, '/images/spinner.gif');
 });

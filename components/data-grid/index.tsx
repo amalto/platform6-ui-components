@@ -83,7 +83,6 @@ export namespace DataGrid {
         selectedAppInstanceName?: string;
         defaultServiceId?: string
         user?: UserModel;
-        spinnerSrc?: string;
         locale: string;
     }
 
@@ -238,7 +237,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
         return (
 
 
-            fetchingHeaders ? <div><Spinner src={this.props.spinnerSrc} /></div> : (
+            fetchingHeaders ? <div><Spinner /></div> : (
 
                 <div>
 

@@ -29,8 +29,6 @@ namespace PdfViewer {
         style?: React.CSSProperties;
         /** Update value to force update. */
         reloadTick?: number;
-        /** Spinner url source for the loader component. */
-        spinnerSrc: string;
         /** Locale to be used. */
         locale: string;
 
@@ -84,7 +82,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
             <div className={containerClass} style={style}>
 
                 {
-                    loading ? <div className="padded"><Spinner src={spinnerSrc} /></div> : ( loadingError ? (
+                    loading ? <div className="padded"><Spinner /></div> : ( loadingError ? (
                         <div className="padded">
                             <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
                                 <span className="fa fa-exclamation-triangle right-spaced" />

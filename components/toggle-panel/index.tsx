@@ -39,8 +39,6 @@ module TogglePanel {
         };
         /** CSS style of the panel. */
         customStyle?: React.CSSProperties;
-        /** Spinner src. */
-        spinnerSrc?: string;
 
         /** Hide props from documentation */
 
@@ -71,7 +69,7 @@ class TogglePanel extends React.Component<TogglePanel.Props, TogglePanel.State> 
 
         let titleSpinner = this.props.showSpinner ? (
             <div className="spinner-container">
-                <Spinner src={this.props.spinnerSrc} />
+                <Spinner />
             </div>
         ) : null
 

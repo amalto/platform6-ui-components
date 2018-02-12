@@ -16,8 +16,6 @@ module Spinner {
         left?: string | number;
         /** Spinner size. */
         size?: number;
-        /** Source url which point to the spinner image. */
-        src?: string;
 
         /** Hide props from documentation */
 
@@ -51,7 +49,7 @@ class Spinner extends React.Component<Spinner.Props, any> {
         return (
 
             <div className='spinner' style={spinnerStyle}>
-                <img src={this.props.src || spinner} alt='Loading...' width={this.props.size || 32} height={this.props.size || 32} />
+                <img src={spinner} alt='Loading...' width={this.props.size || 32} height={this.props.size || 32} />
             </div>
 
         )

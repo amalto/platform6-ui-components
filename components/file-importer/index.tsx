@@ -91,8 +91,6 @@ module FileImporter {
         }
         /** Is being processed, if true display the spinner. */
         processing?: boolean;
-        /** Spinner image's source. */
-        spinnerSrc: string;
         /** Locale to be used. */
         locale: string;
 
@@ -147,7 +145,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                             } )}>
                                 {this.state.wordings['fileimporter.title']}
                             </h3>
-                            {this.props.processing && <div className="spinner-container"><Spinner src={this.props.spinnerSrc} /></div>}
+                            {this.props.processing && <div className="spinner-container"><Spinner /></div>}
                         </div>
 
                         <div className="panel-body">
