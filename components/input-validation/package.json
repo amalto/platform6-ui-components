@@ -3,6 +3,7 @@
     "displayName": "InputValidation",
     "description": "Common input's validation methods.",
     "version": "1.0.4",
+    "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

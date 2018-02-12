@@ -1,6 +1,7 @@
 {
     "name": "@amalto/platform6-ui-components",
     "version": "1.0.0",
+    "license": "MIT",
     "private": true,
     "scripts": {
         "bootstrap": "lerna bootstrap --hoist --registry http://repo.amalto.com:8081/repository/npm-all/",

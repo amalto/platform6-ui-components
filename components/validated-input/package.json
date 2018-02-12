@@ -3,6 +3,7 @@
     "displayName": "ValidatedInput",
     "description": "Input component with validation control.",
     "version": "1.0.24",
+    "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

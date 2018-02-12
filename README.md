@@ -1,17 +1,12 @@
-# Platform 6 Components
+# Platform 6 UI Components
 
 > :construction: This project is currently in development. :construction:
-
-:warning: This project works for [Platform 6](https://github.com/amalto/platform6-wiki) and won't work with others projects.
 
 ## Requirements
 
 Platform 6 depends on:
 
-- [Node.js](https://nodejs.org/en/) (version `>= 4`),
-- [_b2box_](https://github.com/amalto/platform6-wiki/blob/master/glossary.md#b2box) (version `5.13.8` and higher)
-
-> _b2box_ is the term used to define the previous versions of _Platform 6_.
+- [Node.js](https://nodejs.org/en/) (version `>= 4`)
 
 ## Installation
 
@@ -50,3 +45,9 @@ You can also build the documentation which will be stored in the styleguide dire
 ```terminal
 npm run styleguide:build
 ```
+
+You will be able to see the documentation at the url `http://localhost:6060`
+
+## License
+
+MIT © 2018 [Amalto Technologies](https://www.amalto.com/)

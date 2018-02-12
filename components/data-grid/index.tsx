@@ -41,9 +41,13 @@ export namespace DataGrid {
 
     export interface Props extends React.Props<DataGrid>, ReduxProps {
 
+        /** Interface used to perform all the api call to the server. */
         api: WebApi;
+        /** Display context menu. */
         displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => Action;
+        /** Hide contet menu. */
         hideContextMenu: () => Action;
+        /** Update user info from store. */
         receiveUserInfo: ( userInfo: UserModel ) => Action;
         displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => Action;
         handleErrorDisplay: ( error: any ) => Action;
@@ -83,7 +87,17 @@ export namespace DataGrid {
         selectedAppInstanceName?: string;
         defaultServiceId?: string
         user?: UserModel;
+
         locale: string;
+
+        /** Hide props from documentation */
+
+        /** @ignore */
+        children?: React.ReactNode;
+        /** @ignore */
+        key?: React.ReactText;
+        /** @ignore */
+        ref?: React.Ref<DataGrid>;
     }
 
     export interface State {

@@ -3,6 +3,7 @@
     "displayName": "Switch",
     "description": "Switch button.",
     "version": "1.0.5",
+    "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

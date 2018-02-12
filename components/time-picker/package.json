@@ -3,6 +3,7 @@
     "displayName": "TimePicker",
     "description": "TimePicker component",
     "version": "1.0.17",
+    "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

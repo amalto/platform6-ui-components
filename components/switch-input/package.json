@@ -3,6 +3,7 @@
     "displayName": "SwitchInput",
     "description": "Switch input used on platform6.",
     "version": "1.0.2",
+    "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

@@ -3,6 +3,7 @@
     "displayName": "Helpers",
     "description": "Helpers functions used across b2portal core and components.",
     "version": "1.1.30",
+    "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
