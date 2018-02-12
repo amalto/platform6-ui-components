@@ -73,7 +73,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
 
     render() {
 
-        const { containerClass, style, spinnerSrc } = this.props
+        const { containerClass, style } = this.props
 
         const { loading, loadingError } = this.state
 
