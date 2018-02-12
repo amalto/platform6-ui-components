@@ -1,19 +1,17 @@
 {
     "name": "@amalto/platform6-ui-components",
     "version": "1.0.0",
-    "license": "MIT",
-    "private": true,
     "scripts": {
-        "bootstrap": "lerna bootstrap --hoist --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "bootstrap": "lerna bootstrap --hoist --registry https://www.npmjs.com/org",
         "build": "lerna run build",
         "test": "ava --verbose",
-        "publish": "lerna publish --yes --exact",
-        "setup": "npm install --registry http://repo.amalto.com:8081/repository/npm-all/",
+        "publish": "lerna publish --yes --exact --registry=https://www.npmjs.com/org",
+        "setup": "npm install --registry https://www.npmjs.com/org",
         "styleguide": "styleguidist server",
         "styleguide:build": "styleguidist build"
     },
     "publishConfig": {
-        "registry": "http://repo.amalto.com:8081/repository/npm-amalto/"
+        "registry": "https://www.npmjs.com/org/amalto"
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
