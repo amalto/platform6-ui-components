@@ -1,3 +1,4 @@
+.vscode
 *.iml
 *.DS_Store
 npm-debug.log
