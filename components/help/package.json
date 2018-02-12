@@ -2,7 +2,7 @@
     "name": "@amalto/help",
     "displayName": "Help",
     "description": "Help component",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
