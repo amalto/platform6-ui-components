@@ -30,10 +30,10 @@ npm install --save @amalto/spinner
 
 ## Demo
 
-If you did install the platform4-ui-components project, in order to run the documentation you need to install the project dependencies:
+To read the documentation you need to install the project dependencies:
 
 ```terminal
-npm run boostrap
+npm run bootstrap
 ```
 
 Then run it locally:
