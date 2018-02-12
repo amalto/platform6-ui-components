@@ -2,7 +2,7 @@
     "name": "@amalto/helpers",
     "displayName": "Helpers",
     "description": "Helpers functions used across b2portal core and components.",
-    "version": "1.1.30",
+    "version": "1.1.31",
     "license": "MIT",
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -16,7 +16,7 @@
         "prepare": "tsc -d"
     },
     "dependencies": {
-        "@amalto/wordings": "1.0.6",
+        "@amalto/wordings": "1.0.7",
         "base-64": "0.1.0",
         "classnames": "2.2.5",
         "install": "^0.10.4",
