@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import * as extend from 'just-extend'
 
+import { spinner } from './images/spinner'
+
 module Spinner {
     export interface Props extends React.Props<Spinner> {
         /** Top position. */
@@ -15,7 +17,7 @@ module Spinner {
         /** Spinner size. */
         size?: number;
         /** Source url which point to the spinner image. */
-        src: string;
+        src?: string;
 
         /** Hide props from documentation */
 
@@ -48,8 +50,8 @@ class Spinner extends React.Component<Spinner.Props, any> {
 
         return (
 
-            <div className="spinner" style={spinnerStyle}>
-                <img src={this.props.src} alt="Loading..." width={this.props.size || 32} height={this.props.size || 32} />
+            <div className='spinner' style={spinnerStyle}>
+                <img src={this.props.src || spinner} alt='Loading...' width={this.props.size || 32} height={this.props.size || 32} />
             </div>
 
         )
