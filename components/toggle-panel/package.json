@@ -2,7 +2,7 @@
   "name": "@amalto/toggle-panel",
   "displayName": "TogglePanel",
   "description": "Panel body which contain a header and a body.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "author": "Amalto Technologies",
@@ -15,7 +15,7 @@
     "prepare": "tsc -d"
   },
   "dependencies": {
-    "@amalto/spinner": "1.0.14",
+    "@amalto/spinner": "1.0.15",
     "classnames": "2.2.5",
     "react": "15.6.2",
     "react-dom": "15.6.2"
