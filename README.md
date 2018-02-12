@@ -2,7 +2,7 @@
 
 > :construction: This project is currently in development. :construction:
 
-:warning: This project works for [platform 6](https://github.com/amalto/platform6-wiki) and won't to work with others projects.
+:warning: This project works for [platform 6](https://github.com/amalto/platform6-wiki) and won't work with others projects.
 
 ## Requirements
 
