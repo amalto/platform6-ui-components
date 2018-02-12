@@ -11,8 +11,11 @@
         "react",
         "typescript"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
-        "bootstrap": "lerna bootstrap --hoist --registry",
+        "bootstrap": "lerna bootstrap",
         "build": "lerna run build",
         "test": "ava --verbose",
         "publish": "lerna publish --yes --exact",

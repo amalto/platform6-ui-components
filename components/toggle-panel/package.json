@@ -12,6 +12,9 @@
         "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@amalto/spinner": "1.0.19",
         "classnames": "2.2.5",

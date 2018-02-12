@@ -12,6 +12,9 @@
         "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "classnames": "2.2.5",
         "just-extend": "1.1.27",

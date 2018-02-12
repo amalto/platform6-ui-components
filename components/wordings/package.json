@@ -11,6 +11,9 @@
         "setup": "npm install",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "react": "15.6.2"
     },

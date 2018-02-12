@@ -12,6 +12,9 @@
         "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "react": "15.6.2"
     },

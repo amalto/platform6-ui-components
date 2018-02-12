@@ -12,6 +12,9 @@
         "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
         "@types/jquery": "3.3.0",

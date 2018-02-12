@@ -12,6 +12,9 @@
         "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
         "@types/base-64": "0.1.2",

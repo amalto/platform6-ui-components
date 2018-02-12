@@ -12,6 +12,9 @@
         "test": "ava ./test/test.js --verbose",
         "prepare": "tsc -d"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@amalto/helpers": "1.1.34",
         "@amalto/tab": "1.0.6",
