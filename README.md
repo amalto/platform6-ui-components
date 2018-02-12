@@ -2,7 +2,7 @@
 
 > :construction: This project is currently in development. :construction:
 
-:warning: This project works for [platform 6](https://github.com/amalto/platform6-wiki) and won't work with others projects.
+:warning: This project works for [Platform 6](https://github.com/amalto/platform6-wiki) and won't work with others projects.
 
 ## Requirements
 
@@ -46,7 +46,7 @@ Then run it locally:
 npm run styleguide
 ```
 
-You can also build the documentation whch will be stored in the styleguide directory:
+You can also build the documentation which will be stored in the styleguide directory:
 ```terminal
 npm run styleguide:build
 ```
