@@ -7,11 +7,8 @@
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
-    "publishConfig": {
-        "registry": "https://www.npmjs.com/org/amalto/"
-    },
     "scripts": {
-        "setup": "npm install --registry https://www.npmjs.com/org/amalto/",
+        "setup": "npm install",
         "prepare": "tsc -d"
     },
     "dependencies": {
