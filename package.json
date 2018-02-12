@@ -1,5 +1,5 @@
 {
-    "name": "platform6-ui-components",
+    "name": "@amalto/platform6-ui-components",
     "version": "1.0.0",
     "private": true,
     "scripts": {
