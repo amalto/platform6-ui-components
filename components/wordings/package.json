@@ -24,9 +24,11 @@
         "access": "public"
     },
     "dependencies": {
-        "react": "15.6.2"
+        "react": "15.6.2",
+        "react-dom": "15.6.2"
     },
     "devDependencies": {
-        "@types/react": "15.6.10"
+        "@types/react": "15.6.10",
+        "@types/react-dom": "15.5.6"
     }
 }
