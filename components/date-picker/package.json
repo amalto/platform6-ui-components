@@ -2,7 +2,7 @@
     "name": "@amalto/date-picker",
     "displayName": "DatePicker",
     "description": "DatePicker components.",
-    "version": "1.0.27",
+    "version": "1.0.28",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.0.13",
+        "@amalto/help": "1.0.14",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
