@@ -2,7 +2,7 @@
     "name": "@amalto/help",
     "displayName": "Help",
     "description": "Help component",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "license": "MIT",
     "repository": {
         "type": "git",
