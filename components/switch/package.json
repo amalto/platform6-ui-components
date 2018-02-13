@@ -2,16 +2,16 @@
     "name": "@amalto/switch",
     "displayName": "Switch",
     "description": "Switch button.",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",

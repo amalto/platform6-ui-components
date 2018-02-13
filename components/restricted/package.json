@@ -2,16 +2,16 @@
     "name": "@amalto/restricted",
     "displayName": "Restricted",
     "description": "Display or hide children depending on permissions.",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/scope-helpers": "1.0.5",
+        "@amalto/scope-helpers": "1.0.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },

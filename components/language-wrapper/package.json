@@ -2,16 +2,16 @@
     "name": "@amalto/language-wrapper",
     "displayName": "LanguageWrapper",
     "description": "Used to select language.",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.0.7",
-        "@amalto/helpers": "1.1.34",
-        "@amalto/typeahead-input": "1.0.6",
-        "@amalto/wordings": "1.0.10",
+        "@amalto/help": "1.0.8",
+        "@amalto/helpers": "1.1.35",
+        "@amalto/typeahead-input": "1.0.7",
+        "@amalto/wordings": "1.0.11",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2"

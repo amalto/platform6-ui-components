@@ -2,16 +2,16 @@
     "name": "@amalto/data-grid",
     "displayName": "DataGrid",
     "description": "Grid used in platform6.",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -26,14 +26,14 @@
     },
     "dependencies": {
         "@amalto/action-button": "1.1.31",
-        "@amalto/button-bar": "1.0.6",
-        "@amalto/color-picker": "1.0.23",
-        "@amalto/data-line": "1.0.5",
-        "@amalto/helpers": "1.1.34",
-        "@amalto/restricted": "1.0.5",
-        "@amalto/spinner": "1.0.19",
-        "@amalto/toggle-panel": "1.0.9",
-        "@amalto/wordings": "1.0.10",
+        "@amalto/button-bar": "1.0.7",
+        "@amalto/color-picker": "1.0.24",
+        "@amalto/data-line": "1.0.6",
+        "@amalto/helpers": "1.1.35",
+        "@amalto/restricted": "1.0.6",
+        "@amalto/spinner": "1.0.20",
+        "@amalto/toggle-panel": "1.0.10",
+        "@amalto/wordings": "1.0.11",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",

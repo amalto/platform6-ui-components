@@ -2,16 +2,16 @@
     "name": "@amalto/pdf-viewer",
     "displayName": "PdfViewer",
     "description": "Display pdf.",
-    "version": "1.0.29",
+    "version": "1.0.30",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -25,9 +25,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.34",
-        "@amalto/paging-controls": "1.0.26",
-        "@amalto/spinner": "1.0.19",
+        "@amalto/helpers": "1.1.35",
+        "@amalto/paging-controls": "1.0.27",
+        "@amalto/spinner": "1.0.20",
         "classnames": "2.2.5",
         "pdfjs-dist": "2.0.288",
         "react": "15.6.2",

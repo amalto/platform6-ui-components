@@ -2,16 +2,16 @@
     "name": "@amalto/code-editor-input",
     "displayName": "CodeEditorInput",
     "description": "Editor used in form.",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -41,7 +41,7 @@
         "sinon": "4.2.2"
     },
     "dependencies": {
-        "@amalto/help": "1.0.7",
+        "@amalto/help": "1.0.8",
         "brace": "0.11.0",
         "classnames": "2.2.5",
         "react": "15.6.2",

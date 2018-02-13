@@ -2,16 +2,16 @@
     "name": "@amalto/cron-input",
     "displayName": "CronInput",
     "description": "Cron input used to schedule a task.",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/amalto/platform6-ui-components"
+        "type": "git",
+        "url": "https://github.com/amalto/platform6-ui-components"
     },
     "keywords": [
-      "user-interface",
-      "react",
-      "typescript"
+        "user-interface",
+        "react",
+        "typescript"
     ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.34",
-        "@amalto/switch": "1.0.9",
-        "@amalto/validated-input": "1.0.28",
-        "@amalto/wordings": "1.0.10",
+        "@amalto/helpers": "1.1.35",
+        "@amalto/switch": "1.0.10",
+        "@amalto/validated-input": "1.0.29",
+        "@amalto/wordings": "1.0.11",
         "classnames": "2.2.5",
         "jquery": "3.3.1",
         "react": "15.6.2",
