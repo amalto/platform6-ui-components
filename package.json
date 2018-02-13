@@ -18,8 +18,8 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "test": "ava --verbose",
-    "publish": "lerna publish --yes --exact",
-    "setup": "npm install --registry=https://www.npmjs.com/",
+    "publish": "lerna publish --yes --exact -- --access public --registry=https://registry.npmjs.org/",
+    "setup": "npm install",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },

@@ -4,6 +4,15 @@
     "description": "Tab displayed inside the Tabs component.",
     "version": "1.0.6",
     "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/amalto/platform6-ui-components"
+    },
+    "keywords": [
+      "user-interface",
+      "react",
+      "typescript"
+    ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

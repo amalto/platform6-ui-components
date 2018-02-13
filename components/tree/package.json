@@ -4,6 +4,15 @@
     "description": "A tree component to display data like an organisation tree.",
     "version": "1.1.40",
     "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/amalto/platform6-ui-components"
+    },
+    "keywords": [
+      "user-interface",
+      "react",
+      "typescript"
+    ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",

@@ -4,6 +4,15 @@
     "description": "Component to pick a color.",
     "version": "1.0.23",
     "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/amalto/platform6-ui-components"
+    },
+    "keywords": [
+      "user-interface",
+      "react",
+      "typescript"
+    ],
     "main": "./build/index.js",
     "typings": "./build/index.d.ts",
     "author": "Amalto Technologies",
