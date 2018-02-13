@@ -50,10 +50,10 @@ module.exports = {
     showCode: true,
 
     ignore: [
-        '**/node_modules/**/*.*',
-        '**/test/**/*.*',
-        '**/readme/**/*.*',
-        '**/public/**/*.*'
+        '**/node_modules/**',
+        '**/test/**',
+        '**/readme/**',
+        '**/public/**'
     ],
 
     skipComponentsWithoutExample: true,
@@ -65,6 +65,7 @@ module.exports = {
     {
         name: 'Components',
         description: 'All the components provided by platform6',
+        ignore: ['**/node_modules/**'],
         components: 'components/**/index.tsx'
     },
     {
