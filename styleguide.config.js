@@ -11,8 +11,6 @@ module.exports = {
         path.resolve(__dirname, 'public/sass/main.scss')
     ],
 
-    resolver: require('react-docgen').resolver.findExportedComponentDefinition,
-
     styleguideComponents: {
         Wrapper: path.join(__dirname, 'typescript/Wrapper')
     },
