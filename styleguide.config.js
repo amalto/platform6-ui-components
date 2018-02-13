@@ -26,6 +26,10 @@ module.exports = {
         return type === 'components' ? `import ${name} from '@amalto/${dir}';` : null
     },
 
+    getExampleFilename(componentPath) {
+        return componentPath.replace(/\.tsx?$/, '.md')
+    },
+
     template: path.resolve(__dirname, './public/index.html'),
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
     webpackConfig: require('./webpack.config.js'),

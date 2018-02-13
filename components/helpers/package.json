@@ -28,7 +28,6 @@
         "@amalto/wordings": "1.0.18",
         "base-64": "0.1.0",
         "classnames": "2.2.5",
-        "install": "^0.10.4",
         "md5": "2.2.1",
         "react": "15.6.2",
         "react-dom": "15.6.2"
@@ -49,8 +48,7 @@
         "jsdom": "11.6.2",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
-        "sinon": "4.2.2",
-        "tap-nyan": "^1.1.0"
+        "sinon": "4.2.2"
     },
     "ava": {
         "concurrency": 5,

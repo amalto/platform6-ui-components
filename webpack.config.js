@@ -16,7 +16,6 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 include: [
                     path.resolve(__dirname, './components'),
-                    path.resolve(__dirname, './examples'),
                     path.resolve(__dirname, './typescript')
                 ],
                 loaders: ['ts-loader'],
