@@ -2,7 +2,7 @@
     "name": "@amalto/data-grid",
     "displayName": "DataGrid",
     "description": "Grid used in platform6.",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -26,10 +26,10 @@
     },
     "dependencies": {
         "@amalto/action-button": "1.1.31",
-        "@amalto/button-bar": "1.0.8",
+        "@amalto/button-bar": "1.0.9",
         "@amalto/color-picker": "1.0.25",
         "@amalto/data-line": "1.0.7",
-        "@amalto/helpers": "1.1.36",
+        "@amalto/helpers": "1.1.37",
         "@amalto/restricted": "1.0.7",
         "@amalto/spinner": "1.0.21",
         "@amalto/toggle-panel": "1.0.11",
