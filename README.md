@@ -10,17 +10,15 @@ Use the following command in your terminal to install the project:
 git clone https://github.com/amalto/platform6-ui-components.git
 ```
 
-If you want to install a specific component use instead:
-
 ### With npm
 
-You need to install [Node.Js](https://nodejs.org/en/).
+You need to install [Node.js](https://nodejs.org/en/).
 
 ```terminal
 npm install --save @amalto/{component_name}
 ```
 
-You must replace `{component_name}` with the wanted component:
+You must replace `{component_name}` with the wanted component.
 ```terminal
 # example
 npm install --save @amalto/spinner
@@ -28,10 +26,7 @@ npm install --save @amalto/spinner
 
 ## Documentation
 
-In order to install the documentation you need [Node.Js](https://nodejs.org/en/).
-
-To read the documentation you need to install the project dependencies:
-
+In order to read the documentation you need to install [Node.js](https://nodejs.org/en/) and the project dependencies.
 ```terminal
 npm run bootstrap
 ```
@@ -46,7 +41,7 @@ You can also build the documentation which will be stored in the styleguide dire
 npm run styleguide:build
 ```
 
-You will be able to see the documentation at the url `http://localhost:6060`
+You will be able to see the documentation at the url [http://localhost:6060](http://localhost:6060)
 
 ## License
 

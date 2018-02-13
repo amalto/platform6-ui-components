@@ -11,6 +11,7 @@
     "react",
     "typescript"
   ],
+  "description": "Platform 6 UI components provided to develop the user interface of services.",
   "publishConfig": {
     "access": "public"
   },
