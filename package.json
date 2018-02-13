@@ -19,7 +19,7 @@
     "build": "lerna run build",
     "test": "ava --verbose",
     "publish": "lerna publish --yes --exact",
-    "setup": "npm install --registry",
+    "setup": "npm install --registry=https://www.npmjs.com/",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },

@@ -3,5 +3,11 @@
   "packages": [
     "components/*"
   ],
+  "commands": {
+    "init": {
+      "exact": true
+    }
+  },
+  "private": false,
   "version": "independent"
 }
