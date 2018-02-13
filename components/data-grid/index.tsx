@@ -4,6 +4,7 @@
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { Dispatch } from 'redux'
 
 //utils & stores
 import { hasRequiredResource, loadTooltips, unloadTooltips, compileWordings } from '@amalto/helpers'
@@ -49,45 +50,66 @@ export namespace DataGrid {
         hideContextMenu: () => Action;
         /** Update user info from store. */
         receiveUserInfo: ( userInfo: UserModel ) => Action;
+        /** Display notification component. */
         displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => Action;
+        /** Display an request error on a notification component. */
         handleErrorDisplay: ( error: any ) => Action;
-
+        /** Display a modal on top of the page. */
         showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: Action | ThunkAction<void, GlobalState, any>, cancelAction?: Action | ThunkAction<void, GlobalState, any>, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => Action;
+        /** Hide the modal previously open by the showDialog method. */
         hideDialog: () => Action;
 
-        //must be added to allow templating
+        /** Must be added to allow templating. */
         dataGridId?: string;
 
-        //serviceId used if the datagrid isn't part of a service
+        /** ServiceId used if the datagrid isn't part of a service */
         forcedServiceId?: string
 
+        /** If you want to prevent templating but need to give the dataGridId props, set this value to false. */
         preventTemplating?: boolean;
 
+        /** Column data array to be displayed. */
         columnHeaders: ColumnHeader[];
+        /** DataLine components array to be displayed. */
         dataLines: JSX.Element[]//should return a DataLine component
+        /** Set true to display a spinner if columnHeaders is being poll from request. */
         fetchingHeaders?: boolean;
+        /** Set true to hide DataGrid body if dataLines is being poll from request. */
         fetchingItems?: boolean;
+        /** Message displayed when no items is provided. */
         noItemsMsg?: string;
+        /** Event triggered when clicking on an header item. */
         sortHandler?: ( columnId: string, sortDirection: string ) => void;
+        /** Column being sorted. */
         sortColumn?: string;
+        /** Sort direction. */
         sortDirection?: string;
 
-        //selection props
+        /** Give the selected items. */
         selectHandler?: ( selectedItemsIdx: number[] ) => void;
+        /** Index of the selected items. */
         selectedItems?: number[];
+        /** Displayed when right clicking on selected items. */
         selectionContextMenu?: JSX.Element;
-
+        
+        /** Force update grid id updated. */
         resetTick?: number;
 
+        /** If true, column header will be visible on top if user scroll down. */
         stickyHeader?: boolean;
 
-        //auto added props
+        /** DataGrid customization state. */
         templates?: DataGridTemplates;
+        /** If templates has changed. */
         templatesChanged?: boolean;
+        /** Current instance selected. */
         selectedAppInstanceName?: string;
+        /** Default service id. */
         defaultServiceId?: string
+        /** User information store inside browser local storage. */
         user?: UserModel;
 
+        /** Locale use. */
         locale: string;
 
         /** Hide props from documentation */
@@ -98,6 +120,8 @@ export namespace DataGrid {
         key?: React.ReactText;
         /** @ignore */
         ref?: React.Ref<DataGrid>;
+        /** @ignore */
+        dispatch: Dispatch<any>;
     }
 
     export interface State {
