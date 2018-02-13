@@ -16,7 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build",
     "test": "ava --verbose",
     "publish": "lerna publish --yes --exact -- --access public --registry=https://registry.npmjs.org/",
@@ -63,8 +63,8 @@
     "webpack-dev-server": "2.10.1"
   },
   "dependencies": {
-    "@amalto/help": "^1.0.1",
-    "@amalto/helpers": "^1.1.26",
+    "@amalto/help": "1.0.15",
+    "@amalto/helpers": "1.1.45",
     "babel-preset-react": "6.24.1",
     "bootstrap": "4.0.0",
     "change-case": "3.0.1",
