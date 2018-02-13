@@ -2,7 +2,7 @@
     "name": "@amalto/code-editor",
     "displayName": "CodeEditor",
     "description": "Customizable code editor (non-form version).",
-    "version": "1.1.46",
+    "version": "1.1.47",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -44,7 +44,7 @@
         "typescript": "2.6.2"
     },
     "dependencies": {
-        "@amalto/helpers": "1.1.35",
+        "@amalto/helpers": "1.1.36",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },

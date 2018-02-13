@@ -2,7 +2,7 @@
     "name": "@amalto/switch",
     "displayName": "Switch",
     "description": "Switch button.",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "license": "MIT",
     "repository": {
         "type": "git",
