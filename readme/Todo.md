@@ -22,7 +22,7 @@ List of what's left to be documented.
 - [x] SwitchInput
 - [x] TextareaInput
 - [x] DateInput
-- [x] TimeInput => Very slow when added to styleguide
+- [x] TimeInput
 - [x] CodeEditorInput
 - [x] CodeEditor
 - [x] CronInput
@@ -30,7 +30,7 @@ List of what's left to be documented.
 - [x] TypeaheadFormInput
 - [x] TogglePanel
 - [x] Spinner
-- [ ] DataGrid
+- [x] DataGrid => **Dispatch after updating data doesn't work**
 - [x] DataLine
 - [x] Tabs
 - [x] Tab
