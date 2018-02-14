@@ -14,7 +14,7 @@ const {
     hideDialog
 } = require('./test/Mock.ts');
 
-initialState = { columnId: 'name', sortDirection: 'DESC', selectedItemsIdx: [] };
+initialState = { columnId: 'name', sortDirection: 'DESC', selectedItemsIdx: [], resetTick: 0 };
 
 const columnHeaders = [
     {
@@ -87,27 +87,33 @@ const dataLines = [
     showDialog={showDialog}
     hideDialog={hideDialog}
 
-    dataGridId='props-data-grid-id-example'
-    forcedServiceId='props-forced-service-id-example'
-    preventTemplating={true}
+    // dataGridId='documentation'
+    forcedServiceId='documentation'
+    // preventTemplating={true}
     columnHeaders={columnHeaders}
     dataLines={dataLines}
     fetchingHeaders={false}
     fetchingItems={false}
     noItemsMsg='No item provided'
-    sortHandler={( columnId, sortDirection ) => setState({ columnId, sortDirection })}
+    sortHandler={( columnId, sortDirection ) => {
+        setState({
+            columnId,
+            sortDirection,
+            resetTick: state.resetTick + 1
+        })
+    }}
     sortColumn={state.columnId}
     sortDirection={state.sortDirection}
     selectHandler={( selectedItemsIdx ) => setState({ selectedItemsIdx })}
     selectedItems={state.selectedItemsIdx}
-    selectionContextMenu={null}
-    resetTick={0}
-    stickyHeader={true}
-    templates={{}}
-    templatesChanged={true}
+    // selectionContextMenu={null}
+    resetTick={state.resetTick}
+    stickyHeader={false}
+    // templates={null}
+    // templatesChanged={true}
     selectedAppInstanceName='test'
     defaultServiceId='documentation'
-    user={null}
+    // user={null}
     locale='en-US'
 />
 ```
