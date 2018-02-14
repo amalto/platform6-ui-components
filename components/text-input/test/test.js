@@ -35,7 +35,7 @@ test('TextInput props should be defined', t => {
             inputClass='text-large'
             type='text'
             autofocus={true}
-            randomGenerator={false}
+            randomGenerator={true}
             collapseErrorSpace={true}
         />
     )

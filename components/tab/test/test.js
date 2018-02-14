@@ -12,14 +12,7 @@ configure({ adapter: new Adapter() });
 
 test.beforeEach('Tab component should exist', t => {
     const wrapper = shallow(
-        <Tab id='tab-example-exist'
-            iconClass='fa fa-file-o'
-            title='Tab'
-            closable={true}
-            tabClassNames=''
-            tabLinkUniqueClass=''
-            tabLinkUniqueStyle={{}}
-        />
+        <Tab id='tab-example-exist' title='Tab' />
     );
 
     t.true(wrapper.exists());

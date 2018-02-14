@@ -30,7 +30,7 @@ test('CheckboxesInput props should be defined', t => {
         { value: 'second', label: 'second' }
     ];
     const wrapper = shallow(
-        <ExampleCheckboxes name='checkboxes-input-example'
+        <ExampleCheckboxesInput name='checkboxes-input-example'
             label='CheckboxesInput example'
             options={options}
             disabled={false}

@@ -15,7 +15,6 @@ test.beforeEach('PdfViewer component should exist', t => {
         <PdfViewer containerClass='padded'
             style={{ height: 100 }}
             pdfSource={null}
-            spinnerSrc={'/images/spinner.gif'}
             locale='en-US'
         />
     );
@@ -31,7 +30,6 @@ test('PdfViewer props should be defined', t => {
         <PdfViewer containerClass='padded'
             style={{ height: 100 }}
             pdfSource={null}
-            spinnerSrc={'/images/spinner.gif'}
             locale='en-US'
         />
     );

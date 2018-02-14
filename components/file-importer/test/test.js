@@ -15,7 +15,6 @@ test.beforeEach('FileImporter component should exist', t => {
             fileData={{ name: 'test_file', size: 100 }}
             cancelHandler={() => { }}
             submitHandler={() => { }}
-            spinnerSrc={'/images/spinner.gif'}
         />
     )
 
@@ -42,7 +41,6 @@ test('FileImporter props should be defined', t => {
                 overwrite: true
             }}
             processing={true}
-            spinnerSrc={'/images/spinner.gif'}
         />
     );
 
@@ -50,7 +48,6 @@ test('FileImporter props should be defined', t => {
     t.true(wrapper.childAt(0).childAt(0).childAt(0).childAt(0).hasClass('panel-title has-spinner'));
     t.is(wrapper.childAt(0).childAt(0).childAt(0).childAt(0).text(), 'Import data from a file');
     t.true(wrapper.childAt(0).childAt(0).childAt(0).childAt(1).hasClass('spinner-container'));
-    t.is(wrapper.childAt(0).childAt(0).childAt(0).childAt(1).childAt(0).prop('src'), '/images/spinner.gif');
 
     t.is(wrapper.childAt(0).childAt(0).childAt(1).childAt(1).children().length, 6);
     t.true(wrapper.childAt(0).childAt(0).childAt(1).childAt(1).childAt(0).hasClass('col-xs-12 col-sm-6'));

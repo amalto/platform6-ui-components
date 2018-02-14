@@ -55,6 +55,7 @@
     "md5": "2.2.1",
     "node-sass": "4.7.2",
     "path": "0.12.7",
+    "pdfjs-dist": "2.0.363",
     "react-addons-test-utils": "15.6.2",
     "react-docgen": "2.20.0",
     "react-docgen-typescript": "1.2.0",
@@ -92,12 +93,16 @@
     "redux-thunk": "^2.2.0"
   },
   "ava": {
+    "files": [
+      "components/**/test.js"
+    ],
     "concurrency": 5,
     "failFast": true,
     "failWithoutAssertions": false,
     "powerAssert": true,
     "require": [
-      "babel-register"
+      "babel-register",
+      "./test/utils.js"
     ],
     "babel": {
       "presets": [

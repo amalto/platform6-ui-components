@@ -13,7 +13,6 @@ test.beforeEach('TogglePanel component should exist', t => {
     const wrapper = shallow(
         <TogglePanel panelTitle='Panel header'
             defaultOpened={true}
-            spinnerSrc='/images/spinner.gif'
         >
             TogglePanel content
         </TogglePanel>
@@ -49,7 +48,6 @@ test('TogglePanel props should be defined', t => {
                 cssClass: 'btn btn-trans btn-warning'
             }}
             customStyle={{ padding: 5 }}
-            spinnerSrc='/images/spinner.gif'
         >
             TogglePanel content
         </TogglePanel>
@@ -66,7 +64,6 @@ test('TogglePanel props should be defined', t => {
     // Spinner
     t.true(wrapper.childAt(0).childAt(0).hasClass('panel-title has-spinner'));
     t.is(wrapper.childAt(0).childAt(0).childAt(0).text(), 'Panel header');
-    t.is(wrapper.childAt(0).childAt(1).childAt(0).prop('src'), '/images/spinner.gif');
 
     // leftCustomControls
     t.is(wrapper.childAt(0).childAt(2).childAt(0).text(), 'Left');

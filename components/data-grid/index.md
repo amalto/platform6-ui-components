@@ -12,7 +12,7 @@ const {
     handleErrorDisplay,
     showDialog,
     hideDialog
-} = require('./test/Mock.tsx');
+} = require('./test/Mock.ts');
 
 initialState = { columnId: 'name', sortDirection: 'DESC', selectedItemsIdx: [] };
 
@@ -103,8 +103,8 @@ const dataLines = [
     selectionContextMenu={null}
     resetTick={0}
     stickyHeader={true}
-    templates={null}
-    templatesChanged={false}
+    templates={{}}
+    templatesChanged={true}
     selectedAppInstanceName='test'
     defaultServiceId='documentation'
     user={null}

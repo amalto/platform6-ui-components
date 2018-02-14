@@ -25,7 +25,6 @@ const toggleCallback = ( opened ) => {
         cssClass: 'btn btn-trans btn-warning'
     }}
     customStyle={{}}
-    spinnerSrc='/images/spinner.gif'
 >
     <div>
         <ActionButton clickAction={() => setState({ showSpinner: !state.showSpinner })}

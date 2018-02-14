@@ -8,5 +8,17 @@ import {
 } from 'enzyme';
 
 import DataGrid from '../build/index.js';
+// const {
+//     api,
+//     displayContextMenu,
+//     hideContextMenu,
+//     receiveUserInfo,
+//     displayNotification,
+//     handleErrorDisplay,
+//     showDialog,
+//     hideDialog
+// } = require('./Mock.ts');
 
 configure({ adapter: new Adapter() });
+
+test.todo('DataGrid: Declaring type wasn\'t working.');
