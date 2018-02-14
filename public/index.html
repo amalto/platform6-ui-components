@@ -19,7 +19,15 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="https://portal.amalto.com/assets/vendor/bootstrap-3.3.1/css/bootstrap.min.css">
     <!-- Fonts  -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        FontAwesomeConfig = {
+            autoReplaceSvg: 'nest',
+            searchPseudoElements: true
+        }
+    </script>
+    <!-- FIXME: When new font are deployed on prod get font from prod. -->
+    <script defer src="https://dev.portal.amalto.com/fonts/fontawesome-5.0.6/fa-v4-shims.js"></script>
+    <script defer src="https://dev.portal.amalto.com/fonts/fontawesome-5.0.6/fontawesome-all.js"></script>
     <link rel="stylesheet" type="text/css" href="https://portal.amalto.com/fonts/icomoon/style.css">
     <!-- CSS Animate -->
     <link rel="stylesheet" type="text/css" href="https://portal.amalto.com/assets/vendor/animate.min.css">
@@ -28,9 +36,8 @@
     <!-- jstree -->
     <link rel="stylesheet" href="https://portal.amalto.com/assets/vendor/jstree-3.3.1/themes/default/style.min.css" />
     <!-- Main stylesheet -->
-    <link rel="stylesheet" type="text/css" href="https://portal.amalto.com/assets/generated/styles.css">
-    <!-- Documentation stylesheet -->
-    <!-- <link rel="stylesheet" type="text/css" href="/assets/generated/styles.css"> -->
+    <!-- FIXME: When new font are deployed on prod get font from prod. -->
+    <link rel="stylesheet" type="text/css" href="https://dev.portal.amalto.com/assets/generated/styles.css">
     <!-- Feature detection -->
     <script type="text/javascript" src="https://portal.amalto.com/assets/vendor/modernizr-custom-3.3.1.min.js"></script>
 </head>

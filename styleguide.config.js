@@ -104,10 +104,16 @@ module.exports = {
         name: 'Utils',
         description: 'Utils used by b2-common-components',
         showCode: false,
-        sections: [{
-            name: 'Helpers',
-            content: 'readme/Helpers.md',
-        }]
+        sections: [
+            {
+                name: 'FontAwesome',
+                content: 'readme/Icons.md',
+            },
+            {
+                name: 'Helpers',
+                content: 'readme/Helpers.md',
+            }
+        ]
     },
     {
         name: 'Todo',
