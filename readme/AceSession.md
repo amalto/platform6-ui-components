@@ -1,4 +1,4 @@
-Simplified object containing the [CodeEditor](http://localhost:6060/#typescript-1)'s ace session.
+Simplified object containing the [CodeEditor](http://localhost:6060/#codeeditor)'s ace session.
 It allow you to maintain the history of your current CodeEditor instance.
 
 ```typescript

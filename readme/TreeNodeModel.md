@@ -1,4 +1,4 @@
-Node object for the [Tree](http://localhost:6060/#typescript-7) component.
+Object used to display the [Tree](http://localhost:6060/#tree) component. It uses an [TreeNodeDataModel](http://localhost:6060/#treenodedatamodel) object to display a more details description of the tree's node when selected.
 
 ```typescript
 interface TreeNodeModel {

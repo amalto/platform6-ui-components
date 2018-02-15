@@ -61,6 +61,9 @@ module ButtonsBar {
 
 }
 
+/**
+ * Component allowing you to display a set of buttons as well as a search input if needed.
+ */
 class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
 
     constructor( props: ButtonsBar.Props ) {

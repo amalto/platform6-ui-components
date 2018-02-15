@@ -76,6 +76,14 @@ module.exports = {
             content: 'readme/AceSession.md'
         },
         {
+            name: 'BtnGroupsProps',
+            content: 'readme/BtnGroupsProps.md'
+        },
+        {
+            name: 'ButtonProps',
+            content: 'readme/ButtonProps.md'
+        },
+        {
             name: 'FileWrapper',
             content: 'readme/FileWrapper.md'
         },

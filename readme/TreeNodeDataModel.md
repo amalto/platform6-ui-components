@@ -1,4 +1,4 @@
-Data displayed after selecting a node on the [Tree](http://localhost:6060/#typescript-7) component.
+Node object used by [TreeNodeModel](http://localhost:6060/#treenodemodel) interface to display the [Tree](http://localhost:6060/#tree)'s data.
 
 ```typescript
 interface TreeNodeDataModel {
