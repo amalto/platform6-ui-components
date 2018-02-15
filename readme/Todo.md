@@ -30,14 +30,14 @@ List of what's left to be documented.
 - [x] TypeaheadFormInput
 - [x] TogglePanel
 - [x] Spinner
-- [x] DataGrid => **Dispatch after updating data doesn't work**
+- [x] DataGrid => **Dispatch not working, it means that DataGrid templates are not updated**
 - [x] DataLine
 - [x] Tabs
 - [x] Tab
 - [x] ButtonsBar
 - [x] Tree
 - [ ] DynamicComponent
-- [ ] CustomFormDialog
+- [x] CustomFormDialog **Dispatch not working, it means that there is no example and no test**
 - [x] Restricted
 - [x] Help
 

@@ -1,7 +1,7 @@
 {
-  "name": "@amalto/custom-form-dialog",
-  "displayName": "CustomFormDialog",
-  "description": "Display custom form.",
+  "name": "@amalto/dynamic-component",
+  "displayName": "DynamicComponent",
+  "description": "Dynamic component used in Platform 6.",
   "version": "1.0.0",
   "license": "MIT",
   "repository": {
