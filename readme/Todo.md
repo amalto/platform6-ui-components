@@ -36,8 +36,8 @@ List of what's left to be documented.
 - [x] Tab
 - [x] ButtonsBar
 - [x] Tree
-- [ ] DynamicComponent
-- [x] CustomFormDialog **Dispatch not working, it means that there is no example and no test**
+- [x] DynamicComponent => **Dispatch not working, it means that there is no example and no test**
+- [x] CustomFormDialog => **Dispatch not working, it means that there is no example and no test**
 - [x] Restricted
 - [x] Help
 

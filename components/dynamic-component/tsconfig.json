@@ -19,8 +19,13 @@
             "es2017"
         ]
     },
+    "include": [
+        "models",
+        "index.tsx"
+    ],
     "exclude": [
         "node_modules",
-        "build"
+        "build",
+        "test"
     ]
 }
