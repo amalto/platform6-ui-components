@@ -1,8 +1,8 @@
 {
-  "name": "@amalto/tree",
-  "displayName": "Tree",
-  "description": "A tree component to display data like an organisation tree.",
-  "version": "1.1.53",
+  "name": "@amalto/custom-form-dialog",
+  "displayName": "CustomFormDialog",
+  "description": "Display custom form.",
+  "version": "1.0.17",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -24,29 +24,34 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@amalto/file-input": "1.0.39",
+    "@amalto/helpers": "1.1.47",
+    "@amalto/spinner": "1.0.27",
+    "@amalto/switch": "1.0.17",
+    "@amalto/toggle-panel": "1.0.17",
+    "@amalto/wordings": "1.0.20",
+    "classnames": "2.2.5",
+    "history": "4.7.2",
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
+  },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "1.1.0",
-    "@types/jquery": "3.3.0",
-    "@types/jstree": "3.3.36",
+    "@types/bootstrap": "3.3.36",
+    "@types/history": "4.6.2",
     "@types/react": "15.6.10",
     "@types/react-dom": "15.5.6",
+    "@types/react-router": "3.0.4",
     "ava": "0.24.0",
     "babel-preset-react": "6.24.1",
     "babel-register": "6.26.0",
-    "base-64": "0.1.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-15": "1.0.5",
     "react-addons-test-utils": "15.6.2",
+    "react-router": "3.0.2",
     "react-test-renderer": "15.6.2",
-    "sinon": "4.2.2",
-    "uuid": "3.2.1"
-  },
-  "dependencies": {
-    "@amalto/helpers": "1.1.47",
-    "@amalto/key-value-editor": "1.1.51",
-    "jstree": "3.3.5",
-    "react": "15.6.2",
-    "react-dom": "15.6.2"
+    "sinon": "4.2.2"
   },
   "ava": {
     "concurrency": 5,
@@ -54,8 +59,7 @@
     "failWithoutAssertions": false,
     "powerAssert": true,
     "require": [
-      "babel-register",
-      "./test/utils.js"
+      "babel-register"
     ],
     "babel": {
       "presets": [

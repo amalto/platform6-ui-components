@@ -73,7 +73,8 @@
     "webpack-dev-server": "2.10.1"
   },
   "dependencies": {
-    "@amalto/helpers": "^1.1.47",
+    "@amalto/helpers": "1.1.47",
+    "@amalto/wordings": "1.0.20",
     "babel-preset-react": "6.24.1",
     "bootstrap": "4.0.0",
     "change-case": "3.0.1",
@@ -90,7 +91,7 @@
     "react-sidebar": "2.3.2",
     "redux": "3.7.2",
     "redux-form": "6.6.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "2.2.0"
   },
   "ava": {
     "files": [

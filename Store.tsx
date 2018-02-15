@@ -1,16 +1,25 @@
-import { combineReducers, createStore, Store } from 'redux'
-import { reducer as formReducer } from 'redux-form'
+import { combineReducers, createStore, Store, compose, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
 
+
+import { reducer as formReducer } from 'redux-form'
 import { datagridReducer } from './typescript/DataGridReducer'
 import { mainReducer } from './typescript/MainReducer'
 import { servicesReducer } from './typescript/ServicesReducer'
+import dialogReducer from './typescript/Redux/Dialog/DialogReducer'
 
-const reducer = combineReducers( {
+const finalReducer = combineReducers( {
     form: formReducer,
     datagrid: datagridReducer,
     main: mainReducer,
-    services: servicesReducer
+    services: servicesReducer,
+    dialog: dialogReducer
 } )
-const store = createStore( reducer )
+
+const finalCreateStore = compose(
+    applyMiddleware( ReduxThunk )
+)( createStore )
+
+const store = finalCreateStore( finalReducer )
 
 export { store }
