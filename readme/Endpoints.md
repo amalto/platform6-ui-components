@@ -1,6 +1,7 @@
 ```typescript
 interface Endpoints {
 
+    /** Get Application Publisher Profile keys. */
     APP_KEYS: () => string,
 
     ////////////////////////////////////////////////
@@ -9,7 +10,10 @@ interface Endpoints {
     //
     ////////////////////////////////////////////////
 
+    /** Get scope tree and permissions for super admin. */
     REQUEST_BASE_SCOPES_TREE: () => string,
+    
+    /** Get cope tree and permissions for current instance. */
     REQUEST_APP_SCOPES_TREE: () => string,
 
     ////////////////////////////////////////////////
@@ -18,28 +22,40 @@ interface Endpoints {
     //
     ////////////////////////////////////////////////
 
+    /** Get authentification code. */
     REQUEST_AUTH_CODE: () => string,
 
+    /** Get user access token. */
     REQUEST_ACCESS_TOKEN: () => string,
 
+    /** Get user info token. */
     REQUEST_TOKEN_INFO: () => string,
 
+    /** Get access history by each token. */
     REQUEST_OAUTH_STATS: () => string,
 
+    /** Deny access to token. */
     REQUEST_REVOKE_TOKEN: () => string,
 
+    /** Get instance by name. */
     REQUEST_APP_INSTANCE: () => string,
 
+    /** Get paged list of instances. */
     REQUEST_APP_INSTANCE_PAGED: () => string,
 
+    /** Get instance client by realm. */
     REQUEST_CLIENT: () => string,
 
+    /** Get premissions set for instance and by page. */
     REQUEST_PERMISSION_SET: () => string,
 
+    /** Get instance realm. */
     REQUEST_REALM: () => string,
 
+    /** Get user informations. */
     REQUEST_USER: () => string,
 
+    /**  */
     REQUEST_USER_PAGED: () => string,
     REQUEST_USER_PAGED_ADMIN: () => string,
     REQUEST_USER_INFO: () => string,
