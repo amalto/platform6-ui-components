@@ -71,42 +71,76 @@ module.exports = {
     {
         name: 'Interfaces',
         description: 'Interfaces used by platform6-ui-components',
-        sections: [{
-            name: 'AceSession',
-            content: 'readme/AceSession.md'
-        },
-        {
-            name: 'BtnGroupsProps',
-            content: 'readme/BtnGroupsProps.md'
-        },
-        {
-            name: 'ButtonProps',
-            content: 'readme/ButtonProps.md'
-        },
-        {
-            name: 'FileWrapper',
-            content: 'readme/FileWrapper.md'
-        },
-        {
-            name: 'KeyValDef',
-            content: 'readme/KeyValDef.md'
-        },
-        {
-            name: 'Marker',
-            content: 'readme/Marker.md'
-        },
-        {
-            name: 'Settings',
-            content: 'readme/Settings.md'
-        },
-        {
-            name: 'TreeNodeDataModel',
-            content: 'readme/TreeNodeDataModel.md'
-        },
-        {
-            name: 'TreeNodeModel',
-            content: 'readme/TreeNodeModel.md'
-        }]
+        sections: [
+            {
+                name: 'AceSession',
+                content: 'readme/AceSession.md'
+            },
+            {
+                name: 'AppEndpointsModel',
+                content: 'readme/AppEndpointsModel.md'
+            },
+            {
+                name: 'Auth',
+                content: 'readme/Auth.md'
+            },
+            {
+                name: 'BtnGroupsProps',
+                content: 'readme/BtnGroupsProps.md'
+            },
+            {
+                name: 'ButtonProps',
+                content: 'readme/ButtonProps.md'
+            },
+            {
+                name: 'CronValue',
+                content: 'readme/CronValue.md'
+            },
+            {
+                name: 'DisplayTemplate',
+                content: 'readme/DisplayTemplate.md'
+            },
+            {
+                name: 'Endpoints',
+                content: 'readme/Endpoints.md'
+            },
+            {
+                name: 'FileWrapper',
+                content: 'readme/FileWrapper.md'
+            },
+            {
+                name: 'KeyValDef',
+                content: 'readme/KeyValDef.md'
+            },
+            {
+                name: 'Marker',
+                content: 'readme/Marker.md'
+            },
+            {
+                name: 'OrderDataset',
+                content: 'readme/OrderDataset.md'
+            },
+            {
+                name: 'Settings',
+                content: 'readme/Settings.md'
+            },
+            {
+                name: 'TreeNodeDataModel',
+                content: 'readme/TreeNodeDataModel.md'
+            },
+            {
+                name: 'TreeNodeModel',
+                content: 'readme/TreeNodeModel.md'
+            },
+            {
+                name: 'UserModel',
+                content: 'readme/UserModel.md'
+            },
+            {
+                name: 'WebApi',
+                content: 'readme/WebApi.md'
+            }
+        ]
     },
     {
         name: 'Utils',

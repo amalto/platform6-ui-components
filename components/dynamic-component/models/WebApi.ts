@@ -1,4 +1,4 @@
-import { Endpoints } from './AppEndpointsModel'
+import { Endpoints } from './Endpoints'
 
 namespace Auth {
     export interface AuthCodeBodyParameters {
