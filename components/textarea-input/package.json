@@ -2,7 +2,7 @@
     "name": "@amalto/textarea-input",
     "displayName": "TextareaInput",
     "description": "Textarea input used on platform6.",
-    "version": "1.0.15",
+    "version": "1.0.16",
     "license": "MIT",
     "repository": {
         "type": "git",
