@@ -16,6 +16,9 @@ import TypeaheadInput from '@amalto/typeahead-input'
 //modules
 import * as classNames from 'classnames'
 
+/**
+ * Language selector.
+ */
 module LanguageWrapper {
     export interface Props extends React.Props<LanguageWrapper> {
         /** Current selected language. */

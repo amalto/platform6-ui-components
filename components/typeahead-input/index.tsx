@@ -2,6 +2,9 @@ import * as React from 'react'
 
 import 'typeahead.js'
 
+/**
+ * Typeahead input displaying a filtered dropdown list from your input and your collection.
+ */
 module TypeaheadInput {
     export interface Props extends React.Props<TypeaheadInput> {
         /** Div id. */

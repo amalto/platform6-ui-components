@@ -4,6 +4,9 @@ import * as extend from 'just-extend'
 
 import { spinner } from './images/spinner'
 
+/**
+ * Loading spinner.
+ */
 module Spinner {
     export interface Props extends React.Props<Spinner> {
         /** Top position. */
@@ -28,9 +31,6 @@ module Spinner {
     }
 }
 
-/**
- * Loading spinner
- */
 class Spinner extends React.Component<Spinner.Props, any> {
     constructor( props: Spinner.Props ) {
         super( props )

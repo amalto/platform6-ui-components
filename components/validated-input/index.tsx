@@ -1,14 +1,14 @@
 import * as React from 'react'
 
-//utils & stores
-import { compileWordings } from '@amalto/helpers'
-
 //components & models
 import Help from '@amalto/help'
 
 //modules
 import * as classNames from 'classnames'
 
+/**
+ * Simple select or input with a validation by regular expression or method check used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ */
 module ValidatedInput {
     export interface Props extends React.Props<ValidatedInput> {
         /** Input name in the DOM. */
@@ -71,9 +71,6 @@ module ValidatedInput {
     }
 }
 
-/**
- * Simple select or input with a validation by regular expression or method check.
- */
 class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInput.State> {
 
     constructor( props: ValidatedInput.Props ) {

@@ -37,7 +37,9 @@ import * as classNames from 'classnames'
 import * as dataGridActions from './actions/DataGridActions'
 import { WebApi } from './models/WebApi';
 
-
+/**
+ * Customizable grid.
+ */
 export namespace DataGrid {
 
     export interface Props extends React.Props<DataGrid>, ReduxProps {

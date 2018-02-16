@@ -2,46 +2,14 @@ import * as React from 'react'
 
 //utils & stores
 import { compileWordings, isValidKeyChar, downloadDataFile } from '@amalto/helpers'
-
-//components & models
-
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //modules
 import * as classNames from 'classnames'
 
-const WORDINGS = {
-
-    'keyvalueeditor.key': {
-        'en-US': 'Key',
-        'fr-FR': 'Clé'
-    },
-    'keyvalueeditor.value': {
-        'en-US': 'Value',
-        'fr-FR': 'Valeur'
-    },
-    'keyvalueeditor.add.text.btn': {
-        'en-US': 'Add a text property',
-        'fr-FR': 'Ajouter une valeur de type texte'
-    },
-    'keyvalueeditor.add.file.btn': {
-        'en-US': 'Add a file property',
-        'fr-FR': 'Ajouter un fichier'
-    },
-    'keyvalueeditor.select.file': {
-        'en-US': 'Select a file:',
-        'fr-FR': 'Ajouter un fichier :'
-    },
-    'keyvalueeditor.download.file': {
-        'en-US': 'Download',
-        'fr-FR': 'Télécharger'
-    },
-    'keyvalueeditor.upload.file': {
-        'en-US': 'Upload a file',
-        'fr-FR': 'Envoyer un fichier'
-    }
-
-}
-
+/**
+ * Map component where you can assiociate keys with texts or files.
+ */
 namespace KeyValueEditor {
 
     export interface KeyValDef {
@@ -85,15 +53,12 @@ namespace KeyValueEditor {
 declare type KeyValDef = KeyValueEditor.KeyValDef
 declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef
 
-/**
- * Map component where you can assiociate keys with texts or files.
- */
 class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
 
     constructor( props: KeyValueEditor.Props ) {
         super( props )
         this.state = {
-            wordings: compileWordings( WORDINGS, props.locale )
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
         }
     }
 

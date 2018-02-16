@@ -2,6 +2,7 @@ import * as React from 'react'
 
 //utils & stores
 import { compileWordings, formatFileSize } from '@amalto/helpers'
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //components
 import Switch from '@amalto/switch'
@@ -10,68 +11,9 @@ import Spinner from '@amalto/spinner'
 //modules
 import * as classNames from 'classnames'
 
-const WORDINGS = {
-
-
-    'fileimporter.title': {
-        'en-US': 'Import data from a file',
-        'fr-FR': 'Importer des données depuis un fichier'
-    },
-    'fileimporter.sub.title': {
-        'en-US': 'Selected file',
-        'fr-FR': 'Fichier sélectionné'
-    },
-    'fileimporter.file.name': {
-        'en-US': 'name',
-        'fr-FR': 'nom'
-    },
-    'fileimporter.file.size': {
-        'en-US': 'size',
-        'fr-FR': 'taille'
-    },
-    'fileimporter.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'fileimporter.button.submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
-    'fileimporter.file.type': {
-        'en-US': 'File type',
-        'fr-FR': 'Type du fichier'
-    },
-    'fileimporter.select.value': {
-        'en-US': 'Select a value',
-        'fr-FR': 'Sélectionner une valeur'
-    },
-    'fileimporter.file.fields.separator': {
-        'en-US': 'Fields separator',
-        'fr-FR': 'Séparateur de colonnes'
-    },
-    'fileimporter.file.encoding': {
-        'en-US': 'Encoding',
-        'fr-FR': 'Encodage'
-    },
-    'fileimporter.file.quote.char': {
-        'en-US': 'Quote character',
-        'fr-FR': 'Caractère de guillemet'
-    },
-    'fileimporter.file.has.headers': {
-        'en-US': 'Headers on first row',
-        'fr-FR': 'Entêtes sur la première ligne'
-    },
-    'fileimporter.file.overwrite.existing': {
-        'en-US': 'Overwrite existing data',
-        'fr-FR': 'Écraser les données existantes'
-    },
-    'fileimporter.none': {
-        'en-US': 'None',
-        'fr-FR': 'Aucun'
-    }
-
-}
-
+/**
+ * Modal use to confirm a file upload.
+ */
 module FileImporter {
     export interface Props extends React.Props<FileImporter> {
         /** File to be imported. */
@@ -120,7 +62,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
     constructor( props: FileImporter.Props ) {
         super( props )
         this.state = {
-            wordings: compileWordings( WORDINGS, props.locale ),
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             impFileType: this.props.fileData.name.toLowerCase().indexOf( '.csv' ) !== -1 ? 'CSV' : 'EXCEL',
             impFileHasHeaders: true,
             impFileOverwrite: false,

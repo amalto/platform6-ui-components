@@ -2,22 +2,15 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import { compileWordings } from '@amalto/helpers'
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //modules
 import { FormattedNumber } from 'react-intl'
 import * as classNames from 'classnames'
 
-const WORDINGS = {
-    'pagingcontrols.page': {
-        'en-US': 'Page',
-        'fr-FR': 'Page'
-    },
-    'pagingcontrols.page.of': {
-        'en-US': 'of',
-        'fr-FR': 'sur'
-    }
-}
-
+/**
+ * Page navigation toolbar.
+ */
 module PagingControls {
     export interface Props extends React.Props<PagingControls> {
         /** Class for the PagingControls component. */
@@ -56,7 +49,7 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
     constructor( props: PagingControls.Props ) {
         super( props )
         this.state = {
-            wordings: compileWordings( WORDINGS, props.locale )
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
         }
     }
 

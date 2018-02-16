@@ -3,6 +3,9 @@ import * as React from 'react'
 //modules
 import * as classNames from 'classnames'
 
+/**
+ * Choose a color from a panel
+ */
 module ColorPicker {
     export interface Props extends React.Props<ColorPicker> {
         /** Current hexadecimal string color. */

@@ -19,7 +19,9 @@ import { RunningJob } from './models/JobControl'
 //modules
 import * as classNames from 'classnames'
 
-
+/**
+ * Display any component passed as props.
+ */
 namespace DynamicComponent {
     export interface Props extends React.Props<DynamicComponent> {
 

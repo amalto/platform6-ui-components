@@ -11,6 +11,9 @@ import Switch from '@amalto/switch'
 //utils
 import * as classNames from 'classnames'
 
+/**
+ * Switch input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ */
 namespace SwitchInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */

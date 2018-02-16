@@ -5,20 +5,15 @@ import * as PDFJS from 'pdfjs-dist'
 
 //utils
 import { compileWordings } from '@amalto/helpers'
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //components
 import Spinner from '@amalto/spinner'
 import PagingControls from '@amalto/paging-controls'
 
-const WORDINGS = {
-
-    'pdfviewer.error.loading': {
-        'en-US': 'PDF loading error',
-        'fr-FR': 'Erreur de chargement du PDF'
-    }
-
-}
-
+/**
+ * Display pdf content.
+ */
 namespace PdfViewer {
     export interface Props extends React.Props<PdfViewer> {
         /** Pdf data. */
@@ -51,9 +46,6 @@ namespace PdfViewer {
     }
 }
 
-/**
- * Display pdf content.
- */
 class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
 
 
@@ -63,7 +55,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
         super( props )
 
         this.state = {
-            wordings: compileWordings( WORDINGS, props.locale ),
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             pdf: undefined,
             loading: false,
             loadingError: false,

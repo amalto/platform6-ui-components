@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom'
 
 //utils
 import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips, base64Decode } from '@amalto/helpers'
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //components
 import KeyValueEditor from '@amalto/key-value-editor'
@@ -13,71 +14,10 @@ import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tre
 //modules
 import * as classNames from 'classnames'
 
-const WORDINGS = {
-
-    'tree.button.create': {
-        'en-US': 'Create child',
-        'fr-FR': 'Créer enfant'
-    },
-    'tree.button.validate': {
-        'en-US': 'Validate',
-        'fr-FR': 'Valider'
-    },
-    'tree.button.edit': {
-        'en-US': 'Edit',
-        'fr-FR': 'Éditer'
-    },
-    'tree.button.update': {
-        'en-US': 'Update',
-        'fr-FR': 'Valider'
-    },
-    'tree.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'tree.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'tree.node.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'tree.node.id': {
-        'en-US': 'ID',
-        'fr-FR': 'ID'
-    },
-    'tree.node.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'tree.node.invalid.key': {
-        'en-US': 'Properties key(s)',
-        'fr-FR': 'Clé(s) de propriétés'
-    },
-    'tree.node.invalid.name': {
-        'en-US': 'Node name must be unique among direct children',
-        'fr-FR': 'Le nom du noeud doit être unique parmi les enfants directs'
-    },
-    'tree.node.properties': {
-        'en-US': 'Additional properties',
-        'fr-FR': 'Propriétés additionnelles'
-    },
-    'tree.selected.node.details': {
-        'en-US': 'Selected node details',
-        'fr-FR': 'Détails du noeud sélectionné'
-    },
-    'tree.expand.all.btn': {
-        'en-US': 'Expand',
-        'fr-FR': 'Déplier'
-    },
-    'tree.collapse.all.btn': {
-        'en-US': 'Collapse',
-        'fr-FR': 'Plier'
-    }
-
-}
-
+/**
+ * Organize custom tree allowing you to manage nodes and attached data to it.
+ * Attached data can be either texts or files.
+ */
 module Tree {
     export interface Props extends React.Props<Tree> {
         /** Any unique DOM ID. */
@@ -123,10 +63,6 @@ module Tree {
     }
 }
 
-/**
- * Organize custom tree allowing you to manage nodes and attached data to it.
- * Attached data can be either texts or files.
- */
 class Tree extends React.Component<Tree.Props, Tree.State> {
 
     private _tree: HTMLDivElement = null
@@ -139,7 +75,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             formOpened: null,
             editedNode: null,
             maxTreeHeight: 0,
-            wordings: compileWordings( WORDINGS, props.locale )
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
         }
     }
 

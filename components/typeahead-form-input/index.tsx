@@ -11,6 +11,9 @@ import Typeahead from '@amalto/typeahead-input'
 //utils
 import * as classNames from 'classnames'
 
+/**
+ * Typeahead input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ */
 namespace TypeaheadFormInput {
     export interface Props extends BaseFieldProps {
         /** Input's name. */

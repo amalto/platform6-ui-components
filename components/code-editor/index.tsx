@@ -70,6 +70,9 @@ const Range = ace.acequire( 'ace/range' ).Range
 
 type AceEditor = ace.Editor
 
+/**
+ * CodeEditor used outside a form.
+ */
 module CodeEditor {
 
     /**
@@ -90,7 +93,7 @@ module CodeEditor {
         loadTime: number;
         /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
-        /** Set ace session. */
+        /** Editor ace session. */
         aceSession?: AceSession;
         /** Unique editor id. */
         docId: string;

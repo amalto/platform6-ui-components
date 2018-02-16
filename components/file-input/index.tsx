@@ -2,6 +2,7 @@ import * as React from 'react'
 
 //utils & stores
 import { compileWordings, formatFileSize } from '@amalto/helpers'
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //components & models
 import FileWrapper from './models/FileWrapper'
@@ -11,39 +12,7 @@ import FileWrapperDisplay from './components/FileWrapper'
 import Dropzone from 'react-dropzone'
 import * as classNames from 'classnames'
 
-const WORDINGS = {
-
-    'fileinput.drop.zone.title': {
-        'en-US': 'Drop files here to upload them',
-        'fr-FR': 'Déposer les fichiers à envoyer ici'
-    },
-    'fileinput.drop.zone.subtitle': {
-        'en-US': '(or click)',
-        'fr-FR': '(ou cliquer)'
-    },
-    'fileinput.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'fileinput.invalid.file': {
-        'en-US': 'Invalid file(s)',
-        'fr-FR': 'Fichier(s) invalide(s)'
-    },
-    'fileinput.content.type': {
-        'en-US': 'Accepted Content-types:',
-        'fr-FR': 'Content-types acceptés :'
-    },
-    'fileinput.max.size': {
-        'en-US': 'Max size:',
-        'fr-FR': 'Taille max :'
-    },
-    'fileinput.unknown.format': {
-        'en-US': 'unknown format',
-        'fr-FR': 'unknown size'
-    }
-
-}
-
+/** Component allowing you to import multiple files. */
 module FileInput {
 
     export interface Props extends React.ClassAttributes<FileInput> {
@@ -105,7 +74,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
     constructor( props: FileInput.Props ) {
         super( props )
         this.state = {
-            wordings: compileWordings( WORDINGS, props.locale ),
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             submitDisabled: false,
             invalidFiles: []
         }

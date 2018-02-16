@@ -23,6 +23,9 @@ export const CRON_VALIDATION = {
     YEAR: /[^\,\-\*\/0-9]/
 }
 
+/**
+ * Cron input scheduler used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ */
 module CronInput {
     export interface Props extends React.Props<CronInput> {
         /** Input's name. */

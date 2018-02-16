@@ -15,6 +15,10 @@ import * as uuid from 'uuid'
 
 type AceEditor = AceAjax.Editor
 
+
+/**
+ * Code editor inputs used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ */
 namespace CodeEditorInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
@@ -33,7 +37,7 @@ namespace CodeEditorInput {
         mode: string;
         /** Editor height. */
         height?: number | string;
-        /** Set ace session. */
+        /** Editor ace session. */
         initSession?: AceSession;
         /**
          * Force save with keyboard shortcuts <strong>Ctrl + s</strong> or <strong>Cmd + s</strong>.

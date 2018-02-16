@@ -2,6 +2,9 @@ import * as React from 'react'
 
 import * as classNames from 'classnames'
 
+/**
+ * Switch input.
+ */
 module Switch {
     export interface Props extends React.Props<Switch> {
         /** Input unique id. */

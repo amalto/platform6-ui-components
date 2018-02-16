@@ -8,6 +8,9 @@ import * as classNames from 'classnames'
 
 import Help from '@amalto/help'
 
+/**
+ * Choose a date from a calendar.
+ */
 module DatePicker {
     export interface DateInputEvent {
         target: {

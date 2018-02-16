@@ -4,6 +4,9 @@ import * as classNames from 'classnames'
 
 import Spinner from '@amalto/spinner'
 
+/**
+ * Panel component with configuration buttons.
+ */
 module TogglePanel {
     export interface Props extends React.Props<TogglePanel> {
         /** Header title. */

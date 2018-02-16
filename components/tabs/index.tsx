@@ -18,6 +18,9 @@ import * as classNames from 'classnames'
 import * as uuid from 'uuid'
 import * as PerfectScrollbar from 'react-perfect-scrollbar'
 
+/**
+ * Tabs management component allowing you to display custom content.
+ */
 module Tabs {
 
     export interface Props extends React.Props<Tabs> {
