@@ -121,6 +121,10 @@ module.exports = {
                 content: 'readme/DisplayTemplate.md'
             },
             {
+                name: 'DisplayTemplates',
+                content: 'readme/DisplayTemplates.md'
+            },
+            {
                 name: 'EndpointsUrl',
                 content: 'readme/EndpointsUrl.md'
             },
