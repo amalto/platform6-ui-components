@@ -105,6 +105,10 @@ module.exports = {
                 content: 'readme/CronValue.md'
             },
             {
+                name: 'DateInputEvent',
+                content: 'readme/DateInputEvent.md'
+            },
+            {
                 name: 'DisplayTemplate',
                 content: 'readme/DisplayTemplate.md'
             },
