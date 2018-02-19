@@ -55,8 +55,6 @@ interface Endpoints {
 
     //org
 
-    REQUEST_ORG_EXPORT: () => string,
-
     REQUEST_ORG_USERS: () => string,
 
     REQUEST_ORG_PATHS: () => string,
@@ -65,13 +63,9 @@ interface Endpoints {
 
     REQUEST_ORG_UPDATE_NODE: () => string,
 
-    REQUEST_ORG_IMPORT: () => string,
-
     REQUEST_ORG_DELETE_NODE: () => string,
 
     REQUEST_ORG_NODES: () => string,
-
-    REQUEST_ORG_PROPERTIES: () => string,
 
     ////////////////////////////////////////////////
     //
@@ -97,9 +91,6 @@ interface Endpoints {
     // Messages (and documents)
     //
     ////////////////////////////////////////////////
-
-
-    REQUEST_MESSAGES_IS_ADMIN: () => string,
 
     REQUEST_MESSAGES_VIEWS: () => string,
 
