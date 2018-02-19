@@ -20,6 +20,7 @@
     "build": "lerna run build",
     "test": "ava --verbose",
     "publish": "lerna publish --yes --exact -- --access public --registry=https://registry.npmjs.org/",
+    "publish:force": "lerna publish --force-publish=*",
     "setup": "npm install",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
