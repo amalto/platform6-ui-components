@@ -44,15 +44,15 @@ export namespace DataGrid {
 
     export interface Props extends React.Props<DataGrid>, ReduxProps {
 
-        /** Interface used to perform all the api call to the server. */
+        /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#webapi). */
         api: WebApi;
         /** Display context menu. */
         displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => Action;
-        /** Hide contet menu. */
+        /** Hide contet menu. More details on [Action](http://localhost:6060/#action). */
         hideContextMenu: () => Action;
-        /** Update user info from store. */
+        /** Update user info from store. More details on [UserModel](http://localhost:6060/#usermodel). */
         receiveUserInfo: ( userInfo: UserModel ) => Action;
-        /** Display notification component. */
+        /** Display notification component. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
         displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => Action;
         /** Display an request error on a notification component. */
         handleErrorDisplay: ( error: any ) => Action;
@@ -100,7 +100,7 @@ export namespace DataGrid {
         /** If true, column header will be visible on top if user scroll down. */
         stickyHeader?: boolean;
 
-        /** DataGrid customization state. */
+        /** DataGrid customization state. More details on [DataGridTemplates](http://localhost:6060/#datagridtemplates). */
         templates?: DataGridTemplates;
         /** If templates has changed. */
         templatesChanged?: boolean;

@@ -19,7 +19,7 @@ import * as classNames from 'classnames'
  */
 module DataLine {
     export interface Props extends React.Props<DataLine> {
-        /** Cells to be displayed. */
+        /** Cells to be displayed. More details on [CellData](http://localhost:6060/#celldata). */
         cells: CellData[];
         /** Single click event handler. */
         sgleClickHandler?: () => void;
@@ -40,7 +40,7 @@ module DataLine {
         /** CSS class applied to the line. */
         cssClass?: string;
 
-        /** Handle cells width, aligment, color, order and display mode (desktop, laptop or mobile). */
+        /** Handle cells width, aligment, color, order and display mode (desktop, laptop or mobile). More details on [DisplayTemplate](http://localhost:6060/#displaytemplate). */
         displayTemplate?: DisplayTemplate;
 
         /** Hide props from documentation */

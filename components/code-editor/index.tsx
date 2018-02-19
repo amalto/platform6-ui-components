@@ -93,11 +93,11 @@ module CodeEditor {
         loadTime: number;
         /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
-        /** Editor ace session. */
+        /** Editor ace session. More details on [AceSession](http://localhost:6060/#acesession). */
         aceSession?: AceSession;
         /** Unique editor id. */
         docId: string;
-        /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. */
+        /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. More details on [UserModel](http://localhost:6060/#usermodel). */
         userJson?: UserModel.JsonContent;
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;

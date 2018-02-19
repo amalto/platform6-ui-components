@@ -25,7 +25,7 @@ import * as classNames from 'classnames'
 namespace DynamicComponent {
     export interface Props extends React.Props<DynamicComponent> {
 
-        /** Interface used to perform all the api call to the server. */
+        /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#webapi). */
         api: WebApi;
         /** Allow you to handle your navigation. */
         appHistory: History;
@@ -54,7 +54,7 @@ namespace DynamicComponent {
         showJobStatus?: ( jobId: string | number, callbackOnComplete?: ( job: RunningJob ) => void ) => void;
         /** If any application publisher profile is accessible to user. */
         canSelectAppKey?: boolean;
-        /** Current application publisher profile object selected. */
+        /** Current application publisher profile object selected. More details on [AppKey](http://localhost:6060/#appkey). */
         selectedAppKey?: AppKey;
         /** Current application publisher profile name selected. */
         selectedAppKeyName?: string;
@@ -65,7 +65,7 @@ namespace DynamicComponent {
         showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[] ) => void;
         /** Hide the confirmation modal. */
         hideDialog: () => void;
-        /** Display a custom notification. */
+        /** Display a custom notification. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
         displayNotification: ( notificationOptions: NotificationModel ) => void;
         /** Display an error notification for  */
         handleErrorDisplay: ( error: any ) => void;

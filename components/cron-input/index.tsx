@@ -30,7 +30,7 @@ module CronInput {
     export interface Props extends React.Props<CronInput> {
         /** Input's name. */
         name: string;
-        /** Date value part. */
+        /** Date value part. More details on [CronValue](http://localhost:6060/#cronvalue). */
         value: CronValue;
         /** Cron value onchange event. */
         handleChange: ( fieldValue: CronValue ) => void;

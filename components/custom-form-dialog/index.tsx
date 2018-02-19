@@ -29,14 +29,14 @@ import FileWrapper from './models/FileWrapper'
 namespace CustomFormDialog {
     export interface Props extends React.Props<CustomFormDialog> {
 
-        /** Interface used to perform all the api call to the server. */
+        /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#webapi). */
         api: WebApi;
         /** Allow you to handle your navigation. */
         appHistory: History;
 
         /** Panel title. */
         title: string;
-        /** Initial state of the form. */
+        /** Initial state of the form. More details on [CustomFormData](http://localhost:6060/#customformdata). */
         formData: CustomFormData;
         /** Refresh component data. */
         refreshData: () => void;
@@ -50,7 +50,7 @@ namespace CustomFormDialog {
         newFileUploadSession?: () => void;
         /** Cancel upload. */
         cancelFileUploadSession?: () => void;
-        /** File to be uploaded. */
+        /** File to be uploaded. More details on [FileWrapper](http://localhost:6060/#filewrapper). */
         filesQueue?: {
             [fileName: string]: FileWrapper
         };
@@ -63,7 +63,7 @@ namespace CustomFormDialog {
         showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[] ) => void;
         /** Hide the confirmation modal. */
         hideDialog: () => void;
-        /** Display a custom notification. */
+        /** Display a custom notification. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
         displayNotification: ( notificationOptions: NotificationModel ) => void;
         /** Display an error notification for  */
         handleErrorDisplay: ( error: any ) => void;

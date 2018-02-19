@@ -12,7 +12,7 @@ module Restricted {
     export interface Props extends React.Props<Restricted> {
         /** Instance you are connected to. */
         appInstance?: string;
-        /** Tree containing all your permissions. */
+        /** Tree containing all your permissions. More details on [ScopeTree](http://localhost:6060/#scopetree). */
         scopesTree?: ScopesTree;
         /** Actions which allow you to display children. */
         authorizedActions?: string[];
@@ -20,7 +20,7 @@ module Restricted {
         requiredActions?: string[];
         /** Feature you want to access. */
         featureId?: string;
-        /** Permissions needed to display children. */
+        /** Permissions needed to display children. More details on [PermissionDef](http://localhost:6060/#permissiondef). */
         permissions?: string[] | PermissionDef[];
         /** Permission need to be in * instance. */
         needsGlobalPermission?: boolean;

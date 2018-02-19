@@ -37,7 +37,7 @@ namespace CodeEditorInput {
         mode: string;
         /** Editor height. */
         height?: number | string;
-        /** Editor ace session. */
+        /** Editor ace session. More details on [AceSession](http://localhost:6060/#acesession) */
         initSession?: AceSession;
         /**
          * Force save with keyboard shortcuts <strong>Ctrl + s</strong> or <strong>Cmd + s</strong>.
@@ -45,11 +45,11 @@ namespace CodeEditorInput {
         saveEditorContent?: ( session: AceSession ) => void;
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
-        /** Editor visual settings. */
+        /** Editor visual settings. More details on [Settings](http://localhost:6060/#settings). */
         displaySettings?: Settings;
         /** If updated, force update of component. */
         resetTick?: number;
-        /** User session informations used to get his editor preferences. */
+        /** User session informations used to get his editor preferences. More details on [UserModel](http://localhost:6060/#usermodel). */
         user?: UserModel;
 
         /** Hide props from documentation */

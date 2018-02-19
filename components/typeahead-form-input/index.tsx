@@ -20,7 +20,7 @@ namespace TypeaheadFormInput {
         name: string;
         /** Collection of item to be display inside the dropdown list. */
         collection: any[];
-        /** Search remotely from server. */
+        /** Search remotely from server. More details on [RemoteConfig](http://localhost:6060/#remoteconfig). */
         remote?: Typeahead.RemoteConfig;
         /** Manage the dropdown list of choices when input value is updated by user. */
         datumTokenizer?: ( datum: any ) => string[];
