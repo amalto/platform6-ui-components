@@ -133,6 +133,10 @@ module.exports = {
                 content: 'readme/PDFSource.md'
             },
             {
+                name: 'PermissionDef',
+                content: 'readme/PermissionDef.md'
+            },
+            {
                 name: 'RemoteConfig',
                 content: 'readme/RemoteConfig.md'
             },
