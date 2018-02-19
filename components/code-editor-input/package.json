@@ -2,7 +2,7 @@
     "name": "@amalto/code-editor-input",
     "displayName": "CodeEditorInput",
     "description": "Editor used in form.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -41,7 +41,7 @@
         "sinon": "4.2.2"
     },
     "dependencies": {
-        "@amalto/help": "^1.1.0",
+        "@amalto/help": "1.1.1",
         "brace": "0.11.0",
         "classnames": "2.2.5",
         "react": "15.6.2",

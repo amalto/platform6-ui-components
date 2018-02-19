@@ -2,7 +2,7 @@
     "name": "@amalto/select-input",
     "displayName": "SelectInput",
     "description": "Select input used on platform6.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "^1.1.0",
+        "@amalto/help": "1.1.1",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",
