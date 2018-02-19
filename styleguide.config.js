@@ -129,6 +129,10 @@ module.exports = {
                 content: 'readme/OrderDataset.md'
             },
             {
+                name: 'PDFSource',
+                content: 'readme/PDFSource.md'
+            },
+            {
                 name: 'Settings',
                 content: 'readme/Settings.md'
             },
