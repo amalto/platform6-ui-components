@@ -2,7 +2,7 @@
   "name": "@amalto/custom-form-dialog",
   "displayName": "CustomFormDialog",
   "description": "Display custom form.",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,12 +25,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/file-input": "1.0.40",
-    "@amalto/helpers": "1.1.47",
-    "@amalto/spinner": "1.0.28",
-    "@amalto/switch": "1.0.18",
-    "@amalto/toggle-panel": "1.0.18",
-    "@amalto/wordings": "1.0.20",
+    "@amalto/file-input": "^1.1.0",
+    "@amalto/helpers": "^1.2.0",
+    "@amalto/spinner": "^1.1.0",
+    "@amalto/switch": "^1.1.0",
+    "@amalto/toggle-panel": "^1.1.0",
+    "@amalto/wordings": "^1.1.0",
     "classnames": "2.2.5",
     "history": "4.7.2",
     "react": "15.6.2",
