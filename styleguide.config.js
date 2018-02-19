@@ -101,6 +101,10 @@ module.exports = {
                 content: 'readme/ButtonProps.md'
             },
             {
+                name: 'CellData',
+                content: 'readme/CellData.md'
+            },
+            {
                 name: 'CronValue',
                 content: 'readme/CronValue.md'
             },

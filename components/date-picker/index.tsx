@@ -24,7 +24,10 @@ module DatePicker {
         name: string;
         /** Default value of the date picker. You can put the current value in here, usually stored in the state of the parent component. */
         defaultValue: string;
-        /** Date change event. */
+        /**
+         * Date change event.
+         * [DateInputEvent]{@link http://localehost:6060/#dateinputevent}
+         */
         handleDateChangeEvent?: ( event: DateInputEvent ) => void;
         /** Callback function executed on user input. */
         handleDateChange?: ( date: string ) => void;
