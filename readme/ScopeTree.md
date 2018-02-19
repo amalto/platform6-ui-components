@@ -1,0 +1,1 @@
+ScopeTree interface is not editable by user, it regroup the user permissions on each instance he has access to.
