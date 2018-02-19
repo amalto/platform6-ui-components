@@ -133,6 +133,10 @@ module.exports = {
                 content: 'readme/PDFSource.md'
             },
             {
+                name: 'RemoteConfig',
+                content: 'readme/RemoteConfig.md'
+            },
+            {
                 name: 'ScopeTree',
                 content: 'readme/ScopeTree.md'
             },
