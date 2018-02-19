@@ -77,8 +77,16 @@ module.exports = {
                 content: 'readme/AceSession.md'
             },
             {
+                name: 'Action',
+                content: 'readme/Action.md'
+            },
+            {
                 name: 'AppEndpointsModel',
                 content: 'readme/AppEndpointsModel.md'
+            },
+            {
+                name: 'AppKey',
+                content: 'readme/AppKey.md'
             },
             {
                 name: 'Auth',
