@@ -1,33 +1,115 @@
+
+The WebApi interface use others interfaces listed here:
+- [Auth](http://localhost:6060/#auth)
+- [EndpointsUrl](http://localhost:6060/#endpointsurl)
+
+
 ```typescript
 interface WebApi {
 
-    /**  */
-    requestAuthorizationCode: ( code: string, uname: string, pw: string, realm?: string, cctx?: string ) => Promise<Auth.AuthCodeData>
+    /** Request authentification code. */
+    requestAuthorizationCode: (
+        code: string,
+        uname: string,
+        pw: string,
+        realm?: string,
+        cctx?: string
+    ) => Promise<Auth.AuthCodeData>;
 
-    requestAccessToken: ( authorizationCode: string ) => Promise<Auth.TokenData>
-    requestClientAccessToken: () => Promise<Auth.TokenData>
+    /** Request access token using the authentification code. */
+    requestAccessToken: ( authorizationCode: string ) => Promise<Auth.TokenData>;
+    requestClientAccessToken: () => Promise<Auth.TokenData>;
 
     /** Refresh access token and reset token expiration timer. */
-    refreshAccessToken: () => Promise<Auth.TokenData>
+    refreshAccessToken: () => Promise<Auth.TokenData>;
 
     /** Queries that required a client token. */
-    getWithClientToken: ( url: string, clientAccessToken: string, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
-    delWithClientToken: ( url: string, clientAccessToken: string, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
-    postWithClientToken: ( url: string, clientAccessToken: string, bodyParameters?: any, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
-    putWithClientToken: ( url: string, clientAccessToken: string, bodyParameters?: any, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
+    getWithClientToken: (
+        url: string,
+        clientAccessToken: string,
+        queryParameters?: any,
+        disableTimeout?: boolean
+    ) => Promise<any>;
 
-    download: ( url: string, queryParameters?: Object ) => Promise<any>
-    staticGet: ( url: string, queryParameters?: any, disableTimeout?: boolean, fullResponse?: boolean ) => Promise<any>
+    delWithClientToken: (
+        url: string,
+        clientAccessToken: string,
+        queryParameters?: any,
+        disableTimeout?: boolean
+    ) => Promise<any>;
 
-    /** Queries  */
-    get: ( url: string, queryParameters?: any, disableTimeout?: boolean, fullResponse?: boolean ) => Promise<any>
-    del: ( url: string, queryParameters?: any, disableTimeout?: boolean, bodyParameters?: any ) => Promise<any>
-    post: ( url: string, bodyParameters?: any, queryParameters?: any, disableTimeout?: boolean, formUrlEncoded?: boolean ) => Promise<any>
-    postWithFile: ( url: string, fieldName: string, file: any, fieldsParameters?: { [fieldName: string]: string }, queryParameters?: any ) => Promise<any>
-    put: ( url: string, bodyParameters?: any, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
-    putWithFile: ( url: string, fieldName: string, file: any, fieldsParameters?: { [fieldName: string]: string }, queryParameters?: any ) => Promise<any>
+    postWithClientToken: (
+        url: string,
+        clientAccessToken: string,
+        bodyParameters?: any,
+        queryParameters?: any,
+        disableTimeout?: boolean
+    ) => Promise<any>;
 
-    /** Endpoint url to be used when */
-    endpoints: Endpoints
+    putWithClientToken: (
+        url: string,
+        clientAccessToken: string,
+        bodyParameters?: any,
+        queryParameters?: any,
+        disableTimeout?: boolean
+    ) => Promise<any>;
+
+    download: ( url: string, queryParameters?: Object ) => Promise<any>;
+
+    staticGet: (
+        url: string,
+        queryParameters?: any,
+        disableTimeout?: boolean,
+        fullResponse?: boolean
+    ) => Promise<any>;
+
+    /** Queries */
+    get: (
+        url: string,
+        queryParameters?: any,
+        disableTimeout?: boolean,
+        fullResponse?: boolean
+    ) => Promise<any>;
+    
+    del: (
+        url: string,
+        queryParameters?: any,
+        disableTimeout?: boolean,
+        bodyParameters?: any
+    ) => Promise<any>;
+    
+    post: (
+        url: string,
+        bodyParameters?: any,
+        queryParameters?: any,
+        disableTimeout?: boolean,
+        formUrlEncoded?: boolean
+    ) => Promise<any>;
+    
+    postWithFile: (
+        url: string,
+        fieldName: string,
+        file: any,
+        fieldsParameters?: { [fieldName: string]: string },
+        queryParameters?: any
+    ) => Promise<any>;
+    
+    put: (
+        url: string,
+        bodyParameters?: any,
+        queryParameters?: any,
+        disableTimeout?: boolean
+    ) => Promise<any>;
+    
+    putWithFile: (
+        url: string,
+        fieldName: string,
+        file: any,
+        fieldsParameters?: { [fieldName: string]: string },
+        queryParameters?: any
+    ) => Promise<any>;
+
+    /** Endpoint url to be used when making a query. */
+    endpoints: EndpointsUrl;
 }
 ```

@@ -119,10 +119,10 @@ interface EndpointsUrl {
     //
     ////////////////////////////////////////////////
 
-    /** Get user community informations. */
+    /** Get the membership details associated with a registered user. */
     REQUEST_CTY_MEMBER: () => string,
 
-    /** Get community informations. */
+    /** Using community attribute values, obtain a community status value. */
     REQUEST_CTY_STATUS: () => string,
 
     ////////////////////////////////////////////////
