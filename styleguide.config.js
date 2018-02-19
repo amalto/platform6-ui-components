@@ -105,6 +105,10 @@ module.exports = {
                 content: 'readme/CellData.md'
             },
             {
+                name: 'ColumnHeader',
+                content: 'readme/ColumnHeader.md'
+            },
+            {
                 name: 'CronValue',
                 content: 'readme/CronValue.md'
             },

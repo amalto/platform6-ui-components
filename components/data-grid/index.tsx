@@ -70,7 +70,7 @@ export namespace DataGrid {
         /** If you want to prevent templating but need to give the dataGridId props, set this value to false. */
         preventTemplating?: boolean;
 
-        /** Column data array to be displayed. */
+        /** Column data array to be displayed. More details on [ColumnHeader](http://localhost:6060/#columnheader). */
         columnHeaders: ColumnHeader[];
         /** DataLine components array to be displayed. */
         dataLines: JSX.Element[]//should return a DataLine component
