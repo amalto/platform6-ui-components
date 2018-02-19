@@ -1,4 +1,4 @@
-interface Endpoints {
+interface EndpointsUrl {
 
     APP_KEYS: () => string,
 
@@ -286,4 +286,4 @@ interface Endpoints {
     getAppKeysUrl: () => string
 }
 
-export { Endpoints }
+export { EndpointsUrl }

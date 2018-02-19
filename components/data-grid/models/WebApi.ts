@@ -1,4 +1,4 @@
-import { Endpoints } from './Endpoints'
+import { EndpointsUrl } from './EndpointsUrl'
 
 namespace Auth {
     export interface AuthCodeBodyParameters {
@@ -60,7 +60,7 @@ interface WebApi {
     putWithFile: ( url: string, fieldName: string, file: any, fieldsParameters?: { [fieldName: string]: string }, queryParameters?: any ) => Promise<any>
 
 
-    endpoints: Endpoints
+    endpoints: EndpointsUrl
 }
 
 export { Auth, WebApi }

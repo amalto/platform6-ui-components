@@ -101,8 +101,8 @@ module.exports = {
                 content: 'readme/DisplayTemplate.md'
             },
             {
-                name: 'Endpoints',
-                content: 'readme/Endpoints.md'
+                name: 'EndpointsUrl',
+                content: 'readme/EndpointsUrl.md'
             },
             {
                 name: 'FileWrapper',
