@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import * as extend from 'just-extend'
-
 import { spinner } from './images/spinner'
 
 /**
@@ -44,7 +42,7 @@ class Spinner extends React.Component<Spinner.Props, any> {
             textAlign: 'center'
         }
 
-        extend( spinnerStyle, this.props )
+        $.extend( {}, spinnerStyle, this.props )
 
         return (
 
