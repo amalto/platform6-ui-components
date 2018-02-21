@@ -208,7 +208,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
         const doUpdate = ( newDoc || nextProps.loadTime > this._firstChangeTime )
 
-        // FIXME: Handle multiple editor with readonly and write mode
         this._editor.setReadOnly( nextProps.readonly )
         if ( doUpdate ) {
             $( this._editorPanel ).height( this.props.height || 300 )

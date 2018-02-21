@@ -1,8 +1,3 @@
-/**
- * Custom Webpack config for Storybook
- * https://storybook.js.org/configurations/custom-webpack-config
- */
-
 const path = require('path');
 const webpack = require('webpack');
 
