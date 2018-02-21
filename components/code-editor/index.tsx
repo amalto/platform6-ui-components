@@ -85,6 +85,8 @@ module CodeEditor {
         value: string;
         /** Editor language mode. Default value is <strong>javascript</strong>. */
         mode: string;
+        /** Move the editor and cursor to end of file after updating. */
+        moveToEndOfFile?: boolean;
         /** If true don't allow user to edit content. */
         readonly?: boolean;
         /** Editor visual settings. */
@@ -216,6 +218,11 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         doUpdate && this.setEditorSession( this._editor, nextProps )
         displaySettingsChanged && this._markerId && this._editor.getSession().removeMarker( this._markerId )
         displaySettingsChanged && this.setEditorOptions( this._editor, nextProps )
+
+        if ( nextProps.moveToEndOfFile ) {
+            this._editor.getSelection().moveCursorFileEnd()
+            this._editor.scrollToLine( this._editor.getSession().getLength(), false, true, () => this._editor.scrollPageDown() )
+        }
 
         return doUpdate
     }
