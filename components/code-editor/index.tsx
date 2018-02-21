@@ -145,6 +145,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     private _firstChangeTime: number
     private _editorPanel: HTMLDivElement
     private _editor: AceEditor
+    private _clearTimeout: number = null
 
     constructor( props: CodeEditor.Props ) {
         super( props )
@@ -269,14 +270,30 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             //BGR: If this is too colstly/slow we will have to get smarter there
             //CHRIS: setTimeout Needed to be able to save the complete history
-            setTimeout( () => {
-                props.saveSession && props.saveSession( $.extend( {}, this.getAceSession( editor ), {
-                    cursorPosition: e.end
-                } ) )
-            }, 0 )
+            // setTimeout( () => {
+            //     props.saveSession && props.saveSession( $.extend( {}, this.getAceSession( editor ), {
+            //         cursorPosition: e.end
+            //     } ) )
+            // }, 0 )
+            this._clearTimeout = requestAnimationFrame( ( timestamp ) => this.saveSessionHandler( timestamp, e ) )
         } )
 
         this._firstChangeTime = props.loadTime
+    }
+
+    private saveSessionHandler = ( timestamp: number, e: any ): void => {
+        let progress = 0;
+        if ( timestamp === null ) this._clearTimeout = timestamp;
+
+        progress = timestamp - this._clearTimeout
+
+        if ( progress < 100 ) {
+            this._clearTimeout = requestAnimationFrame( ( timestamp ) => this.saveSessionHandler(timestamp, e) );
+        } else {
+            if ( this.props.saveSession ) {
+                this.props.saveSession($.extend({}, this.getAceSession(this._editor), {cursorPosition: e.end}));
+            }
+        }
     }
 
     //see http://stackoverflow.com/questions/28257566/ace-editor-save-send-session-on-server-via-post
