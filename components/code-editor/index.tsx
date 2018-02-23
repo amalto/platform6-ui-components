@@ -101,6 +101,8 @@ module CodeEditor {
         docId: string;
         /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. More details on [UserModel](http://localhost:6060/#usermodel). */
         userJson?: UserModel.JsonContent;
+        /** Code editor onchange event handler. */
+        editorOnChange?: ( session: AceSession ) => void;
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
         /**
@@ -281,6 +283,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             this._canUpdate = true
             this._cursorLastPosition = e.end
+
+            this.props.editorOnChange($.extend(  this.getAceSession( this._editor ), { cursorPosition: this._cursorLastPosition } ) )
         } )
 
         this._firstChangeTime = props.loadTime
