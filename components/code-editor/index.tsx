@@ -193,15 +193,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     componentWillUnmount() {
-        this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
-
         window.removeEventListener( 'resize', () => this.resizeEditor() )
 
         //save current session
-        const session: AceSession = this.getAceSession( this._editor )
-
-        session.cursorPosition = this._cursorLastPosition
-        this.props.saveSession && this.props.saveSession( session )
+        this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
 
         clearInterval( this._clearTimeout )
 
