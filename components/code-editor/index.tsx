@@ -275,7 +275,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         editor.getSession().setMode( props.mode && `ace/mode/${ props.mode }` || 'ace/mode/javascript' )
 
-        editor.getSession().on( 'changeCursor', e => {
+        editor.getSession().on( 'change', e => {
+            
             if ( this._firstChangeTime <= props.loadTime ) {
                 this._firstChangeTime = new Date().getTime()
             }
@@ -285,18 +286,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             this.props.editorOnChange(this._editor.getValue())
         } )
-
-        // editor.getSession().on( 'change', e => {
-            
-        //     if ( this._firstChangeTime <= props.loadTime ) {
-        //         this._firstChangeTime = new Date().getTime()
-        //     }
-
-        //     this._canUpdate = true
-        //     this._cursorLastPosition = e.end
-
-        //     this.props.editorOnChange(this._editor.getValue())
-        // } )
 
         this._firstChangeTime = props.loadTime
     }
