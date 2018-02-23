@@ -145,7 +145,9 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     private _firstChangeTime: number
     private _editorPanel: HTMLDivElement
     private _editor: AceEditor
-    private _clearTimeout: number = null
+    private _clearTimeout: NodeJS.Timer = null
+    private _canUpdate: boolean = false
+    private _cursorLastPosition: { row: number, column: number } = { row: 0, column: 0 }
 
     constructor( props: CodeEditor.Props ) {
         super( props )
@@ -181,13 +183,27 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         this.resizeEditor()
         !this.props.readonly && this.focus( this.props.aceSession )
+
+        this._clearTimeout = setInterval(() => {
+            if ( this._canUpdate ) {
+                this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
+                this._canUpdate = false
+            }
+        }, 12000)
     }
 
     componentWillUnmount() {
+        this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
+
         window.removeEventListener( 'resize', () => this.resizeEditor() )
 
         //save current session
-        this.props.saveSession && this.props.saveSession( this.getAceSession( this._editor ) )
+        const session: AceSession = this.getAceSession( this._editor )
+
+        session.cursorPosition = this._cursorLastPosition
+        this.props.saveSession && this.props.saveSession( session )
+
+        clearInterval( this._clearTimeout )
 
         //destroy the editor
         this._editor && this._editor.destroy()
@@ -263,36 +279,16 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         editor.getSession().setMode( props.mode && `ace/mode/${ props.mode }` || 'ace/mode/javascript' )
 
         editor.getSession().on( 'change', e => {
+            
             if ( this._firstChangeTime <= props.loadTime ) {
                 this._firstChangeTime = new Date().getTime()
             }
 
-            //BGR: If this is too colstly/slow we will have to get smarter there
-            //CHRIS: setTimeout Needed to be able to save the complete history
-            // setTimeout( () => {
-            //     props.saveSession && props.saveSession( $.extend( {}, this.getAceSession( editor ), {
-            //         cursorPosition: e.end
-            //     } ) )
-            // }, 0 )
-            this._clearTimeout = requestAnimationFrame( ( timestamp ) => this.saveSessionHandler( timestamp, e ) )
+            this._canUpdate = true
+            this._cursorLastPosition = e.end
         } )
 
         this._firstChangeTime = props.loadTime
-    }
-
-    private saveSessionHandler = ( timestamp: number, e: any ): void => {
-        let progress = 0;
-        if ( timestamp === null ) this._clearTimeout = timestamp;
-
-        progress = timestamp - this._clearTimeout
-
-        if ( progress < 100 ) {
-            this._clearTimeout = requestAnimationFrame( ( timestamp ) => this.saveSessionHandler(timestamp, e) );
-        } else {
-            if ( this.props.saveSession ) {
-                this.props.saveSession($.extend({}, this.getAceSession(this._editor), {cursorPosition: e.end}));
-            }
-        }
     }
 
     //see http://stackoverflow.com/questions/28257566/ace-editor-save-send-session-on-server-via-post
