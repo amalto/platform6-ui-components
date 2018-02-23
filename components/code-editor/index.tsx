@@ -198,7 +198,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         window.removeEventListener( 'resize', () => this.resizeEditor() )
 
         //save current session
-        this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
+        this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ), {cursorPosition: this._cursorLastPosition} ) )
 
         clearInterval( this._clearTimeout )
 
