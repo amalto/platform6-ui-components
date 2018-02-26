@@ -1,11 +1,10 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 //const
 import { languageIso, Language } from './constants/Data'
 
 //helpers
-import { addValToArrayNoDup, removeValFromArrayNoDup, loadTooltips, unloadTooltips, compileWordings } from '@amalto/helpers'
+import { addValToArrayNoDup, removeValFromArrayNoDup, compileWordings } from '@amalto/helpers'
 
 //wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -60,18 +59,6 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
             addOpen: false,
             wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
         }
-    }
-
-    componentDidMount() {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
-    }
-
-    componentDidUpdate() {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
-    }
-
-    componentWillUnmount() {
-        unloadTooltips( ReactDOM.findDOMNode( this ) )
     }
 
     render() {

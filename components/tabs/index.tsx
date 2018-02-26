@@ -3,7 +3,6 @@
  */
 
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 //utils & stores
 import { compileWordings } from '@amalto/helpers'
@@ -62,18 +61,6 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
     constructor( props: Tabs.Props ) {
         super( props )
     }
-
-    // componentDidMount() {
-    //     loadTooltips( ReactDOM.findDOMNode( this ) )
-    // }
-
-    // componentDidUpdate() {
-    //     loadTooltips( ReactDOM.findDOMNode( this ) )
-    // }
-
-    // componentWillUnmount() {
-    //     unloadTooltips( ReactDOM.findDOMNode( this ) )
-    // }
 
     render() {
 

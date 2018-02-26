@@ -147,7 +147,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     private _firstChangeTime: number
     private _editorPanel: HTMLDivElement
     private _editor: AceEditor
-    private _clearTimeout: NodeJS.Timer = null
+    // Should be NodeJS.Timer but actual version of node js only have the prototype that return number
+    private _clearTimeout: any = null 
     private _canUpdate: boolean = false
     private _cursorLastPosition: { row: number, column: number } = { row: 0, column: 0 }
 

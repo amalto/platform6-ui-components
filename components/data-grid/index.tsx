@@ -3,11 +3,10 @@
  */
 
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import { Dispatch } from 'redux'
 
 //utils & stores
-import { hasRequiredResource, loadTooltips, unloadTooltips, compileWordings } from '@amalto/helpers'
+import { hasRequiredResource, compileWordings } from '@amalto/helpers'
 import GlobalState from './models/GlobalState'
 import { ReduxProps } from './models/ReduxProps'
 
@@ -167,8 +166,6 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
         if ( sortColumn && sortDirection && sortHandler ) {
             sortHandler( sortColumn, sortDirection )
         }
-
-        loadTooltips( ReactDOM.findDOMNode( this ) )
     }
 
     componentDidUpdate( prevProps: DataGrid.Props ) {
@@ -200,12 +197,6 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                 } ) )
             } )
         }
-
-        loadTooltips( ReactDOM.findDOMNode( this ) )
-    }
-
-    componentWillUnmount() {
-        unloadTooltips( ReactDOM.findDOMNode( this ) )
     }
 
     render() {

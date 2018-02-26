@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 //utils
-import { compileWordings, isNotEmpty, downloadDataFile, loadTooltips, unloadTooltips, base64Decode } from '@amalto/helpers'
+import { compileWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers'
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //components
@@ -273,12 +273,9 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         this.setState( {
             treeInstance: tree
         } )
-
-        loadTooltips( ReactDOM.findDOMNode( this ) )
     }
 
     componentDidUpdate( prevProps: Tree.Props, prevState: Tree.State ) {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
 
         if ( prevState.selectedNode !== this.state.selectedNode || prevProps.children !== this.props.children ) {
 
@@ -317,7 +314,6 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         }
         let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
         $( treeContainer ).off()
-        unloadTooltips( ReactDOM.findDOMNode( this ) )
     }
 
     private downloadFile = ( event: any ) => {
