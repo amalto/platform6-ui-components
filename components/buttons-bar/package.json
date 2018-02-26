@@ -2,7 +2,7 @@
     "name": "@amalto/buttons-bar",
     "displayName": "ButtonsBar",
     "description": "Buttons bar used in platform6.",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "license": "MIT",
     "repository": {
         "type": "git",
