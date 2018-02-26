@@ -25,12 +25,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/file-input": "^1.3.4",
-    "@amalto/helpers": "^1.3.4",
-    "@amalto/spinner": "^1.3.2",
-    "@amalto/switch": "^1.3.2",
-    "@amalto/toggle-panel": "^1.3.4",
-    "@amalto/wordings": "^1.3.3",
+    "@amalto/file-input": "1.3.4",
+    "@amalto/helpers": "1.3.4",
+    "@amalto/spinner": "1.3.2",
+    "@amalto/switch": "1.3.2",
+    "@amalto/toggle-panel": "1.3.4",
+    "@amalto/wordings": "1.3.3",
     "classnames": "2.2.5",
     "history": "4.7.2",
     "react": "15.6.2",
