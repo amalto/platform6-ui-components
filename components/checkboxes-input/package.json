@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "^1.3.1",
+        "@amalto/help": "1.3.1",
         "@amalto/helpers": "1.3.2",
         "classnames": "2.2.5",
         "react": "15.6.2",
