@@ -18,7 +18,7 @@
     "author": "Amalto Technologies",
     "scripts": {
         "setup": "npm install",
-        "prepare": "tsc -d"
+        "prepare": "rm -rf ./build; tsc -d"
     },
     "publishConfig": {
         "access": "public"

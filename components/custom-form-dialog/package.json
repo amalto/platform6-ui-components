@@ -19,7 +19,7 @@
   "scripts": {
     "setup": "npm install",
     "test": "ava ./test/test.js --verbose",
-    "prepare": "tsc -d"
+    "prepare": "rm -rf ./build; tsc -d"
   },
   "publishConfig": {
     "access": "public"
