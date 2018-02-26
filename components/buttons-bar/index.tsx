@@ -3,7 +3,6 @@
  */
 
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 //wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
