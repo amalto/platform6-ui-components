@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 //utils & stores
 import { getStyleDef, compileWordings } from '@amalto/helpers'

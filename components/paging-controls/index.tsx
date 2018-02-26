@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 import { compileWordings } from '@amalto/helpers'
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 //modules
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
