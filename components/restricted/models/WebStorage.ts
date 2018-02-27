@@ -40,7 +40,8 @@ export interface WebStorage {
 
     /** saved in sessionStorage */
     storeUser: ( user: UserModel ) => void;
-
+    
+    /** Get user data */
     user: () => UserModel;
 
     /** Saved in sessionStorage */
@@ -61,12 +62,14 @@ export interface WebStorage {
     /** saved in sessionStorage */
     storeAppEndpoints: ( appEndpoints: Endpoints ) => void;
 
+    /** Get endpoints */
     appEndpoints: () => Endpoints;
 
     /** saved in sessionStorage */
     storeScopesTree: ( scopesTree: ScopesTree ) => void;
 
-     scopesTree: () => ScopesTree;
+    /** Get scopes tree */
+    scopesTree: () => ScopesTree;
 
      /** saved in sessionStorage */
     storeTempLoginData: ( loginData: Object ) => void;
@@ -80,7 +83,9 @@ export interface WebStorage {
 
     selectedLocaleHeader: () => any;
 
+    /** Set locale. */
     storeLocale: ( locale: string ) => void;
 
+    /** Get locale. */
     locale: () => string;
 }
