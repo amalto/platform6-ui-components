@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 import { arrayMin, arrayMax } from '@amalto/helpers'
 
@@ -19,6 +18,9 @@ module SelectablesContainer {
 
 
 class SelectablesContainer extends React.Component<SelectablesContainer.Props, any> {
+
+    private _container: HTMLDivElement = null
+
     constructor( props: SelectablesContainer.Props ) {
         super( props )
     }
@@ -50,7 +52,7 @@ class SelectablesContainer extends React.Component<SelectablesContainer.Props, a
         }
 
         return (
-            <div {...additionalProps}>
+            <div ref={dom => this._container = dom} {...additionalProps}>
                 {selectableItems}
             </div>
         )
@@ -58,8 +60,7 @@ class SelectablesContainer extends React.Component<SelectablesContainer.Props, a
 
     componentDidMount() {
         if ( this.props.selectedItems.length === 1 ) {
-            let element = ReactDOM.findDOMNode( this )
-            let $selectedElement = $( element ).find( '[data-item-index="' + this.props.selectedItems[0] + '"]' )
+            let $selectedElement = $( this._container ).find( '[data-item-index="' + this.props.selectedItems[0] + '"]' )
             window.setTimeout( () => {
                 $( 'html' ).animate( { scrollTop: $selectedElement.position().top }, 500 )
             }, 500 )
