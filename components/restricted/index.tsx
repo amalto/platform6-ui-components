@@ -48,7 +48,7 @@ class Restricted extends React.Component<Restricted.Props, any> {
         const { webStorage, authorizedActions, requiredActions, permissions, featureId, needsGlobalPermission, children } = this.props
 
         const appInstance: string = webStorage.selectedAppInstance && webStorage.selectedAppInstance.name
-        const scopesTree: ScopesTree = webStorage.scopesTree()
+        const scopesTree: ScopesTree = webStorage.scopesTree
 
         if ( appInstance && scopesTree ) {
 

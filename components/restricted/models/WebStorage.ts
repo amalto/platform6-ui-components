@@ -14,12 +14,12 @@ export interface WebStorage {
     storeInfraAlertCloseDate: ( date: string ) => void;
 
     /**  */
-    infraAlertCloseDate: () => string;
+    infraAlertCloseDate: string;
 
     /** always saved in localStorage (used for app bootstrapping) */
     storeLastTriggeredUpdate: ( date: string ) => void;
     /**  */
-    lastTriggeredUpdate: () => string;
+    lastTriggeredUpdate: string;
 
     /**
      * Access and refresh token are either saved in webStorage or in session storage
@@ -27,11 +27,11 @@ export interface WebStorage {
      */
     storeAccessToken: ( accessToken: string ) => void;
 
-    accessToken: () => string;
+    accessToken: string;
 
     storeRefreshToken: ( refreshToken: string ) => void;
 
-    refreshToken: () => string;
+    refreshToken: string;
 
     /**
      * All other globals variables are saved in session storage
@@ -40,52 +40,47 @@ export interface WebStorage {
 
     /** saved in sessionStorage */
     storeUser: ( user: UserModel ) => void;
-    
-    /** Get user data */
-    user: () => UserModel;
+
+    user: UserModel;
 
     /** Saved in sessionStorage */
     storeAppInstances: ( appInstances: AppInstanceModel[] ) => void;
 
-    appInstances: () => AppInstanceModel[];
+    appInstances: AppInstanceModel[];
 
     /** Saved in sessionStorage */
     storeSelectedAppInstance: ( appInstanceName: string ) => void;
 
-    selectedAppInstance: () => AppInstanceModel;
+    selectedAppInstance: AppInstanceModel;
 
     /** saved in localStorage */
      storeLastUsedAppInstance: ( appInstanceName: string ) => void;
 
-    lastUsedAppInstance: () => string;
+    lastUsedAppInstance: string;
 
     /** saved in sessionStorage */
     storeAppEndpoints: ( appEndpoints: Endpoints ) => void;
 
-    /** Get endpoints */
-    appEndpoints: () => Endpoints;
+    appEndpoints: Endpoints;
 
     /** saved in sessionStorage */
     storeScopesTree: ( scopesTree: ScopesTree ) => void;
 
-    /** Get scopes tree */
-    scopesTree: () => ScopesTree;
+    scopesTree: ScopesTree;
 
      /** saved in sessionStorage */
     storeTempLoginData: ( loginData: Object ) => void;
 
     clearTempLoginData: () => void;
 
-    tempLoginData: () => any;
+    tempLoginData: any;
 
     /** saved in sessionStorage */
     storeSelectedLocaleHeader: ( locale: string ) => void;
 
-    selectedLocaleHeader: () => any;
+    selectedLocaleHeader: any;
 
-    /** Set locale. */
     storeLocale: ( locale: string ) => void;
 
-    /** Get locale. */
-    locale: () => string;
+    locale: string;
 }
