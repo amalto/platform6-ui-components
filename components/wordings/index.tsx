@@ -7,6 +7,38 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
     },
+    'defaultsettingsform.button.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'datagrid.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'button.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Enregistrer'
+    },
+    'frameform.button.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'framemanager.notification.button.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'framesubmitform.btn.submit': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'editownhome.button.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
+    'messageslist.save': {
+        'en-US': 'Save',
+        'fr-FR': 'Sauvegarder'
+    },
     'cancel': {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
@@ -878,10 +910,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
-    'defaultsettingsform.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
 
     'appinstanceinput.menu.title': {
         'en-US': 'Instance',
@@ -1288,10 +1316,6 @@ export const MULTILANGUAGE_WORDINGS = {
                 <em class="text-medium">Vos préférences d'affichage (présence, largeur et ordre des colonnes...) seront enregistrées dans votre profil utilisateur.</em>
             </div>
         `
-    },
-    'datagrid.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
     },
     'datagrid.modal.confirm': {
         'en-US': 'Confirm',
@@ -2108,10 +2132,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Élément non supprimé'
     },
 
-    'button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Enregistrer'
-    },
     'button.reset': {
         'en-US': 'Reset changes',
         'fr-FR': 'Annuler les changements'
@@ -2212,10 +2232,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'frameform.button.cancel': {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
-    },
-    'frameform.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
     },
     'frameform.button.lang': {
         'en-US': 'Language',
@@ -2330,10 +2346,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Info',
         'fr-FR': 'Info'
     },
-    'framemanager.notification.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
 
     'framepreview.data.language': {
         'en-US': 'EN',
@@ -2398,10 +2410,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
-    'framesubmitform.btn.submit': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
 
     'editdefaultorder.status.empty': {
         'en-US': 'No module selected',
@@ -2447,10 +2455,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'editownhome.headercolumn.title': {
         'en-US': 'Title',
         'fr-FR': 'Titre'
-    },
-    'editownhome.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
     },
     'editownhome.button.configure': {
         'en-US': 'Configure layout',
@@ -3272,10 +3276,6 @@ export const MULTILANGUAGE_WORDINGS = {
                 <em class="text-medium">Vos préférences d'affichage (présence, largeur et ordre des colonnes, action des boutons “Rechercher” et “Réinitialiser”...) seront enregistrées dans votre profil utilisateur. Vous pouvez sauvegarder des paramètres spécifiques pour chaque mode d'affichage (mobile, moyen et grand écran).</em>
             </div>
         `
-    },
-    'messageslist.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
     },
     'workflow.work.items': {
         'en-US': 'Work items',
