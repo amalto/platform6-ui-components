@@ -2,7 +2,7 @@
   "name": "@amalto/data-grid",
   "displayName": "DataGrid",
   "description": "Grid used in platform6.",
-  "version": "1.3.9",
+  "version": "1.3.10",
   "license": "MIT",
   "repository": {
     "type": "git",
