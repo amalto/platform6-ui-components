@@ -62,12 +62,12 @@ class Restricted extends React.Component<Restricted.Props, any> {
             //WARNING - if both featureId AND permissions are specified in props, only permissions will be used for the display of the children components
 
             else if ( permissions && permissions.length ) {
-                if ( hasAnyPermission( appInstance, scopesTree, permissions, needsGlobalPermission ) ) {
+                if ( hasAnyPermission( webStorage, permissions, needsGlobalPermission ) ) {
                     return children as React.ReactElement<any>
                 }
             }
             else if ( featureId ) {
-                if ( hasAccessToFeature( appInstance, scopesTree, featureId, needsGlobalPermission ) ) {
+                if ( hasAccessToFeature( webStorage, appInstance, featureId, needsGlobalPermission ) ) {
                     return children as React.ReactElement<any>
                 }
             }
