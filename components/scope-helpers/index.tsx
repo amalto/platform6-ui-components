@@ -1,5 +1,6 @@
 
 import { ScopeValue, PermissionDef, ScopesTree } from './models/Scopes'
+import { WebStorage } from './models/WebStorage'
 
 const ASTERISK = '*'
 
@@ -7,15 +8,17 @@ const ASTERISK = '*'
  * User got permission.
  * e.g: reports=view
  */
-export function hasPermission( appInstance: string, scopesTree: ScopesTree, permission: string, global?: boolean ): boolean {
-    return hasAnyPermission( appInstance, scopesTree, [permission], global )
+export function hasPermission( webStorage: WebStorage, permission: string, global?: boolean ): boolean {
+    return hasAnyPermission( webStorage, [permission], global )
 }
 
 /**
  * User got all permissions.
  * e.g: ['reports=view', 'reports=read']
  */
-export function hasAnyPermission( appInstance: string, scopesTree: ScopesTree, permissions: string[] | PermissionDef[], global?: boolean ) {
+export function hasAnyPermission( webStorage: WebStorage, permissions: string[] | PermissionDef[], global?: boolean ) {
+
+    const appInstance = webStorage.selectedAppInstance && webStorage.selectedAppInstance.name
 
     if ( !permissions || !permissions.length || !appInstance ) {
         return false
@@ -25,7 +28,7 @@ export function hasAnyPermission( appInstance: string, scopesTree: ScopesTree, p
         if ( typeof permissions[i] === 'object' ) {
 
             //if the permission is required globally, the check will be only on the * instance
-            const appInstanceValues = getScopeValues( global ? ASTERISK : appInstance, scopesTree, ( permissions[i] as PermissionDef ).feature, ( permissions[i] as PermissionDef ).action )
+            const appInstanceValues = getScopeValues( webStorage, global ? ASTERISK : appInstance, ( permissions[i] as PermissionDef ).feature, ( permissions[i] as PermissionDef ).action )
 
             if ( appInstanceValues ) {
 
@@ -34,17 +37,17 @@ export function hasAnyPermission( appInstance: string, scopesTree: ScopesTree, p
                 }
 
                 if ( ( appInstanceValues as string[] ).length ) {
-                    if ( ( appInstanceValues as string[] ).indexOf( ( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
+                    if ( ( appInstanceValues as string[] ).indexOf(( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
                         return true
                     }
                 }
 
             }
 
-            //check values on * instance
+            //check values on * instance            
             if ( !global ) {
 
-                const asteriskValues = getScopeValues( ASTERISK, scopesTree, ( permissions[i] as PermissionDef ).feature, ( permissions[i] as PermissionDef ).action )
+                const asteriskValues = getScopeValues( webStorage, ASTERISK, ( permissions[i] as PermissionDef ).feature, ( permissions[i] as PermissionDef ).action )
 
                 if ( asteriskValues ) {
                     if ( $.isEmptyObject( asteriskValues ) ) {
@@ -52,7 +55,7 @@ export function hasAnyPermission( appInstance: string, scopesTree: ScopesTree, p
                     }
 
                     if ( ( asteriskValues as string[] ).length ) {
-                        if ( ( asteriskValues as string[] ).indexOf( ( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
+                        if ( ( asteriskValues as string[] ).indexOf(( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
                             return true
                         }
                     }
@@ -66,7 +69,7 @@ export function hasAnyPermission( appInstance: string, scopesTree: ScopesTree, p
             const parsedScopeString = ( permissions[i] as string ).split( '=' )
 
             if ( parsedScopeString.length === 2 ) {
-                if ( hasPermissionFor( global ? ASTERISK : appInstance, scopesTree, parsedScopeString[0], parsedScopeString[1] ) ) {
+                if ( hasPermissionFor( webStorage, global ? ASTERISK : appInstance, parsedScopeString[0], parsedScopeString[1] ) ) {
                     return true
                 }
             }
@@ -82,15 +85,15 @@ export function hasAnyPermission( appInstance: string, scopesTree: ScopesTree, p
 }
 
 /** @private */
-function hasPermissionFor( appInstance: string, scopesTree: ScopesTree, feature: string, action: string ): boolean {
+function hasPermissionFor( webStorage: WebStorage, appInstance: string, feature: string, action: string ): boolean {
 
     return (
-        hasAccessToAction( appInstance, scopesTree, feature, action ) ||
-        hasAccessToAction( appInstance, scopesTree, feature, ASTERISK ) ||
-        hasAccessToAction( appInstance, scopesTree, ASTERISK, ASTERISK ) ||
-        hasAccessToAction( ASTERISK, scopesTree, feature, action ) ||
-        hasAccessToAction( ASTERISK, scopesTree, feature, ASTERISK ) ||
-        hasAccessToAction( ASTERISK, scopesTree, ASTERISK, ASTERISK )
+        hasAccessToAction( webStorage, appInstance, feature, action ) ||
+        hasAccessToAction( webStorage,  appInstance, feature, ASTERISK ) ||
+        hasAccessToAction( webStorage, appInstance, ASTERISK, ASTERISK ) ||
+        hasAccessToAction( webStorage, ASTERISK, feature, action ) ||
+        hasAccessToAction( webStorage, ASTERISK, feature, ASTERISK ) ||
+        hasAccessToAction( webStorage, ASTERISK, ASTERISK, ASTERISK )
     )
 
 }
@@ -99,15 +102,22 @@ function hasPermissionFor( appInstance: string, scopesTree: ScopesTree, feature:
  * Get item values from permission.
  * e.g: reports=read('Test'), will return ['Test'].
  */
-export function getScopeValues( appInstance: string, scopesTree: ScopesTree, feature: string, action: string ): ScopeValue | string[] {
+export function getScopeValues( webStorage: WebStorage, appInstance: string, feature: string, action: string ): ScopeValue | string[] {
+
+    const scopesTree = webStorage.scopesTree
+
     return scopesTree && scopesTree[appInstance] && scopesTree[appInstance][feature] && scopesTree[appInstance][feature][action]
+
 }
 
 /**
  * User has access to feature id.
  * e.g: reports=read, here 'reports' is the feature id.
  */
-export function hasAccessToFeature( appInstance: string, scopesTree: ScopesTree, feature: string, global?: boolean ): boolean {
+export function hasAccessToFeature( webStorage: WebStorage, appInstance: string, feature: string, global?: boolean ): boolean {
+
+    const scopesTree = webStorage.scopesTree
+
     if ( !scopesTree || !appInstance || !feature ) {
         return false
     }
@@ -122,7 +132,7 @@ export function hasAccessToFeature( appInstance: string, scopesTree: ScopesTree,
 
     //if we don't find an access to the feature on the specific instance, we can check on the * one
     if ( !global ) {
-        return hasAccessToFeature( appInstance, scopesTree, feature, true )
+        return hasAccessToFeature( webStorage, appInstance, feature, true )
     }
 
     return false
@@ -133,14 +143,14 @@ export function hasAccessToFeature( appInstance: string, scopesTree: ScopesTree,
  * User has access to feature action.
  * e.g: reports=read, here 'read' is the action.
  */
-function hasAccessToAction( appInstance: string, scopesTree: ScopesTree, feature: string, action: string ) {
+function hasAccessToAction( webStorage: WebStorage, appInstance: any, feature: string, action: string ) {
 
     if ( !appInstance || !feature || !action ) {
         return false
     }
 
-    if ( hasAccessToFeature( appInstance, scopesTree, feature ) ) {
-        return getScopeValues( appInstance, scopesTree, feature, action ) !== undefined
+    if ( hasAccessToFeature( webStorage, appInstance, feature ) ) {
+        return getScopeValues( webStorage, appInstance, feature, action ) !== undefined
     }
     else {
         return false
@@ -151,12 +161,14 @@ function hasAccessToAction( appInstance: string, scopesTree: ScopesTree, feature
 /**
  * Action has filter on it.
  */
-export function hasFilterOn( appInstance: string, scopesTree: ScopesTree, feature: string, viewFilter: string, filterKey: string ): boolean {
+export function hasFilterOn( webStorage: WebStorage, feature: string, viewFilter: string, filterKey: string ): boolean {
+
+    const appInstance = webStorage.selectedAppInstance && webStorage.selectedAppInstance.name
 
     //filter by key value are made via the keyword 'allow'
 
-    const appInstanceValues = appInstance ? getScopeValues( appInstance, scopesTree, feature, 'allow' ) as ScopeValue : undefined
-    const asteriskValues = getScopeValues( ASTERISK, scopesTree, feature, 'allow' ) as ScopeValue
+    const appInstanceValues = appInstance ? getScopeValues( webStorage, appInstance, feature, 'allow' ) as ScopeValue : undefined
+    const asteriskValues = getScopeValues( webStorage, ASTERISK, feature, 'allow' ) as ScopeValue
 
     if ( appInstanceValues && appInstanceValues[viewFilter] ) {
         if ( appInstanceValues[viewFilter].filter( scopeFilter => scopeFilter.searchable === filterKey ).length > 0 ) {
