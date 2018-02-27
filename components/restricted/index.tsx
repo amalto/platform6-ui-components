@@ -1,7 +1,10 @@
 import * as React from 'react'
 
+// Models
 import { PermissionDef, ScopesTree } from './models/Scopes'
+import { WebStorage } from './models/WebStorage'
 
+// Utils
 import { hasPermission, hasAnyPermission, hasAccessToFeature, canPerformAnyAction } from '@amalto/scope-helpers'
 
 /**
@@ -10,10 +13,8 @@ import { hasPermission, hasAnyPermission, hasAccessToFeature, canPerformAnyActio
 module Restricted {
 
     export interface Props extends React.Props<Restricted> {
-        /** Instance you are connected to. */
-        appInstance?: string;
-        /** Tree containing all your permissions. More details on [ScopeTree](http://localhost:6060/#scopetree). */
-        scopesTree?: ScopesTree;
+        /** Storage which contain instance and user informations. */
+        webStorage: WebStorage;
         /** Actions which allow you to display children. */
         authorizedActions?: string[];
         /** Actions you want to use. */
@@ -44,7 +45,10 @@ class Restricted extends React.Component<Restricted.Props, any> {
 
     render() {
 
-        const { appInstance, scopesTree, authorizedActions, requiredActions, permissions, featureId, needsGlobalPermission, children } = this.props
+        const { webStorage, authorizedActions, requiredActions, permissions, featureId, needsGlobalPermission, children } = this.props
+
+        const appInstance: string = webStorage.selectedAppInstance && webStorage.selectedAppInstance.name
+        const scopesTree: ScopesTree = webStorage.scopesTree()
 
         if ( appInstance && scopesTree ) {
 
