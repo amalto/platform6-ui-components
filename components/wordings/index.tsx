@@ -43,7 +43,87 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
+    'register.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'permissionsetform.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'userform.button.close': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'crossreftableform.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'defaultsettingsform.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'fileimporter.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'fileinput.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'tree.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'customformdialog.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'formdialog.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'frameform.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'framesubmitform.btn.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'jobcontrolpanel.job.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
+    'profile.button.cancel': {
+        'en-US': 'Cancel',
+        'fr-FR': 'Annuler'
+    },
     'email': {
+        'en-US': 'Email',
+        'fr-FR': 'Email'
+    },
+    'register.email.label': {
+        'en-US': 'Email',
+        'fr-FR': 'Email'
+    },
+    'userform.email': {
+        'en-US': 'Email',
+        'fr-FR': 'Email'
+    },
+    'users.email': {
+        'en-US': 'Email',
+        'fr-FR': 'Email'
+    },
+    'forgotpassword.email': {
+        'en-US': 'Email',
+        'fr-FR': 'Email'
+    },
+    'login.email': {
         'en-US': 'Email',
         'fr-FR': 'Email'
     },
@@ -51,7 +131,71 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Submit',
         'fr-FR': 'Valider'
     },
+    'register.button.submit': {
+        'en-US': 'Submit',
+        'fr-FR': 'Valider'
+    },
+    'fileimporter.button.submit': {
+        'en-US': 'Submit',
+        'fr-FR': 'Valider'
+    },
+    'formdialog.submit': {
+        'en-US': 'Submit',
+        'fr-FR': 'Valider'
+    },
     'confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'permissionsets.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'users.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'admin.user.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'admin.permissionset.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'confirm.title': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'datagrid.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'crossrefactions.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'workflow.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'homedefaultsettings.modal.title.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'jobcontrolpanel.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'profile.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'organisations.modal.confirm': {
+        'en-US': 'Confirm',
+        'fr-FR': 'Confirmer'
+    },
+    'services.confirm': {
         'en-US': 'Confirm',
         'fr-FR': 'Confirmer'
     },
@@ -59,7 +203,51 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Delete',
         'fr-FR': 'Supprimer'
     },
+    'permissionsets.button.delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
+    'users.button.delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
+    'admin.button.delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
+    'crossreftableform.tooltip.delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
+    'tree.button.delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
+    'messageslist.button.delete': {
+        'en-US': 'Delete',
+        'fr-FR': 'Supprimer'
+    },
     'enabled': {
+        'en-US': 'Enabled',
+        'fr-FR': 'Actif'
+    },
+    'permissionset.data.enabled': {
+        'en-US': 'Enabled',
+        'fr-FR': 'Actif'
+    },
+    'permissionsetform.data.enabled': {
+        'en-US': 'Enabled',
+        'fr-FR': 'Actif'
+    },
+    'user.data.enabled': {
+        'en-US': 'Enabled',
+        'fr-FR': 'Actif'
+    },
+    'userform.enabled': {
+        'en-US': 'Enabled',
+        'fr-FR': 'Actif'
+    },
+    'croninput.enabled': {
         'en-US': 'Enabled',
         'fr-FR': 'Actif'
     },
@@ -67,7 +255,55 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Permissions',
         'fr-FR': 'Permissions'
     },
+    'permissionset.data.permissions': {
+        'en-US': 'Permissions',
+        'fr-FR': 'Permissions'
+    },
+    'permissionsetform.data.permissions': {
+        'en-US': 'Permissions',
+        'fr-FR': 'Permissions'
+    },
+    'user.data.permissionset.permissions': {
+        'en-US': 'Permissions',
+        'fr-FR': 'Permissions'
+    },
+    'users.permissions': {
+        'en-US': 'Permissions',
+        'fr-FR': 'Permissions'
+    },
     'description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'permissionset.data.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'permissionsetform.data.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'framepreview.title.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'tree.node.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'frameform.grid.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'framemanager.grid.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'framesubmitform.label.description': {
+        'en-US': 'Description',
+        'fr-FR': 'Description'
+    },
+    'jobcontrolpanel.job.description': {
         'en-US': 'Description',
         'fr-FR': 'Description'
     },
@@ -75,7 +311,51 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Name',
         'fr-FR': 'Nom'
     },
+    'permissionsetform.data.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'crossreftableform.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'counter.text.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'defaultsettingsform.label.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom',
+    },
+    'fileuploadinput.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'tree.node.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'frameform.grid.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'framemanager.grid.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
+    'framesubmitform.label.name': {
+        'en-US': 'Name',
+        'fr-FR': 'Nom'
+    },
     'no.data.found': {
+        'en-US': 'No data found',
+        'fr-FR': 'Aucune donnée'
+    },
+    'permissionsets.no.data': {
+        'en-US': 'No data found',
+        'fr-FR': 'Aucune donnée'
+    },
+    'users.no.data': {
         'en-US': 'No data found',
         'fr-FR': 'Aucune donnée'
     },
@@ -83,7 +363,39 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'First name',
         'fr-FR': 'Prénom'
     },
+    'user.data.firstname': {
+        'en-US': 'First name',
+        'fr-FR': 'Prénom'
+    },
+    'register.firstName.label': {
+        'en-US': 'First name',
+        'fr-FR': 'Prénom'
+    },
+    'profile.firstname': {
+        'en-US': 'First name',
+        'fr-FR': 'Prénom'
+    },
     'loading.error': {
+        'en-US': 'Loading error',
+        'fr-FR': 'Erreur de chargement'
+    },
+    'usercreate.error': {
+        'en-US': 'Loading error',
+        'fr-FR': 'Erreur de chargement'
+    },
+    'useredit.error': {
+        'en-US': 'Loading error',
+        'fr-FR': 'Erreur de chargement'
+    },
+    'dynamiccomponent.error.loading': {
+        'en-US': 'Loading error',
+        'fr-FR': 'Erreur de chargement'
+    },
+    'customformdialog.error.loading': {
+        'en-US': 'Loading error',
+        'fr-FR': 'Erreur de chargement'
+    },
+    'workflow.loading.error': {
         'en-US': 'Loading error',
         'fr-FR': 'Erreur de chargement'
     },
@@ -91,11 +403,71 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Details',
         'fr-FR': 'Détails'
     },
+    'workflow.details': {
+        'en-US': 'Details',
+        'fr-FR': 'Détails'
+    },
+    'jobcontrolpanel.job.details': {
+        'en-US': 'Details',
+        'fr-FR': 'Détails'
+    },
     'lastname': {
         'en-US': 'Last name',
         'fr-FR': 'Nom'
     },
+    'user.data.lastname': {
+        'en-US': 'Last name',
+        'fr-FR': 'Nom'
+    },
+    'users.last.name': {
+        'en-US': 'Last name',
+        'fr-FR': 'Nom'
+    },
+    'register.lastName.label': {
+        'en-US': 'Last name',
+        'fr-FR': 'Nom'
+    },
+    'profile.lastname': {
+        'en-US': 'Last name',
+        'fr-FR': 'Nom'
+    },
     'error': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'framepreview.notification.error.title': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'messagevalue.error': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'errorcontainer.title': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'notification.title.failure': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'frameform.notification.submit.failed.title': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'homedefaultsettings.notification.error.title': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'notification.title.error': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'mainactions.notification.title.error': {
+        'en-US': 'Error',
+        'fr-FR': 'Erreur'
+    },
+    'messageslist.error': {
         'en-US': 'Error',
         'fr-FR': 'Erreur'
     },
@@ -104,10 +476,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'register.registration': {
         'en-US': 'Registration',
         'fr-FR': 'Enregistrement'
-    },
-    'register.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
     'register.back.login': {
         'en-US': 'Back to sign in page',
@@ -124,10 +492,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'register.success.message': {
         'en-US': 'If you already set your password, you can now sign in. Otherwise, please click on the link sent to you by email to activate your account.',
         'fr-FR': 'Si vous avez déjà créé votre mot de passe, vous pouvez vous connecter dès maintenant. Sinon, vous trouverez un lien dans l\'email de confirmation qui vous pemettra d\'activer votre compte.'
-    },
-    'register.email.label': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
     },
     'register.email.help': {
         'en-US': 'Make sure the email is correct to receive the confirmation link',
@@ -237,10 +601,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Register',
         'fr-FR': 'S\'enregistrer'
     },
-    'register.button.submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
     'register.ps': {
         'en-US': 'Following your registration request, you will receive a registration confirmation email.',
         'fr-FR': 'Suite à votre demande d\'inscription, vous recevrez un email de confirmation.'
@@ -275,18 +635,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
     },
-    'permissionset.data.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
-    'permissionset.data.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'permissionset.data.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
-    },
     'permissionset.data.id': {
         'en-US': 'ID',
         'fr-FR': 'ID'
@@ -303,26 +651,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'permissionsetform.button.update': {
         'en-US': 'Update',
         'fr-FR': 'Enregistrer modifications'
-    },
-    'permissionsetform.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'permissionsetform.data.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'permissionsetform.data.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
-    'permissionsetform.data.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'permissionsetform.data.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
     },
     'permissionsetform.data.permissionset.name': {
         'en-US': 'Permission set name',
@@ -345,30 +673,13 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Create permission set',
         'fr-FR': 'Créer groupe de permissions'
     },
-    'permissionsets.no.data': {
-        'en-US': 'No data found',
-        'fr-FR': 'Aucune donnée'
-    },
-    'permissionsets.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'permissionsets.delete.confirm': {
         'en-US': 'Are you sure you want to delete this permission set?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ce groupe de permissions ?'
     },
-    'permissionsets.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
     'permissionsets.button.export.json': {
         'en-US': 'Export as JSON',
         'fr-FR': 'Exporter (JSON)'
-    },
-
-    'usercreate.error': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
     },
 
     'user.tooltip.delete': {
@@ -391,10 +702,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
     },
-    'user.data.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
     'user.data.realm': {
         'en-US': 'Realm',
         'fr-FR': 'Domaine'
@@ -402,14 +709,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'user.data.email.verified': {
         'en-US': 'Email verified',
         'fr-FR': 'Email confirmé'
-    },
-    'user.data.firstname': {
-        'en-US': 'First name',
-        'fr-FR': 'Prénom'
-    },
-    'user.data.lastname': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
     },
     'user.data.salutation': {
         'en-US': 'Salutation',
@@ -491,10 +790,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Permission set name',
         'fr-FR': 'Groupe de permissions'
     },
-    'user.data.permissionset.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
-    },
     'user.resend.activation.email': {
         'en-US': 'Resend activation email',
         'fr-FR': 'Renvoyer l\'email d\'activation'
@@ -502,11 +797,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'user.get.org.positions.btn': {
         'en-US': 'Show user organization positions',
         'fr-FR': 'Voir les positions d\'organisation'
-    },
-
-    'useredit.error': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
     },
 
     'userform.permissionset.section.title': {
@@ -525,14 +815,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'At least one permission set must be selected',
         'fr-FR': 'Au moins un groupe de permissions doît être assigné à l\'utilisateur'
     },
-    'userform.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
-    'userform.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
     'userform.org.position': {
         'en-US': 'Organization position',
         'fr-FR': 'Position dans l\'organisation'
@@ -544,10 +826,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'userform.button.update': {
         'en-US': 'Update',
         'fr-FR': 'Enregistrer modifications'
-    },
-    'userform.button.close': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
     'userform.search': {
         'en-US': 'Search...',
@@ -573,14 +851,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'users.button.associate.user': {
         'en-US': 'Associate new user',
         'fr-FR': 'Associer nouvel utilisateur'
-    },
-    'users.no.data': {
-        'en-US': 'No data found',
-        'fr-FR': 'Aucune donnée'
-    },
-    'users.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
     },
     'users.delete.confirm': {
         'en-US': 'Are you sure you want to delete this user?',
@@ -610,10 +880,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Only display users without any associated org node',
         'fr-FR': 'Afficher seulement les utilisateurs sans position d\'organisation'
     },
-    'users.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
     'users.button.export.json': {
         'en-US': 'Export as JSON',
         'fr-FR': 'Exporter (JSON)'
@@ -621,18 +887,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'users.button.disassociate': {
         'en-US': 'Disassociate',
         'fr-FR': 'Désassocier'
-    },
-    'users.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
-    'users.last.name': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
-    },
-    'users.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
     },
     'users.permission.set.name': {
         'en-US': 'Permission set name',
@@ -668,10 +922,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'User',
         'fr-FR': 'Utilisateur'
     },
-    'admin.user.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'admin.user.delete.confirm': {
         'en-US': 'Are you sure you want to delete this user?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?'
@@ -680,17 +930,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Are you sure you want to disassociate this user from the current instance?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir désassocier cet utilisateur de l\'instance ?'
     },
-    'admin.permissionset.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'admin.permissionset.delete.confirm': {
         'en-US': 'Are you sure you want to delete this permission set?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ce groupe de permissions ?'
-    },
-    'admin.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
     },
     'admin.button.export.json': {
         'en-US': 'Export as JSON',
@@ -722,14 +964,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Dupliquer l\'entrée'
     },
 
-    'crossreftableform.tooltip.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'crossreftableform.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
     'crossreftableform.fields': {
         'en-US': 'Fields',
         'fr-FR': 'Champs'
@@ -749,10 +983,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'crossreftableform.edit.table': {
         'en-US': 'Update the table',
         'fr-FR': 'Modifier la table'
-    },
-    'crossreftableform.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
     'crossreftableform.invalid.xml.tag': {
         'en-US': 'Invalid value. Allowed chars: a-z A-Z 0-9 _ : - .',
@@ -846,17 +1076,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Ce message est verrouillé'
     },
 
-    'framepreview.title.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
     'framepreview.button.back': {
         'en-US': 'Return to list',
         'fr-FR': 'Retour à la liste'
-    },
-    'framepreview.notification.error.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
     },
 
     'appkeyselector.empty.app': {
@@ -881,10 +1103,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Déconnexion'
     },
 
-    'counter.text.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
     'counter.text.target': {
         'en-US': 'Target',
         'fr-FR': 'Cible'
@@ -894,10 +1112,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Date de dernière synchronisation'
     },
 
-    'defaultsettingsform.label.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom',
-    },
     'defaultsettingsform.invalid.name': {
         'en-US': 'Invalid value. Authorized characters : a-z A-Z 0-9 _ : - .',
         'fr-FR': 'Valeur invalide. Caractères autorisés : a-z A-Z 0-9 _ : - .'
@@ -905,10 +1119,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'defaultsettingsform.notification.create.error.in.use': {
         'en-US': 'The name `{name}`is already in use by another configuration, choose another one please',
         'fr-FR': 'Le nom `{name}` est déjà utilisé pour une autre configuration, veuillez en choisir un autre'
-    },
-    'defaultsettingsform.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
 
     'appinstanceinput.menu.title': {
@@ -1014,10 +1224,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'message.tooltip.close': {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
-    },
-    'confirm.title': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
     },
     'flags.title': {
         'en-US': 'Flags',
@@ -1189,10 +1395,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'In a workflow',
         'fr-FR': 'Flux en cours'
     },
-    'messagevalue.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
 
     'userassignform.assign.user': {
         'en-US': 'Assign user',
@@ -1317,10 +1519,6 @@ export const MULTILANGUAGE_WORDINGS = {
             </div>
         `
     },
-    'datagrid.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'datagrid.reset.confirm': {
         'en-US': 'Are you sure you want to reset all your display settings?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir réinitialiser vos préférences d\'affichage ?'
@@ -1348,15 +1546,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Écran de grande taille'
     },
 
-    'dynamiccomponent.error.loading': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
-
-    'errorcontainer.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
     'errorcontainer.message': {
         'en-US': 'An unexpected error has occured. Please retry and check for the URL you requested or contact your system administrator.',
         'fr-FR': 'Une erreur est survenue. Merci de réessayer en vérifiant l\'URL ou contactez votre administrateur système.'
@@ -1370,10 +1559,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Réessayer'
     },
 
-    'croninput.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
     'croninput.second': {
         'en-US': 'Second',
         'fr-FR': 'Seconde'
@@ -1423,14 +1608,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'size',
         'fr-FR': 'taille'
     },
-    'fileimporter.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'fileimporter.button.submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
     'fileimporter.file.type': {
         'en-US': 'File type',
         'fr-FR': 'Type du fichier'
@@ -1471,10 +1648,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'fileinput.drop.zone.subtitle': {
         'en-US': '(or click)',
         'fr-FR': '(ou cliquer)'
-    },
-    'fileinput.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
     'fileinput.invalid.file': {
         'en-US': 'Invalid file(s)',
@@ -1564,10 +1737,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'fileuploadinput.uploaded': {
         'en-US': 'File uploaded',
         'fr-FR': 'Fichier téléchargé'
-    },
-    'fileuploadinput.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
     },
     'fileuploadinput.size': {
         'en-US': 'Size',
@@ -1673,25 +1842,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Update',
         'fr-FR': 'Valider'
     },
-    'tree.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'tree.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'tree.node.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
     'tree.node.id': {
         'en-US': 'ID',
         'fr-FR': 'ID'
-    },
-    'tree.node.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
     },
     'tree.node.invalid.key': {
         'en-US': 'Properties key(s)',
@@ -1746,17 +1899,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Please select your salutation',
         'fr-FR': 'Merci de choisir votre salutation'
     },
-    'register.firstName.label': {
-        'en-US': 'First name',
-        'fr-FR': 'Prénom'
-    },
     'register.firstName.error': {
         'en-US': 'Please enter your first name',
         'fr-FR': 'Merci de saisir votre prénom'
-    },
-    'register.lastName.label': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
     },
     'register.lastName.error': {
         'en-US': 'Please enter your last name',
@@ -1856,23 +2001,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Afficher par'
     },
 
-    'customformdialog.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'customformdialog.error.loading': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
-
-    'formdialog.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'formdialog.submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
     'formdialog.select.user': {
         'en-US': 'Select a user',
         'fr-FR': 'Sélectionner un utilisateur'
@@ -1911,10 +2039,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'notification.title.success': {
         'en-US': 'Success',
         'fr-FR': 'Succès'
-    },
-    'notification.title.failure': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
     },
     'notification.multiple.permsets.delete.success': {
         'en-US': 'Permission set(s) deleted!',
@@ -2034,10 +2158,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Success',
         'fr-FR': 'Succès'
     },
-    'crossrefactions.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'crossrefactions.confirm.delete': {
         'en-US': 'Are you sure you want to delete this record?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cette entrée ?'
@@ -2063,10 +2183,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': '{nbRecords} enregistrement(s) traité(s).'
     },
 
-    'button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
     'button.ok': {
         'en-US': 'OK',
         'fr-FR': 'OK'
@@ -2148,10 +2264,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Work items',
         'fr-FR': 'Tâches'
     },
-    'workflow.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'workflow.modal.confirm.text': {
         'en-US': 'Are you sure you want to',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir'
@@ -2159,14 +2271,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'workflow.modal.this.item': {
         'en-US': 'this work item?',
         'fr-FR': 'cette tâche ?'
-    },
-    'workflow.details': {
-        'en-US': 'Details',
-        'fr-FR': 'Détails'
-    },
-    'workflow.loading.error': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
     },
     'workflow.retry': {
         'en-US': 'Retry?',
@@ -2217,21 +2321,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Unique ID',
         'fr-FR': 'ID unique'
     },
-    'frameform.grid.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'frameform.grid.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
     'frameform.grid.url': {
         'en-US': 'URL',
         'fr-FR': 'URL'
-    },
-    'frameform.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
     'frameform.button.lang': {
         'en-US': 'Language',
@@ -2257,10 +2349,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Failed to save the new frame. Some inputs are missing',
         'fr-FR': 'Échec de la sauvegarde de la nouvelle frame. Certains champs sont vides'
     },
-    'frameform.notification.submit.failed.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
 
     'framemanager.data.language': {
         'en-US': 'EN',
@@ -2269,10 +2357,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'framemanager.text.empty': {
         'en-US': 'No frame to display',
         'fr-FR': 'Aucune frame à afficher'
-    },
-    'framemanager.grid.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
     },
     'framemanager.placeholder.search': {
         'en-US': 'Search...',
@@ -2285,10 +2369,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'framemanager.header.title.nagivate': {
         'en-US': 'Navigate',
         'fr-FR': 'Navigation'
-    },
-    'framemanager.grid.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
     },
     'framemanager.grid.url': {
         'en-US': 'Url',
@@ -2386,14 +2466,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'ID',
         'fr-FR': 'ID'
     },
-    'framesubmitform.label.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'framesubmitform.label.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
     'framesubmitform.label.url': {
         'en-US': 'URL',
         'fr-FR': 'URL'
@@ -2405,10 +2477,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'framesubmitform.helper.url': {
         'en-US': 'Must be a valid HTTPS URL',
         'fr-FR': 'URL HTTPS valide requise'
-    },
-    'framesubmitform.btn.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
 
     'editdefaultorder.status.empty': {
@@ -2590,17 +2658,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Invalid value. Authorized characters : a-z A-Z 0-9 _ : - .',
         'fr-FR': 'Valeur invalide. Caractères autorisés : a-z A-Z 0-9 _ : - .'
     },
-    'homedefaultsettings.modal.title.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'homedefaultsettings.modal.delete': {
         'en-US': 'Are you sure about deleting this setting ?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cette configuration ?'
-    },
-    'homedefaultsettings.notification.error.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
     },
     'homedefaultsettings.notification.create.error.in.use': {
         'en-US': 'The name `{name}`is already in use by another configuration, choose another one please',
@@ -2610,10 +2670,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'notification.title.info': {
         'en-US': 'Info',
         'fr-FR': 'Info'
-    },
-    'notification.title.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
     },
     'notification.title.warning': {
         'en-US': 'Warning',
@@ -2708,10 +2764,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Reset password',
         'fr-FR': 'Réinitialiser mot de passe'
     },
-    'forgotpassword.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
     'forgotpassword.button.validate': {
         'en-US': 'OK',
         'fr-FR': 'Valider'
@@ -2765,10 +2817,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Stacktrace',
         'fr-FR': 'Stacktrace'
     },
-    'jobcontrolpanel.job.details': {
-        'en-US': 'Details',
-        'fr-FR': 'Détails'
-    },
     'jobcontrolpanel.job.view.last.messages': {
         'en-US': 'View last messages',
         'fr-FR': 'Voir les derniers messages'
@@ -2776,10 +2824,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'jobcontrolpanel.job.view.stacktrace': {
         'en-US': 'View stacktrace',
         'fr-FR': 'Voir la stacktrace'
-    },
-    'jobcontrolpanel.job.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
     },
     'jobcontrolpanel.job.priority.high': {
         'en-US': 'High',
@@ -2817,17 +2861,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Actions',
         'fr-FR': 'Actions'
     },
-    'jobcontrolpanel.job.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
     'jobcontrolpanel.job.mark.as.read': {
         'en-US': 'Mark as read',
         'fr-FR': 'Marquer comme lu'
-    },
-    'jobcontrolpanel.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
     },
     'jobcontrolpanel.cancel.confirm': {
         'en-US': 'Are you sure you want to cancel this job?',
@@ -2838,10 +2874,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'par'
     },
 
-    'login.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
     'login.email.invalid': {
         'en-US': 'Invalid email',
         'fr-FR': 'Email invalide'
@@ -2920,10 +2952,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Aller à la page de connexion'
     },
 
-    'mainactions.notification.title.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
     'mainactions.notification.title.info': {
         'en-US': 'Info',
         'fr-FR': 'Info'
@@ -3022,14 +3050,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Code editor configuration',
         'fr-FR': 'Configuration des éditeurs de code'
     },
-    'profile.firstname': {
-        'en-US': 'First name',
-        'fr-FR': 'Prénom'
-    },
-    'profile.lastname': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
-    },
     'profile.change.password': {
         'en-US': 'Password',
         'fr-FR': 'Mot de passe'
@@ -3045,10 +3065,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'profile.button.update': {
         'en-US': 'Save changes',
         'fr-FR': 'Enregistrer modifications'
-    },
-    'profile.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
     },
     'profile.button.refresh.permissions': {
         'en-US': <div>Refresh<br />permissions</div>,
@@ -3077,10 +3093,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'profile.messages.preferred.language': {
         'en-US': 'Preferred language',
         'fr-FR': 'Langue préférée'
-    },
-    'profile.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
     },
     'profile.user.delete.confirm': {
         'en-US': <p>Are you sure you want to delete you account?</p>,
@@ -3235,10 +3247,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Reprocess',
         'fr-FR': 'Relancer'
     },
-    'messageslist.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
     'messageslist.flags.title': {
         'en-US': 'Flags',
         'fr-FR': 'Marqueurs'
@@ -3250,10 +3258,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'messageslist.multiple.delete.impossible': {
         'en-US': 'One or more of the selected messages cannot be deleted. Please check your selection and retry!',
         'fr-FR': 'Un ou plusieurs des messages sélectionnés ne peuvent pas être supprimés. Merci de verifier votre sélection et de réessayer !'
-    },
-    'messageslist.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
     },
     'messageslist.reset.display.settings': {
         'en-US': 'Reset display settings',
@@ -3294,10 +3298,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Users positions',
         'fr-FR': 'Positions des utilisateurs'
     },
-    'organisations.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
     'organisations.confirm.delete': {
         'en-US': 'Are you sure you want to delete this node?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ce noeud ?'
@@ -3336,10 +3336,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'services.no.data': {
         'en-US': 'No data',
         'fr-FR': 'Aucune donnée'
-    },
-    'services.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
     },
     'services.stale.confirm.leave': {
         'en-US': 'There are unsaved changes. Are you sure you want to leave this page and lose your updates?',
