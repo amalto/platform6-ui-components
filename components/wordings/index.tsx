@@ -3,6 +3,8 @@ import * as React from 'react'
 export const MULTILANGUAGE_WORDINGS = {
 
     /** Common wordings. */
+
+    // save
     'save': {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
@@ -39,6 +41,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
     },
+
+    // Cancel
     'cancel': {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
@@ -103,6 +107,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
+
+    // Email
     'email': {
         'en-US': 'Email',
         'fr-FR': 'Email'
@@ -127,6 +133,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Email',
         'fr-FR': 'Email'
     },
+
+    // Submit
     'submit': {
         'en-US': 'Submit',
         'fr-FR': 'Valider'
@@ -143,6 +151,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Submit',
         'fr-FR': 'Valider'
     },
+
+    // Confirm
     'confirm': {
         'en-US': 'Confirm',
         'fr-FR': 'Confirmer'
@@ -199,6 +209,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Confirm',
         'fr-FR': 'Confirmer'
     },
+
+    // Delete
     'delete': {
         'en-US': 'Delete',
         'fr-FR': 'Supprimer'
@@ -227,6 +239,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Delete',
         'fr-FR': 'Supprimer'
     },
+
+    // Enabled
     'enabled': {
         'en-US': 'Enabled',
         'fr-FR': 'Actif'
@@ -251,6 +265,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Enabled',
         'fr-FR': 'Actif'
     },
+
+    // Permissions
     'permissions': {
         'en-US': 'Permissions',
         'fr-FR': 'Permissions'
@@ -271,6 +287,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Permissions',
         'fr-FR': 'Permissions'
     },
+
+    // Description
     'description': {
         'en-US': 'Description',
         'fr-FR': 'Description'
@@ -307,6 +325,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Description',
         'fr-FR': 'Description'
     },
+
+    // Name
     'name': {
         'en-US': 'Name',
         'fr-FR': 'Nom'
@@ -347,6 +367,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Name',
         'fr-FR': 'Nom'
     },
+
+    // No data found
     'no.data.found': {
         'en-US': 'No data found',
         'fr-FR': 'Aucune donnée'
@@ -359,6 +381,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'No data found',
         'fr-FR': 'Aucune donnée'
     },
+
+    // First name
     'firstname': {
         'en-US': 'First name',
         'fr-FR': 'Prénom'
@@ -375,6 +399,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'First name',
         'fr-FR': 'Prénom'
     },
+
+    // Loading error
     'loading.error': {
         'en-US': 'Loading error',
         'fr-FR': 'Erreur de chargement'
@@ -399,6 +425,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Loading error',
         'fr-FR': 'Erreur de chargement'
     },
+
+    // Details
     'details': {
         'en-US': 'Details',
         'fr-FR': 'Détails'
@@ -411,6 +439,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Details',
         'fr-FR': 'Détails'
     },
+
+    // Last name
     'lastname': {
         'en-US': 'Last name',
         'fr-FR': 'Nom'
@@ -431,6 +461,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Last name',
         'fr-FR': 'Nom'
     },
+
+    // Error
     'error': {
         'en-US': 'Error',
         'fr-FR': 'Erreur'
@@ -470,6 +502,226 @@ export const MULTILANGUAGE_WORDINGS = {
     'messageslist.error': {
         'en-US': 'Error',
         'fr-FR': 'Erreur'
+    },
+
+    // Register
+    'register': {
+        'en-US': 'Register',
+        'fr-FR': 'S\'enregistrer'
+    },
+    'register.button': {
+        'en-US': 'Register',
+        'fr-FR': 'S\'enregistrer'
+    },
+    'login.register': {
+        'en-US': 'Register',
+        'fr-FR': 'S\'enregistrer'
+    },
+
+    // Instance
+    'instance': {
+        'en-US': 'Instance',
+        'fr-FR': 'Instance'
+    },
+    'user.data.appinstance': {
+        'en-US': 'Instance',
+        'fr-FR': 'Instance'
+    },
+    'users.appinstance': {
+        'en-US': 'Instance',
+        'fr-FR': 'Instance'
+    },
+    'admin.appinstance': {
+        'en-US': 'Instance',
+        'fr-FR': 'Instance'
+    },
+    'appinstanceinput.menu.title': {
+        'en-US': 'Instance',
+        'fr-FR': 'Instance'
+    },
+
+    // Messages
+    'messages': {
+        'en-US': 'Messages',
+        'fr-FR': 'Messages'
+    },
+    'menu.title.messages': {
+        'en-US': 'Messages',
+        'fr-FR': 'Messages'
+    },
+    'menu.entry.messages': {
+        'en-US': 'Messages',
+        'fr-FR': 'Messages'
+    },
+    'messageslist.panel.title.messages': {
+        'en-US': 'Messages',
+        'fr-FR': 'Messages'
+    },
+
+    // Title
+    'title': {
+        'en-US': 'Title',
+        'fr-FR': 'Titre'
+    },
+    'user.data.title': {
+        'en-US': 'Title',
+        'fr-FR': 'Titre'
+    },
+    'register.title.label': {
+        'en-US': 'Title',
+        'fr-FR': 'Titre'
+    },
+    'editownhome.headercolumn.title': {
+        'en-US': 'Title',
+        'fr-FR': 'Titre'
+    },
+    'homedefaultsettings.headercolumn.title': {
+        'en-US': 'Title',
+        'fr-FR': 'Titre'
+    },
+
+    // User
+    'user': {
+        'en-US': 'User',
+        'fr-FR': 'Utilisateur'
+    },
+    'users.user': {
+        'en-US': 'User',
+        'fr-FR': 'Utilisateur'
+    },
+    'admin.user': {
+        'en-US': 'User',
+        'fr-FR': 'Utilisateur'
+    },
+
+    // Mr
+    'mr': {
+        'en-US': 'Mr.',
+        'fr-FR': 'M.'
+    },
+    'user.data.salutation.mr': {
+        'en-US': 'Mr.',
+        'fr-FR': 'M.'
+    },
+    'register.salutation.mr': {
+        'en-US': 'Mr.',
+        'fr-FR': 'M.'
+    },
+
+    // Mrs
+    'mrs': {
+        'en-US': 'Mrs.',
+        'fr-FR': 'Mme'
+    },
+    'user.data.salutation.mrs': {
+        'en-US': 'Mrs.',
+        'fr-FR': 'Mme'
+    },
+    'register.salutation.mrs': {
+        'en-US': 'Mrs.',
+        'fr-FR': 'Mme'
+    },
+
+    // Prof
+    'prof': {
+        'en-US': 'Prof.',
+        'fr-FR': 'Pr'
+    },
+    'user.data.salutation.pr': {
+        'en-US': 'Prof.',
+        'fr-FR': 'Pr'
+    },
+    'register.salutation.pr': {
+        'en-US': 'Prof.',
+        'fr-FR': 'Pr'
+    },
+
+    // Dr
+    'dr': {
+        'en-US': 'Dr.',
+        'fr-FR': 'Dr'
+    },
+    'user.data.salutation.dr': {
+        'en-US': 'Dr.',
+        'fr-FR': 'Dr'
+    },
+    'register.salutation.dr': {
+        'en-US': 'Dr.',
+        'fr-FR': 'Dr'
+    },
+
+    // Salutation
+    'salutation': {
+        'en-US': 'Salutation',
+        'fr-FR': 'Salutation'
+    },
+    'user.data.salutation': {
+        'en-US': 'Salutation',
+        'fr-FR': 'Salutation'
+    },
+    'register.salutation.label': {
+        'en-US': 'Salutation',
+        'fr-FR': 'Salutation'
+    },
+
+    // Company name
+    'companyName': {
+        'en-US': 'Company name',
+        'fr-FR': 'Nom de la société'
+    },
+    'user.data.companyName': {
+        'en-US': 'Company name',
+        'fr-FR': 'Nom de la société'
+    },
+    'register.companyName.label': {
+        'en-US': 'Company name',
+        'fr-FR': 'Nom de la société'
+    },
+
+    // Phone
+    'phone': {
+        'en-US': 'Phone',
+        'fr-FR': 'Téléphone'
+    },
+    'user.data.phone': {
+        'en-US': 'Phone',
+        'fr-FR': 'Téléphone'
+    },
+    'register.phone.label': {
+        'en-US': 'Phone',
+        'fr-FR': 'Téléphone'
+    },
+
+    // Mobile
+    'mobule': {
+        'en-US': 'Mobile',
+        'fr-FR': 'Mobile'
+    },
+    'user.data.mobile': {
+        'en-US': 'Mobile',
+        'fr-FR': 'Mobile'
+    },
+    'displaymodebtn.panel.display.mobile': {
+        'en-US': 'Mobile',
+        'fr-FR': 'Mobile'
+    },
+    'register.mobile.label': {
+        'en-US': 'Mobile',
+        'fr-FR': 'Mobile'
+    },
+
+    // Website
+    'website': {
+        'en-US': 'Website',
+        'fr-FR': 'Site web'
+    },
+    'user.data.website': {
+        'en-US': 'Website',
+        'fr-FR': 'Site web'
+    },
+    'register.webSite.label': {
+        'en-US': 'Website',
+        'fr-FR': 'Site web'
     },
 
     /** Custom wordings. */
@@ -597,10 +849,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'You are creating this account for a Chevron Major Capital Project.',
         'fr-FR': 'Vous créez ce compte pour un "Chevron Major Capital Project".'
     },
-    'register.button': {
-        'en-US': 'Register',
-        'fr-FR': 'S\'enregistrer'
-    },
     'register.ps': {
         'en-US': 'Following your registration request, you will receive a registration confirmation email.',
         'fr-FR': 'Suite à votre demande d\'inscription, vous recevrez un email de confirmation.'
@@ -710,46 +958,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Email verified',
         'fr-FR': 'Email confirmé'
     },
-    'user.data.salutation': {
-        'en-US': 'Salutation',
-        'fr-FR': 'Salutation'
-    },
-    'user.data.salutation.mr': {
-        'en-US': 'Mr.',
-        'fr-FR': 'M.'
-    },
-    'user.data.salutation.mrs': {
-        'en-US': 'Mrs.',
-        'fr-FR': 'Mme'
-    },
-    'user.data.salutation.pr': {
-        'en-US': 'Prof.',
-        'fr-FR': 'Pr'
-    },
-    'user.data.salutation.dr': {
-        'en-US': 'Dr.',
-        'fr-FR': 'Dr'
-    },
-    'user.data.title': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
-    'user.data.companyName': {
-        'en-US': 'Company name',
-        'fr-FR': 'Nom de la société'
-    },
-    'user.data.phone': {
-        'en-US': 'Phone',
-        'fr-FR': 'Téléphone'
-    },
-    'user.data.mobile': {
-        'en-US': 'Mobile',
-        'fr-FR': 'Mobile'
-    },
-    'user.data.website': {
-        'en-US': 'Website',
-        'fr-FR': 'Site web'
-    },
     'user.data.street': {
         'en-US': 'Address',
         'fr-FR': 'Adresse'
@@ -781,10 +989,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'user.reload.org.paths': {
         'en-US': 'Reload user organization positions',
         'fr-FR': 'Rafraîchir les positions d\'organisation'
-    },
-    'user.data.appinstance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
     },
     'user.data.permissionset': {
         'en-US': 'Permission set name',
@@ -860,14 +1064,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Are you sure you want to disassociate this user from the current instance?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir désassocier cet utilisateur de l\'instance ?'
     },
-    'users.user': {
-        'en-US': 'User',
-        'fr-FR': 'Utilisateur'
-    },
-    'users.appinstance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
     'users.show.all': {
         'en-US': 'Display users of all instances',
         'fr-FR': 'Afficher les utilisateurs de toutes les instances'
@@ -913,14 +1109,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'admin.tab.title.permissionssets': {
         'en-US': 'Permission sets',
         'fr-FR': 'Groupes de permissions'
-    },
-    'admin.appinstance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
-    'admin.user': {
-        'en-US': 'User',
-        'fr-FR': 'Utilisateur'
     },
     'admin.user.delete.confirm': {
         'en-US': 'Are you sure you want to delete this user?',
@@ -1121,10 +1309,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Le nom `{name}` est déjà utilisé pour une autre configuration, veuillez en choisir un autre'
     },
 
-    'appinstanceinput.menu.title': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
     'appinstanceinput.message.change.disabled': {
         'en-US': 'Instance change isn\'t possible when you are editing users or permission sets',
         'fr-FR': 'Changer d\'instance est impossible pendant l\'édition d\'utilisateurs ou de groupes de permissions.'
@@ -1146,17 +1330,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Menu',
         'fr-FR': 'Menu'
     },
-    'menu.title.messages': {
-        'en-US': 'Messages',
-        'fr-FR': 'Messages'
-    },
     'menu.entry.home': {
         'en-US': 'Home',
         'fr-FR': 'Accueil'
-    },
-    'menu.entry.messages': {
-        'en-US': 'Messages',
-        'fr-FR': 'Messages'
     },
     'menu.entry.reports': {
         'en-US': 'Reports',
@@ -1533,10 +1709,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Display mode:',
         'fr-FR': 'Affichage :'
     },
-    'displaymodebtn.panel.display.mobile': {
-        'en-US': 'Mobile',
-        'fr-FR': 'Mobile'
-    },
     'displaymodebtn.panel.display.laptop': {
         'en-US': 'Medium screen size',
         'fr-FR': 'Écran de taille moyenne'
@@ -1875,26 +2047,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'User details',
         'fr-FR': 'Informations'
     },
-    'register.salutation.label': {
-        'en-US': 'Salutation',
-        'fr-FR': 'Salutation'
-    },
-    'register.salutation.mr': {
-        'en-US': 'Mr.',
-        'fr-FR': 'M.'
-    },
-    'register.salutation.mrs': {
-        'en-US': 'Mrs.',
-        'fr-FR': 'Mme'
-    },
-    'register.salutation.pr': {
-        'en-US': 'Prof.',
-        'fr-FR': 'Pr'
-    },
-    'register.salutation.dr': {
-        'en-US': 'Dr.',
-        'fr-FR': 'Dr'
-    },
     'register.salutation.error': {
         'en-US': 'Please select your salutation',
         'fr-FR': 'Merci de choisir votre salutation'
@@ -1907,10 +2059,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Please enter your last name',
         'fr-FR': 'Merci de saisir votre nom'
     },
-    'register.title.label': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
     'register.title.error': {
         'en-US': 'Please enter your title',
         'fr-FR': 'Merci de saisir votre titre'
@@ -1919,33 +2067,17 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Company',
         'fr-FR': 'Société'
     },
-    'register.companyName.label': {
-        'en-US': 'Company name',
-        'fr-FR': 'Nom de la société'
-    },
     'register.companyName.error': {
         'en-US': 'Please enter your company name',
         'fr-FR': 'Merci de saisir le nom de votre société'
-    },
-    'register.phone.label': {
-        'en-US': 'Phone',
-        'fr-FR': 'Téléphone'
     },
     'register.phone.error': {
         'en-US': 'Please enter your phone number',
         'fr-FR': 'Merci de saisir votre numéro de téléphone'
     },
-    'register.mobile.label': {
-        'en-US': 'Mobile',
-        'fr-FR': 'Mobile'
-    },
     'register.mobile.error': {
         'en-US': 'Please enter your mobile phone number',
         'fr-FR': 'Merci de saisir votre numéro de mobile'
-    },
-    'register.webSite.label': {
-        'en-US': 'Website',
-        'fr-FR': 'Site web'
     },
     'register.webSite.error': {
         'en-US': 'Please enter your company\'s website address',
@@ -2520,10 +2652,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Type',
         'fr-FR': 'Type'
     },
-    'editownhome.headercolumn.title': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
     'editownhome.button.configure': {
         'en-US': 'Configure layout',
         'fr-FR': 'Paramétrage de l\'affichage'
@@ -2593,10 +2721,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'homedefaultsettings.headercolumn.selected': {
         'en-US': 'Selected',
         'fr-FR': 'Sélectionné'
-    },
-    'homedefaultsettings.headercolumn.title': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
     },
     'homedefaultsettings.headercolumn.type': {
         'en-US': 'Type',
@@ -2902,10 +3026,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Not already registered?',
         'fr-FR': 'Pas encore enregistré(e) ?'
     },
-    'login.register': {
-        'en-US': 'Register',
-        'fr-FR': 'S\'enregistrer'
-    },
     'login.invalid.url': {
         'en-US': 'Invalid login URL!',
         'fr-FR': 'URL de login invalide !'
@@ -3206,10 +3326,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'messageslist.panel.title.layout.builder': {
         'en-US': 'Layout builder',
         'fr-FR': 'Personnaliser l\'affichage'
-    },
-    'messageslist.panel.title.messages': {
-        'en-US': 'Messages',
-        'fr-FR': 'Messages'
     },
     'messageslist.panel.pagination.view.by': {
         'en-US': 'View by',
