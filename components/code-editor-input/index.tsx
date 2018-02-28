@@ -175,7 +175,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
                 <div
                     id={editorId}
                     className={classNames( 'form-control input-block', inputClass )}
-                    ref={div => this.editorCtn = div}
+                    ref={dom => this.editorCtn = dom}
                     style={{ height: height || 300 }}
                 />
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-
+// Utils
 import * as classNames from 'classnames'
 
 /**
@@ -40,7 +40,7 @@ class Help extends React.Component<Help.Props, any> {
                 )
             }
                 data-content={this.props.text}
-                ref={ref => this._helpPopup = ref}
+                ref={dom => this._helpPopup = dom}
                 style={this.props.style}
             >
             </span>

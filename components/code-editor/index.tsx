@@ -163,7 +163,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         return (
             <div style={{ height, width: '100%', position: 'relative' }}
                 id={this.props.docId}
-                ref={( c ) => this._editorPanel = c}>
+                ref={dom => this._editorPanel = dom}>
             </div>
         )
     }

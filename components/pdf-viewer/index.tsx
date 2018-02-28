@@ -81,7 +81,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
                         </div> ) : (
                             <div>
                                 {this.getPagingControls()}
-                                <canvas ref={canvas => this.pdfCtn = canvas} />
+                                <canvas ref={dom => this.pdfCtn = dom} />
                             </div>
                         )
                     )
