@@ -724,7 +724,250 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Site web'
     },
 
-    /** Custom wordings. */
+    // Start
+    'start': {
+        'en-US': 'Start',
+        'fr-FR': 'Démarrer'
+    },
+    'servicebuttonsbar.start': {
+        'en-US': 'Start',
+        'fr-FR': 'Démarrer'
+    },
+
+    // Stop
+    'stop': {
+        'en-US': 'Stop',
+        'fr-FR': 'Arrêter'
+    },
+    'servicebuttonsbar.stop': {
+        'en-US': 'Stop',
+        'fr-FR': 'Arrêter'
+    },
+
+    // Reset
+    'reset': {
+        'en-US': 'Reset',
+        'fr-FR': 'Réinitialiser'
+    },
+    'messagesearchform.button.reset': {
+        'en-US': 'Reset',
+        'fr-FR': 'Réinitialiser'
+    },
+
+    // Edit
+    'edit': {
+        'en-US': 'Edit',
+        'fr-FR': 'Éditer'
+    },
+    'tree.button.edit': {
+        'en-US': 'Edit',
+        'fr-FR': 'Éditer'
+    },
+    'messageslist.button.edit': {
+        'en-US': 'Edit',
+        'fr-FR': 'Éditer'
+    },
+
+    // Create
+    'create': {
+        'en-US': 'Create',
+        'fr-FR': 'Créer'
+    },
+    'permissionsetform.button.create': {
+        'en-US': 'Create',
+        'fr-FR': 'Créer'
+    },
+
+    // Actions
+    'actions': {
+        'en-US': 'Actions',
+        'fr-FR': 'Actions'
+    },
+    'messageheaderline.actions.header': {
+        'en-US': 'Actions',
+        'fr-FR': 'Actions'
+    },
+    'crossref.headers.actions': {
+        'en-US': 'Actions',
+        'fr-FR': 'Actions'
+    },
+    'framemanager.grid.action': {
+        'en-US': 'Actions',
+        'fr-FR': 'Actions'
+    },
+    'jobcontrolpanel.job.actions': {
+        'en-US': 'Actions',
+        'fr-FR': 'Actions'
+    },
+
+    // Info
+    'info': {
+        'en-US': 'Info',
+        'fr-FR': 'Info'
+    },
+    'crossref.notification.info': {
+        'en-US': 'Info',
+        'fr-FR': 'Info'
+    },
+    'frameform.notification.submit.success.title': {
+        'en-US': 'Info',
+        'fr-FR': 'Info'
+    },
+    'framemanager.notification.info': {
+        'en-US': 'Info',
+        'fr-FR': 'Info'
+    },
+    'notification.title.info': {
+        'en-US': 'Info',
+        'fr-FR': 'Info'
+    },
+    'mainactions.notification.title.info': {
+        'en-US': 'Info',
+        'fr-FR': 'Info'
+    },
+
+    // Search
+    'search': {
+        'en-US': 'Search...',
+        'fr-FR': 'Rechercher...'
+    },
+    'permissionsets.search.placeholder': {
+        'en-US': 'Search...',
+        'fr-FR': 'Recherche...'
+    },
+    'userform.search': {
+        'en-US': 'Search...',
+        'fr-FR': 'Rechercher...'
+    },
+    'buttonsbar.input.search': {
+        'en-US': 'Search...',
+        'fr-FR': 'Rechercher...'
+    },
+    'crossref.input.search': {
+        'en-US': 'Search...',
+        'fr-FR': 'Rechercher...'
+    },
+    'framemanager.placeholder.search': {
+        'en-US': 'Search...',
+        'fr-FR': 'Rechercher...'
+    },
+
+    // Key
+    'key': {
+        'en-US': 'Key',
+        'fr-FR': 'Clé'
+    },
+    'keyvalueeditor.key': {
+        'en-US': 'Key',
+        'fr-FR': 'Clé'
+    },
+
+    // Value
+    'value': {
+        'en-US': 'Value',
+        'fr-FR': 'Valeur'
+    },
+    'keyvalueeditor.value': {
+        'en-US': 'Value',
+        'fr-FR': 'Valeur'
+    },
+
+    // Tab title
+    'tabList': {
+        'en-US': 'List ({total})',
+        'fr-FR': 'Liste ({total})'
+    },
+    'tabEdit': {
+        'en-US': 'Edit - {name}',
+        'fr-FR': 'Éditer - {name}'
+    },
+    'tabAdd': {
+        'en-US': 'Add - {name}',
+        'fr-FR': 'Ajouter - {name}'
+    },
+    'tabRun': {
+        'en-US': 'Run - {name}',
+        'fr-FR': 'Exécuter - {name}'
+    },
+
+    'selectAll': {
+        'en-US': 'Select all',
+        'fr-FR': 'Sélectionner tout'
+    },
+    'unselectAll': {
+        'en-US': 'Unselect all',
+        'fr-FR': 'Désélectionner tout'
+    },
+    'add': {
+        'en-US': 'Add',
+        'fr-FR': 'Ajouter'
+    },
+    'import': {
+        'en-US': 'Import',
+        'fr-FR': 'Importer'
+    },
+    'export': {
+        'en-US': 'Export',
+        'fr-FR': 'Exporter'
+    },
+    'exportAll': {
+        'en-US': 'Export all',
+        'fr-FR': 'Exporter tout'
+    },
+    'deleteAll': {
+        'en-US': 'Delete all',
+        'fr-FR': 'Supprimer tout'
+    },
+    'saveAll': {
+        'en-US': 'Save all',
+        'fr-FR': 'Sauvegarder tout'
+    },
+    'run': {
+        'en-US': 'Run',
+        'fr-FR': 'Exécuter'
+    },
+    'rename': {
+        'en-US': 'Rename',
+        'fr-FR': 'Renommer'
+    },
+    'duplicate': {
+        'en-US': 'Duplicate',
+        'fr-FR': 'Dupliquer'
+    },
+    'types': {
+        'en-US': 'Types',
+        'fr-FR': 'Types'
+    },
+    'fullscreen': {
+        'en-US': 'Full-screen',
+        'fr-FR': 'Plein écran'
+    },
+    'reduce': {
+        'en-US': 'Reduce',
+        'fr-FR': 'Réduire'
+    },
+    'appKey': {
+        'en-US': 'Application key',
+        'fr-FR': 'Clé d\'application'
+    },
+    'appInfo': {
+        'en-US': 'Application info',
+        'fr-FR': 'Information sur l\'application'
+    },
+    'lastModification': {
+        'en-US': 'Last modification',
+        'fr-FR': 'Dernière modification'
+    },
+    'lastModificationBy': {
+        'en-US': 'Last modification made by {name} on {date}',
+        'fr-FR': 'Dernière modification faite par {name} le {date}'
+    },
+    'keyExist': {
+        'en-US': 'Key already exist.',
+        'fr-FR': 'La clé existe déjà.'
+    },
+
+    /** b2portal wordings. */
     'register.registration': {
         'en-US': 'Registration',
         'fr-FR': 'Enregistrement'
@@ -892,10 +1135,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Ce groupe de permissions est global'
     },
 
-    'permissionsetform.button.create': {
-        'en-US': 'Create',
-        'fr-FR': 'Créer'
-    },
     'permissionsetform.button.update': {
         'en-US': 'Update',
         'fr-FR': 'Enregistrer modifications'
@@ -913,10 +1152,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Au moins un scope doit être renseigné'
     },
 
-    'permissionsets.search.placeholder': {
-        'en-US': 'Search...',
-        'fr-FR': 'Recherche...'
-    },
     'permissionsets.button.create.permissionset': {
         'en-US': 'Create permission set',
         'fr-FR': 'Créer groupe de permissions'
@@ -1030,10 +1265,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'userform.button.update': {
         'en-US': 'Update',
         'fr-FR': 'Enregistrer modifications'
-    },
-    'userform.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
     },
 
     'users.email.placeholder': {
@@ -1489,11 +1720,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Couleur texte'
     },
 
-    'messageheaderline.actions.header': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
-
     'messageinlinetemplatebuilder.hidden.columns': {
         'en-US': 'Hidden columns',
         'fr-FR': 'Colonnes cachées'
@@ -1531,10 +1757,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'messagesearchform.button.search': {
         'en-US': 'Search',
         'fr-FR': 'Rechercher'
-    },
-    'messagesearchform.button.reset': {
-        'en-US': 'Reset',
-        'fr-FR': 'Réinitialiser'
     },
     'messagesearchform.collapse.option': {
         'en-US': 'Collapse after search',
@@ -1654,11 +1876,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'aceconfigform.update': {
         'en-US': 'Save changes',
         'fr-FR': 'Enregistrer modifications'
-    },
-
-    'buttonsbar.input.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
     },
 
     'datagrid.show.hidden.columns': {
@@ -1838,14 +2055,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'unknown size'
     },
 
-    'keyvalueeditor.key': {
-        'en-US': 'Key',
-        'fr-FR': 'Clé'
-    },
-    'keyvalueeditor.value': {
-        'en-US': 'Value',
-        'fr-FR': 'Valeur'
-    },
     'keyvalueeditor.add.text.btn': {
         'en-US': 'Add a text property',
         'fr-FR': 'Ajouter une valeur de type texte'
@@ -1956,14 +2165,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Url https invalid'
     },
 
-    'servicebuttonsbar.start': {
-        'en-US': 'Start',
-        'fr-FR': 'Démarrer'
-    },
-    'servicebuttonsbar.stop': {
-        'en-US': 'Stop',
-        'fr-FR': 'Arrêter'
-    },
     'servicebuttonsbar.restart': {
         'en-US': 'Restart',
         'fr-FR': 'Redémarrer'
@@ -2005,10 +2206,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'tree.button.validate': {
         'en-US': 'Validate',
         'fr-FR': 'Valider'
-    },
-    'tree.button.edit': {
-        'en-US': 'Edit',
-        'fr-FR': 'Éditer'
     },
     'tree.button.update': {
         'en-US': 'Update',
@@ -2217,10 +2414,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'No records found!',
         'fr-FR': 'Aucune donnée trouvée !'
     },
-    'crossref.headers.actions': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
     'crossref.button.delete.all.records': {
         'en-US': 'Delete all records',
         'fr-FR': 'Supprimer tout le contenu'
@@ -2272,14 +2465,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'crossref.table.invalid.values': {
         'en-US': 'Invalid value(s) supplied for the table structure',
         'fr-FR': 'Valeur(s) invalide(s) fournie(s) pour définir la structure de la table'
-    },
-    'crossref.input.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
-    },
-    'crossref.notification.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
     },
     'crossref.notification.nothing.to.save': {
         'en-US': 'Nothing to save here!',
@@ -2473,10 +2658,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Successfully saved frame',
         'fr-FR': 'Sauvegarde de la frame réussie'
     },
-    'frameform.notification.submit.success.title': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
     'frameform.notification.submit.failed': {
         'en-US': 'Failed to save the new frame. Some inputs are missing',
         'fr-FR': 'Échec de la sauvegarde de la nouvelle frame. Certains champs sont vides'
@@ -2490,10 +2671,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'No frame to display',
         'fr-FR': 'Aucune frame à afficher'
     },
-    'framemanager.placeholder.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
-    },
     'framemanager.header.list': {
         'en-US': 'Frames',
         'fr-FR': 'Frames'
@@ -2505,10 +2682,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'framemanager.grid.url': {
         'en-US': 'Url',
         'fr-FR': 'Url'
-    },
-    'framemanager.grid.action': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
     },
     'framemanager.button.edit': {
         'en-US': 'Edit frame',
@@ -2553,10 +2726,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'framemanager.button.back': {
         'en-US': 'Return to Home pages configuration',
         'fr-FR': 'Retour à la page de configuration des pages d\'accueil'
-    },
-    'framemanager.notification.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
     },
 
     'framepreview.data.language': {
@@ -2791,10 +2960,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Le nom `{name}` est déjà utilisé pour une autre configuration, veuillez en choisir un autre'
     },
 
-    'notification.title.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
     'notification.title.warning': {
         'en-US': 'Warning',
         'fr-FR': 'Attention'
@@ -2981,10 +3146,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Running',
         'fr-FR': 'En cours'
     },
-    'jobcontrolpanel.job.actions': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
     'jobcontrolpanel.job.mark.as.read': {
         'en-US': 'Mark as read',
         'fr-FR': 'Marquer comme lu'
@@ -3072,10 +3233,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Aller à la page de connexion'
     },
 
-    'mainactions.notification.title.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
     'mainactions.notification.title.warning': {
         'en-US': 'Warning',
         'fr-FR': 'Attention'
@@ -3354,10 +3511,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'messageslist.button.refresh': {
         'en-US': 'Refresh',
         'fr-FR': 'Rafraîchir'
-    },
-    'messageslist.button.edit': {
-        'en-US': 'Edit',
-        'fr-FR': 'Éditer'
     },
     'messageslist.button.reprocess': {
         'en-US': 'Reprocess',
