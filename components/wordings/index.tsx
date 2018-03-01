@@ -872,6 +872,16 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Valeur'
     },
 
+    // Field required
+    'fieldRequired': {
+        'en-US': 'Required field',
+        'fr-FR': 'Champ obligatoire'
+    },
+    'inputvalidation.required': {
+        'en-US': 'Required field',
+        'fr-FR': 'Champ obligatoire'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -2147,10 +2157,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'inputvalidation.invalid': {
         'en-US': 'Invalid field',
         'fr-FR': 'Champ invalide'
-    },
-    'inputvalidation.required': {
-        'en-US': 'Required field',
-        'fr-FR': 'Champ obligatoire'
     },
     'inputvalidation.invalid.email': {
         'en-US': 'Invalid email',
