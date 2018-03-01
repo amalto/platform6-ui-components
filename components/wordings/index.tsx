@@ -826,8 +826,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Info'
     },
 
-    // Search
-    'search': {
+    // Search placeholder
+    'searchPlaceholder': {
         'en-US': 'Search...',
         'fr-FR': 'Rechercher...'
     },
@@ -880,6 +880,46 @@ export const MULTILANGUAGE_WORDINGS = {
     'inputvalidation.required': {
         'en-US': 'Required field',
         'fr-FR': 'Champ obligatoire'
+    },
+
+    // Show details
+    'showDetails': {
+        'en-US': 'Show details',
+        'fr-FR': 'Voir les détails'
+    },
+    'permissionset.tooltip.expand': {
+        'en-US': 'Show details',
+        'fr-FR': 'Voir les détails'
+    },
+    'user.tooltip.expand': {
+        'en-US': 'Show details',
+        'fr-FR': 'Voir les détails'
+    },
+    'message.tooltip.expand': {
+        'en-US': 'Show details',
+        'fr-FR': 'Voir les détails'
+    },
+    'framemanager.button.expand': {
+        'en-US': 'Show details',
+        'fr-FR': 'Voir les détails'
+    },
+
+    // Close details
+    'closeDetails': {
+        'en-US': 'Close details',
+        'fr-FR': 'Fermer les détails'
+    },
+    'permissionset.tooltip.close': {
+        'en-US': 'Close details',
+        'fr-FR': 'Fermer les détails'
+    },
+    'user.tooltip.close': {
+        'en-US': 'Close details',
+        'fr-FR': 'Fermer les détails'
+    },
+    'message.tooltip.close': {
+        'en-US': 'Close details',
+        'fr-FR': 'Fermer les détails'
     },
 
     // Tab title
@@ -1128,14 +1168,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Create a new permission set with prefilled data from this one',
         'fr-FR': 'Créer un nouveau groupe de permissions avec les données de celui-ci'
     },
-    'permissionset.tooltip.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'permissionset.tooltip.close': {
-        'en-US': 'Close details',
-        'fr-FR': 'Fermer les détails'
-    },
     'permissionset.data.id': {
         'en-US': 'ID',
         'fr-FR': 'ID'
@@ -1186,14 +1218,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'user.tooltip.disassociate': {
         'en-US': 'Disassociate user',
         'fr-FR': 'Désassocier cet utilisateur'
-    },
-    'user.tooltip.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'user.tooltip.close': {
-        'en-US': 'Close details',
-        'fr-FR': 'Fermer les détails'
     },
     'user.data.realm': {
         'en-US': 'Realm',
@@ -1633,14 +1657,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'tooltip.workflow.view.details': {
         'en-US': 'View details',
         'fr-FR': 'Voir les détails'
-    },
-    'message.tooltip.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'message.tooltip.close': {
-        'en-US': 'Close details',
-        'fr-FR': 'Fermer les détails'
     },
     'flags.title': {
         'en-US': 'Flags',
@@ -2716,10 +2732,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'framemanager.button.cancel': {
         'en-US': 'Cancel frame edit',
         'fr-FR': 'Annuler l\'édition de la frame'
-    },
-    'framemanager.button.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Afficher les détails'
     },
     'framemanager.button.compress': {
         'en-US': 'Hide details',
