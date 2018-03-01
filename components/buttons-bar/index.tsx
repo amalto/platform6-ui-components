@@ -148,7 +148,7 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
                                     type="text"
                                     className="form-control" value={searchValue}
                                     onChange={e => { this.setState( { searchValue: e.target.value } ) }}
-                                    placeholder={wordings['buttonsbar.input.search']} />
+                                    placeholder={wordings['searchPlaceholder']} />
                             </form>
                             <div className="icon-ctn">
                                 <span className="fa fa-fw fa-search text-medium default-color" />
