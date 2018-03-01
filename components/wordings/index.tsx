@@ -678,6 +678,80 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Nom de la société'
     },
 
+    // Address
+    'address': {
+        'en-US': 'Address',
+        'fr-FR': 'Adresse'
+    },
+    'user.data.street': {
+        'en-US': 'Address',
+        'fr-FR': 'Adresse'
+    },
+    'register.billingAddress.label': {
+        'en-US': 'Address',
+        'fr-FR': 'Adresse'
+    },
+    'register.street.label': {
+        'en-US': 'Address',
+        'fr-FR': 'Adresse'
+    },
+
+    // City
+    'city': {
+        'en-US': 'City',
+        'fr-FR': 'Ville'
+    },
+    'user.data.city': {
+        'en-US': 'City',
+        'fr-FR': 'Ville'
+    },
+    'register.city.label': {
+        'en-US': 'City',
+        'fr-FR': 'Ville'
+    },
+
+    // State
+    'state': {
+        'en-US': 'State',
+        'fr-FR': 'État'
+    },
+    'user.data.state': {
+        'en-US': 'State',
+        'fr-FR': 'État'
+    },
+    'register.state.label': {
+        'en-US': 'State',
+        'fr-FR': 'État'
+    },
+
+    // Country
+    'country': {
+        'en-US': 'Country',
+        'fr-FR': 'Pays'
+    },
+    'user.data.country': {
+        'en-US': 'Country',
+        'fr-FR': 'Pays'
+    },
+    'register.country.label': {
+        'en-US': 'Country',
+        'fr-FR': 'Pays'
+    },
+
+    // Zip
+    'zip': {
+        'en-US': 'Zip',
+        'fr-FR': 'Code postal'
+    },
+    'user.data.zip': {
+        'en-US': 'Zip',
+        'fr-FR': 'Code postal'
+    },
+    'register.zip.label': {
+        'en-US': 'Zip',
+        'fr-FR': 'Code postal'
+    },
+
     // Phone
     'phone': {
         'en-US': 'Phone',
@@ -920,6 +994,42 @@ export const MULTILANGUAGE_WORDINGS = {
     'message.tooltip.close': {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
+    },
+
+    // Search
+    'search': {
+        'en-US': 'Search',
+        'fr-FR': 'Rechercher'
+    },
+    'users.search': {
+        'en-US': 'Search',
+        'fr-FR': 'Rechercher'
+    },
+    'permissionssearchform.search': {
+        'en-US': 'Search',
+        'fr-FR': 'Rechercher'
+    },
+    'messagesearchform.button.search': {
+        'en-US': 'Search',
+        'fr-FR': 'Rechercher'
+    },
+    'messageslist.panel.title.search': {
+        'en-US': 'Search',
+        'fr-FR': 'Rechercher'
+    },
+
+    // Administration
+    'administration': {
+        'en-US': 'Administration',
+        'fr-FR': 'Administration'
+    },
+    'admin.title': {
+        'en-US': 'Administration',
+        'fr-FR': 'Administration'
+    },
+    'menu.entry.administration': {
+        'en-US': 'Administration',
+        'fr-FR': 'Administration'
     },
 
     // Tab title
@@ -1227,26 +1337,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Email verified',
         'fr-FR': 'Email confirmé'
     },
-    'user.data.street': {
-        'en-US': 'Address',
-        'fr-FR': 'Adresse'
-    },
-    'user.data.city': {
-        'en-US': 'City',
-        'fr-FR': 'Ville'
-    },
-    'user.data.state': {
-        'en-US': 'State',
-        'fr-FR': 'État'
-    },
-    'user.data.country': {
-        'en-US': 'Country',
-        'fr-FR': 'Pays'
-    },
-    'user.data.zip': {
-        'en-US': 'Zip',
-        'fr-FR': 'Code postal'
-    },
     'user.data.policies': {
         'en-US': 'Policies',
         'fr-FR': 'Droits d\'accès'
@@ -1305,10 +1395,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Email...',
         'fr-FR': 'Email...'
     },
-    'users.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
-    },
     'users.search.by': {
         'en-US': 'Search by',
         'fr-FR': 'Rechercher par'
@@ -1358,15 +1444,7 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Permission sets',
         'fr-FR': 'Groupes de permissions'
     },
-    'permissionssearchform.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
-    },
 
-    'admin.title': {
-        'en-US': 'Administration',
-        'fr-FR': 'Administration'
-    },
     'admin.tab.title.users': {
         'en-US': 'Users',
         'fr-FR': 'Utilisateurs'
@@ -1615,10 +1693,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Documents',
         'fr-FR': 'Documents'
     },
-    'menu.entry.administration': {
-        'en-US': 'Administration',
-        'fr-FR': 'Administration'
-    },
     'menu.entry.oauth.settings': {
         'en-US': 'OAuth Settings',
         'fr-FR': 'Paramètres OAuth'
@@ -1779,10 +1853,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'messagesearchform.document.type': {
         'en-US': 'View',
         'fr-FR': 'Vue'
-    },
-    'messagesearchform.button.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
     },
     'messagesearchform.collapse.option': {
         'en-US': 'Collapse after search',
@@ -2302,45 +2372,21 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Please enter your company\'s website address',
         'fr-FR': 'Merci de saisir l\'adresse du site web de votre société'
     },
-    'register.billingAddress.label': {
-        'en-US': 'Address',
-        'fr-FR': 'Adresse'
-    },
-    'register.street.label': {
-        'en-US': 'Address',
-        'fr-FR': 'Adresse'
-    },
     'register.street.error': {
         'en-US': 'Please enter the name and the number of the street',
         'fr-FR': 'Merci de saisir le nom de la rue ainsi que le numéro'
-    },
-    'register.city.label': {
-        'en-US': 'City',
-        'fr-FR': 'Ville'
     },
     'register.city.error': {
         'en-US': 'Please enter the name of the city',
         'fr-FR': 'Merci de saisir le nom de la ville'
     },
-    'register.state.label': {
-        'en-US': 'State',
-        'fr-FR': 'État'
-    },
     'register.state.error': {
         'en-US': 'Please enter the name of the state',
         'fr-FR': 'Merci de saisir le nom de l\'état'
     },
-    'register.country.label': {
-        'en-US': 'Country',
-        'fr-FR': 'Pays'
-    },
     'register.country.error': {
         'en-US': 'Please enter the name of the country',
         'fr-FR': 'Merci de saisir le nom du pays'
-    },
-    'register.zip.label': {
-        'en-US': 'Zip',
-        'fr-FR': 'Code postal'
     },
     'register.zip.error': {
         'en-US': 'Please enter the zip code',
@@ -3494,10 +3540,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Vous n\'avez accès à aucune vue sur cette page'
     },
 
-    'messageslist.panel.title.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Recherche'
-    },
     'messageslist.panel.title.layout.builder': {
         'en-US': 'Layout builder',
         'fr-FR': 'Personnaliser l\'affichage'
