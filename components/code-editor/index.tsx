@@ -3,7 +3,7 @@
  *  Extend from XmlEditor
  */
 
- // Modules
+// Modules
 import * as React from 'react'
 import * as ace from 'brace'
 
