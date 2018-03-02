@@ -2,7 +2,7 @@
     "name": "@amalto/scope-helpers",
     "displayName": "ScopeHelpers",
     "description": "Check user permissions.",
-    "version": "1.4.8",
+    "version": "1.4.9",
     "license": "MIT",
     "repository": {
         "type": "git",
