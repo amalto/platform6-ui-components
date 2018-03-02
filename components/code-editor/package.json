@@ -2,7 +2,7 @@
   "name": "@amalto/code-editor",
   "displayName": "CodeEditor",
   "description": "Customizable code editor (non-form version).",
-  "version": "1.4.20",
+  "version": "1.4.21",
   "license": "MIT",
   "repository": {
     "type": "git",
