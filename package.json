@@ -60,7 +60,7 @@
     "jsdom": "11.6.2",
     "json-loader": "0.5.7",
     "jstree": "3.3.5",
-    "lerna": "2.4.0",
+    "lerna": "2.8.0",
     "markdown-loader": "2.0.2",
     "node-sass": "4.7.2",
     "path": "0.12.7",
