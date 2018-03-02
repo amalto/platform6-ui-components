@@ -2,24 +2,23 @@
  * Created by franckmontaigne on 02/06/16.
  */
 
-
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//utils
+// Utils
 import { isValidColorCode, compileWordings } from '@amalto/helpers'
 
-//wordings
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-//components & models
+// Components
 import ColorPicker from '@amalto/color-picker'
+
+// Models
 import NotificationModel from '../models/NotificationModel'
 import { ColumnHeader } from '../models/DataGrid'
 import { DisplayTemplate, DisplayTemplateItem } from '../models/DisplayTemplate'
-
-//modules
-import * as classNames from 'classnames'
-
 
 module HeaderItem {
     export interface Props extends React.Props<HeaderItem> {

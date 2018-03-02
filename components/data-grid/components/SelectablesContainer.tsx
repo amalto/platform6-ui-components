@@ -1,8 +1,9 @@
+// Modules
 import * as React from 'react'
-
-import { arrayMin, arrayMax } from '@amalto/helpers'
-
 import * as classNames from 'classnames'
+
+// Utils
+import { arrayMin, arrayMax } from '@amalto/helpers'
 
 module SelectablesContainer {
     export interface Props extends React.Props<SelectablesContainer> {

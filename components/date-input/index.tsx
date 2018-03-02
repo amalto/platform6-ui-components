@@ -1,14 +1,11 @@
+// Modules
 import * as React from 'react'
-
-//modules
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import * as classNames from 'classnames'
 
-//components
+// Components
 import Help from '@amalto/help'
 import DatePicker from '@amalto/date-picker'
-
-//utils
-import * as classNames from 'classnames'
 
 /**
  * Date input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).

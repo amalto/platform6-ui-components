@@ -2,9 +2,8 @@
  * Created by franckmontaigne on 13/06/16.
  */
 
+ // Modules
 import * as React from 'react'
-
-//modules
 import * as classNames from 'classnames'
 
 /**

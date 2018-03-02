@@ -1,3 +1,4 @@
+// Modules
 import * as React from 'react'
 
 export const MULTILANGUAGE_WORDINGS = {

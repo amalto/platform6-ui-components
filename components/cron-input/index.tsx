@@ -1,18 +1,18 @@
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//wordings
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
+// Utils
 import { compileWordings } from '@amalto/helpers'
 
-//components
+// Components
 import Switch from '@amalto/switch'
 import ValidatedInput from '@amalto/validated-input'
 
-//modules
-import * as classNames from 'classnames'
-
-
+// Constants
 export const CRON_VALIDATION = {
     SECOND: /[^0-9\,\-\*\/]/,
     MINUTE: /[^0-9\,\-\*\/]/,

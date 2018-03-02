@@ -2,38 +2,41 @@
  * Created by franckmontaigne on 13/06/16.
  */
 
+// Modules
 import * as React from 'react'
 import { Dispatch } from 'redux'
-
-//utils & stores
-import { hasRequiredResource, compileWordings } from '@amalto/helpers'
-import GlobalState from './models/GlobalState'
-import { ReduxProps } from './models/ReduxProps'
-
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-//components & models
-import { Action } from './models/Actions'
-import TogglePanel from '@amalto/toggle-panel'
-import Spinner from '@amalto/spinner'
-import NotificationModel from './models/NotificationModel'
-import SelectablesContainer from './components/SelectablesContainer'
-import { RequireResource } from './components/RequireResource'
-import ActionButton from '@amalto/action-button'
-import ButtonsBar from '@amalto/buttons-bar'
-import { ColumnHeader, DataGridTemplates } from './models/DataGrid'
-import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
-import { UserModel, getUserJson } from './models/UserModel'
-import HeaderLine from './components/HeaderLine'
-import DataLine from '@amalto/data-line'
-
-//modules
 import { ThunkAction } from 'redux-thunk'
 import { MapStateToProps, connect } from 'react-redux'
 import * as classNames from 'classnames'
 
+// Utils
+import { hasRequiredResource, compileWordings } from '@amalto/helpers'
+
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+
+// Components
+import TogglePanel from '@amalto/toggle-panel'
+import Spinner from '@amalto/spinner'
+import SelectablesContainer from './components/SelectablesContainer'
+import { RequireResource } from './components/RequireResource'
+import ActionButton from '@amalto/action-button'
+import ButtonsBar from '@amalto/buttons-bar'
+import HeaderLine from './components/HeaderLine'
+import DataLine from '@amalto/data-line'
+
+// Models
+import { Action } from './models/Actions'
+import NotificationModel from './models/NotificationModel'
+import { ColumnHeader, DataGridTemplates } from './models/DataGrid'
+import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
+import { UserModel, getUserJson } from './models/UserModel'
+import { WebApi } from './models/WebApi'
+import GlobalState from './models/GlobalState'
+import { ReduxProps } from './models/ReduxProps'
+
+// Actions
 import * as dataGridActions from './actions/DataGridActions'
-import { WebApi } from './models/WebApi';
 
 /**
  * Customizable grid.

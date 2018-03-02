@@ -2,17 +2,19 @@
  * Created by franckmontaigne on 28/03/17.
  */
 
+// Modules
 import * as React from 'react'
-
-//wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-import { compileWordings } from '@amalto/helpers'
-
-//modules
 import * as classNames from 'classnames'
 
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
+// Utils
+import { compileWordings } from '@amalto/helpers'
+
+/**
+ * Component allowing you to display a set of buttons as well as a search input if needed.
+ */
 module ButtonsBar {
 
     export interface BtnGroupsProps {
@@ -60,9 +62,6 @@ module ButtonsBar {
 
 }
 
-/**
- * Component allowing you to display a set of buttons as well as a search input if needed.
- */
 class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
 
     constructor( props: ButtonsBar.Props ) {

@@ -2,13 +2,12 @@
  * Created by franckmontaigne on 14/06/16.
  */
 
-
+// Modules
 import * as React from 'react'
-
-import { DisplayTemplate, DisplayTemplateItem } from '../models/DisplayTemplate'
-
-//modules
 import * as classNames from 'classnames'
+
+// Models
+import { DisplayTemplate, DisplayTemplateItem } from '../models/DisplayTemplate'
 
 module DataItem {
     export interface Props extends React.Props<DataItem> {

@@ -1,21 +1,21 @@
+// Modules
 import * as React from 'react'
-
-//utils & stores
-import { compileWordings } from '@amalto/helpers'
-
-//wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-//components & models
-import Spinner from '@amalto/spinner'
-import { WorkflowActionParam } from '../models/Workflow'
-import Switch from '@amalto/switch'
-import FileInput from '@amalto/file-input'
-import FileWrapper from '../models/FileWrapper'
-
-//modules
 import * as classNames from 'classnames'
 
+// Utils
+import { compileWordings } from '@amalto/helpers'
+
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+
+// Components
+import Spinner from '@amalto/spinner'
+import Switch from '@amalto/switch'
+import FileInput from '@amalto/file-input'
+
+// Models
+import { WorkflowActionParam } from '../models/Workflow'
+import FileWrapper from '../models/FileWrapper'
 
 module FormInput {
     export interface Props extends React.Props<FormInput> {

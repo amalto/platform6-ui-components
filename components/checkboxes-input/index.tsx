@@ -1,17 +1,13 @@
+// Modules
 import * as React from 'react'
-
-//helpers
-import { addValToArrayNoDup, removeValFromArrayNoDup } from '@amalto/helpers'
-
-//modules
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-
-//components
-import Help from '@amalto/help'
-
-//utils
 import * as classNames from 'classnames'
 
+// Helpers
+import { addValToArrayNoDup, removeValFromArrayNoDup } from '@amalto/helpers'
+
+// Components
+import Help from '@amalto/help'
 
 /**
  * Checkboxes inputs used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).

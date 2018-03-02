@@ -2,18 +2,17 @@
  * Created by franckmontaigne on 02/06/16.
  */
 
-
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//components & models
-import NotificationModel from '../models/NotificationModel'
-import { ColumnHeader } from '../models/DataGrid'
+// Components
 import HeaderItem from './HeaderItem'
 
+// Models
+import NotificationModel from '../models/NotificationModel'
+import { ColumnHeader } from '../models/DataGrid'
 import { DisplayTemplate, DisplayTemplateItem } from '../models/DisplayTemplate'
-
-//modules
-import * as classNames from 'classnames'
 
 module HeaderLine {
     export interface Props extends React.Props<HeaderLine> {

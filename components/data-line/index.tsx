@@ -2,17 +2,16 @@
  * Created by franckmontaigne on 14/06/16.
  */
 
-
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//components 
+// Components 
 import DataItem from './components/DataItem'
 
-//models
+// Models
 import { CellData } from './models/DataGrid'
 import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
-
-import * as classNames from 'classnames'
 
 /**
  * DateLine shouldn't be used outside the DataGrid component else it won't be displayed correctly.

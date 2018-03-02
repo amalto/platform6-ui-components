@@ -1,7 +1,8 @@
+// Modules
 import * as React from 'react'
-
 import * as classNames from 'classnames'
 
+// Components
 import Spinner from '@amalto/spinner'
 
 /**

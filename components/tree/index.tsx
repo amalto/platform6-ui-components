@@ -1,18 +1,19 @@
+// Modules
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import * as classNames from 'classnames'
 
-//utils
+// Utils
 import { compileWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers'
+
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-//components
+// Components
 import KeyValueEditor from '@amalto/key-value-editor'
 
-//models
+// Models
 import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tree'
-
-//modules
-import * as classNames from 'classnames'
 
 /**
  * Organize custom tree allowing you to manage nodes and attached data to it.

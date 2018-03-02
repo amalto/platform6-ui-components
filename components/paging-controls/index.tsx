@@ -1,11 +1,13 @@
+// Modules
 import * as React from 'react'
-
-import { compileWordings } from '@amalto/helpers'
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-//modules
 import { FormattedNumber } from 'react-intl'
 import * as classNames from 'classnames'
+
+// Utils
+import { compileWordings } from '@amalto/helpers'
+
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 /**
  * Page navigation toolbar.

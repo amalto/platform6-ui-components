@@ -1,5 +1,7 @@
+// Modules
 import * as React from 'react'
 
+// Assets
 import { spinner } from './images/spinner'
 
 /**

@@ -1,13 +1,12 @@
+// Modules
 import * as React from 'react'
-
-//modules
 import * as uuid from 'uuid'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 
-//components
+// Components
 import Help from '@amalto/help'
 
-//utils
+// Utils
 import * as classNames from 'classnames'
 
 /**

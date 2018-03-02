@@ -1,6 +1,7 @@
+// Utils
 import { isValidEmail, isNotEmpty, isValidHttpsUrl, compileWordings } from '@amalto/helpers'
 
-//wordings
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 

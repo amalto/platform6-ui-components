@@ -1,10 +1,9 @@
+// Modules
 import * as React from 'react'
-
-//components & models
-import Help from '@amalto/help'
-
-//modules
 import * as classNames from 'classnames'
+
+// Components
+import Help from '@amalto/help'
 
 /**
  * Simple select or input with a validation by regular expression or method check used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).

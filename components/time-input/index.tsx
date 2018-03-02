@@ -1,17 +1,14 @@
+// Modules
 import * as React from 'react'
-
-//modules
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import * as classNames from 'classnames'
 
-//components
+// Components
 import Help from '@amalto/help'
 import TimePicker from '@amalto/time-picker'
 
-//input validation
+// Utils
 import { required } from '@amalto/input-validation'
-
-//utils
-import * as classNames from 'classnames'
 
 /**
  * Time input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).

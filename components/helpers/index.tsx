@@ -1,13 +1,16 @@
+// Modules
 import md5 from 'md5'
 import * as base64 from 'base-64'
-
 import * as classNames from 'classnames'
 
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
+// Models
 import { Endpoints } from './models/AppEndpointsModel'
 import { OrgModel, TreeNodeModel } from './models/Organisation'
 
+// Constants
 import { AVAILABLE_LANGUAGES } from './constants/Config'
 import { flagsDef } from './constants/Data'
 

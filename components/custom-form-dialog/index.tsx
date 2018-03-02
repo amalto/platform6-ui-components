@@ -1,30 +1,28 @@
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//utils & stores
+// Utils
 import { getStyleDef, compileWordings } from '@amalto/helpers'
 
-//wordings
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-//models
+// Models
 import { WorkflowActionParam, CustomFormData } from './models/Workflow'
 import { WebApi } from './models/WebApi'
 import NotificationModel from './models/NotificationModel'
+import { ReduxProps } from './models/ReduxProps'
+import FileWrapper from './models/FileWrapper'
 
-//components
+// Components
 import FormInput from './components/FormInput'
 import Spinner from '@amalto/spinner'
 import TogglePanel from '@amalto/toggle-panel'
 
-//web api utils
-import { ReduxProps } from './models/ReduxProps'
-
-//modules
-import * as classNames from 'classnames'
-
-import FileWrapper from './models/FileWrapper'
-
-/** Custom component display on a modal's panel body. */
+/**
+ * Custom component display on a modal's panel body
+ */
 namespace CustomFormDialog {
     export interface Props extends React.Props<CustomFormDialog> {
 

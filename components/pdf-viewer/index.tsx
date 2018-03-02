@@ -1,11 +1,14 @@
+// Modules
 import * as React from 'react'
 import * as PDFJS from 'pdfjs-dist'
 
-//utils
+// Utils
 import { compileWordings } from '@amalto/helpers'
+
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-//components
+// Components
 import Spinner from '@amalto/spinner'
 import PagingControls from '@amalto/paging-controls'
 

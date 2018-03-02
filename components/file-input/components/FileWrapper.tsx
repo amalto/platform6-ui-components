@@ -1,10 +1,9 @@
+// Modules
 import * as React from 'react'
-
-//utils & stores
-import { formatFileSize } from '@amalto/helpers'
-
-//modules
 import * as classNames from 'classnames'
+
+// Utils
+import { formatFileSize } from '@amalto/helpers'
 
 module FileWrapper {
     export interface Props extends React.ClassAttributes<FileWrapper> {

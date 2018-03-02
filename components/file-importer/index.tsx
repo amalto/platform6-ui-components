@@ -1,15 +1,16 @@
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//utils & stores
+// Utils
 import { compileWordings, formatFileSize } from '@amalto/helpers'
+
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-//components
+// Components
 import Switch from '@amalto/switch'
 import Spinner from '@amalto/spinner'
-
-//modules
-import * as classNames from 'classnames'
 
 /**
  * Modal use to confirm a file upload.

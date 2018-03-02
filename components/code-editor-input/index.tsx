@@ -1,16 +1,15 @@
+// Modules
 import * as React from 'react'
-
-//modules
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import * as classNames from 'classnames'
+import * as uuid from 'uuid'
+
+// Models
 import { UserModel, getUserJson } from './models/UserModel'
 import AceSession from './models/AceSession'
 
-//components
+// Components
 import Help from '@amalto/help'
-
-//utils
-import * as classNames from 'classnames'
-import * as uuid from 'uuid'
 
 type AceEditor = AceAjax.Editor
 

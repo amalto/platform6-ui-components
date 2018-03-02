@@ -2,20 +2,20 @@
  * Created by franckmontaigne on 13/06/16.
  */
 
+ // Modules
 import * as React from 'react'
-
-//utils & stores
-import { compileWordings } from '@amalto/helpers'
-
-//wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-import Tab from '@amalto/tab'
-
-//modules
 import * as classNames from 'classnames'
 import * as uuid from 'uuid'
 import * as PerfectScrollbar from 'react-perfect-scrollbar'
+
+// Utils
+import { compileWordings } from '@amalto/helpers'
+
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+
+// Components
+import Tab from '@amalto/tab'
 
 /**
  * Tabs management component allowing you to display custom content.

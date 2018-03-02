@@ -1,11 +1,11 @@
+// Modules
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-
 import * as moment from 'moment'
 import * as Pikaday from 'pikaday'
-
 import * as classNames from 'classnames'
 
+// Components
 import Help from '@amalto/help'
 
 /**

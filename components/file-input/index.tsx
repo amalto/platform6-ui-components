@@ -1,18 +1,23 @@
+// Modules
 import * as React from 'react'
-
-//utils & stores
-import { compileWordings, formatFileSize } from '@amalto/helpers'
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-//components & models
-import FileWrapper from './models/FileWrapper'
-import FileWrapperDisplay from './components/FileWrapper'
-
-//modules
 import Dropzone from 'react-dropzone'
 import * as classNames from 'classnames'
 
-/** Component allowing you to import multiple files. */
+// Utils
+import { compileWordings, formatFileSize } from '@amalto/helpers'
+
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+
+// Components
+import FileWrapperDisplay from './components/FileWrapper'
+
+// Models
+import FileWrapper from './models/FileWrapper'
+
+/**
+ * Component allowing you to import multiple files.
+ */
 module FileInput {
 
     export interface Props extends React.ClassAttributes<FileInput> {

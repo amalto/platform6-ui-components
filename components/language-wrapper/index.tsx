@@ -1,19 +1,18 @@
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//const
+// Constants
 import { languageIso, Language } from './constants/Data'
 
-//helpers
+// Utils
 import { addValToArrayNoDup, removeValFromArrayNoDup, compileWordings } from '@amalto/helpers'
 
-//wordings
+// Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-//components
+// Components
 import TypeaheadInput from '@amalto/typeahead-input'
-
-//modules
-import * as classNames from 'classnames'
 
 /**
  * Language selector.

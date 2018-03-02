@@ -1,11 +1,12 @@
+// Modules
 import * as React from 'react'
-
-//utils & stores
-import { compileWordings, isValidKeyChar, downloadDataFile } from '@amalto/helpers'
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-//modules
 import * as classNames from 'classnames'
+
+// Utils
+import { compileWordings, isValidKeyChar, downloadDataFile } from '@amalto/helpers'
+
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 /**
  * Map component where you can assiociate keys with texts or files.

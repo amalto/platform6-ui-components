@@ -3,13 +3,14 @@
  *  Extend from XmlEditor
  */
 
+ // Modules
 import * as React from 'react'
+import * as ace from 'brace'
 
+// Models
 import { UserModel } from './models/UserModel'
-
 import { Model } from './models/Messages'
 import AceSession from './models/AceSession'
-import * as ace from 'brace'
 
 /**
  * Ace editor mode

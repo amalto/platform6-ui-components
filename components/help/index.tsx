@@ -1,6 +1,5 @@
+// Modules
 import * as React from 'react'
-
-// Utils
 import * as classNames from 'classnames'
 
 /**

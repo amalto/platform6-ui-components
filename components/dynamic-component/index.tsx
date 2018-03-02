@@ -1,22 +1,22 @@
+// Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
 
-//utils & stores
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+// Utils
 import { compileWordings } from '@amalto/helpers'
 
-//web api utils
-import { ReduxProps } from './models/ReduxProps'
+// Wordings
+import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
+// Components
 import Spinner from '@amalto/spinner'
 
-//models
+// Models
+import { ReduxProps } from './models/ReduxProps'
 import { WebApi } from './models/WebApi'
 import NotificationModel from './models/NotificationModel'
 import { AppKey } from './models/AppKey'
 import { RunningJob } from './models/JobControl'
-
-//modules
-import * as classNames from 'classnames'
 
 /**
  * Display any component passed as props.

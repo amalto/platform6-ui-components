@@ -1,13 +1,10 @@
+// Modules
 import * as React from 'react'
-
-//modules
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-
-//components
-import Help from '@amalto/help'
-
-//utils
 import * as classNames from 'classnames'
+
+// Components
+import Help from '@amalto/help'
 
 /**
  * Radio input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).

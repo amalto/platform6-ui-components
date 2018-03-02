@@ -1,6 +1,10 @@
+// Modules
 import * as React from 'react'
 
+// Utils
 import { hasRequiredResource } from '@amalto/helpers'
+
+// Models
 import { Endpoints } from '../models/AppEndpointsModel'
 
 module RequireResource {

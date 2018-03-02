@@ -1,9 +1,9 @@
+// Modules
 import * as React from 'react'
-
-import Help from '@amalto/help'
-
-//modules
 import * as classNames from 'classnames'
+
+// Components
+import Help from '@amalto/help'
 
 /**
  * Timepicker with few customizations like a minimum and a maximum time range of time available.

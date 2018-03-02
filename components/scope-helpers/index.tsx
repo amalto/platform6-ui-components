@@ -1,7 +1,9 @@
 
+// Models
 import { ScopeValue, PermissionDef, ScopesTree } from './models/Scopes'
 import { WebStorage } from './models/WebStorage'
 
+// Constants
 const ASTERISK = '*'
 
 /**

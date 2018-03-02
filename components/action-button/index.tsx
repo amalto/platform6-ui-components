@@ -1,10 +1,11 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
+/**
+ * Small button with an icon instead of text.
+ */
 module ActionButton {
-    /**
-     * ActionButton properties
-     */
+
     export interface Props extends React.Props<ActionButton> {
         /** onClick method. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
@@ -33,9 +34,6 @@ module ActionButton {
     }
 }
 
-/**
- * Small button with an icon instead of text.
- */
 class ActionButton extends React.Component<ActionButton.Props, any> {
     constructor( props: ActionButton.Props ) {
         super( props )
