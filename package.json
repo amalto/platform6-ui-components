@@ -21,6 +21,7 @@
     "test": "ava --verbose",
     "publish": "lerna publish --yes --exact --independent --skip-npm -- --access public",
     "publish:force": "lerna publish --yes --exact --independent --skip-npm --force-publish=* -- --access public",
+    "postpublish": "git push && git push --tags",
     "setup": "npm install",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
