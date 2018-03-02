@@ -2,7 +2,7 @@
   "name": "@amalto/language-wrapper",
   "displayName": "LanguageWrapper",
   "description": "Used to select language.",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,10 +25,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/help": "1.4.0",
-    "@amalto/helpers": "1.4.0",
-    "@amalto/typeahead-input": "1.4.0",
-    "@amalto/wordings": "1.4.0",
+    "@amalto/help": "1.4.1",
+    "@amalto/helpers": "1.4.1",
+    "@amalto/typeahead-input": "1.4.1",
+    "@amalto/wordings": "1.4.1",
     "classnames": "2.2.5",
     "react": "15.6.2",
     "react-dom": "15.6.2"
