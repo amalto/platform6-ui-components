@@ -2,7 +2,7 @@
     "name": "@amalto/color-picker",
     "displayName": "ColorPicker",
     "description": "Component to pick a color.",
-    "version": "1.3.12",
+    "version": "1.3.13",
     "license": "MIT",
     "repository": {
         "type": "git",
