@@ -19,8 +19,8 @@
     "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build",
     "test": "ava --verbose",
-    "publish": "lerna publish --yes --exact --independent --npm-tag=next -- --access public --registry=https://registry.npmjs.org/",
-    "publish:force": "lerna publish --yes --exact --independent --npm-tag=next --force-publish=* -- --access public --registry=https://registry.npmjs.org/",
+    "publish": "lerna publish --yes --exact --independent --follow-tags -- --access public --registry=https://registry.npmjs.org/",
+    "publish:force": "lerna publish --yes --exact --independent --follow-tags --force-publish=* -- --access public --registry=https://registry.npmjs.org/",
     "setup": "npm install",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
