@@ -295,6 +295,15 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             this.props.editorOnChange(this._editor.getValue())
         } )
 
+        editor.on('blur', function (e) {
+            const session = this.getAceSession(this._editor);
+
+            this._canUpdate = true;
+            this._cursorLastPosition = e.end;
+            session.cursorPosition = this._cursorLastPosition
+            this.props.saveSession(session);
+        });
+
         this._firstChangeTime = props.loadTime
     }
 
