@@ -93,6 +93,8 @@ module CodeEditor {
         displaySettings?: Settings;
         /** Initial load time of editor. If the new loadTime is at a later date, the editor will be updated. */
         loadTime: number;
+        /** Force use of saveSession props. */
+        forceSave?: boolean;
         /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
         /** Editor ace session. More details on [AceSession](http://localhost:6060/#acesession). */
@@ -236,6 +238,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         if ( nextProps.moveToEndOfFile ) {
             this._editor.getSelection().moveCursorFileEnd()
             this._editor.scrollToLine( this._editor.getSession().getLength(), false, true, () => this._editor.scrollPageDown() )
+        }
+
+        if ( this.props.forceSave !== nextProps.forceSave && nextProps.forceSave ) {
+            this.props.saveSession( this.getAceSession( this._editor ) )
         }
 
         return doUpdate
