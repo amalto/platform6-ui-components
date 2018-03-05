@@ -298,7 +298,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         const self = this
 
         editor.on('blur', function (e) {
-            console.info(self)
             const session = self.getAceSession(self._editor)
 
             self._canUpdate = true
