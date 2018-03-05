@@ -192,7 +192,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         this._clearTimeout = setInterval(() => {
             if ( this._canUpdate ) {
-                this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
+                this.props.saveSession( $.extend( {}, CodeEditor.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
                 this._canUpdate = false
             }
         }, 12000)
@@ -202,7 +202,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         window.removeEventListener( 'resize', () => this.resizeEditor() )
 
         //save current session
-        this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ), {cursorPosition: this._cursorLastPosition} ) )
+        this.props.saveSession && this.props.saveSession( $.extend( {}, CodeEditor.getAceSession( this._editor ), {cursorPosition: this._cursorLastPosition} ) )
 
         clearInterval( this._clearTimeout )
 
@@ -219,7 +219,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         if ( this.props.saveSession && newDoc ) {
             //save previous ACE Session
-            this.props.saveSession( this.getAceSession( this._editor ) )
+            this.props.saveSession( CodeEditor.getAceSession( this._editor ) )
         }
 
         const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
@@ -242,7 +242,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         }
 
         if ( this.props.forceSave !== nextProps.forceSave && nextProps.forceSave ) {
-            this.props.saveSession( this.getAceSession( this._editor ) )
+            this.props.saveSession( CodeEditor.getAceSession( this._editor ) )
         }
 
         return doUpdate
@@ -278,7 +278,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             editor.setSession( session )
             //make sure the store is updated with the new session
-            props.saveSession && props.saveSession( this.getAceSession( editor ) )
+            props.saveSession && props.saveSession( CodeEditor.getAceSession( editor ) )
         }
 
         editor.getSession().setMode( props.mode && `ace/mode/${ props.mode }` || 'ace/mode/javascript' )
@@ -292,31 +292,33 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             this._canUpdate = true
             this._cursorLastPosition = e.end
 
-            this.props.editorOnChange(this._editor.getValue())
+            this.props.editorOnChange && this.props.editorOnChange(this._editor.getValue())
         } )
 
         editor.on('blur', function (e) {
-            const session = this.getAceSession(this._editor);
+            const session = CodeEditor.getAceSession(this._editor)
 
-            this._canUpdate = true;
-            this._cursorLastPosition = e.end;
-            session.cursorPosition = this._cursorLastPosition;
-            props.saveSession(session);
+            if ( session ) {
+                session.cursorPosition = e.end
+                this._canUpdate = true
+                this._cursorLastPosition = e.end
+                this.props.saveSession(session)
+            }
         });
 
         this._firstChangeTime = props.loadTime
     }
 
     //see http://stackoverflow.com/questions/28257566/ace-editor-save-send-session-on-server-via-post
-    private getAceSession = ( editor: AceEditor ): AceSession => {
-        return this.extractAceSession( editor )
+    private static getAceSession = ( editor: AceEditor ): AceSession => {
+        return CodeEditor.extractAceSession( editor )
     }
 
-    private extractAceSession = ( editor: AceEditor ): AceSession => {
-        let session = editor.getSession()
+    private static extractAceSession = ( editor: AceEditor ): AceSession => {
+        let session = editor && editor.getSession()
         const filterHistory = ( deltas ) => deltas.filter( d => d.group !== "fold" )
 
-        return {
+        return session ? {
             cursorPosition: session.getSelection().getCursor(),
             selection: session.selection['toJSON'](),
             value: session.getValue(),
@@ -327,8 +329,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             scrollTop: session.getScrollTop(),
             scrollLeft: session.getScrollLeft(),
             options: session['getOptions'](),
-            firstChangeTime: this._firstChangeTime
-        } as AceSession
+            firstChangeTime: CodeEditor.prototype._firstChangeTime
+        } as AceSession : null
     }
 
     private static restoreSession( editor: AceEditor, data: AceSession ) {
@@ -435,7 +437,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             name: 'save',
             bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
             exec: ( currentEditor ) => {
-                props.saveContent && props.saveContent( $.extend( {}, this.extractAceSession( currentEditor ), {
+                props.saveContent && props.saveContent( $.extend( {}, CodeEditor.extractAceSession( currentEditor ), {
                     savable: this.isSessionSavable( currentEditor ),
                     cursorPosition: currentEditor.getCursorPosition()
                 } ) )
