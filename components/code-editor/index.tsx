@@ -196,6 +196,19 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
                 this._canUpdate = false
             }
         }, 12000)
+
+        // Needed to be able to access this from editor onblur event
+        const self = this
+
+        this._editor.on('blur', function (e) {
+            const session = self.getAceSession(self._editor)
+
+            if ( self._canUpdate ) {
+                self._cursorLastPosition = e.end
+                session.cursorPosition = self._cursorLastPosition
+                self.props.saveSession && self.props.saveSession(session)
+            }
+        });
     }
 
     componentWillUnmount() {
@@ -293,20 +306,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             this.props.editorOnChange && this.props.editorOnChange(this._editor.getValue())
         } )
-
-        // Needed to be able to access this from editor onblur event
-        const self = this
-
-        editor.on('blur', function (e) {
-            const session = self.getAceSession(self._editor)
-
-            if ( self._canUpdate ) {
-                self._cursorLastPosition = e.end
-                session.cursorPosition = self._cursorLastPosition
-                self.props.saveSession && self.props.saveSession(session)
-            }
-        });
-
         this._firstChangeTime = props.loadTime
     }
 
