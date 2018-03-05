@@ -300,8 +300,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             this._canUpdate = true;
             this._cursorLastPosition = e.end;
-            session.cursorPosition = this._cursorLastPosition
-            this.props.saveSession(session);
+            session.cursorPosition = this._cursorLastPosition;
+            props.saveSession(session);
         });
 
         this._firstChangeTime = props.loadTime
