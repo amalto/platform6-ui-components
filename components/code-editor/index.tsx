@@ -300,10 +300,11 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         editor.on('blur', function (e) {
             const session = self.getAceSession(self._editor)
 
-            self._canUpdate = true
-            self._cursorLastPosition = e.end
-            session.cursorPosition = self._cursorLastPosition
-            self.props.saveSession && self.props.saveSession(session)
+            if ( self._canUpdate ) {
+                self._cursorLastPosition = e.end
+                session.cursorPosition = self._cursorLastPosition
+                self.props.saveSession && self.props.saveSession(session)
+            }
         });
 
         this._firstChangeTime = props.loadTime
