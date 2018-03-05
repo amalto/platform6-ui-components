@@ -192,7 +192,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         this._clearTimeout = setInterval(() => {
             if ( this._canUpdate ) {
-                this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
+                this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
                 this._canUpdate = false
             }
         }, 12000)
