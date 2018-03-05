@@ -308,11 +308,11 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     //see http://stackoverflow.com/questions/28257566/ace-editor-save-send-session-on-server-via-post
-    getAceSession = ( editor: AceEditor ): AceSession => {
+    private getAceSession = ( editor: AceEditor ): AceSession => {
         return this.extractAceSession( editor )
     }
 
-    extractAceSession = ( editor: AceEditor ): AceSession => {
+    private extractAceSession = ( editor: AceEditor ): AceSession => {
         let session = editor.getSession()
         const filterHistory = ( deltas ) => deltas.filter( d => d.group !== "fold" )
 
