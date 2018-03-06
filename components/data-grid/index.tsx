@@ -46,8 +46,6 @@ export namespace DataGrid {
         displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => Action;
         /** Hide contet menu. More details on [Action](http://localhost:6060/#action). */
         hideContextMenu: () => Action;
-        /** Update user info from store. More details on [UserModel](http://localhost:6060/#usermodel). */
-        receiveUserInfo: ( userInfo: UserModel ) => Action;
         /** Display notification component. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
         displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => Action;
         /** Display an request error on a notification component. */
@@ -59,6 +57,9 @@ export namespace DataGrid {
 
         /** Actions to disptach in order for the datagrid to work. */
         dataGridActions: DataGridActions;
+        
+        /** Save all interaction with DataGrid. */
+        saveDataGridTemplate: ( user: UserModel ) => void;
 
         /** Must be added to allow templating. */
         dataGridId?: string;
@@ -479,7 +480,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
 
     private saveDataGridTemplate = (): void => {
 
-        const { api, user, templates, dataGridActions } = this.props
+        const { api, user, templates, dataGridActions, saveDataGridTemplate } = this.props
 
         let userJson = getUserJson( user )
 
@@ -491,7 +492,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
         }
 
         //update user data
-        dataGridActions.saveUserDisplayTemplates( api, payload )
+        saveDataGridTemplate( payload )
     }
 
 }
