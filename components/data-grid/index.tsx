@@ -4,8 +4,6 @@
 
 // Modules
 import * as React from 'react'
-import { Dispatch } from 'redux'
-import { ThunkAction } from 'redux-thunk'
 import { MapStateToProps, connect } from 'react-redux'
 import * as classNames from 'classnames'
 
@@ -34,10 +32,7 @@ import { UserModel, getUserJson } from './models/UserModel'
 import { WebApi } from './models/WebApi'
 import GlobalState from './models/GlobalState'
 import { ReduxProps } from './models/ReduxProps'
-
-// Actions
-import * as dataGridActions from './actions/DataGridActions'
-
+import { DataGridActions } from './models/DataGridActions'
 /**
  * Customizable grid.
  */
@@ -58,9 +53,12 @@ export namespace DataGrid {
         /** Display an request error on a notification component. */
         handleErrorDisplay: ( error: any ) => Action;
         /** Display a modal on top of the page. */
-        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: Action | ThunkAction<void, GlobalState, any>, cancelAction?: Action | ThunkAction<void, GlobalState, any>, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => Action;
+        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => Action;
         /** Hide the modal previously open by the showDialog method. */
         hideDialog: () => Action;
+
+        /** Actions to disptach in order for the datagrid to work. */
+        dataGridActions: DataGridActions;
 
         /** Must be added to allow templating. */
         dataGridId?: string;
@@ -123,8 +121,6 @@ export namespace DataGrid {
         key?: React.ReactText;
         /** @ignore */
         ref?: React.Ref<DataGrid>;
-        /** @ignore */
-        dispatch: Dispatch<any>;
     }
 
     export interface State {
@@ -179,7 +175,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
             this.setState( {
                 templateDialogOpened: true
             }, () => {
-                this.props.dispatch( this.props.displayNotification( null, {
+                this.props.displayNotification( null, {
                     autoDismiss: 0,
                     title: this.state.wordings['datagrid.display.settings.changed'],
                     level: 'info',
@@ -196,7 +192,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                             templateDialogOpened: false
                         } )
                     }
-                } ) )
+            } )
             } )
         }
     }
@@ -334,7 +330,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
     }
 
     private bootstrapTemplate = () => {
-        const { dispatch, columnHeaders, dataGridId, defaultServiceId, forcedServiceId, selectedAppInstanceName } = this.props
+        const { dataGridActions, columnHeaders, dataGridId, defaultServiceId, forcedServiceId, selectedAppInstanceName } = this.props
 
         const _serviceId = forcedServiceId || defaultServiceId
 
@@ -342,52 +338,52 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
             const template = this.getDisplayTemplate()
 
             if ( !template ) {
-                this.props.dispatch( dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName ) )
+                dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName )
             }
             else {
-                this.props.dispatch( dataGridActions.synchroniseDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName ) )
+                dataGridActions.synchroniseDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName )
             }
         }
     }
 
     private changeColumnOrder = ( columnId: string, order: string ) => {
-        const { selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
+        const { dataGridActions, selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
         const _serviceId = forcedServiceId || defaultServiceId
 
         //FIXME
         /* hardcoded access to desktop display mode */
 
-        this.props.dispatch( dataGridActions.changeColumnOrder( columnId, order, 'desktop', dataGridId, _serviceId, selectedAppInstanceName ) )
+        dataGridActions.changeColumnOrder( columnId, order, 'desktop', dataGridId, _serviceId, selectedAppInstanceName )
     }
 
     private changeColumnWidth = ( columnId: string, way: string ) => {
-        const { selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
+        const { dataGridActions, selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
         const _serviceId = forcedServiceId || defaultServiceId
 
         //FIXME
         /* hardcoded access to desktop display mode */
 
-        this.props.dispatch( dataGridActions.changeColumnWidth( columnId, way, 'desktop', dataGridId, _serviceId, selectedAppInstanceName ) )
+        dataGridActions.changeColumnWidth( columnId, way, 'desktop', dataGridId, _serviceId, selectedAppInstanceName )
     }
 
     private changeColumnTextAlign = ( columnId: string, align: string ) => {
-        const { selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
+        const { dataGridActions, selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
         const _serviceId = forcedServiceId || defaultServiceId
 
         //FIXME
         /* hardcoded access to desktop display mode */
 
-        this.props.dispatch( dataGridActions.changeColumnTextAlign( columnId, align, 'desktop', dataGridId, _serviceId, selectedAppInstanceName ) )
+        dataGridActions.changeColumnTextAlign( columnId, align, 'desktop', dataGridId, _serviceId, selectedAppInstanceName )
     }
 
     private changeColumnDisplay = ( columnId: string, display: boolean ) => {
-        const { selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
+        const { dataGridActions, selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
         const _serviceId = forcedServiceId || defaultServiceId
 
         //FIXME
         /* hardcoded access to desktop display mode */
 
-        this.props.dispatch( dataGridActions.changeColumnDisplay( columnId, display, 'desktop', dataGridId, _serviceId, selectedAppInstanceName ) )
+        dataGridActions.changeColumnDisplay( columnId, display, 'desktop', dataGridId, _serviceId, selectedAppInstanceName )
 
         if ( display === false ) {
             this.setState( {
@@ -397,27 +393,27 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
     }
 
     private resetTemplate = () => {
-        const { dispatch, columnHeaders, dataGridId, defaultServiceId, forcedServiceId, selectedAppInstanceName } = this.props
+        const { dataGridActions, columnHeaders, dataGridId, defaultServiceId, forcedServiceId, selectedAppInstanceName } = this.props
         const _serviceId = forcedServiceId || defaultServiceId
 
         if ( dataGridId && columnHeaders && _serviceId && selectedAppInstanceName ) {
 
             const thunk = dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName )
 
-            dispatch( this.props.showDialog(
+            this.props.showDialog(
                 this.state.wordings['datagrid.modal.confirm'],
                 this.state.wordings['datagrid.reset.confirm'],
                 thunk,
                 this.props.hideDialog()
-            ) )
+            )
         }
     }
 
     private changeTemplate = ( template: DisplayTemplate ) => {
-        const { selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
+        const { dataGridActions, selectedAppInstanceName, dataGridId, forcedServiceId, defaultServiceId } = this.props
         const _serviceId = forcedServiceId || defaultServiceId
 
-        this.props.dispatch( dataGridActions.changeDisplayTemplate( template, dataGridId, _serviceId, selectedAppInstanceName ) )
+        dataGridActions.changeDisplayTemplate( template, dataGridId, _serviceId, selectedAppInstanceName )
     }
 
     private getHiddenColumnsPanel = () => {
@@ -470,20 +466,20 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
     }
 
     private displayContextMenu = ( content: any, positionX?: number, positionY?: number ) => {
-        this.props.dispatch( this.props.displayContextMenu( content, positionX, positionY ) )
+        this.props.displayContextMenu( content, positionX, positionY )
     }
 
     private hideContextMenu = () => {
-        this.props.dispatch( this.props.hideContextMenu() )
+        this.props.hideContextMenu()
     }
 
     private displayNotification = ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ): void => {
-        this.props.dispatch( this.props.displayNotification( notificationType, notificationOptions, displayParameter ) )
+        this.props.displayNotification( notificationType, notificationOptions, displayParameter )
     }
 
     private saveDataGridTemplate = (): void => {
 
-        const { api, user, templates, dispatch } = this.props
+        const { api, user, templates, dataGridActions } = this.props
 
         let userJson = getUserJson( user )
 
@@ -495,13 +491,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
         }
 
         //update user data
-        dispatch( dataGridActions.saveUserDisplayTemplates(
-            api,
-            payload,
-            this.props.receiveUserInfo,
-            this.props.displayNotification,
-            this.props.handleErrorDisplay
-        ) )
+        dataGridActions.saveUserDisplayTemplates( api, payload )
     }
 
 }
