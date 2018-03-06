@@ -20,8 +20,8 @@
     "build": "lerna run build",
     "test": "ava --verbose",
     "prepublish": "npm run bootstrap",
-    "publish": "lerna publish --yes --exact --independent --since -- --production --access public",
-    "publish:force": "lerna publish --yes --exact --independent --since --force-publish=* --  --production --access public",
+    "publish": "lerna publish --yes --exact --independent --since -- --production --access public --registry=https://registry.npmjs.org/",
+    "publish:force": "lerna publish --yes --exact --independent --since --force-publish=* --  --production --access public --registry=https://registry.npmjs.org/",
     "setup": "npm install",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
