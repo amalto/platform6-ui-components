@@ -1050,6 +1050,10 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Run - {name}',
         'fr-FR': 'Exécuter - {name}'
     },
+    'tabView': {
+        'en-US': 'View - {name}',
+        'fr-FR': 'Vue - {name}'
+    },
 
     'selectAll': {
         'en-US': 'Select all',
