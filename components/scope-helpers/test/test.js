@@ -53,39 +53,53 @@ const scopesTree = {
             'read': {}
         }
     }
-};
+}
+
+const webStorageMaster = {
+    selectedAppInstance: {
+        name: 'master'
+    },
+    scopesTree,
+}
+
+const webStorageDev = {
+    selectedAppInstance: {
+        name: 'dev'
+    },
+    scopesTree,
+}
 
 test('ScopeHelpers: hasPermission', t => {
-    t.true(hasPermission('dev', scopesTree, 'scripts=view'));
-    t.true(hasPermission('master', scopesTree, 'counters=read'));
-    t.false(hasPermission('master', scopesTree, 'counters=edit'));
-    t.false(hasPermission('master', scopesTree, 'home=edit'));
+    t.true(hasPermission(webStorageDev, 'scripts=view'));
+    t.true(hasPermission(webStorageMaster, 'counters=read'));
+    t.false(hasPermission(webStorageMaster, 'counters=edit'));
+    t.false(hasPermission(webStorageMaster, 'home=edit'));
 });
 
 test('ScopeHelpers: hasAccessToFeature', t => {
-    t.true(hasAccessToFeature('dev', scopesTree, 'scripts'));
-    t.true(hasAccessToFeature('master', scopesTree, 'home'));
-    t.false(hasAccessToFeature('master', scopesTree, 'scripts'));
-    t.false(hasAccessToFeature('master', scopesTree, 'reports'));
+    t.true(hasAccessToFeature(webStorageDev, 'dev', 'scripts'));
+    t.true(hasAccessToFeature(webStorageMaster, 'master', 'home'));
+    t.false(hasAccessToFeature(webStorageMaster, 'master', 'scripts'));
+    t.false(hasAccessToFeature(webStorageMaster, 'master', 'reports'));
 });
 
 test('ScopeHelpers: hasAnyPermission', t => {
-    t.true(hasAnyPermission('dev', scopesTree, ['scripts=view', 'home=read']));
-    t.true(hasAnyPermission('master', scopesTree, ['scripts=view', 'home=read']));
-    t.false(hasAnyPermission('master', scopesTree, ['scripts=view', 'reports=edit']));
-    t.false(hasAnyPermission('dev', scopesTree, ['counters=view', 'reports=read']));
+    t.true(hasAnyPermission(webStorageDev, ['scripts=view', 'home=read']));
+    t.true(hasAnyPermission(webStorageMaster, ['scripts=view', 'home=read']));
+    t.false(hasAnyPermission(webStorageMaster, ['scripts=view', 'reports=edit']));
+    t.false(hasAnyPermission(webStorageDev, ['counters=view', 'reports=read']));
 });
 
 test('ScopeHelpers: getScopeValues', t => {
-    t.deepEqual(getScopeValues('master', scopesTree, 'counters', 'read'), ['Test']);
-    t.deepEqual(getScopeValues('dev', scopesTree, 'scripts', 'read'), {});
+    t.deepEqual(getScopeValues(webStorageMaster, 'master', 'counters', 'read'), ['Test']);
+    t.deepEqual(getScopeValues(webStorageDev, 'dev', 'scripts', 'read'), {});
 });
 
 test('ScopeHelpers: hasFilterOn', t => {
-    t.true(hasFilterOn('master', scopesTree, 'counters', 'allow_1', 'first'));
-    t.true(hasFilterOn('master', scopesTree, 'counters', 'allow_2', 'second'));
-    t.false(hasFilterOn('dev', scopesTree, 'counters', 'allow_1', 'second'));
-    t.false(hasFilterOn('dev', scopesTree, 'counters', 'allow_2', 'first'));
+    t.true(hasFilterOn(webStorageMaster, 'counters', 'allow_1', 'first'));
+    t.true(hasFilterOn(webStorageMaster, 'counters', 'allow_2', 'second'));
+    t.false(hasFilterOn(webStorageDev, 'counters', 'allow_1', 'second'));
+    t.false(hasFilterOn(webStorageDev, 'counters', 'allow_2', 'first'));
 });
 
 test('ScopeHelpers: canPerformAnyAction', t => {

@@ -30,5 +30,4 @@ test('should have the style applied', t => {
     t.is(wrapper.props().style.bottom, '5px');
     t.is(wrapper.props().style.right, 20);
     t.is(wrapper.props().style.left, '15px');
-    t.is(wrapper.props().style.size, 30);
 });

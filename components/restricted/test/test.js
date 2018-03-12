@@ -7,49 +7,54 @@ import { shallow, configure } from 'enzyme';
 
 configure({ adapter: new Adapter() });
 
-const scopesTree = {
-    'dev': {
-        'scripts': {
-            'view': {},
-            'read': {},
-            'edit': {},
-            'run': {}
-        },
-        'home': {
-            'reports': {},
-            'view': {},
-            'customize-own': {},
-            'read': {},
-            'frames': {},
-            'counters': {},
-            'configure': {}
-        }
+const webStorage = {
+    selectedAppInstance: {
+        name: 'test'
     },
-    'master': {
-        'counters': {
-            'read': ['Test'],
-            'allow': {
-                'allow_1': [{
-                    orgFilter: 'UNIT',
-                    searchable: 'first',
-                    comparisonOperator: '=',
-                    value: 'first'
-                }],
-                'allow_2': [{
-                    orgFilter: 'BRANCH',
-                    searchable: 'second',
-                    comparisonOperator: '>',
-                    value: 'second'
-                }]
+    scopesTree: {
+        'dev': {
+            'scripts': {
+                'view': {},
+                'read': {},
+                'edit': {},
+                'run': {}
+            },
+            'home': {
+                'reports': {},
+                'view': {},
+                'customize-own': {},
+                'read': {},
+                'frames': {},
+                'counters': {},
+                'configure': {}
             }
         },
-        'home': {
-            'reports': {},
-            'view': {},
-            'read': {}
+        'master': {
+            'counters': {
+                'read': ['Test'],
+                'allow': {
+                    'allow_1': [{
+                        orgFilter: 'UNIT',
+                        searchable: 'first',
+                        comparisonOperator: '=',
+                        value: 'first'
+                    }],
+                    'allow_2': [{
+                        orgFilter: 'BRANCH',
+                        searchable: 'second',
+                        comparisonOperator: '>',
+                        value: 'second'
+                    }]
+                }
+            },
+            'home': {
+                'reports': {},
+                'view': {},
+                'read': {}
+            }
         }
     }
-};
+}
 
 test.beforeEach('Restricted should component exist', t => {
     const wrapper = shallow(<Restricted />);
@@ -59,8 +64,7 @@ test.beforeEach('Restricted should component exist', t => {
 
 test('Restricted should display child', t => {
     const wrapper = shallow(
-        <Restricted appInstance='scripts'
-            scopesTree={scopesTree}
+        <Restricted webStorage={webStorage}
             authorizedActions={['view']}
             requiredActions={['view']}
             featureId='scripts'
@@ -75,8 +79,7 @@ test('Restricted should display child', t => {
 
 test('Restricted shouldn\'t display child', t => {
     const wrapper = shallow(
-        <Restricted appInstance='scripts'
-            scopesTree={scopesTree}
+        <Restricted webStorage={webStorage}
             authorizedActions={['view']}
             requiredActions={['read']}
             featureId='scripts'

@@ -37,14 +37,17 @@ class Spinner extends React.Component<Spinner.Props, any> {
     }
 
     render() {
-        var spinnerStyle: React.CSSProperties = {
+        const { top, bottom, right, left, size } = this.props
+        let spinnerStyle: React.CSSProperties = {
             position: 'relative',
             display: 'block',
             margin: 'auto',
-            textAlign: 'center'
+            textAlign: 'center',
+            top,
+            bottom,
+            right,
+            left
         }
-
-        $.extend( {}, spinnerStyle, this.props )
 
         return (
 
