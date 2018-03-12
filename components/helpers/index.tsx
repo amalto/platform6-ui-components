@@ -488,3 +488,7 @@ export function filterCollection( collection: any[], properties: string[], searc
 export function base64Decode( encodedData: string ) {
     return base64.decode( encodedData )
 }
+
+export function deepCopy( data: any, extensions?: any ): any {
+    return !extensions ? JSON.parse( JSON.stringify( data || {} ) ) : $.extend( {}, data, extensions )
+}

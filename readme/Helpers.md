@@ -90,4 +90,7 @@ function getNestedValue( obj: any, keyPath: string ): any;
 function filterCollection( collection: any[], properties: string[], searchString: string ): any[];
 
 function base64Decode( encodedData: string ): string;
+
+/** Make a deep copy of an objct and allow concatenation with another object. */
+function deepCopy( data: any, extensions?: any ): any;
 ```

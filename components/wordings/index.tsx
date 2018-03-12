@@ -1131,6 +1131,10 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Key already exist.',
         'fr-FR': 'La clé existe déjà.'
     },
+    'size': {
+        'en-US': 'Size',
+        'fr-FR': 'Taille'
+    },
 
     /** b2portal wordings. */
     'register.registration': {
@@ -2212,37 +2216,21 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Erreur de chargement du PDF'
     },
 
-    'fileuploadinput.empty': {
+    'noFileChosen': {
         'en-US': 'No file chosen',
         'fr-FR': 'Aucun fichier choisi'
     },
-    'fileuploadinput.uploaded': {
+    'fileUploaded': {
         'en-US': 'File uploaded',
         'fr-FR': 'Fichier téléchargé'
     },
-    'fileuploadinput.size': {
-        'en-US': 'Size',
-        'fr-FR': 'Taille'
-    },
-    'fileuploadinput.preview': {
+    'previewLowerCase': {
         'en-US': 'preview',
         'fr-FR': 'aperçu'
     },
-    'fileuploadinput.upload.failed': {
+    'fileUploadFailed': {
         'en-US': 'File upload failed',
         'fr-FR': 'Échec du téléchargement du fichier'
-    },
-    'fileuploadinput.bytes': {
-        'en-US': 'bytes',
-        'fr-FR': 'octets'
-    },
-    'fileuploadinput.kilobytes': {
-        'en-US': 'kilobytes',
-        'fr-FR': 'kilooctets'
-    },
-    'fileuploadinput.megabytes': {
-        'en-US': 'megabytes',
-        'fr-FR': 'mégaoctets'
     },
 
     'inputvalidation.invalid': {
