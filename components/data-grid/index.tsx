@@ -399,12 +399,10 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
 
         if ( dataGridId && columnHeaders && _serviceId && selectedAppInstanceName ) {
 
-            const thunk = dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName )
-
             this.props.showDialog(
                 this.state.wordings['datagrid.modal.confirm'],
                 this.state.wordings['datagrid.reset.confirm'],
-                thunk,
+                dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName ),
                 this.props.hideDialog()
             )
         }
