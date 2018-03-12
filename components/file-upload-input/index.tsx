@@ -22,20 +22,33 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 namespace FileInput {
     export interface Props extends WrappedFieldProps<any> {
+        /** Input's name used when submitting form. */
         name: string;
+        /** Input's label. */
         label?: string | JSX.Element;
-        disabled?: boolean;
+        /** Tooltip text displayed when hovering "?" icon. */
         help?: string;
+        /** Either input is disable or not. */
+        disabled?: boolean;
+        /** CheckboxInput group CSS class. */
         containerClass?: string;
+        /** CSS class applied to every input from the list. */
         inputClass?: string;
+        /** Display file preview. */
         displayPreview?: boolean;
+        /**
+         * Remove the bottom margin which is the default height of the error message
+         * displayed when input is invalid.
+         */
         collapseErrorSpace?: boolean;
+        /** Locale to use. */
         locale: string;
     }
 
     export interface State {
         wordings?: { [id: string]: string };
         loadingError?: boolean;
+        fileContent?: string;
         filename?: string;
         filesize?: number;
     }
@@ -47,6 +60,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         this.state = {
             wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             loadingError: false,
+            fileContent: null,
             filename: null,
             filesize: null
         }
@@ -54,10 +68,8 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 
     render() {
 
-        const { filename, filesize, wordings } = this.state
-
+        const { filename, filesize, fileContent, wordings } = this.state
         const { label, disabled, help, containerClass, inputClass, name, displayPreview, collapseErrorSpace, input, meta } = this.props
-
         const fileUploaded: boolean = !!input.value
 
         return (
@@ -89,10 +101,10 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                 {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace || this.state.loadingError ? null : <p className="validation-error-message">&nbsp;</p> )}
 
                 {
-                    ( input.value && displayPreview ) ?
+                    ( input.value && displayPreview && fileContent ) ?
                         <div className="hidden-xs top-spaced">
                             <em><small>{label && <span className="right-spaced">{label}</span>}{wordings['previewLowerCase']}</small></em>
-                            <pre className="code-preview-sm">{input.value}</pre>
+                            <pre className="code-preview-sm">{fileContent}</pre>
                         </div> : null
                 }
 
@@ -107,8 +119,19 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 
         const { input, meta } = field
         const file = event.target.files[0]
+        const reader = new FileReader()
 
         if ( file ) {
+            reader.onload = ( e: any ) => {
+                this.setState( { fileContent: reader.result } as FileUploadInput.State )
+            }
+
+            reader.onerror = ( e: any ) => {
+                this.setState( { loadingError: true } )
+            }
+
+            reader.readAsText( file )
+
             this.setState( { filename: file.name, filesize: file.size } as FileUploadInput.State, () => input.onChange( file, undefined, undefined ) )
         }
     }
@@ -116,15 +139,55 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 
 namespace FileUploadInput {
     export interface Props extends BaseFieldProps {
+        /** Input's name used when submitting form. */
         name: string;
-        label?: string;
-        disabled?: boolean;
+        /** Input's label. */
+        label?: string | JSX.Element;
+        /** Tooltip text displayed when hovering "?" icon. */
         help?: string;
+        /** Either input is disable or not. */
+        disabled?: boolean;
+        /** CheckboxInput group CSS class. */
         containerClass?: string;
+        /** CSS class applied to every input from the list. */
         inputClass?: string;
+        /** Display file preview. */
         displayPreview?: boolean;
+        /**
+         * Remove the bottom margin which is the default height of the error message
+         * displayed when input is invalid.
+         */
         collapseErrorSpace?: boolean;
+        /** Locale to use. */
         locale: string;
+
+        /** Hide props from documentation */
+
+        /** @ignore */
+        children?: React.ReactNode;
+        /** @ignore */
+        key?: React.ReactText;
+        /** @ignore */
+        ref?: React.Ref<any>;
+
+        /** redux-form props */
+
+        /** @ignore */
+        component?: any,
+        /** @ignore */
+        format?: any,
+        /** @ignore */
+        normalize?: any,
+        /** @ignore */
+        props?: any,
+        /** @ignore */
+        parse?: any,
+        /** @ignore */
+        validate?: any,
+        /** @ignore */
+        warn?: any,
+        /** @ignore */
+        withRef?: any
     }
 
     export interface State { }
