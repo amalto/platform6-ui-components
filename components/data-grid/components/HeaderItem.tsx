@@ -37,9 +37,7 @@ module HeaderItem {
         templateChangeHandler?: ( template: DisplayTemplate ) => void
 
         displayContextMenu?: ( content: any, positionX?: number, positionY?: number ) => void
-        displayNotification?: ( notificationType?: NotificationModel.Type,
-            notificationOptions?: NotificationModel,
-            displayParameter?: any ) => void
+        displayNotification?: ( notificationOptions?: NotificationModel ) => void
         hideContextMenu?: () => void
 
         displayTemplate?: DisplayTemplate;
@@ -196,6 +194,7 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
 
     private handleColorChange = ( color: string ): void => {
 
+        const { wordings } = this.state
         const { columnHeader, templateChangeHandler } = this.props
 
         if ( isValidColorCode( color ) ) {
@@ -210,7 +209,11 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
             window.setTimeout( this.updateContextMenu, 250 )
         }
         else {
-            this.props.displayNotification( NotificationModel.Type.INVALID_COLOR_CODE )
+            this.props.displayNotification( {
+                title: wordings['error'],
+                message: wordings['notification.invalid.color'],
+                level: 'error'
+            } )
         }
     }
 

@@ -47,7 +47,7 @@ export namespace DataGrid {
         /** Hide contet menu. More details on [Action](http://localhost:6060/#action). */
         hideContextMenu: () => void;
         /** Display notification component. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
-        displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => void;
+        displayNotification: ( notificationOptions?: NotificationModel ) => void;
         /** Display an request error on a notification component. */
         handleErrorDisplay: ( error: any ) => void;
         /** Display a modal on top of the page. */
@@ -176,7 +176,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
             this.setState( {
                 templateDialogOpened: true
             }, () => {
-                this.props.displayNotification( null, {
+                this.props.displayNotification( {
                     autoDismiss: 0,
                     title: this.state.wordings['datagrid.display.settings.changed'],
                     level: 'info',
@@ -222,7 +222,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                 displayHandler={this.changeColumnDisplay}
                 templateChangeHandler={this.changeTemplate}
 
-                displayNotification={this.displayNotification}
+                displayNotification={this.props.displayNotification}
                 displayContextMenu={this.displayContextMenu}
                 hideContextMenu={this.hideContextMenu}
 
@@ -472,10 +472,6 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
 
     private hideContextMenu = () => {
         this.props.hideContextMenu()
-    }
-
-    private displayNotification = ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ): void => {
-        this.props.displayNotification( notificationType, notificationOptions, displayParameter )
     }
 
     private saveDataGridTemplate = (): void => {

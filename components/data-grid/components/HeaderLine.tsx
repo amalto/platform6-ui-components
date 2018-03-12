@@ -31,9 +31,7 @@ module HeaderLine {
         templateChangeHandler?: ( template: DisplayTemplate ) => void
 
         displayContextMenu?: ( content: any, positionX?: number, positionY?: number ) => void;
-        displayNotification?: ( notificationType?: NotificationModel.Type,
-            notificationOptions?: NotificationModel,
-            displayParameter?: any ) => void;
+        displayNotification?: ( notificationOptions?: NotificationModel ) => void;
         hideContextMenu?: () => void;
 
         stickyHeader?: boolean
