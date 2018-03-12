@@ -402,7 +402,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
             this.props.showDialog(
                 this.state.wordings['datagrid.modal.confirm'],
                 this.state.wordings['datagrid.reset.confirm'],
-                dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName ),
+                () => dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName ),
                 this.props.hideDialog()
             )
         }
