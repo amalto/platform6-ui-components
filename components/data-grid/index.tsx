@@ -37,23 +37,23 @@ import { DataGridActions } from './models/DataGridActions'
  * Customizable grid.
  */
 export namespace DataGrid {
-
+ 
     export interface Props extends React.Props<DataGrid>, ReduxProps {
 
         /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#webapi). */
         api: WebApi;
         /** Display context menu. */
-        displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => Action;
+        displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => void;
         /** Hide contet menu. More details on [Action](http://localhost:6060/#action). */
-        hideContextMenu: () => Action;
+        hideContextMenu: () => void;
         /** Display notification component. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
-        displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => Action;
+        displayNotification: ( notificationType?: NotificationModel.Type, notificationOptions?: NotificationModel, displayParameter?: any ) => void;
         /** Display an request error on a notification component. */
-        handleErrorDisplay: ( error: any ) => Action;
+        handleErrorDisplay: ( error: any ) => void;
         /** Display a modal on top of the page. */
-        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => Action;
+        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => void;
         /** Hide the modal previously open by the showDialog method. */
-        hideDialog: () => Action;
+        hideDialog: () => void;
 
         /** Actions to disptach in order for the datagrid to work. */
         dataGridActions: DataGridActions;
@@ -496,5 +496,5 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
     }
 
 }
-
+export { DataGridActions }
 export default connect( DataGrid.select )( DataGrid )
