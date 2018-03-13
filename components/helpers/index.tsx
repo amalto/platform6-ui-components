@@ -545,9 +545,14 @@ export function handleDuplicateNameFromArray( name: string, container: string[])
  * Return string date from timestamp and locale.
  * @param timestamp timestamp in milliseconde
  * @param locale locale to be used
+ * @param options options of toLocaleString method
  */
-export function localeDate(timestamp: number, locale: string): string {
-    const date = timestamp ? new Date(timestamp) : new Date()
-
-    return date.toLocaleString(locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
+export function dateByLocalToString( locale: string, date: number, options?: Intl.DateTimeFormatOptions ): string {
+    return new Date( date ).toLocaleString( locale, deepCopy( {
+        month: 'numeric',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+    }, options ) )
 }
