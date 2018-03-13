@@ -432,6 +432,11 @@ export function groupByProperty( list: any[], propertyName: string ): { [propVal
     }, {} )
 }
 
+/**
+ * Add an element if it isn't already in the array
+ * @param array Array to process
+ * @param value Value to add
+ */
 export function addValToArrayNoDup( array: string[], value: string ): string[] {
     if ( array.indexOf( value ) === -1 ) {
         return array.concat( value )
@@ -439,10 +444,20 @@ export function addValToArrayNoDup( array: string[], value: string ): string[] {
     return array.slice()
 }
 
+/**
+ * Remove all element from array that match the value parameter
+ * @param array Array to process
+ * @param value Value to exclude
+ */
 export function removeValFromArrayNoDup( array: string[], value: string ): string[] {
     return array.filter( element => element !== value )
 }
 
+/**
+ * Get nested value from object and pointed by a doted path
+ * @param obj Object to search in
+ * @param keyPath Path to search to
+ */
 export function getNestedValue( obj: any, keyPath: string ): any {
 
     if ( !obj ) {
@@ -460,6 +475,12 @@ export function getNestedValue( obj: any, keyPath: string ): any {
 
 }
 
+/**
+ * Filter collection by given  properties and matching string
+ * @param collection Array to filter
+ * @param properties Properties keys to sort the array by
+ * @param searchString If given, only return value that contain this value
+ */
 export function filterCollection( collection: any[], properties: string[], searchString: string ) {
 
     const searchElements = searchString.toLowerCase().split( ' ' )
@@ -489,6 +510,33 @@ export function base64Decode( encodedData: string ) {
     return base64.decode( encodedData )
 }
 
+/**
+ * Copy object data into another object
+ * @param data Object to copy and extend
+ * @param extensions Object to inject into data
+ */
 export function deepCopy( data: any, extensions?: any ): any {
     return !extensions ? JSON.parse( JSON.stringify( data || {} ) ) : $.extend( {}, data, extensions )
+}
+
+/**
+ * @description Handle dupplicate name from array
+ * @param { string } name Name to check
+ * @param { string[] } container String to compared to
+ */
+export function handleDuplicateNameFromArray( name: string, container: string[]) {
+    let firstTime: boolean = true
+    let res: string = name
+    let idx: number = 1
+
+    while ( container.some( c => res === c ) ) {
+        if ( firstTime ) {
+            res = res.concat(`_${idx}`)
+        } else {
+            res = res.replace(/_[\d]+$/, `_${idx}`)
+        }
+        firstTime = false
+        idx++
+    }
+    return res
 }

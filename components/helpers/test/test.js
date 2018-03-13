@@ -46,7 +46,9 @@ import {
     removeValFromArrayNoDup,
     getNestedValue,
     filterCollection,
-    base64Decode
+    base64Decode,
+    deepCopy,
+    handleDuplicateNameFromArray
 } from '../build/index.js';
 
 configure({ adapter: new Adapter() });
@@ -495,3 +497,24 @@ test('filterCollection: should filter collection by properties and search value'
 
 // base64Decode
 test.skip('base64Decode: This won\'t be tested because it use base64.decode directly', t => { });
+
+// deepCopy
+test('deepCopy: Should copy and extend object', t => {
+    const obj1 = {first: 'one', second: 'two'};
+    const obj2 = {third: 'three', fourth: 'four'};
+    const obj3 = {first: 'one', second: 'two', third: 'three', fourth: 'four'};
+
+    t.deepEqual(deepCopy(obj1, obj2), obj3);
+});
+
+// handleDuplicateNameFromArray
+test('handleDuplicateNameFromArray: Should handle duplicate name', t => {
+    const name = 'test'
+    const container1 = ['test']
+    const container2 =['test', 'test_1']
+    const container3 =['test_1']
+
+    t.is(handleDuplicateNameFromArray(name, container1), 'test_1');
+    t.is(handleDuplicateNameFromArray(name, container2), 'test_2');
+    t.is(handleDuplicateNameFromArray(name, container3), 'test');
+})
