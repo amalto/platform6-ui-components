@@ -524,7 +524,7 @@ export function deepCopy( data: any, extensions?: any ): any {
  * @param { string } name Name to check
  * @param { string[] } container String to compared to
  */
-export function handleDuplicateNameFromArray( name: string, container: string[]) {
+export function handleDuplicateNameFromArray( name: string, container: string[]): string {
     let firstTime: boolean = true
     let res: string = name
     let idx: number = 1

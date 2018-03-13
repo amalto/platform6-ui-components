@@ -1,5 +1,7 @@
 These functions are part of the helpers module.
 
+The `dateByLocalToString` options are described [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).
+
 ```typescript
 /** Select the wordings based on locale */
 function compileWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string };
@@ -93,4 +95,15 @@ function base64Decode( encodedData: string ): string;
 
 /** Make a deep copy of an objct and allow concatenation with another object. */
 function deepCopy( data: any, extensions?: any ): any;
+
+/**
+ * Compare name with a string array and return a new name
+ * if it's a duplicate.
+ */
+function handleDuplicateNameFromArray( name: string, container: string[]): string;
+
+/**
+ * Return a date string from timestamp and locale.
+ */
+function dateByLocalToString( locale: string, date: number, options?: Intl.DateTimeFormatOptions ): string;
 ```
