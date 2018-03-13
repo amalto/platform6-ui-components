@@ -1077,6 +1077,24 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Attention'
     },
 
+    // Export
+    'exportJSON': {
+        'en-US': 'Export as JSON',
+        'fr-FR': 'Exporter (JSON)'
+    },
+    'permissionsets.button.export.json': {
+        'en-US': 'Export as JSON',
+        'fr-FR': 'Exporter (JSON)'
+    },
+    'users.button.export.json': {
+        'en-US': 'Export as JSON',
+        'fr-FR': 'Exporter (JSON)'
+    },
+    'admin.button.export.json': {
+        'en-US': 'Export as JSON',
+        'fr-FR': 'Exporter (JSON)'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -1365,10 +1383,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Are you sure you want to delete this permission set?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ce groupe de permissions ?'
     },
-    'permissionsets.button.export.json': {
-        'en-US': 'Export as JSON',
-        'fr-FR': 'Exporter (JSON)'
-    },
 
     'user.tooltip.delete': {
         'en-US': 'Delete user',
@@ -1480,10 +1494,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Only display users without any associated org node',
         'fr-FR': 'Afficher seulement les utilisateurs sans position d\'organisation'
     },
-    'users.button.export.json': {
-        'en-US': 'Export as JSON',
-        'fr-FR': 'Exporter (JSON)'
-    },
     'users.button.disassociate': {
         'en-US': 'Disassociate',
         'fr-FR': 'Désassocier'
@@ -1517,10 +1527,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'admin.permissionset.delete.confirm': {
         'en-US': 'Are you sure you want to delete this permission set?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ce groupe de permissions ?'
-    },
-    'admin.button.export.json': {
-        'en-US': 'Export as JSON',
-        'fr-FR': 'Exporter (JSON)'
     },
     'admin.button.disassociate': {
         'en-US': 'Disassociate',
