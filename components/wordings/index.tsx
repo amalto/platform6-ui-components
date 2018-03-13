@@ -1033,6 +1033,50 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Administration'
     },
 
+    // Item created
+    'itemCreated': {
+        'en-US': 'Item created!',
+        'fr-FR': 'Élément créé !'
+    },
+    'notification.item.created': {
+        'en-US': 'Item created!',
+        'fr-FR': 'Élément créé !'
+    },
+
+    // Item updated
+    'itemUpdated': {
+        'en-US': 'Item updated!',
+        'fr-FR': 'Élément mis à jour !'
+    },
+    'notification.item.updated': {
+        'en-US': 'Item updated!',
+        'fr-FR': 'Élément mis à jour !'
+    },
+
+    // Item deleted
+    'itemDeleted': {
+        'en-US': 'Item deleted!',
+        'fr-FR': 'Élément supprimé !'
+    },
+    'notification.item.deleted': {
+        'en-US': 'Item deleted!',
+        'fr-FR': 'Élément supprimé !'
+    },
+
+    // Warning
+    'warning': {
+        'en-US': 'Warning',
+        'fr-FR': 'Attention'
+    },
+    'notification.title.warning': {
+        'en-US': 'Warning',
+        'fr-FR': 'Attention'
+    },
+    'mainactions.notification.title.warning': {
+        'en-US': 'Warning',
+        'fr-FR': 'Attention'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -3017,25 +3061,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Le nom `{name}` est déjà utilisé pour une autre configuration, veuillez en choisir un autre'
     },
 
-    'notification.title.warning': {
-        'en-US': 'Warning',
-        'fr-FR': 'Attention'
-    },
     'notification.app.loaded': {
         'en-US': 'App loaded!',
         'fr-FR': 'App lancée !'
-    },
-    'notification.item.created': {
-        'en-US': 'Item created!',
-        'fr-FR': 'Élément créé !'
-    },
-    'notification.item.updated': {
-        'en-US': 'Item updated!',
-        'fr-FR': 'Élément mis à jour !'
-    },
-    'notification.item.deleted': {
-        'en-US': 'Item deleted!',
-        'fr-FR': 'Élément supprimé !'
     },
     'notification.invalid.password': {
         'en-US': 'Your password must be 8 to 32 characters long and contains at least 1 upper/lower case letter and 1 number',
@@ -3290,10 +3318,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Aller à la page de connexion'
     },
 
-    'mainactions.notification.title.warning': {
-        'en-US': 'Warning',
-        'fr-FR': 'Attention'
-    },
     'mainactions.notification.title.caution': {
         'en-US': 'Caution!',
         'fr-FR': 'Attention !'
