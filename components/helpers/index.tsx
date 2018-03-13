@@ -540,3 +540,14 @@ export function handleDuplicateNameFromArray( name: string, container: string[])
     }
     return res
 }
+
+/**
+ * Return string date from timestamp and locale.
+ * @param timestamp timestamp in milliseconde
+ * @param locale locale to be used
+ */
+export function localeDate(timestamp: number, locale: string): string {
+    const date = timestamp ? new Date(timestamp) : new Date()
+
+    return date.toLocaleString(locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
+}

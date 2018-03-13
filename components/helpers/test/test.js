@@ -48,7 +48,8 @@ import {
     filterCollection,
     base64Decode,
     deepCopy,
-    handleDuplicateNameFromArray
+    handleDuplicateNameFromArray,
+    localeDate
 } from '../build/index.js';
 
 configure({ adapter: new Adapter() });
@@ -509,12 +510,20 @@ test('deepCopy: Should copy and extend object', t => {
 
 // handleDuplicateNameFromArray
 test('handleDuplicateNameFromArray: Should handle duplicate name', t => {
-    const name = 'test'
-    const container1 = ['test']
-    const container2 =['test', 'test_1']
-    const container3 =['test_1']
+    const name = 'test';
+    const container1 = ['test'];
+    const container2 =['test', 'test_1'];
+    const container3 =['test_1'];
 
     t.is(handleDuplicateNameFromArray(name, container1), 'test_1');
     t.is(handleDuplicateNameFromArray(name, container2), 'test_2');
     t.is(handleDuplicateNameFromArray(name, container3), 'test');
+})
+
+// localeDate
+test('localeDate: Should convert timestamp to date string', t => {
+    const timestamp = 1520936526658;
+    const dateString = '3/13/2018, 11:22 AM';
+
+    t.is( localeDate( timestamp, 'en-US' ), dateString );
 })
