@@ -1095,6 +1095,20 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Exporter (JSON)'
     },
 
+    // Profile
+    'profile': {
+        'en-US': 'Profile',
+        'fr-FR': 'Profil'
+    },
+    'profile.dropdown.profile': {
+        'en-US': 'Profile',
+        'fr-FR': 'Profil'
+    },
+    'profile.title': {
+        'en-US': 'Profile',
+        'fr-FR': 'Profil'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -1684,10 +1698,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Sélectionner une application'
     },
 
-    'profile.dropdown.profile': {
-        'en-US': 'Profile',
-        'fr-FR': 'Profil'
-    },
     'profile.dropdown.logout': {
         'en-US': 'Sign out',
         'fr-FR': 'Déconnexion'
@@ -3394,10 +3404,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'La ressource demandée est introuvable.'
     },
 
-    'profile.title': {
-        'en-US': 'Profile',
-        'fr-FR': 'Profil'
-    },
     'profile.settings': {
         'en-US': 'Settings',
         'fr-FR': 'Paramètres'
