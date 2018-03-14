@@ -31,7 +31,7 @@
     "react-dom": "15.6.2"
   },
   "devDependencies": {
-    "@amalto/action-button": "1.4.3",
+    "@amalto/action-button": "1.4.10",
     "@ava/babel-preset-stage-4": "1.1.0",
     "@types/bootstrap": "3.3.36",
     "@types/react": "15.6.10",
