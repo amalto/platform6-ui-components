@@ -5,7 +5,7 @@ export const MULTILANGUAGE_WORDINGS = {
 
     /** Common wordings. */
 
-    // save
+    // Save
     'save': {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
