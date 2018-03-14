@@ -1119,6 +1119,16 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Cible'
     },
 
+    // By
+    'by': {
+        'en-US': 'by',
+        'fr-FR': 'par'
+    },
+    'jobcontrolpanel.by': {
+        'en-US': 'by',
+        'fr-FR': 'par'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -1224,6 +1234,110 @@ export const MULTILANGUAGE_WORDINGS = {
     'tabCloseUnsave': {
         'en-US': 'There are unsaved changes. Are you sure you want to close this tab and lose your updates?',
         'fr-FR': 'Vous avez effectué des modifications sans les enregistrer. Êtes-vous sûr(e) de vouloir fermer cet onglet et perdre les données non sauvegardées ?'
+    },
+    'nameAlreadyTaken': {
+        'en-US': 'Name already taken.',
+        'fr-FR': 'Nom déjà utilisé.'
+    },
+    'nameNoDot': {
+		'en-US': 'The name cannot contain a \'.\'',
+		'fr-FR': 'Le nom ne peut pas contenir de \'.\''
+    },
+    'resource': {
+        'en-US': 'Resource',
+        'fr-FR': 'Ressource'
+    },
+    'targetRoot': {
+        'en-US': 'Target root',
+        'fr-FR': 'Racine de la cible'
+    },
+    'targetPath': {
+        'en-US': 'Target path',
+        'fr-FR': 'Chemin vers la cible'
+    },
+    'properties': {
+        'en-US': 'Properties',
+        'fr-FR': 'Propriétés'
+    },
+    'propertiesEmpty': {
+        'en-US': 'You don\'t have any property',
+        'fr-FR': 'Vous n\'avez aucune propriété'
+    },
+    'keyUnique': {
+        'en-US': 'Key must be unique',
+        'fr-FR': 'La clé doit être unique'
+    },
+    'propertyAdd': {
+        'en-US': 'Add property',
+        'fr-FR': 'Ajouter une propriété'
+    },
+    'multilanguageField': {
+        'en-US': 'This is a multilingual field. English is required.',
+        'fr-FR': 'Ceci est un champ multilingue. L\'anglais est obligatoire.'
+    },
+    'englishDescriptionRequired': {
+        'en-US': 'English description is required.',
+        'fr-FR': 'La description anglaise est obligatoire.'
+    },
+    'bundledResourceEmptyList': {
+        'en-US': 'Bundled resource not found',
+        'fr-FR': 'Aucune ressource groupée'
+    },
+    'maxSize1GB': {
+        'en-US': 'Maximum size allowed is 1GB',
+        'fr-FR': 'La taille maximale authorisée est de 1GO'
+    },
+    'invalidSizeMax1GB': {
+        'en-US': 'File too big, maximum size allowed is 1GB',
+        'fr-FR': 'Fichier trop lourd, la taille maximale authorisée est de 1GO'
+    },
+    'bundledResourcesConfirmDelete': {
+        'en-US': 'Are you sure you want to delete those bundled resources?',
+        'fr-FR': 'Êtes vous sur(e) de vouloir supprimer ces ressources groupées ?'
+    },
+    'bundledResourcesAdded': {
+        'en-US': 'Bundled resource added',
+        'fr-FR': 'Ressource groupée ajoutée'
+    },
+    'bundledResourcesImported': {
+        'en-US': 'Bundled resources imported',
+        'fr-FR': 'Ressource groupées importés'
+    },
+    'bundledResourcesUpdated': {
+        'en-US': 'Bundled resource updated',
+        'fr-FR': 'Ressource groupée mise à jour'
+    },
+    'bundledResourcesRenamed': {
+        'en-US': 'Bundled resource renamed',
+        'fr-FR': 'Ressource groupée renommée'
+    },
+    'bundledResourcesDuplicated': {
+        'en-US': 'Bundled resource duplicated',
+        'fr-FR': 'Ressource groupée dupliquée'
+    },
+    'bundledResourcesDeleted': {
+        'en-US': 'Bundled resource(s) deleted',
+        'fr-FR': 'Ressource groupée(s) supprimée(s)'
+    },
+    'bundledResourcesExported': {
+        'en-US': 'Bundled resource(s) exported',
+        'fr-FR': 'Ressources groupée(s) exportée(s)'
+    },
+    'nameAlreadyExist': {
+        'en-US': 'This name already exists',
+        'fr-FR': 'Ce nom existe déjà'
+    },
+    'resourceNotFound': {
+        'en-US': 'No resource has been found',
+        'fr-FR': 'Aucune ressource n\'a été trouvée'
+    },
+    'resourcesAttached': {
+        'en-US': 'Resource attached',
+        'fr-FR': 'Ressource attachée'  
+    },
+    'bundledResourcesReadonly': {
+        'en-US': 'These bundled resources are only readable. They can not be deleted.',
+        'fr-FR': 'Ces ressources groupées ne sont éditables. Elles ne peuvent pas supprimés.'
     },
 
     /** b2portal wordings. */
@@ -3264,10 +3378,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'jobcontrolpanel.cancel.confirm': {
         'en-US': 'Are you sure you want to cancel this job?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir annuler cette tâche ?'
-    },
-    'jobcontrolpanel.by': {
-        'en-US': 'by',
-        'fr-FR': 'par'
     },
 
     'login.email.invalid': {
