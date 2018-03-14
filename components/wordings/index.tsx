@@ -1109,6 +1109,16 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Profil'
     },
 
+    // Target
+    'target': {
+        'en-US': 'Target',
+        'fr-FR': 'Cible'
+    },
+    'counter.text.target': {
+        'en-US': 'Target',
+        'fr-FR': 'Cible'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -1210,6 +1220,10 @@ export const MULTILANGUAGE_WORDINGS = {
     'size': {
         'en-US': 'Size',
         'fr-FR': 'Taille'
+    },
+    'tabCloseUnsave': {
+        'en-US': 'There are unsaved changes. Are you sure you want to close this tab and lose your updates?',
+        'fr-FR': 'Vous avez effectué des modifications sans les enregistrer. Êtes-vous sûr(e) de vouloir fermer cet onglet et perdre les données non sauvegardées ?'
     },
 
     /** b2portal wordings. */
@@ -1703,10 +1717,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Déconnexion'
     },
 
-    'counter.text.target': {
-        'en-US': 'Target',
-        'fr-FR': 'Cible'
-    },
     'counter.text.lastSyncDate': {
         'en-US': 'Last synchronization date',
         'fr-FR': 'Date de dernière synchronisation'
