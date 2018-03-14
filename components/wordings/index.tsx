@@ -1129,6 +1129,45 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'par'
     },
 
+    // Invalid email
+    'invalidEmail': {
+        'en-US': 'Invalid email',
+        'fr-FR': 'Email invalide'
+    },
+    'inputvalidation.invalid.email': {
+        'en-US': 'Invalid email',
+        'fr-FR': 'Email invalide'
+    },
+
+    // Invalid Number
+    'invalidNumber': {
+        'en-US': 'Must be a number',
+        'fr-FR': 'Doit être un nombre'
+    },
+    'inputvalidation.invalid.number': {
+        'en-US': 'Must be a number',
+        'fr-FR': 'Doit être un nombre'
+    },
+
+    // Invalid url
+    'invalidUrl': {
+        'en-US': 'Invalid https url',
+        'fr-FR': 'Url https invalid'
+    },
+    'inputvalidation.invalid.https.url': {
+        'en-US': 'Invalid https url',
+        'fr-FR': 'Url https invalid'
+    },
+
+    'invalidField': {
+        'en-US': 'Invalid field',
+        'fr-FR': 'Champ invalide'
+    },
+    'inputvalidation.invalid': {
+        'en-US': 'Invalid field',
+        'fr-FR': 'Champ invalide'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -2415,23 +2454,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'fileUploadFailed': {
         'en-US': 'File upload failed',
         'fr-FR': 'Échec du téléchargement du fichier'
-    },
-
-    'inputvalidation.invalid': {
-        'en-US': 'Invalid field',
-        'fr-FR': 'Champ invalide'
-    },
-    'inputvalidation.invalid.email': {
-        'en-US': 'Invalid email',
-        'fr-FR': 'Email invalide'
-    },
-    'inputvalidation.invalid.number': {
-        'en-US': 'Must be a number',
-        'fr-FR': 'Doit être un nombre'
-    },
-    'inputvalidation.invalid.https.url': {
-        'en-US': 'Invalid https url',
-        'fr-FR': 'Url https invalid'
     },
 
     'servicebuttonsbar.restart': {
