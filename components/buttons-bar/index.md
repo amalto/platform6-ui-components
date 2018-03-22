@@ -5,13 +5,13 @@ const btnGroups = [
     {
         btns: [
             {
-                iconClass: 'fa fa-info',
+                iconClass: 'fas fa-info',
                 cssClass: 'btn btn-info',
                 text: 'Info button',
                 tooltipText: 'Info button tooltip'
             },
             {
-                iconClass: 'fa fa-trash',
+                iconClass: 'fas fa-trash-alt',
                 cssClass: 'btn btn-trans btn-danger',
                 tooltipText: 'Delete'
             }

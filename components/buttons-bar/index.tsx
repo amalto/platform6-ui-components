@@ -110,10 +110,10 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
                                                     {
                                                         btn.content ? btn.content : btn.text ? (
                                                             <span>
-                                                                {btn.iconClass ? <span className={classNames( 'fa fa-fw right-spaced', btn.iconClass )} /> : null}
+                                                                {btn.iconClass ? <span className={classNames( 'fa-fw right-spaced', btn.iconClass )} /> : null}
                                                                 <span>{btn.text}</span>
                                                             </span>
-                                                        ) : <span className={classNames( 'fa fa-fw', btn.iconClass )} />
+                                                        ) : <span className={classNames( 'fa-fw', btn.iconClass )} />
                                                     }
 
                                                 </button>

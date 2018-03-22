@@ -234,7 +234,7 @@ class CustomFormDialog extends React.Component<CustomFormDialog.Props, CustomFor
             else {
                 dialogContent = (
                     <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
-                        <span className="fa fa-exclamation-triangle right-spaced" />
+                        <span className="fas fa-exclamation-triangle right-spaced" />
                         <span>{wordings['customformdialog.error.loading']}</span>
                     </div>
                 )
@@ -243,7 +243,7 @@ class CustomFormDialog extends React.Component<CustomFormDialog.Props, CustomFor
         else if ( formData.loadingError ) {
             dialogContent = (
                 <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
-                    <span className="fa fa-exclamation-triangle right-spaced" />
+                    <span className="fas fa-exclamation-triangle right-spaced" />
                     <span>{wordings['customformdialog.error.loading']}</span>
                 </div>
             )

@@ -279,23 +279,23 @@ test('replaceTemplateFlags', t => {
     const template = '{{FLAGS=dwarning,cimportant}}';
     const proccessedTemplate = replaceTemplateFlags(template, 'en-US');
 
-    t.is(proccessedTemplate, '<span class="fa fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span><span class="fa fa-fw right-spaced text-xlarge warning-color fa-star" title="Important"></span><span class="fa fa-fw right-spaced text-xlarge font-color-lighter fa-archive" title="Archived"></span>');
+    t.is(proccessedTemplate, '<span class="fas fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span><span class="fas fa-fw right-spaced text-xlarge warning-color fa-star" title="Important"></span><span class="fas fa-fw right-spaced text-xlarge font-color-lighter fa-archive" title="Archived"></span>');
     t.not(proccessedTemplate, template);
-    t.not(proccessedTemplate, '<span class="fa fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span>');
+    t.not(proccessedTemplate, '<span class="fas fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span>');
 });
 
 // getStyleDef
 test('getStyleDef: generate style object from string', t => {
-    const styleConf = 'icon:fa fa-info,btn:btn btn-trans btn-info,color:info-color';
+    const styleConf = 'icon:fas fa-info,btn:btn btn-trans btn-info,color:info-color';
     const styleObject = getStyleDef(styleConf);
 
     t.deepEqual(styleObject, {
-        icon: 'fa fa-info',
+        icon: 'fas fa-info',
         btn: 'btn btn-trans btn-info',
         color: 'info-color'
     });
     t.notDeepEqual(styleObject, {
-        icon: 'fa fa-danger',
+        icon: 'fas fa-danger',
         btn: 'btn btn-trans btn-trash',
         color: 'danger-color'
     });
@@ -367,13 +367,13 @@ test('getJSTreeData: generate JSTree data from orgModel object', t => {
                     childNames: []
                 },
                 children: null,
-                icon: 'fa fa-fw fa-th-large font-color-lighter',
+                icon: 'fas fa-fw fa-th-large font-color-lighter',
                 state: {
                     opened: false,
                     disabled: false
                 },
             }],
-            icon: 'fa fa-fw fa-terminal black-color',
+            icon: 'fas fa-fw fa-terminal black-color',
             state: {
                 opened: true,
                 disabled: false

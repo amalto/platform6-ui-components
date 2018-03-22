@@ -30,7 +30,7 @@ test('Help props should be defined', t => {
         />
     );
 
-    t.true(wrapper.hasClass('fa fa-fw fa-question-circle default-color info-color'));
+    t.true(wrapper.hasClass('fas fa-fw fa-question-circle default-color info-color'));
     t.deepEqual(wrapper.prop('style'), style);
     t.is(wrapper.prop('data-content'), 'Help text');
 });

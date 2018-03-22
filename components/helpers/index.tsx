@@ -289,7 +289,7 @@ export function replaceTemplateFlags( templatedHtml: string, locale: string ): s
             if ( flagName !== 'eunread' ) {
 
                 if ( ( flagDef.inversed && flags.indexOf( flagName ) === -1 ) || ( !flagDef.inversed && flags.indexOf( flagName ) !== -1 ) ) {
-                    flagsHtml += '<span class="fa fa-fw right-spaced text-xlarge ' + flagDef.iconColor + ' ' + flagDef.iconShape + '" title="' + flagDef.flagLabel[locale] + '"></span>'
+                    flagsHtml += '<span class="fa-fw right-spaced text-xlarge ' + flagDef.iconColor + ' ' + flagDef.iconShape + '" title="' + flagDef.flagLabel[locale] + '"></span>'
                 }
 
             }
@@ -387,7 +387,7 @@ export function getJSTreeData( orgTreeData: OrgModel, openedNodes?: string[] ): 
         children: orgTreeData.children ? orgTreeData.children.map( child => {
             return getJSTreeData( child, openedNodes )
         } ) : null,
-        icon: classNames( 'fa fa-fw', {
+        icon: classNames( 'fas fa-fw', {
             'fa-th-large font-color-lighter': orgTreeData.id !== '0',
             'fa-terminal black-color': orgTreeData.id === '0',
         } ),

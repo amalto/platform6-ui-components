@@ -213,7 +213,7 @@ class DynamicComponent extends React.Component<DynamicComponent.Props, DynamicCo
             else {
                 content = (
                     <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
-                        <span className="fa fa-exclamation-triangle right-spaced" />
+                        <span className="fas fa-exclamation-triangle right-spaced" />
                         <span>{wordings['dynamiccomponent.error.loading']}</span>
                     </div>
                 )

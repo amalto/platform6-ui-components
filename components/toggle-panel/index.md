@@ -28,7 +28,7 @@ const toggleCallback = ( opened ) => {
 >
     <div>
         <ActionButton clickAction={() => setState({ showSpinner: !state.showSpinner })}
-            iconClass='fa fa-eye'
+            iconClass='fas fa-eye'
             tooltipText='Display or hide spinner'
             btnClass='btn btn-info'
         />

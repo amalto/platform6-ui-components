@@ -77,13 +77,13 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                     {
                         byContext ? null : (
                             <button type="button" disabled={prevDisabled} className="btn btn-primary btn-trans" onClick={this.goToFirstPage}>
-                                <span className="fa fa-fw fa-fast-backward"></span>
+                                <span className="fas fa-fw fa-fast-backward"></span>
                             </button>
                         )
                     }
 
                     <button type="button" disabled={prevDisabled} className="btn btn-primary btn-trans" onClick={this.goToPrevPage}>
-                        <span className="fa fa-fw fa-backward"></span>
+                        <span className="fas fa-fw fa-backward"></span>
                     </button>
 
                     <span className="btn btn-primary btn-trans text-element no-border-right">
@@ -96,13 +96,13 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                     </span>
 
                     <button type="button" disabled={nextDisabled} className="btn btn-primary btn-trans" onClick={this.goToNextPage}>
-                        <span className="fa fa-fw fa-forward"></span>
+                        <span className="fas fa-fw fa-forward"></span>
                     </button>
 
                     {
                         byContext ? null : (
                             <button type="button" disabled={nextDisabled} className="btn btn-primary btn-trans" onClick={this.goToLastPage}>
-                                <span className="fa fa-fw fa-fast-forward"></span>
+                                <span className="fas fa-fw fa-fast-forward"></span>
                             </button>
                         )
                     }

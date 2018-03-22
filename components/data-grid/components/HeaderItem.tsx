@@ -91,38 +91,38 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
         const advancedControls = displayTemplate && !columnHeader.disableClick && !preventTemplating ? (
             <div className="hover-menu" onContextMenu={this.handleCardContextMenu}>
                 <div className="hover-menu-btn-container">
-                    <span className="info-color fa fa-fw fa-chevron-left" data-column-id={columnHeader.id}
+                    <span className="info-color fas fa-fw fa-chevron-left" data-column-id={columnHeader.id}
                         data-order="up" onClick={this.handleOrderChange} />
-                    <span className={classNames( 'fa fa-fw fa-sort', {
+                    <span className={classNames( 'fas fa-fw fa-sort', {
                         'info-color': !!sortHandler,
                         'default-color': !sortHandler
                     } )} data-column-id={columnHeader.id}
                         onClick={this.handleSortChange} />
-                    <span className="info-color fa fa-fw fa-chevron-right" data-column-id={columnHeader.id}
+                    <span className="info-color fas fa-fw fa-chevron-right" data-column-id={columnHeader.id}
                         data-order="down" onClick={this.handleOrderChange} />
                 </div>
                 <div className="hover-menu-btn-container">
-                    <span className="info-color fa fa-fw fa-trash" data-column-id={columnHeader.id}
+                    <span className="info-color fas fa-fw fa-trash-alt" data-column-id={columnHeader.id}
                         onClick={this.hideColumn} />
-                    <span className="info-color fa fa-fw fa-minus" data-column-id={columnHeader.id}
+                    <span className="info-color fas fa-fw fa-minus" data-column-id={columnHeader.id}
                         data-way="down" onClick={this.handleWidthChange} />
-                    <span className="info-color fa fa-fw fa-plus" data-column-id={columnHeader.id}
+                    <span className="info-color fas fa-fw fa-plus" data-column-id={columnHeader.id}
                         data-way="up" onClick={this.handleWidthChange} />
                 </div>
                 <div className="hover-menu-btn-container">
-                    <span className={classNames( 'fa fa-fw fa-align-left', {
+                    <span className={classNames( 'fas fa-fw fa-align-left', {
                         'info-color': align !== 'left',
                         'black-color': align === 'left'
                     } )}
                         data-column-id={columnHeader.id}
                         data-align="left" onClick={this.handleTextAlignChange} />
-                    <span className={classNames( 'fa fa-fw fa-align-center', {
+                    <span className={classNames( 'fas fa-fw fa-align-center', {
                         'info-color': align !== 'center',
                         'black-color': align === 'center'
                     } )}
                         data-column-id={columnHeader.id}
                         data-align="center" onClick={this.handleTextAlignChange} />
-                    <span className={classNames( 'fa fa-fw fa-align-right', {
+                    <span className={classNames( 'fas fa-fw fa-align-right', {
                         'info-color': align !== 'right',
                         'black-color': align === 'right'
                     } )}

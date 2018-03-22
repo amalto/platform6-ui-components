@@ -5,7 +5,7 @@ initialState = { open: false, fileData: {name: 'test_file', size: 100} };
 
 <div>
 
-    <ActionButton iconClass='fa-upload'
+    <ActionButton iconClass='fas fa-upload'
         btnClass='btn btn-trans btn-info'
         clickAction={() => { setState( {open: !state.open} )}}
         tooltipText='Display the modal'

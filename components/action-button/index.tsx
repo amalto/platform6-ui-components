@@ -51,7 +51,7 @@ class ActionButton extends React.Component<ActionButton.Props, any> {
         return (
             <span className={classNames( 'action-icon-button', this.props.btnClass, { 'disabled': this.props.disabled } )}
                 onClick={handleClick} data-toggle="tooltip" data-original-title={this.props.disabled ? null : this.props.tooltipText}>
-                <span className={classNames( 'fa', this.props.iconClass, this.props.colorClass )}></span>
+                <span className={classNames( this.props.iconClass, this.props.colorClass )}></span>
             </span>
         )
     }

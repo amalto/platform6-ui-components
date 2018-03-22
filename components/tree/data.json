@@ -10,7 +10,7 @@
                     "id": "c1",
                     "text": "Node C1",
                     "children": null,
-                    "icon": "fa fa-fw fa-cube font-color-lighter",
+                    "icon": "fas fa-fw fa-cube font-color-lighter",
                     "data": {
                         "description": "Node Description (C1)",
                         "parentId": "b1",
@@ -23,7 +23,7 @@
                     }
                 }
             ],
-            "icon": "fa fa-fw fa-cube font-color-lighter",
+            "icon": "fas fa-fw fa-cube font-color-lighter",
             "data": {
                 "description": "Node Description (B1)",
                 "parentId": "a1",
@@ -39,7 +39,7 @@
             "id": "b2",
             "text": "Node B2",
             "children": null,
-            "icon": "fa fa-fw fa-cube font-color-lighter",
+            "icon": "fas fa-fw fa-cube font-color-lighter",
             "data": {
                 "description": "Node Description (B2)",
                 "parentId": "a1",
@@ -52,7 +52,7 @@
             }
         }
     ],
-    "icon": "fa fa-fw fa-cube font-color-lighter",
+    "icon": "fas fa-fw fa-cube font-color-lighter",
     "data": {
         "description": "Node Description (A1)",
         "parentId": "",

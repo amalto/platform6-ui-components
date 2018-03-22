@@ -88,7 +88,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                             type='button'
                             onClick={() => { this.setState( { addOpen: false } ) }}
                             data-toggle='tooltip' data-original-title={wordings['languagewrapper.close.selector']}>
-                            <span className="fa fa-times" />
+                            <span className="fas fa-times" />
                         </button> : null
                     }
 
@@ -98,7 +98,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                                 className="btn btn-sm btn-trans btn-danger mgl-10"
                                 onClick={( e ) => { e.preventDefault(); handleRemovedLanguage( selectedLanguage ) }}
                                 data-toggle="tooltip" data-original-title={wordings['languagewrapper.remove.selected']}>
-                                <span className="fa fa-minus" />
+                                <span className="fas fa-minus" />
                             </button>
                         ) : null
                     }
@@ -130,7 +130,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                     type="button"
                     onClick={() => { this.setState( { addOpen: true } ) }}
                     data-toggle="tooltip" data-original-title={wordings['languagewrapper.add.one']}>
-                    <span className="fa fa-plus" />
+                    <span className="fas fa-plus" />
                 </button>
             )
     }

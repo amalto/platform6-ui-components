@@ -78,7 +78,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
                     loading ? <div className="padded"><Spinner /></div> : ( loadingError ? (
                         <div className="padded">
                             <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
-                                <span className="fa fa-exclamation-triangle right-spaced" />
+                                <span className="fas fa-exclamation-triangle right-spaced" />
                                 <span>{this.state.wordings['pdfviewer.error.loading']}</span>
                             </div>
                         </div> ) : (

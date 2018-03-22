@@ -202,14 +202,14 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                     <span className="inline-middle">{nodeData.propertiesMap[key].contentBytes}</span>
                 ) : (
                         <button className="inline-middle btn btn-xs btn-trans btn-info" data-key={key} onClick={this.downloadFile}>
-                            <span className="fa fa-download" />
+                            <span className="fas fa-download" />
                         </button>
                     )
 
                 return (
                     <li key={key}>
                         <em className="right-spaced inline-middle">{key}</em>
-                        <span className="fa fa-long-arrow-right right-spaced inline-middle" />
+                        <span className="fas fa-long-arrow-alt-right right-spaced inline-middle" />
                         {dataDisplay}
                     </li>
                 )

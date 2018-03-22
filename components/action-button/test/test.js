@@ -26,11 +26,11 @@ test('should have class name .action-icon-button .disabled', t => {
     t.true(wrapper.hasClass('btn btn-trans btn-info'));
 });
 
-test('children should have classname .fa .fa-info .info-color', t => {
-    const wrapper = shallow(<ActionButton iconClass='fa-info' colorClass='info-color' />);
+test('children should have classname .fas .fa-info .info-color', t => {
+    const wrapper = shallow(<ActionButton iconClass='fas fa-info' colorClass='info-color' />);
 
     t.is(wrapper.children('span').length, 1);
-    t.true(wrapper.children('span').hasClass('fa fa-info'));
+    t.true(wrapper.children('span').hasClass('fas fa-info'));
     t.true(wrapper.children('span').hasClass('info-color'));
 });
 

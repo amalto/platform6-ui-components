@@ -75,7 +75,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                 <div className="row" key={idx}>
 
                     <div className="form-group col-xs-2 text-center" style={{ paddingRight: 0 }}>
-                        <span className="fa fa-minus-circle danger-color control-align click-pointer"
+                        <span className="fas fa-minus-circle danger-color control-align click-pointer"
                             data-key={keyVal.key} onClick={this.removeKeyValue} />
                     </div>
 
@@ -108,12 +108,12 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                             ) : (
                                     keyVal.contentBytes ? (
                                         <button className="btn btn-info btn-trans" data-key={keyVal.key} onClick={this.downloadFile}>
-                                            <span className="fa fa-download right-spaced" />
+                                            <span className="fas fa-download right-spaced" />
                                             <span>{this.state.wordings['keyvalueeditor.download.file']}</span>
                                         </button>
                                     ) : (
                                             <span className="btn btn-block upload-btn btn-default btn-trans">
-                                                <span className="fa fa-upload right-spaced" />
+                                                <span className="fas fa-upload right-spaced" />
                                                 <span>{this.state.wordings['keyvalueeditor.upload.file']}</span>
                                                 <input type="file" className="upload-input" onChange={this.handleFileUpload} data-idx={idx} data-key={keyVal.key} />
                                             </span>
@@ -134,13 +134,13 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                 <div>
                     <button className="btn btn-trans btn-info right-margin" onClick={this.addKeyValue.bind( this )}
                         data-toggle="tooltip" data-original-title={this.state.wordings['keyvalueeditor.add.text.btn']}>
-                        <span className="fa fa-plus right-spaced" />
-                        <span className="fa fa-font" />
+                        <span className="fas fa-plus right-spaced" />
+                        <span className="fas fa-font" />
                     </button>
                     <button className="btn btn-trans btn-info" onClick={this.addKeyValue.bind( this, true )}
                         data-toggle="tooltip" data-original-title={this.state.wordings['keyvalueeditor.add.file.btn']}>
-                        <span className="fa fa-plus right-spaced" />
-                        <span className="fa fa-file-o" />
+                        <span className="fas fa-plus right-spaced" />
+                        <span className="fas fa-file" />
                     </button>
                 </div>
 

@@ -34,7 +34,7 @@ class Help extends React.Component<Help.Props, any> {
         return (
             <span className={
                 classNames(
-                    'fa fa-fw fa-question-circle default-color',
+                    'fas fa-fw fa-question-circle default-color',
                     this.props.containerClass
                 )
             }

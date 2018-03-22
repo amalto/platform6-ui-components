@@ -40,7 +40,7 @@ function createNode( parentId, elementName, description, propertiesMap ) {
     const newNode = {
         id: uuid.v4(),
         text: elementName,
-        icon: 'fa fa-fw fa-cube font-color-lighter',
+        icon: 'fas fa-fw fa-cube font-color-lighter',
         data: {
             parentId,
             description,

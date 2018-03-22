@@ -5,13 +5,13 @@ initialState = {
     selectedTabId: 'tabs-1-example',
     tabs: [
         (<Tab id='tabs-1-example'
-            iconClass='fa fa-file-o'
+            iconClass='fas fa-file'
             title='First tab'
             closable={true}>
             <div>First tab content</div>
         </Tab>),
         (<Tab id='tabs-2-example'
-            iconClass='fa fa-file-o'
+            iconClass='fas fa-file'
             title='Second tab'
             closable={false}>
             <div>Second tab content</div>

@@ -37,13 +37,13 @@ class FileWrapper extends React.Component<FileWrapper.Props, FileWrapper.State> 
 
         let deleteBtn = ( this.props.uploaded && !this.props.processSuccess ) ? (
             <div data-file-name={this.props.fileName} className="file-icon-cell file-delete-btn" onClick={this.deleteUploadedFile}>
-                <span className="fa fa-fw fa-trash"></span>
+                <span className="fas fa-fw fa-trash-alt"></span>
             </div>
         ) : null
 
         let successIcon = this.props.processSuccess ? (
             <div className="file-icon-cell">
-                <span className="fa fa-fw fa-check"></span>
+                <span className="fas fa-fw fa-check"></span>
             </div>
         ) : null
 
@@ -52,7 +52,7 @@ class FileWrapper extends React.Component<FileWrapper.Props, FileWrapper.State> 
         let errorMessage = ( this.props.processSuccess === false && this.props.message ) ? (
             <div className="file-error-row">
                 <div className="file-error-message">
-                    <span className="fa fa-exclamation-triangle right-spaced" />
+                    <span className="fas fa-exclamation-triangle right-spaced" />
                     <span dangerouslySetInnerHTML={{ __html: this.props.message }} />
                 </div>
                 {/* this div matches the number of cell of the previous table-row, it allows proper alignment of borders */}

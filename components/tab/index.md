@@ -1,6 +1,6 @@
 ```javascript
 <Tab id='tab-example'
-    iconClass='fa fa-file-o'
+    iconClass='fas fa-file'
     title='Tab'
     closable={true}
     tabClassNames=''

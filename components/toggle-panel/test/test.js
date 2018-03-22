@@ -72,7 +72,7 @@ test('TogglePanel props should be defined', t => {
     t.is(wrapper.childAt(0).childAt(3).childAt(0).text(), 'Right');
 
     // False because we triggered the toggleCallback event earlier
-    t.true(wrapper.childAt(0).childAt(4).childAt(0).hasClass('fa fa-chevron-down'));
+    t.true(wrapper.childAt(0).childAt(4).childAt(0).hasClass('fas fa-chevron-down'));
 
     t.true(wrapper.childAt(1).hasClass('panel-body hidden'));
     t.is(wrapper.childAt(1).childAt(0).text(), 'TogglePanel content');

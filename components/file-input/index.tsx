@@ -153,7 +153,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                                         <button type="button" className="close" onClick={this.closeInvalidFilesAlert}>&times;</button>
                                         <div className="bottom-spaced">
                                             <strong className="right-spaced">{this.state.wordings['fileinput.invalid.file']}</strong>
-                                            <span className="fa fa-info-circle click-pointer" data-toggle="collapse" data-target="#inputFormatInfo" />
+                                            <span className="fas fa-info-circle click-pointer" data-toggle="collapse" data-target="#inputFormatInfo" />
                                             <div id="inputFormatInfo" className="collapse top-spaced font-color" style={{ paddingLeft: 20 }}>
                                                 {this.props.mimeTypeAccepted ? <div><strong className="right-spaced">{this.state.wordings['fileinput.content.type']}</strong><span>{this.props.mimeTypeAccepted}</span></div> : null}
                                                 {this.props.maxBytesSize ? <div><strong className="right-spaced">{this.state.wordings['fileinput.max.size']}</strong><span>{formatFileSize( this.props.maxBytesSize )}</span></div> : null}

@@ -125,7 +125,7 @@ class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
                     />
                     <span className="input-group-btn">
                         <button disabled={disableClearBtn || this.props.mandatory} className="btn btn-default" type="button" onClick={this.clearDate}>
-                            <span className="fa fa-fw fa-times"></span>
+                            <span className="fas fa-fw fa-times"></span>
                         </button>
                     </span>
                 </div>

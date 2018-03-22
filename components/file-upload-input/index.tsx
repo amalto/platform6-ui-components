@@ -86,7 +86,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                         disabled={disabled}
                         className={classNames( 'pos-absolute upload-input default-pointer', inputClass )}
                         onChange={( e ) => { this.setValue( e, { input, meta } ) }} />
-                    <span className='fa fa-upload primary-color mgr-10' />
+                    <span className='fas fa-upload primary-color mgr-10' />
                     {
                         !!filename && !!filesize
                             ? <span className='italic'>
