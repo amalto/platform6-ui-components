@@ -21,7 +21,7 @@ export const flagsDef: { [flagName: string]: FlagDef; } = {
 
     //BE CAREFUL THIS ONE IS USED HARDCODED IN OTHER FILES
     'eunread': {
-        iconShape: 'fa-envelope',
+        iconShape: 'fas fa-envelope',
         iconColor: 'font-color-lighter',
         flagLabel: {
             'en-US': 'Unread',
@@ -29,7 +29,7 @@ export const flagsDef: { [flagName: string]: FlagDef; } = {
         }
     },
     'dwarning': {
-        iconShape: 'fa-exclamation-triangle',
+        iconShape: 'fas fa-exclamation-triangle',
         iconColor: 'danger-color',
         flagLabel: {
             'en-US': 'Warning',
@@ -37,7 +37,7 @@ export const flagsDef: { [flagName: string]: FlagDef; } = {
         }
     },
     'cimportant': {
-        iconShape: 'fa-star',
+        iconShape: 'fas fa-star',
         iconColor: 'warning-color',
         flagLabel: {
             'en-US': 'Important',
@@ -45,7 +45,7 @@ export const flagsDef: { [flagName: string]: FlagDef; } = {
         }
     },
     'binfo': {
-        iconShape: 'fa-square',
+        iconShape: 'fas fa-square',
         iconColor: 'info-color',
         flagLabel: {
             'en-US': 'Info',
@@ -53,7 +53,7 @@ export const flagsDef: { [flagName: string]: FlagDef; } = {
         }
     },
     'aok': {
-        iconShape: 'fa-circle',
+        iconShape: 'fas fa-circle',
         iconColor: 'primary-color',
         flagLabel: {
             'en-US': 'OK',
@@ -61,7 +61,7 @@ export const flagsDef: { [flagName: string]: FlagDef; } = {
         }
     },
     'aavisible': {
-        iconShape: 'fa-archive',
+        iconShape: 'fas fa-archive',
         iconColor: 'font-color-lighter',
         flagLabel: {
             'en-US': 'Archived',

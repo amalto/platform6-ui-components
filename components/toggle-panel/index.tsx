@@ -129,7 +129,7 @@ class TogglePanel extends React.Component<TogglePanel.Props, TogglePanel.State> 
                     {lCustomControls}
                     {rCustomControls}
                     <div className={classNames( 'actions', { 'hidden': this.props.togglable === false } )}>
-                        <span className={classNames( 'fa', {
+                        <span className={classNames( 'fas', {
                             'fa-chevron-down': !this.state.opened,
                             'fa-chevron-up': this.state.opened
                         }

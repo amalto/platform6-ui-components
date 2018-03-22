@@ -241,7 +241,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                 btns: [{
                     clickAction: () => this.resetTemplate(),
                     cssClass: 'btn btn-danger btn-trans',
-                    iconClass: 'fa-eraser',
+                    iconClass: 'fas fa-eraser',
                     tooltipText: this.state.wordings['datagrid.reset.templates']
                 }],
                 cssClass: 'btn-group-xs'
@@ -257,7 +257,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                         } )
                     },
                     cssClass: 'btn btn-info btn-trans',
-                    iconClass: 'fa-eye-slash',
+                    iconClass: 'fas fa-eye-slash',
                     tooltipText: this.state.wordings['datagrid.show.hidden.columns']
                 }],
                 cssClass: 'btn-group-xs'

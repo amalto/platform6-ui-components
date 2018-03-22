@@ -64,9 +64,9 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
         const { columnHeader, sortColumn, sortDirection, displayTemplate, preventTemplating, sortHandler } = this.props
 
         const sortIcon = columnHeader.id === sortColumn ? (
-            <span className={classNames( 'dark-color sort-control fa', {
-                'fa-long-arrow-up': sortDirection === "ASC",
-                'fa-long-arrow-down': sortDirection === "DESC"
+            <span className={classNames( 'dark-color sort-control fas', {
+                'fa-long-arrow-alt-up': sortDirection === "ASC",
+                'fa-long-arrow-alt-down': sortDirection === "DESC"
             } )} />
         ) : null
 
