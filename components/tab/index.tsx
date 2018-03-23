@@ -2,7 +2,7 @@
  * Created by franckmontaigne on 13/06/16.
  */
 
- // Modules
+// Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
 
@@ -28,6 +28,8 @@ namespace Tab {
         tabLinkUniqueClass?: string;
         /** CSS style applied only to thos tab link. */
         tabLinkUniqueStyle?: React.CSSProperties;
+        /** Custom render function of the tab content if children are not used. Should be used when tab content is dynamic and depends on parent data. */
+        renderer?: () => React.JSX.Element;
 
         /** Hide props from documentation */
 

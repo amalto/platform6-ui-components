@@ -2,7 +2,7 @@
  * Created by franckmontaigne on 13/06/16.
  */
 
- // Modules
+// Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as uuid from 'uuid'
@@ -118,7 +118,7 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
                                     } )}
                                     style={tab.props.tabStyle}>
 
-                                    {tab.props.children}
+                                    {tab.props.renderer ? tab.props.renderer() : tab.props.children}
 
                                 </div>
                             )
