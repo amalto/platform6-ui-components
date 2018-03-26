@@ -3,7 +3,7 @@ const changeCase = require('change-case');
 
 module.exports = {
 
-    title: 'platform6-ui-components',
+    title: 'Platform 6 UI components',
 
     assetsDir: 'public/',
 
