@@ -227,14 +227,14 @@ export function orderDesc( object: Object ): Object {
     return result
 }
 
-export function saveDataAsJSONFile( data: any, fileName: string ): void {
+export function saveDataAsJSONFile( data: any, fileName: string, extension?: string ): void {
     let json = JSON.stringify( data, null, '\t' )
 
     let blob = new Blob( [json], {
         type: 'application/json'
     } )
 
-    triggerDataDownload( blob, fileName + '_' + ( new Date().toISOString().substr( 0, 19 ) ) + '.json' )
+    triggerDataDownload( blob, `${ fileName }_${ new Date().toISOString().substr( 0, 19 ) }${ extension || '.json' }` )
 }
 
 export function downloadDataFile( base64DataString: string, contentType: string, fileName: string ): void {
@@ -524,16 +524,16 @@ export function deepCopy( data: any, extensions?: any ): any {
  * @param { string } name Name to check
  * @param { string[] } container String to compared to
  */
-export function handleDuplicateNameFromArray( name: string, container: string[]): string {
+export function handleDuplicateNameFromArray( name: string, container: string[] ): string {
     let firstTime: boolean = true
     let res: string = name
     let idx: number = 1
 
     while ( container.some( c => res === c ) ) {
         if ( firstTime ) {
-            res = res.concat(`_${idx}`)
+            res = res.concat( `_${ idx }` )
         } else {
-            res = res.replace(/_[\d]+$/, `_${idx}`)
+            res = res.replace( /_[\d]+$/, `_${ idx }` )
         }
         firstTime = false
         idx++
@@ -555,4 +555,12 @@ export function dateByLocalToString( locale: string, date: number, options?: Int
         hour: 'numeric',
         minute: 'numeric'
     }, options ) )
+}
+
+export function getItemsByIdx<T>( collection: Array<T>, indexes: number[] ): Array<T> {
+    return indexes.map( idx => collection[idx] )
+}
+
+export function escapeRegExp( text: string ): string {
+    return text.replace( /[-[\]{}()*+?.,\\^$|#]/g, '\\$&' );
 }
