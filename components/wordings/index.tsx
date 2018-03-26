@@ -1378,6 +1378,10 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'These bundled resources are only readable. They can not be deleted.',
         'fr-FR': 'Ces ressources groupées ne sont éditables. Elles ne peuvent pas supprimés.'
     },
+    'confirmUpdateForConsistancy': {
+        'en-US': 'It seems like your items are not synchronized with the server anymore, you should save your work and update the service.',
+        'fr-FR': 'Il semblerait que vos objects ne sont plus synchronisés avec le serveur, vous devriez sauvegarder votre travail et mettre à jour le service.'
+    },
 
     /** b2portal wordings. */
     'register.registration': {
