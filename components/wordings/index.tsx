@@ -1168,6 +1168,24 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Champ invalide'
     },
 
+    // Success
+    'success': {
+        'en-US': 'Success',
+        'fr-FR': 'Succès'
+    },
+    'notification.title.success': {
+        'en-US': 'Success',
+        'fr-FR': 'Succès'
+    },
+    'crossrefactions.notification.title.success': {
+        'en-US': 'Success',
+        'fr-FR': 'Succès'
+    },
+    'frameacions.notification.upsert.success.title': {
+        'en-US': 'Success',
+        'fr-FR': 'Succès'
+    },
+
     // Tab title
     'tabList': {
         'en-US': 'List ({total})',
@@ -2636,10 +2654,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Are you sure you want to delete the selected permission set(s)?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer le(s) groupe(s) de permissions sélectionné(s) ?'
     },
-    'notification.title.success': {
-        'en-US': 'Success',
-        'fr-FR': 'Succès'
-    },
     'notification.multiple.permsets.delete.success': {
         'en-US': 'Permission set(s) deleted!',
         'fr-FR': 'Groupe(s) de permissions supprimés !'
@@ -2742,10 +2756,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Rien à enregistrer !'
     },
 
-    'crossrefactions.notification.title.success': {
-        'en-US': 'Success',
-        'fr-FR': 'Succès'
-    },
     'crossrefactions.confirm.delete': {
         'en-US': 'Are you sure you want to delete this record?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cette entrée ?'
@@ -3849,11 +3859,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'notification.work.item.processed': {
         'en-US': 'Work item processed!',
         'fr-FR': 'Tâche traitée !'
-    },
-
-    'frameacions.notification.upsert.success.title': {
-        'en-US': 'Success',
-        'fr-FR': 'Succès'
     },
     'frameactions.notification.upsert.success.message': {
         'en-US': 'Frame has been successfully updated',
