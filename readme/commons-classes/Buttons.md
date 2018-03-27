@@ -29,9 +29,9 @@ Each button must have the `.btn` class, otherwise the class wont work.
 
     <h4>Buttons sizes</h4>
     <div className='btn-toolbar'>
-        <button className='btn btn-trans btn-default btn-xs'>.btn-xs</button>
+        <button className='btn btn-trans btn-info btn-xs'>.btn-xs</button>
         <button className='btn btn-trans btn-info btn-sm'>.btn-sm</button>
-        <button className='btn btn-trans btn-primary btn-lg'>.btn-lg</button>
+        <button className='btn btn-trans btn-info btn-lg'>.btn-lg</button>
     </div>
 </div>
 ```

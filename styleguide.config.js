@@ -196,6 +196,10 @@ module.exports = {
                 name: 'Commmons classes',
                 sections: [
                     {
+                        name: 'Text',
+                        content: 'readme/commons-classes/Text.md'
+                    },
+                    {
                         name: 'Buttons',
                         content: 'readme/commons-classes/Buttons.md'
                     }
