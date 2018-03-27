@@ -98,11 +98,11 @@ module CodeEditor {
         forceSave?: boolean;
         /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
-        /** Editor ace session. More details on [AceSession](http://localhost:6060/#!/AceSession). */
+        /** Editor ace session. More details on [AceSession](http://localhost:6060/#acesession). */
         aceSession?: AceSession;
         /** Unique editor id. */
         docId: string;
-        /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. More details on [UserModel](http://localhost:6060/#!/UserModel). */
+        /** Preferred user's displaySettings. Set on the user profile, you can provide the userJson object but shouldn't modify this value. More details on [UserModel](http://localhost:6060/#usermodel). */
         userJson?: UserModel.JsonContent;
         /** Code editor onchange event handler. */
         editorOnChange?: ( value: string ) => void;

@@ -29,7 +29,7 @@ namespace KeyValueEditor {
     }
 
     export interface Props extends React.ClassAttributes<KeyValueEditor> {
-        /** Handle values changes. More details on [KeyValDef](http://localhost:6060/#!/KeyValDef). */
+        /** Handle values changes. More details on [KeyValDef](http://localhost:6060/#keyvaldef). */
         handleChange: ( keyValues: KeyValDef ) => void;
         /** Current keyValues data. */
         keyValues: KeyValDef

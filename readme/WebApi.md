@@ -1,7 +1,7 @@
 
 The WebApi interface use others interfaces listed here:
-- [Auth](http://localhost:6060/#!/Auth)
-- [EndpointsUrl](http://localhost:6060/#!/EndpointsUrl)
+- [Auth](http://localhost:6060/#auth)
+- [EndpointsUrl](http://localhost:6060/#endpointsurl)
 
 
 ```typescript

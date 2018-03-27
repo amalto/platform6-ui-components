@@ -12,7 +12,7 @@ module TypeaheadInput {
         id: string;
         /** Collection of item to be display inside the dropdown list. */
         collection: any[];
-        /** Search remotely from server. More details on [RemoteConfig](http://localhost:6060/#!/RemoteConfig). */
+        /** Search remotely from server. More details on [RemoteConfig](http://localhost:6060/#remoteconfig). */
         remote?: RemoteConfig;
         /** Input's value. */
         value?: any;

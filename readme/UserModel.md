@@ -1,4 +1,4 @@
-This interface uses the [DisplayTemplate](http://localhost:6060/#!/DisplayTemplate) and [OrderDataset](http://localhost:6060/#!/OrderDataset) interfaces.
+This interface uses the [DisplayTemplate](http://localhost:6060/#displaytemplate) and [OrderDataset](http://localhost:6060/#orderdataset) interfaces.
 
 ```typescript
 module UserModel {

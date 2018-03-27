@@ -5,7 +5,8 @@ module.exports = {
 
     title: 'Platform 6 UI components',
 
-    pagePerSection: true,
+    // Can't be use right now because navbar and header links are not the same if used.
+    // pagePerSection: true,
 
     assetsDir: 'public/',
 

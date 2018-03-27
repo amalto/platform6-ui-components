@@ -23,13 +23,13 @@ module Tree {
     export interface Props extends React.Props<Tree> {
         /** Any unique DOM ID. */
         id: string;
-        /** Data to render as a tree. More details on [TreeNodeModel](http://localhost:6060/#!/TreeNodeModel). */
+        /** Data to render as a tree. More details on [TreeNodeModel](http://localhost:6060/#treenodemodel). */
         data: TreeNodeModel;
         /**
          * Function to create a node.
          * Data update logic needs to be implemented based on the provided parameters.
          * See below for the required data model behind the KeyValDef interface.
-         * More details on [KeyValDef](http://localhost:6060/#!/KeyValDef).
+         * More details on [KeyValDef](http://localhost:6060/#keyvaldef).
          */
         createNode?: ( parentId: string, elementName: string, description: string, propertiesMap?: KeyValDef ) => void;
         /** Manage node edition. */
