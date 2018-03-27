@@ -8,6 +8,8 @@ import * as classNames from 'classnames'
 
 /**
  * This component should be used in the Tabs component.
+ * 
+ * The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
  */
 namespace Tab {
 

@@ -6,6 +6,7 @@ module.exports = {
     title: 'Platform 6 UI components',
 
     // Can't be use right now because navbar and header links are not the same if used.
+    // See https://github.com/styleguidist/react-styleguidist/issues/892.
     // pagePerSection: true,
 
     assetsDir: 'public/',

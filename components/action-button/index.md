@@ -1,4 +1,4 @@
-You can see all the available icons [here](https://fontawesome.com/icons?d=gallery).
+The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
 
 ```javascript
 <ActionButton clickAction={e => window.alert('click on button')}

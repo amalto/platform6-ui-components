@@ -1,5 +1,7 @@
 Object used to display the [Tree](http://localhost:6060/#tree) component. It uses an [TreeNodeDataModel](http://localhost:6060/#treenodedatamodel) object to display a more details description of the tree's node when selected.
 
+The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
+
 ```typescript
 interface TreeNodeModel {
 
