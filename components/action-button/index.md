@@ -1,3 +1,5 @@
+You can see all the available icons [here](https://fontawesome.com/icons?d=gallery).
+
 ```javascript
 <ActionButton clickAction={e => window.alert('click on button')}
     iconClass='fas fa-info'

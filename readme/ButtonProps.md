@@ -1,4 +1,4 @@
-This component is using [FontAwesome](http://localhost:6060/#fontawesome) icon classes.
+This component is using [FontAwesome](http://localhost:6060/#FontAwesome) icon classes.
 
 ```typescript
 export interface ButtonProps {

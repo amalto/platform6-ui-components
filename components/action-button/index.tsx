@@ -3,6 +3,8 @@ import * as classNames from 'classnames'
 
 /**
  * Small button with an icon instead of text.
+ * 
+ * The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
  */
 module ActionButton {
 

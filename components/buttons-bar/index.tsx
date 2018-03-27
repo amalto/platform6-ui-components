@@ -14,6 +14,8 @@ import { compileWordings } from '@amalto/helpers'
 
 /**
  * Component allowing you to display a set of buttons as well as a search input if needed.
+ * 
+ * The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
  */
 module ButtonsBar {
 
@@ -40,7 +42,7 @@ module ButtonsBar {
         handleSearch?: ( searchValue: string ) => void;
         /** Search value usually used with list beneath it. */
         searchValue?: string;
-        /** Button list to be displayed. More details on [BtnGroupsProps](https:localhost:6060/#btngroupsprops) */
+        /** Button list to be displayed. More details on [BtnGroupsProps](https:localhost:6060/#BtnGroupsProps) */
         btnGroups: BtnGroupsProps[];
         /** Locale to be used. */
         locale: string;

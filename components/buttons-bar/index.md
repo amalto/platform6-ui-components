@@ -1,3 +1,5 @@
+The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
+
 ```javascript
 initialState = { searchValue: '' };
 

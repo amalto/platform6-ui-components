@@ -63,13 +63,13 @@ module.exports = {
     },
     {
         name: 'Components',
-        description: 'All the components provided by platform6',
+        description: 'All the components provided by Platform 6',
         ignore: ['**/node_modules/**'],
         components: 'components/**/index.tsx'
     },
     {
         name: 'Interfaces',
-        description: 'Interfaces used by platform6-ui-components',
+        description: 'Interfaces used by the Platform 6 UI components.',
         sections: [
             {
                 name: 'AceSession',
@@ -183,7 +183,7 @@ module.exports = {
     },
     {
         name: 'Utils',
-        description: 'Utils used by b2-common-components',
+        description: 'Externals resources and commons methods used in several Platform 6 UI components. You should take a look at the resources provided here before any implementation to avoid duplicate code.',
         showCode: false,
         sections: [
             {
