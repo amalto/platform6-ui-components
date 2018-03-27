@@ -35,6 +35,13 @@ module.exports = {
     template: path.resolve(__dirname, './public/index.html'),
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
     webpackConfig: require('./webpack.config.js'),
+    styles: {
+        Pre: {
+            pre: {
+                'white-space': 'pre-wrap !important'
+            }
+        }
+    },
 
     editorConfig: {
         theme: 'tomorrow-night-eighties'
@@ -198,6 +205,10 @@ module.exports = {
                     {
                         name: 'Text',
                         content: 'readme/commons-classes/Text.md'
+                    },
+                    {
+                        name: 'Colors',
+                        content: 'readme/commons-classes/Colors.md'
                     },
                     {
                         name: 'Buttons',
