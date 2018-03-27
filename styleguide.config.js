@@ -193,6 +193,15 @@ module.exports = {
                 content: 'readme/Icons.md',
             },
             {
+                name: 'Commmons classes',
+                sections: [
+                    {
+                        name: 'Buttons',
+                        content: 'readme/commons-classes/Buttons.md'
+                    }
+                ]
+            },
+            {
                 name: 'ScopeHelpers',
                 content: 'readme/ScopeHelpers.md',
             },

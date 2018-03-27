@@ -5,5 +5,15 @@
         font-size: $size14px;
         margin-bottom: 20px;
     }
+
+    .button-example {
+        h4 {
+            margin-bottom: 10px;
+        }
+
+        .btn-toolbar:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
