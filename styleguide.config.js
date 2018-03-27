@@ -20,10 +20,10 @@ module.exports = {
     getComponentPathLine(componentPath) {
         const type = componentPath.split('/')[0]
         const componentName = componentPath.split('/')[1]
-        const name = changeCase.pascalCase(componentName)
+        // const name = changeCase.pascalCase(componentName)
         const dir = componentName
 
-        return type === 'components' ? `import ${name} from '@amalto/${dir}';` : null
+        return type === 'components' ? `npm install --save @amalto/${dir}` : null
     },
 
     getExampleFilename(componentPath) {
@@ -35,7 +35,7 @@ module.exports = {
     webpackConfig: require('./webpack.config.js'),
 
     editorConfig: {
-        theme: 'tomorrow-night-eighties' // should be tomorrow-night-eighties, but not working for now
+        theme: 'tomorrow-night-eighties'
     },
 
     theme: {
