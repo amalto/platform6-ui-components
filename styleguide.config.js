@@ -193,6 +193,10 @@ module.exports = {
                 content: 'readme/Icons.md',
             },
             {
+                name: 'ScopeHelpers',
+                content: 'readme/ScopeHelpers.md',
+            },
+            {
                 name: 'Helpers',
                 description: 'Methods used in several Platform 6 UI components.',
                 sections: [
