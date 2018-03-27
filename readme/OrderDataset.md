@@ -18,7 +18,7 @@ export interface OrderDataset {
     /** Module width. */
     width: string;
 
-    /** Module height */
+    /** Module height. */
     height: string;
 
     /** Data to be displayed depending on module type. */

@@ -40,13 +40,13 @@ export namespace DataGrid {
  
     export interface Props extends React.Props<DataGrid>, ReduxProps {
 
-        /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#webapi). */
+        /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#!/WebApi). */
         api: WebApi;
         /** Display context menu. */
         displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => void;
-        /** Hide contet menu. More details on [Action](http://localhost:6060/#action). */
+        /** Hide contet menu. More details on [Action](http://localhost:6060/#!/Action). */
         hideContextMenu: () => void;
-        /** Display notification component. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
+        /** Display notification component. More details on [NotificationModel](http://localhost:6060/#!/NotificationModel). */
         displayNotification: ( notificationOptions?: NotificationModel ) => void;
         /** Display an request error on a notification component. */
         handleErrorDisplay: ( error: any ) => void;
@@ -70,7 +70,7 @@ export namespace DataGrid {
         /** If you want to prevent templating but need to give the dataGridId props, set this value to false. */
         preventTemplating?: boolean;
 
-        /** Column data array to be displayed. More details on [ColumnHeader](http://localhost:6060/#columnheader). */
+        /** Column data array to be displayed. More details on [ColumnHeader](http://localhost:6060/#!/ColumnHeader). */
         columnHeaders: ColumnHeader[];
         /** DataLine components array to be displayed. */
         dataLines: JSX.Element[]//should return a DataLine component
@@ -100,7 +100,7 @@ export namespace DataGrid {
         /** If true, column header will be visible on top if user scroll down. */
         stickyHeader?: boolean;
 
-        /** DataGrid customization state. More details on [DataGridTemplates](http://localhost:6060/#datagridtemplates). */
+        /** DataGrid customization state. More details on [DataGridTemplates](http://localhost:6060/#!/DataGridTemplates). */
         templates?: DataGridTemplates;
         /** If templates has changed. */
         templatesChanged?: boolean;

@@ -22,7 +22,7 @@ module Restricted {
         requiredActions?: string[];
         /** Feature you want to access. */
         featureId?: string;
-        /** Permissions needed to display children. More details on [PermissionDef](http://localhost:6060/#permissiondef). */
+        /** Permissions needed to display children. More details on [PermissionDef](http://localhost:6060/#!/PermissionDef). */
         permissions?: string[] | PermissionDef[];
         /** Permission need to be in * instance. */
         needsGlobalPermission?: boolean;

@@ -10,7 +10,7 @@ export interface FeatureEndpoint {
     /** Feature version. */
     version: string;
 
-    /** TODO: add description. */
+    /** TODO: Add description. */
     altContextUrl?: string;
 
     /** Navigation bar visibility parameters. */

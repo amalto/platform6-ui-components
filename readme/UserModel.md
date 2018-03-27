@@ -1,4 +1,4 @@
-This interface uses the [DisplayTemplate](http://localhost:6060/#displaytemplate) and [OrderDataset](http://localhost:6060/#orderdataset) interfaces.
+This interface uses the [DisplayTemplate](http://localhost:6060/#!/DisplayTemplate) and [OrderDataset](http://localhost:6060/#!/OrderDataset) interfaces.
 
 ```typescript
 module UserModel {
@@ -32,7 +32,7 @@ module UserModel {
 
     export interface JsonContent {
         
-        /** JSON string containing the order of Home modules */
+        /** JSON string containing the order of Home modules. */
         homeSettings?: {
             [appInstanceName: string]: {
                 [id: string]: OrderDataset[]
@@ -42,10 +42,10 @@ module UserModel {
         /** Language saved on user profile. By default set to browser language. */
         preferredLanguage?: string;
         
-        /** Base64 string or absolute url to image file */
+        /** Base64 string or absolute url to image file. */
         avatar?: string;
         
-        /** Delay of messages list auto-refresh (in seconds) */
+        /** Delay of messages list auto-refresh (in seconds). */
         messagesAutoRefresh?: number;
 
         /**

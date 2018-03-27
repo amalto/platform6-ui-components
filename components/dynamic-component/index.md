@@ -1,1 +1,1 @@
-**Example not available for the moment, cant dispatch event.**
+**Example not available for the moment, can't dispatch event.**

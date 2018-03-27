@@ -109,8 +109,10 @@ interface EndpointsUrl {
     //
     ////////////////////////////////////////////////
 
-    /** check for alert messages to display */
+    /** Check for alert messages to display. */
     REQUEST_INFRA_STATUS: () => string,
+
+    /** Get portal configurations. */
     REQUEST_PORTAL_CONFIG: () => string,
 
     ////////////////////////////////////////////////
@@ -161,7 +163,7 @@ interface EndpointsUrl {
     /** Upsert message's smart document. */
     REQUEST_MESSAGES_UPSERT_SMART_DOCUMENT: () => string,
 
-    /**  */
+    /** TODO: Add description. */
     REQUEST_MESSAGES_UPSERT_SMART_DOCUMENT_FORM: () => string,
 
     /** Get messages's source document informations. */

@@ -1,7 +1,7 @@
 ```typescript
 export namespace DisplayTemplateItem {
     
-    /** available areas in the card template */
+    /** Available areas in the card template. */
     export enum Area {
         Title,
         Subtitle,
@@ -16,25 +16,34 @@ export namespace DisplayTemplateItem {
     }
 
     export interface InlineDef {
+
+        /** Display or not. */
         display?: boolean;
+
+        /** Display width. */
         width?: number;
+
+        /** Display height. */
         order?: number;
+
+        /** Display text alignment. */
         textAlign?: string;
     }
 }
 
 export interface DisplayTemplateItem {
 
-    /** For card template */
+    /** For card template. */
     area?: DisplayTemplateItem.Area;
     
+    /** Display label or not.  */
     displayLabel?: boolean;
 
-    /** For inline display templates */
+    /** For inline display templates. */
     laptop?: DisplayTemplateItem.InlineDef;
     desktop?: DisplayTemplateItem.InlineDef;
 
-    /** For all template types */
+    /** For all template types. */
     color?: string
 
 }

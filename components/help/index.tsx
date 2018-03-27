@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 
 /**
- * This component is generally used next to input's label. See [RadioInput](http://localhost:6060/#radioinput)
+ * This component is generally used next to input's label. See [RadioInput](http://localhost:6060/#!/RadioInput)
  */
 namespace Help {
     export interface Props extends React.Props<Help> {
