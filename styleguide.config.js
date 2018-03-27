@@ -192,7 +192,33 @@ module.exports = {
             },
             {
                 name: 'Helpers',
-                content: 'readme/Helpers.md',
+                description: 'Methods used in several Platform 6 UI components.',
+                sections: [
+                    {
+                        name: 'File',
+                        content: 'readme/helpers/File.md'
+                    },
+                    {
+                        name: 'ObjectManipulation',
+                        content: 'readme/helpers/ObjectManipulation.md'
+                    },
+                    {
+                        name: 'StoreManipulation',
+                        content: 'readme/helpers/StoreManipulation.md'
+                    },
+                    {
+                        name: 'Strings',
+                        content: 'readme/helpers/Strings.md'
+                    },
+                    {
+                        name: 'Uri',
+                        content: 'readme/helpers/Uri.md'
+                    },
+                    {
+                        name: 'Validation',
+                        content: 'readme/helpers/Validation.md'
+                    }
+                ]
             }
         ]
     }
