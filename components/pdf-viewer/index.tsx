@@ -17,7 +17,7 @@ import PagingControls from '@amalto/paging-controls'
  */
 namespace PdfViewer {
     export interface Props extends React.Props<PdfViewer> {
-        /** Pdf data. More details on [PDFSource](http://localhost:6060/#pdfsource). */
+        /** Pdf data. More details on [PDFSource](#pdfsource). */
         pdfSource: PDFSource;
         /** Class of the PdfViewer component. */
         containerClass?: string;

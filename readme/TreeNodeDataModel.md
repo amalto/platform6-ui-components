@@ -1,4 +1,4 @@
-Node object used by [TreeNodeModel](http://localhost:6060/#treenodemodel) interface to display the [Tree](http://localhost:6060/#tree)'s data.
+Node object used by [TreeNodeModel](#treenodemodel) interface to display the [Tree](#tree)'s data.
 
 ```typescript
 interface TreeNodeDataModel {

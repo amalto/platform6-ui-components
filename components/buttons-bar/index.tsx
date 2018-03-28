@@ -42,7 +42,7 @@ module ButtonsBar {
         handleSearch?: ( searchValue: string ) => void;
         /** Search value usually used with list beneath it. */
         searchValue?: string;
-        /** Button list to be displayed. More details on [BtnGroupsProps](https:localhost:6060/#BtnGroupsProps) */
+        /** Button list to be displayed. More details on [BtnGroupsProps](#btngroupsprops) */
         btnGroups: BtnGroupsProps[];
         /** Locale to be used. */
         locale: string;

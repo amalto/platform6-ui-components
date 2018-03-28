@@ -24,7 +24,7 @@ import { RunningJob } from './models/JobControl'
 namespace DynamicComponent {
     export interface Props extends React.Props<DynamicComponent> {
 
-        /** Interface used to perform all the api call to the server. More details on [WebApi](http://localhost:6060/#webapi). */
+        /** Interface used to perform all the api call to the server. More details on [WebApi](#webapi). */
         api: WebApi;
         /** Allow you to handle your navigation. */
         appHistory: History;
@@ -53,7 +53,7 @@ namespace DynamicComponent {
         showJobStatus?: ( jobId: string | number, callbackOnComplete?: ( job: RunningJob ) => void ) => void;
         /** If any application publisher profile is accessible to user. */
         canSelectAppKey?: boolean;
-        /** Current application publisher profile object selected. More details on [AppKey](http://localhost:6060/#appkey). */
+        /** Current application publisher profile object selected. More details on [AppKey](#appkey). */
         selectedAppKey?: AppKey;
         /** Current application publisher profile name selected. */
         selectedAppKeyName?: string;
@@ -64,7 +64,7 @@ namespace DynamicComponent {
         showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[] ) => void;
         /** Hide the confirmation modal. */
         hideDialog: () => void;
-        /** Display a custom notification. More details on [NotificationModel](http://localhost:6060/#notificationmodel). */
+        /** Display a custom notification. More details on [NotificationModel](#notificationmodel). */
         displayNotification: ( notificationOptions: NotificationModel ) => void;
         /** Display an error notification for  */
         handleErrorDisplay: ( error: any ) => void;

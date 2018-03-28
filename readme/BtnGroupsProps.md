@@ -1,4 +1,4 @@
-More details on [ButtonProps](http://localhost:6060/#buttonProps).
+More details on [ButtonProps](#buttonProps).
 
 ```typescript
 export interface BtnGroupsProps {
