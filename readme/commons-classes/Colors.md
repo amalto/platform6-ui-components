@@ -9,6 +9,7 @@ Custom colors classes provided for Platform 6 UI components.
         <p className='line border text-muted'>.text-muted</p>
         <p className='line border font-lighter-color'>.font-lighter-color</p>
         <p className='line border font-color'>.font-color</p>
+        <p className='line border dark-color'>.dark-color</p>
         <p className='line border black-color'>.black-color</p>
         <p className='line border success-color'>.success-color</p>
         <p className='line border primary-color'>.primary-color</p>
