@@ -1,4 +1,4 @@
-Custom paddings between elements.
+Custom paddings inside elements.
 
 ```jsx noeditor
     <div className='example'>
