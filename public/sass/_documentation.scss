@@ -6,6 +6,16 @@
         margin-bottom: 20px;
     }
 
+    .note {
+        font-family: $fontStack;
+        font-size: $size14px;
+        color: $fontColor;
+        background-color: $bodyColor;
+        padding: 10px;
+        border-top: 2px solid $leftSidebarLinkColor;
+        margin-bottom: 20px;
+    }
+
     .button-example {
         h4 {
             margin-bottom: 10px;
