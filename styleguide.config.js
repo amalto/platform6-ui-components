@@ -121,6 +121,10 @@ module.exports = {
                 content: 'readme/CronValue.md'
             },
             {
+                name: 'CustomFormData',
+                content: 'readme/CustomFormData.md'
+            },
+            {
                 name: 'DateInputEvent',
                 content: 'readme/DateInputEvent.md'
             },
@@ -147,6 +151,10 @@ module.exports = {
             {
                 name: 'Marker',
                 content: 'readme/Marker.md'
+            },
+            {
+                name: 'NotificationModel',
+                content: 'readme/NotificationModel.md'
             },
             {
                 name: 'OrderDataset',
