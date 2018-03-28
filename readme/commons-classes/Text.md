@@ -1,7 +1,7 @@
 Handle text size with some classes.
 
 ```jsx noeditor
-<div className='text-example'>
+<div className='example'>
     <p className='text-xsmall'>.text-xsmall</p>
     <p className='text-small'>.text-small</p>
     <p className='text-medium'>.text-medium</p>

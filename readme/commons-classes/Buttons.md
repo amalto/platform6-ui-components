@@ -1,7 +1,7 @@
 All the classes used to define a button will be define below.
 
 ```jsx noeditor
-<div className='button-example'>
+<div className='example'>
     <div className='note'>
         <div>Each button must have the <strong>.btn</strong> class, otherwise the class wont work.</div>
         <div>You shouldn't use the color classes define above to handle buttons colors, it will break the others buttons classes.</div>

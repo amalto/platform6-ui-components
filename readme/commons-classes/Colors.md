@@ -1,7 +1,7 @@
 Custom colors classes provided for Platform 6 UI components.
 
 ```jsx noeditor
-<div className='colors-example'>
+<div className='example'>
     <h4>Text colors</h4>
     <div className='line-group'>
         <p className='line white-color dark-bg-color'>.white-color</p>

@@ -16,7 +16,7 @@
         margin-bottom: 20px;
     }
 
-    .button-example {
+    .example {
         h4 {
             margin-bottom: 10px;
         }
@@ -30,13 +30,6 @@
                 margin-bottom: 10px;
             }
         }
-    }
-
-    .colors-example {
-
-        h4 {
-            margin-bottom: 10px;
-        }
 
         .line-group {
 
@@ -45,12 +38,23 @@
             }
 
             .line {
-                display: inline-block;
+                
+                &.fit-content {
+                    width: fit-content;
+                }
+
+                &:not(.horizontal) {
+                    display: inline-block;
+                }
     
-                margin-left: 5px;
+                &:not(.margin-free) {
+                    margin-left: 5px;
+                }
     
-                &:not(:last-child) {
-                    margin-bottom: 10px;
+                &:not(.margin-free) {
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
                 }
     
                 &.border {
@@ -67,7 +71,9 @@
                     &.danger-color { border-color: $dangerColor; }
                 }
     
-                padding: 5px 10px;
+                &:not(.padding-free) {
+                    padding: 5px 10px;
+                }
                 border-radius: 5px;
             }
         }

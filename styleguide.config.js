@@ -201,6 +201,7 @@ module.exports = {
             },
             {
                 name: 'Commmons classes',
+                description: 'All the custom classes provided with Platform 6 UI components.',
                 sections: [
                     {
                         name: 'Text',
@@ -209,6 +210,14 @@ module.exports = {
                     {
                         name: 'Colors',
                         content: 'readme/commons-classes/Colors.md'
+                    },
+                    {
+                        name: 'Margins',
+                        content: 'readme/commons-classes/Margins.md'
+                    },
+                    {
+                        name: 'Paddings',
+                        content: 'readme/commons-classes/Paddings.md'
                     },
                     {
                         name: 'Buttons',
