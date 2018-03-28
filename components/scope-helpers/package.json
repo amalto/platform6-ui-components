@@ -25,6 +25,7 @@
         "access": "public"
     },
     "dependencies": {
+        "@amalto/tab": "1.5.0",
         "react": "15.6.2"
     },
     "devDependencies": {
