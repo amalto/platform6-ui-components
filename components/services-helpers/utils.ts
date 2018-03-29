@@ -156,16 +156,6 @@ export function validateName (value: string, id: Id, items: ServiceItemFacades, 
 }
 
 /**
- * Format the locale retrieved from the Portal
- *
- * @param {string} locale
- * @returns {string}
- */
-export function formatLocale (locale: string): string {
-	return locale.substring(0, locale.indexOf('-')).toUpperCase()
-}
-
-/**
  * Found a specific item in a list
  *
  * @param {ServiceItemFacades} facades

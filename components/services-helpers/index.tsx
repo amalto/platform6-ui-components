@@ -28,7 +28,10 @@ import {
 
 import {
     getSelectButtonState,
-    getAddButtonState
+    getAddButtonState,
+    getImportButtonState,
+    getExportButtonState,
+    getDeleteButtonState
 } from './typescripts/ButtonsBarGenerator'
 
 // Helpers
@@ -51,8 +54,13 @@ class ServicePropsPopulator {
     private _wordings: CompiledWordings = {}
 
     // Optional
+    private _selectItem: ( ids: Ids ) => void
     private _itemToAdd: ServiceItemFacade = null
     private _addItem: ( item: ServiceItemFacade ) => void
+    private _dataToImport: any = null
+    private _importItems: ( data: any ) => void
+    private _exportItems: ( ids: Ids ) => void
+    private _deleteItems: ( ids: Ids ) => void
 
     constructor( appKey: string, serviceName: string, permissions: string[], locale: string ) {
         this._serviceName = serviceName
@@ -71,12 +79,17 @@ class ServicePropsPopulator {
     }
     set serviceName( serviceName: string ) { this._serviceName = serviceName }
     set permissions( permissions: string[] ) { this._permissions = permissions }
+    set selectItem( selectItem: ( ids: Ids ) => Ids ) { this._selectItem = selectItem }
     set itemToAdd( itemToAdd: ServiceItemFacade ) { this._itemToAdd = itemToAdd }
-    set addItem( addItem: ( item: ServiceItemFacade ) => void ) { this._addItem = addItem } 
+    set addItem( addItem: ( item: ServiceItemFacade ) => void ) { this._addItem = addItem }
+    set dataToImport( dataToImport: any ) { this._dataToImport = dataToImport }
+    set importItems( importItems: ( data: any ) => void ) { this._importItems = importItems }
+    set exportItems( exportItems: ( ids: Ids ) => void ) { this._exportItems = exportItems }
+    set deleteItems( deleteItems: ( ids: Ids ) => void ) { this._deleteItems = deleteItems }
 
-    private generatePopulatedProps = ( generator: ( ...genArgs : any[] ) => any, props: any ): any => {
-        return generator( props )
-    }
+    // private generatePopulatedProps = ( generator: ( ...genArgs : any[] ) => any, props: any ): any => {
+    //     return generator( props )
+    // }
 
     /**
      * Return a JSON object of Tab props.
@@ -103,8 +116,11 @@ class ServicePropsPopulator {
         return {
             locale: this._locale,
             btnGroups: {
-                selectButton: getSelectButtonState( itemSelected, items, this._wordings ),
-                addButton: getAddButtonState( this._itemToAdd, this._addItem, this._wordings )
+                selectButton: getSelectButtonState( itemSelected, items, this._selectItem, this._wordings ),
+                addButton: getAddButtonState( this._itemToAdd, this._addItem, this._wordings ),
+                importButton: getImportButtonState( this._dataToImport, this._importItems, this._wordings ),
+                exportButton: getExportButtonState( itemSelected, items, this._exportItems, this._wordings ),
+                deleteButton: getDeleteButtonState( itemSelected, items, this._deleteItems, this._wordings )
             }
         }
     }
