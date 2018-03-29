@@ -144,40 +144,25 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             <div>
                 <div className="row text-xs-center">
                     <div className="col-xs-12">
-                        <button disabled={disabled} className={classNames( 'btn btn-trans right-margin bottom-margin', {
-                            'btn-primary': !disabled,
-                            'btn-default': disabled
-                        } )} onClick={this.expandAll}>
+                        <button disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
                             <span>{this.state.wordings['tree.expand.all.btn']}</span>
                         </button>
-                        <button disabled={disabled} className={classNames( 'btn btn-trans right-margin bottom-margin', {
-                            'btn-primary': !disabled,
-                            'btn-default': disabled
-                        } )} onClick={this.collapseAll}>
+                        <button disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
                             <span>{this.state.wordings['tree.collapse.all.btn']}</span>
                         </button>
                         {
                             canModifyTree ? (
                                 <span>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans right-margin bottom-margin', {
-                                        'btn-success': !disabled,
-                                        'btn-default': disabled
-                                    } )} onClick={this.openCreateForm}>
+                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-success right-margin bottom-margin' )} onClick={this.openCreateForm}>
                                         {this.state.wordings['tree.button.create']}
                                     </button>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans right-margin bottom-margin', {
-                                        'btn-warning': !disabled,
-                                        'btn-default': disabled
-                                    } )} onClick={this.openEditForm}>
+                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-warning right-margin bottom-margin' )} onClick={this.openEditForm}>
                                         {this.state.wordings['tree.button.edit']}
                                     </button>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans right-margin bottom-margin', {
-                                        'btn-danger': !disabled,
-                                        'btn-default': disabled
-                                    } )} onClick={this.deleteNode}>
+                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-danger right-margin bottom-margin' )} onClick={this.deleteNode}>
                                         {this.state.wordings['tree.button.delete']}
                                     </button>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-default right-margin bottom-margin', {
+                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-font right-margin bottom-margin', {
                                         'hidden': !this.state.formOpened
                                     } )} onClick={this.clearForm}>
                                         {this.state.wordings['tree.button.cancel']}
@@ -270,7 +255,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     }
 
     componentDidMount() {
-        const tree = this.setUpTree( this.props.id, this.props.data )
+        const tree = this.setUpTree( this.props.id, this.props.data, this.props.defaultSelectedNodeId )
         this.setState( {
             treeInstance: tree
         } )
@@ -280,7 +265,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
         if ( prevState.selectedNode !== this.state.selectedNode || prevProps.children !== this.props.children ) {
 
-            // window height - tree action buttons container height - details container - header, paddings and nav tabs
+            // window height - tree action buttons container height - details container - header, paddings and nav tabs            
             let maxTreeHeight = window.innerHeight - $( '#' + this.props.id + ' .tree-controls-container' ).outerHeight() - $( '#' + this.props.id + ' .tree-details-container .toggle-form' ).outerHeight() - 212
 
             //if we have a user assign form, we reduce a bit more the tree height to fully display selected node details and user assign form (this.props.children)
@@ -300,7 +285,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             if ( this.state.treeInstance ) {
                 this.state.treeInstance.destroy( false )
                 this.setState( {
-                    treeInstance: this.setUpTree( nextProps.id, nextProps.data ),
+                    treeInstance: this.setUpTree( nextProps.id, nextProps.data, nextProps.defaultSelectedNodeId ),
                     selectedNode: null,
                     editedNode: null,
                     formOpened: null
@@ -472,7 +457,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         } )
     }
 
-    private setUpTree = ( id: string, data: TreeNodeModel ): JSTree => {
+    private setUpTree = ( id: string, data: TreeNodeModel, defaultSelectedNodeId?: string ): JSTree => {
         let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
 
         let tree = $.jstree.create( treeContainer, {
@@ -514,9 +499,10 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             }
         } )
 
-        if ( this.props.defaultSelectedNodeId ) {
+        if ( defaultSelectedNodeId ) {
             setTimeout( () => {
-                tree.select_node( this.props.defaultSelectedNodeId )
+                tree._open_to( defaultSelectedNodeId )
+                tree.select_node( defaultSelectedNodeId )
             }, 500 )
         }
 
