@@ -22,5 +22,7 @@ export interface ServiceItem extends Id {
     revisionId?: string
 }
 
+export declare type ServiceItems = ServiceItem[]
 export declare type ServiceItemFacades = ServiceItemFacade[]
 export declare type Ids = Id[]
+export declare type CompiledWordings = Description

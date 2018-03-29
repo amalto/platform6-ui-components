@@ -1,6 +1,3 @@
-// Components
-import Tab from '@amalto/tab'
-
 // Models
 import {
     Id,
@@ -8,8 +5,13 @@ import {
     Description,
     ServiceItemFacade,
     ServiceItemFacades,
-    ServiceItem
+    ServiceItem,
+    ServiceItems,
+    CompiledWordings
 } from './models/ServiceHelpers'
+
+import { Tab } from './models/Tab'
+import { ButtonsBar } from './models/ButtonsBar'
 
 // constants
 import {
@@ -24,22 +26,49 @@ import {
     prettifyId
 } from './utils'
 
-class ServicePropsPopulator {
-    private _serviceName: string = null
-    private _permissions: string[] = []
+import {
+    getSelectButtonState
+} from './typescripts/ButtonsBarGenerator'
 
-    constructor( serviceName: string, permissions: string[] ) {
+// Helpers
+import {
+    compileWordings
+} from '@amalto/helpers'
+
+// Wordings
+import {
+    MULTILANGUAGE_WORDINGS
+} from '@amalto/wordings'
+
+class ServicePropsPopulator {
+    private _appKey: string = null
+    private _locale: string = null
+    private _permissions: string[] = []
+    private _serviceName: string = null
+
+    constructor( appKey: string, serviceName: string, permissions: string[], locale: string ) {
         this._serviceName = serviceName
+        this._appKey = appKey
         this._permissions = permissions
+        this._locale = locale
     }
 
     // Setters
     set serviceName( serviceName: string ) { this._serviceName = serviceName }
     set permissions( permissions: string[] ) { this._permissions = permissions }
 
-    generatePopulatedProps( generator: ( ...genArgs : any[] ) => any, useServiceName?: boolean, usePermissions?: boolean ): any {
-        let args: any[] = Array.prototype.slice.call( arguments )
-        let func = args[0]
+    private generatePopulatedProps = (
+        generator: ( ...genArgs : any[] ) => any,
+        props: any,
+        useLocale?: boolean,
+        useServiceName?: boolean,
+        usePermissions?: boolean
+    ): any => {
+        if ( useLocale ) props.locale = this._locale
+        if ( useServiceName ) props.serviceName = this._serviceName
+        if ( usePermissions ) props.permissions = this._permissions
+
+        return generator( props )
     }
 }
 
@@ -53,5 +82,16 @@ export function getPopulatedTabView( itemId: Id, mode: string ): Tab.Props {
         id: stringifyId( itemId, ID_SEPARATOR ),
         title: prettifyId( itemId, ID_SEPARATOR ),
         closable: true
+    }
+}
+
+export function getPopulatedButtonsBar( itemSelected: Ids, items: ServiceItemFacades, permissions: string[], unsavedChanged?: boolean, loading?: boolean ): ButtonsBar {
+    const wordings: CompiledWordings = compileWordings( MULTILANGUAGE_WORDINGS, this._locale )
+
+    return {
+        locale: this._locale,
+        btnGroups: {
+            selectButton: getSelectButtonState( itemSelected, items, wordings )
+        }
     }
 }

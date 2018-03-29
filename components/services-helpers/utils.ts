@@ -5,13 +5,15 @@ import {
     Description,
     ServiceItemFacade,
     ServiceItemFacades,
-    ServiceItem
+	ServiceItem,
+	ServiceItems
 } from './models/ServiceHelpers'
+
+import { BtnModel } from './models/ButtonsBar'
 
 // Constants
 import {
-    TAB_TYPE,
-    CALCULATED_CONTENT_MODE
+    TAB_TYPE
 } from './constants/variables'
 
 // Helpers
