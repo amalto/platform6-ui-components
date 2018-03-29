@@ -26,7 +26,8 @@
     },
     "dependencies": {
         "@amalto/tab": "1.5.0",
-        "react": "15.6.2"
+        "react": "15.6.2",
+        "uuid": "3.2.1"
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
