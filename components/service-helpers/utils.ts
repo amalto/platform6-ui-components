@@ -15,7 +15,7 @@ import { BtnModel } from './models/ButtonsBar'
 import {
 	TAB_TYPE,
 	DATA_GRID_PREFIX
-} from './constants/variables'
+} from './constants'
 
 // Helpers
 import {
