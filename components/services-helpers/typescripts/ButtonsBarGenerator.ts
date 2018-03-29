@@ -1,6 +1,7 @@
 // Models
 import {
     Ids,
+    ServiceItemFacade,
     ServiceItemFacades,
 	CompiledWordings
 } from '../models/ServiceHelpers'
@@ -15,9 +16,16 @@ import {
 
 // Utils
 import {
-    getItem
+    getItem,
+    toIds
 } from '../utils'
 
+/**
+ * Return select button props
+ * @param { Ids } itemSelected 
+ * @param { ServiceItemFacades } items 
+ * @param { CompiledWordings } wordings 
+ */
 export function getSelectButtonState( itemSelected: Ids, items: ServiceItemFacades, wordings: CompiledWordings ): BtnModel {
 	const allSelected: boolean = !items.some( i => !getItem( items, i ) )
 
@@ -25,7 +33,22 @@ export function getSelectButtonState( itemSelected: Ids, items: ServiceItemFacad
 		label: allSelected ? wordings.unselectAll : wordings.selectAll,
 		iconClass: allSelected ? ICON_TYPE.SQUARE : ICON_TYPE.CHECK_SQUARE,
 		btnClass: BUTTON_TYPE.INFO_TRANS,
-		action: () => {},
+		action: () => { allSelected ? toIds( items ) : [] },
 		disabled: !items || items.length === 0
+	}
+}
+
+/**
+ * Add an item
+ * @param itemSelected 
+ * @param items 
+ * @param wordings 
+ */
+export function getAddButtonState( item: ServiceItemFacade, action: ( item: ServiceItemFacade ) => void, wordings: CompiledWordings ): BtnModel {
+	return {
+		label: wordings.add,
+		iconClass: ICON_TYPE.PLUS,
+		btnClass: BUTTON_TYPE.PRIMARY_TRANS,
+		action: () => { action( item ) }
 	}
 }
