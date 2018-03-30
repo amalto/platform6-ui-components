@@ -1,1 +1,1 @@
-We are using FontAwesome icons in our components, they can be found [here](https://fontawesome.com/icons?d=gallery)
+For the icons we are using [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) classes in our components.

@@ -14,8 +14,6 @@ import { compileWordings } from '@amalto/helpers'
 
 /**
  * Component allowing you to display a set of buttons as well as a search input if needed.
- * 
- * The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
  */
 module ButtonsBar {
 

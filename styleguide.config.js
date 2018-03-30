@@ -45,7 +45,7 @@ module.exports = {
             blockquote: {
                 'background-color': '#eee',
                 'margin': '0',
-                'padding': '2px 3px',
+                'padding': '0px 3px',
                 'border-radius': '5px',
                 'font-size': 'inherit',
                 'display': 'inline-block'

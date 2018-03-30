@@ -1,7 +1,5 @@
 Click on the button to display the file importer modal.
 
-The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
-
 ```javascript
 initialState = { open: false, fileData: {name: 'test_file', size: 100} };
 

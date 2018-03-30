@@ -1,6 +1,6 @@
 Methods checking user's permissions.
 
-More informations on the interfaces [WebStorage](https:localhost:6060/#webstorage), [PermissionDef](https:localhost:6060/#permissiondef) and [ScopeValue](https:localhost:6060/#scopevalue).
+More informations on the interfaces [WebStorage](#webstorage), [PermissionDef](#permissiondef) and [ScopeValue](#scopevalue).
 
 ```typescript
 /**

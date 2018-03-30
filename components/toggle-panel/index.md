@@ -1,5 +1,3 @@
-The icons used are [FontAwesome](https://fontawesome.com/icons?d=gallery) classes.
-
 ```javascript
 const ActionButton = require('@amalto/action-button').default;
 
