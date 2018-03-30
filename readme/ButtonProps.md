@@ -1,5 +1,3 @@
-This component is using [FontAwesome](#fontawesome) icon classes.
-
 ```typescript
 export interface ButtonProps {
     
@@ -9,7 +7,7 @@ export interface ButtonProps {
     /** CSS class. */
     cssClass?: string;
     
-    /** FontAwesome icon class. */
+    /** Font Awesome icon class. */
     iconClass?: string;
     
     /** Button's label. */

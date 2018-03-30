@@ -13,7 +13,7 @@ import Switch from '@amalto/switch'
 import Spinner from '@amalto/spinner'
 
 /**
- * Modal use to confirm a file upload.
+ * Modal used to confirm a file upload.
  */
 module FileImporter {
     export interface Props extends React.Props<FileImporter> {

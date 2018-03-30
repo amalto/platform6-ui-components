@@ -17,10 +17,10 @@ export interface FeatureEndpoint {
     ui?: {        
         visible?: boolean;
         
-        /** FontAwesome icon associated to navigation button. */
+        /** Font Awesome icon associated to navigation button. */
         iconName?: string;
 
-        /** Use instead of FontAwesome icons classes. */
+        /** Use instead of Font Awesome icons classes. */
         iconInlineImage?: string;
 
         /** Label object with each language. */

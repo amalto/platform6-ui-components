@@ -82,7 +82,7 @@ module.exports = {
     },
     {
         name: 'Components',
-        description: 'All the components provided by Platform 6',
+        description: 'All the components provided by Platform 6.',
         ignore: ['**/node_modules/**'],
         components: 'components/**/index.tsx'
     },
@@ -218,7 +218,7 @@ module.exports = {
         showCode: false,
         sections: [
             {
-                name: 'FontAwesome',
+                name: 'Font Awesome',
                 content: 'readme/Icons.md',
             },
             {
