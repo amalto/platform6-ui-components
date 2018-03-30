@@ -22,7 +22,7 @@ interface ColumnHeader {
     /** Text alignement. */
     textAlign?: string;
 
-    /** Disable onclick event on header. */
+    /** Disable onClick event on header. */
     disableClick?: boolean;
 }
 ```

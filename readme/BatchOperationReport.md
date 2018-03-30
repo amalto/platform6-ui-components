@@ -37,6 +37,7 @@ export interface BatchOperationReport {
 
             /** Internal error code. */
             code: number | string;
+            
             link: string;
 
             /** Complete error message. */
