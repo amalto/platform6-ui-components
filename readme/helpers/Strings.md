@@ -3,6 +3,13 @@ Methods returning formatted strings.
 More informations on `dateByLocalToString` options [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).
 
 ```typescript
+
+/**
+ * Return gravater linked to use email.
+ * @param { string } email - User email.
+ */
+function getGravatarUrl( email: string ): string;
+
 /**
  * Escape xml.
  * @param { string } xml - String to be escaped.

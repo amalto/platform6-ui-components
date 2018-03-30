@@ -260,6 +260,11 @@ module.exports = {
                 content: 'readme/ScopeHelpers.md',
             },
             {
+                name: 'Locale',
+                description: 'List available locales on Platform 6 UI Components.',
+                content: 'readme/Locale.md',
+            },
+            {
                 name: 'Helpers',
                 description: 'Methods used in several Platform 6 UI components.',
                 sections: [

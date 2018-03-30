@@ -1,5 +1,7 @@
 Methods validating strings.
 
+More details about [Endpoints](#appendpointsmodel).
+
 ```typescript
 /**
  * At least it has an "@" and a "." in it...
@@ -42,4 +44,12 @@ function isValidXMLTag( value: string ): boolean;
  * @param { string } value - String to validate.
  */
 function isValidHttpsUrl( value: string ): boolean;
+
+/**
+ * Check if user has access to resources from feature.
+ * @param { Endpoints } appEndpoints - Object containing resources by instance. More details on the link above.
+ * @param { string } appInstanceName - Current instance.
+ * @param { string } featureId - Service name. e.g: "home".
+ */
+function hasRequiredResource( appEndpoints: Endpoints, appInstanceName: string, featureId: string ): boolean;
 ```
