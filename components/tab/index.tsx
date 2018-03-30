@@ -7,7 +7,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 
 /**
- * This component should be used in the Tabs component.
+ * This component should be used in the [Tabs](#tabs) component.
  */
 namespace Tab {
 
