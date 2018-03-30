@@ -103,7 +103,10 @@ interface DynamicComponent {
      */
     handleErrorDisplay: ( error: any ) => void;
 
-    /** Define the language to use. e.g: 'en-US' */
+    /**
+     * Language to use on the component. e.g: 'en-US'.
+     * Accessible via <blockquote>WebStorage</blockquote>.
+     */
     locale: string;
 
 }

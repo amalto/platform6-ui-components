@@ -31,7 +31,10 @@ module LanguageWrapper {
         handleRemovedLanguage: ( language: string ) => void;
         /** CSS Class of the div root component. */
         containerClass?: string;
-        /** Language selected. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

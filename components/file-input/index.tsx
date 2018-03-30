@@ -50,7 +50,10 @@ module FileInput {
         /** Max size in bytes (by file). */
         maxBytesSize?: number;
 
-        /** Locale to be used by component. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

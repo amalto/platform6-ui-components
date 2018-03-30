@@ -41,7 +41,10 @@ namespace FileInput {
          * displayed when input is invalid.
          */
         collapseErrorSpace?: boolean;
-        /** Locale to use. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
     }
 
@@ -158,7 +161,10 @@ namespace FileUploadInput {
          * displayed when input is invalid.
          */
         collapseErrorSpace?: boolean;
-        /** Locale to use. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

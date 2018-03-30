@@ -42,7 +42,10 @@ module ButtonsBar {
         searchValue?: string;
         /** Button list to be displayed. More details on [BtnGroupsProps](#btngroupsprops) */
         btnGroups: BtnGroupsProps[];
-        /** Locale to be used. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

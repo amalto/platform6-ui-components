@@ -27,7 +27,10 @@ module PagingControls {
             prevContextToken: string;
             nextContextToken: string;
         }
-        /** Locale to bu used. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

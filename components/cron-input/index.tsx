@@ -42,7 +42,10 @@ module CronInput {
         containerClass?: string;
         /** Check cron value on component mount. */
         forceValidation?: boolean;
-        /** Locale used. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

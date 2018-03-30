@@ -25,7 +25,10 @@ namespace PdfViewer {
         style?: React.CSSProperties;
         /** Update value to force update. */
         reloadTick?: number;
-        /** Locale to be used. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */
