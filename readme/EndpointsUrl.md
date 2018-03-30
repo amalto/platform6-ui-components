@@ -349,10 +349,19 @@ interface EndpointsUrl {
     //
     ////////////////////////////////////////////////
 
-    /** Request service by id. */
+    /**
+     * Request service by id.
+     * @param { string } serviceId
+     * @param { string } [baseUrlOverride]
+     */
     REQUEST_SERVICES_GET_UI: ( serviceId: string, baseUrlOverride?: string ) => string,
 
-    /** API endpoint by instance. */
+    /**
+     * API endpoint by instance.
+     * @param { string } featureId
+     * @param { string } actionEndpoint
+     * @param { string } [baseUrlOverride]
+     */
     getUrlOfFeature: ( featureId: string, actionEndpoint: string, baseUrlOverride?: string ) => string,
 }
 ```

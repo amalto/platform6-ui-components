@@ -1,4 +1,4 @@
-Mode details on [DisplayTemplate](#displaytemplate).
+DataGridTemplates uses [DisplayTemplate](#displaytemplate) interface.
 
 ```typescript
 /**

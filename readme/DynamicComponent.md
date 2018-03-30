@@ -1,9 +1,11 @@
 Root component of all services.
 
+DynamicComponent uses [WebApi](#webapi), [AppKey](#appkey), [BatchOperationReport](#batchoperationreport) and [NotificationModel](#notificationmodel) interfaces.
+
 ```typescript
 interface DynamicComponent {
 
-    /** Interface used to perform all the api call to the server. More details on [WebApi](#webapi). */
+    /** Interface used to perform all the api call to the server. */
     api: WebApi;
     
     /** Allow you to handle your navigation. */
@@ -59,7 +61,7 @@ interface DynamicComponent {
     /** If any application publisher profile is accessible to user. */
     canSelectAppKey?: boolean;
 
-    /** Current application publisher profile object selected. More details on [AppKey](#appkey). */
+    /** Current application publisher profile object selected. */
     selectedAppKey?: AppKey;
     
     /** Current application publisher profile name selected. */
@@ -105,7 +107,6 @@ interface DynamicComponent {
 
     /**
      * Language to use on the component. e.g: 'en-US'.
-     * Accessible via <blockquote>WebStorage</blockquote>.
      */
     locale: string;
 
