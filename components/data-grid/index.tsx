@@ -35,30 +35,59 @@ import { ReduxProps } from './models/ReduxProps'
 import { DataGridActions } from './models/DataGridActions'
 /**
  * Customizable grid.
+ * 
+ * some properties are provided by the [DynamicComponent](#dynamiccomponent) and [WebStorage](#webstorage)
+ * which are accessible at the root component of your service.
  */
 export namespace DataGrid {
  
     export interface Props extends React.Props<DataGrid>, ReduxProps {
 
-        /** Interface used to perform all the api call to the server. More details on [WebApi](#webapi). */
+        /**
+         * Interface used to perform all the api call to the server. More details on [WebApi](#webapi).
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         api: WebApi;
-        /** Display context menu. */
+        /**
+         * Display context menu. Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => void;
-        /** Hide contet menu. More details on [Action](#action). */
+        /**
+         * Hide contet menu. More details on [Action](#action).
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         hideContextMenu: () => void;
-        /** Display notification component. More details on [NotificationModel](#notificationmodel). */
+        /**
+         * Display notification component. More details on [NotificationModel](#notificationmodel).
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         displayNotification: ( notificationOptions?: NotificationModel ) => void;
-        /** Display an request error on a notification component. */
+        /**
+         * Display an request error on a notification component.
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         handleErrorDisplay: ( error: any ) => void;
-        /** Display a modal on top of the page. */
+        /**
+         * Display a modal on top of the page.
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => void;
-        /** Hide the modal previously open by the showDialog method. */
+        /**
+         * Hide the modal previously open by the showDialog method.
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         hideDialog: () => void;
 
-        /** Actions to disptach in order for the datagrid to work. */
-        dataGridActions: DataGridActions;
+        /**
+         * Actions controlling the DataGrid template such as sorting order or column width,
+         * dataGridId must be provided in order for those actions to be triggered.
+         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
+        dataGridActions: any;
         
-        /** Save all interaction with DataGrid. */
+        /**
+         * Save all interaction with DataGrid. Accessible via <blockquote>DynamicComponent</blockquote>.
+         */
         saveDataGridTemplate: ( user: UserModel ) => void;
 
         /** Must be added to allow templating. */
@@ -108,10 +137,16 @@ export namespace DataGrid {
         selectedAppInstanceName?: string;
         /** Default service id. */
         defaultServiceId?: string
-        /** User information store inside browser local storage. */
+        /**
+         * User information store inside browser local storage.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         user?: UserModel;
 
-        /** Locale use. */
+        /**
+         * Language to use on the component. e.g: 'en-US'.
+         * Accessible via <blockquote>WebStorage</blockquote>.
+         */
         locale: string;
 
         /** Hide props from documentation */

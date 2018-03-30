@@ -40,6 +40,16 @@ module.exports = {
             pre: {
                 'white-space': 'pre-wrap !important'
             }
+        },
+        Blockquote: {
+            blockquote: {
+                'background-color': '#eee',
+                'margin': '0',
+                'padding': '2px 3px',
+                'border-radius': '5px',
+                'font-size': 'inherit',
+                'display': 'inline-block'
+            }
         }
     },
 
@@ -133,8 +143,8 @@ module.exports = {
                 content: 'readme/DisplayTemplate.md'
             },
             {
-                name: 'DisplayTemplates',
-                content: 'readme/DisplayTemplates.md'
+                name: 'DataGridTemplates',
+                content: 'readme/DataGridTemplates.md'
             },
             {
                 name: 'EndpointsUrl',
@@ -195,6 +205,10 @@ module.exports = {
             {
                 name: 'WebApi',
                 content: 'readme/WebApi.md'
+            },
+            {
+                name: 'WebStorage',
+                content: 'readme/WebStorage.md'
             }
         ]
     },
