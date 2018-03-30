@@ -35,7 +35,7 @@ module FileImporter {
         /** Is being processed, if true display the spinner. */
         processing?: boolean;
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;

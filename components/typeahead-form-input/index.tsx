@@ -26,9 +26,9 @@ namespace TypeaheadFormInput {
         label?: string | JSX.Element;
         /** Input's placeholder. */
         placeholder?: string;
-        /** Tooltip help displayed when hovering the "?" icon next to label. */
+        /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
         help?: string;
-        /** CSS class names applied to the input <strong>div</strong> container. */
+        /** CSS class names applied to the input <blockquote>div</blockquote> container. */
         containerClass?: string;
         /**
          * Remove the bottom margin which is the default height of the error message

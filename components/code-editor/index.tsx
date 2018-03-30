@@ -84,7 +84,10 @@ module CodeEditor {
         height?: number | string;
         /** Initial content of the editor. */
         value: string;
-        /** Editor language mode. Default value is <strong>javascript</strong>. */
+        /**
+         * Editor language mode.
+         * @default javascript
+         */
         mode: string;
         /** Move the editor and cursor to end of file after updating. */
         moveToEndOfFile?: boolean;
@@ -98,7 +101,10 @@ module CodeEditor {
         forceSave?: boolean;
         /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
-        /** Editor ace session. More details on [AceSession](#acesession). */
+        /**
+         * Editor ace session. More details on [AceSession](#acesession).
+         * @default null
+         */
         aceSession?: AceSession;
         /** Unique editor id. */
         docId: string;
@@ -109,7 +115,7 @@ module CodeEditor {
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
         /**
-         * Force save with keyboard shortcuts <strong>Ctrl + s</strong> or <strong>Cmd + s</strong>.
+         * Force save with keyboard shortcuts <blockquote>Ctrl + s</blockquote> or <blockquote>Cmd + s</blockquote>.
          */
         saveContent?: ( session: AceSession ) => void;
 

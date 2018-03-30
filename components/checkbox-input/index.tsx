@@ -17,7 +17,7 @@ namespace CheckboxInput {
         label: string | JSX.Element;
         /** Disable input. */
         disabled?: boolean;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
         /** CheckboxInput group CSS class. */
         containerClass?: string;

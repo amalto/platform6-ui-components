@@ -48,7 +48,7 @@ module ValidatedInput {
         placeholder?: string;
         /** Autocomplete HTML attribute. */
         autoComplete?: string;
-        /** Tooltip help displayed when hovering the "?" icon next to label. */
+        /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
         help?: string;
         /** Input and label parent class. */
         containerClass?: string;

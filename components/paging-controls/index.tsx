@@ -14,7 +14,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
  */
 module PagingControls {
     export interface Props extends React.Props<PagingControls> {
-        /** Class for the PagingControls component. */
+        /** Class for the <blockquote>PagingControls</blockquote> component. */
         containerClass: string;
         /** Current page selected. */
         currentPage: number;
@@ -22,13 +22,13 @@ module PagingControls {
         totalPages: number;
         /** Method triggered when changing page. */
         handlePageChange: ( newPage: number | string ) => void;
-        /** Get previous and next context from the handlePageChange props. */
+        /** Get previous and next context from the <blockquote>handlePageChange</blockquote> props. */
         byContext?: {
             prevContextToken: string;
             nextContextToken: string;
         }
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;

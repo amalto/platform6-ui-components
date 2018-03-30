@@ -42,7 +42,7 @@ namespace FileInput {
          */
         collapseErrorSpace?: boolean;
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US<blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;
@@ -146,7 +146,7 @@ namespace FileUploadInput {
         name: string;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
         /** Either input is disable or not. */
         disabled?: boolean;
@@ -162,7 +162,7 @@ namespace FileUploadInput {
          */
         collapseErrorSpace?: boolean;
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;

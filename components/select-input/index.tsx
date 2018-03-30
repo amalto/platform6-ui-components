@@ -23,9 +23,9 @@ namespace SelectInput {
         }[];
         /** Disable input. */
         disabled?: boolean;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
-        /** CheckboxInput group CSS class. */
+        /** <blockquote>SelectInput</blockquote> CSS class. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;

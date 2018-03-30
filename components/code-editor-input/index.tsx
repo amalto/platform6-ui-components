@@ -25,20 +25,23 @@ namespace CodeEditorInput {
         label?: string | JSX.Element;
         /** If true don't allow user to edit content. */
         readonly?: boolean;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
         /** CheckboxInput group CSS class. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
-        /** Editor language mode. Default value is <strong>javascript</strong>. */
+        /**
+         * Editor language mode.
+         * @default javascript
+         */
         mode: string;
         /** Editor height. */
         height?: number | string;
         /** Editor ace session. More details on [AceSession](#acesession) */
         initSession?: AceSession;
         /**
-         * Force save with keyboard shortcuts <strong>Ctrl + s</strong> or <strong>Cmd + s</strong>.
+         * Force save with keyboard shortcuts <blockquote>Ctrl + s</blockquote> or <blockquote>Cmd + s</blockquote>.
          */
         saveEditorContent?: ( session: AceSession ) => void;
         /** Save ace session after each update. */

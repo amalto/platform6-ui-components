@@ -16,7 +16,7 @@ namespace DateInput {
         name: string;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
         /** CheckboxInput group CSS class. */
         containerClass?: string;
@@ -25,7 +25,7 @@ namespace DateInput {
         /** All dates after this one will be disabled in the date picker. */
         maxDate?: string;
         /**
-         * Will show a mandatory asterisk on the input label. Will disable the "clear selected date" button.
+         * Will show a mandatory asterisk on the input label. Will disable the <blockquote>clear selected date</blockquote> button.
          * Warning: a default value for the date will be required otherwise the input will not be displayed.
          */
         mandatory?: boolean;

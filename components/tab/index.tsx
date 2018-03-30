@@ -12,21 +12,21 @@ import * as classNames from 'classnames'
 namespace Tab {
 
     export interface Props extends React.Props<Tab> {
-        /** Id will be used when selecting a tab from Tabs compoenent. */
+        /** Id will be used when selecting a tab from <blockquote>Tabs</blockquote> compoenent. */
         id: string;
         /** Icon in front of the title. */
         iconClass?: string;
-        /** Tab displayed title. */
+        /** Displayed title. */
         title: string;
-        /** Tab is closable or not. */
+        /** Closable or not. */
         closable?: boolean;
-        /** Common CSS style shared between Tab from Tabs component. */
+        /** Common CSS style shared between <blockquote>Tab</blockquote> from Tabs component. */
         tabStyle?: React.CSSProperties;
-        /** Common CSS class shared between Tab from Tabs component. */
+        /** Common CSS class shared between <blockquote>Tab</blockquote> from <blockquote>Tabs</blockquote> component. */
         tabClassNames?: string;
-        /** CSS class applied only to thos tab link. */
+        /** CSS class applied only to this tab link. */
         tabLinkUniqueClass?: string;
-        /** CSS style applied only to thos tab link. */
+        /** CSS style applied only to this tab link. */
         tabLinkUniqueStyle?: React.CSSProperties;
         /** Custom render function of the tab content if children are not used. Should be used when tab content is dynamic and depends on parent data. */
         renderer?: () => JSX.Element;

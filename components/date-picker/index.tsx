@@ -25,7 +25,7 @@ module DatePicker {
         /** Default value of the date picker. You can put the current value in here, usually stored in the state of the parent component. */
         defaultValue: string;
         /**
-         * Date change event. More details on [DateInputEvent](#dateinputevent).
+         * Date <blockquote>onChange</blockquote> event. More details on [DateInputEvent](#dateinputevent).
          */
         handleDateChangeEvent?: ( event: DateInputEvent ) => void;
         /** Callback function executed on user input. */
@@ -35,15 +35,15 @@ module DatePicker {
         /** All dates after this one will be disabled in the date picker. */
         maxDate?: string;
         /**
-         * Will show a mandatory asterisk on the input label. Will disable the "clear selected date" button.
+         * Will show a mandatory asterisk on the input label. Will disable the <blockquote>clear selected date</blockquote> button.
          * Warning: a default value for the date will be required otherwise the input will not be displayed.
          */
         mandatory?: boolean;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** Tooltip help displayed when hovering the "?" icon next to label. */
+        /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
         help?: string;
-        /** CSS class names applied to the input <strong>div</strong> container. */
+        /** CSS class names applied to the input <blockquote>div</blockquote>container. */
         containerClass?: string;
 
         /** Hide props from documentation */

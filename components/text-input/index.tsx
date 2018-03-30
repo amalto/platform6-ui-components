@@ -22,9 +22,9 @@ namespace TextInput {
         placeholder?: string;
         /** Disable input. */
         disabled?: boolean;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
-        /** CheckboxInput group CSS class. */
+        /** <blockquote>TextInput</blockquote> CSS class. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
@@ -32,7 +32,7 @@ namespace TextInput {
         type?: string;
         /** Focus the input after being loaded. */
         autofocus?: boolean;
-        /** Randomize input value as a uuid.v1() string. */
+        /** Randomize input value as a <blockquote>uuid.v1()</blockquote> string. */
         randomGenerator?: boolean;
         /**
          * Remove the bottom margin which is the default height of the error message

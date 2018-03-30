@@ -7,18 +7,18 @@ import * as classNames from 'classnames'
 module ActionButton {
 
     export interface Props extends React.Props<ActionButton> {
-        /** onClick method. */
+        /** Action triggered on click event. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
-        /** Any Font Awesome icon CSS class names like "fa-info" or "fa-info fa-lg". */
+        /** Any Font Awesome icon CSS class names like <blockquote>fa-info</blockquote> or <blockquote>fa-info fa-lg</blockquote>. */
         iconClass?: string
-        /** Set the icon color class. Do not use if you don't need it, otherwise, btnClass will have trouble handling hover color. */
+        /** Set the icon color class. Do not use if you don't need it, otherwise, <blockquote>btnClass</blockquote> will have trouble handling hover color. */
         colorClass?: string
         /** Disabling button if true. */
         disabled?: boolean
-        /** Text that will be displayed in the "title" HTML attribute of the button. */
+        /** Text that will be displayed in the <blockquote>title</blockquote> HTML attribute of the button. */
         tooltipText?: string
         /**
-         * Any available Portal CSS class names you want to apply to the icon wrapper <strong>div</strong>.
+         * Any available Portal CSS class names you want to apply to the icon wrapper <blockquote>div</blockquote>.
          * This can be used to space the icon from any other content.
          */
         btnClass?: string

@@ -6,7 +6,7 @@ interface WebStorage {
     /** User session's informations. */
     user: UserModel;
 
-    /** Define the language and the region the user is using. e.g: 'en-US'. */
+    /** Define the language and the region the user is using. e.g: <blockquote>en-US<blockquote>. */
     locale: string;
 }
 ```

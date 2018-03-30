@@ -16,7 +16,7 @@ module TypeaheadInput {
         remote?: RemoteConfig;
         /** Input's value. */
         value?: any;
-        /** Input's onchange event. */
+        /** Input's <blockquote>onChange</blockquote> event. */
         handleInputChange: ( value: any ) => void;
         /** Manage input value to be displayed. */
         display?: ( value: any ) => string;

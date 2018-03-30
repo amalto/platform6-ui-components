@@ -17,9 +17,9 @@ namespace ReadOnlyInput {
         name: string;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** Tooltip text displayed when hovering "?" icon. */
+        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
-        /** CheckboxInput group CSS class. */
+        /** <blockquote>ReadOnlyInput</blockquote> CSS class. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;

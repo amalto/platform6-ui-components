@@ -79,8 +79,8 @@ export namespace DataGrid {
         hideDialog: () => void;
 
         /**
-         * Actions controlling the DataGrid template such as sorting order or column width,
-         * dataGridId must be provided in order for those actions to be triggered.
+         * Actions controlling the <blockquote>DataGrid</blockquote> template such as sorting order or column width,
+         * <blockquote>dataGridId</blockquote> must be provided in order for those actions to be triggered.
          * Accessible via <blockquote>DynamicComponent</blockquote>.
          */
         dataGridActions: any;
@@ -96,16 +96,16 @@ export namespace DataGrid {
         /** ServiceId used if the datagrid isn't part of a service */
         forcedServiceId?: string
 
-        /** If you want to prevent templating but need to give the dataGridId props, set this value to false. */
+        /** If you want to prevent templating but need to give the <blockquote>dataGridId</blockquote> props, set this value to false. */
         preventTemplating?: boolean;
 
         /** Column data array to be displayed. More details on [ColumnHeader](#columnheader). */
         columnHeaders: ColumnHeader[];
-        /** DataLine components array to be displayed. */
-        dataLines: JSX.Element[]//should return a DataLine component
+        /** <blockquote>DataLine</blockquote> components array to be displayed. */
+        dataLines: JSX.Element[];
         /** Set true to display a spinner if columnHeaders is being poll from request. */
         fetchingHeaders?: boolean;
-        /** Set true to hide DataGrid body if dataLines is being poll from request. */
+        /** Set true to hide <blockquote>DataGrid</blockquote> body if dataLines is being poll from request. */
         fetchingItems?: boolean;
         /** Message displayed when no items is provided. */
         noItemsMsg?: string;
@@ -129,7 +129,7 @@ export namespace DataGrid {
         /** If true, column header will be visible on top if user scroll down. */
         stickyHeader?: boolean;
 
-        /** DataGrid customization state. More details on [DataGridTemplates](#datagridtemplates). */
+        /** <blockquote>DataGrid</blockquote> customization state. More details on [DataGridTemplates](#datagridtemplates). */
         templates?: DataGridTemplates;
         /** If templates has changed. */
         templatesChanged?: boolean;
@@ -144,7 +144,7 @@ export namespace DataGrid {
         user?: UserModel;
 
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;

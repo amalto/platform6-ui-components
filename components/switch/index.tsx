@@ -13,9 +13,9 @@ module Switch {
         value: boolean;
         /** Method triggered when Switch is used. */
         changeHandler: ( value: boolean, name?: string ) => void;
-        /** CSS class of Switch component. */
+        /** CSS class of <blockquote>Switch</blockquote> component. */
         cssClass?: string;
-        /** Wether the switch input should be align left or not. */
+        /** Whether the switch input should be align left or not. */
         alignLeft?: boolean;
         /** Input name, if not define id is used instead. */
         name?: string;

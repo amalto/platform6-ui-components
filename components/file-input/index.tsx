@@ -17,13 +17,14 @@ import FileWrapper from './models/FileWrapper'
 
 /**
  * Component allowing you to import multiple files.
+ * 
+ * FileInput use [FileWrapper](#filewrapper) interface.
  */
 module FileInput {
 
     export interface Props extends React.ClassAttributes<FileInput> {
         /**
          * Uploaded files list.
-         * See below for the required data model behind the FileWrapper interface.
          */
         filesQueue: {
             [fileName: string]: FileWrapper
@@ -35,12 +36,12 @@ module FileInput {
         addFilesToQueue: ( files: File[] ) => void;
 
         /**
-         * Callback function executed when the user clicks on the "Delete" button of a specific uploaded file.
+         * Callback function executed when the user clicks on the <blockquote>Delete</blockquote> button of a specific uploaded file.
          */
         deleteUploadedFile: ( fileName: string ) => void;
 
         /**
-         * Callback function executed when the user clicks on the "Cancel" button.
+         * Callback function executed when the user clicks on the <blockquote>Cancel</blockquote> button.
          */
         cancelSubmit: () => void;
 
@@ -51,7 +52,7 @@ module FileInput {
         maxBytesSize?: number;
 
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;

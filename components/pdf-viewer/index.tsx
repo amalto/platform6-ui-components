@@ -26,7 +26,7 @@ namespace PdfViewer {
         /** Update value to force update. */
         reloadTick?: number;
         /**
-         * Language to use on the component. e.g: 'en-US'.
+         * Language to use on the component. e.g: <blockquote>en-US<blockquote>.
          * Accessible via <blockquote>WebStorage</blockquote>.
          */
         locale: string;

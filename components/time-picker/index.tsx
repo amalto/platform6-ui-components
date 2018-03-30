@@ -20,7 +20,7 @@ module TimePicker {
         disabled?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
-        /** Tooltip help displayed when hovering the "?" icon next to label. */
+        /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
         help?: string;
         /** 
          * Determined the interval in minute between each option from the select input.
@@ -31,7 +31,7 @@ module TimePicker {
         minHour?: number;
         /** Maximum hour that can be selected. */
         maxHour?: number;
-        /** CSS class names applied to the input <strong>div</strong> container. */
+        /** CSS class names applied to the input <blockquote>div</blockquote> container. */
         containerClass?: string;
         /** Will show a mandatory asterisk on the input label. */
         mandatory?: boolean;

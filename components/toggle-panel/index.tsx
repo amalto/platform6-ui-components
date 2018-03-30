@@ -12,11 +12,11 @@ module TogglePanel {
     export interface Props extends React.Props<TogglePanel> {
         /** Header title. */
         panelTitle: string | JSX.Element;
-        /** Panel state on firt render. */
+        /** Panel state on first render. */
         defaultOpened: boolean;
         /**
          * Totally hide the header.
-         * Props panelTitle, togglable, showSpinner, leftCustomControls and rightCustomControls wont be used if true.
+         * Props <blockquote>panelTitle</blockquote>, <blockquote>togglable</blockquote>, <blockquote>showSpinner</blockquote>, <blockquote>leftCustomControls</blockquote> and <blockquote>rightCustomControls</blockquote> wont be used if true.
          */
         hideTitle?: boolean;
         /** Alow user to open and close panel. */
