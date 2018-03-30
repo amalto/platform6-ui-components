@@ -20,6 +20,11 @@ import {
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
+
+/**
+ * FileInput uses WebStorage](#webstorage)'s properties
+ * which are accessible at the root component of your service.
+ */
 namespace FileInput {
     export interface Props extends WrappedFieldProps<any> {
         /** Input's name used when submitting form. */
@@ -43,7 +48,7 @@ namespace FileInput {
         collapseErrorSpace?: boolean;
         /**
          * Language to use on the component. e.g: <blockquote>en-US<blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
     }

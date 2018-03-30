@@ -36,7 +36,7 @@ import { DataGridActions } from './models/DataGridActions'
 /**
  * Customizable grid.
  * 
- * Some properties are provided by the [DynamicComponent](#dynamiccomponent) and [WebStorage](#webstorage)
+ * DataGrid uses [DynamicComponent](#dynamiccomponent)'s and [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
 export namespace DataGrid {
@@ -45,48 +45,48 @@ export namespace DataGrid {
 
         /**
          * Interface used to perform all the api call to the server. More details on [WebApi](#webapi).
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         api: WebApi;
         /**
-         * Display context menu. Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Display context menu. Accessible via [DynamicComponent](#dynamiccomponent).
          */
         displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => void;
         /**
          * Hide contet menu. More details on [Action](#action).
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         hideContextMenu: () => void;
         /**
          * Display notification component. More details on [NotificationModel](#notificationmodel).
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         displayNotification: ( notificationOptions?: NotificationModel ) => void;
         /**
          * Display an request error on a notification component.
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         handleErrorDisplay: ( error: any ) => void;
         /**
          * Display a modal on top of the page.
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[], modalReadyCallback?: () => void ) => void;
         /**
          * Hide the modal previously open by the showDialog method.
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         hideDialog: () => void;
 
         /**
          * Actions controlling the <blockquote>DataGrid</blockquote> template such as sorting order or column width,
          * <blockquote>dataGridId</blockquote> must be provided in order for those actions to be triggered.
-         * Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Accessible via [DynamicComponent](#dynamiccomponent).
          */
         dataGridActions: any;
         
         /**
-         * Save all interaction with DataGrid. Accessible via <blockquote>DynamicComponent</blockquote>.
+         * Save all interaction with DataGrid. Accessible via [DynamicComponent](#dynamiccomponent).
          */
         saveDataGridTemplate: ( user: UserModel ) => void;
 
@@ -139,13 +139,13 @@ export namespace DataGrid {
         defaultServiceId?: string
         /**
          * User information store inside browser local storage.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via [WebStorage](#webstorage).
          */
         user?: UserModel;
 
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
 

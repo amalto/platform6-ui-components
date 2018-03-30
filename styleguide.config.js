@@ -41,11 +41,6 @@ module.exports = {
                 'white-space': 'pre-wrap !important'
             }
         },
-        Para: {
-            para: {
-                'display': 'inline-block'
-            }
-        },
         Blockquote: {
             blockquote: {
                 'background-color': '#eee',

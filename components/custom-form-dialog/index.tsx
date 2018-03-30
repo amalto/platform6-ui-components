@@ -22,6 +22,8 @@ import TogglePanel from '@amalto/toggle-panel'
 
 /**
  * Custom component display on a modal's panel body
+ * 
+ * CustomFormDialog uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */
 namespace CustomFormDialog {
     export interface Props extends React.Props<CustomFormDialog> {
@@ -67,7 +69,7 @@ namespace CustomFormDialog {
         
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
 

@@ -14,6 +14,8 @@ import { compileWordings } from '@amalto/helpers'
 
 /**
  * Component allowing you to display a set of buttons as well as a search input if needed.
+ * 
+ * ButtonsBar uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */
 module ButtonsBar {
 
@@ -44,7 +46,7 @@ module ButtonsBar {
         btnGroups: BtnGroupsProps[];
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
 

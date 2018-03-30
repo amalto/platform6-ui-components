@@ -11,6 +11,9 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 /**
  * Page navigation toolbar.
+ * 
+ * PagingControls uses WebStorage](#webstorage)'s properties
+ * which are accessible at the root component of your service.
  */
 module PagingControls {
     export interface Props extends React.Props<PagingControls> {
@@ -29,7 +32,7 @@ module PagingControls {
         }
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
 

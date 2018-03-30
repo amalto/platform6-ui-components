@@ -10,6 +10,9 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 /**
  * Map component where you can assiociate keys with texts or files.
+ *
+ * KeyValueEditor uses WebStorage](#webstorage)'s properties
+ * which are accessible at the root component of your service.
  */
 namespace KeyValueEditor {
 
@@ -35,7 +38,7 @@ namespace KeyValueEditor {
         keyValues: KeyValDef
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
 

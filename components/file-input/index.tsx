@@ -18,7 +18,7 @@ import FileWrapper from './models/FileWrapper'
 /**
  * Component allowing you to import multiple files.
  * 
- * FileInput use [FileWrapper](#filewrapper) interface.
+ * FileInput uses [FileWrapper](#filewrapper)'s interface and WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */
 module FileInput {
 
@@ -53,7 +53,7 @@ module FileInput {
 
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
 

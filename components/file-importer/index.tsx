@@ -14,6 +14,9 @@ import Spinner from '@amalto/spinner'
 
 /**
  * Modal used to confirm a file upload.
+ * 
+ * FileImporter uses WebStorage](#webstorage)'s properties
+ * which are accessible at the root component of your service.
  */
 module FileImporter {
     export interface Props extends React.Props<FileImporter> {
@@ -36,7 +39,7 @@ module FileImporter {
         processing?: boolean;
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
 

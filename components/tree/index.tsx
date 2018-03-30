@@ -19,7 +19,8 @@ import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tre
  * Organize custom tree allowing you to manage nodes and attached data to it.
  * Attached data can be either texts or files.
  * 
- * Tree uses [KeyValDef](#keyvaldev) interface.
+ * Tree uses [KeyValDef](#keyvaldev) interface and PdfViewer uses WebStorage](#webstorage)'s properties
+ * which are accessible at the root component of your service.
  */
 module Tree {
     export interface Props extends React.Props<Tree> {
@@ -46,7 +47,7 @@ module Tree {
         defaultSelectedNodeId?: string;
         /**
          * Language to use on the component. e.g: <blockquote>en-US<blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
 
