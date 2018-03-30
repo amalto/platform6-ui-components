@@ -28,7 +28,7 @@ npm install --save @amalto/spinner
 
 You can access the online documentation [here](https://documentation.amalto.com/b2box/master/developer-guide/platform6-ui-components/docs/)
 
-If you want to access it from your localhost, follow the steos below.
+If you want to access it from your localhost, follow the steps below.
 
 In order to read the documentation you need to install [Node.js](https://nodejs.org/en/) and the project dependencies.
 ```terminal
