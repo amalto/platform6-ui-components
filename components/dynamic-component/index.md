@@ -1,1 +1,0 @@
-**Example not available for the moment, can't dispatch event.**

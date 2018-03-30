@@ -36,7 +36,7 @@ import { DataGridActions } from './models/DataGridActions'
 /**
  * Customizable grid.
  * 
- * some properties are provided by the [DynamicComponent](#dynamiccomponent) and [WebStorage](#webstorage)
+ * Some properties are provided by the [DynamicComponent](#dynamiccomponent) and [WebStorage](#webstorage)
  * which are accessible at the root component of your service.
  */
 export namespace DataGrid {

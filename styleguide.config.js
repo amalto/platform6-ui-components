@@ -139,12 +139,16 @@ module.exports = {
                 content: 'readme/DateInputEvent.md'
             },
             {
+                name: 'DataGridTemplates',
+                content: 'readme/DataGridTemplates.md'
+            },
+            {
                 name: 'DisplayTemplate',
                 content: 'readme/DisplayTemplate.md'
             },
             {
-                name: 'DataGridTemplates',
-                content: 'readme/DataGridTemplates.md'
+                name: 'DynamicComponent',
+                content: 'readme/DynamicComponent.md'
             },
             {
                 name: 'EndpointsUrl',
