@@ -1,5 +1,6 @@
-Simplified object containing the [CodeEditor](#codeeditor)'s ace session.
-It allow you to maintain the history of your current CodeEditor instance.
+Simplified object containing the [CodeEditor](#codeeditor)'s ace session. It allow you to maintain the history of your current CodeEditor instance.
+
+For more informations about the AceAjax class, see https://ace.c9.io/#nav=api&api=selection.
 
 ```typescript
 interface AceSession {
@@ -9,7 +10,6 @@ interface AceSession {
 
     /**
      * Selection of the ace editor document. Do not modify.
-     * For more information see https://ace.c9.io/#nav=api&api=selection
     **/
     selection?: AceAjax.Selection;
 

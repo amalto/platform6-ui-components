@@ -1,7 +1,5 @@
 
-The WebApi interface use others interfaces listed here:
-- [Auth](#auth)
-- [EndpointsUrl](#endpointsurl)
+WebApi uses [Auth](#auth) and [EndpointsUrl](#endpointsurl) interfaces.
 
 
 ```typescript

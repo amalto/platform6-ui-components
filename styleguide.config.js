@@ -111,6 +111,10 @@ module.exports = {
                 content: 'readme/Auth.md'
             },
             {
+                name: 'BatchOperationReport',
+                content: 'readme/BatchOperationReport.md'
+            },
+            {
                 name: 'BtnGroupsProps',
                 content: 'readme/BtnGroupsProps.md'
             },
@@ -226,7 +230,7 @@ module.exports = {
                 content: 'readme/Icons.md',
             },
             {
-                name: 'Commmons classes',
+                name: 'Commons classes',
                 description: 'All the custom classes provided with Platform 6 UI components.',
                 sections: [
                     {
