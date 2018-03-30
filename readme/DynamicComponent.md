@@ -24,10 +24,17 @@ interface DynamicComponent {
     /** Context data saved into store to be restored on serveur. */
     contextData?: any;
     
-    /** Store component data inside the store as contextData. */
+    /**
+     * Store component data inside the store as contextData.
+     * @param { any } contextData
+     */
     storeContext?: ( contextData: any ) => void;
     
-    /** Set dirty status of the component. */
+    /**
+     * Set dirty status of the component.
+     * If true a comfirmation modal will shows up if you try to move to another menu.
+     * @param { boolean } hasUnsavedChanges
+     */
     setStatus?: ( hasUnsavedChanges: boolean ) => void;
     
     /** Component height. */
@@ -42,7 +49,11 @@ interface DynamicComponent {
     /** Reload tooltip if not displayed correctly. */
     reloadTooltips?: () => void;
     
-    /** Show current job status. */
+    /**
+     * Show current job status.
+     * @param { string | number } jobId
+     * @param { ( job: RunningJob ) => void } callbackOnComplete
+     */
     showJobStatus?: ( jobId: string | number, callbackOnComplete?: ( job: RunningJob ) => void ) => void;
     
     /** If any application publisher profile is accessible to user. */
@@ -54,22 +65,42 @@ interface DynamicComponent {
     /** Current application publisher profile name selected. */
     selectedAppKeyName?: string;
     
-    /** Application publisher profile is installed. */
+    /**
+     * Application publisher profile is installed.
+     * @param { string } appKeyName
+     */
     hasAppKeyInstalled?: ( appKeyName: string ) => boolean;
     
-    /** Handle display of bach operations in case some of the operation fails and other succeed. */
+    /**
+     * Handle display of bach operations in case some of the operation fails and other succeed.
+     * @param { BatchOperationReport } report
+     */
     handleBatchOperationReportDisplay?: ( report: BatchOperationReport ) => void;
 
-    /** Display the custom confirmation modal. */
+    /**
+     * Display the custom confirmation modal.
+     * @param { string } title
+     * @param { React.ReactElement<any> | string } body
+     * @param { any } [confirmAction]
+     * @param { any } [cancelAction]
+     * @param { string } [confirmLevel]
+     * @param { string[] } [itemsList]
+     */
     showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[] ) => void;
     
     /** Hide the confirmation modal. */
     hideDialog: () => void;
     
-    /** Display a custom notification. More details on [NotificationModel](#notificationmodel). */
+    /**
+     * Display a custom notification. More details on [NotificationModel](#notificationmodel).
+     * @param { NotificationModel } notificationOptions
+     */
     displayNotification: ( notificationOptions: NotificationModel ) => void;
     
-    /** Display an error notification for  */
+    /**
+     * Display an error notification for failed request.
+     * @param { any } error
+     */
     handleErrorDisplay: ( error: any ) => void;
 
     /** Define the language to use. e.g: 'en-US' */
