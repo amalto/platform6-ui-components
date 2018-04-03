@@ -21,13 +21,13 @@ function arrayMin( arr: number[] ): number;
 function arrayMax( arr: number[] ): number;
 
 /**
- * return the same object passed as param but with ASC ordered keys.
+ * Return the same object passed as param but with ASC ordered keys.
  * @param { Object } object - Object to order.
  */
 function orderAsc( object: Object ): Object;
 
 /**
- * return the same object passed as param but with DESC ordered keys.
+ * Return the same object passed as param but with DESC ordered keys.
  * @param { Object } object - Object to order.
  */
 function orderDesc( object: Object ): Object;

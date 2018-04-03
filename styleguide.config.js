@@ -234,7 +234,7 @@ module.exports = {
                 content: 'readme/Icons.md',
             },
             {
-                name: 'Commons classes',
+                name: 'Common classes',
                 description: 'All the custom classes provided with Platform 6 UI components.',
                 sections: [
                     {

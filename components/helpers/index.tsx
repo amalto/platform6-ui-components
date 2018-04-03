@@ -205,7 +205,7 @@ export function addQueryParam( uri: string, key: string, value: any ): HTMLAncho
     return link
 }
 
-//return the same object passed as param but with ASC ordered keys
+// Return the same object passed as param but with ASC ordered keys
 export function orderAsc( object: Object ): Object {
     let result = {}
 
@@ -216,7 +216,7 @@ export function orderAsc( object: Object ): Object {
     return result
 }
 
-//return the same object passed as param but with DESC ordered keys
+// Return the same object passed as param but with DESC ordered keys
 export function orderDesc( object: Object ): Object {
     let result = {}
 

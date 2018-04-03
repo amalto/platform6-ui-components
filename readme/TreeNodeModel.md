@@ -1,4 +1,4 @@
-Object used to display the [Tree](#tree) component. It uses an [TreeNodeDataModel](#treenodedatamodel) object to display a more details description of the tree's node when selected.
+Object used to display the [Tree](#tree) component. It uses a [TreeNodeDataModel](#treenodedatamodel) object to display a more details description of the tree's node when selected.
 
 ```typescript
 interface TreeNodeModel {
