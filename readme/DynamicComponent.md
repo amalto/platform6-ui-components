@@ -106,7 +106,8 @@ interface DynamicComponent {
     handleErrorDisplay: ( error: any ) => void;
 
     /**
-     * Language to use on the component. e.g: <blockquote>en-US<blockquote>.
+     * Language to use on the component. e.g: "en-US".
+     * Locales available at [Locale](#locale).
      */
     locale: string;
 

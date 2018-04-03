@@ -145,6 +145,7 @@ export namespace DataGrid {
 
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */
         locale: string;

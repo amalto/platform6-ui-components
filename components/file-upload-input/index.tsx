@@ -47,7 +47,8 @@ namespace FileInput {
          */
         collapseErrorSpace?: boolean;
         /**
-         * Language to use on the component. e.g: <blockquote>en-US<blockquote>.
+         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Locales available at [Locale](#locale).
          * Accessible via WebStorage](#webstorage).
          */
         locale: string;
@@ -168,7 +169,8 @@ namespace FileUploadInput {
         collapseErrorSpace?: boolean;
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
-         * Accessible via <blockquote>WebStorage</blockquote>.
+         * Locales available at [Locale](#locale).
+         * Accessible via WebStorage](#webstorage).
          */
         locale: string;
 
