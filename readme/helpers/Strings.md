@@ -48,8 +48,10 @@ function buildReactRouterUri( uri: string ): string;
 function base64Decode( encodedData: string ): string;
 
 /**
- * Compare name with a string array and return a new name
- * if it's a duplicate.
+ * Compare name with a string array and return a new name if it's a duplicate.
+ * The duplicated name will have the format {name}_{n} where name is the current name
+ * and n is an index incremented until the name is available.
+ * e.g: name will become name_1 if available.
  * @param { string } name - Name wanted.
  * @param { string[] } container - List of unavailables names.
  */
