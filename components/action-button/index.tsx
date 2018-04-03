@@ -3,8 +3,6 @@ import * as classNames from 'classnames'
 
 /**
  * Small button with an icon instead of text.
- * 
- * @version 1.4.12
  */
 module ActionButton {
 
