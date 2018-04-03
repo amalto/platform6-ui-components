@@ -62,4 +62,19 @@ function handleDuplicateNameFromArray( name: string, container: string[]): strin
  * @param { Intl.DateTimeFormatOptions } options - Date options.
  */
 function dateByLocalToString( locale: string, date: number, options?: Intl.DateTimeFormatOptions ): string;
+
+/**
+ * Return string form a map with the language selected.
+ * @param { string } locale
+ * @param { { [language: string]: string } } labelMap
+ * @param { boolean } [noRegion] - In "en-US" region is "US".
+ * @param { boolean } [upper]
+ */
+function getI18nLabel( locale: string, labelMap: { [language: string]: string; }, noRegion?: boolean, upper?: boolean ): string;
+
+/**
+ * Escape specials caracters from regexp string.
+ * @param { string } text
+ */
+function escapeRegExp( text: string ): string;
 ```

@@ -74,4 +74,18 @@ function filterCollection( collection: any[], properties: string[], searchString
  * @param { any } [extensions] - Data to be added.
  */
 function deepCopy( data: any, extensions?: any ): any;
+
+/**
+ * Return a JSON object of the organisation tree.
+ * @param { OrgModel } orgTreeData
+ * @param { string[] } [openedNodes]
+ */
+function getJSTreeData( orgTreeData: OrgModel, openedNodes?: string[] ): TreeNodeModel;
+
+/**
+ * Get items by index
+ * @param { Array<T> } collection
+ * @param { number[] } indexes
+ */
+function getItemsByIdx<T>( collection: Array<T>, indexes: number[] ): Array<T>;
 ```
