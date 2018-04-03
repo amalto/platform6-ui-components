@@ -273,11 +273,11 @@ module.exports = {
                         content: 'readme/helpers/File.md'
                     },
                     {
-                        name: 'ObjectManipulation',
+                        name: 'Object manipulation',
                         content: 'readme/helpers/ObjectManipulation.md'
                     },
                     {
-                        name: 'StoreManipulation',
+                        name: 'Store manipulation',
                         content: 'readme/helpers/StoreManipulation.md'
                     },
                     {
