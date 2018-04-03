@@ -195,6 +195,10 @@ module.exports = {
                 content: 'readme/ScopeTree.md'
             },
             {
+                name: 'ScopeValue',
+                content: 'readme/ScopeValue.md'
+            },
+            {
                 name: 'Settings',
                 content: 'readme/Settings.md'
             },
