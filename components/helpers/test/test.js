@@ -49,7 +49,8 @@ import {
     base64Decode,
     deepCopy,
     handleDuplicateNameFromArray,
-    localeDate
+    handleDuplicateServiceItemName,
+    dateByLocalToString
 } from '../build/index.js';
 
 configure({ adapter: new Adapter() });
@@ -279,9 +280,9 @@ test('replaceTemplateFlags', t => {
     const template = '{{FLAGS=dwarning,cimportant}}';
     const proccessedTemplate = replaceTemplateFlags(template, 'en-US');
 
-    t.is(proccessedTemplate, '<span class="fas fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span><span class="fas fa-fw right-spaced text-xlarge warning-color fa-star" title="Important"></span><span class="fas fa-fw right-spaced text-xlarge font-color-lighter fa-archive" title="Archived"></span>');
+    t.is(proccessedTemplate, '<span class="fa-fw right-spaced text-xlarge danger-color fas fa-exclamation-triangle" title="Warning"></span><span class="fa-fw right-spaced text-xlarge warning-color fas fa-star" title="Important"></span><span class="fa-fw right-spaced text-xlarge font-color-lighter fas fa-archive" title="Archived"></span>');
     t.not(proccessedTemplate, template);
-    t.not(proccessedTemplate, '<span class="fas fa-fw right-spaced text-xlarge danger-color fa-exclamation-triangle" title="Warning"></span>');
+    t.not(proccessedTemplate, '<span class="fa-fw right-spaced text-xlarge danger-color fas fa-exclamation-triangle" title="Warning"></span>');
 });
 
 // getStyleDef
@@ -520,10 +521,30 @@ test('handleDuplicateNameFromArray: Should handle duplicate name', t => {
     t.is(handleDuplicateNameFromArray(name, container3), 'test');
 })
 
-// localeDate
-test('localeDate: Should convert timestamp to date string', t => {
+// handleDuplicateServiceItemName
+test('handleDuplicateServiceItemName: Should handle duplicate name of ServiceItemFacade', t => {
+    const item = { appKey: 'appKey1', name: 'test' };
+    const item2 = { appKey: 'appKey1', name: 'test2' };
+    const items1 = [
+        { appKey: 'appKey1', name: 'test'},
+        { appKey: 'appKey1', name: 'test2'},
+        { appKey: 'appKey1', name: 'test3'},
+    ];
+    const items2 = [
+        { appKey: '', name: 'test'},
+        { appKey: 'appKey1', name: 'test2'},
+        { appKey: 'appKey1', name: 'test2_1'},
+    ];
+
+    t.is(handleDuplicateServiceItemName(item, items1), 'test_1');
+    t.is(handleDuplicateServiceItemName(item, items2), 'test');
+    t.is(handleDuplicateServiceItemName(item2, items2), 'test2_2');
+})
+
+// dateByLocalToString
+test('dateByLocalToString: Should convert timestamp to date string', t => {
     const timestamp = 1520936526658;
     const dateString = '3/13/2018, 11:22 AM';
 
-    t.is( localeDate( timestamp, 'en-US' ), dateString );
+    t.is( dateByLocalToString( 'en-US', timestamp ), dateString );
 })
