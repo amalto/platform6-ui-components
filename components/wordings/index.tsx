@@ -3862,7 +3862,7 @@ export const MULTILANGUAGE_WORDINGS = {
     },
     'frameactions.notification.upsert.success.message': {
         'en-US': 'Frame has been successfully updated',
-        'fr=FR': 'Mise à jour de la frame effectuée'
+        'fr-FR': 'Mise à jour de la frame effectuée'
     }
 
 
