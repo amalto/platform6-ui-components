@@ -1,6 +1,8 @@
 Methods returning formatted strings.
 
-More informations on `dateByLocalToString` options [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).
+More informations on <blockquote>dateByLocalToString</blockquote> options [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).
+
+More informations about [Service](#service).
 
 ```typescript
 
@@ -56,6 +58,14 @@ function base64Decode( encodedData: string ): string;
  * @param { string[] } container - List of unavailables names.
  */
 function handleDuplicateNameFromArray( name: string, container: string[]): string;
+
+/**
+ * Handle ServiceItemFacade duplicate name. It work the same as "handleDuplicateNameFromArray"
+ * but for "ServiceItemFacade".
+ * @param { Id } id - Name to duplicate. 
+ * @param { ServiceItemFacades } items - All items to compare the name to.
+ */
+function handleDuplicateServiceItemName( id: Id, items: ServiceItemFacades ): string;
 
 /**
  * Return a date string from timestamp and locale.

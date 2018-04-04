@@ -9,9 +9,10 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 // Models
 import { Endpoints } from './models/AppEndpointsModel'
 import { OrgModel, TreeNodeModel } from './models/Organisation'
-// import {
-//     Service
-// } from '@amalto/typings'
+import {
+    Id,
+    ServiceItemFacades
+} from '@amalto/typings'
 
 // Constants
 import { AVAILABLE_LANGUAGES } from './constants/Config'
@@ -523,7 +524,7 @@ export function deepCopy( data: any, extensions?: any ): any {
 }
 
 /**
- * @description Handle dupplicate name from array
+ * Handle dupplicate name from array
  * @param { string } name Name to check
  * @param { string[] } container String to compared to
  */
@@ -544,9 +545,14 @@ export function handleDuplicateNameFromArray( name: string, container: string[] 
     return res
 }
 
-// export function handleDuplicateServiceItemName(): string {
-
-// }
+/**
+ * Handle ServiceItemFacade duplicate name.
+ * @param { Id } id - Name to duplicate. 
+ * @param { ServiceItemFacades } items - All items to compare the name to.
+ */
+export function handleDuplicateServiceItemName( id: Id, items: ServiceItemFacades ): string {
+    return handleDuplicateNameFromArray( id.name, items.filter( i => i.appKey === id.appKey ).map( i => i.name ) )
+}
 
 /**
  * Return string date from timestamp and locale.

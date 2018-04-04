@@ -1,48 +1,6 @@
 import { EndpointsUrl } from './EndpointsUrl'
 
-namespace Auth {
-    export interface AuthCodeBodyParameters {
-        code: string;
-        uname: string;
-        pw: string;
-        realm?: string;
-    }
-
-    export interface AuthCodeData {
-        code: string;
-        scope: string;
-        redirect_uri: string;
-        state?: string;
-    }
-
-    export interface TokenData {
-        access_token: string
-        token_type: string
-        expires_in: number
-        refresh_token?: string
-        scope?: string
-        audience?: string
-        user_id?: string
-    }
-
-    export interface TokenBodyParameters {
-        redirect_uri: string
-        client_id: string
-        client_secret: string
-        grant_type: string
-        code?: string
-        refresh_token?: string
-    }
-}
-
 interface WebApi {
-
-    requestAuthorizationCode: ( code: string, uname: string, pw: string, realm?: string, cctx?: string ) => Promise<Auth.AuthCodeData>
-
-    requestAccessToken: ( authorizationCode: string ) => Promise<Auth.TokenData>
-    requestClientAccessToken: () => Promise<Auth.TokenData>
-
-    refreshAccessToken: () => Promise<Auth.TokenData>
 
     getWithClientToken: ( url: string, clientAccessToken: string, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
     delWithClientToken: ( url: string, clientAccessToken: string, queryParameters?: any, disableTimeout?: boolean ) => Promise<any>
@@ -63,4 +21,4 @@ interface WebApi {
     endpoints: EndpointsUrl
 }
 
-export { Auth, WebApi }
+export { WebApi }

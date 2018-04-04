@@ -1,25 +1,9 @@
 
-WebApi uses [Auth](#auth) and [EndpointsUrl](#endpointsurl) interfaces.
+WebApi uses [EndpointsUrl](#endpointsurl) interface.
 
 
 ```typescript
 interface WebApi {
-
-    /** Request authentification code. */
-    requestAuthorizationCode: (
-        code: string,
-        uname: string,
-        pw: string,
-        realm?: string,
-        cctx?: string
-    ) => Promise<Auth.AuthCodeData>;
-
-    /** Request access token using the authentification code. */
-    requestAccessToken: ( authorizationCode: string ) => Promise<Auth.TokenData>;
-    requestClientAccessToken: () => Promise<Auth.TokenData>;
-
-    /** Refresh access token and reset token expiration timer. */
-    refreshAccessToken: () => Promise<Auth.TokenData>;
 
     /** Queries that required a client token. */
     getWithClientToken: (

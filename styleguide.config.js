@@ -136,10 +136,6 @@ module.exports = {
                 content: 'readme/AppKey.md'
             },
             {
-                name: 'Auth',
-                content: 'readme/Auth.md'
-            },
-            {
                 name: 'BatchOperationReport',
                 content: 'readme/BatchOperationReport.md'
             },
@@ -226,6 +222,10 @@ module.exports = {
             {
                 name: 'ScopeValue',
                 content: 'readme/ScopeValue.md'
+            },
+            {
+                name: 'Service',
+                content: 'readme/Service.md'
             },
             {
                 name: 'Settings',
