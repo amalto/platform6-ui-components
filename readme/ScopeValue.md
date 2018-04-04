@@ -1,1 +1,1 @@
-ScopeValue interface is not editable and usable by user, it regroup the user's actions he is able to perform.
+ScopeValue interface is not editable and usable by user, it regroups the user actions he is able to perform.
