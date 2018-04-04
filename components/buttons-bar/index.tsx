@@ -16,6 +16,10 @@ import { compileWordings } from '@amalto/helpers'
  * Component allowing you to display a set of buttons as well as a search input if needed.
  * 
  * ButtonsBar uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
+ * 
+ * @name buttons-bar
+ * @see {npm}
+ * @version {latest}
  */
 module ButtonsBar {
 
@@ -38,7 +42,10 @@ module ButtonsBar {
     }
 
     export interface Props extends React.Props<ButtonsBar> {
-        /** Handle search value. */
+        /**
+         * Handle search value.
+         * @param { string } searchValue - String to search.
+         */
         handleSearch?: ( searchValue: string ) => void;
         /** Search value usually used with list beneath it. */
         searchValue?: string;

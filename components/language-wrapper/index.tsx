@@ -17,8 +17,12 @@ import TypeaheadInput from '@amalto/typeahead-input'
 /**
  * Language selector.
  * 
- * LanguageWrapper uses WebStorage](#webstorage)'s properties
+ * LanguageWrapper uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
+ * 
+ * @name language-wrapper
+ * @see {npm}
+ * @version {latest}
  */
 module LanguageWrapper {
     export interface Props extends React.Props<LanguageWrapper> {
@@ -37,7 +41,7 @@ module LanguageWrapper {
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Locales available at [Locale](#locale).
-         * Accessible via WebStorage](#webstorage).
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
 

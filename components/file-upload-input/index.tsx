@@ -20,11 +20,6 @@ import {
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
-
-/**
- * FileInput uses WebStorage](#webstorage)'s properties
- * which are accessible at the root component of your service.
- */
 namespace FileInput {
     export interface Props extends WrappedFieldProps<any> {
         /** Input's name used when submitting form. */
@@ -49,7 +44,7 @@ namespace FileInput {
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Locales available at [Locale](#locale).
-         * Accessible via WebStorage](#webstorage).
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
     }
@@ -146,6 +141,14 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
     }
 }
 
+/**
+ * FileInput uses [WebStorage](#webstorage)'s properties
+ * which are accessible at the root component of your service.
+ * 
+ * @name file-upload-input
+ * @see {npm}
+ * @version {latest}
+ */
 namespace FileUploadInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
@@ -170,7 +173,7 @@ namespace FileUploadInput {
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Locales available at [Locale](#locale).
-         * Accessible via WebStorage](#webstorage).
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
 

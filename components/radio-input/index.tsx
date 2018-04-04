@@ -8,6 +8,10 @@ import Help from '@amalto/help'
 
 /**
  * Radio input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * 
+ * @name radio-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace RadioInput {
     export interface Props extends BaseFieldProps {

@@ -7,6 +7,10 @@ import Help from '@amalto/help'
 
 /**
  * Timepicker with few customizations like a minimum and a maximum time range of time available.
+ * 
+ * @name time-picker
+ * @see {npm}
+ * @version {latest}
  */
 module TimePicker {
     export interface Props extends React.Props<TimePicker> {

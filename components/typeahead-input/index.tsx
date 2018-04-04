@@ -5,6 +5,10 @@ import 'typeahead.js'
 
 /**
  * Typeahead input displaying a filtered dropdown list from your input and your collection.
+ * 
+ * @name typeahead-input
+ * @see {npm}
+ * @version {latest}
  */
 module TypeaheadInput {
     export interface Props extends React.Props<TypeaheadInput> {

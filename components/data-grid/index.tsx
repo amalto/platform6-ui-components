@@ -38,6 +38,10 @@ import { DataGridActions } from './models/DataGridActions'
  * 
  * DataGrid uses [DynamicComponent](#dynamiccomponent)'s and [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
+ * 
+ * @name data-grid
+ * @see {npm}
+ * @version {latest}
  */
 export namespace DataGrid {
  

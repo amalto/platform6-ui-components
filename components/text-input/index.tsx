@@ -11,6 +11,10 @@ import * as classNames from 'classnames'
 
 /**
  * Text input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * 
+ * @name text-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace TextInput {
     export interface Props extends BaseFieldProps {

@@ -16,6 +16,10 @@ type AceEditor = AceAjax.Editor
 
 /**
  * Code editor inputs used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * 
+ * @name code-editor-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace CodeEditorInput {
     export interface Props extends BaseFieldProps {

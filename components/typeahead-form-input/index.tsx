@@ -9,6 +9,10 @@ import Typeahead from '@amalto/typeahead-input'
 
 /**
  * Typeahead input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * 
+ * @name typeahead-form-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace TypeaheadFormInput {
     export interface Props extends BaseFieldProps {

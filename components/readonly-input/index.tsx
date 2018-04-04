@@ -10,6 +10,10 @@ import * as classNames from 'classnames'
 
 /**
  * Readonly input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ *
+ * @name readonly-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace ReadOnlyInput {
     export interface Props extends BaseFieldProps {

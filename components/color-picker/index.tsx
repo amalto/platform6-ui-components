@@ -3,7 +3,11 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 
 /**
- * Choose a color from a panel
+ * Choose a color from a panel.
+ * 
+ * @name color-picker
+ * @see {npm}
+ * @version {latest}
  */
 module ColorPicker {
     export interface Props extends React.Props<ColorPicker> {

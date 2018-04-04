@@ -19,6 +19,10 @@ import Tab from '@amalto/tab'
 
 /**
  * Tabs management component allowing you to display custom content.
+ * 
+ * @name tabs
+ * @see {npm}
+ * @version {latest}
  */
 module Tabs {
 

@@ -28,6 +28,28 @@ module.exports = {
         return componentPath.replace(/\.tsx?$/, '.md')
     },
 
+    updateDocs: (docs) => {
+        if ( docs.doclets.name ) {
+            const componentName = docs.doclets.name
+            const filePath = path.resolve(__dirname, `./components/${componentName}/package.json`)
+            const config = require(filePath)
+
+            if ( docs.doclets.version ) {
+                const version = config.version
+        
+                docs.doclets.version = version
+                docs.tags.version[0].description = `<span>${version}</span>`
+            }
+            if ( docs.doclets.see ) {
+                const moduleName = `@amalto/${componentName}`
+                
+                docs.doclets.see = moduleName
+                docs.tags.see[0].description = `npm <a className="mgl-5" href="https://www.npmjs.com/package/${moduleName}" target="_blank">${moduleName}</a>`
+            }
+        }
+        return docs
+    },
+
     template: {
         favicon: "images/platform-6-logo.png",
         head: {

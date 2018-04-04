@@ -8,6 +8,10 @@ import * as classNames from 'classnames'
 
 /**
  * This component should be used in the [Tabs](#tabs) component.
+ * 
+ * @name tab
+ * @see {npm}
+ * @version {latest}
  */
 namespace Tab {
 

@@ -15,8 +15,12 @@ import PagingControls from '@amalto/paging-controls'
 /**
  * Display pdf content.
  * 
- * PdfViewer uses WebStorage](#webstorage)'s properties
+ * PdfViewer uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
+ * 
+ * @name pdf-viewer
+ * @see {npm}
+ * @version {latest}
  */
 namespace PdfViewer {
     export interface Props extends React.Props<PdfViewer> {
@@ -31,7 +35,7 @@ namespace PdfViewer {
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Locales available at [Locale](#locale).
-         * Accessible via WebStorage](#webstorage).
+         * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
 

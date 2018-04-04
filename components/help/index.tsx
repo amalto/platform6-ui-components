@@ -4,6 +4,10 @@ import * as classNames from 'classnames'
 
 /**
  * This component is generally used next to input's label. See [RadioInput](#radioinput)
+ * 
+ * @name help
+ * @see {npm}
+ * @version {latest}
  */
 namespace Help {
     export interface Props extends React.Props<Help> {

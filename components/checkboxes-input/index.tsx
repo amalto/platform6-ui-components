@@ -11,6 +11,10 @@ import Help from '@amalto/help'
 
 /**
  * Checkboxes inputs used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * 
+ * @name checkboxes-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace CheckboxesInput {
     export interface Props extends BaseFieldProps {

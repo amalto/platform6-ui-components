@@ -12,6 +12,10 @@ import { required } from '@amalto/input-validation'
 
 /**
  * Time input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * 
+ * @name time-input
+ * @see {npm}
+ * @version {latest}
  */
 namespace TimeInput {
     export interface Props extends BaseFieldProps {
