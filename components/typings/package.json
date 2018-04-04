@@ -1,0 +1,34 @@
+{
+  "name": "@amalto/typings",
+  "displayName": "Typings",
+  "description": "Interfaces used in Platform 6 UI component.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amalto/platform6-ui-components"
+  },
+  "keywords": [
+    "user-interface",
+    "react",
+    "typescript"
+  ],
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "author": "Amalto Technologies",
+  "scripts": {
+    "setup": "npm install",
+    "test": "ava ./test/test.js --verbose",
+    "prepare": "rm -rf ./build; tsc -d"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/react": "15.6.10",
+    "ts-loader": "3.2.0"
+  },
+  "dependencies": {
+    "react": "15.6.2"
+  }
+}
