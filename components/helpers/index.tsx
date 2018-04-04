@@ -9,6 +9,9 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 // Models
 import { Endpoints } from './models/AppEndpointsModel'
 import { OrgModel, TreeNodeModel } from './models/Organisation'
+// import {
+//     Service
+// } from '@amalto/typings'
 
 // Constants
 import { AVAILABLE_LANGUAGES } from './constants/Config'
@@ -540,6 +543,10 @@ export function handleDuplicateNameFromArray( name: string, container: string[] 
     }
     return res
 }
+
+// export function handleDuplicateServiceItemName(): string {
+
+// }
 
 /**
  * Return string date from timestamp and locale.
