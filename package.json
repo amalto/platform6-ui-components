@@ -20,7 +20,7 @@
     "build": "lerna run build",
     "test": "ava --verbose",
     "prepare": "npm run bootstrap",
-    "publish": "lerna publish --yes --exact --independent --since -- --production --access public --registry=https://registry.npmjs.org/",
+    "publish": "lerna publish --yes --exact --independent --since --cd-version patch -- --production --access public --registry=https://registry.npmjs.org/",
     "publish:version": "lerna publish --yes --exact --independent --since -- --production --access public --registry=https://registry.npmjs.org/",
     "setup": "npm install",
     "styleguide": "styleguidist server",
