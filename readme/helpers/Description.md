@@ -1,7 +1,10 @@
 ```jsx noeditor
-const InstallLine = require('../../typescript/components/InstallLine').default;
+const CopyStringContent = require('../../typescript/components/CopyStringContent').default;
 
-<InstallLine componentName='@amalto/helpers' />
+<div>
+    <CopyStringContent content='npm install --save @amalto/helpers' />
+    <CopyStringContent content="import ScopeHelpers from '@amalto/helpers'" />
+</div>
 ```
 
 Methods used in several Platform 6 UI components.

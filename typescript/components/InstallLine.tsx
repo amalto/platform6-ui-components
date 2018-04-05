@@ -20,7 +20,7 @@ class InstallLine extends React.Component<InstallLine.Props, InstallLine.State> 
     render() {
         const { componentName } = this.props
 
-        return <Pathline classes={{}} children={`npm install --save @amalto/${componentName}`} />
+        return <Pathline classes={{}} children={`npm install --save ${componentName}`} />
     }
  }
 

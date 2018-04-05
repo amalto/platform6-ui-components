@@ -1,7 +1,10 @@
 ```jsx noeditor
-const InstallLine = require('../typescript/components/InstallLine').default;
+const CopyStringContent = require('../typescript/components/CopyStringContent').default;
 
-<InstallLine componentName='@amalto/scope-helpers' />
+<div>
+    <CopyStringContent content='npm install --save scope-helpers' />
+    <CopyStringContent content="import ScopeHelpers from '@amalto/scope-helpers'" />
+</div>
 ```
 
 Methods checking user's permissions.

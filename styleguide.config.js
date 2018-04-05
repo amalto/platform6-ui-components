@@ -12,16 +12,18 @@ module.exports = {
     ],
 
     styleguideComponents: {
-        Wrapper: path.join(__dirname, 'typescript/Wrapper')
+        Wrapper: path.join(__dirname, 'typescript/custom/Wrapper'),
+        PathlineRenderer: path.join(__dirname, 'typescript/custom/Pathline')
     },
 
     getComponentPathLine(componentPath) {
         const type = componentPath.split('/')[0]
         const componentName = componentPath.split('/')[1]
         // const name = changeCase.pascalCase(componentName)
-        const dir = componentName
+        // const dir = componentName
 
-        return type === 'components' ? `npm install --save @amalto/${dir}` : null
+        // return type === 'components' ? `npm install --save @amalto/${dir}` : null
+        return componentName
     },
 
     getExampleFilename(componentPath) {

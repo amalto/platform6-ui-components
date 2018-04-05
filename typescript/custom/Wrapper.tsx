@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { loadTooltips, unloadTooltips } from '@amalto/helpers'
 
 // Store
-import { store } from '../Store'
+import { store } from '../../Store'
 
 module Wrapper {
     export interface Props extends React.ClassAttributes<Wrapper> { }

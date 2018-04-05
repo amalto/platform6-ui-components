@@ -1,7 +1,7 @@
 ```jsx noeditor
-const InstallLine = require('{{pathToDocComponent}}/InstallLine').default;
+const CopyStringContent = require('{{pathToDocComponent}}/CopyStringContent').default;
 
-<InstallLine componentName='@amalto/{{componentName}}' />
+<CopyStringContent content='{{content}}' />
 ```
 
 {{description}}
