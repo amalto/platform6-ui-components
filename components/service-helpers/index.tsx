@@ -51,7 +51,7 @@ import {
 } from '@amalto/wordings'
 
 
-class ServiceHelpers {
+export default class ServiceHelpers {
 
     // Mandatory
     private _serviceAppKey: string
