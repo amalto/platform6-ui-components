@@ -1,4 +1,6 @@
 ```javascript
+const Switch = require('@amalto/switch').default;
+
 initialState = { value: true };
 
 <Switch id='test-switch-id'

@@ -1,4 +1,21 @@
+```jsx noeditor
+const InstallLine = require('../typescript/components/InstallLine').default;
+
+<InstallLine componentName='@amalto/scope-helpers' />
+```
+
 Methods checking user's permissions.
+
+```jsx noeditor
+const NpmLink = require('../typescript/components/NpmLink').default;
+const VersionLine = require('../typescript/components/VersionLine').default;
+const version = require('../components/scope-helpers/package.json').version;
+
+<div>
+    <NpmLink href='https://www.npmjs.com/package/@amalto/scope-helpers' name='@amalto/scope-helpers' />
+    <VersionLine version={version} />
+</div>
+```
 
 More informations on the interfaces [WebStorage](#webstorage), [PermissionDef](#permissiondef) and [ScopeValue](#scopevalue).
 

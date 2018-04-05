@@ -1,4 +1,6 @@
 ```javascript
+const CodeEditor = require('@amalto/code-editor').default;
+
 <div>
     <CodeEditor value={`const value = 'test';`}
         height={200}

@@ -1,6 +1,7 @@
 See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for reduxForm options.
 
 ```javascript
+const TimeInput = require('@amalto/time-input').default;
 const { reduxForm } = require('redux-form');
 
 const moment = require('moment');

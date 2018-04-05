@@ -1,4 +1,5 @@
 ```javascript
+const PagingControls = require('@amalto/paging-controls').default;
 const { IntlProvider } = require('react-intl');
 
 initialState = { currentPage: 1 };

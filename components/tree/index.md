@@ -1,4 +1,5 @@
 ```javascript
+const Tree = require('@amalto/tree').default;
 const data = require('./data.json');
 const uuid = require('uuid');
 const base64 = require('base-64');

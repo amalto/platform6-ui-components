@@ -321,7 +321,7 @@ module.exports = {
             },
             {
                 name: 'Helpers',
-                description: 'Methods used in several Platform 6 UI components.',
+                content: 'readme/helpers/Description.md',
                 sections: [
                     {
                         name: 'File',

@@ -1,4 +1,5 @@
 ```javascript
+const Tabs = require('@amalto/tabs').default;
 const Tab = require('@amalto/tab').default;
 
 initialState = {

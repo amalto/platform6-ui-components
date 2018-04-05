@@ -1,4 +1,5 @@
 ```javascript
+const ValidatedInput = require('@amalto/validated-input').default;
 
 initialState = {
     'validateinput-exemple-1': {

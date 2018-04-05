@@ -1,4 +1,6 @@
 ```javascript
+const DataLine = require('@amalto/data-line').default;
+
 const cells = [
     {
         displayValue: 'first cell',

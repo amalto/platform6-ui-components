@@ -1,6 +1,7 @@
 DataGrid customization is not working as well as sorting order. It need to be connected to the store in order to handle those functionalities.
 
 ```javascript
+const DataGrid = require('@amalto/data-grid').default;
 const DataLine = require('@amalto/data-line').default;
 
 const {
@@ -88,6 +89,7 @@ const dataLines = [
     hideDialog={hideDialog}
 
     // dataGridId='documentation'
+    // dataGridActions={null}
     forcedServiceId='documentation'
     // preventTemplating={true}
     columnHeaders={columnHeaders}

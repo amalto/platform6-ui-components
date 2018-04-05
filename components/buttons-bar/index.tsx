@@ -44,7 +44,8 @@ module ButtonsBar {
     export interface Props extends React.Props<ButtonsBar> {
         /**
          * Handle search value.
-         * @param { string } searchValue - String to search.
+         * @function handleSearch
+         * @param {string} searchValue - String to search.
          */
         handleSearch?: ( searchValue: string ) => void;
         /** Search value usually used with list beneath it. */

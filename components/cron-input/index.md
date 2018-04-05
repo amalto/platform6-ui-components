@@ -1,4 +1,6 @@
 ```javascript
+const CronInput = require('@amalto/cron-input').default;
+
 initialState = {
     value: {
         enabled: true,

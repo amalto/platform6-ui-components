@@ -1,4 +1,6 @@
 ```javascript
+const Tab = require('@amalto/tab').default;
+
 <Tab id='tab-example'
     iconClass='fas fa-file'
     title='Tab'

@@ -1,4 +1,5 @@
 ```javascript
+const LanguageWrapper = require('@amalto/language-wrapper').default;
 const { addValToArrayNoDup, removeValFromArrayNoDup } = require('@amalto/helpers');
 
 initialState = { selectedLanguage: 'EN', supportedLanguages: ['EN']};

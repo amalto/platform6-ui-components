@@ -1,6 +1,8 @@
 In this exemple most of the props are randomly set in order to show most of the component functionality.
 
 ```javascript
+const FileInput = require('@amalto/file-input').default;
+
 initialState = { filesQueue: {} };
 
 function addFilesToQueue( files ) {

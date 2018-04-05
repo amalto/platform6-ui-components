@@ -1,4 +1,6 @@
 ```javascript
+const ButtonsBar = require('@amalto/buttons-bar').default;
+
 initialState = { searchValue: '' };
 
 const btnGroups = [

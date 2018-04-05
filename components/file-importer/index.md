@@ -1,6 +1,8 @@
 Click on the button to display the file importer modal.
 
 ```javascript
+const FileImporter = require('@amalto/file-importer').default;
+
 initialState = { open: false, fileData: {name: 'test_file', size: 100} };
 
 <div>
