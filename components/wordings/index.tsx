@@ -3868,7 +3868,7 @@ export const MULTILANGUAGE_WORDINGS = {
     // Generic wordings (to be used in services by external devs)
     'view': {
         'en-US': 'View',
-        'fr=FR': 'Afficher'
+        'fr-FR': 'Afficher'
     }
 
 
