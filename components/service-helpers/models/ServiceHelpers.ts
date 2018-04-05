@@ -3,7 +3,19 @@ export interface Id {
     appKey: string
 }
 
-export interface Description { [lang: string]: string }
+export interface Description {
+    [lang: string]: string
+}
+
+export interface Wordings {
+    [key: string]: {
+        [lang: string]: string
+    }
+}
+
+export interface CompiledWordings {
+    [key: string]: string
+}
 
 export interface ServiceItemFacade extends Id {
     description: string
@@ -23,6 +35,7 @@ export interface ServiceItem extends Id {
 }
 
 export declare type ServiceItems = ServiceItem[]
+
 export declare type ServiceItemFacades = ServiceItemFacade[]
+
 export declare type Ids = Id[]
-export declare type CompiledWordings = Description

@@ -5,16 +5,14 @@ import {
     Description,
     ServiceItemFacade,
     ServiceItemFacades,
-	ServiceItem,
-	ServiceItems
+    ServiceItem,
+    ServiceItems
 } from './models/ServiceHelpers'
-
-import { BtnModel } from './models/ButtonsBar'
 
 // Constants
 import {
-	TAB_TYPE,
-	DATA_GRID_PREFIX
+    TAB_TYPE,
+    ID_SEPARATOR
 } from './constants'
 
 // Helpers
@@ -33,8 +31,8 @@ import {
  * @param {ServiceItemFacade | ServiceItem} item
  * @returns {Id}
  */
-export function getId (item: ServiceItemFacade | ServiceItem): Id {
-	return { name: item.name, appKey: item.appKey }
+export function getId( item: ServiceItemFacade | ServiceItem ): Id {
+    return { name: item.name, appKey: item.appKey }
 }
 
 /**
@@ -43,8 +41,8 @@ export function getId (item: ServiceItemFacade | ServiceItem): Id {
  * @param {ServiceItemFacades} facades
  * @returns {Id[]}
  */
-export function toIds (facades: ServiceItemFacades): Id[] {
-	return facades.map(f => getId(f))
+export function toIds( facades: ServiceItemFacades ): Id[] {
+    return facades.map( f => getId( f ) )
 }
 
 /**
@@ -54,43 +52,10 @@ export function toIds (facades: ServiceItemFacades): Id[] {
  * @param {Id} id
  * @returns {boolean}
  */
-export function isIdUnique (ids: Ids, id: Id) {
-	const { name } = id
+export function isIdUnique( ids: Ids, id: Id ) {
+    const { name } = id
 
-	return ids.every(i => i.name !== name || (i.name === name && i.appKey !== id.appKey))
-}
-
-export function getTabNameByType( itemId: string, mode: string ): string {
-    const tabPreffix: { [mode: string]: string } = {
-        'add': TAB_TYPE.ADD_TAB_ID,
-        'edit': TAB_TYPE.EDIT_TAB_ID,
-        'view': TAB_TYPE.VIEW_TAB_ID
-    }
-
-    return `${tabPreffix[mode]}${itemId}`
-}
-
-/**
- * Parse an identifier
- *
- * @param {string} id
- * @returns {Id}
- */
-export function parseId (id: string, separator: string): Id {
-	const { length } = id
-
-	if (!id.includes(separator)) {
-		return {
-			appKey: '',
-			name: id.substring(5, length)
-		}
-	}
-
-	const separatorIndex = id.indexOf(separator)
-	return {
-		appKey: id.substring(5, separatorIndex),
-		name: id.substring(separatorIndex + 2, length)
-	}
+    return ids.every( i => i.name !== name || ( i.name === name && i.appKey !== id.appKey ) )
 }
 
 /**
@@ -99,10 +64,10 @@ export function parseId (id: string, separator: string): Id {
  * @param {Id} id
  * @returns {string}
  */
-export function prettifyId (id: Id, separator: string): string {
-	const { appKey } = id
+export function prettifyId( id: Id ): string {
+    const { appKey } = id
 
-    return `${appKey && `[${appKey}]${separator}`}${id.name}`
+    return `${ appKey && `[${ appKey }]${ ID_SEPARATOR }` }${ id.name }`
 }
 
 /**
@@ -111,10 +76,10 @@ export function prettifyId (id: Id, separator: string): string {
  * @param {Id} id
  * @returns {string}
  */
-export function stringifyId (id: Id, separator: string): string {
-	const { appKey } = id
+export function stringifyId( id: Id ): string {
+    const { appKey } = id
 
-	return `${appKey && `${appKey}${separator}`}${id.name}`
+    return `${ appKey && `${ appKey }${ ID_SEPARATOR }` }${ id.name }`
 }
 
 /**
@@ -124,17 +89,17 @@ export function stringifyId (id: Id, separator: string): string {
  * @param {Id} id
  * @returns {string}
  */
-export function incrementName (facades: ServiceItemFacades, id: Id): string {
-	const { name } = id
-	let index = 1
+export function incrementName( facades: ServiceItemFacades, id: Id ): string {
+    const { name } = id
+    let index = 1
 
-	const facadesWithSameAppKey = facades.filter(f => f.appKey === id.appKey)
+    const facadesWithSameAppKey = facades.filter( f => f.appKey === id.appKey )
 
-	if (facadesWithSameAppKey.length === 0) return name
+    if ( facadesWithSameAppKey.length === 0 ) return name
 
-	while (!facadesWithSameAppKey.every(f => f.name !== `${name}_${index}`)) index++
+    while ( !facadesWithSameAppKey.every( f => f.name !== `${ name }_${ index }` ) ) index++
 
-	return `${name}_${index}`
+    return `${ name }_${ index }`
 }
 
 /**
@@ -145,15 +110,15 @@ export function incrementName (facades: ServiceItemFacades, id: Id): string {
  * @param {ServiceItemFacades} items
  * @returns {string}
  */
-export function validateName (value: string, id: Id, items: ServiceItemFacades, locale: string): string {
+export function validateName( value: string, id: Id, items: ServiceItemFacades, locale: string ): string {
     const wordings: { [id: string]: string } = compileWordings( MULTILANGUAGE_WORDINGS, locale )
 
-	if (!value || !value.trim()) return wordings.fieldRequired
+    if ( !value || !value.trim() ) return wordings.fieldRequired
 
-	if (value !== id.name && !isIdUnique(items, { name: value, appKey: id.appKey }))
-		return wordings.nameAlreadyExist
+    if ( value !== id.name && !isIdUnique( items, { name: value, appKey: id.appKey } ) )
+        return wordings.nameAlreadyExist
 
-	if (value.includes('.')) return wordings.nameNoDot
+    if ( value.includes( '.' ) ) return wordings.nameNoDot
 }
 
 /**
@@ -163,8 +128,21 @@ export function validateName (value: string, id: Id, items: ServiceItemFacades, 
  * @param {Id} id
  * @returns {ServiceItemFacade | undefined}
  */
-export function getItem (items: ServiceItemFacades, id: Id): ServiceItemFacade | undefined {
-	const { name } = id
+export function getItem( items: ServiceItemFacades, id: Id ): ServiceItemFacade | undefined {
+    const { name } = id
 
-	return items.find(i => i.name === name && i.appKey === id.appKey)
+    return items.find( i => i.name === name && i.appKey === id.appKey )
+}
+
+/**
+ * Display a date in the specified language
+ *
+ * @param {number} timestamp
+ * @param {string} locale
+ * @returns {string}
+ */
+export function formatDate( timestamp: number, locale: string ): string {
+    const date = timestamp ? new Date( timestamp ) : new Date()
+
+    return date.toLocaleString( locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' } )
 }

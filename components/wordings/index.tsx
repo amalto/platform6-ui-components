@@ -1205,7 +1205,7 @@ export const MULTILANGUAGE_WORDINGS = {
     },
     'tabView': {
         'en-US': 'View - {name}',
-        'fr-FR': 'Vue - {name}'
+        'fr-FR': 'Afficher - {name}'
     },
 
     'selectAll': {
@@ -1297,8 +1297,8 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Nom déjà utilisé.'
     },
     'nameNoDot': {
-		'en-US': 'The name cannot contain a \'.\'',
-		'fr-FR': 'Le nom ne peut pas contenir de \'.\''
+        'en-US': 'The name cannot contain a \'.\'',
+        'fr-FR': 'Le nom ne peut pas contenir de \'.\''
     },
     'resource': {
         'en-US': 'Resource',
@@ -1390,7 +1390,7 @@ export const MULTILANGUAGE_WORDINGS = {
     },
     'resourcesAttached': {
         'en-US': 'Resource attached',
-        'fr-FR': 'Ressource attachée'  
+        'fr-FR': 'Ressource attachée'
     },
     'bundledResourcesReadonly': {
         'en-US': 'These bundled resources are only readable. They can not be deleted.',
@@ -3863,7 +3863,15 @@ export const MULTILANGUAGE_WORDINGS = {
     'frameactions.notification.upsert.success.message': {
         'en-US': 'Frame has been successfully updated',
         'fr-FR': 'Mise à jour de la frame effectuée'
+    },
+
+    // Generic wordings (to be used in services by external devs)
+    'view': {
+        'en-US': 'View',
+        'fr=FR': 'Afficher'
     }
+
+
 
 
 }

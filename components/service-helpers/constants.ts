@@ -1,10 +1,10 @@
 export const ID_SEPARATOR = '::'
-export const DATA_GRID_PREFIX = 'data-grid_'
 
 export const TAB_TYPE = {
-    ADD_TAB_ID: 'add_',
-	EDIT_TAB_ID: 'edit_',
-	VIEW_TAB_ID: 'view_'
+    ADD: 'add_',
+    EDIT: 'edit_',
+    VIEW: 'view_',
+    MAIN_LIST: 'list_'
 }
 
 export const CALCULATED_CONTENT_MODE = {
@@ -14,9 +14,7 @@ export const CALCULATED_CONTENT_MODE = {
 }
 
 export const ICON_TYPE = {
-    PLUS: 'fas fa-plus',
     ADD: 'fas fa-plus',
-    MINUS: 'fas fa-minus',
     REMOVE: 'fas fa-minus',
     CLOSE: 'fas fa-times',
     DELETE: 'fas fa-trash-alt',
@@ -25,11 +23,12 @@ export const ICON_TYPE = {
     UNDO: 'fas fa-undo-alt',
     UPLOAD: 'fas fa-upload',
     DOWNLOAD: 'fas fa-download',
-    SQUARE: 'far fa-square',
-    CHECK_SQUARE: 'far fa-check-square',
+    UNSELECTED: 'far fa-square',
+    SELECTED: 'far fa-check-square',
     RENAME: 'fas fa-i-cursor',
     COPY: 'far fa-copy',
-    SAVE: 'fas fa-save'
+    SAVE: 'fas fa-save',
+    VIEW: 'fas fa-eye'
 }
 
 export const BUTTON_TYPE = {
