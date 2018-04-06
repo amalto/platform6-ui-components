@@ -21,10 +21,6 @@ import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tre
  * 
  * Tree uses [KeyValDef](#keyvaldev) interface and PdfViewer uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
- * 
- * @name tree
- * @see {npm}
- * @version {latest}
  */
 module Tree {
     export interface Props extends React.Props<Tree> {

@@ -16,10 +16,6 @@ import { compileWordings } from '@amalto/helpers'
  * Component allowing you to display a set of buttons as well as a search input if needed.
  * 
  * ButtonsBar uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
- * 
- * @name buttons-bar
- * @see {npm}
- * @version {latest}
  */
 module ButtonsBar {
 

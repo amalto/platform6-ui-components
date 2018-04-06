@@ -19,10 +19,6 @@ import TypeaheadInput from '@amalto/typeahead-input'
  * 
  * LanguageWrapper uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
- * 
- * @name language-wrapper
- * @see {npm}
- * @version {latest}
  */
 module LanguageWrapper {
     export interface Props extends React.Props<LanguageWrapper> {

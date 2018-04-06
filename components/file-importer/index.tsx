@@ -17,10 +17,6 @@ import Spinner from '@amalto/spinner'
  * 
  * FileImporter uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
- * 
- * @name file-importer
- * @see {npm}
- * @version {latest}
  */
 module FileImporter {
     export interface Props extends React.Props<FileImporter> {

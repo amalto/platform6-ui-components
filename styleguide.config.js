@@ -19,37 +19,14 @@ module.exports = {
     getComponentPathLine(componentPath) {
         const type = componentPath.split('/')[0]
         const componentName = componentPath.split('/')[1]
-        // const name = changeCase.pascalCase(componentName)
-        // const dir = componentName
+        const packageJsonPath = path.resolve(__dirname, componentPath.replace('index.tsx', 'package.json'))
+        const package = require(packageJsonPath)
 
-        // return type === 'components' ? `npm install --save @amalto/${dir}` : null
-        return componentName
+        return JSON.stringify({ name: package.name, version: package.version })
     },
 
     getExampleFilename(componentPath) {
         return componentPath.replace(/\.tsx?$/, '.md')
-    },
-
-    updateDocs: (docs) => {
-        if ( docs.doclets.name ) {
-            const componentName = docs.doclets.name
-            const filePath = path.resolve(__dirname, `./components/${componentName}/package.json`)
-            const config = require(filePath)
-
-            if ( docs.doclets.version ) {
-                const version = config.version
-        
-                docs.doclets.version = version
-                docs.tags.version[0].description = `<span>${version}</span>`
-            }
-            if ( docs.doclets.see ) {
-                const moduleName = `@amalto/${componentName}`
-                
-                docs.doclets.see = moduleName
-                docs.tags.see[0].description = `npm <a className="mgl-5" href="https://www.npmjs.com/package/${moduleName}" target="_blank">${moduleName}</a>`
-            }
-        }
-        return docs
     },
 
     template: {

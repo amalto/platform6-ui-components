@@ -73,10 +73,6 @@ type AceEditor = ace.Editor
 
 /**
  * CodeEditor used outside a form.
- * 
- * @name code-editor
- * @see {npm}
- * @version {latest}
  */
 module CodeEditor {
 

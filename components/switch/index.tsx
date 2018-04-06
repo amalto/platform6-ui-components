@@ -4,10 +4,6 @@ import * as classNames from 'classnames'
 
 /**
  * Switch input.
- * 
- * @name switch
- * @see {npm}
- * @version {latest}
  */
 module Switch {
     export interface Props extends React.Props<Switch> {

@@ -6,10 +6,6 @@ import { spinner } from './images/spinner'
 
 /**
  * Loading spinner.
- * 
- * @name spinner
- * @see {npm}
- * @version {latest}
  */
 module Spinner {
     export interface Props extends React.Props<Spinner> {

@@ -1,3 +1,7 @@
+```typescript
+import ActionButton from '@amalto/action-button'
+```
+
 ```javascript
 const ActionButton = require('@amalto/action-button').default;
 

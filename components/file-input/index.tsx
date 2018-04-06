@@ -19,10 +19,6 @@ import FileWrapper from './models/FileWrapper'
  * Component allowing you to import multiple files.
  * 
  * FileInput uses [FileWrapper](#filewrapper)'s interface and [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
- * 
- * @name file-input
- * @see {npm}
- * @version {latest}
  */
 module FileInput {
 

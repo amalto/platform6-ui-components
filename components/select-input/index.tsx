@@ -8,10 +8,6 @@ import Help from '@amalto/help'
 
 /**
  * Select input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
- * 
- * @name select-input
- * @see {npm}
- * @version {latest}
  */
 namespace SelectInput {
     export interface Props extends BaseFieldProps {

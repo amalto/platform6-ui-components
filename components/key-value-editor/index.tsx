@@ -13,10 +13,6 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
  *
  * KeyValueEditor uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
- *
- * @name key-value-editor
- * @see {npm}
- * @version {latest}
  */
 namespace KeyValueEditor {
 

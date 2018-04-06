@@ -7,10 +7,6 @@ import Help from '@amalto/help'
 
 /**
  * Simple select or input with a validation by regular expression or method check used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
- * 
- * @name validated-input
- * @see {npm}
- * @version {latest}
  */
 module ValidatedInput {
     export interface Props extends React.Props<ValidatedInput> {

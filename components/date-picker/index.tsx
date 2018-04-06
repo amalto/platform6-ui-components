@@ -10,10 +10,6 @@ import Help from '@amalto/help'
 
 /**
  * Choose a date from a calendar.
- * 
- * @name date-picker
- * @see {npm}
- * @version {latest}
  */
 module DatePicker {
     export interface DateInputEvent {

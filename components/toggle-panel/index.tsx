@@ -7,10 +7,6 @@ import Spinner from '@amalto/spinner'
 
 /**
  * Panel component with configuration buttons.
- * 
- * @name toggle-panel
- * @see {npm}
- * @version {latest}
  */
 module TogglePanel {
     export interface Props extends React.Props<TogglePanel> {

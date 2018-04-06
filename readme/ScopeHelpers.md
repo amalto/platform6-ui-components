@@ -1,24 +1,11 @@
 ```jsx noeditor
-const CopyStringContent = require('../typescript/components/CopyStringContent').default;
+const version = require('../components/scope-helpers/package.json').version;
+const Pathline = require('../typescript/custom/Pathline').default;
 
-<div>
-    <CopyStringContent content='npm install --save scope-helpers' />
-    <CopyStringContent content="import ScopeHelpers from '@amalto/scope-helpers'" />
-</div>
+<Pathline children={JSON.stringify( { name: '@amalto/scope-helpers', version } )} />
 ```
 
 Methods checking user's permissions.
-
-```jsx noeditor
-const NpmLink = require('../typescript/components/NpmLink').default;
-const VersionLine = require('../typescript/components/VersionLine').default;
-const version = require('../components/scope-helpers/package.json').version;
-
-<div>
-    <NpmLink href='https://www.npmjs.com/package/@amalto/scope-helpers' name='@amalto/scope-helpers' />
-    <VersionLine version={version} />
-</div>
-```
 
 More informations on the interfaces [WebStorage](#webstorage), [PermissionDef](#permissiondef) and [ScopeValue](#scopevalue).
 

@@ -10,10 +10,6 @@ import { hasPermission, hasAnyPermission, hasAccessToFeature, canPerformAnyActio
 
 /**
  * Display or hide component depending of user access.
- * 
- * @name restricted
- * @see {npm}
- * @version {latest}
  */
 module Restricted {
 

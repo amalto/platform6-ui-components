@@ -14,10 +14,6 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
  * 
  * PagingControls uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
- * 
- * @name paging-controls
- * @see {npm}
- * @version {latest}
  */
 module PagingControls {
     export interface Props extends React.Props<PagingControls> {

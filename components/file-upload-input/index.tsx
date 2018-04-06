@@ -144,10 +144,6 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 /**
  * FileInput uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
- * 
- * @name file-upload-input
- * @see {npm}
- * @version {latest}
  */
 namespace FileUploadInput {
     export interface Props extends BaseFieldProps {
