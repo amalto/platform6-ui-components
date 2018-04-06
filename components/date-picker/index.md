@@ -5,7 +5,6 @@ import DatePicker from '@amalto/date-picker'
 ```
 
 ```javascript
-const DatePicker = require('@amalto/date-picker').default;
 const moment = require('moment');
 
 const today = new Date().toISOString();

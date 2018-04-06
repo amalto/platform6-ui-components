@@ -16,7 +16,8 @@ initialState = {
         dayOfWeek: 'MON',
         year: '2017'
     }
-}
+};
+
 const handleChange = ( fieldValue ) => {
     setState({ value: fieldValue })
 };

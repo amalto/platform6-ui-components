@@ -5,7 +5,7 @@ import TypeaheadInput from '@amalto/typeahead-input'
 ```
 
 ```javascript
-const collection = ['first','second','third']
+const collection = ['first','second','third'];
 
 const handleInputChange = ( value ) => {
     // Handle input onchange event

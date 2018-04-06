@@ -5,7 +5,7 @@ import ButtonsBar from '@amalto/buttons-bar'
 ```
 
 ```js
-initialState = { searchValue: '' }
+initialState = { searchValue: '' };
 
 const btnGroups = [
     {
