@@ -1,6 +1,10 @@
-```javascript
-const DataLine = require('@amalto/data-line').default;
+### Usage
 
+```typescript
+import DataLine from '@amalto/data-line'
+```
+
+```javascript
 const cells = [
     {
         displayValue: 'first cell',

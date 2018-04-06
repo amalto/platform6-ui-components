@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import PdfViewer from '@amalto/pdf-viewer'
+```
+
 ```javascript
-const PdfViewer = require('@amalto/pdf-viewer').default;
 const { IntlProvider } = require('react-intl');
 const data = require('./pdf.ts');
 

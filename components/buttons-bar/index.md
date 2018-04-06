@@ -1,7 +1,11 @@
-```javascript
-const ButtonsBar = require('@amalto/buttons-bar').default;
+### Usage
 
-initialState = { searchValue: '' };
+```typescript
+import ButtonsBar from '@amalto/buttons-bar'
+```
+
+```js
+initialState = { searchValue: '' }
 
 const btnGroups = [
     {

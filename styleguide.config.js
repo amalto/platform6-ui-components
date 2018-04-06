@@ -80,6 +80,11 @@ module.exports = {
                 'display': 'inline-block',
                 'line-height': '1.2'
             }
+        },
+        Heading: {
+            heading: {
+                'color': '#89bc55'
+            }
         }
     },
 

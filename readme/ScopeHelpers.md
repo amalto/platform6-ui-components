@@ -9,6 +9,12 @@ Methods checking user's permissions.
 
 More informations on the interfaces [WebStorage](#webstorage), [PermissionDef](#permissiondef) and [ScopeValue](#scopevalue).
 
+### Usage
+
+```typescript
+import * as helpers from '@amalto/scope-helpers'
+```
+
 ```typescript
 /**
  * User got permission.

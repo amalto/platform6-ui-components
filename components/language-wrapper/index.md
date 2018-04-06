@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import LanguageWrapper from '@amalto/language-wrapper'
+```
+
 ```javascript
-const LanguageWrapper = require('@amalto/language-wrapper').default;
 const { addValToArrayNoDup, removeValFromArrayNoDup } = require('@amalto/helpers');
 
 initialState = { selectedLanguage: 'EN', supportedLanguages: ['EN']};

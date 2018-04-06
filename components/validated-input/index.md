@@ -1,6 +1,10 @@
-```javascript
-const ValidatedInput = require('@amalto/validated-input').default;
+### Usage
 
+```typescript
+import ValidatedInput from '@amalto/validated-input'
+```
+
+```javascript
 initialState = {
     'validateinput-exemple-1': {
         value: 'HelloWorld',

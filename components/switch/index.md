@@ -1,6 +1,10 @@
-```javascript
-const Switch = require('@amalto/switch').default;
+### Usage
 
+```typescript
+import Switch from '@amalto/switch'
+```
+
+```javascript
 initialState = { value: true };
 
 <Switch id='test-switch-id'

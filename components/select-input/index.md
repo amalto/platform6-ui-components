@@ -1,7 +1,12 @@
 See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for reduxForm options.
 
+### Usage
+
+```typescript
+import SelectInput from '@amalto/select-input'
+```
+
 ```javascript
-const SelectInput = require('@amalto/select-input').default;
 const { reduxForm } = require('redux-form');
 
 const ExampleSelectInput = reduxForm({

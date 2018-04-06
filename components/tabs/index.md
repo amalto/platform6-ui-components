@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import Tabs from '@amalto/tabs'
+```
+
 ```javascript
-const Tabs = require('@amalto/tabs').default;
 const Tab = require('@amalto/tab').default;
 
 initialState = {

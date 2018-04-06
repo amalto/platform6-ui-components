@@ -1,6 +1,10 @@
-```javascript
-const CodeEditor = require('@amalto/code-editor').default;
+### Usage
 
+```typescript
+import CodeEditor from '@amalto/code-editor'
+```
+
+```javascript
 <div>
     <CodeEditor value={`const value = 'test';`}
         height={200}

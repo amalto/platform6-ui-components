@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import TogglePanel from '@amalto/toggle-panel'
+```
+
 ```javascript
-const TogglePanel = require('@amalto/toggle-panel').default;
 const ActionButton = require('@amalto/action-button').default;
 
 initialState = { opened: true, showSpinner: false };

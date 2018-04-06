@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import CodeEditorInput from '@amalto/code-editor-input'
+```
+
 ```javascript
-const CodeEditorInput = require('@amalto/code-editor-input').default;
 const { reduxForm } = require('redux-form');
 
 const ExampleCodeEditorInput = reduxForm({

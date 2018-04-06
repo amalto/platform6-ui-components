@@ -1,7 +1,12 @@
 See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for reduxForm options.
 
+### Usage
+
+```typescript
+import DateInput from '@amalto/date-input'
+```
+
 ```javascript
-const DateInput = require('@amalto/date-input').default;
 const { reduxForm } = require('redux-form');
 
 const moment = require('moment');

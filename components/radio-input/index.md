@@ -1,7 +1,12 @@
 See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for reduxForm options.
 
+### Usage
+
+```typescript
+import RadioInput from '@amalto/radio-input'
+```
+
 ```javascript
-const RadioInput = require('@amalto/radio-input').default;
 const { reduxForm } = require('redux-form');
 
 const DecoratedRadioInput = reduxForm({

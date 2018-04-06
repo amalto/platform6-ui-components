@@ -6,3 +6,9 @@ const Pathline = require('../../typescript/custom/Pathline').default;
 ```
 
 Methods used in several Platform 6 UI components.
+
+### Usage
+
+```typescript
+import * as helpers from '@amalto/helpers'
+```

@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import PagingControls from '@amalto/paging-controls'
+```
+
 ```javascript
-const PagingControls = require('@amalto/paging-controls').default;
 const { IntlProvider } = require('react-intl');
 
 initialState = { currentPage: 1 };

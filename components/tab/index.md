@@ -1,6 +1,10 @@
-```javascript
-const Tab = require('@amalto/tab').default;
+### Usage
 
+```typescript
+import Tab from '@amalto/tab'
+```
+
+```javascript
 <Tab id='tab-example'
     iconClass='fas fa-file'
     title='Tab'

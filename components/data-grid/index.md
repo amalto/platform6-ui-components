@@ -1,7 +1,12 @@
 DataGrid customization is not working as well as sorting order. It need to be connected to the store in order to handle those functionalities.
 
+### Usage
+
+```typescript
+import DataGrid from '@amalto/data-grid'
+```
+
 ```javascript
-const DataGrid = require('@amalto/data-grid').default;
 const DataLine = require('@amalto/data-line').default;
 
 const {

@@ -1,6 +1,10 @@
-```javascript
-const CronInput = require('@amalto/cron-input').default;
+### Usage
 
+```typescript
+import CronInput from '@amalto/cron-input'
+```
+
+```javascript
 initialState = {
     value: {
         enabled: true,
@@ -13,7 +17,6 @@ initialState = {
         year: '2017'
     }
 }
-
 const handleChange = ( fieldValue ) => {
     setState({ value: fieldValue })
 };

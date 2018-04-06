@@ -1,8 +1,12 @@
 Click on the button to display the file importer modal.
 
-```javascript
-const FileImporter = require('@amalto/file-importer').default;
+### Usage
 
+```typescript
+import FileImporter from '@amalto/file-importer'
+```
+
+```javascript
 initialState = { open: false, fileData: {name: 'test_file', size: 100} };
 
 <div>

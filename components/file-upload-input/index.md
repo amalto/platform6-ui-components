@@ -1,7 +1,12 @@
 See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for reduxForm options.
 
+### Usage
+
+```typescript
+import FileUploadInput from '@amalto/file-upload-input'
+```
+
 ```javascript
-const FileUploadInput = require('@amalto/file-upload-input').default;
 const { reduxForm } = require('redux-form');
 const ExampleFileUploadInput = reduxForm({
     form: 'form-file-upload-input-example',

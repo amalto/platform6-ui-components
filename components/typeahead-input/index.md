@@ -1,5 +1,10 @@
+### Usage
+
+```typescript
+import TypeaheadInput from '@amalto/typeahead-input'
+```
+
 ```javascript
-const TypeaheadInput = require('@amalto/typeahead-input').default;
 const collection = ['first','second','third']
 
 const handleInputChange = ( value ) => {
