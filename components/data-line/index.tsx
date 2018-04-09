@@ -16,7 +16,7 @@ import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
 /**
  * DateLine shouldn't be used outside the DataGrid component else it won't be displayed correctly.
  */
-module DataLine {
+export module DataLine {
     export interface Props extends React.Props<DataLine> {
         /** Cells to be displayed. More details on [CellData](#celldata). */
         cells: CellData[];
