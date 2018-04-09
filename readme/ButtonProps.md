@@ -1,3 +1,5 @@
+<blockquote>ButtonProps</blockquote> is only used on [BtnGroupsProps](#btngroupsprops).
+
 ```typescript
 export interface ButtonProps {
     

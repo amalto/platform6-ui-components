@@ -1,0 +1,1 @@
+<blockquote>DisplayTemplate</blockquote> is handled automatically by the [DataGrid](#datagrid).

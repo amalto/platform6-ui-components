@@ -13,6 +13,7 @@ import * as Errors from './models/Errors'
 import NotificationModel from './models/NotificationModel'
 import { UserModel, getUserJson, UserSearch } from './models/UserModel'
 import { WebApi } from './models/WebApi'
+import DynamicComponent from './models/DynamicComponent'
 
 export {
     Id,
@@ -28,3 +29,4 @@ export { Errors }
 export { NotificationModel }
 export { UserModel, getUserJson, UserSearch }
 export { WebApi }
+export { DynamicComponent }

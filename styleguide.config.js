@@ -158,12 +158,16 @@ module.exports = {
                 content: 'readme/CustomFormData.md'
             },
             {
+                name: 'DataGridTemplates',
+                content: 'readme/DataGridTemplates.md'
+            },
+            {
                 name: 'DateInputEvent',
                 content: 'readme/DateInputEvent.md'
             },
             {
-                name: 'DynamicComponent',
-                content: 'readme/DynamicComponent.md'
+                name: 'DisplayTemplate',
+                content: 'readme/DisplayTemplate.md'
             },
             {
                 name: 'FileWrapper',
@@ -198,7 +202,7 @@ module.exports = {
                 content: 'readme/ScopeValue.md'
             },
             {
-                name: 'CodeEditorInput.Settings',
+                name: 'Settings',
                 content: 'readme/CodeEditorInputSettings.md'
             },
             {
@@ -306,20 +310,8 @@ module.exports = {
                         content: 'readme/typings/BatchOperationReport.md'
                     },
                     {
-                        name: 'CellData',
-                        content: 'readme/typings/CellData.md'
-                    },
-                    {
-                        name: 'ColumnHeader',
-                        content: 'readme/typings/ColumnHeader.md'
-                    },
-                    {
-                        name: 'DataGridTemplates',
-                        content: 'readme/typings/DataGridTemplates.md'
-                    },
-                    {
-                        name: 'DisplayTemplate',
-                        content: 'readme/typings/DisplayTemplate.md'
+                        name: 'DynamicComponent',
+                        content: 'readme/typings/DynamicComponent.md'
                     },
                     {
                         name: 'EndpointsUrl',

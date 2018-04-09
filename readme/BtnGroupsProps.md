@@ -1,4 +1,4 @@
-More details on [ButtonProps](#buttonProps).
+<blockquote>BtnGroupsProps</blockquote> is only used on [ButtonsBar](#buttonsbar). It uses the [ButtonProps](#buttonProps) interface.
 
 ```typescript
 export interface BtnGroupsProps {

@@ -1,4 +1,4 @@
-Simplified object containing the [CodeEditor](#codeeditor)'s ace session. It allow you to maintain the history of your current CodeEditor instance.
+Simplified object containing the [CodeEditor](#codeeditor)'s ace session. It allow you to maintain the history of your current [CodeEditor](#codeeditor) instance.
 
 For more informations about the AceAjax class, see https://ace.c9.io/#nav=api&api=selection.
 
