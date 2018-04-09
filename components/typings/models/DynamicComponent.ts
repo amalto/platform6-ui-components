@@ -4,6 +4,7 @@ import { RunningJob } from './JobControl'
 import NotificationModel from './NotificationModel'
 import { BatchOperationReport } from './BatchOperationReport'
 import { WebApi } from './WebApi'
+import { UserModel } from './UserModel'
 
 export interface DynamicComponent {
 
@@ -33,7 +34,26 @@ export interface DynamicComponent {
      * @param { any } contextData
      */
     storeContext?: ( contextData: any ) => void;
+
+    /**
+     * Save template into user configuration settings.
+     * @param { UserModel } payload
+     */
+    saveDataGridTemplate?: ( payload: UserModel ) => void;
     
+    /**
+     * Display column header configuration popup.
+     * @param { any } content
+     * @param { number } [positionX]
+     * @param { number } [positionY]
+     */
+    displayContextMenu: ( content: any, positionX?: number, positionY?: number ) => void;
+    
+    /**
+     * Hide context menu.
+     */
+    hideContextMenu: () => void;
+
     /**
      * Set dirty status of the component.
      * If true a comfirmation modal will shows up if you try to move to another menu.
