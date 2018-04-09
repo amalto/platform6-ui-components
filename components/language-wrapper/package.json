@@ -2,7 +2,7 @@
   "name": "@amalto/language-wrapper",
   "displayName": "LanguageWrapper",
   "description": "Used to select language.",
-  "version": "1.4.43",
+  "version": "1.4.44",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@amalto/help": "1.4.16",
-    "@amalto/helpers": "1.4.38",
+    "@amalto/helpers": "1.4.39",
     "@amalto/typeahead-input": "1.4.16",
     "@amalto/wordings": "1.4.25",
     "classnames": "2.2.5",
