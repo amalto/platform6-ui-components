@@ -22,7 +22,7 @@ namespace PdfViewer {
     export interface Props extends React.Props<PdfViewer> {
         /** Pdf data. More details on [PDFSource](#pdfsource). */
         pdfSource: PDFSource;
-        /** Class of the PdfViewer component. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** React CSS properties object to apply to PdfViewer. */
         style?: React.CSSProperties;

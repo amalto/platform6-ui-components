@@ -18,7 +18,7 @@ namespace DateInput {
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
-        /** CheckboxInput group CSS class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** All dates before this one will be disabled in the date picker. */
         minDate?: string;

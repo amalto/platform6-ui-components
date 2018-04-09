@@ -19,9 +19,9 @@ namespace ReadOnlyInput {
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
-        /** <blockquote>ReadOnlyInput</blockquote> CSS class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
-        /** CSS class applied to every input from the list. */
+        /** CSS class applied to input. */
         inputClass?: string;
         /**
          * Remove the bottom margin which is the default height of the error message

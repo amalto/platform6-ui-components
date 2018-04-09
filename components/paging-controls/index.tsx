@@ -17,7 +17,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
  */
 module PagingControls {
     export interface Props extends React.Props<PagingControls> {
-        /** Class for the <blockquote>PagingControls</blockquote> component. */
+        /** CSS class wrapping the component. */
         containerClass: string;
         /** Current page selected. */
         currentPage: number;

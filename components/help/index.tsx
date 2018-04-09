@@ -7,7 +7,7 @@ import * as classNames from 'classnames'
  */
 namespace Help {
     export interface Props extends React.Props<Help> {
-        /** CSS class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** CSS properties. */
         style?: React.CSSProperties;

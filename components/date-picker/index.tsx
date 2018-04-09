@@ -43,7 +43,7 @@ module DatePicker {
         label?: string | JSX.Element;
         /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
         help?: string;
-        /** CSS class names applied to the input <blockquote>div</blockquote>container. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
 
         /** Hide props from documentation */

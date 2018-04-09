@@ -19,7 +19,7 @@ namespace CheckboxInput {
         disabled?: boolean;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;
-        /** CheckboxInput group CSS class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;

@@ -1,4 +1,4 @@
-<blockquote>Settings</blockquote> is only used on [CodeEditor](#codeeditor) and [CodeEditorInput](#codeeditorinput) components.
+Settings is only used on [CodeEditor](#codeeditor) and [CodeEditorInput](#codeeditorinput) components.
 
 ```typescript
 interface Settings {

@@ -50,7 +50,7 @@ module ValidatedInput {
         autoComplete?: string;
         /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
         help?: string;
-        /** Input and label parent class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** Input class. */
         inputClass?: string;

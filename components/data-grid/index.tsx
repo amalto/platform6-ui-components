@@ -101,7 +101,7 @@ export namespace DataGrid {
 
         /** Column data array to be displayed. More details on [ColumnHeader](#columnheader). */
         columnHeaders: ColumnHeader[];
-        /** <blockquote>DataLine</blockquote> components array to be displayed. */
+        /** Array of <blockquote>DataLine</blockquote> components to be displayed. */
         dataLines: JSX.Element[];
         /** Set true to display a spinner if columnHeaders is being poll from request. */
         fetchingHeaders?: boolean;
@@ -129,7 +129,7 @@ export namespace DataGrid {
         /** If true, column header will be visible on top if user scroll down. */
         stickyHeader?: boolean;
 
-        /** <blockquote>DataGrid</blockquote> customization state. More details on [DataGridTemplates](#datagridtemplates). */
+        /** Cuztomization state. More details on [DataGridTemplates](#datagridtemplates). */
         templates?: DataGridTemplates;
         /** If templates has changed. */
         templatesChanged?: boolean;

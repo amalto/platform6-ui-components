@@ -32,7 +32,7 @@ module LanguageWrapper {
         handleAddedLanguage: ( language: string ) => void;
         /** Remove language event. */
         handleRemovedLanguage: ( language: string ) => void;
-        /** CSS Class of the div root component. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.

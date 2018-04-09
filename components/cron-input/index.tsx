@@ -40,7 +40,7 @@ module CronInput {
         label?: string | JSX.Element;
         /** Set input to invalid state and display error message. */
         invalid?: boolean;
-        /** Input's CSS class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** Check cron value on component mount. */
         forceValidation?: boolean;

@@ -1,1 +1,1 @@
-<blockquote>DataGridTemplates</blockquote> is handled automatically by the [DataGrid](#datagrid).
+DataGridTemplates is handled automatically by the [DataGrid](#datagrid).

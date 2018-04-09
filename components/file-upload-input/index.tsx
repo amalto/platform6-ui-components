@@ -30,7 +30,7 @@ namespace FileInput {
         help?: string;
         /** Either input is disable or not. */
         disabled?: boolean;
-        /** CheckboxInput group CSS class. */
+        /** CSS class wrapping the component. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
