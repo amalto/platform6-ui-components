@@ -40,7 +40,7 @@ import { DataGridActions } from './models/DataGridActions'
  * which are accessible at the root component of your service.
  */
 export namespace DataGrid {
- 
+
     export interface Props extends React.Props<DataGrid>, ReduxProps {
 
         /**
@@ -526,5 +526,5 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
     }
 
 }
-export { DataGridActions }
+export { DataGridActions, ColumnHeader }
 export default connect( DataGrid.select )( DataGrid )

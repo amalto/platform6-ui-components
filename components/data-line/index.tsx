@@ -125,4 +125,6 @@ class DataLine extends React.Component<DataLine.Props, any> {
 
 }
 
+export { CellData }
+
 export default DataLine
