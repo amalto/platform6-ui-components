@@ -93,7 +93,7 @@ module CodeEditor {
         moveToEndOfFile?: boolean;
         /** If true don't allow user to edit content. */
         readonly?: boolean;
-        /** Editor visual settings. */
+        /** Editor visual settings. More details on [Settings](#codeeditorinputsettings). */
         displaySettings?: Settings;
         /** Initial load time of editor. If the new loadTime is at a later date, the editor will be updated. */
         loadTime: number;

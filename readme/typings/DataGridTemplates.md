@@ -2,11 +2,17 @@ DataGridTemplates uses [DisplayTemplate](#displaytemplate) interface.
 
 ```typescript
 /**
- * Object used to store the DataGrid template for each service and for each user.
+ * Signature of each "DataGrid" the user has diplayed on each instances and services.
  */
 interface DataGridTemplates {
+
+    /** Instance name the template is saved to. */
     [instanceName: string]: {
+
+        /** Service name the template is saved to. */
         [serviceId: string]: {
+
+            /** Unique id of the DataGrid to save. */
             [dataGridId: string]: DisplayTemplate
         }
     }

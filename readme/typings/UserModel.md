@@ -1,4 +1,4 @@
-This interface uses the [DisplayTemplate](#displaytemplate) and [OrderDataset](#orderdataset) interfaces.
+UserModel uses [DisplayTemplate](#displaytemplate) and [OrderDataset](#orderdataset) interfaces.
 
 ```typescript
 module UserModel {

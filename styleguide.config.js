@@ -130,20 +130,8 @@ module.exports = {
                 content: 'readme/AceSession.md'
             },
             {
-                name: 'Action',
-                content: 'readme/Action.md'
-            },
-            {
                 name: 'AppEndpointsModel',
                 content: 'readme/AppEndpointsModel.md'
-            },
-            {
-                name: 'AppKey',
-                content: 'readme/AppKey.md'
-            },
-            {
-                name: 'BatchOperationReport',
-                content: 'readme/BatchOperationReport.md'
             },
             {
                 name: 'BtnGroupsProps',
@@ -174,20 +162,8 @@ module.exports = {
                 content: 'readme/DateInputEvent.md'
             },
             {
-                name: 'DataGridTemplates',
-                content: 'readme/DataGridTemplates.md'
-            },
-            {
-                name: 'DisplayTemplate',
-                content: 'readme/DisplayTemplate.md'
-            },
-            {
                 name: 'DynamicComponent',
                 content: 'readme/DynamicComponent.md'
-            },
-            {
-                name: 'EndpointsUrl',
-                content: 'readme/EndpointsUrl.md'
             },
             {
                 name: 'FileWrapper',
@@ -200,14 +176,6 @@ module.exports = {
             {
                 name: 'Marker',
                 content: 'readme/Marker.md'
-            },
-            {
-                name: 'NotificationModel',
-                content: 'readme/NotificationModel.md'
-            },
-            {
-                name: 'OrderDataset',
-                content: 'readme/OrderDataset.md'
             },
             {
                 name: 'PDFSource',
@@ -230,12 +198,8 @@ module.exports = {
                 content: 'readme/ScopeValue.md'
             },
             {
-                name: 'Service',
-                content: 'readme/Service.md'
-            },
-            {
-                name: 'Settings',
-                content: 'readme/Settings.md'
+                name: 'CodeEditorInput.Settings',
+                content: 'readme/CodeEditorInputSettings.md'
             },
             {
                 name: 'TreeNodeDataModel',
@@ -244,14 +208,6 @@ module.exports = {
             {
                 name: 'TreeNodeModel',
                 content: 'readme/TreeNodeModel.md'
-            },
-            {
-                name: 'UserModel',
-                content: 'readme/UserModel.md'
-            },
-            {
-                name: 'WebApi',
-                content: 'readme/WebApi.md'
             },
             {
                 name: 'WebStorage',
@@ -330,6 +286,64 @@ module.exports = {
                     {
                         name: 'Validation',
                         content: 'readme/helpers/Validation.md'
+                    }
+                ]
+            },
+            {
+                name: 'Typings',
+                content: 'readme/typings/Description.md',
+                sections: [
+                    {
+                        name: 'Action',
+                        content: 'readme/typings/Action.md'
+                    },
+                    {
+                        name: 'AppKey',
+                        content: 'readme/typings/AppKey.md'
+                    },
+                    {
+                        name: 'BatchOperationReport',
+                        content: 'readme/typings/BatchOperationReport.md'
+                    },
+                    {
+                        name: 'CellData',
+                        content: 'readme/typings/CellData.md'
+                    },
+                    {
+                        name: 'ColumnHeader',
+                        content: 'readme/typings/ColumnHeader.md'
+                    },
+                    {
+                        name: 'DataGridTemplates',
+                        content: 'readme/typings/DataGridTemplates.md'
+                    },
+                    {
+                        name: 'DisplayTemplate',
+                        content: 'readme/typings/DisplayTemplate.md'
+                    },
+                    {
+                        name: 'EndpointsUrl',
+                        content: 'readme/typings/EndpointsUrl.md'
+                    },
+                    {
+                        name: 'NotificationModel',
+                        content: 'readme/typings/NotificationModel.md'
+                    },
+                    {
+                        name: 'OrderDataset',
+                        content: 'readme/typings/OrderDataset.md'
+                    },
+                    {
+                        name: 'Service',
+                        content: 'readme/typings/Service.md'
+                    },
+                    {
+                        name: 'UserModel',
+                        content: 'readme/typings/UserModel.md'
+                    },
+                    {
+                        name: 'WebApi',
+                        content: 'readme/typings/WebApi.md'
                     }
                 ]
             }

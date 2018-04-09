@@ -46,7 +46,7 @@ namespace CodeEditorInput {
         saveEditorContent?: ( session: AceSession ) => void;
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
-        /** Editor visual settings. More details on [Settings](#settings). */
+        /** Editor visual settings. More details on [Settings](#codeeditorinputsettings). */
         displaySettings?: Settings;
         /** If updated, force update of component. */
         resetTick?: number;
