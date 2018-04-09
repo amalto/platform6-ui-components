@@ -53,7 +53,7 @@ export module DataLine {
     }
 }
 
-class DataLine extends React.Component<DataLine.Props, any> {
+export class DataLine extends React.Component<DataLine.Props, any> {
 
     constructor( props: DataLine.Props ) {
         super( props )
