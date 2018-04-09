@@ -20,7 +20,7 @@ namespace RadioInput {
             value: string;
             label?: string;
         }[];
-        /** Disable input. */
+        /** Whether or not the input is disabled. */
         disabled?: boolean;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;

@@ -13,7 +13,7 @@ module ActionButton {
         iconClass?: string
         /** Set the icon color class. Do not use if you don't need it, otherwise, <blockquote>btnClass</blockquote> will have trouble handling hover color. */
         colorClass?: string
-        /** Disabling button if true. */
+        /** Whether or not the input is disabled. */
         disabled?: boolean
         /** Text that will be displayed in the <blockquote>title</blockquote> HTML attribute of the button. */
         tooltipText?: string

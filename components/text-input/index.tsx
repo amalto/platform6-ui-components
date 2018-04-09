@@ -20,7 +20,7 @@ namespace TextInput {
         label?: string | JSX.Element;
         /** Input's placeholder. */
         placeholder?: string;
-        /** Disable input. */
+        /** Whether or not the input is disabled. */
         disabled?: boolean;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
         help?: string;

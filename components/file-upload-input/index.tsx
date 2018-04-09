@@ -28,7 +28,7 @@ namespace FileInput {
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering "?" icon. */
         help?: string;
-        /** Either input is disable or not. */
+        /** Whether or not the input is disabled. */
         disabled?: boolean;
         /** CSS class wrapping the component. */
         containerClass?: string;
