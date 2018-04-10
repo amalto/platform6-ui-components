@@ -1400,6 +1400,10 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'It seems like your items are not synchronized with the server anymore, you should save your work and update the service.',
         'fr-FR': 'Il semblerait que vos objects ne sont plus synchronisés avec le serveur, vous devriez sauvegarder votre travail et mettre à jour le service.'
     },
+    'itemNotFound': {
+        'en-US': 'Item not found.',
+        'fr-US': 'Aucun objet trouvé.'
+    },
 
     /** b2portal wordings. */
     'register.registration': {
@@ -2168,10 +2172,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'panelmanager.text.title': {
         'en-US': 'Frames manager',
         'fr-FR': 'Gestionnaire de frames'
-    },
-    'panelmanager.text.empty': {
-        'en-US': 'No items to be displayed',
-        'fr-US': 'Aucuns objets à afficher'
     },
     'panelmanager.title.builder': {
         'en-US': 'Layout builder',
