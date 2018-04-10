@@ -1,4 +1,4 @@
-import * as React from 'react'
+/** Import */
 
 // Models
 import {
@@ -13,32 +13,14 @@ import {
     ServiceItems
 } from './models/ServiceHelpers'
 
-import { DataGridPartialProps, TabPartialProps, ButtonsBarPartialProps } from './models/PartialProps'
-
 // constants
 import {
     ID_SEPARATOR,
     TAB_TYPE,
-    CALCULATED_CONTENT_MODE
+    CALCULATED_CONTENT_MODE,
+    ICON_TYPE,
+    BUTTON_TYPE
 } from './constants'
-
-// Utils
-import {
-    stringifyId,
-    prettifyId
-} from './utils'
-
-import {
-    getSelectButton,
-    getAddButton,
-    getImportExportButtons,
-    getDeleteButton
-} from './typescript/ButtonsBar'
-
-import {
-    getColumnHeaders,
-    getDataLines
-} from './typescript/DataGrid'
 
 // Helpers
 import {
@@ -50,193 +32,174 @@ import {
     MULTILANGUAGE_WORDINGS
 } from '@amalto/wordings'
 
+/**
+ * Get the identifier of an item
+ *
+ * @param {ServiceItemFacade | ServiceItem} item
+ * @returns {Id}
+ */
+export function getId( item: ServiceItemFacade | ServiceItem ): Id {
+    return { name: item.name, appKey: item.appKey }
+}
 
-export default class ServiceHelpers {
-
-    // Mandatory
-    private _serviceAppKey: string
-    private _serviceName: string
-
-    private _webStorage: any;
-
-    private _locale: string
-    private _wordings: CompiledWordings
-
-    private _readPermission: string
-    private _editPermission: string
-    private _deletePermission: string
-
-    // Optional
-    private _selectHandler: ( indexes: number[] ) => void
-    private _importHandler: ( file: File ) => void
-    private _exportHandler: () => void
-    private _deleteHandler: () => void
-
-    private _viewHandler: ( item: ServiceItemFacade ) => void
-    private _openEditOrAddFormHandler: ( item?: ServiceItemFacade ) => void
-    private _openRenameFormHandler: ( item: ServiceItemFacade, lineIdx: number ) => void
-    private _cancelRenameHandler: ( item: ServiceItemFacade, lineIdx: number ) => void
-    private _openDuplicateFormHandler: ( item: ServiceItemFacade, lineIdx: number ) => void
-
-    constructor(
-        serviceAppKey: string,
-        serviceName: string,
-
-        serviceItemsType: string,
-
-        webStorage: any,
-
-        customWordings: Wordings,
-
-        readPermission: string,
-        editPermission: string,
-        deletePermission: string,
-
-        selectHandler?: ( indexes: number[] ) => void,
-        importHandler?: ( file: File ) => void,
-        exportHandler?: ( item?: ServiceItemFacade ) => void,
-        deleteHandler?: ( item?: ServiceItemFacade ) => void,
-
-        viewHandler?: ( item: ServiceItemFacade ) => void,
-        openEditOrAddFormHandler?: ( item?: ServiceItemFacade ) => void,
-        openRenameFormHandler?: ( item: ServiceItemFacade, lineIdx: number ) => void,
-        cancelRenameHandler?: ( item: ServiceItemFacade, lineIdx: number ) => void,
-        openDuplicateFormHandler?: ( item: ServiceItemFacade, lineIdx: number ) => void
-    ) {
-
-        this._serviceAppKey = serviceAppKey
-        this._serviceName = serviceName
-
-        this._webStorage = webStorage
-
-        this._locale = webStorage.locale
-        this._wordings = compileWordings( Object.assign( {}, MULTILANGUAGE_WORDINGS, customWordings ), this._locale )
-
-        this._readPermission = readPermission || `${ this._serviceName }=read`
-        this._editPermission = editPermission || `${ this._serviceName }=edit`
-        this._deletePermission = deletePermission || `${ this._serviceName }=edit`
-
-        this._selectHandler = selectHandler || null
-        this._importHandler = importHandler || null
-        this._exportHandler = exportHandler || null
-        this._deleteHandler = deleteHandler || null
-
-        this._viewHandler = viewHandler || null
-        this._openEditOrAddFormHandler = openEditOrAddFormHandler || null
-        this._openRenameFormHandler = openRenameFormHandler || null
-        this._cancelRenameHandler = cancelRenameHandler || null
-        this._openDuplicateFormHandler = openDuplicateFormHandler || null
-
+/**
+ * Return item index from ids array
+ * @param { ItemFacade } item 
+ * @param { Ids } ids 
+ */
+export function getItemIdx( item: ItemFacade, ids: Ids ): number {
+    for ( let i = 0; i < ids.length; i++ ) {
+        if ( ids[i].name === item.name && ids[i].appKey === item.appKey ) return i
     }
+    return -1
+}
 
-    /**
-     * Returns a specific subset of Tab props for a "View Tab".
-     * @param { Id } itemId
-     */
-    public getBaseViewTabConf = ( itemId: Id ) => {
-        return {
-            id: TAB_TYPE.VIEW + stringifyId( itemId ),
-            title: this._wordings['tabView'].replace( '{name}', prettifyId( itemId ) ),
-            closable: true
-        }
-    }
+/**
+ * Return items indexes from a ids array.
+ * @param { ItemFacades } items 
+ * @param { Ids } ids 
+ */
+export function getItemIndexes( items: ItemFacades, ids: Ids ): number[] {
+    const indexes: number[] = []
 
-    /**
-     * Returns a specific subset of Tab props for an "Add Tab".
-     * @param { Id } itemId
-     */
-    public getBaseAddTabConf = ( itemId: Id ) => {
-        return {
-            id: TAB_TYPE.ADD + stringifyId( itemId ),
-            title: this._wordings['tabAdd'].replace( '{name}', prettifyId( itemId ) ),
-            closable: true
-        }
-    }
+    items.forEach( item => {
+        let idx: number = getItemIdx( item, ids )
 
-    /**
-     * Returns a specific subset of Tab props for an "Edit Tab".
-     * @param { Id } itemId
-     */
-    public getBaseEditTabConf = ( itemId: Id ) => {
-        return {
-            id: TAB_TYPE.EDIT + stringifyId( itemId ),
-            title: this._wordings['tabEdit'].replace( '{name}', prettifyId( itemId ) ),
-            closable: true
-        }
-    }
+        if ( idx >= 0 ) indexes.push( idx )
+    } )
 
-    /**
-     * Returns a specific subset of Tab props for the Main Tab (items list).
-     * @param { ServiceItemFacades } items
-     */
-    public getBaseMainTabConf = ( items: ServiceItemFacades ) => {
-        return {
-            id: TAB_TYPE.MAIN_LIST + this._serviceName,
-            title: this._wordings['tabList'].replace( '{total}', items ? items.length.toString() : '0' ),
-            closable: false
-        }
-    }
+    return indexes
+}
 
-    /**
-     * Return default buttons bar template.
-     
-     * @param { number[] } selectedItemsIdx
-     * @param { ServiceItemFacades } itemsList 
-     * @param { boolean } hasUnsavedChanges
-     * @param { string } [importFormId]
-     */
-    public getBaseButtonsBarConf = ( selectedItemsIdx: number[], itemsList: ServiceItemFacades, hasUnsavedChanges: boolean, importFormId?: string ): ButtonsBarPartialProps => {
-        return {
-            locale: this._locale,
-            btnGroups: [
-                this._selectHandler ? getSelectButton( this._wordings, this._webStorage, selectedItemsIdx, itemsList, this._selectHandler, hasUnsavedChanges, this._editPermission, this._deletePermission ) : null,
-                this._openEditOrAddFormHandler ? getAddButton( this._wordings, this._webStorage, this._openEditOrAddFormHandler, this._editPermission ) : null,
-                getImportExportButtons( this._wordings, this._webStorage, selectedItemsIdx, this._importHandler, this._exportHandler, hasUnsavedChanges, this._editPermission, importFormId ),
-                this._deleteHandler ? getDeleteButton( this._wordings, this._webStorage, selectedItemsIdx, itemsList, this._deleteHandler, this._deletePermission ) : null,
-            ].filter( btn => !!btn )
-        }
-    }
+/**
+ * Convert a list of facades into a list of identifiers
+ *
+ * @param {ServiceItemFacades} facades
+ * @returns {Id[]}
+ */
+export function toIds( facades: ServiceItemFacades ): Id[] {
+    return facades.map( f => getId( f ) )
+}
 
-    public getBaseMainDataGridConf = ( itemsList: ServiceItemFacades, hasUnsavedChanges?: boolean ): DataGridPartialProps => {
+/**
+ * Check that an identifier is not already taken
+ *
+ * @param {Ids} ids
+ * @param {Id} id
+ * @returns {boolean}
+ */
+export function isIdUnique( ids: Ids, id: Id ) {
+    const { name } = id
 
-        return {
-            dataGridId: this._serviceName + 'List',
-            noItemsMsg: this._wordings['no.data.found'],
-            columnHeaders: getColumnHeaders( this._wordings ),
-            dataLines: getDataLines(
-                itemsList,
-                this._wordings,
-                this._locale,
-                this._webStorage,
-                this._readPermission,
-                this._editPermission,
-                this._deletePermission,
-                this._viewHandler,
-                this._openEditOrAddFormHandler,
-                this._openRenameFormHandler,
-                this._cancelRenameHandler,
-                this._openDuplicateFormHandler,
-                this._exportHandler,
-                this._deleteHandler
-            ),
-            selectHandler: hasUnsavedChanges ? null : this._selectHandler
-        }
+    return ids.every( i => i.name !== name || ( i.name === name && i.appKey !== id.appKey ) )
+}
 
-    }
+/**
+ * Prettify an identifier
+ *
+ * @param {Id} id
+ * @returns {string}
+ */
+export function prettifyId( id: Id ): string {
+    const { appKey } = id
 
-    public getSortedItems = ( column: string, direction: 'ASC' | 'DESC', items: ServiceItemFacades ): ServiceItemFacades => {
+    return `${ appKey && `[${ appKey }]${ ID_SEPARATOR }` }${ id.name }`
+}
 
-        return items.sort( ( a, b ) => {
-            if ( column === 'lastModification' ) {
-                const aDate = a.lastModifiedDate || 0
-                const bDate = b.lastModifiedDate || 0
+/**
+ * Stringify an identifier
+ *
+ * @param {Id} id
+ * @returns {string}
+ */
+export function stringifyId( id: Id ): string {
+    const { appKey } = id
 
-                return aDate - bDate
-            }
+    return `${ appKey && `${ appKey }${ ID_SEPARATOR }` }${ id.name }`
+}
 
-            return a[column].toLowerCase().localeCompare( b[column].toLowerCase() )
-        } )
+/**
+ * Increment an item's name ( Handle duplicate names, one version on @amalto/helpers )
+ *
+ * @param {ServiceItemFacades} facades
+ * @param {Id} id
+ * @returns {string}
+ */
+export function incrementName( facades: ServiceItemFacades, id: Id ): string {
+    const { name } = id
+    let index = 1
 
-    }
+    const facadesWithSameAppKey = facades.filter( f => f.appKey === id.appKey )
 
+    if ( facadesWithSameAppKey.length === 0 ) return name
+
+    while ( !facadesWithSameAppKey.every( f => f.name !== `${ name }_${ index }` ) ) index++
+
+    return `${ name }_${ index }`
+}
+
+/**
+ * Validate the new name of an item
+ *
+ * @param {string} value
+ * @param {Id} id
+ * @param {ServiceItemFacades} items
+ * @returns {string}
+ */
+export function validateName( value: string, id: Id, items: ServiceItemFacades, locale: string ): string {
+    const wordings: { [id: string]: string } = compileWordings( MULTILANGUAGE_WORDINGS, locale )
+
+    if ( !value || !value.trim() ) return wordings.fieldRequired
+
+    if ( value !== id.name && !isIdUnique( items, { name: value, appKey: id.appKey } ) )
+        return wordings.nameAlreadyExist
+
+    if ( value.includes( '.' ) ) return wordings.nameNoDot
+}
+
+/**
+ * Found a specific item in a list
+ *
+ * @param {ServiceItemFacades} facades
+ * @param {Id} id
+ * @returns {ServiceItemFacade | undefined}
+ */
+export function getItem( items: ServiceItemFacades, id: Id ): ServiceItemFacade | undefined {
+    const { name } = id
+
+    return items.find( i => i.name === name && i.appKey === id.appKey )
+}
+
+/**
+ * Display a date in the specified language
+ *
+ * @param {number} timestamp
+ * @param {string} locale
+ * @returns {string}
+ */
+export function formatDate( timestamp: number, locale: string ): string {
+    const date = timestamp ? new Date( timestamp ) : new Date()
+
+    return date.toLocaleString( locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' } )
+}
+
+/** Export */
+export {
+    Id,
+    Ids,
+    Description,
+    Wordings,
+    CompiledWordings,
+    ServiceItemFacade,
+    ServiceItemFacades,
+    ServiceItem,
+    ServiceItems
+}
+
+export {
+    ID_SEPARATOR,
+    TAB_TYPE,
+    CALCULATED_CONTENT_MODE,
+    ICON_TYPE,
+    BUTTON_TYPE
 }
