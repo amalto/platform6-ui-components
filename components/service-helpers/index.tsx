@@ -47,7 +47,7 @@ export function getId( item: ServiceItemFacade | ServiceItem ): Id {
  * @param { ItemFacade } item 
  * @param { Ids } ids 
  */
-export function getItemIdx( item: ItemFacade, ids: Ids ): number {
+export function getItemIdx( item: ServiceItemFacade, ids: Ids ): number {
     for ( let i = 0; i < ids.length; i++ ) {
         if ( ids[i].name === item.name && ids[i].appKey === item.appKey ) return i
     }
@@ -59,7 +59,7 @@ export function getItemIdx( item: ItemFacade, ids: Ids ): number {
  * @param { ItemFacades } items 
  * @param { Ids } ids 
  */
-export function getItemIndexes( items: ItemFacades, ids: Ids ): number[] {
+export function getItemIndexes( items: ServiceItemFacades, ids: Ids ): number[] {
     const indexes: number[] = []
 
     items.forEach( item => {
