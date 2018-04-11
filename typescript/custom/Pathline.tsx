@@ -2,7 +2,7 @@
 import * as React from 'react'
 
 // Components
-import Pathline from 'react-styleguidist/lib/rsg-components/Pathline/PathLineRenderer'
+import Pathline from 'react-styleguidist/lib/rsg-components/Pathline/PathlineRenderer'
 import Link from 'react-styleguidist/lib/rsg-components/Link'
 
 module CustomPathline {
