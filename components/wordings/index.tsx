@@ -10,101 +10,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
     },
-    'defaultsettingsform.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
-    'datagrid.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
-    'button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Enregistrer'
-    },
-    'frameform.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
-    'framemanager.notification.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
-    'framesubmitform.btn.submit': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
-    'editownhome.button.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
-    'messageslist.save': {
-        'en-US': 'Save',
-        'fr-FR': 'Sauvegarder'
-    },
 
     // Cancel
     'cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'register.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'permissionsetform.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'userform.button.close': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'crossreftableform.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'defaultsettingsform.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'fileimporter.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'fileinput.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'tree.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'customformdialog.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'formdialog.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'frameform.button.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'framesubmitform.btn.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'jobcontrolpanel.job.cancel': {
-        'en-US': 'Cancel',
-        'fr-FR': 'Annuler'
-    },
-    'profile.button.cancel': {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
@@ -114,41 +22,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Email',
         'fr-FR': 'Email'
     },
-    'register.email.label': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
-    'userform.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
-    'users.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
-    'forgotpassword.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
-    'login.email': {
-        'en-US': 'Email',
-        'fr-FR': 'Email'
-    },
 
     // Submit
     'submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
-    'register.button.submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
-    'fileimporter.button.submit': {
-        'en-US': 'Submit',
-        'fr-FR': 'Valider'
-    },
-    'formdialog.submit': {
         'en-US': 'Submit',
         'fr-FR': 'Valider'
     },
@@ -158,85 +34,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Confirm',
         'fr-FR': 'Confirmer'
     },
-    'permissionsets.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'users.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'admin.user.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'admin.permissionset.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'confirm.title': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'datagrid.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'crossrefactions.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'workflow.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'homedefaultsettings.modal.title.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'jobcontrolpanel.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'profile.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'organisations.modal.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
-    'services.confirm': {
-        'en-US': 'Confirm',
-        'fr-FR': 'Confirmer'
-    },
 
     // Delete
     'delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'permissionsets.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'users.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'admin.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'crossreftableform.tooltip.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'tree.button.delete': {
-        'en-US': 'Delete',
-        'fr-FR': 'Supprimer'
-    },
-    'messageslist.button.delete': {
         'en-US': 'Delete',
         'fr-FR': 'Supprimer'
     },
@@ -246,45 +46,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Enabled',
         'fr-FR': 'Actif'
     },
-    'permissionset.data.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
-    'permissionsetform.data.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
-    'user.data.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
-    'userform.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
-    'croninput.enabled': {
-        'en-US': 'Enabled',
-        'fr-FR': 'Actif'
-    },
 
     // Permissions
     'permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
-    },
-    'permissionset.data.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
-    },
-    'permissionsetform.data.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
-    },
-    'user.data.permissionset.permissions': {
-        'en-US': 'Permissions',
-        'fr-FR': 'Permissions'
-    },
-    'users.permissions': {
         'en-US': 'Permissions',
         'fr-FR': 'Permissions'
     },
@@ -294,77 +58,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Description',
         'fr-FR': 'Description'
     },
-    'permissionset.data.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'permissionsetform.data.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'framepreview.title.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'tree.node.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'frameform.grid.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'framemanager.grid.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'framesubmitform.label.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
-    'jobcontrolpanel.job.description': {
-        'en-US': 'Description',
-        'fr-FR': 'Description'
-    },
 
     // Name
     'name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'permissionsetform.data.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'crossreftableform.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'counter.text.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'defaultsettingsform.label.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom',
-    },
-    'fileuploadinput.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'tree.node.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'frameform.grid.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'framemanager.grid.name': {
-        'en-US': 'Name',
-        'fr-FR': 'Nom'
-    },
-    'framesubmitform.label.name': {
         'en-US': 'Name',
         'fr-FR': 'Nom'
     },
@@ -374,29 +70,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'No data found',
         'fr-FR': 'Aucune donnée'
     },
-    'permissionsets.no.data': {
-        'en-US': 'No data found',
-        'fr-FR': 'Aucune donnée'
-    },
-    'users.no.data': {
-        'en-US': 'No data found',
-        'fr-FR': 'Aucune donnée'
-    },
 
     // First name
     'firstname': {
-        'en-US': 'First name',
-        'fr-FR': 'Prénom'
-    },
-    'user.data.firstname': {
-        'en-US': 'First name',
-        'fr-FR': 'Prénom'
-    },
-    'register.firstName.label': {
-        'en-US': 'First name',
-        'fr-FR': 'Prénom'
-    },
-    'profile.firstname': {
         'en-US': 'First name',
         'fr-FR': 'Prénom'
     },
@@ -406,37 +82,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Loading error',
         'fr-FR': 'Erreur de chargement'
     },
-    'usercreate.error': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
-    'useredit.error': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
-    'dynamiccomponent.error.loading': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
-    'customformdialog.error.loading': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
-    'workflow.loading.error': {
-        'en-US': 'Loading error',
-        'fr-FR': 'Erreur de chargement'
-    },
 
     // Details
     'details': {
-        'en-US': 'Details',
-        'fr-FR': 'Détails'
-    },
-    'workflow.details': {
-        'en-US': 'Details',
-        'fr-FR': 'Détails'
-    },
-    'jobcontrolpanel.job.details': {
         'en-US': 'Details',
         'fr-FR': 'Détails'
     },
@@ -446,61 +94,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Last name',
         'fr-FR': 'Nom'
     },
-    'user.data.lastname': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
-    },
-    'users.last.name': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
-    },
-    'register.lastName.label': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
-    },
-    'profile.lastname': {
-        'en-US': 'Last name',
-        'fr-FR': 'Nom'
-    },
 
     // Error
     'error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'framepreview.notification.error.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'messagevalue.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'errorcontainer.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'notification.title.failure': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'frameform.notification.submit.failed.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'homedefaultsettings.notification.error.title': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'notification.title.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'mainactions.notification.title.error': {
-        'en-US': 'Error',
-        'fr-FR': 'Erreur'
-    },
-    'messageslist.error': {
         'en-US': 'Error',
         'fr-FR': 'Erreur'
     },
@@ -510,33 +106,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Register',
         'fr-FR': 'S\'enregistrer'
     },
-    'register.button': {
-        'en-US': 'Register',
-        'fr-FR': 'S\'enregistrer'
-    },
-    'login.register': {
-        'en-US': 'Register',
-        'fr-FR': 'S\'enregistrer'
-    },
 
     // Instance
     'instance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
-    'user.data.appinstance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
-    'users.appinstance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
-    'admin.appinstance': {
-        'en-US': 'Instance',
-        'fr-FR': 'Instance'
-    },
-    'appinstanceinput.menu.title': {
         'en-US': 'Instance',
         'fr-FR': 'Instance'
     },
@@ -546,37 +118,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Messages',
         'fr-FR': 'Messages'
     },
-    'menu.title.messages': {
-        'en-US': 'Messages',
-        'fr-FR': 'Messages'
-    },
-    'menu.entry.messages': {
-        'en-US': 'Messages',
-        'fr-FR': 'Messages'
-    },
-    'messageslist.panel.title.messages': {
-        'en-US': 'Messages',
-        'fr-FR': 'Messages'
-    },
 
     // Title
     'title': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
-    'user.data.title': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
-    'register.title.label': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
-    'editownhome.headercolumn.title': {
-        'en-US': 'Title',
-        'fr-FR': 'Titre'
-    },
-    'homedefaultsettings.headercolumn.title': {
         'en-US': 'Title',
         'fr-FR': 'Titre'
     },
@@ -586,25 +130,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'User',
         'fr-FR': 'Utilisateur'
     },
-    'users.user': {
-        'en-US': 'User',
-        'fr-FR': 'Utilisateur'
-    },
-    'admin.user': {
-        'en-US': 'User',
-        'fr-FR': 'Utilisateur'
-    },
 
     // Mr
     'mr': {
-        'en-US': 'Mr.',
-        'fr-FR': 'M.'
-    },
-    'user.data.salutation.mr': {
-        'en-US': 'Mr.',
-        'fr-FR': 'M.'
-    },
-    'register.salutation.mr': {
         'en-US': 'Mr.',
         'fr-FR': 'M.'
     },
@@ -614,25 +142,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Mrs.',
         'fr-FR': 'Mme'
     },
-    'user.data.salutation.mrs': {
-        'en-US': 'Mrs.',
-        'fr-FR': 'Mme'
-    },
-    'register.salutation.mrs': {
-        'en-US': 'Mrs.',
-        'fr-FR': 'Mme'
-    },
 
     // Prof
     'prof': {
-        'en-US': 'Prof.',
-        'fr-FR': 'Pr'
-    },
-    'user.data.salutation.pr': {
-        'en-US': 'Prof.',
-        'fr-FR': 'Pr'
-    },
-    'register.salutation.pr': {
         'en-US': 'Prof.',
         'fr-FR': 'Pr'
     },
@@ -642,25 +154,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Dr.',
         'fr-FR': 'Dr'
     },
-    'user.data.salutation.dr': {
-        'en-US': 'Dr.',
-        'fr-FR': 'Dr'
-    },
-    'register.salutation.dr': {
-        'en-US': 'Dr.',
-        'fr-FR': 'Dr'
-    },
 
     // Salutation
     'salutation': {
-        'en-US': 'Salutation',
-        'fr-FR': 'Salutation'
-    },
-    'user.data.salutation': {
-        'en-US': 'Salutation',
-        'fr-FR': 'Salutation'
-    },
-    'register.salutation.label': {
         'en-US': 'Salutation',
         'fr-FR': 'Salutation'
     },
@@ -670,29 +166,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Company name',
         'fr-FR': 'Nom de la société'
     },
-    'user.data.companyName': {
-        'en-US': 'Company name',
-        'fr-FR': 'Nom de la société'
-    },
-    'register.companyName.label': {
-        'en-US': 'Company name',
-        'fr-FR': 'Nom de la société'
-    },
 
     // Address
     'address': {
-        'en-US': 'Address',
-        'fr-FR': 'Adresse'
-    },
-    'user.data.street': {
-        'en-US': 'Address',
-        'fr-FR': 'Adresse'
-    },
-    'register.billingAddress.label': {
-        'en-US': 'Address',
-        'fr-FR': 'Adresse'
-    },
-    'register.street.label': {
         'en-US': 'Address',
         'fr-FR': 'Adresse'
     },
@@ -702,25 +178,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'City',
         'fr-FR': 'Ville'
     },
-    'user.data.city': {
-        'en-US': 'City',
-        'fr-FR': 'Ville'
-    },
-    'register.city.label': {
-        'en-US': 'City',
-        'fr-FR': 'Ville'
-    },
 
     // State
     'state': {
-        'en-US': 'State',
-        'fr-FR': 'État'
-    },
-    'user.data.state': {
-        'en-US': 'State',
-        'fr-FR': 'État'
-    },
-    'register.state.label': {
         'en-US': 'State',
         'fr-FR': 'État'
     },
@@ -730,25 +190,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Country',
         'fr-FR': 'Pays'
     },
-    'user.data.country': {
-        'en-US': 'Country',
-        'fr-FR': 'Pays'
-    },
-    'register.country.label': {
-        'en-US': 'Country',
-        'fr-FR': 'Pays'
-    },
 
     // Zip
     'zip': {
-        'en-US': 'Zip',
-        'fr-FR': 'Code postal'
-    },
-    'user.data.zip': {
-        'en-US': 'Zip',
-        'fr-FR': 'Code postal'
-    },
-    'register.zip.label': {
         'en-US': 'Zip',
         'fr-FR': 'Code postal'
     },
@@ -758,29 +202,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Phone',
         'fr-FR': 'Téléphone'
     },
-    'user.data.phone': {
-        'en-US': 'Phone',
-        'fr-FR': 'Téléphone'
-    },
-    'register.phone.label': {
-        'en-US': 'Phone',
-        'fr-FR': 'Téléphone'
-    },
 
     // Mobile
-    'mobule': {
-        'en-US': 'Mobile',
-        'fr-FR': 'Mobile'
-    },
-    'user.data.mobile': {
-        'en-US': 'Mobile',
-        'fr-FR': 'Mobile'
-    },
-    'displaymodebtn.panel.display.mobile': {
-        'en-US': 'Mobile',
-        'fr-FR': 'Mobile'
-    },
-    'register.mobile.label': {
+    'mobile': {
         'en-US': 'Mobile',
         'fr-FR': 'Mobile'
     },
@@ -790,21 +214,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Website',
         'fr-FR': 'Site web'
     },
-    'user.data.website': {
-        'en-US': 'Website',
-        'fr-FR': 'Site web'
-    },
-    'register.webSite.label': {
-        'en-US': 'Website',
-        'fr-FR': 'Site web'
-    },
 
     // Start
     'start': {
-        'en-US': 'Start',
-        'fr-FR': 'Démarrer'
-    },
-    'servicebuttonsbar.start': {
         'en-US': 'Start',
         'fr-FR': 'Démarrer'
     },
@@ -814,17 +226,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Stop',
         'fr-FR': 'Arrêter'
     },
-    'servicebuttonsbar.stop': {
-        'en-US': 'Stop',
-        'fr-FR': 'Arrêter'
-    },
 
     // Reset
     'reset': {
-        'en-US': 'Reset',
-        'fr-FR': 'Réinitialiser'
-    },
-    'messagesearchform.button.reset': {
         'en-US': 'Reset',
         'fr-FR': 'Réinitialiser'
     },
@@ -834,21 +238,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Edit',
         'fr-FR': 'Éditer'
     },
-    'tree.button.edit': {
-        'en-US': 'Edit',
-        'fr-FR': 'Éditer'
-    },
-    'messageslist.button.edit': {
-        'en-US': 'Edit',
-        'fr-FR': 'Éditer'
-    },
 
     // Create
     'create': {
-        'en-US': 'Create',
-        'fr-FR': 'Créer'
-    },
-    'permissionsetform.button.create': {
         'en-US': 'Create',
         'fr-FR': 'Créer'
     },
@@ -858,71 +250,15 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Actions',
         'fr-FR': 'Actions'
     },
-    'messageheaderline.actions.header': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
-    'crossref.headers.actions': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
-    'framemanager.grid.action': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
-    'jobcontrolpanel.job.actions': {
-        'en-US': 'Actions',
-        'fr-FR': 'Actions'
-    },
 
     // Info
     'info': {
         'en-US': 'Info',
         'fr-FR': 'Info'
     },
-    'crossref.notification.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
-    'frameform.notification.submit.success.title': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
-    'framemanager.notification.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
-    'notification.title.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
-    'mainactions.notification.title.info': {
-        'en-US': 'Info',
-        'fr-FR': 'Info'
-    },
 
     // Search placeholder
     'searchPlaceholder': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
-    },
-    'permissionsets.search.placeholder': {
-        'en-US': 'Search...',
-        'fr-FR': 'Recherche...'
-    },
-    'userform.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
-    },
-    'buttonsbar.input.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
-    },
-    'crossref.input.search': {
-        'en-US': 'Search...',
-        'fr-FR': 'Rechercher...'
-    },
-    'framemanager.placeholder.search': {
         'en-US': 'Search...',
         'fr-FR': 'Rechercher...'
     },
@@ -952,29 +288,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Required field',
         'fr-FR': 'Champ obligatoire'
     },
-    'inputvalidation.required': {
-        'en-US': 'Required field',
-        'fr-FR': 'Champ obligatoire'
-    },
 
     // Show details
     'showDetails': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'permissionset.tooltip.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'user.tooltip.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'message.tooltip.expand': {
-        'en-US': 'Show details',
-        'fr-FR': 'Voir les détails'
-    },
-    'framemanager.button.expand': {
         'en-US': 'Show details',
         'fr-FR': 'Voir les détails'
     },
@@ -984,37 +300,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
     },
-    'permissionset.tooltip.close': {
-        'en-US': 'Close details',
-        'fr-FR': 'Fermer les détails'
-    },
-    'user.tooltip.close': {
-        'en-US': 'Close details',
-        'fr-FR': 'Fermer les détails'
-    },
-    'message.tooltip.close': {
-        'en-US': 'Close details',
-        'fr-FR': 'Fermer les détails'
-    },
 
     // Search
     'search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
-    },
-    'users.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
-    },
-    'permissionssearchform.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
-    },
-    'messagesearchform.button.search': {
-        'en-US': 'Search',
-        'fr-FR': 'Rechercher'
-    },
-    'messageslist.panel.title.search': {
         'en-US': 'Search',
         'fr-FR': 'Rechercher'
     },
@@ -1024,21 +312,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Administration',
         'fr-FR': 'Administration'
     },
-    'admin.title': {
-        'en-US': 'Administration',
-        'fr-FR': 'Administration'
-    },
-    'menu.entry.administration': {
-        'en-US': 'Administration',
-        'fr-FR': 'Administration'
-    },
 
     // Item created
     'itemCreated': {
-        'en-US': 'Item created!',
-        'fr-FR': 'Élément créé !'
-    },
-    'notification.item.created': {
         'en-US': 'Item created!',
         'fr-FR': 'Élément créé !'
     },
@@ -1048,17 +324,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Item updated!',
         'fr-FR': 'Élément mis à jour !'
     },
-    'notification.item.updated': {
-        'en-US': 'Item updated!',
-        'fr-FR': 'Élément mis à jour !'
-    },
 
     // Item deleted
     'itemDeleted': {
-        'en-US': 'Item deleted!',
-        'fr-FR': 'Élément supprimé !'
-    },
-    'notification.item.deleted': {
         'en-US': 'Item deleted!',
         'fr-FR': 'Élément supprimé !'
     },
@@ -1068,29 +336,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Warning',
         'fr-FR': 'Attention'
     },
-    'notification.title.warning': {
-        'en-US': 'Warning',
-        'fr-FR': 'Attention'
-    },
-    'mainactions.notification.title.warning': {
-        'en-US': 'Warning',
-        'fr-FR': 'Attention'
-    },
 
     // Export
     'exportJSON': {
-        'en-US': 'Export as JSON',
-        'fr-FR': 'Exporter (JSON)'
-    },
-    'permissionsets.button.export.json': {
-        'en-US': 'Export as JSON',
-        'fr-FR': 'Exporter (JSON)'
-    },
-    'users.button.export.json': {
-        'en-US': 'Export as JSON',
-        'fr-FR': 'Exporter (JSON)'
-    },
-    'admin.button.export.json': {
         'en-US': 'Export as JSON',
         'fr-FR': 'Exporter (JSON)'
     },
@@ -1100,21 +348,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Profile',
         'fr-FR': 'Profil'
     },
-    'profile.dropdown.profile': {
-        'en-US': 'Profile',
-        'fr-FR': 'Profil'
-    },
-    'profile.title': {
-        'en-US': 'Profile',
-        'fr-FR': 'Profil'
-    },
 
     // Target
     'target': {
-        'en-US': 'Target',
-        'fr-FR': 'Cible'
-    },
-    'counter.text.target': {
         'en-US': 'Target',
         'fr-FR': 'Cible'
     },
@@ -1124,17 +360,9 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'by',
         'fr-FR': 'par'
     },
-    'jobcontrolpanel.by': {
-        'en-US': 'by',
-        'fr-FR': 'par'
-    },
 
     // Invalid email
     'invalidEmail': {
-        'en-US': 'Invalid email',
-        'fr-FR': 'Email invalide'
-    },
-    'inputvalidation.invalid.email': {
         'en-US': 'Invalid email',
         'fr-FR': 'Email invalide'
     },
@@ -1144,44 +372,15 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Must be a number',
         'fr-FR': 'Doit être un nombre'
     },
-    'inputvalidation.invalid.number': {
-        'en-US': 'Must be a number',
-        'fr-FR': 'Doit être un nombre'
-    },
 
     // Invalid url
     'invalidUrl': {
         'en-US': 'Invalid https url',
         'fr-FR': 'Url https invalid'
     },
-    'inputvalidation.invalid.https.url': {
-        'en-US': 'Invalid https url',
-        'fr-FR': 'Url https invalid'
-    },
-
-    'invalidField': {
-        'en-US': 'Invalid field',
-        'fr-FR': 'Champ invalide'
-    },
-    'inputvalidation.invalid': {
-        'en-US': 'Invalid field',
-        'fr-FR': 'Champ invalide'
-    },
 
     // Success
     'success': {
-        'en-US': 'Success',
-        'fr-FR': 'Succès'
-    },
-    'notification.title.success': {
-        'en-US': 'Success',
-        'fr-FR': 'Succès'
-    },
-    'crossrefactions.notification.title.success': {
-        'en-US': 'Success',
-        'fr-FR': 'Succès'
-    },
-    'frameacions.notification.upsert.success.title': {
         'en-US': 'Success',
         'fr-FR': 'Succès'
     },
@@ -1403,6 +602,10 @@ export const MULTILANGUAGE_WORDINGS = {
     'itemNotFound': {
         'en-US': 'Item not found.',
         'fr-US': 'Aucun objet trouvé.'
+    },
+    'status': {
+        'en-US': 'Status',
+        'fr-FR': 'Statut'
     },
 
     /** b2portal wordings. */
