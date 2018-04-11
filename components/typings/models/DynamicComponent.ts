@@ -5,8 +5,9 @@ import NotificationModel from './NotificationModel'
 import { BatchOperationReport } from './BatchOperationReport'
 import { WebApi } from './WebApi'
 import { UserModel } from './UserModel'
+import { ReduxProps } from './ReduxProps'
 
-export interface DynamicComponent {
+export interface DynamicComponent extends ReduxProps {
 
     /** Interface used to perform all the api call to the server. */
     api: WebApi;
