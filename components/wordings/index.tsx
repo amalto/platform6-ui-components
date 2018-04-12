@@ -1534,47 +1534,40 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Champ invalide'
     },
 
-    'fileimporter.title': {
+    'importDataFromFile': {
         'en-US': 'Import data from a file',
         'fr-FR': 'Importer des données depuis un fichier'
     },
-    'fileimporter.sub.title': {
+
+    'selectedFile': {
         'en-US': 'Selected file',
         'fr-FR': 'Fichier sélectionné'
     },
-    'fileimporter.file.name': {
-        'en-US': 'name',
-        'fr-FR': 'nom'
-    },
-    'fileimporter.file.size': {
-        'en-US': 'size',
-        'fr-FR': 'taille'
+    'fileType': {
+        'en-US': 'File type',
+        'fr-FR': 'Type du fichier'
     },
     'fileimporter.file.type': {
         'en-US': 'File type',
         'fr-FR': 'Type du fichier'
     },
-    'fileimporter.select.value': {
-        'en-US': 'Select a value',
-        'fr-FR': 'Sélectionner une valeur'
-    },
-    'fileimporter.file.fields.separator': {
+    'fieldsSeparator': {
         'en-US': 'Fields separator',
         'fr-FR': 'Séparateur de colonnes'
     },
-    'fileimporter.file.encoding': {
+    'encoding': {
         'en-US': 'Encoding',
         'fr-FR': 'Encodage'
     },
-    'fileimporter.file.quote.char': {
+    'quoteChar': {
         'en-US': 'Quote character',
         'fr-FR': 'Caractère de guillemet'
     },
-    'fileimporter.file.has.headers': {
+    'headerOnFirstRow': {
         'en-US': 'Headers on first row',
         'fr-FR': 'Entêtes sur la première ligne'
     },
-    'fileimporter.file.overwrite.existing': {
+    'overwriteExistingData': {
         'en-US': 'Overwrite existing data',
         'fr-FR': 'Écraser les données existantes'
     },

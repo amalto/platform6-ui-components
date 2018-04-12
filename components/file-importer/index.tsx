@@ -93,7 +93,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                             <h3 className={classNames( 'panel-title', {
                                 'has-spinner': this.props.processing
                             } )}>
-                                {this.state.wordings['fileimporter.title']}
+                                {this.state.wordings['importDataFromFile']}
                             </h3>
                             {this.props.processing && <div className="spinner-container"><Spinner /></div>}
                         </div>
@@ -102,16 +102,16 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
                             <div className="row bottom-margin">
                                 <div className="col-xs-12 text-center toggle-form">
-                                    <h5 className="upper bottom-margin">{this.state.wordings['fileimporter.sub.title']}</h5>
+                                    <h5 className="upper bottom-margin">{this.state.wordings['selectedFile']}</h5>
 
                                     <p className="bottom-spaced">
-                                        <span className="label label-success text-small">{this.state.wordings['fileimporter.file.name']}</span>
+                                        <span className="label label-success text-small">{this.state.wordings['name'].toLowerCase()}</span>
                                         <br />
                                         <em>{this.props.fileData.name}</em>
                                     </p>
 
                                     <p className="margin-none">
-                                        <span className="label label-success text-small">{this.state.wordings['fileimporter.file.size']}</span>
+                                        <span className="label label-success text-small">{this.state.wordings['size'].toLowerCase()}</span>
                                         <br />
                                         <em>{formatFileSize( this.props.fileData.size )}</em>
                                     </p>
@@ -122,7 +122,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
                                 <div className={classNames( 'col-xs-12 col-sm-6', { 'hidden': hideControls.fileType === true } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileimporter.file.type']}</label>
+                                        <label>{this.state.wordings['fileType']}</label>
                                         <select className="form-control" name="impFileType"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileType}>
@@ -136,7 +136,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': this.state.impFileType === 'EXCEL' || hideControls.separator === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileimporter.file.fields.separator']}</label>
+                                        <label>{this.state.wordings['fieldsSeparator']}</label>
                                         <select className="form-control" name="impFileSeparator"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileSeparator}
@@ -151,14 +151,14 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': this.state.impFileType === 'EXCEL' || hideControls.quoteChar === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileimporter.file.quote.char']}</label>
+                                        <label>{this.state.wordings['quoteChar']}</label>
                                         <select className="form-control" name="impFileQuoteChar"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileQuoteChar}
                                             disabled={this.state.impFileType === 'EXCEL'}>
                                             <option value="'">'</option>
                                             <option value='"'>"</option>
-                                            <option value="">{this.state.wordings['fileimporter.none']}</option>
+                                            <option value="">{this.state.wordings['none']}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': this.state.impFileType === 'EXCEL' || hideControls.encoding === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileimporter.file.encoding']}</label>
+                                        <label>{this.state.wordings['encoding']}</label>
                                         <select className="form-control" name="impFileEncoding"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileEncoding}
@@ -183,7 +183,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': hideControls.headers === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileimporter.file.has.headers']}</label>
+                                        <label>{this.state.wordings['headerOnFirstRow']}</label>
                                         <Switch id="fileImporterHasHeaders"
                                             value={this.state.impFileHasHeaders}
                                             name="impFileHasHeaders"
@@ -196,7 +196,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': hideControls.overwrite === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileimporter.file.overwrite.existing']}</label>
+                                        <label>{this.state.wordings['overwriteExistingData']}</label>
                                         <Switch id="fileImporterOverwrite"
                                             value={this.state.impFileOverwrite}
                                             name="impFileOverwrite"
@@ -211,14 +211,14 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
                         <div className="panel-footer">
                             <button type="button" className="btn btn-font btn-trans" onClick={this.props.cancelHandler}>
-                                {this.state.wordings['fileimporter.button.cancel']}
+                                {this.state.wordings['cancel']}
                             </button>
 
                             <button type="button"
                                 className="btn btn-success pull-right"
                                 onClick={this.submitHandler}
                                 disabled={this.props.processing}>
-                                {this.state.wordings['fileimporter.button.submit']}
+                                {this.state.wordings['submit']}
                             </button>
                         </div>
                     </div>
