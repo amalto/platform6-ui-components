@@ -62,10 +62,8 @@ export function getItemIdx( item: ServiceItemFacade, ids: Ids ): number {
 export function getItemIndexes( items: ServiceItemFacades, ids: Ids ): number[] {
     const indexes: number[] = []
 
-    items.forEach( item => {
-        let idx: number = getItemIdx( item, ids )
-
-        if ( idx >= 0 ) indexes.push( idx )
+    items.forEach( ( item, idx ) => {
+        if ( getItemIdx( item, ids ) >= 0 ) indexes.push( idx )
     } )
 
     return indexes
