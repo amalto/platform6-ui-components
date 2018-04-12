@@ -607,6 +607,10 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Status',
         'fr-FR': 'Statut'
     },
+    'none': {
+        'en-US': 'None',
+        'fr-FR': 'Aucun'
+    },
 
     /** b2portal wordings. */
     'register.registration': {
@@ -1547,10 +1551,6 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'File type',
         'fr-FR': 'Type du fichier'
     },
-    'fileimporter.file.type': {
-        'en-US': 'File type',
-        'fr-FR': 'Type du fichier'
-    },
     'fieldsSeparator': {
         'en-US': 'Fields separator',
         'fr-FR': 'Séparateur de colonnes'
@@ -1570,10 +1570,6 @@ export const MULTILANGUAGE_WORDINGS = {
     'overwriteExistingData': {
         'en-US': 'Overwrite existing data',
         'fr-FR': 'Écraser les données existantes'
-    },
-    'fileimporter.none': {
-        'en-US': 'None',
-        'fr-FR': 'Aucun'
     },
 
     'fileinput.drop.zone.title': {
