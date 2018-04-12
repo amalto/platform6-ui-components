@@ -331,6 +331,11 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Élément supprimé !'
     },
 
+    'itemsImported': {
+        'en-US': 'Items imported.',
+        'fr-FR': 'Objets importés.'
+    },
+
     // Warning
     'warning': {
         'en-US': 'Warning',
