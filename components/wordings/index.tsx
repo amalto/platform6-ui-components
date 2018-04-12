@@ -616,6 +616,14 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'None',
         'fr-FR': 'Aucun'
     },
+    'itemsReadonly': {
+        'en-US': 'These items are only readable. They can not be deleted.',
+        'fr-FR': 'Ces objets ne sont éditables. Elles ne peuvent pas supprimés.'
+    },
+    'confirmItemsDelete': {
+        'en-US': 'Are you sure you want to delete those items?',
+        'fr-FR': 'Êtes vous sur(e) de vouloir supprimer ces objets ?'
+    },
 
     /** b2portal wordings. */
     'register.registration': {
