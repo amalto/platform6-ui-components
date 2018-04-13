@@ -644,12 +644,12 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'If you already set your password, you can now sign in. Otherwise, please click on the link sent to you by email to activate your account.',
         'fr-FR': 'Si vous avez déjà créé votre mot de passe, vous pouvez vous connecter dès maintenant. Sinon, vous trouverez un lien dans l\'email de confirmation qui vous pemettra d\'activer votre compte.'
     },
-
-    /** b2portal wordings. */
-    'register.email.help': {
+    'registrationEmailHelp': {
         'en-US': 'Make sure the email is correct to receive the confirmation link',
         'fr-FR': 'Merci de vous assurer que votre email est correct pour pouvoir finaliser l\'enregistrement'
     },
+
+    /** b2portal wordings. */
     'register.email.error': {
         'en-US': 'Please enter a valid email address',
         'fr-FR': 'Merci de saisir une adresse email valide'
