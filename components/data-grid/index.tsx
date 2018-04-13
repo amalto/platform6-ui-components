@@ -39,7 +39,7 @@ import { DataGridActions } from './models/DataGridActions'
  * DataGrid uses [DynamicComponent](#dynamiccomponent)'s and [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
-export namespace DataGrid {
+module DataGrid {
 
     export interface ColumnHeader {
         id: string | number;
@@ -203,7 +203,7 @@ export namespace DataGrid {
 
 }
 
-export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
+class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
 
     public static select: MapStateToProps<any, DataGrid.Props> = ( state: GlobalState ) => {
 
