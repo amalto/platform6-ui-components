@@ -624,28 +624,28 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Are you sure you want to delete those items?',
         'fr-FR': 'Êtes vous sur(e) de vouloir supprimer ces objets ?'
     },
-
-    /** b2portal wordings. */
-    'register.registration': {
+    'registration': {
         'en-US': 'Registration',
         'fr-FR': 'Enregistrement'
     },
-    'register.back.login': {
+    'backToLogin': {
         'en-US': 'Back to sign in page',
         'fr-FR': 'Retour à la page de connexion'
     },
-    'register.success.ok': {
+    'registrationSuccess': {
         'en-US': 'Successful registration',
         'fr-FR': 'Enregistrement réussi'
     },
-    'register.success.email.sent': {
+    'successRegisterMailSent': {
         'en-US': 'You will receive a confirmation email.',
         'fr-FR': 'Vous allez recevoir un email de confirmation.'
     },
-    'register.success.message': {
+    'successRegistrationMessage': {
         'en-US': 'If you already set your password, you can now sign in. Otherwise, please click on the link sent to you by email to activate your account.',
         'fr-FR': 'Si vous avez déjà créé votre mot de passe, vous pouvez vous connecter dès maintenant. Sinon, vous trouverez un lien dans l\'email de confirmation qui vous pemettra d\'activer votre compte.'
     },
+
+    /** b2portal wordings. */
     'register.email.help': {
         'en-US': 'Make sure the email is correct to receive the confirmation link',
         'fr-FR': 'Merci de vous assurer que votre email est correct pour pouvoir finaliser l\'enregistrement'
