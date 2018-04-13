@@ -2,7 +2,7 @@
   "name": "@amalto/helpers",
   "displayName": "Helpers",
   "description": "Helpers functions used across b2portal core and components.",
-  "version": "1.4.47",
+  "version": "1.4.48",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/typings": "1.0.9",
-    "@amalto/wordings": "1.4.32",
+    "@amalto/typings": "1.0.10",
+    "@amalto/wordings": "1.4.33",
     "base-64": "0.1.0",
     "classnames": "2.2.5",
     "md5": "2.2.1",
