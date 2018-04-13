@@ -181,6 +181,27 @@ export function formatDate( timestamp: number, locale: string ): string {
     return date.toLocaleString( locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' } )
 }
 
+/**
+ * Get the VIEW identifier of an item (used in Tab component as ID)
+ *
+ * @param {ServiceItemFacade} item
+ * @returns {string}
+ */
+export function getViewId( item: ServiceItemFacade ): string {
+    const itemId = getId( item )
+    return `${ TAB_TYPE.VIEW }${ stringifyId( itemId ) }`
+}
+/**
+ * Get the EDIT identifier of an item (used in Tab component as ID)
+ *
+ * @param {ServiceItemFacade} item
+ * @returns {string}
+ */
+export function getEditId( item: ServiceItemFacade ): string {
+    const itemId = getId( item )
+    return `${ TAB_TYPE.EDIT }${ stringifyId( itemId ) }`
+}
+
 /** Export */
 export {
     Id,
