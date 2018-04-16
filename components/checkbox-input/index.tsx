@@ -85,6 +85,7 @@ class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.S
 
                 <span className={classNames( 'form-checkbox-wrapper', inputClass )}>
                     <input {...input as any}
+                        key={input.name}
                         type="checkbox"
                         disabled={disabled}
                         id={input.name}

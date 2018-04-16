@@ -87,6 +87,7 @@ class TextareaInput extends React.Component<TextareaInput.Props, TextareaInput.S
 
                 <textarea
                     {...input as any}
+                    key={input.name}
                     disabled={disabled}
                     className={classNames( 'form-control input-block', inputClass )} />
 

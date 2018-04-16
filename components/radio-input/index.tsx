@@ -93,6 +93,7 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
                     options.map( ( opt, idx ) => (
                         <span key={idx} className="form-radio-wrapper right-margin">
                             <input {...input as any}
+                                key={input.name}
                                 disabled={disabled}
                                 type="radio"
                                 id={input.name + '_' + idx}
