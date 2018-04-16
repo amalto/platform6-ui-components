@@ -79,6 +79,7 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
 
                 <input
                     {...input as any}
+                    key={input.name}
                     type={type || 'text'}
                     placeholder={placeholder}
                     disabled={disabled}
