@@ -2,7 +2,7 @@
   "name": "@amalto/buttons-bar",
   "displayName": "ButtonsBar",
   "description": "Buttons bar used in platform6.",
-  "version": "1.5.53",
+  "version": "1.5.54",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "sinon": "4.2.2"
   },
   "dependencies": {
-    "@amalto/helpers": "1.4.49",
+    "@amalto/helpers": "1.4.50",
     "@amalto/wordings": "1.4.34",
     "classnames": "2.2.5",
     "react": "15.6.2",
