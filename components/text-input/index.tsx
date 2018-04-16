@@ -30,6 +30,8 @@ namespace TextInput {
         inputClass?: string;
         /** Input's type. */
         type?: string;
+        /** Step between each number if input is of type <blockquote>number</blockquote>. */
+        step?: number;
         /** Focus the input after being loaded. */
         autofocus?: boolean;
         /** Randomize input value as a <blockquote>uuid.v1()</blockquote> string. */
@@ -66,7 +68,7 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
 
     private renderText = ( field: WrappedFieldProps<any> ) => {
 
-        const { label, disabled, autofocus, help, containerClass, inputClass, type, randomGenerator, placeholder, collapseErrorSpace } = this.props
+        const { label, disabled, autofocus, help, containerClass, inputClass, type, step, randomGenerator, placeholder, collapseErrorSpace } = this.props
 
         const { input, meta } = field
 
@@ -81,6 +83,7 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
                     {...input as any}
                     key={input.name}
                     type={type || 'text'}
+                    step={!type || type !== 'number' ? undefined : step}
                     placeholder={placeholder}
                     disabled={disabled}
                     autoFocus={autofocus}
