@@ -1448,15 +1448,15 @@ export const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Enregistrer modifications'
     },
 
-    'datagrid.show.hidden.columns': {
+    'showHiddenColumns': {
         'en-US': 'Show hidden columns',
         'fr-FR': 'Afficher les colonnes cachées'
     },
-    'datagrid.reset.templates': {
+    'resetDisplaySettings': {
         'en-US': 'Reset all display settings',
         'fr-FR': 'Réinitialiser les préférences d\'affichage'
     },
-    'datagrid.hidden.columns': {
+    'displayHiddenColumns': {
         'en-US': 'Hidden columns (click to re-display)',
         'fr-FR': 'Colonnes cachées (cliquer pour ré-afficher)'
     },
@@ -1464,11 +1464,11 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'All columns are currently displayed. Hiddens columns can be found here and re-displayed.',
         'fr-FR': 'Toutes les colonnes sont actuellement visibles. Les colonnes cachées apparaitront ici et pourront être ré-affichées.'
     },
-    'datagrid.display.settings.changed': {
+    'displaySettingsChanged': {
         'en-US': 'Display settings changed!',
         'fr-FR': 'Préférences d\'affichage modifiées !'
     },
-    'datagrid.save.display.settings': {
+    'datagridSaveDisplaySettings': {
         'en-US': `
             <div>
                 <span>Do you want to save your modifications?</span><br/>
@@ -1482,12 +1482,12 @@ export const MULTILANGUAGE_WORDINGS = {
             </div>
         `
     },
-    'datagrid.reset.confirm': {
+    'displaySettingsResetConfirm': {
         'en-US': 'Are you sure you want to reset all your display settings?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir réinitialiser vos préférences d\'affichage ?'
     },
 
-    'headeritem.font.color': {
+    'fontColor': {
         'en-US': 'Font color',
         'fr-FR': 'Couleur texte'
     },
@@ -2458,7 +2458,7 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'This area cannot contain more items',
         'fr-FR': 'Cet zone ne peut pas contenir plus d\'éléments'
     },
-    'notification.invalid.color': {
+    'invalidColorCode': {
         'en-US': 'Color code is invalid',
         'fr-FR': 'Code couleur invalide'
     },

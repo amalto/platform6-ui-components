@@ -179,7 +179,7 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
             <div className="padded">
 
                 <div className="bottom-margin top-margin">
-                    <label>{this.state.wordings['headeritem.font.color']}</label>
+                    <label>{this.state.wordings['fontColor']}</label>
                     <ColorPicker color={itemDisplaySettings.color} handleColorChange={this.handleColorChange} />
                 </div>
 
@@ -211,7 +211,7 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
         else {
             this.props.displayNotification( {
                 title: wordings['error'],
-                message: wordings['notification.invalid.color'],
+                message: wordings['invalidColorCode'],
                 level: 'error'
             } )
         }

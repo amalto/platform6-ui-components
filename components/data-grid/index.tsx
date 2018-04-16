@@ -249,12 +249,12 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
             }, () => {
                 this.props.displayNotification( {
                     autoDismiss: 0,
-                    title: this.state.wordings['datagrid.display.settings.changed'],
+                    title: this.state.wordings['displaySettingsChanged'],
                     level: 'info',
                     position: 'tr',
-                    message: this.state.wordings['datagrid.save.display.settings'],
+                    message: this.state.wordings['datagridSaveDisplaySettings'],
                     action: {
-                        label: this.state.wordings['datagrid.save'],
+                        label: this.state.wordings['save'],
                         callback: () => {
                             this.saveDataGridTemplate()
                         }
@@ -313,7 +313,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                     clickAction: () => this.resetTemplate(),
                     cssClass: 'btn btn-danger btn-trans',
                     iconClass: 'fas fa-eraser',
-                    tooltipText: this.state.wordings['datagrid.reset.templates']
+                    tooltipText: this.state.wordings['resetDisplaySettings']
                 }],
                 cssClass: 'btn-group-xs'
             }
@@ -329,7 +329,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                     },
                     cssClass: 'btn btn-info btn-trans',
                     iconClass: 'fas fa-eye-slash',
-                    tooltipText: this.state.wordings['datagrid.show.hidden.columns']
+                    tooltipText: this.state.wordings['showHiddenColumns']
                 }],
                 cssClass: 'btn-group-xs'
             } )
@@ -471,8 +471,8 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
         if ( dataGridId && columnHeaders && _serviceId && selectedAppInstanceName ) {
 
             this.props.showDialog(
-                this.state.wordings['datagrid.modal.confirm'],
-                this.state.wordings['datagrid.reset.confirm'],
+                this.state.wordings['confirm'],
+                this.state.wordings['displaySettingsResetConfirm'],
                 () => dataGridActions.bootstrapDataGridTemplate( columnHeaders, dataGridId, _serviceId, selectedAppInstanceName ),
                 this.props.hideDialog()
             )
@@ -509,7 +509,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
                     <div className='bordered padded mgt-10' style={{ marginBottom: 22 }}>
 
                         <div className='mgb-5' style={{ position: 'relative' }}>
-                            <label>{this.state.wordings['datagrid.hidden.columns']}</label>
+                            <label>{this.state.wordings['displayHiddenColumns']}</label>
                             <span className='close-button small' onClick={() => this.setState( { displayHiddenColumnsPanel: false } )} />
                         </div>
 
