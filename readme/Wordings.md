@@ -3,392 +3,340 @@ const MULTILANGUAGE_WORDINGS = {
 
     /** Common wordings. */
 
-    // Save
     'save': {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
     },
 
-    // Cancel
     'cancel': {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
 
-    // Email
     'email': {
         'en-US': 'Email',
         'fr-FR': 'Email'
     },
 
-    // Submit
     'submit': {
         'en-US': 'Submit',
         'fr-FR': 'Valider'
     },
 
-    // Confirm
     'confirm': {
         'en-US': 'Confirm',
         'fr-FR': 'Confirmer'
     },
 
-    // Delete
     'delete': {
         'en-US': 'Delete',
         'fr-FR': 'Supprimer'
     },
 
-    // Enabled
     'enabled': {
         'en-US': 'Enabled',
         'fr-FR': 'Actif'
     },
 
-    // Permissions
     'permissions': {
         'en-US': 'Permissions',
         'fr-FR': 'Permissions'
     },
 
-    // Description
     'description': {
         'en-US': 'Description',
         'fr-FR': 'Description'
     },
 
-    // Name
     'name': {
         'en-US': 'Name',
         'fr-FR': 'Nom'
     },
 
-    // No data found
-    'no.data.found': {
+    'noDataFound': {
         'en-US': 'No data found',
         'fr-FR': 'Aucune donnée'
     },
 
-    // First name
     'firstname': {
         'en-US': 'First name',
         'fr-FR': 'Prénom'
     },
 
-    // Loading error
-    'loading.error': {
+    'loadingError': {
         'en-US': 'Loading error',
         'fr-FR': 'Erreur de chargement'
     },
 
-    // Details
     'details': {
         'en-US': 'Details',
         'fr-FR': 'Détails'
     },
 
-    // Last name
     'lastname': {
         'en-US': 'Last name',
         'fr-FR': 'Nom'
     },
 
-    // Error
     'error': {
         'en-US': 'Error',
         'fr-FR': 'Erreur'
     },
 
-    // Register
     'register': {
         'en-US': 'Register',
         'fr-FR': 'S\'enregistrer'
     },
 
-    // Instance
     'instance': {
         'en-US': 'Instance',
         'fr-FR': 'Instance'
     },
 
-    // Messages
     'messages': {
         'en-US': 'Messages',
         'fr-FR': 'Messages'
     },
 
-    // Title
+    // Profile START
     'title': {
         'en-US': 'Title',
         'fr-FR': 'Titre'
     },
 
-    // User
     'user': {
         'en-US': 'User',
         'fr-FR': 'Utilisateur'
     },
 
-    // Mr
     'mr': {
         'en-US': 'Mr.',
         'fr-FR': 'M.'
     },
 
-    // Mrs
     'mrs': {
         'en-US': 'Mrs.',
         'fr-FR': 'Mme'
     },
 
-    // Prof
     'prof': {
         'en-US': 'Prof.',
         'fr-FR': 'Pr'
     },
 
-    // Dr
     'dr': {
         'en-US': 'Dr.',
         'fr-FR': 'Dr'
     },
 
-    // Salutation
     'salutation': {
         'en-US': 'Salutation',
         'fr-FR': 'Salutation'
     },
 
-    // Company name
     'companyName': {
         'en-US': 'Company name',
         'fr-FR': 'Nom de la société'
     },
 
-    // Address
     'address': {
         'en-US': 'Address',
         'fr-FR': 'Adresse'
     },
 
-    // City
     'city': {
         'en-US': 'City',
         'fr-FR': 'Ville'
     },
 
-    // State
     'state': {
         'en-US': 'State',
         'fr-FR': 'État'
     },
 
-    // Country
     'country': {
         'en-US': 'Country',
         'fr-FR': 'Pays'
     },
 
-    // Zip
     'zip': {
         'en-US': 'Zip',
         'fr-FR': 'Code postal'
     },
 
-    // Phone
     'phone': {
         'en-US': 'Phone',
         'fr-FR': 'Téléphone'
     },
 
-    // Mobile
     'mobile': {
         'en-US': 'Mobile',
         'fr-FR': 'Mobile'
     },
 
-    // Website
     'website': {
         'en-US': 'Website',
         'fr-FR': 'Site web'
     },
 
-    // Start
+    // Profile END
+
     'start': {
         'en-US': 'Start',
         'fr-FR': 'Démarrer'
     },
 
-    // Stop
     'stop': {
         'en-US': 'Stop',
         'fr-FR': 'Arrêter'
     },
 
-    // Reset
     'reset': {
         'en-US': 'Reset',
         'fr-FR': 'Réinitialiser'
     },
 
-    // Edit
     'edit': {
         'en-US': 'Edit',
         'fr-FR': 'Éditer'
     },
 
-    // Create
     'create': {
         'en-US': 'Create',
         'fr-FR': 'Créer'
     },
 
-    // Actions
     'actions': {
         'en-US': 'Actions',
         'fr-FR': 'Actions'
     },
 
-    // Info
     'info': {
         'en-US': 'Info',
         'fr-FR': 'Info'
     },
 
-    // Search placeholder
     'searchPlaceholder': {
         'en-US': 'Search...',
         'fr-FR': 'Rechercher...'
     },
 
-    // Key
     'key': {
         'en-US': 'Key',
         'fr-FR': 'Clé'
     },
-    'keyvalueeditor.key': {
-        'en-US': 'Key',
-        'fr-FR': 'Clé'
-    },
 
-    // Value
     'value': {
         'en-US': 'Value',
         'fr-FR': 'Valeur'
     },
-    'keyvalueeditor.value': {
-        'en-US': 'Value',
-        'fr-FR': 'Valeur'
-    },
 
-    // Field required
     'fieldRequired': {
         'en-US': 'Required field',
         'fr-FR': 'Champ obligatoire'
     },
 
-    // Show details
     'showDetails': {
         'en-US': 'Show details',
         'fr-FR': 'Voir les détails'
     },
 
-    // Close details
     'closeDetails': {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
     },
 
-    // Search
     'search': {
         'en-US': 'Search',
         'fr-FR': 'Rechercher'
     },
 
-    // Administration
     'administration': {
         'en-US': 'Administration',
         'fr-FR': 'Administration'
     },
 
-    // Item created
     'itemCreated': {
-        'en-US': 'Item created!',
-        'fr-FR': 'Élément créé !'
+        'en-US': 'Item created',
+        'fr-FR': 'Élément créé'
     },
 
-    // Item updated
     'itemUpdated': {
-        'en-US': 'Item updated!',
-        'fr-FR': 'Élément mis à jour !'
+        'en-US': 'Item updated',
+        'fr-FR': 'Élément modifié'
     },
 
-    // Item deleted
+    'itemRenamed': {
+        'en-US': 'Item renamed',
+        'fr-FR': 'Nom de l\'élément modifié'
+    },
+
     'itemDeleted': {
-        'en-US': 'Item deleted!',
-        'fr-FR': 'Élément supprimé !'
+        'en-US': 'Item deleted',
+        'fr-FR': 'Élément supprimé'
     },
 
     'itemsImported': {
-        'en-US': 'Items imported.',
-        'fr-FR': 'Objets importés.'
+        'en-US': 'Items imported',
+        'fr-FR': 'Objets importés'
     },
 
-    // Warning
+    'confirmItemsDelete': {
+        'en-US': 'Are you sure you want to delete these items?',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ces objets ?'
+    },
+
+    'itemsDeleteImpossible': {
+        'en-US': 'You can\'t delete these items',
+        'fr-FR': 'Impossible de supprimer ces éléments'
+    },
+
     'warning': {
         'en-US': 'Warning',
         'fr-FR': 'Attention'
     },
 
-    // Export
     'exportJSON': {
         'en-US': 'Export as JSON',
         'fr-FR': 'Exporter (JSON)'
     },
 
-    // Profile
     'profile': {
         'en-US': 'Profile',
         'fr-FR': 'Profil'
     },
 
-    // Target
     'target': {
         'en-US': 'Target',
         'fr-FR': 'Cible'
     },
 
-    // By
     'by': {
         'en-US': 'by',
         'fr-FR': 'par'
     },
 
-    // Invalid email
     'invalidEmail': {
         'en-US': 'Invalid email',
         'fr-FR': 'Email invalide'
     },
 
-    // Invalid Number
     'invalidNumber': {
         'en-US': 'Must be a number',
         'fr-FR': 'Doit être un nombre'
     },
 
-    // Invalid url
     'invalidUrl': {
         'en-US': 'Invalid https url',
         'fr-FR': 'Url https invalid'
     },
 
-    // Success
     'success': {
         'en-US': 'Success',
         'fr-FR': 'Succès'
     },
 
-    // Tab title
+    // Tab title START
     'tabList': {
         'en-US': 'List ({total})',
         'fr-FR': 'Liste ({total})'
@@ -398,8 +346,8 @@ const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Éditer - {name}'
     },
     'tabAdd': {
-        'en-US': 'Add - {name}',
-        'fr-FR': 'Ajouter - {name}'
+        'en-US': 'Add - New item',
+        'fr-FR': 'Ajouter - Nouvel objet'
     },
     'tabRun': {
         'en-US': 'Run - {name}',
@@ -409,6 +357,8 @@ const MULTILANGUAGE_WORDINGS = {
         'en-US': 'View - {name}',
         'fr-FR': 'Afficher - {name}'
     },
+    // Tab title END
+
 
     'selectAll': {
         'en-US': 'Select all',
@@ -618,10 +568,7 @@ const MULTILANGUAGE_WORDINGS = {
         'en-US': 'These items are only readable. They can not be deleted.',
         'fr-FR': 'Ces objets ne sont éditables. Elles ne peuvent pas supprimés.'
     },
-    'confirmItemsDelete': {
-        'en-US': 'Are you sure you want to delete those items?',
-        'fr-FR': 'Êtes vous sur(e) de vouloir supprimer ces objets ?'
-    },
+
     'registration': {
         'en-US': 'Registration',
         'fr-FR': 'Enregistrement'
@@ -645,6 +592,21 @@ const MULTILANGUAGE_WORDINGS = {
     'registrationEmailHelp': {
         'en-US': 'Make sure the email is correct to receive the confirmation link',
         'fr-FR': 'Merci de vous assurer que votre email est correct pour pouvoir finaliser l\'enregistrement'
+    },
+
+    'pleaseWait': {
+        'en-US': 'Please wait',
+        'fr-FR': 'Merci de patienter'
+    },
+    
+    'importLoading': {
+        'en-US': 'Your import file is being processed...',
+        'fr-FR': 'Votre import est en cours de traitement...'
+    },
+
+    'exportLoading': {
+        'en-US': 'Your export file is being prepared...',
+        'fr-FR': 'Votre export est en cours de chargement...'
     },
 
     /** b2portal wordings. */
@@ -1516,35 +1478,35 @@ const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Réessayer'
     },
 
-    'croninput.second': {
+    'second': {
         'en-US': 'Second',
         'fr-FR': 'Seconde'
     },
-    'croninput.minute': {
+    'minute': {
         'en-US': 'Minute',
         'fr-FR': 'Minute'
     },
-    'croninput.hour': {
+    'hour': {
         'en-US': 'Hour',
         'fr-FR': 'Heure'
     },
-    'croninput.day.of.month': {
+    'dayOfMonth': {
         'en-US': 'Day of month',
         'fr-FR': 'Jour du mois'
     },
-    'croninput.month': {
+    'month': {
         'en-US': 'Month',
         'fr-FR': 'Mois'
     },
-    'croninput.day.of.week': {
+    'dayOfWeek': {
         'en-US': 'Day of week',
         'fr-FR': 'Jour de la semaine'
     },
-    'croninput.year': {
+    'year': {
         'en-US': 'Year',
         'fr-FR': 'Année'
     },
-    'croninput.invalid': {
+    'inputInvalid': {
         'en-US': 'Invalid input',
         'fr-FR': 'Champ invalide'
     },
@@ -1583,83 +1545,83 @@ const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Écraser les données existantes'
     },
 
-    'fileinput.drop.zone.title': {
+    'dropZoneTitle': {
         'en-US': 'Drop files here to upload them',
         'fr-FR': 'Déposer les fichiers à envoyer ici'
     },
-    'fileinput.drop.zone.subtitle': {
+    'dropZoneSubtitle': {
         'en-US': '(or click)',
         'fr-FR': '(ou cliquer)'
     },
-    'fileinput.invalid.file': {
+    'invalidFile': {
         'en-US': 'Invalid file(s)',
         'fr-FR': 'Fichier(s) invalide(s)'
     },
-    'fileinput.content.type': {
+    'contentType': {
         'en-US': 'Accepted Content-types:',
         'fr-FR': 'Content-types acceptés :'
     },
-    'fileinput.max.size': {
+    'maxSize': {
         'en-US': 'Max size:',
         'fr-FR': 'Taille max :'
     },
-    'fileinput.unknown.format': {
+    'unknownFormat': {
         'en-US': 'unknown format',
         'fr-FR': 'unknown size'
     },
 
-    'keyvalueeditor.add.text.btn': {
+    'addTextProperty': {
         'en-US': 'Add a text property',
         'fr-FR': 'Ajouter une valeur de type texte'
     },
-    'keyvalueeditor.add.file.btn': {
+    'addFileProperty': {
         'en-US': 'Add a file property',
         'fr-FR': 'Ajouter un fichier'
     },
-    'keyvalueeditor.select.file': {
+    'selectFile': {
         'en-US': 'Select a file:',
         'fr-FR': 'Ajouter un fichier :'
     },
-    'keyvalueeditor.download.file': {
+    'download': {
         'en-US': 'Download',
         'fr-FR': 'Télécharger'
     },
-    'keyvalueeditor.upload.file': {
+    'uploadFile': {
         'en-US': 'Upload a file',
         'fr-FR': 'Envoyer un fichier'
     },
 
-    'languagewrapper.selected': {
+    'selectedLanguage': {
         'en-US': 'Selected language',
         'fr-FR': 'Langue sélectionnée'
     },
-    'languagewrapper.add.one': {
+    'addLanguage': {
         'en-US': 'Add a language',
         'fr-FR': 'Ajouter une langue'
     },
-    'languagewrapper.remove.selected': {
+    'removeLanguageSelected': {
         'en-US': 'Remove selected language',
         'fr-FR': 'Supprimer la langue sélectionnée'
     },
-    'languagewrapper.close.selector': {
+    'closeLanguageSelector': {
         'en-US': 'Close language selector',
         'fr-FR': 'Fermer la sélection de langue'
     },
-    'languagewrapper.search': {
+    'searchLanguage': {
         'en-US': 'Search language...',
         'fr-FR': 'Rechercher une langue'
     },
 
-    'pagingcontrols.page': {
+    'page': {
         'en-US': 'Page',
         'fr-FR': 'Page'
     },
-    'pagingcontrols.page.of': {
+    'of': {
         'en-US': 'of',
         'fr-FR': 'sur'
     },
 
-    'pdfviewer.error.loading': {
+    'pdfLoadingError': {
         'en-US': 'PDF loading error',
         'fr-FR': 'Erreur de chargement du PDF'
     },
@@ -1715,43 +1677,43 @@ const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Trier par'
     },
 
-    'tree.button.create': {
+    'createChild': {
         'en-US': 'Create child',
         'fr-FR': 'Créer enfant'
     },
-    'tree.button.validate': {
+    'validate': {
         'en-US': 'Validate',
         'fr-FR': 'Valider'
     },
-    'tree.button.update': {
+    'treeUpdate': {
         'en-US': 'Update',
         'fr-FR': 'Valider'
     },
-    'tree.node.id': {
+    'id': {
         'en-US': 'ID',
         'fr-FR': 'ID'
     },
-    'tree.node.invalid.key': {
+    'propertiesKey': {
         'en-US': 'Properties key(s)',
         'fr-FR': 'Clé(s) de propriétés'
     },
-    'tree.node.invalid.name': {
+    'invalidUniqueNodeName': {
         'en-US': 'Node name must be unique among direct children',
         'fr-FR': 'Le nom du noeud doit être unique parmi les enfants directs'
     },
-    'tree.node.properties': {
+    'additionalProperties': {
         'en-US': 'Additional properties',
         'fr-FR': 'Propriétés additionnelles'
     },
-    'tree.selected.node.details': {
+    'selectedNodeDetails': {
         'en-US': 'Selected node details',
         'fr-FR': 'Détails du noeud sélectionné'
     },
-    'tree.expand.all.btn': {
+    'expand': {
         'en-US': 'Expand',
         'fr-FR': 'Déplier'
     },
-    'tree.collapse.all.btn': {
+    'collapse': {
         'en-US': 'Collapse',
         'fr-FR': 'Plier'
     },
@@ -1831,11 +1793,11 @@ const MULTILANGUAGE_WORDINGS = {
         'fr-FR': 'Email de l\'utilsateur'
     },
 
-    'forminput.select.value': {
+    'selectValue': {
         'en-US': 'Select a value',
         'fr-FR': 'Sélectionner une valeur'
     },
-    'forminput.add.files': {
+    'addFiles': {
         'en-US': 'Add files',
         'fr-FR': 'Ajouter des fichiers'
     },
@@ -1971,10 +1933,6 @@ const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Are you sure you want to delete this table?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cette table ?'
     },
-    'crossrefactions.notification.download.title': {
-        'en-US': 'Please wait',
-        'fr-FR': 'Merci de patienter'
-    },
     'crossrefactions.notification.download.message': {
         'en-US': 'The dowload will start automatically',
         'fr-FR': 'Le téléchargement va démarrer automatiquement'
@@ -1984,7 +1942,7 @@ const MULTILANGUAGE_WORDINGS = {
         'fr-FR': '{nbRecords} enregistrement(s) traité(s).'
     },
 
-    'button.ok': {
+    'ok': {
         'en-US': 'OK',
         'fr-FR': 'OK'
     },
@@ -2910,10 +2868,6 @@ const MULTILANGUAGE_WORDINGS = {
     'notification.fetchdoc.failure': {
         'en-US': 'Document cannot be loaded',
         'fr-FR': 'Le document ne peut être chargé'
-    },
-    'notification.download.title': {
-        'en-US': 'Please wait',
-        'fr-FR': 'Merci de patienter'
     },
     'notification.download.message': {
         'en-US': 'The dowload will start automatically',
