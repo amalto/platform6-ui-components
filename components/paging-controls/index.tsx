@@ -94,11 +94,11 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                     </button>
 
                     <span className="btn btn-primary btn-trans text-element no-border-right">
-                        <span className="right-spaced">{this.state.wordings['pagingcontrols.page']}</span>
+                        <span className="right-spaced">{this.state.wordings['page']}</span>
                         <strong className="right-spaced">
                             <FormattedNumber value={currentPage} />
                         </strong>
-                        <span className="right-spaced">{this.state.wordings['pagingcontrols.page.of']}</span>
+                        <span className="right-spaced">{this.state.wordings['of']}</span>
                         <span><FormattedNumber value={totalPages} /></span>
                     </span>
 

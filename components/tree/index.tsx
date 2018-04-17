@@ -93,11 +93,11 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         let disabled = !this.state.selectedNode
 
         let editButton = this.state.formOpened === 'EDIT' ? (
-            <button className="btn btn-block btn-warning" onClick={this.editNode}>{this.state.wordings['tree.button.update']}</button>
+            <button className="btn btn-block btn-warning" onClick={this.editNode}>{this.state.wordings['treeUpdate']}</button>
         ) : null
 
         let createButton = this.state.formOpened === 'CREATE' ? (
-            <button className="btn btn-block btn-success" onClick={this.createNode}>{this.state.wordings['tree.button.validate']}</button>
+            <button className="btn btn-block btn-success" onClick={this.createNode}>{this.state.wordings['validate']}</button>
         ) : null
 
         let canModifyTree = this.props.createNode && this.props.editNode && this.props.deleteNode && this.props.displayEmptyValsError
@@ -111,7 +111,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                 <div className="row">
 
                     <div className="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <label>{this.state.wordings['tree.node.name']}</label>
+                        <label>{this.state.wordings['name']}</label>
                         <input type="text" className="form-control"
                             value={this.state.editedNode.elementName}
                             onChange={this.handleElementNameChange}
@@ -120,7 +120,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                     </div>
 
                     <div className="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <label>{this.state.wordings['tree.node.description']}</label>
+                        <label>{this.state.wordings['description']}</label>
                         <input type="text" className="form-control"
                             value={this.state.editedNode.description}
                             onChange={this.handleDescriptionChange}
@@ -128,7 +128,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                     </div>
 
                     <div className="form-group col-xs-12 col-sm-6 col-md-4 col-lg-6">
-                        <label>{this.state.wordings['tree.node.properties']}</label>
+                        <label>{this.state.wordings['additionalProperties']}</label>
                         <KeyValueEditor handleChange={this.handlePropertiesChange} keyValues={this.state.editedNode.propertiesMap} locale={this.props.locale} />
                     </div>
 
@@ -152,27 +152,27 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                 <div className="row text-xs-center">
                     <div className="col-xs-12">
                         <button disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
-                            <span>{this.state.wordings['tree.expand.all.btn']}</span>
+                            <span>{this.state.wordings['expand']}</span>
                         </button>
                         <button disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
-                            <span>{this.state.wordings['tree.collapse.all.btn']}</span>
+                            <span>{this.state.wordings['collapse']}</span>
                         </button>
                         {
                             canModifyTree ? (
                                 <span>
                                     <button disabled={disabled} className={classNames( 'btn btn-trans btn-success right-margin bottom-margin' )} onClick={this.openCreateForm}>
-                                        {this.state.wordings['tree.button.create']}
+                                        {this.state.wordings['createChild']}
                                     </button>
                                     <button disabled={disabled} className={classNames( 'btn btn-trans btn-warning right-margin bottom-margin' )} onClick={this.openEditForm}>
-                                        {this.state.wordings['tree.button.edit']}
+                                        {this.state.wordings['edit']}
                                     </button>
                                     <button disabled={disabled} className={classNames( 'btn btn-trans btn-danger right-margin bottom-margin' )} onClick={this.deleteNode}>
-                                        {this.state.wordings['tree.button.delete']}
+                                        {this.state.wordings['delete']}
                                     </button>
                                     <button disabled={disabled} className={classNames( 'btn btn-trans btn-font right-margin bottom-margin', {
                                         'hidden': !this.state.formOpened
                                     } )} onClick={this.clearForm}>
-                                        {this.state.wordings['tree.button.cancel']}
+                                        {this.state.wordings['cancel']}
                                     </button>
                                 </span>
                             ) : null
@@ -213,26 +213,26 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                 <div className="row">
 
                     <div className="col-xs-12">
-                        <h4 className="upper bottom-spaced">{this.state.wordings['tree.selected.node.details']}</h4>
+                        <h4 className="upper bottom-spaced">{this.state.wordings['selectedNodeDetails']}</h4>
                     </div>
 
                     <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{this.state.wordings['tree.node.name']}</div>
+                        <div className="text-small font-color-lighter">{this.state.wordings['name']}</div>
                         <div>{node.text}</div>
                     </div>
 
                     <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{this.state.wordings['tree.node.id']}</div>
+                        <div className="text-small font-color-lighter">{this.state.wordings['id']}</div>
                         <div className="word-wrap"><em>{node.id}</em></div>
                     </div>
 
                     <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{this.state.wordings['tree.node.description']}</div>
+                        <div className="text-small font-color-lighter">{this.state.wordings['description']}</div>
                         <div>{node.data.description}</div>
                     </div>
 
                     <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{this.state.wordings['tree.node.properties']}</div>
+                        <div className="text-small font-color-lighter">{this.state.wordings['properties']}</div>
                         {selectedNodeProperties ? <ul className="basic-list margin-none">{selectedNodeProperties}</ul> : <span>-</span>}
                     </div>
 
@@ -353,20 +353,20 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         let errors: string[] = []
         if ( isNotEmpty( editedNode.elementName ) ) {
             if ( this.state.selectedNode.data.childNames.indexOf( editedNode.elementName ) !== -1 ) {
-                errors.push( this.state.wordings['tree.node.invalid.name'] )
+                errors.push( this.state.wordings['invalidUniqueNodeName'] )
             }
         }
         else {
-            errors.push( this.state.wordings['tree.node.name'] )
+            errors.push( this.state.wordings['name'] )
         }
 
         if ( !isNotEmpty( editedNode.description ) ) {
-            errors.push( this.state.wordings['tree.node.description'] )
+            errors.push( this.state.wordings['description'] )
         }
 
         for ( const key in editedNode.propertiesMap ) {
             if ( !key ) {
-                errors.push( this.state.wordings['tree.node.invalid.key'] )
+                errors.push( this.state.wordings['propertiesKey'] )
             }
         }
 
@@ -398,15 +398,15 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
         let errors: string[] = []
         if ( !isNotEmpty( editedNode.elementName ) ) {
-            errors.push( this.state.wordings['tree.node.name'] )
+            errors.push( this.state.wordings['name'] )
         }
         if ( !isNotEmpty( editedNode.description ) ) {
-            errors.push( this.state.wordings['tree.node.description'] )
+            errors.push( this.state.wordings['description'] )
         }
 
         for ( const key in editedNode.propertiesMap ) {
             if ( !key ) {
-                errors.push( this.state.wordings['tree.node.invalid.key'] )
+                errors.push( this.state.wordings['propertiesKey'] )
             }
         }
 

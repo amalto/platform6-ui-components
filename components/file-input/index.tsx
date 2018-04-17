@@ -114,8 +114,8 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                 accept={this.props.mimeTypeAccepted} maxSize={this.props.maxBytesSize}>
 
                 <div className="drop-zone-title">
-                    <span>{this.state.wordings['fileinput.drop.zone.title']}</span><br />
-                    <span className="subtitle">{this.state.wordings['fileinput.drop.zone.subtitle']}</span>
+                    <span>{this.state.wordings['dropZoneTitle']}</span><br />
+                    <span className="subtitle">{this.state.wordings['dropZoneSubtitle']}</span>
                 </div>
 
             </Dropzone>
@@ -124,7 +124,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         let cancelBtn = (
             <div className="top-margin">
                 <button type="button" className="btn btn-sm btn-danger btn-trans" onClick={this.props.cancelSubmit}>
-                    {this.state.wordings['fileinput.button.cancel']}
+                    {this.state.wordings['cancel']}
                 </button>
             </div>
         )
@@ -132,7 +132,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         let errors = this.state.invalidFiles.map( ( file, idx ) => {
             return (
                 <div key={idx}>
-                    <span><strong>{file.name}</strong> - </span><em>{formatFileSize( file.size )}, {file.type || this.state.wordings['fileinput.unknown.format']}</em>
+                    <span><strong>{file.name}</strong> - </span><em>{formatFileSize( file.size )}, {file.type || this.state.wordings['unknownFormat']}</em>
                 </div>
             )
         } )
@@ -157,11 +157,11 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                                     <div className="alert alert-danger alert-dismissable top-margin text-medium">
                                         <button type="button" className="close" onClick={this.closeInvalidFilesAlert}>&times;</button>
                                         <div className="bottom-spaced">
-                                            <strong className="right-spaced">{this.state.wordings['fileinput.invalid.file']}</strong>
+                                            <strong className="right-spaced">{this.state.wordings['invalidFile']}</strong>
                                             <span className="fas fa-info-circle click-pointer" data-toggle="collapse" data-target="#inputFormatInfo" />
                                             <div id="inputFormatInfo" className="collapse top-spaced font-color" style={{ paddingLeft: 20 }}>
-                                                {this.props.mimeTypeAccepted ? <div><strong className="right-spaced">{this.state.wordings['fileinput.content.type']}</strong><span>{this.props.mimeTypeAccepted}</span></div> : null}
-                                                {this.props.maxBytesSize ? <div><strong className="right-spaced">{this.state.wordings['fileinput.max.size']}</strong><span>{formatFileSize( this.props.maxBytesSize )}</span></div> : null}
+                                                {this.props.mimeTypeAccepted ? <div><strong className="right-spaced">{this.state.wordings['contentType']}</strong><span>{this.props.mimeTypeAccepted}</span></div> : null}
+                                                {this.props.maxBytesSize ? <div><strong className="right-spaced">{this.state.wordings['maxSize']}</strong><span>{formatFileSize( this.props.maxBytesSize )}</span></div> : null}
                                             </div>
                                         </div>
                                         {errors}

@@ -11,9 +11,6 @@ import * as PerfectScrollbar from 'react-perfect-scrollbar'
 // Utils
 import { compileWordings } from '@amalto/helpers'
 
-// Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
 // Components
 import Tab from '@amalto/tab'
 

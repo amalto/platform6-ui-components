@@ -76,7 +76,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
             <div className={containerClass}>
                 <div className="form-inline">
 
-                    <label>{wordings['languagewrapper.selected']}</label>
+                    <label>{wordings['selectedLanguage']}</label>
 
                     <select className="form-control mgl-10"
                         value={selectedLanguage}
@@ -94,7 +94,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                         addOpen ? <button className='btn btn-sm btn-trans btn-font mgl-10'
                             type='button'
                             onClick={() => { this.setState( { addOpen: false } ) }}
-                            data-toggle='tooltip' data-original-title={wordings['languagewrapper.close.selector']}>
+                            data-toggle='tooltip' data-original-title={wordings['closeLanguageSelector']}>
                             <span className="fas fa-times" />
                         </button> : null
                     }
@@ -104,7 +104,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                             <button type='button'
                                 className="btn btn-sm btn-trans btn-danger mgl-10"
                                 onClick={( e ) => { e.preventDefault(); handleRemovedLanguage( selectedLanguage ) }}
-                                data-toggle="tooltip" data-original-title={wordings['languagewrapper.remove.selected']}>
+                                data-toggle="tooltip" data-original-title={wordings['removeLanguageSelected']}>
                                 <span className="fas fa-minus" />
                             </button>
                         ) : null
@@ -129,14 +129,14 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                     collection={languageIso}
                     display={( lang: Language ) => lang && lang.languageCode && `${ lang.languageCode } - ${ lang.languageName }`}
                     datumTokenizer={( lang: Language ) => [lang.languageCode, lang.languageName]}
-                    placeholder={wordings['languagewrapper.search']}
+                    placeholder={wordings['searchLanguage']}
                 />
             </span>
         ) : (
                 <button className="btn btn-sm btn-trans btn-info mgl-10"
                     type="button"
                     onClick={() => { this.setState( { addOpen: true } ) }}
-                    data-toggle="tooltip" data-original-title={wordings['languagewrapper.add.one']}>
+                    data-toggle="tooltip" data-original-title={wordings['addLanguage']}>
                     <span className="fas fa-plus" />
                 </button>
             )

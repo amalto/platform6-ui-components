@@ -52,10 +52,10 @@ class Dialog extends React.Component<any, Dialog.State> {
         let actionButtons = props.confirmAction ? (
             <div className="modal-footer">
                 <button type="button" className="btn btn-font btn-trans" onClick={this.cancelFunction}>
-                    {wordings['button.cancel']}
+                    {wordings['cancel']}
                 </button>
                 <button type="button" className={confirmButtonClasses} onClick={this.confirmFunction}>
-                    {wordings['button.ok']}
+                    {wordings['ok']}
                 </button>
             </div>
         ) : null
