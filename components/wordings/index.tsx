@@ -600,6 +600,16 @@ export const MULTILANGUAGE_WORDINGS = {
         'en-US': 'Please wait',
         'fr-FR': 'Merci de patienter'
     },
+    
+    'importLoading': {
+        'en-US': 'Your import file is being processed...',
+        'fr-FR': 'Votre import est en cours de traitement...'
+    },
+
+    'exportLoading': {
+        'en-US': 'Your export file is being prepared...',
+        'fr-FR': 'Votre export est en cours de chargement...'
+    },
 
     /** b2portal wordings. */
     'register.email.error': {
