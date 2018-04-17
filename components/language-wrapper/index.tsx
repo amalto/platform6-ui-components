@@ -90,7 +90,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                         }
                     </select>
 
-                    {this.getLanguagesSelector()}
+                    {!disabled ? this.getLanguagesSelector() : null}
 
                     {
                         !disabled && addOpen ? <button className='btn btn-sm btn-trans btn-font mgl-10'
