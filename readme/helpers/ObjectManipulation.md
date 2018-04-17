@@ -1,6 +1,15 @@
 Methods manipulating objects.
 
 ```typescript
+
+/**
+ * Select the wordings based on locale after combining it with global wordings.
+ * 
+ * @param { Object } wordings - Object containing all the custom wordings and their translations.
+ * @param { string } locale - String used to extract wordings from the wanted language.
+ */
+function getWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string };
+
 /**
  * Select the wordings based on locale.
  * @param { Object } wordings - Object containing all wordings and their translations.

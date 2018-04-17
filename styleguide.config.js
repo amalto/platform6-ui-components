@@ -338,6 +338,11 @@ module.exports = {
                         content: 'readme/typings/WebApi.md'
                     }
                 ]
+            },
+            {
+                name: 'Wordings',
+                description: 'This is all the global text that is displayed on the ui. You can update or create your own wordings.',
+                content: 'readme/Wordings.md'
             }
         ]
     }
