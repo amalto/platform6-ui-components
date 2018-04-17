@@ -34,6 +34,8 @@ module LanguageWrapper {
         handleRemovedLanguage: ( language: string ) => void;
         /** CSS class wrapping the component. */
         containerClass?: string;
+        /** Disable add and remove of language but still allow user to select language. */
+        disabled?: boolean;
         /**
          * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
          * Locales available at [Locale](#locale).
@@ -70,7 +72,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
     render() {
 
         const { addOpen, wordings } = this.state
-        const { selectedLanguage, handleLanguageChange, handleRemovedLanguage, containerClass } = this.props
+        const { selectedLanguage, handleLanguageChange, handleRemovedLanguage, containerClass, disabled } = this.props
 
         return (
             <div className={containerClass}>
@@ -91,7 +93,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                     {this.getLanguagesSelector()}
 
                     {
-                        addOpen ? <button className='btn btn-sm btn-trans btn-font mgl-10'
+                        !disabled && addOpen ? <button className='btn btn-sm btn-trans btn-font mgl-10'
                             type='button'
                             onClick={() => { this.setState( { addOpen: false } ) }}
                             data-toggle='tooltip' data-original-title={wordings['closeLanguageSelector']}>
@@ -100,7 +102,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                     }
 
                     {
-                        selectedLanguage ? (
+                        !disabled && selectedLanguage ? (
                             <button type='button'
                                 className="btn btn-sm btn-trans btn-danger mgl-10"
                                 onClick={( e ) => { e.preventDefault(); handleRemovedLanguage( selectedLanguage ) }}
