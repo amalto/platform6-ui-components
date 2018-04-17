@@ -182,7 +182,7 @@ export function formatDate( timestamp: number, locale: string ): string {
 }
 
 /**
- * Get the VIEW identifier of an item (used in Tab component as ID)
+ * Get the VIEW identifier of an item (used in Tab component as ID).
  *
  * @param {ServiceItemFacade} item
  * @returns {string}
@@ -192,7 +192,7 @@ export function getViewId( item: ServiceItemFacade ): string {
     return `${ TAB_TYPE.VIEW }${ stringifyId( itemId ) }`
 }
 /**
- * Get the EDIT identifier of an item (used in Tab component as ID)
+ * Get the EDIT identifier of an item (used in Tab component as ID).
  *
  * @param {ServiceItemFacade} item
  * @returns {string}
@@ -200,6 +200,13 @@ export function getViewId( item: ServiceItemFacade ): string {
 export function getEditId( item: ServiceItemFacade ): string {
     const itemId = getId( item )
     return `${ TAB_TYPE.EDIT }${ stringifyId( itemId ) }`
+}
+
+/**
+ * Get the ADD identifier (used in Tab component as ID).
+ */
+export function getAddId(): string {
+    return `${ TAB_TYPE.ADD }new_item`
 }
 
 /** Export */
