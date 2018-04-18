@@ -6,6 +6,7 @@ import { BatchOperationReport } from './BatchOperationReport'
 import { WebApi } from './WebApi'
 import { UserModel } from './UserModel'
 import { ReduxProps } from './ReduxProps'
+import { BaseListConfig } from './BaseListConfig'
 
 export interface DynamicComponent extends ReduxProps {
 
@@ -127,6 +128,13 @@ export interface DynamicComponent extends ReduxProps {
      * @param { any } error
      */
     handleErrorDisplay: ( error: any ) => void;
+
+    /**
+     * Render generic "Tabs" component with items list and views.
+     * 
+     * @param { BaseListConfig } config
+     */
+    renderBaseServiceList?: ( config: BaseListConfig ) => JSX.Element;
 
     /**
      * Language to use on the component. e.g: "en-US".

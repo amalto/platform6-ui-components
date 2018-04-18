@@ -15,6 +15,7 @@ import { UserModel, getUserJson, UserSearch } from './models/UserModel'
 import { WebApi } from './models/WebApi'
 import DynamicComponent from './models/DynamicComponent'
 import { ColumnHeader, CellData, DataGridTemplates } from './models/DataGrid'
+import { BaseListConfig } from './models/BaseListConfig'
 
 export {
     Id,
@@ -32,3 +33,4 @@ export { UserModel, getUserJson, UserSearch }
 export { WebApi }
 export { DynamicComponent }
 export { ColumnHeader, CellData, DataGridTemplates }
+export { BaseListConfig }

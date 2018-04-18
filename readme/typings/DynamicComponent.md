@@ -106,6 +106,13 @@ interface DynamicComponent {
     handleErrorDisplay: ( error: any ) => void;
 
     /**
+     * Render generic "Tabs" component with items list and views.
+     * 
+     * @param { BaseListConfig } config
+     */
+    renderBaseServiceList?: ( config: BaseListConfig ) => JSX.Element;
+
+    /**
      * Language to use on the component. e.g: "en-US".
      * Locales available at [Locale](#locale).
      */
