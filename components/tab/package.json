@@ -2,7 +2,7 @@
     "name": "@amalto/tab",
     "displayName": "Tab",
     "description": "Tab displayed inside the Tabs component.",
-    "version": "1.5.10",
+    "version": "1.5.11",
     "license": "MIT",
     "repository": {
         "type": "git",
