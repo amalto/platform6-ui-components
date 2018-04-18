@@ -133,6 +133,7 @@ export interface DynamicComponent extends ReduxProps {
      * Render generic "Tabs" component with items list and views.
      * 
      * @param { BaseListConfig } config
+     * @return { JSX.Element }
      */
     renderBaseServiceList?: ( config: BaseListConfig ) => JSX.Element;
 
