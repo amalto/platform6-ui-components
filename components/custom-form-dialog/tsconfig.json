@@ -3,11 +3,11 @@
         "target": "es5",
         "module": "commonjs",
         "noImplicitAny": false,
-        "removeComments": false,
-        "outDir": "build",
+        "removeComments": true,
+        "outDir": "../build",
         "jsx": "react",
-        "declaration": true,
         "sourceMap": true,
+        "declaration": true,
         "experimentalDecorators": true,
         "lib": [
             "dom",
@@ -19,13 +19,7 @@
             "es2017"
         ]
     },
-    "include": [
-        "components",
-        "models",
-        "index.tsx"
-    ],
     "exclude": [
-        "node_modules",
-        "build"
+        "node_modules"
     ]
 }

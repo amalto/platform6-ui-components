@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
 
-    devtool: 'eval',
+    devtool: 'source-map',
 
     module: {
         rules: [

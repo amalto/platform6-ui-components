@@ -18,8 +18,8 @@
   "author": "Amalto Technologies",
   "scripts": {
     "setup": "npm install",
-    "test": "ava ./test/test.js --verbose",
-    "prepare": "rm -rf ./build; tsc -d"
+    "build": "rm -rf ./build/; NODE_ENV=production webpack -p --config webpack.config.js",
+    "test": "ava ./test/test.js --verbose"
   },
   "publishConfig": {
     "access": "public"
@@ -48,7 +48,8 @@
     "jsdom": "11.6.2",
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "15.6.2",
-    "sinon": "4.2.2"
+    "sinon": "4.2.2",
+    "webpack": "3.10.0"
   },
   "ava": {
     "concurrency": 5,

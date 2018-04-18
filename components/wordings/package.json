@@ -18,7 +18,7 @@
     "author": "Amalto Technologies",
     "scripts": {
         "setup": "npm install",
-        "prepare": "rm -rf ./build; tsc -d"
+        "build": "rm -rf ./build/; NODE_ENV=production webpack -p --config webpack.config.js"
     },
     "publishConfig": {
         "access": "public"
@@ -29,6 +29,8 @@
     },
     "devDependencies": {
         "@types/react": "15.6.10",
-        "@types/react-dom": "15.5.6"
+        "@types/react-dom": "15.5.6",
+        "ts-loader": "3.2.0",
+        "webpack": "3.10.0"
     }
 }

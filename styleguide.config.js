@@ -118,7 +118,7 @@ module.exports = {
     {
         name: 'Components',
         description: 'All the components provided by Platform 6.',
-        ignore: ['**/node_modules/**'],
+        ignore: ['**/node_modules/**', 'components/wordings/**'],
         components: 'components/**/index.tsx'
     },
     {
@@ -294,7 +294,7 @@ module.exports = {
                 ]
             },
             {
-                name: 'ServicHelpers',
+                name: 'ServiceHelpers',
                 content: 'readme/service-helpers/Description.md',
                 sections: [
                     {
