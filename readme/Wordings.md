@@ -2979,7 +2979,7 @@ const MULTILANGUAGE_WORDINGS = {
     },
 
     'organisations.confirm.delete.last.position': {
-        'en-US': 'This is the only organization position holded by this user. If you delete it, you won\'t be able to re-assign this user anywhere in the tree. Are you sure you want to completely remove this user from the organization?',
+        'en-US': 'This is the only organization position held by this user. If you delete it, you won\'t be able to re-assign this user anywhere in the tree. Are you sure you want to completely remove this user from the organization?',
         'fr-FR': 'Vous êtes sur le point de supprimer la seule position tenue par cet utilisateur dans l\'organisation. Si vous la supprimez, vous ne pourrez plus du tout réassigner cet utilisateur dans l\'arbre. Êtes-vous certain de vouloir supprimer complètement cet utilisateur de l\'organisation ?'
     },
 
