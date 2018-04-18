@@ -294,6 +294,24 @@ module.exports = {
                 ]
             },
             {
+                name: 'ServicHelpers',
+                content: 'readme/service-helpers/Description.md',
+                sections: [
+                    {
+                        name: 'Constants',
+                        content: 'readme/service-helpers/Constants.md'
+                    },
+                    {
+                        name: 'Models',
+                        content: 'readme/service-helpers/Models.md'
+                    },
+                    {
+                        name: 'Methods',
+                        content: 'readme/service-helpers/Methods.md'
+                    }
+                ]
+            },
+            {
                 name: 'Typings',
                 content: 'readme/typings/Description.md',
                 sections: [
