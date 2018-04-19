@@ -18,7 +18,7 @@
     "author": "Amalto Technologies",
     "scripts": {
         "setup": "npm install",
-        "build": "rm -rf ./build/; NODE_ENV=production webpack -p --config webpack.config.js"
+        "build": "rm -rf ./build/; tsc"
     },
     "publishConfig": {
         "access": "public"

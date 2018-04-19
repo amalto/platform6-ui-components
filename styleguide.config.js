@@ -118,7 +118,7 @@ module.exports = {
     {
         name: 'Components',
         description: 'All the components provided by Platform 6.',
-        ignore: ['**/node_modules/**', 'components/wordings/**'],
+        ignore: ['**/node_modules/**'],
         components: 'components/**/index.tsx'
     },
     {
