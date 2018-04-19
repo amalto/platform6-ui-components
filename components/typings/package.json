@@ -2,7 +2,7 @@
   "name": "@amalto/typings",
   "displayName": "Typings",
   "description": "Interfaces used in Platform 6 UI component.",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "webpack": "3.10.0"
   },
   "dependencies": {
-    "@amalto/service-helpers": "1.0.37",
+    "@amalto/service-helpers": "1.0.38",
     "react": "15.6.2",
     "redux": "3.7.2"
   }
