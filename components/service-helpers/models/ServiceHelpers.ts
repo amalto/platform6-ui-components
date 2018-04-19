@@ -9,12 +9,12 @@ export interface Description {
 
 export interface Wordings {
     [key: string]: {
-        [lang: string]: string
+        [lang: string]: string | JSX.Element
     }
 }
 
 export interface CompiledWordings {
-    [key: string]: string
+    [key: string]: string | JSX.Element
 }
 
 export interface ServiceItemFacade extends Id {

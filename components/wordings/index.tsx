@@ -1,7 +1,13 @@
 // Modules
 import * as React from 'react'
 
-export const MULTILANGUAGE_WORDINGS = {
+export interface Wordings {
+    [key: string]: {
+        [lang: string]: string | JSX.Element
+    }
+}
+
+export const MULTILANGUAGE_WORDINGS: Wordings = {
 
     /** Common wordings. */
 
