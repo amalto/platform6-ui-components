@@ -162,7 +162,7 @@ export function validateName( value: string, id: Id, items: ServiceItemFacades, 
  * @param {Id} id
  * @returns {ServiceItemFacade | undefined}
  */
-export function getItem( items: ServiceItemFacades, id: Id ): ServiceItemFacade | undefined {
+export function getItem( items: ServiceItemFacades, id: Id ): ServiceItemFacade {
     const { name } = id
 
     return items.find( i => i.name === name && i.appKey === id.appKey )
