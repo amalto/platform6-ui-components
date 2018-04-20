@@ -1,6 +1,6 @@
 ```jsx noeditor
 const version = require('../components/input-validation/package.json').version;
-const Pathline = require('../../typescript/custom/Pathline').default;
+const Pathline = require('../typescript/custom/Pathline').default;
 
 <Pathline children={JSON.stringify( { name: '@amalto/input-validation', version } )} />
 ```

@@ -1,6 +1,6 @@
 ```jsx noeditor
 const version = require('../components/wordings/package.json').version;
-const Pathline = require('../../typescript/custom/Pathline').default;
+const Pathline = require('../typescript/custom/Pathline').default;
 
 <Pathline children={JSON.stringify( { name: '@amalto/wordings', version } )} />
 ```
