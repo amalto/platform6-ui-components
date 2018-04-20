@@ -18,8 +18,8 @@ export interface CompiledWordings {
 }
 
 export interface ServiceItemFacade extends Id {
-    description: string
-    calculatedContentMode: string
+    description?: string
+    calculatedContentMode?: string
     appInfo?: string
     lastModifiedBy?: string
     lastModifiedDate?: number
@@ -27,10 +27,10 @@ export interface ServiceItemFacade extends Id {
 }
 
 export interface ServiceItem extends Id {
-    description: Description
+    description?: Description
     lastModifiedBy?: string
     lastModifiedDate?: string
-    contentMode: string
+    contentMode?: string
     revisionId?: string
 }
 
