@@ -2,7 +2,7 @@
     "name": "@amalto/wordings",
     "displayName": "Wordings",
     "description": "Wordings used on platform6.",
-    "version": "1.4.41",
+    "version": "1.4.42",
     "license": "MIT",
     "repository": {
         "type": "git",
