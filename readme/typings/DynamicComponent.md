@@ -1,6 +1,6 @@
 Root component of all services.
 
-DynamicComponent uses [WebApi](#webapi), [AppKey](#appkey), [BatchOperationReport](#batchoperationreport) and [NotificationModel](#notificationmodel) interfaces.
+DynamicComponent uses [WebApi](#webapi), [AppKey](#appkey), [BaseListConfig](#baselistconfig), [BatchOperationReport](#batchoperationreport) and [NotificationModel](#notificationmodel) interfaces.
 
 ```typescript
 interface DynamicComponent {

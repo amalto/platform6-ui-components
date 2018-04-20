@@ -1,3 +1,5 @@
+Those methods are used to display each tabs from your service. It is used on [DymanicComponent](#dynamiccomponent).
+
 ```typescript
 interface BaseListConfig {
 

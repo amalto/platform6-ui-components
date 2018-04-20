@@ -324,6 +324,10 @@ module.exports = {
                         content: 'readme/typings/AppKey.md'
                     },
                     {
+                        name: 'BaseListConfig',
+                        content: 'readme/typings/BaseListConfig.md'
+                    },
+                    {
                         name: 'BatchOperationReport',
                         content: 'readme/typings/BatchOperationReport.md'
                     },
