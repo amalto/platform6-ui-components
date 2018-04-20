@@ -1,4 +1,4 @@
-Method used on the validate property from an <blockquote>input</blockquote>.
+Method used on the validate property from an <blockquote>input</blockquote>. Those methods should return <blockquote>undefined</blockquote> when validated and string to be display when not validated.
 
 ```typescript
 /**
@@ -7,7 +7,7 @@ Method used on the validate property from an <blockquote>input</blockquote>.
  * @param { boolean } value
  * @param { string } locale
  */
-export const checked = ( value: boolean, locale: string ) => value ? undefined : error( 'fieldRequired', locale )
+export const checked = ( value: boolean, locale: string ) => string;
 
 /**
  * Check if a "text" input is not empty
@@ -15,7 +15,7 @@ export const checked = ( value: boolean, locale: string ) => value ? undefined :
  * @param { boolean } value
  * @param { string } locale
  */
-export const required = ( value: string, locale: string ) => isNotEmpty( value ) ? undefined : error( 'fieldRequired', locale )
+export const required = ( value: string, locale: string ) => string;
 
 /**
  * Check if a "email" input has the right format.
@@ -23,15 +23,14 @@ export const required = ( value: string, locale: string ) => isNotEmpty( value )
  * @param { boolean } value
  * @param { string } locale
  */
-export const email = ( value: string, locale: string ) => isValidEmail( value ) ? undefined : error( 'invalidEmail', locale )
-
+export const email = ( value: string, locale: string ) => string;
 /**
  * Check if a "text" input is a valid number.
  * 
  * @param { boolean } value
  * @param { string } locale
  */
-export const number = ( value: string, locale: string ) => value && isNaN( Number( value ) ) ? error( 'invalidNumber', locale ) : undefined
+export const number = ( value: string, locale: string ) => string;
 
 /**
  * Check if a "text" input is a valid https url.
@@ -39,5 +38,5 @@ export const number = ( value: string, locale: string ) => value && isNaN( Numbe
  * @param { boolean } value
  * @param { string } locale
  */
-export const https = ( value: string, locale: string ) => value && isValidHttpsUrl( value ) ? undefined : error( 'invalidUrl', locale )
+export const https = ( value: string, locale: string ) => string;
 ```
