@@ -7,7 +7,7 @@ export interface Description { [lang: string]: string }
 
 export interface ServiceItemFacade extends Id {
     description: string
-    calculatedContentMode: string
+    calculatedContentMode?: string
     appInfo?: string
     lastModifiedBy?: string
     lastModifiedDate?: number
@@ -18,7 +18,7 @@ export interface ServiceItem extends Id {
     description: Description
     lastModifiedBy?: string
     lastModifiedDate?: string
-    contentMode: string
+    contentMode?: string
     revisionId?: string
 }
 
