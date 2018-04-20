@@ -1,3 +1,18 @@
+```jsx noeditor
+const version = require('../components/wordings/package.json').version;
+const Pathline = require('../../typescript/custom/Pathline').default;
+
+<Pathline children={JSON.stringify( { name: '@amalto/wordings', version } )} />
+```
+
+Multi language text used in the UI.
+
+### Usage
+
+```typescript
+import * as inputValidation from '@amalto/wordings'
+```
+
 ```typescript
 interface Wordings {
     [key: string]: {
