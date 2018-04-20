@@ -678,6 +678,10 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'en-US': 'Your export file is being prepared...',
         'fr-FR': 'Votre export est en cours de chargement...'
     },
+    'close': {
+        'en-US': 'Close',
+        'fr-FR': 'Fermer'
+    },
 
     /** b2portal wordings. */
     'register.email.error': {
