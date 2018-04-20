@@ -264,6 +264,10 @@ module.exports = {
                 content: 'readme/Locale.md',
             },
             {
+                name: 'InputValidation',
+                content: 'readme/InputValidation.md',
+            },
+            {
                 name: 'Helpers',
                 content: 'readme/helpers/Description.md',
                 sections: [
