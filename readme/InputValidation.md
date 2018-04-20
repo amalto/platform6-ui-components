@@ -1,4 +1,17 @@
+```jsx noeditor
+const version = require('../../components/typings/package.json').version;
+const Pathline = require('../../typescript/custom/Pathline').default;
+
+<Pathline children={JSON.stringify( { name: '@amalto/input-validation', version } )} />
+```
+
 Method used on the validate property from an <blockquote>input</blockquote>. Those methods should return <blockquote>undefined</blockquote> when validated and string to be display when not validated.
+
+### Usage
+
+```typescript
+import * as inputValidation from '@amalto/input-validation'
+```
 
 ```typescript
 /**
