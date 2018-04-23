@@ -153,6 +153,10 @@ namespace FileUploadInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
         name: string;
+        /** File name to display. */
+        filename?: string;
+        /** File size to display. */
+        filesize?: number;
         /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
