@@ -28,6 +28,8 @@ namespace FileInput {
         filename?: string;
         /** File size to display. */
         filesize?: number;
+        /** Callback with filename and filesize after load. */
+        onFileLoaded?: ( filename: string, filesize: number ) => void;
         /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering "?" icon. */
@@ -140,7 +142,10 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 
             reader.readAsText( file )
 
-            this.setState( { filename: file.name, filesize: file.size } as FileUploadInput.State, () => input.onChange( file, undefined, undefined ) )
+            this.setState( { filename: file.name, filesize: file.size } as FileUploadInput.State, () => {
+                input.onChange( file, undefined, undefined )
+                this.props.onFileLoaded && this.props.onFileLoaded( this.state.filename, this.state.filesize )
+            } )
         }
     }
 }
@@ -157,6 +162,8 @@ namespace FileUploadInput {
         filename?: string;
         /** File size to display. */
         filesize?: number;
+        /** Callback with filename and filesize after load. */
+        onFileLoaded?: ( filename: string, filesize: number ) => void;
         /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
