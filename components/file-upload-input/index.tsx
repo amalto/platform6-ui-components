@@ -76,6 +76,11 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         }
     }
 
+    componentDidUpdate( prevProps: FileInput.Props, prevState: FileInput.State ) {
+        if ( prevProps.filename !== this.props.filename ) this.setState( { filename: this.props.filename } as FileInput.State )
+        if ( prevProps.filesize !== this.props.filesize ) this.setState( { filesize: this.props.filesize } as FileInput.State )
+    }
+
     render() {
 
         const { filename, filesize, fileContent, wordings } = this.state
