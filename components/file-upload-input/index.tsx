@@ -24,6 +24,10 @@ namespace FileInput {
     export interface Props extends WrappedFieldProps<any> {
         /** Input's name used when submitting form. */
         name: string;
+        /** File name to display. */
+        filename?: string;
+        /** File size to display. */
+        filesize?: number;
         /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering "?" icon. */
@@ -65,8 +69,8 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
             wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             loadingError: false,
             fileContent: null,
-            filename: null,
-            filesize: null
+            filename: props.filename || null,
+            filesize: props.filesize || null
         }
     }
 
