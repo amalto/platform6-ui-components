@@ -18,6 +18,7 @@
   "author": "Amalto Technologies",
   "scripts": {
     "setup": "npm install",
+    "build": "rm -rf ./build; tsc",
     "test": "ava ./test/test.js --verbose"
   },
   "publishConfig": {
