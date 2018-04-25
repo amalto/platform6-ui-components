@@ -1,4 +1,4 @@
-import { ServiceItemFacade, ServiceItemFacades } from '@amalto/service-helpers'
+import { ServiceItemFacade, ServiceItemFacades } from './ServiceHelpers'
 
 export interface BaseListConfig {
     viewTabRenderer: ( viewId: string, item: ServiceItemFacade, closeTab: () => void ) => JSX.Element;

@@ -310,6 +310,10 @@ module.exports = {
                         content: 'readme/service-helpers/Models.md'
                     },
                     {
+                        name: 'BaseListConfig',
+                        content: 'readme/service-helpers/BaseListConfig.md'
+                    },
+                    {
                         name: 'Methods',
                         content: 'readme/service-helpers/Methods.md'
                     }
@@ -326,10 +330,6 @@ module.exports = {
                     {
                         name: 'AppKey',
                         content: 'readme/typings/AppKey.md'
-                    },
-                    {
-                        name: 'BaseListConfig',
-                        content: 'readme/typings/BaseListConfig.md'
                     },
                     {
                         name: 'BatchOperationReport',

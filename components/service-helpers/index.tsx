@@ -13,6 +13,8 @@ import {
     ServiceItems
 } from './models/ServiceHelpers'
 
+import { BaseListConfig } from './models/BaseListConfig'
+
 // constants
 import {
     ID_SEPARATOR,
@@ -221,6 +223,8 @@ export {
     ServiceItem,
     ServiceItems
 }
+
+export { BaseListConfig }
 
 export {
     ID_SEPARATOR,
