@@ -12,7 +12,8 @@ import { OrgModel, TreeNodeModel } from './models/Organisation'
 import {
     Id,
     ServiceItemFacades,
-    CompiledWordings
+    CompiledWordings,
+    Wordings
 } from '@amalto/service-helpers'
 
 // Constants
@@ -26,15 +27,15 @@ export const MAP_PROPERTY_KEY_REGEX = /^[a-zA-Z0-9-_]+$/
 export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
 export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
 
-export function getWordings( wordings: { [key: string]: any }, locale: string ): { [key: string]: string } {
-    const combinedWordings: { [key: string]: any } = deepCopy( MULTILANGUAGE_WORDINGS, wordings )
+export function getWordings( wordings: { [key: string]: any }, locale: string ): CompiledWordings {
+    const combinedWordings: Wordings = deepCopy( MULTILANGUAGE_WORDINGS, wordings )
 
     var res = Object.keys( combinedWordings ).reduce(
         ( dic, key ) => {
             dic[key] = combinedWordings[key][locale]
             return dic
         },
-        {} as { [key: string]: string; }
+        {} as CompiledWordings
     )
     return res
 }
