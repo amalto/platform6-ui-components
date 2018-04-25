@@ -10,6 +10,9 @@ import { ColumnHeader, CellData, DataGridTemplates } from './models/DataGrid'
 import { BatchOperationReport } from './models/BatchOperationReport'
 
 /** Export */
+export { AppKey }
+export { RunningJob }
+export { ReduxProps }
 export { Errors }
 export { NotificationModel }
 export { UserModel, getUserJson, UserSearch }

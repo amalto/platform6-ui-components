@@ -13,7 +13,7 @@ import {
     Id,
     ServiceItemFacades,
     CompiledWordings
-} from '@amalto/typings'
+} from '@amalto/service-helpers'
 
 // Constants
 import { AVAILABLE_LANGUAGES } from './constants/Config'
