@@ -6,9 +6,10 @@ import {
     BatchOperationReport,
     WebApi,
     UserModel,
-    ReduxProps,
-    BaseListConfig
+    ReduxProps
 } from '@amalto/typings'
+
+import { BaseListConfig } from './BaseListConfig'
 
 export interface DynamicComponent extends ReduxProps {
 
