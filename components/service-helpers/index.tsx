@@ -15,6 +15,8 @@ import {
 
 import { BaseListConfig } from './models/BaseListConfig'
 
+import { DynamicComponent } from './models/DynamicComponent'
+
 // constants
 import {
     ID_SEPARATOR,
@@ -225,6 +227,8 @@ export {
 }
 
 export { BaseListConfig }
+
+export { DynamicComponent }
 
 export {
     ID_SEPARATOR,
