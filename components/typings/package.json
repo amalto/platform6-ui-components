@@ -31,10 +31,6 @@
     "webpack": "3.10.0"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "@amalto/service-helpers": "1.0.45",
->>>>>>> ca1c9c4f0c8b0636f9022e1f0b4c1a8164829475
     "react": "15.6.2",
     "redux": "3.7.2"
   }
