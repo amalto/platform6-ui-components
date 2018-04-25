@@ -3,7 +3,7 @@ import * as React from 'react'
 
 export interface Wordings {
     [key: string]: {
-        [lang: string]: string | JSX.Element
+        [lang: string]: string
     }
 }
 
@@ -755,16 +755,20 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     'register.agreement.intro': {
-        'en-US': <span>
-            <span>Please read the&nbsp;</span>
-            <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">contractual agreement</a>
-            <span>&nbsp;and confirm below</span>
-        </span>,
-        'fr-FR': <span>
-            <span>Merci de lire&nbsp;</span>
-            <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">l'accord contractuel</a>
-            <span>&nbsp;et de valider ci-dessous</span>
-        </span>
+        'en-US': `
+            <span>
+                <span>Please read the&nbsp;</span>
+                <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">contractual agreement</a>
+                <span>&nbsp;and confirm below</span>
+            </span>
+        `,
+        'fr-FR': `
+            <span>
+                <span>Merci de lire&nbsp;</span>
+                <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">l'accord contractuel</a>
+                <span>&nbsp;et de valider ci-dessous</span>
+            </span>
+        `
     },
 
     'register.agreement.label': {
@@ -3256,23 +3260,23 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     'profile.button.refresh.permissions': {
-        'en-US': <div>Refresh<br />permissions</div>,
-        'fr-FR': <div>Rafraîchir<br />permissions</div>
+        'en-US': `<div>Refresh<br />permissions</div>`,
+        'fr-FR': `<div>Rafraîchir<br />permissions</div>`
     },
 
     'profile.button.cty.unsubscribe': {
-        'en-US': <div>Unsubscribe from<br />this Community</div>,
-        'fr-FR': <div>Me désinscrire<br />de cette Communauté</div>
+        'en-US': `<div>Unsubscribe from<br />this Community</div>`,
+        'fr-FR': `<div>Me désinscrire<br />de cette Communauté</div>`
     },
 
     'profile.button.delete.account': {
-        'en-US': <div>Delete<br />my account</div>,
-        'fr-FR': <div>Supprimer mon<br />compte utilisateur</div>
+        'en-US': `<div>Delete<br />my account</div>`,
+        'fr-FR': `<div>Supprimer mon<br />compte utilisateur</div>`
     },
 
     'profile.button.export.permissions': {
-        'en-US': <div>Export<br />permissions</div>,
-        'fr-FR': <div>Exporter<br />permissions</div>
+        'en-US': `<div>Export<br />permissions</div>`,
+        'fr-FR': `<div>Exporter<br />permissions</div>`
     },
 
     'profile.messages.autorefresh': {
@@ -3291,19 +3295,23 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     'profile.user.delete.confirm': {
-        'en-US': <p>Are you sure you want to delete you account?</p>,
-        'fr-FR': <p>Êtes-vous sûr(e) de vouloir supprimer votre compte utilisateur ?</p>
+        'en-US': `<p>Are you sure you want to delete you account?</p>`,
+        'fr-FR': `<p>Êtes-vous sûr(e) de vouloir supprimer votre compte utilisateur ?</p>`
     },
 
     'profile.user.delete.sure.confirm': {
-        'en-US': <p>
-            <h3 className="danger-color bottom-margin text-xxlarge">WARNING</h3>
-            <span>Are you <strong>REALLY</strong> sure you want to delete you account? You won't be able to access the portal anymore...</span>
-        </p>,
-        'fr-FR': <p>
-            <h3 className="danger-color bottom-margin text-xxlarge">ATTENTION</h3>
-            <span>Êtes-vous <strong>VRAIMENT</strong> sûr(e) de vouloir supprimer votre compte utilisateur ? Vous ne pourrez plus accéder au portail...</span>
-        </p>
+        'en-US': `
+            <p>
+                <h3 className="danger-color bottom-margin text-xxlarge">WARNING</h3>
+                <span>Are you <strong>REALLY</strong> sure you want to delete you account? You won't be able to access the portal anymore...</span>
+            </p>
+        `,
+        'fr-FR': `
+            <p>
+                <h3 className="danger-color bottom-margin text-xxlarge">ATTENTION</h3>
+                <span>Êtes-vous <strong>VRAIMENT</strong> sûr(e) de vouloir supprimer votre compte utilisateur ? Vous ne pourrez plus accéder au portail...</span>
+            </p>
+        `
     },
 
     'profile.user.unsubscribe.confirm': {
