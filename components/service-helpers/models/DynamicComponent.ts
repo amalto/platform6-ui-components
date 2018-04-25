@@ -1,12 +1,14 @@
 // Models
-import { AppKey } from './AppKey'
-import { RunningJob } from './JobControl'
-import NotificationModel from './NotificationModel'
-import { BatchOperationReport } from './BatchOperationReport'
-import { WebApi } from './WebApi'
-import { UserModel } from './UserModel'
-import { ReduxProps } from './ReduxProps'
-import { BaseListConfig } from './BaseListConfig'
+import {
+    AppKey,
+    RunningJob,
+    NotificationModel,
+    BatchOperationReport,
+    WebApi,
+    UserModel,
+    ReduxProps,
+    BaseListConfig
+} from '@amalto/typings'
 
 export interface DynamicComponent extends ReduxProps {
 

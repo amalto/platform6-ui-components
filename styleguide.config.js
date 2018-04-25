@@ -314,6 +314,10 @@ module.exports = {
                         content: 'readme/service-helpers/BaseListConfig.md'
                     },
                     {
+                        name: 'DynamicComponent',
+                        content: 'readme/service-helpers/DynamicComponent.md'
+                    },
+                    {
                         name: 'Methods',
                         content: 'readme/service-helpers/Methods.md'
                     }
@@ -334,10 +338,6 @@ module.exports = {
                     {
                         name: 'BatchOperationReport',
                         content: 'readme/typings/BatchOperationReport.md'
-                    },
-                    {
-                        name: 'DynamicComponent',
-                        content: 'readme/typings/DynamicComponent.md'
                     },
                     {
                         name: 'EndpointsUrl',
