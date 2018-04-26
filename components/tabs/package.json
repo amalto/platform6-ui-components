@@ -2,7 +2,7 @@
   "name": "@amalto/tabs",
   "displayName": "Tabs",
   "description": "Tabs component used in platform6.",
-  "version": "1.5.53",
+  "version": "1.5.54",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,9 +25,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/helpers": "1.4.73",
+    "@amalto/helpers": "1.4.74",
     "@amalto/tab": "1.5.13",
-    "@amalto/wordings": "1.4.45",
+    "@amalto/wordings": "1.4.46",
     "classnames": "2.2.5",
     "react": "15.6.2",
     "react-dom": "15.6.2",
