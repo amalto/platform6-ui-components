@@ -14,372 +14,373 @@ import * as inputValidation from '@amalto/wordings'
 ```
 
 ```typescript
-interface Wordings {
+// Modules
+export interface Wordings {
     [key: string]: {
-        [lang: string]: string | JSX.Element
+        [lang: string]: string
     }
 }
 
-const MULTILANGUAGE_WORDINGS: Wordings = {
+export const MULTILANGUAGE_WORDINGS: Wordings = {
 
     /** Common wordings. */
 
-    'save': {
+    save: {
         'en-US': 'Save',
         'fr-FR': 'Sauvegarder'
     },
 
-    'cancel': {
+    cancel: {
         'en-US': 'Cancel',
         'fr-FR': 'Annuler'
     },
 
-    'email': {
+    email: {
         'en-US': 'Email',
         'fr-FR': 'Email'
     },
 
-    'submit': {
+    submit: {
         'en-US': 'Submit',
         'fr-FR': 'Valider'
     },
 
-    'confirm': {
+    confirm: {
         'en-US': 'Confirm',
         'fr-FR': 'Confirmer'
     },
 
-    'delete': {
+    delete: {
         'en-US': 'Delete',
         'fr-FR': 'Supprimer'
     },
 
-    'enabled': {
+    enabled: {
         'en-US': 'Enabled',
         'fr-FR': 'Actif'
     },
 
-    'permissions': {
+    permissions: {
         'en-US': 'Permissions',
         'fr-FR': 'Permissions'
     },
 
-    'description': {
+    description: {
         'en-US': 'Description',
         'fr-FR': 'Description'
     },
 
-    'name': {
+    name: {
         'en-US': 'Name',
         'fr-FR': 'Nom'
     },
 
-    'noDataFound': {
+    noDataFound: {
         'en-US': 'No data found',
         'fr-FR': 'Aucune donnée'
     },
 
-    'firstname': {
+    firstname: {
         'en-US': 'First name',
         'fr-FR': 'Prénom'
     },
 
-    'loadingError': {
+    loadingError: {
         'en-US': 'Loading error',
         'fr-FR': 'Erreur de chargement'
     },
 
-    'details': {
+    details: {
         'en-US': 'Details',
         'fr-FR': 'Détails'
     },
 
-    'lastname': {
+    lastname: {
         'en-US': 'Last name',
         'fr-FR': 'Nom'
     },
 
-    'error': {
+    error: {
         'en-US': 'Error',
         'fr-FR': 'Erreur'
     },
 
-    'register': {
+    register: {
         'en-US': 'Register',
         'fr-FR': 'S\'enregistrer'
     },
 
-    'instance': {
+    instance: {
         'en-US': 'Instance',
         'fr-FR': 'Instance'
     },
 
-    'messages': {
+    messages: {
         'en-US': 'Messages',
         'fr-FR': 'Messages'
     },
 
     // Profile START
-    'title': {
+    title: {
         'en-US': 'Title',
         'fr-FR': 'Titre'
     },
 
-    'user': {
+    user: {
         'en-US': 'User',
         'fr-FR': 'Utilisateur'
     },
 
-    'mr': {
+    mr: {
         'en-US': 'Mr.',
         'fr-FR': 'M.'
     },
 
-    'mrs': {
+    mrs: {
         'en-US': 'Mrs.',
         'fr-FR': 'Mme'
     },
 
-    'prof': {
+    prof: {
         'en-US': 'Prof.',
         'fr-FR': 'Pr'
     },
 
-    'dr': {
+    dr: {
         'en-US': 'Dr.',
         'fr-FR': 'Dr'
     },
 
-    'salutation': {
+    salutation: {
         'en-US': 'Salutation',
         'fr-FR': 'Salutation'
     },
 
-    'companyName': {
+    companyName: {
         'en-US': 'Company name',
         'fr-FR': 'Nom de la société'
     },
 
-    'address': {
+    address: {
         'en-US': 'Address',
         'fr-FR': 'Adresse'
     },
 
-    'city': {
+    city: {
         'en-US': 'City',
         'fr-FR': 'Ville'
     },
 
-    'state': {
+    state: {
         'en-US': 'State',
         'fr-FR': 'État'
     },
 
-    'country': {
+    country: {
         'en-US': 'Country',
         'fr-FR': 'Pays'
     },
 
-    'zip': {
+    zip: {
         'en-US': 'Zip',
         'fr-FR': 'Code postal'
     },
 
-    'phone': {
+    phone: {
         'en-US': 'Phone',
         'fr-FR': 'Téléphone'
     },
 
-    'mobile': {
+    mobile: {
         'en-US': 'Mobile',
         'fr-FR': 'Mobile'
     },
 
-    'website': {
+    website: {
         'en-US': 'Website',
         'fr-FR': 'Site web'
     },
 
     // Profile END
 
-    'start': {
+    start: {
         'en-US': 'Start',
         'fr-FR': 'Démarrer'
     },
 
-    'stop': {
+    stop: {
         'en-US': 'Stop',
         'fr-FR': 'Arrêter'
     },
 
-    'reset': {
+    reset: {
         'en-US': 'Reset',
         'fr-FR': 'Réinitialiser'
     },
 
-    'edit': {
+    edit: {
         'en-US': 'Edit',
         'fr-FR': 'Éditer'
     },
 
-    'create': {
+    create: {
         'en-US': 'Create',
         'fr-FR': 'Créer'
     },
 
-    'actions': {
+    actions: {
         'en-US': 'Actions',
         'fr-FR': 'Actions'
     },
 
-    'info': {
+    info: {
         'en-US': 'Info',
         'fr-FR': 'Info'
     },
 
-    'searchPlaceholder': {
+    searchPlaceholder: {
         'en-US': 'Search...',
         'fr-FR': 'Rechercher...'
     },
 
-    'key': {
+    key: {
         'en-US': 'Key',
         'fr-FR': 'Clé'
     },
 
-    'value': {
+    value: {
         'en-US': 'Value',
         'fr-FR': 'Valeur'
     },
 
-    'fieldRequired': {
+    fieldRequired: {
         'en-US': 'Required field',
         'fr-FR': 'Champ obligatoire'
     },
 
-    'showDetails': {
+    showDetails: {
         'en-US': 'Show details',
         'fr-FR': 'Voir les détails'
     },
 
-    'closeDetails': {
+    closeDetails: {
         'en-US': 'Close details',
         'fr-FR': 'Fermer les détails'
     },
 
-    'search': {
+    search: {
         'en-US': 'Search',
         'fr-FR': 'Rechercher'
     },
 
-    'administration': {
+    administration: {
         'en-US': 'Administration',
         'fr-FR': 'Administration'
     },
 
-    'itemCreated': {
+    itemCreated: {
         'en-US': 'Item created',
         'fr-FR': 'Élément créé'
     },
 
-    'itemUpdated': {
+    itemUpdated: {
         'en-US': 'Item updated',
         'fr-FR': 'Élément modifié'
     },
 
-    'itemRenamed': {
+    itemRenamed: {
         'en-US': 'Item renamed',
         'fr-FR': 'Nom de l\'élément modifié'
     },
 
-    'itemDeleted': {
+    itemDeleted: {
         'en-US': 'Item deleted',
         'fr-FR': 'Élément supprimé'
     },
 
-    'itemsImported': {
+    itemsImported: {
         'en-US': 'Items imported',
         'fr-FR': 'Objets importés'
     },
 
-    'confirmItemsDelete': {
+    confirmItemsDelete: {
         'en-US': 'Are you sure you want to delete these items?',
         'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer ces objets ?'
     },
 
-    'itemsDeleteImpossible': {
+    itemsDeleteImpossible: {
         'en-US': 'You can\'t delete these items',
         'fr-FR': 'Impossible de supprimer ces éléments'
     },
 
-    'warning': {
+    warning: {
         'en-US': 'Warning',
         'fr-FR': 'Attention'
     },
 
-    'exportJSON': {
+    exportJSON: {
         'en-US': 'Export as JSON',
         'fr-FR': 'Exporter (JSON)'
     },
 
-    'profile': {
+    profile: {
         'en-US': 'Profile',
         'fr-FR': 'Profil'
     },
 
-    'target': {
+    target: {
         'en-US': 'Target',
         'fr-FR': 'Cible'
     },
 
-    'by': {
+    by: {
         'en-US': 'by',
         'fr-FR': 'par'
     },
 
-    'invalidEmail': {
+    invalidEmail: {
         'en-US': 'Invalid email',
         'fr-FR': 'Email invalide'
     },
 
-    'invalidNumber': {
+    invalidNumber: {
         'en-US': 'Must be a number',
         'fr-FR': 'Doit être un nombre'
     },
 
-    'invalidUrl': {
+    invalidUrl: {
         'en-US': 'Invalid https url',
         'fr-FR': 'Url https invalid'
     },
 
-    'success': {
+    success: {
         'en-US': 'Success',
         'fr-FR': 'Succès'
     },
 
     // Tab title START
 
-    'tabList': {
+    tabList: {
         'en-US': 'List ({total})',
         'fr-FR': 'Liste ({total})'
     },
 
-    'tabEdit': {
+    tabEdit: {
         'en-US': 'Edit - {name}',
         'fr-FR': 'Éditer - {name}'
     },
 
-    'tabAdd': {
+    tabAdd: {
         'en-US': 'Add - New item',
         'fr-FR': 'Ajouter - Nouvel objet'
     },
 
-    'tabRun': {
+    tabRun: {
         'en-US': 'Run - {name}',
         'fr-FR': 'Exécuter - {name}'
     },
 
-    'tabView': {
+    tabView: {
         'en-US': 'View - {name}',
         'fr-FR': 'Afficher - {name}'
     },
@@ -387,313 +388,324 @@ const MULTILANGUAGE_WORDINGS: Wordings = {
     // Tab title END
 
 
-    'selectAll': {
+    selectAll: {
         'en-US': 'Select all',
         'fr-FR': 'Sélectionner tout'
     },
 
-    'unselectAll': {
+    unselectAll: {
         'en-US': 'Unselect all',
         'fr-FR': 'Désélectionner tout'
     },
 
-    'add': {
+    add: {
         'en-US': 'Add',
         'fr-FR': 'Ajouter'
     },
 
-    'import': {
+    import: {
         'en-US': 'Import',
         'fr-FR': 'Importer'
     },
 
-    'export': {
+    export: {
         'en-US': 'Export',
         'fr-FR': 'Exporter'
     },
 
-    'exportAll': {
+    exportAll: {
         'en-US': 'Export all',
         'fr-FR': 'Exporter tout'
     },
 
-    'deleteAll': {
+    deleteAll: {
         'en-US': 'Delete all',
         'fr-FR': 'Supprimer tout'
     },
 
-    'saveAll': {
+    saveAll: {
         'en-US': 'Save all',
         'fr-FR': 'Sauvegarder tout'
     },
 
-    'run': {
+    run: {
         'en-US': 'Run',
         'fr-FR': 'Exécuter'
     },
 
-    'rename': {
+    rename: {
         'en-US': 'Rename',
         'fr-FR': 'Renommer'
     },
 
-    'duplicate': {
+    duplicate: {
         'en-US': 'Duplicate',
         'fr-FR': 'Dupliquer'
     },
 
-    'types': {
+    types: {
         'en-US': 'Types',
         'fr-FR': 'Types'
     },
 
-    'fullscreen': {
+    fullscreen: {
         'en-US': 'Full-screen',
         'fr-FR': 'Plein écran'
     },
 
-    'reduce': {
+    reduce: {
         'en-US': 'Reduce',
         'fr-FR': 'Réduire'
     },
 
-    'appKey': {
+    appKey: {
         'en-US': 'Application key',
         'fr-FR': 'Clé d\'application'
     },
 
-    'appInfo': {
+    appInfo: {
         'en-US': 'Application info',
         'fr-FR': 'Information sur l\'application'
     },
 
-    'lastModification': {
+    lastModification: {
         'en-US': 'Last modification',
         'fr-FR': 'Dernière modification'
     },
 
-    'lastModificationBy': {
+    lastModificationBy: {
         'en-US': 'Last modification made by {name} on {date}',
         'fr-FR': 'Dernière modification faite par {name} le {date}'
     },
 
-    'keyExist': {
+    keyExist: {
         'en-US': 'Key already exist.',
         'fr-FR': 'La clé existe déjà.'
     },
 
-    'size': {
+    size: {
         'en-US': 'Size',
         'fr-FR': 'Taille'
     },
 
-    'tabCloseUnsave': {
+    tabCloseUnsave: {
         'en-US': 'There are unsaved changes. Are you sure you want to close this tab and lose your updates?',
         'fr-FR': 'Vous avez effectué des modifications sans les enregistrer. Êtes-vous sûr(e) de vouloir fermer cet onglet et perdre les données non sauvegardées ?'
     },
 
-    'nameAlreadyTaken': {
+    nameAlreadyTaken: {
         'en-US': 'Name already taken.',
         'fr-FR': 'Nom déjà utilisé.'
     },
 
-    'nameNoDot': {
+    nameNoDot: {
         'en-US': 'The name cannot contain a \'.\'',
         'fr-FR': 'Le nom ne peut pas contenir de \'.\''
     },
 
-    'resource': {
+    resource: {
         'en-US': 'Resource',
         'fr-FR': 'Ressource'
     },
 
-    'targetRoot': {
+    targetRoot: {
         'en-US': 'Target root',
         'fr-FR': 'Racine de la cible'
     },
 
-    'targetPath': {
+    targetPath: {
         'en-US': 'Target path',
         'fr-FR': 'Chemin vers la cible'
     },
 
-    'properties': {
+    properties: {
         'en-US': 'Properties',
         'fr-FR': 'Propriétés'
     },
 
-    'propertiesEmpty': {
+    propertiesEmpty: {
         'en-US': 'You don\'t have any property',
         'fr-FR': 'Vous n\'avez aucune propriété'
     },
 
-    'keyUnique': {
+    keyUnique: {
         'en-US': 'Key must be unique',
         'fr-FR': 'La clé doit être unique'
     },
 
-    'propertyAdd': {
+    propertyAdd: {
         'en-US': 'Add property',
         'fr-FR': 'Ajouter une propriété'
     },
 
-    'multilanguageField': {
+    multilanguageField: {
         'en-US': 'This is a multilingual field. English is required.',
         'fr-FR': 'Ceci est un champ multilingue. L\'anglais est obligatoire.'
     },
 
-    'englishDescriptionRequired': {
+    englishDescriptionRequired: {
         'en-US': 'English description is required.',
         'fr-FR': 'La description anglaise est obligatoire.'
     },
 
-    'bundledResourceEmptyList': {
+    bundledResourceEmptyList: {
         'en-US': 'Bundled resource not found',
         'fr-FR': 'Aucune ressource groupée'
     },
 
-    'maxSize1GB': {
+    maxSize1GB: {
         'en-US': 'Maximum size allowed is 1GB',
         'fr-FR': 'La taille maximale authorisée est de 1GO'
     },
 
-    'invalidSizeMax1GB': {
+    invalidSizeMax1GB: {
         'en-US': 'File too big, maximum size allowed is 1GB',
         'fr-FR': 'Fichier trop lourd, la taille maximale authorisée est de 1GO'
     },
 
-    'bundledResourcesConfirmDelete': {
+    bundledResourcesConfirmDelete: {
         'en-US': 'Are you sure you want to delete those bundled resources?',
         'fr-FR': 'Êtes vous sur(e) de vouloir supprimer ces ressources groupées ?'
     },
 
-    'bundledResourcesAdded': {
+    bundledResourcesAdded: {
         'en-US': 'Bundled resource added',
         'fr-FR': 'Ressource groupée ajoutée'
     },
 
-    'bundledResourcesImported': {
+    bundledResourcesImported: {
         'en-US': 'Bundled resources imported',
         'fr-FR': 'Ressource groupées importés'
     },
 
-    'bundledResourcesUpdated': {
+    bundledResourcesUpdated: {
         'en-US': 'Bundled resource updated',
         'fr-FR': 'Ressource groupée mise à jour'
     },
 
-    'bundledResourcesRenamed': {
+    bundledResourcesRenamed: {
         'en-US': 'Bundled resource renamed',
         'fr-FR': 'Ressource groupée renommée'
     },
 
-    'bundledResourcesDuplicated': {
+    bundledResourcesDuplicated: {
         'en-US': 'Bundled resource duplicated',
         'fr-FR': 'Ressource groupée dupliquée'
     },
 
-    'bundledResourcesDeleted': {
+    bundledResourcesDeleted: {
         'en-US': 'Bundled resource(s) deleted',
         'fr-FR': 'Ressource groupée(s) supprimée(s)'
     },
 
-    'bundledResourcesExported': {
+    bundledResourcesExported: {
         'en-US': 'Bundled resource(s) exported',
         'fr-FR': 'Ressources groupée(s) exportée(s)'
     },
 
-    'nameAlreadyExist': {
+    nameAlreadyExist: {
         'en-US': 'This name already exists',
         'fr-FR': 'Ce nom existe déjà'
     },
 
-    'resourceNotFound': {
+    resourceNotFound: {
         'en-US': 'No resource has been found',
         'fr-FR': 'Aucune ressource n\'a été trouvée'
     },
 
-    'resourcesAttached': {
+    resourcesAttached: {
         'en-US': 'Resource attached',
         'fr-FR': 'Ressource attachée'
     },
 
-    'bundledResourcesReadonly': {
+    bundledResourcesReadonly: {
         'en-US': 'These bundled resources are only readable. They can not be deleted.',
         'fr-FR': 'Ces ressources groupées ne sont éditables. Elles ne peuvent pas supprimés.'
     },
 
-    'confirmUpdateForConsistancy': {
+    confirmUpdateForConsistancy: {
         'en-US': 'It seems like your items are not synchronized with the server anymore, you should save your work and update the service.',
         'fr-FR': 'Il semblerait que vos objects ne sont plus synchronisés avec le serveur, vous devriez sauvegarder votre travail et mettre à jour le service.'
     },
 
-    'itemNotFound': {
+    itemNotFound: {
         'en-US': 'Item not found.',
         'fr-US': 'Aucun objet trouvé.'
     },
 
-    'status': {
+    status: {
         'en-US': 'Status',
         'fr-FR': 'Statut'
     },
 
-    'none': {
+    none: {
         'en-US': 'None',
         'fr-FR': 'Aucun'
     },
 
-    'itemsReadonly': {
+    itemsReadonly: {
         'en-US': 'These items are only readable. They can not be deleted.',
         'fr-FR': 'Ces objets ne sont éditables. Elles ne peuvent pas supprimés.'
     },
 
-    'registration': {
+    registration: {
         'en-US': 'Registration',
         'fr-FR': 'Enregistrement'
     },
 
-    'backToLogin': {
+    backToLogin: {
         'en-US': 'Back to sign in page',
         'fr-FR': 'Retour à la page de connexion'
     },
 
-    'registrationSuccess': {
+    registrationSuccess: {
         'en-US': 'Successful registration',
         'fr-FR': 'Enregistrement réussi'
     },
 
-    'successRegisterMailSent': {
+    successRegisterMailSent: {
         'en-US': 'You will receive a confirmation email.',
         'fr-FR': 'Vous allez recevoir un email de confirmation.'
     },
 
-    'successRegistrationMessage': {
+    successRegistrationMessage: {
         'en-US': 'If you already set your password, you can now sign in. Otherwise, please click on the link sent to you by email to activate your account.',
         'fr-FR': 'Si vous avez déjà créé votre mot de passe, vous pouvez vous connecter dès maintenant. Sinon, vous trouverez un lien dans l\'email de confirmation qui vous pemettra d\'activer votre compte.'
     },
 
-    'registrationEmailHelp': {
+    registrationEmailHelp: {
         'en-US': 'Make sure the email is correct to receive the confirmation link',
         'fr-FR': 'Merci de vous assurer que votre email est correct pour pouvoir finaliser l\'enregistrement'
     },
 
-    'pleaseWait': {
+    pleaseWait: {
         'en-US': 'Please wait',
         'fr-FR': 'Merci de patienter'
     },
     
-    'importLoading': {
+    importLoading: {
         'en-US': 'Your import file is being processed...',
         'fr-FR': 'Votre import est en cours de traitement...'
     },
 
-    'exportLoading': {
+    exportLoading: {
         'en-US': 'Your export file is being prepared...',
         'fr-FR': 'Votre export est en cours de chargement...'
     },
-    'close': {
+
+    close: {
         'en-US': 'Close',
         'fr-FR': 'Fermer'
+    },
+
+    service: {
+        'en-US': 'Service',
+        'fr-FR': 'Service'
+    },
+
+    renameDisabled: {
+        'en-US': 'Please close any view or edit tab concerning this item if you want to rename it',
+        'fr-FR': 'Merci de fermer tout onglet concernant cet élément si vous souhaitez le renommer'
     },
 
     /** b2portal wordings. */
@@ -768,16 +780,20 @@ const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     'register.agreement.intro': {
-        'en-US': <span>
-            <span>Please read the&nbsp;</span>
-            <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">contractual agreement</a>
-            <span>&nbsp;and confirm below</span>
-        </span>,
-        'fr-FR': <span>
-            <span>Merci de lire&nbsp;</span>
-            <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">l'accord contractuel</a>
-            <span>&nbsp;et de valider ci-dessous</span>
-        </span>
+        'en-US': `
+            <span>
+                <span>Please read the&nbsp;</span>
+                <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">contractual agreement</a>
+                <span>&nbsp;and confirm below</span>
+            </span>
+        `,
+        'fr-FR': `
+            <span>
+                <span>Merci de lire&nbsp;</span>
+                <a target="_blank" href="http://www.b2een.com/_communitymaterial/chevron/Agreement_b2een_Chevron_Prod.pdf">l'accord contractuel</a>
+                <span>&nbsp;et de valider ci-dessous</span>
+            </span>
+        `
     },
 
     'register.agreement.label': {
@@ -3269,23 +3285,23 @@ const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     'profile.button.refresh.permissions': {
-        'en-US': <div>Refresh<br />permissions</div>,
-        'fr-FR': <div>Rafraîchir<br />permissions</div>
+        'en-US': `<div>Refresh<br />permissions</div>`,
+        'fr-FR': `<div>Rafraîchir<br />permissions</div>`
     },
 
     'profile.button.cty.unsubscribe': {
-        'en-US': <div>Unsubscribe from<br />this Community</div>,
-        'fr-FR': <div>Me désinscrire<br />de cette Communauté</div>
+        'en-US': `<div>Unsubscribe from<br />this Community</div>`,
+        'fr-FR': `<div>Me désinscrire<br />de cette Communauté</div>`
     },
 
     'profile.button.delete.account': {
-        'en-US': <div>Delete<br />my account</div>,
-        'fr-FR': <div>Supprimer mon<br />compte utilisateur</div>
+        'en-US': `<div>Delete<br />my account</div>`,
+        'fr-FR': `<div>Supprimer mon<br />compte utilisateur</div>`
     },
 
     'profile.button.export.permissions': {
-        'en-US': <div>Export<br />permissions</div>,
-        'fr-FR': <div>Exporter<br />permissions</div>
+        'en-US': `<div>Export<br />permissions</div>`,
+        'fr-FR': `<div>Exporter<br />permissions</div>`
     },
 
     'profile.messages.autorefresh': {
@@ -3304,19 +3320,23 @@ const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     'profile.user.delete.confirm': {
-        'en-US': <p>Are you sure you want to delete you account?</p>,
-        'fr-FR': <p>Êtes-vous sûr(e) de vouloir supprimer votre compte utilisateur ?</p>
+        'en-US': `<p>Are you sure you want to delete you account?</p>`,
+        'fr-FR': `<p>Êtes-vous sûr(e) de vouloir supprimer votre compte utilisateur ?</p>`
     },
 
     'profile.user.delete.sure.confirm': {
-        'en-US': <p>
-            <h3 className="danger-color bottom-margin text-xxlarge">WARNING</h3>
-            <span>Are you <strong>REALLY</strong> sure you want to delete you account? You won't be able to access the portal anymore...</span>
-        </p>,
-        'fr-FR': <p>
-            <h3 className="danger-color bottom-margin text-xxlarge">ATTENTION</h3>
-            <span>Êtes-vous <strong>VRAIMENT</strong> sûr(e) de vouloir supprimer votre compte utilisateur ? Vous ne pourrez plus accéder au portail...</span>
-        </p>
+        'en-US': `
+            <p>
+                <h3 className="danger-color bottom-margin text-xxlarge">WARNING</h3>
+                <span>Are you <strong>REALLY</strong> sure you want to delete you account? You won't be able to access the portal anymore...</span>
+            </p>
+        `,
+        'fr-FR': `
+            <p>
+                <h3 className="danger-color bottom-margin text-xxlarge">ATTENTION</h3>
+                <span>Êtes-vous <strong>VRAIMENT</strong> sûr(e) de vouloir supprimer votre compte utilisateur ? Vous ne pourrez plus accéder au portail...</span>
+            </p>
+        `
     },
 
     'profile.user.unsubscribe.confirm': {
