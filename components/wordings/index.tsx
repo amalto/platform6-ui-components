@@ -694,6 +694,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Merci de fermer tout onglet concernant cet élément si vous souhaitez le renommer'
     },
 
+    deleteDisabled: {
+        'en-US': 'Please close any view or edit tab concerning this item if you want to delete it',
+        'fr-FR': 'Merci de fermer tout onglet concernant cet élément si vous souhaitez le supprimer'
+    },
+
     /** b2portal wordings. */
     'register.email.error': {
         'en-US': 'Please enter a valid email address',
