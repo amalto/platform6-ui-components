@@ -14,11 +14,23 @@ import * as inputValidation from '@amalto/wordings'
 ```
 
 ```typescript
-// Modules
+
+/** Multilanguage wordings. */
 export interface Wordings {
+
+    /** Wording key. */
     [key: string]: {
-        [lang: string]: string
+
+        /** Wording locale. */
+        [lang: string]: string;
     }
+}
+
+/** Wordings after being compiled with the language selected. */
+export interface CompiledWordings {
+
+    /** Wording key. */
+    [key: string]: string;
 }
 
 export const MULTILANGUAGE_WORDINGS: Wordings = {

@@ -13,24 +13,6 @@ export interface Description {
     [lang: string]: string;
 }
 
-/** Multilanguage wordings. */
-export interface Wordings {
-
-    /** Wording key. */
-    [key: string]: {
-
-        /** Wording locale. */
-        [lang: string]: string;
-    }
-}
-
-/** Wordings after being compiled with the language selected. */
-export interface CompiledWordings {
-
-    /** Wording key. */
-    [key: string]: string;
-}
-
 /** Item received when fetching the service items list. */
 export interface ServiceItemFacade extends Id {
 
