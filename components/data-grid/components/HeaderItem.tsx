@@ -97,7 +97,7 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
                         'info-color': !!sortHandler,
                         'default-color': !sortHandler
                     } )} data-column-id={columnHeader.id}
-                        onClick={this.handleSortChange} />
+                        onClick={sortHandler ? this.handleSortChange : null} />
                     <span className="info-color fas fa-fw fa-chevron-right" data-column-id={columnHeader.id}
                         data-order="down" onClick={this.handleOrderChange} />
                 </div>
