@@ -7,16 +7,6 @@ export interface Description {
     [lang: string]: string
 }
 
-export interface Wordings {
-    [key: string]: {
-        [lang: string]: string
-    }
-}
-
-export interface CompiledWordings {
-    [key: string]: string
-}
-
 export interface ServiceItemFacade extends Id {
     description?: string
     calculatedContentMode?: string

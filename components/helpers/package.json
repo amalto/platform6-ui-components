@@ -25,7 +25,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/service-helpers": "1.0.54",
     "@amalto/typings": "1.0.26",
     "@amalto/wordings": "1.4.45",
     "base-64": "0.1.0",

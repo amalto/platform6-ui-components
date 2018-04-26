@@ -7,6 +7,10 @@ export interface Wordings {
     }
 }
 
+export interface CompiledWordings {
+    [key: string]: string
+}
+
 export const MULTILANGUAGE_WORDINGS: Wordings = {
 
     /** Common wordings. */

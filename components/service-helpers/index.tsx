@@ -5,8 +5,6 @@ import {
     Id,
     Ids,
     Description,
-    Wordings,
-    CompiledWordings,
     ServiceItemFacade,
     ServiceItemFacades,
     ServiceItem,
@@ -28,12 +26,15 @@ import {
 
 // Helpers
 import {
-    compileWordings
+    compileWordings,
+    handleDuplicateNameFromArray
 } from '@amalto/helpers'
 
 // Wordings
 import {
-    MULTILANGUAGE_WORDINGS
+    MULTILANGUAGE_WORDINGS,
+    Wordings,
+    CompiledWordings
 } from '@amalto/wordings'
 
 /**
@@ -211,6 +212,15 @@ export function getEditId( item: ServiceItemFacade ): string {
  */
 export function getAddId(): string {
     return `${ TAB_TYPE.ADD }new_item`
+}
+
+/**
+ * Handle ServiceItemFacade duplicate name.
+ * @param { Id } id - Name to duplicate. 
+ * @param { ServiceItemFacades } items - All items to compare the name to.
+ */
+export function handleDuplicateServiceItemName( id: Id, items: ServiceItemFacades ): string {
+    return handleDuplicateNameFromArray( id.name, items.filter( i => i.appKey === id.appKey ).map( i => i.name ) )
 }
 
 /** Export */

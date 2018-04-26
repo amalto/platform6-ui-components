@@ -4,17 +4,15 @@ import * as base64 from 'base-64'
 import * as classNames from 'classnames'
 
 // Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+import {
+    MULTILANGUAGE_WORDINGS,
+    CompiledWordings,
+    Wordings
+} from '@amalto/wordings'
 
 // Models
 import { Endpoints } from './models/AppEndpointsModel'
 import { OrgModel, TreeNodeModel } from './models/Organisation'
-import {
-    Id,
-    ServiceItemFacades,
-    CompiledWordings,
-    Wordings
-} from '@amalto/service-helpers'
 
 // Constants
 import { AVAILABLE_LANGUAGES } from './constants/Config'
@@ -547,15 +545,6 @@ export function handleDuplicateNameFromArray( name: string, container: string[] 
         idx++
     }
     return res
-}
-
-/**
- * Handle ServiceItemFacade duplicate name.
- * @param { Id } id - Name to duplicate. 
- * @param { ServiceItemFacades } items - All items to compare the name to.
- */
-export function handleDuplicateServiceItemName( id: Id, items: ServiceItemFacades ): string {
-    return handleDuplicateNameFromArray( id.name, items.filter( i => i.appKey === id.appKey ).map( i => i.name ) )
 }
 
 /**

@@ -116,4 +116,12 @@ function getEditId( item: ServiceItemFacade ): string;
  * @return { string }
  */
 function getAddId(): string;
+
+/**
+ * Handle ServiceItemFacade duplicate name. It work the same as "handleDuplicateNameFromArray"
+ * but for "ServiceItemFacade".
+ * @param { Id } id - Name to duplicate. 
+ * @param { ServiceItemFacades } items - All items to compare the name to.
+ */
+function handleDuplicateServiceItemName( id: Id, items: ServiceItemFacades ): string;
 ```
