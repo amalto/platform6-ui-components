@@ -90,6 +90,7 @@ class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> 
 
                 <Switch id={name}
                     name={name}
+                    disabled={disabled}
                     value={input.value}
                     cssClass={inputClass}
                     alignLeft={alignLeft}
