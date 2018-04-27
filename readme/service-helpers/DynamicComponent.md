@@ -36,8 +36,9 @@ interface DynamicComponent {
      * Set dirty status of the component.
      * If true a comfirmation modal will shows up if you try to move to another menu.
      * @param { boolean } hasUnsavedChanges
+     * @param { string } tabId
      */
-    setStatus?: ( hasUnsavedChanges: boolean ) => void;
+    setStatus?: ( hasUnsavedChanges: boolean, tabId?: string ) => void;
     
     /** Component height. */
     height?: number;
