@@ -106,7 +106,7 @@ export function isIdUnique( ids: Ids, id: Id ) {
 export function prettifyId( id: Id ): string {
     const { appKey } = id
 
-    return `${ appKey && `[${ appKey }]` }${ id.name }`
+    return `${ appKey && `[${ appKey }]` } ${ id.name }`
 }
 
 /**
