@@ -1,4 +1,5 @@
 import { ServiceItemFacade, ServiceItemFacades } from './ServiceHelpers'
+import ButtonsBar from '@amalto/buttons-bar'
 
 export interface BaseListConfig {
     viewTabRenderer: ( viewId: string, item: ServiceItemFacade, closeTab: () => void ) => JSX.Element;
@@ -9,4 +10,6 @@ export interface BaseListConfig {
     deletePermission?: string;
     customItemNameValidation?: ( value: string ) => string;
     closeTabCallback?: ( closedTabId: string ) => void;
+    editOnDoubleClick?: boolean;
+    customButtons?: ButtonsBar.BtnGroupsProps[];
 }

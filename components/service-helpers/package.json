@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@amalto/action-button": "1.4.26",
+        "@amalto/buttons-bar": "1.5.79",
         "@amalto/data-line": "1.4.21",
         "@amalto/helpers": "1.4.75",
         "@amalto/typings": "1.0.26",
