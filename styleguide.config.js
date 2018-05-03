@@ -123,99 +123,91 @@ module.exports = {
     },
     {
         name: 'Interfaces',
-        description: 'Interfaces used by the Platform 6 UI components.',
+        content: 'readme/interfaces/Description.md',
         sections: [
             {
                 name: 'AceSession',
-                content: 'readme/AceSession.md'
+                content: 'readme/interfaces/AceSession.md'
             },
             {
                 name: 'AppEndpointsModel',
-                content: 'readme/AppEndpointsModel.md'
+                content: 'readme/interfaces/AppEndpointsModel.md'
             },
             {
                 name: 'BtnGroupsProps',
-                content: 'readme/BtnGroupsProps.md'
+                content: 'readme/interfaces/BtnGroupsProps.md'
             },
             {
                 name: 'ButtonProps',
-                content: 'readme/ButtonProps.md'
-            },
-            {
-                name: 'CellData',
-                content: 'readme/CellData.md'
-            },
-            {
-                name: 'ColumnHeader',
-                content: 'readme/ColumnHeader.md'
+                content: 'readme/interfaces/ButtonProps.md'
             },
             {
                 name: 'CronValue',
-                content: 'readme/CronValue.md'
+                content: 'readme/interfaces/CronValue.md'
             },
             {
                 name: 'CustomFormData',
-                content: 'readme/CustomFormData.md'
+                content: 'readme/interfaces/CustomFormData.md'
             },
             {
                 name: 'DataGridTemplates',
-                content: 'readme/DataGridTemplates.md'
+                content: 'readme/interfaces/DataGridTemplates.md'
             },
             {
                 name: 'DateInputEvent',
-                content: 'readme/DateInputEvent.md'
+                content: 'readme/interfaces/DateInputEvent.md'
             },
             {
                 name: 'DisplayTemplate',
-                content: 'readme/DisplayTemplate.md'
+                content: 'readme/interfaces/DisplayTemplate.md'
             },
             {
                 name: 'FileWrapper',
-                content: 'readme/FileWrapper.md'
+                content: 'readme/interfaces/FileWrapper.md'
             },
             {
                 name: 'KeyValDef',
-                content: 'readme/KeyValDef.md'
+                content: 'readme/interfaces/KeyValDef.md'
             },
             {
                 name: 'Marker',
-                content: 'readme/Marker.md'
+                content: 'readme/interfaces/Marker.md'
             },
             {
                 name: 'PDFSource',
-                content: 'readme/PDFSource.md'
+                content: 'readme/interfaces/PDFSource.md'
             },
             {
                 name: 'PermissionDef',
-                content: 'readme/PermissionDef.md'
+                content: 'readme/interfaces/PermissionDef.md'
             },
             {
                 name: 'RemoteConfig',
-                content: 'readme/RemoteConfig.md'
+                content: 'readme/interfaces/RemoteConfig.md'
             },
             {
                 name: 'ScopeTree',
-                content: 'readme/ScopeTree.md'
+                content: 'readme/interfaces/ScopeTree.md'
             },
             {
                 name: 'ScopeValue',
-                content: 'readme/ScopeValue.md'
+                content: 'readme/interfaces/ScopeValue.md'
             },
             {
                 name: 'Settings',
-                content: 'readme/CodeEditorInputSettings.md'
+                content: 'readme/interfaces/CodeEditorInputSettings.md'
             },
             {
                 name: 'TreeNodeDataModel',
-                content: 'readme/TreeNodeDataModel.md'
+                content: 'readme/interfaces/TreeNodeDataModel.md'
             },
             {
                 name: 'TreeNodeModel',
-                content: 'readme/TreeNodeModel.md'
+                content: 'readme/interfaces/TreeNodeModel.md'
             },
             {
                 name: 'WebStorage',
-                content: 'readme/WebStorage.md'
+                content: 'readme/interfaces/WebStorage.md'
             }
         ]
     },
@@ -338,6 +330,14 @@ module.exports = {
                     {
                         name: 'BatchOperationReport',
                         content: 'readme/typings/BatchOperationReport.md'
+                    },
+                    {
+                        name: 'CellData',
+                        content: 'readme/typings/CellData.md'
+                    },
+                    {
+                        name: 'ColumnHeader',
+                        content: 'readme/typings/ColumnHeader.md'
                     },
                     {
                         name: 'EndpointsUrl',
