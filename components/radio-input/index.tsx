@@ -2,6 +2,8 @@
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
+import * as uuid from 'uuid'
+
 
 // Components
 import Help from '@amalto/help'
@@ -82,6 +84,8 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
         const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
 
         const { input, meta } = field
+        
+        const inputId: string = uuid.v4()
 
         return (
             <div className={classNames( 'form-group', containerClass, {
@@ -96,12 +100,12 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
                                 key={input.name}
                                 disabled={disabled}
                                 type="radio"
-                                id={input.name + '_' + idx}
+                                id={`${inputId}_${input.name}_${idx}`}
                                 value={opt.value}
                                 className={classNames( 'form-radio', inputClass )}
                                 checked={input.value === opt.value} />
 
-                            <label htmlFor={input.name + '_' + idx}
+                            <label htmlFor={`${inputId}_${input.name}_${idx}`}
                                 className="form-radio-label">
                                 {opt.label || opt.value}
                             </label>

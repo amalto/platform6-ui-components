@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
+import * as uuid from 'uuid'
 
 // Components
 import Help from '@amalto/help'
@@ -78,6 +79,8 @@ class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.S
 
         const { input, meta } = field
 
+        const inputId: string = uuid.v4()
+
         return (
             <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error
@@ -88,11 +91,11 @@ class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.S
                         key={input.name}
                         type="checkbox"
                         disabled={disabled}
-                        id={input.name}
+                        id={`${inputId}_${input.name}`}
                         className="form-checkbox"
                         checked={input.value} />
 
-                    <label className="form-checkbox-label" htmlFor={input.name}>{label}</label>
+                    <label className="form-checkbox-label" htmlFor={`${inputId}_${input.name}`}>{label}</label>
 
                     {help && <Help text={help} containerClass='pos-absolute' />}
                 </span>

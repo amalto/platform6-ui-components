@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
+import * as uuid from 'uuid'
 
 // Components
 import Help from '@amalto/help'
@@ -81,6 +82,8 @@ class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> 
 
         const { input, meta } = field
 
+        const inputId: string = uuid.v4()
+
         return (
             <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error
@@ -88,7 +91,7 @@ class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> 
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <Switch id={name}
+                <Switch id={`${inputId}_${name}`}
                     name={name}
                     disabled={disabled}
                     value={input.value}
