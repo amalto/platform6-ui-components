@@ -9,7 +9,7 @@ export interface BaseListConfig {
     editPermission?: string;
     deletePermission?: string;
     customItemNameValidation?: ( value: string ) => string;
-    closeTabCallback?: ( closedTabId: string ) => void;
+    closeTabCallback?: ( closedTabId: string, formId: string ) => void;
     editOnDoubleClick?: boolean;
     customButtons?: ButtonsBar.BtnGroupsProps[];
 }
