@@ -132,7 +132,7 @@ class HeaderItem extends React.Component<HeaderItem.Props, HeaderItem.State> {
             </div>
         ) : null
 
-        let additionalProps: React.HTMLAttributes<any> = this.props.displayTemplate ? {
+        let additionalProps: React.HTMLAttributes<any> = this.props.displayTemplate && !this.props.preventTemplating ? {
             onMouseEnter: this.handleMenuEnter,
             onMouseLeave: this.handleMenuLeave
         } :
