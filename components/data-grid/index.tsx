@@ -353,7 +353,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
 
                     {displayHiddenColumnsPanel ? hiddenColumnsPanel : null}
 
-                    <div style={{ marginTop: 22, position: 'relative' }}>
+                    <div style={{ marginTop: !preventTemplating ? 22 : 0, position: 'relative' }}>
 
                         {headerLine}
 
