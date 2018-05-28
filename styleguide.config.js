@@ -126,10 +126,6 @@ module.exports = {
         content: 'readme/interfaces/Description.md',
         sections: [
             {
-                name: 'AceSession',
-                content: 'readme/interfaces/AceSession.md'
-            },
-            {
                 name: 'AppEndpointsModel',
                 content: 'readme/interfaces/AppEndpointsModel.md'
             },
@@ -326,6 +322,10 @@ module.exports = {
                     {
                         name: 'AppKey',
                         content: 'readme/typings/AppKey.md'
+                    },
+                    {
+                        name: 'AceSession',
+                        content: 'readme/typings/AceSession.md'
                     },
                     {
                         name: 'BatchOperationReport',

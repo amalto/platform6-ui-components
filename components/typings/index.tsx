@@ -8,6 +8,7 @@ import { UserModel, getUserJson, UserSearch } from './models/UserModel'
 import { WebApi } from './models/WebApi'
 import { ColumnHeader, CellData, DataGridTemplates } from './models/DataGrid'
 import { BatchOperationReport } from './models/BatchOperationReport'
+import AceSession from './models/AceSession'
 
 /** Export */
 export { AppKey }
@@ -19,3 +20,4 @@ export { UserModel, getUserJson, UserSearch }
 export { WebApi }
 export { ColumnHeader, CellData, DataGridTemplates }
 export { BatchOperationReport }
+export { AceSession }
