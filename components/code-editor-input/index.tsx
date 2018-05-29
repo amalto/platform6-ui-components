@@ -33,9 +33,9 @@ namespace CodeEditorInput {
         inputClass?: string;
         /**
          * Editor language mode.
-         * @default javascript
+         * @default ace/mode/javascript
          */
-        mode: string;
+        mode?: string;
         /** Editor height. */
         height?: number | string;
         /** Editor ace session. More details on [AceSession](#acesession) */
