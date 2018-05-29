@@ -19,7 +19,7 @@ export interface ServiceItemFacade extends Id {
 export interface ServiceItem extends Id {
     description?: Description
     lastModifiedBy?: string
-    lastModifiedDate?: string
+    lastModifiedDate?: number
     contentMode?: string
     revisionId?: string
 }
