@@ -163,11 +163,9 @@ class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesI
             warn
         }
 
-        const props = JSON.parse( JSON.stringify( this.props ) )
-
         return options && options.length ? (
 
-            <Field {...baseFieldProps} {...props} component={Checkboxes} />
+            <Field {...baseFieldProps} {...this.props as any} component={Checkboxes} />
 
         ) : null
 
