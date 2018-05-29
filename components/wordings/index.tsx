@@ -519,8 +519,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     keyUnique: {
-        'en-US': 'Key must be unique',
-        'fr-FR': 'La clé doit être unique'
+        'en-US': 'The key must be unique.',
+        'fr-FR': 'La clé doit être unique.'
     },
 
     propertyAdd: {
@@ -544,8 +544,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     maxSize1GB: {
-        'en-US': 'Maximum size allowed is 1GB',
-        'fr-FR': 'La taille maximale authorisée est de 1GO'
+        'en-US': 'Maximum size allowed is 1GB.',
+        'fr-FR': 'La taille maximale authorisée est de 1GO.'
     },
 
     invalidSizeMax1GB: {
