@@ -549,8 +549,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     invalidSizeMax1GB: {
-        'en-US': 'File too big, maximum size allowed is 1GB',
-        'fr-FR': 'Fichier trop lourd, la taille maximale authorisée est de 1GO'
+        'en-US': 'File too big, maximum size allowed is 1GB.',
+        'fr-FR': 'Fichier trop lourd, la taille maximale authorisée est de 1GO.'
     },
 
     bundledResourcesConfirmDelete: {
@@ -594,8 +594,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     nameAlreadyExist: {
-        'en-US': 'This name already exists',
-        'fr-FR': 'Ce nom existe déjà'
+        'en-US': 'This name already exists.',
+        'fr-FR': 'Ce nom existe déjà.'
     },
 
     resourceNotFound: {

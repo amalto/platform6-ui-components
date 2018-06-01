@@ -26,6 +26,7 @@ import {
 
 // Helpers
 import {
+    isNotEmpty,
     compileWordings,
     handleDuplicateNameFromArray
 } from '@amalto/helpers'
@@ -152,7 +153,7 @@ export function incrementName( facades: ServiceItemFacades, id: Id ): string {
 export function validateName( value: string, id: Id, items: ServiceItemFacades, locale: string ): string {
     const wordings: { [id: string]: string } = compileWordings( MULTILANGUAGE_WORDINGS, locale )
 
-    if ( !value || !value.trim() ) return wordings.fieldRequired
+    if ( !isNotEmpty( value ) ) return wordings.fieldRequired
 
     if ( value !== id.name && !isIdUnique( items, { name: value, appKey: id.appKey } ) )
         return wordings.nameAlreadyExist
