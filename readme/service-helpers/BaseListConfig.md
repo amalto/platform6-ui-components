@@ -62,5 +62,20 @@ interface BaseListConfig {
      * @param { string } closedTabId
      */
     closeTabCallback?: ( closedTabId: string ) => void;
+
+    /**
+     * If true, open "edit" tab instead of "view" tab on double click.
+     */
+    editOnDoubleClick?: boolean;
+
+    /**
+     * If true, open "edit" tab after submit of a new item on the "add" tab.
+     */
+    openEditTabOnCreation?: boolean;
+
+    /**
+     * Custom buttons to be added in the "ButtonsBar" component.
+     */
+    customButtons?: ButtonsBar.BtnGroupsProps[];
 }
 ```
