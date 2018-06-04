@@ -19,8 +19,9 @@ interface BaseListConfig {
      * @param { ServiceItemFacade } item
      * @param { () => void } closeTab
      * @param { ServiceItemFacades } items
+     * @param { string } formId
      */
-    editTabRenderer: ( editId: string, item: ServiceItemFacade, closeTab: () => void, items: ServiceItemFacades ) => JSX.Element;
+    editTabRenderer: ( editId: string, item: ServiceItemFacade, closeTab: () => void, items: ServiceItemFacades, formId: string ) => JSX.Element;
 
     /**
      * Render new form to add an item.
@@ -28,8 +29,10 @@ interface BaseListConfig {
      * @param { string } addId
      * @param { () => void } closeTab
      * @param { ServiceItemFacades } items
+     * @param { string } formId
+     * @param { ( tabId: string, id: Id ) => void } [openEditTab] - Open "edit" tab on creation if provided.
      */
-    addTabRenderer: ( addId: string, closeTab: () => void, items: ServiceItemFacades ) => JSX.Element;
+    addTabRenderer: ( addId: string, closeTab: () => void, items: ServiceItemFacades, formId: string, openEditTab?: ( tabId: string, id: Id ) => void ) => JSX.Element;
 
     /**
      * Complete read permission, e.g: "home=read".
