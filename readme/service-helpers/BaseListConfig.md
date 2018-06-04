@@ -69,9 +69,13 @@ interface BaseListConfig {
     editOnDoubleClick?: boolean;
 
     /**
-     * If true, open "edit" tab after submit of a new item on the "add" tab.
+     * If provided, will open the "edit: tab of the item you have just created.
+     * 
+     * @param { string } tabId
+     * @param { ServiceItemFacade } item
+     * @param { ( tabId: string, item: ServiceItemFacade ) => void } openEditTab
      */
-    openEditTabOnCreation?: boolean;
+    openEditTabOnCreation?: ( tabId: string, item: ServiceItemFacade, openEditTab: ( tabId: string, item: ServiceItemFacade ) => void ) => void;
 
     /**
      * Custom buttons to be added in the "ButtonsBar" component.

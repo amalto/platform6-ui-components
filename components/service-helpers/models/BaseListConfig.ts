@@ -11,6 +11,6 @@ export interface BaseListConfig {
     customItemNameValidation?: ( value: string ) => string;
     closeTabCallback?: ( closedTabId: string, formId: string ) => void;
     editOnDoubleClick?: boolean;
-    openEditTabOnCreation?: boolean;
+    openEditTabOnCreation?: ( tabId: string, item: ServiceItemFacade, openEditTab: ( tabId: string, item: ServiceItemFacade ) => void ) => void;
     customButtons?: ButtonsBar.BtnGroupsProps[];
 }
