@@ -196,12 +196,12 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         this.resizeEditor()
         !this.props.readonly && this.focus( this.props.aceSession )
 
-        this._clearTimeout = setInterval(() => {
-            if ( this._canUpdate ) {
-                this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
-                this._canUpdate = false
-            }
-        }, 12000)
+        // this._clearTimeout = setInterval(() => {
+        //     if ( this._canUpdate ) {
+        //         this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
+        //         this._canUpdate = false
+        //     }
+        // }, 12000)
 
         // Needed to be able to access this from editor onblur event
         const self = this
@@ -213,6 +213,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
                 self._cursorLastPosition = e.end
                 session.cursorPosition = self._cursorLastPosition
                 self.props.saveSession && self.props.saveSession(session)
+                self._canUpdate = false
             }
         });
     }
@@ -223,7 +224,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         //save current session
         this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ), {cursorPosition: this._cursorLastPosition} ) )
 
-        clearInterval( this._clearTimeout )
+        // clearInterval( this._clearTimeout )
 
         //destroy the editor
         this._editor && this._editor.destroy()
