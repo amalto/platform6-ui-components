@@ -13,4 +13,5 @@ export interface BaseListConfig {
     editOnDoubleClick?: boolean;
     openEditTabOnCreation?: boolean;
     customButtons?: ButtonsBar.BtnGroupsProps[];
+    customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
 }
