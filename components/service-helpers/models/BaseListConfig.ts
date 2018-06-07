@@ -14,4 +14,5 @@ export interface BaseListConfig {
     openEditTabOnCreation?: boolean;
     customButtons?: ButtonsBar.BtnGroupsProps[];
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
+    customActionsColumnWidth?: number;
 }
