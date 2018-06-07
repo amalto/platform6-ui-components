@@ -458,7 +458,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         // Shorcut to save multiple ace session.
         editor.commands.addCommand( {
-            name: 'save',
+            name: 'save all',
             bindKey: { win: 'Shift-Ctrl-S', mac: 'Shift-Command-S' },
             exec: ( currentEditor ) => {
                 props.saveMultipleContent && props.saveMultipleContent( $.extend( {}, this.extractAceSession( currentEditor ), {
