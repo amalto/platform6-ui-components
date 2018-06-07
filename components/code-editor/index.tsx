@@ -118,7 +118,10 @@ module CodeEditor {
          * Force save with keyboard shortcuts <blockquote>Ctrl + s</blockquote> or <blockquote>Cmd + s</blockquote>.
          */
         saveContent?: ( session: AceSession ) => void;
-
+        /**
+         * Force save with keyboard shortcuts <blockquote>Shift + Ctrl + s</blockquote> or <blockquote>Shift + Cmd + s</blockquote>.
+         */
+        saveMultipleContent?: ( session: AceSession ) => void;
         /** Hide props from documentation */
 
         /** @ignore */
@@ -440,11 +443,25 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     private setKeyboardShortcuts = ( editor: AceEditor, props: CodeEditor.Props ): void => {
+
+        // Shortcut to save current ace session.
         editor.commands.addCommand( {
             name: 'save',
             bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
             exec: ( currentEditor ) => {
                 props.saveContent && props.saveContent( $.extend( {}, this.extractAceSession( currentEditor ), {
+                    savable: this.isSessionSavable( currentEditor ),
+                    cursorPosition: currentEditor.getCursorPosition()
+                } ) )
+            }
+        } )
+
+        // Shorcut to save multiple ace session.
+        editor.commands.addCommand( {
+            name: 'save',
+            bindKey: { win: 'Shift-Ctrl-S', mac: 'Shift-Command-S' },
+            exec: ( currentEditor ) => {
+                props.saveMultipleContent && props.saveMultipleContent( $.extend( {}, this.extractAceSession( currentEditor ), {
                     savable: this.isSessionSavable( currentEditor ),
                     cursorPosition: currentEditor.getCursorPosition()
                 } ) )
