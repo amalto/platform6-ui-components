@@ -2,7 +2,7 @@
   "name": "@amalto/pdf-viewer",
   "displayName": "PdfViewer",
   "description": "Display pdf.",
-  "version": "1.4.84",
+  "version": "1.4.85",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/helpers": "1.4.78",
-    "@amalto/paging-controls": "1.4.83",
+    "@amalto/helpers": "1.4.79",
+    "@amalto/paging-controls": "1.4.84",
     "@amalto/spinner": "1.4.19",
     "@amalto/wordings": "1.4.49",
     "classnames": "2.2.5",
