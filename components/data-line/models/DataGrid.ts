@@ -23,6 +23,7 @@ interface CellData {
     readOnly?: boolean;
     isEdited?: boolean;
     lastEditable?: boolean;
+    allowDisplayAsTextAreaOnReadonly?: boolean;
     options?: {
         value: string | number;
         label?: string;

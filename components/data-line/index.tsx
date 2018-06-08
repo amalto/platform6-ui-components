@@ -96,6 +96,7 @@ export class DataLine extends React.Component<DataLine.Props, any> {
                     readOnly={cellData.readOnly}
                     isEdited={cellData.isEdited}
                     lastEditable={cellData.lastEditable}
+                    allowDisplayAsTextAreaOnReadonly={cellData.allowDisplayAsTextAreaOnReadonly}
                     options={cellData.options}
                     validate={cellData.validate}
                     tabOnLastCellCallback={tabOnLastCellCallback} />

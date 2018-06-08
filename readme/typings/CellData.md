@@ -22,7 +22,10 @@ interface CellData {
     /** If is the last cell the user can edit. */
     lastEditable?: boolean;
 
-    /** If provided, in edit mode cell will be a select instead of an input. */
+    /** If true, double clicking on a readonly cell will transform it into a disabled "textarea". */
+    allowDisplayAsTextAreaOnReadonly?: boolean;
+
+    /** If provided, in edit mode cell will be a "select" instead of an "text" input. */
     options?: {
         value: string | number;
         label?: string;

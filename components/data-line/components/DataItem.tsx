@@ -21,6 +21,7 @@ module DataItem {
         readOnly?: boolean;
         isEdited?: boolean;
         lastEditable?: boolean;
+        allowDisplayAsTextAreaOnReadonly?: boolean;
         options?: {
             value: string | number;
             label?: string;
@@ -47,7 +48,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
 
     render() {
 
-        const { options, editCallback, editMode, readOnly, isEdited, lastEditable, tabOnLastCellCallback, displayTemplate, displayValue, columnId, cssClass } = this.props
+        const { options, editCallback, editMode, readOnly, isEdited, lastEditable, allowDisplayAsTextAreaOnReadonly, tabOnLastCellCallback, displayTemplate, displayValue, columnId, cssClass } = this.props
 
         const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
 
@@ -94,7 +95,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
             )
         ) : <div>{displayValue || '-'}</div>
 
-        if ( readOnly && typeof displayValue === 'string' ) {
+        if ( allowDisplayAsTextAreaOnReadonly && readOnly && typeof displayValue === 'string' ) {
             additionalProps.onDoubleClick = this.toggleTextareaDisplay
 
             if ( this.state.showAsTextarea ) {

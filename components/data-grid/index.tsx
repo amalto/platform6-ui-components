@@ -33,6 +33,7 @@ import { WebApi } from './models/WebApi'
 import GlobalState from './models/GlobalState'
 import { ReduxProps } from './models/ReduxProps'
 import { DataGridActions } from './models/DataGridActions'
+import { ColumnHeader, CellData } from '@amalto/typings'
 /**
  * Customizable grid.
  * 
@@ -40,33 +41,6 @@ import { DataGridActions } from './models/DataGridActions'
  * which are accessible at the root component of your service.
  */
 export module DataGrid {
-
-    export interface ColumnHeader {
-        id: string | number;
-        label: string | JSX.Element;
-        display?: boolean;
-        order?: number;
-        color?: string;
-        width?: number;
-        textAlign?: string;
-        disableClick?: boolean;
-    }
-    
-    export interface CellData {
-        displayValue: JSX.Element | string;
-        columnId: string;
-        cssClass?: string;
-        display?: boolean;
-        readOnly?: boolean;
-        isEdited?: boolean;
-        lastEditable?: boolean;
-        options?: {
-            value: string | number;
-            label?: string;
-            disabled?: boolean;
-        }[];
-        validate?: ( value: string ) => any;
-    }
     
     export interface DataGridTemplates {
         [instanceName: string]: {
