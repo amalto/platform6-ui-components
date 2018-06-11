@@ -104,7 +104,7 @@ class HeaderLine extends React.Component<HeaderLine.Props, HeaderLine.State> {
         } )
 
         return (
-            <div className={classNames( {
+            <div className={classNames( 'flex flex-auto', {
                 'sticky-dg-header': stickyHeader
             } )}>
                 <div className={classNames( 'dg-inline-headers', {

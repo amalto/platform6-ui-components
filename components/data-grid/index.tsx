@@ -314,7 +314,7 @@ export class DataGrid extends React.Component<DataGrid.Props, DataGrid.State> {
 
             fetchingHeaders ? <div><Spinner /></div> : (
 
-                <div>
+                <div className='full-width'>
 
                     {
                         displayTemplate && !preventTemplating ? (
