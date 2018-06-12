@@ -16,10 +16,11 @@ export interface BaseListConfig {
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
     customColumns?: {
-        columnId: string;
-        label: string;
+        columnId: string | number;
+        label: string | JSX.Element;
         defaultVisible?: boolean;
         allowFiltering?: boolean;
         width?: number;
-    }[]
+        displayFunction?: ( value: any ) => string | JSX.Element
+    }[];
 }
