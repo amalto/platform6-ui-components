@@ -16,7 +16,7 @@ export interface BaseListConfig {
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
     customColumns?: {
-        columnId: string | number;
+        columnId: string;
         label: string | JSX.Element;
         defaultVisible?: boolean;
         allowFiltering?: boolean;
