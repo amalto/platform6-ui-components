@@ -15,4 +15,8 @@ export interface BaseListConfig {
     customButtons?: ButtonsBar.BtnGroupsProps[];
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
+    customColumns?: {
+        columnId: string;
+        defaultVisible?: boolean;
+    }[]
 }
