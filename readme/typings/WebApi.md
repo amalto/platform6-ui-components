@@ -3,7 +3,54 @@ WebApi uses [EndpointsUrl](#endpointsurl) interface.
 
 
 ```typescript
+
+declare namespace Auth {
+    interface AuthCodeBodyParameters {
+        code: string;
+        uname: string;
+        pw: string;
+        realm?: string;
+    }
+    interface AuthCodeData {
+        code: string;
+        scope: string;
+        redirect_uri: string;
+        state?: string;
+    }
+    interface TokenData {
+        access_token: string;
+        token_type: string;
+        expires_in: number;
+        refresh_token?: string;
+        scope?: string;
+        audience?: string;
+        user_id?: string;
+    }
+    interface TokenBodyParameters {
+        redirect_uri: string;
+        client_id: string;
+        client_secret: string;
+        grant_type: string;
+        code?: string;
+        refresh_token?: string;
+    }
+}
+
 interface WebApi {
+
+    requestAuthorizationCode: (
+        code: string,
+        uname: string,
+        pw: string,
+        realm?: string,
+        cctx?: string
+    ) => Promise<Auth.AuthCodeData>;
+    
+    requestAccessToken: ( authorizationCode: string ) => Promise<Auth.TokenData>;
+    
+    requestClientAccessToken: () => Promise<Auth.TokenData>;
+    
+    refreshAccessToken: () => Promise<Auth.TokenData>;
 
     /** Queries that required a client token. */
     getWithClientToken: (
