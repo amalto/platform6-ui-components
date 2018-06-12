@@ -18,5 +18,6 @@ export interface BaseListConfig {
     customColumns?: {
         columnId: string;
         defaultVisible?: boolean;
+        allowFiltering?: boolean;
     }[]
 }
