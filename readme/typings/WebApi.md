@@ -4,20 +4,20 @@ WebApi uses [EndpointsUrl](#endpointsurl) interface.
 
 ```typescript
 
-declare namespace Auth {
-    interface AuthCodeBodyParameters {
+export namespace Auth {
+    export interface AuthCodeBodyParameters {
         code: string;
         uname: string;
         pw: string;
         realm?: string;
     }
-    interface AuthCodeData {
+    export interface AuthCodeData {
         code: string;
         scope: string;
         redirect_uri: string;
         state?: string;
     }
-    interface TokenData {
+    export interface TokenData {
         access_token: string;
         token_type: string;
         expires_in: number;
@@ -26,7 +26,7 @@ declare namespace Auth {
         audience?: string;
         user_id?: string;
     }
-    interface TokenBodyParameters {
+    export interface TokenBodyParameters {
         redirect_uri: string;
         client_id: string;
         client_secret: string;
