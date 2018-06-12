@@ -21,6 +21,6 @@ export interface BaseListConfig {
         defaultVisible?: boolean;
         allowFiltering?: boolean;
         width?: number;
-        displayFunction?: ( value: any ) => string | JSX.Element
+        displayFunction?: ( value: any ) => string | JSX.Element;
     }[];
 }
