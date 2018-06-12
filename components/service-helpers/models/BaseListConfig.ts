@@ -17,7 +17,9 @@ export interface BaseListConfig {
     customActionsColumnWidth?: number;
     customColumns?: {
         columnId: string;
+        label: string;
         defaultVisible?: boolean;
         allowFiltering?: boolean;
+        width?: number;
     }[]
 }
