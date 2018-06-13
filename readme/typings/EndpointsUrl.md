@@ -363,5 +363,14 @@ interface EndpointsUrl {
      * @param { string } [baseUrlOverride]
      */
     getUrlOfFeature: ( featureId: string, actionEndpoint: string, baseUrlOverride?: string ) => string,
+
+    getScopesTreeUrl: ( scopesPath: string ) => string,
+
+    getAppKeysUrl: () => string,
+
+    /**
+     * Get services list
+     */
+    getInfoServicesUrl: () => string
 }
 ```

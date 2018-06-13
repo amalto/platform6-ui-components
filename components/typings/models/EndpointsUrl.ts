@@ -283,7 +283,9 @@ interface EndpointsUrl {
 
     getScopesTreeUrl: ( scopesPath: string ) => string,
 
-    getAppKeysUrl: () => string
+    getAppKeysUrl: () => string,
+
+    getInfoServicesUrl: () => string
 }
 
 export { EndpointsUrl }
