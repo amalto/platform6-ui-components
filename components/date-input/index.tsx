@@ -1,10 +1,8 @@
 // Modules
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-import * as classNames from 'classnames'
 
 // Components
-import Help from '@amalto/help'
 import DatePicker from '@amalto/date-picker'
 
 /**
@@ -75,7 +73,7 @@ class DateInput extends React.Component<DateInput.Props, DateInput.State> {
 
     private renderDatePicker = ( field: WrappedFieldProps<any> ) => {
 
-        const { input, meta } = field
+        const { input } = field
 
         return (
             <DatePicker

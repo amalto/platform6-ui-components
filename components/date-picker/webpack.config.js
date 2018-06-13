@@ -23,6 +23,8 @@ module.exports = {
     externals: {
         'jquery': 'jQuery',
         'pikaday': 'Pikaday',
+        'react': 'React',
+        'react-dom': 'ReactDOM',
         'moment': 'moment'
     },
 
