@@ -2,6 +2,8 @@ interface EndpointsUrl {
 
     APP_KEYS: () => string,
 
+    SERVICES: () => string,
+
     ////////////////////////////////////////////////
     //
     // scopes
@@ -279,13 +281,7 @@ interface EndpointsUrl {
     /*
     * API endpoint by instance
     */
-    getUrlOfFeature: ( featureId: string, actionEndpoint: string, baseUrlOverride?: string ) => string,
-
-    getScopesTreeUrl: ( scopesPath: string ) => string,
-
-    getAppKeysUrl: () => string,
-
-    getInfoServicesUrl: () => string
+    getUrlOfFeature: ( featureId: string, actionEndpoint: string, baseUrlOverride?: string ) => string
 }
 
 export { EndpointsUrl }

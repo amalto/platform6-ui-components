@@ -4,6 +4,9 @@ interface EndpointsUrl {
     /** Get application publisher profile keys. */
     APP_KEYS: () => string,
 
+    /** Get sercices list.  */
+    SERVICES: () => string,
+
     ////////////////////////////////////////////////
     //
     // scopes
@@ -362,15 +365,6 @@ interface EndpointsUrl {
      * @param { string } actionEndpoint
      * @param { string } [baseUrlOverride]
      */
-    getUrlOfFeature: ( featureId: string, actionEndpoint: string, baseUrlOverride?: string ) => string,
-
-    getScopesTreeUrl: ( scopesPath: string ) => string,
-
-    getAppKeysUrl: () => string,
-
-    /**
-     * Get services list
-     */
-    getInfoServicesUrl: () => string
+    getUrlOfFeature: ( featureId: string, actionEndpoint: string, baseUrlOverride?: string ) => string
 }
 ```
