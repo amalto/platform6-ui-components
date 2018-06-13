@@ -1,6 +1,5 @@
 // Modules
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import * as moment from 'moment'
 import * as Pikaday from 'pikaday'
 import * as classNames from 'classnames'
@@ -163,7 +162,7 @@ class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
     }
 
     private setUpDatePicker = (): Pikaday => {
-        let el = ReactDOM.findDOMNode( this._nameInput ) as HTMLElement
+        let el = this._nameInput
 
         let component = this
 
