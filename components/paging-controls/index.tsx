@@ -18,7 +18,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 module PagingControls {
     export interface Props extends React.Props<PagingControls> {
         /** CSS class wrapping the component. */
-        containerClass: string;
+        containerClass?: string;
         /** Current page selected. */
         currentPage: number;
         /** Total page */
