@@ -54,18 +54,21 @@ module PagingControls {
 
 
 class PagingControls extends React.Component<PagingControls.Props, PagingControls.State> {
+    private goToPageInput: HTMLInputElement
+
     constructor( props: PagingControls.Props ) {
         super( props )
         this.state = {
             wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
         }
+        this.goToPageInput = undefined
     }
 
     render() {
 
         const { containerClass, currentPage, totalPages, byContext } = this.props
 
-        //basic paging control by page number
+        //basic paging control by page number        
         let prevDisabled = currentPage === 1
         let nextDisabled = totalPages === 1 || ( currentPage === totalPages )
 
@@ -96,7 +99,18 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                     <span className="btn btn-primary btn-trans text-element no-border-right">
                         <span className="right-spaced">{this.state.wordings['page']}</span>
                         <strong className="right-spaced">
-                            <FormattedNumber value={currentPage} />
+                            {
+                                byContext ? <FormattedNumber value={currentPage} /> : (
+                                    <input
+                                        type="text"
+                                        size={( totalPages ).toString().length}
+                                        value={currentPage}
+                                        onChange={this.handleGoToPageInput}
+                                        ref={input => this.goToPageInput = input}
+                                        onFocus={e => { this.goToPageInput.select() }}
+                                    />
+                                )
+                            }
                         </strong>
                         <span className="right-spaced">{this.state.wordings['of']}</span>
                         <span><FormattedNumber value={totalPages} /></span>
@@ -116,6 +130,16 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                 </div>
             ) : null
         )
+    }
+
+    private handleGoToPageInput = ( event: React.ChangeEvent<HTMLInputElement> ) => {
+        const { totalPages, handlePageChange } = this.props
+        if ( /^\d+$/.test( event.target.value ) && parseInt( event.target.value ) > 0 && parseInt( event.target.value ) <= totalPages ) {
+            handlePageChange( parseInt( event.target.value ) )
+        }
+        else {
+            this.goToPageInput.blur()
+        }
     }
 
     private goToFirstPage = ( event: any ): void => {
