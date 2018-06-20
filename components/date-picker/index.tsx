@@ -97,10 +97,10 @@ class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
 
     render() {
 
-        if ( this.props.mandatory && !this.props.defaultValue ) {
-            console.error( 'Mandatory DatePicker must have a defaultValue property (YYYY-MM-DD formatted string)' )
-            return null
-        }
+        // if ( this.props.mandatory && !this.props.defaultValue ) {
+        //     console.error( 'Mandatory DatePicker must have a defaultValue property (YYYY-MM-DD formatted string)' )
+        //     return null
+        // }
 
         let disableClearBtn = true
         if ( this.state.datePickerInstance ) {
