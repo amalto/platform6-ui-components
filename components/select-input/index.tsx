@@ -98,7 +98,7 @@ class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> 
 
                     {hideEmptyOption ? null : <option value=""></option>}
 
-                    {options.map( ( opt, idx ) => <option key={idx} value={opt.value} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
+                    {options.map( ( opt, idx ) => <option key={idx} value={opt.value} selected={hideEmptyOption && idx === 0} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
 
                 </select>
 
