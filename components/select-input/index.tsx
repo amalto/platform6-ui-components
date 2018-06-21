@@ -86,19 +86,30 @@ class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> 
 
         const { input, meta } = field
 
+        const props = {
+            checked: input.value,
+            name: input.name,
+            onBlur: input.onBlur,
+            onChange: input.onChange,
+            onDragStart: input.onDragStart,
+            onDrop: input.onDrop,
+            onFocus: input.onFocus
+        }
+
         return (
             <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error
             } )}>
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <select {...input as any}
+                <select {...props as any}
                     className={classNames( 'form-control', inputClass )}
+                    defaultValue={hideEmptyOption ? options[0].value : ''}
                     disabled={disabled}>
 
                     {hideEmptyOption ? null : <option value=""></option>}
 
-                    {options.map( ( opt, idx ) => <option key={idx} value={opt.value} selected={hideEmptyOption && idx === 0} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
+                    {options.map( ( opt, idx ) => <option key={idx} value={opt.value} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
 
                 </select>
 

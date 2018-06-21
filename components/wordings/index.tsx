@@ -538,11 +538,6 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'La description anglaise est obligatoire.'
     },
 
-    bundledResourceEmptyList: {
-        'en-US': 'Bundled resource not found',
-        'fr-FR': 'Aucune ressource groupée'
-    },
-
     maxSize1GB: {
         'en-US': 'Maximum size allowed is 1GB.',
         'fr-FR': 'La taille maximale authorisée est de 1GO.'
@@ -551,46 +546,6 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     invalidSizeMax1GB: {
         'en-US': 'File too big, maximum size allowed is 1GB.',
         'fr-FR': 'Fichier trop lourd, la taille maximale authorisée est de 1GO.'
-    },
-
-    bundledResourcesConfirmDelete: {
-        'en-US': 'Are you sure you want to delete those bundled resources?',
-        'fr-FR': 'Êtes vous sur(e) de vouloir supprimer ces ressources groupées ?'
-    },
-
-    bundledResourcesAdded: {
-        'en-US': 'Bundled resource added',
-        'fr-FR': 'Ressource groupée ajoutée'
-    },
-
-    bundledResourcesImported: {
-        'en-US': 'Bundled resources imported',
-        'fr-FR': 'Ressource groupées importés'
-    },
-
-    bundledResourcesUpdated: {
-        'en-US': 'Bundled resource updated',
-        'fr-FR': 'Ressource groupée mise à jour'
-    },
-
-    bundledResourcesRenamed: {
-        'en-US': 'Bundled resource renamed',
-        'fr-FR': 'Ressource groupée renommée'
-    },
-
-    bundledResourcesDuplicated: {
-        'en-US': 'Bundled resource duplicated',
-        'fr-FR': 'Ressource groupée dupliquée'
-    },
-
-    bundledResourcesDeleted: {
-        'en-US': 'Bundled resource(s) deleted',
-        'fr-FR': 'Ressource groupée(s) supprimée(s)'
-    },
-
-    bundledResourcesExported: {
-        'en-US': 'Bundled resource(s) exported',
-        'fr-FR': 'Ressources groupée(s) exportée(s)'
     },
 
     nameAlreadyExist: {
@@ -606,11 +561,6 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     resourcesAttached: {
         'en-US': 'Resource attached',
         'fr-FR': 'Ressource attachée'
-    },
-
-    bundledResourcesReadonly: {
-        'en-US': 'These bundled resources are only readable. They can not be deleted.',
-        'fr-FR': 'Ces ressources groupées ne sont éditables. Elles ne peuvent pas supprimés.'
     },
 
     confirmUpdateForConsistancy: {
