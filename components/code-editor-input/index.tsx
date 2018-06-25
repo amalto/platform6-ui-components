@@ -179,7 +179,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
                     key={input.name}
                     className={classNames( 'form-control input-block', inputClass )}
                     ref={dom => this.editorCtn = dom}
-                    style={{ height: height || 300 }}
+                    style={height ? { height: height } : null}
                 />
 
                 {( meta.touched && !!meta.error ) && <p className="validation-error-message">{meta.error}</p>}
@@ -240,7 +240,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
         const { editorInstance } = this.state
 
-        const { readonly, displaySettings } = this.props
+        const { readonly, displaySettings, height } = this.props
 
         if ( editorInstance ) {
             if ( prevProps.readonly !== readonly ) {
@@ -335,6 +335,12 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
         }
 
         ( editor as any ).setDisplayIndentGuides( showIndent )
+
+        if ( !this.props.height ) {
+            editor.setOptions( {
+                maxLines: 20
+            } )
+        }
 
         editor.clearSelection()
     }

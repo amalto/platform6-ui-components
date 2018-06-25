@@ -122,6 +122,10 @@ module CodeEditor {
          * Force save with keyboard shortcuts <blockquote>Shift + Ctrl + s</blockquote> or <blockquote>Shift + Cmd + s</blockquote>.
          */
         saveMultipleContent?: ( session: AceSession ) => void;
+        /**
+         * Callback executed at first load and after every reload (loadTime changes)
+         */
+        loadedCallback?: ( editor: AceEditor ) => void;
         /** Hide props from documentation */
 
         /** @ignore */
@@ -160,7 +164,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     private _editorPanel: HTMLDivElement
     private _editor: AceEditor
     // Should be NodeJS.Timer but actual version of node js only have the prototype that return number
-    private _clearTimeout: any = null 
+    private _clearTimeout: any = null
     private _canUpdate: boolean = false
     private _cursorLastPosition: { row: number, column: number } = { row: 0, column: 0 }
 
@@ -170,10 +174,17 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     render() {
-        const height: number | string = this.props.height || 300
+        const height: number | string = this.props.height
+
+        let style: React.CSSProperties = {
+            width: '100%',
+            position: 'relative'
+        }
+
+        if ( height ) { style.height = height }
 
         return (
-            <div style={{ height, width: '100%', position: 'relative' }}
+            <div style={style}
                 id={this.props.docId}
                 ref={dom => this._editorPanel = dom}>
             </div>
@@ -209,23 +220,23 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         // Needed to be able to access this from editor onblur event
         const self = this
 
-        this._editor.on('blur', function (e) {
-            const session = self.getAceSession(self._editor)
+        this._editor.on( 'blur', function ( e ) {
+            const session = self.getAceSession( self._editor )
 
             if ( self._canUpdate ) {
                 self._cursorLastPosition = e.end
                 session.cursorPosition = self._cursorLastPosition
-                self.props.saveSession && self.props.saveSession(session)
+                self.props.saveSession && self.props.saveSession( session )
                 self._canUpdate = false
             }
-        });
+        } );
     }
 
     componentWillUnmount() {
         window.removeEventListener( 'resize', () => this.resizeEditor() )
 
         //save current session
-        this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ), {cursorPosition: this._cursorLastPosition} ) )
+        this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ), { cursorPosition: this._cursorLastPosition } ) )
 
         // clearInterval( this._clearTimeout )
 
@@ -250,7 +261,16 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         this._editor.setReadOnly( nextProps.readonly )
         if ( doUpdate ) {
-            $( this._editorPanel ).height( this.props.height || 300 )
+
+            if ( this.props.height ) {
+                $( this._editorPanel ).height( this.props.height )
+            }
+            else {
+                this._editor.setOptions( {
+                    maxLines: 20
+                } )
+            }
+
             this._editor.resize( true )
             !nextProps.readonly && this.focus( nextProps.aceSession )
             this.setEditorSession( this._editor, nextProps )
@@ -284,7 +304,15 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         let h = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 )
 
-        $( this._editorPanel ).height( this.props.height || 300 )
+        if ( this.props.height ) {
+            $( this._editorPanel ).height( this.props.height )
+        }
+        else {
+            this._editor.setOptions( {
+                maxLines: 20
+            } )
+        }
+
         this._editor.resize( true )
     }
 
@@ -314,9 +342,13 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             this._canUpdate = true
             this._cursorLastPosition = e.end
 
-            this.props.editorOnChange && this.props.editorOnChange(this._editor.getValue())
+            this.props.editorOnChange && this.props.editorOnChange( this._editor.getValue() )
         } )
         this._firstChangeTime = props.loadTime
+
+        if ( this.props.loadedCallback ) {
+            this.props.loadedCallback( editor )
+        }
     }
 
     //see http://stackoverflow.com/questions/28257566/ace-editor-save-send-session-on-server-via-post
