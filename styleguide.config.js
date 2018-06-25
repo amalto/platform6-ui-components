@@ -17,8 +17,6 @@ module.exports = {
     },
 
     getComponentPathLine(componentPath) {
-        const type = componentPath.split('/')[0]
-        const componentName = componentPath.split('/')[1]
         const packageJsonPath = path.resolve(__dirname, componentPath.replace('index.tsx', 'package.json'))
         const package = require(packageJsonPath)
 
@@ -120,6 +118,16 @@ module.exports = {
         description: 'All the components provided by Platform 6.',
         ignore: ['**/node_modules/**'],
         components: 'components/**/index.tsx'
+    },
+    {
+        name: 'Platform 6 UI',
+        content: 'readme/platform6-ui/Introduction.md',
+        sections: [
+            {
+                name: 'DataGrid',
+                content: 'readme/platform6-ui/DataGrid.md'
+            }
+        ]
     },
     {
         name: 'Interfaces',
