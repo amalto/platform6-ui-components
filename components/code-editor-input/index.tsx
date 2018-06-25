@@ -36,7 +36,10 @@ namespace CodeEditorInput {
          * @default ace/mode/javascript
          */
         mode?: string;
-        /** Editor height. */
+        /**
+         * Editor height.
+         * @default 300
+         */
         height?: number | string;
         /** Editor ace session. More details on [AceSession](#acesession) */
         initSession?: AceSession;

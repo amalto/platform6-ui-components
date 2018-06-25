@@ -12,6 +12,15 @@
         flex: 1;
         width: 0;
     }
+
+    .flex-3 {
+        -webkit-box-flex: 3;
+        -moz-box-flex: 3;
+        -webkit-flex: 3;
+        -ms-flex: 3;
+        flex: 3;
+        width: 0;
+    }
 }
 
 .inline-flex {

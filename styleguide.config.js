@@ -13,7 +13,9 @@ module.exports = {
 
     styleguideComponents: {
         Wrapper: path.join(__dirname, 'typescript/custom/Wrapper'),
-        PathlineRenderer: path.join(__dirname, 'typescript/custom/Pathline')
+        PathlineRenderer: path.join(__dirname, 'typescript/custom/Pathline'),
+        PropsRenderer: path.join(__dirname, 'typescript/custom/PropsRenderer'),
+        TableRenderer: path.join(__dirname, 'typescript/custom/TableRenderer')
     },
 
     getComponentPathLine(componentPath) {
@@ -63,6 +65,11 @@ module.exports = {
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse,
     webpackConfig: require('./webpack.config.js'),
     styles: {
+        StyleGuide: {
+            content: {
+                'max-width': undefined
+            }
+        },
         Pre: {
             pre: {
                 'white-space': 'pre-wrap !important'
@@ -117,7 +124,7 @@ module.exports = {
         name: 'Components',
         description: 'All the components provided by Platform 6.',
         ignore: ['**/node_modules/**'],
-        components: 'components/**/index.tsx'
+        components: 'components/action-button/index.tsx'
     },
     {
         name: 'Platform 6 UI',
