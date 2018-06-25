@@ -338,6 +338,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
         if ( !this.props.height ) {
             editor.setOptions( {
+                minLines: 2,
                 maxLines: 20
             } )
         }

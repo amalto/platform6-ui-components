@@ -267,6 +267,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             }
             else {
                 this._editor.setOptions( {
+                    minLines: 2,
                     maxLines: 20
                 } )
             }
@@ -309,6 +310,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         }
         else {
             this._editor.setOptions( {
+                minLines: 2,
                 maxLines: 20
             } )
         }
