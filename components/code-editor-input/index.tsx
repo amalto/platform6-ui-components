@@ -405,6 +405,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
             initSession.cursorPosition = e.end
             initSession.value = editor.getValue()
         }
+
         input.onChange( editor.getValue(), undefined, undefined )
     }
 }
