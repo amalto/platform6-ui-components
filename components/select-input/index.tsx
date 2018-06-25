@@ -104,7 +104,7 @@ class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> 
 
                 <select {...props as any}
                     className={classNames( 'form-control', inputClass )}
-                    defaultValue={hideEmptyOption ? options[0].value : ''}
+                    defaultValue={hideEmptyOption ? input.value || options[0].value : ''}
                     disabled={disabled}>
 
                     {hideEmptyOption ? null : <option value=""></option>}
