@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
+import { deepCopy, isNotEmpty } from '@amalto/helpers'
 
 // Components
 import Help from '@amalto/help'
@@ -86,15 +87,9 @@ class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> 
 
         const { input, meta } = field
 
-        const props = {
-            checked: input.value,
-            name: input.name,
-            onBlur: input.onBlur,
-            onChange: input.onChange,
-            onDragStart: input.onDragStart,
-            onDrop: input.onDrop,
-            onFocus: input.onFocus
-        }
+        const copy = deepCopy( input )
+        
+        copy.value = hideEmptyOption && !isNotEmpty( copy.name ) ? options[0].value : copy.value
 
         return (
             <div className={classNames( 'form-group', containerClass, {
@@ -102,9 +97,8 @@ class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> 
             } )}>
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <select {...props as any}
+                <select {...copy as any}
                     className={classNames( 'form-control', inputClass )}
-                    defaultValue={hideEmptyOption ? input.value || options[0].value : ''}
                     disabled={disabled}>
 
                     {hideEmptyOption ? null : <option value=""></option>}

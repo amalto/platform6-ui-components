@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@amalto/help": "1.4.21",
+    "@amalto/helpers": "1.4.84",
     "classnames": "2.2.5",
     "react": "15.6.2",
     "react-dom": "15.6.2",
