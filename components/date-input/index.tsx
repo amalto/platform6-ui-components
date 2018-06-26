@@ -25,6 +25,7 @@ namespace DateInput {
         /**
          * Will show a mandatory asterisk on the input label. Will disable the <span className='quote'>clear selected date</span> button.
          * Warning: a default value for the date will be required otherwise the input will not be displayed.
+         * @default false
          */
         mandatory?: boolean;
 

@@ -21,7 +21,10 @@ namespace SelectInput {
             label?: string;
             disabled?: boolean;
         }[];
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
@@ -29,11 +32,15 @@ namespace SelectInput {
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
-        /** Hide the space where the error message should appear */
+        /**
+         * Hide the space where the error message should appear.
+         * @default false
+         */
         hideEmptyOption?: boolean;
         /**
          * Remove the bottom margin which is the default height of the error message
          * displayed when input is invalid.
+         * @default false
          */
         collapseErrorSpace?: boolean;
 

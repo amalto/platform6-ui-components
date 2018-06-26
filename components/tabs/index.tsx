@@ -24,7 +24,10 @@ module Tabs {
         closeTab: ( tabId: string ) => void;
         /** Select tab method. */
         openedTab: ( tabId: string ) => void;
-        /** Allow horizontal scrolling on tab list. */
+        /**
+         * Allow horizontal scrolling on tab list.
+         * @default false
+         */
         allowHorizontalScrolling?: boolean;
         /** Array of [Tab](#tab). */
         tabs: JSX.Element[];

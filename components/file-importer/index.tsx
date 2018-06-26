@@ -35,7 +35,10 @@ module FileImporter {
             headers?: boolean;
             overwrite?: boolean;
         }
-        /** Is being processed, if true display the spinner. */
+        /**
+         * Is being processed, if true display the spinner.
+         * @default false
+         */
         processing?: boolean;
         /**
          * Language to use on the component. e.g: <span className='quote'>en-US</span>.

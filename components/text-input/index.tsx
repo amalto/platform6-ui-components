@@ -20,7 +20,10 @@ namespace TextInput {
         label?: string | JSX.Element;
         /** Input's placeholder. */
         placeholder?: string;
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
@@ -32,13 +35,20 @@ namespace TextInput {
         type?: string;
         /** Step between each number if input is of type <span className='quote'>number</span>. */
         step?: number;
-        /** Focus the input after being loaded. */
+        /**
+         * Focus the input after being loaded.
+         * @default false
+         */
         autofocus?: boolean;
-        /** Randomize input value as a <span className='quote'>uuid.v1()</span> string. */
+        /**
+         * Randomize input value as a <span className='quote'>uuid.v1()</span> string.
+         * @default false
+         */
         randomGenerator?: boolean;
         /**
          * Remove the bottom margin which is the default height of the error message
          * displayed when input is invalid.
+         * @default false
          */
         collapseErrorSpace?: boolean;
 

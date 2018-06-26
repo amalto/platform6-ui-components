@@ -22,7 +22,10 @@ namespace RadioInput {
             value: string;
             label?: string;
         }[];
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
@@ -33,6 +36,7 @@ namespace RadioInput {
         /**
          * Remove the bottom margin which is the default height of the error message
          * displayed when input is invalid.
+         * @default false
          */
         collapseErrorSpace?: boolean;
 

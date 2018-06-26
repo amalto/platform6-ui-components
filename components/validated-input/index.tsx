@@ -34,15 +34,27 @@ module ValidatedInput {
         validate?: ( fieldValue: string ) => boolean;
         /** Custom error message displayed when the user input is invalid. */
         errorMessage?: string;
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
-        /** If true, value must be defined and can't be cleared. */
+        /**
+         * If true, value must be defined and can't be cleared.
+         * @default false
+         */
         mandatory?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
-        /** Forces the input to be validated (regex/mandatory validation) on first load - before the user starts to type anything. */
+        /**
+         * Forces the input to be validated (regex/mandatory validation) on first load - before the user starts to type anything.
+         * @default false
+         */
         validateOnLoad?: boolean;
-        /** Whether or not the form has been submitted. Will force an input validation if it goes from false to true. */
+        /**
+         * Whether or not the form has been submitted. Will force an input validation if it goes from false to true.
+         * @default false
+         */
         formSubmitted?: boolean;
         /** Placeholder HTML attribute. */
         placeholder?: string;

@@ -23,7 +23,10 @@ namespace CodeEditorInput {
         name: string;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** If true don't allow user to edit content. */
+        /**
+         * If true don't allow user to edit content.
+         * @default false
+         */
         readonly?: boolean;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;

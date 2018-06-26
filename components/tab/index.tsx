@@ -18,7 +18,10 @@ namespace Tab {
         iconClass?: string;
         /** Displayed title. */
         title: string;
-        /** Closable or not. */
+        /**
+         * Closable or not.
+         * @default false
+         */
         closable?: boolean;
         /** Common CSS style shared between <span className='quote'>Tab</span> from Tabs component. */
         tabStyle?: React.CSSProperties;

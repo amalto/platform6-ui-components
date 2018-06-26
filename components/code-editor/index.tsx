@@ -91,7 +91,10 @@ module CodeEditor {
         mode: string;
         /** Move the editor and cursor to end of file after updating. */
         moveToEndOfFile?: boolean;
-        /** If true don't allow user to edit content. */
+        /**
+         * If true don't allow user to edit content.
+         * @default false
+         */
         readonly?: boolean;
         /** Editor visual settings. More details on [Settings](#codeeditorinputsettings). */
         displaySettings?: Settings;
@@ -101,10 +104,7 @@ module CodeEditor {
         forceSave?: boolean;
         /** @deprecated loadTime property will be used instead in next release. */
         resetTick?: number;
-        /**
-         * Editor ace session. More details on [AceSession](#acesession).
-         * @default null
-         */
+        /** Editor ace session. More details on [AceSession](#acesession). */
         aceSession?: AceSession;
         /** Unique editor id. */
         docId: string;

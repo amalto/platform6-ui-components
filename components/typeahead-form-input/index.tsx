@@ -33,6 +33,7 @@ namespace TypeaheadFormInput {
         /**
          * Remove the bottom margin which is the default height of the error message
          * displayed when input is invalid.
+         * @default false
          */
         collapseErrorSpace?: boolean;
 

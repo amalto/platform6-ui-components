@@ -34,7 +34,10 @@ module LanguageWrapper {
         handleRemovedLanguage: ( language: string ) => void;
         /** CSS class wrapping the component. */
         containerClass?: string;
-        /** Disable add and remove of language but still allow user to select language. */
+        /**
+         * Disable add and remove of language but still allow user to select language.
+         * @default false
+         */
         disabled?: boolean;
         /**
          * Language to use on the component. e.g: <span className='quote'>n-US</span>.

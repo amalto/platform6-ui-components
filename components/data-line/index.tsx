@@ -30,9 +30,15 @@ export module DataLine {
         enterPressHandler?: () => void;
         /** Triggered when user press <span className='quote'>tab</span> key on the last cell of the line in edit mode. */
         tabOnLastCellCallback?: () => void;
-        /** If true, all cell will be turned into input and would be editable. */
+        /**
+         * If true, all cell will be turned into input and would be editable.
+         * @default false
+         */
         editMode?: boolean;
-        /** If true, an orange triangle will be displayed on the right bottom of each cells. */
+        /**
+         * If true, an orange triangle will be displayed on the right bottom of each cells.
+         * @default false
+         */
         isNew?: boolean;
         /** CSS style applied to the line. */
         style?: React.CSSProperties;

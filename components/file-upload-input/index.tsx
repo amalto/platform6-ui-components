@@ -34,17 +34,24 @@ namespace FileInput {
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering "?" icon. */
         help?: string;
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** CSS class wrapping the component. */
         containerClass?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
-        /** Display file preview. */
+        /**
+         * Display file preview.
+         * @default false
+         */
         displayPreview?: boolean;
         /**
          * Remove the bottom margin which is the default height of the error message
          * displayed when input is invalid.
+         * @default false
          */
         collapseErrorSpace?: boolean;
         /**

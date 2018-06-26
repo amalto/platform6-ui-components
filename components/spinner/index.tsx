@@ -17,7 +17,10 @@ module Spinner {
         right?: string | number;
         /** Left position. */
         left?: string | number;
-        /** Spinner size. */
+        /**
+         * Spinner size.
+         * @default 32
+         */
         size?: number;
 
         /** Hide props from documentation */

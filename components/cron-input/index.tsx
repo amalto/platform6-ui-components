@@ -38,7 +38,10 @@ module CronInput {
         handleChange: ( fieldValue: CronValue ) => void;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** Set input to invalid state and display error message. */
+        /**
+         * Set input to invalid state and display error message.
+         * @default false
+         */
         invalid?: boolean;
         /** CSS class wrapping the component. */
         containerClass?: string;

@@ -17,7 +17,10 @@ namespace TimeInput {
     export interface Props extends BaseFieldProps {
         /** Input name in the DOM. */
         name: string;
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
@@ -34,7 +37,10 @@ namespace TimeInput {
         maxHour?: number;
         /** CSS class wrapping the component. */
         containerClass?: string;
-        /** Will show a mandatory asterisk on the input label. */
+        /**
+         * Will show a mandatory asterisk on the input label.
+         * @default false
+         */
         mandatory?: boolean;
 
         /** Hide props from documentation */

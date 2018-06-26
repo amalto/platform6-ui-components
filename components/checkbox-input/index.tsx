@@ -16,7 +16,10 @@ namespace CheckboxInput {
         name: string;
         /** Input's label. */
         label: string | JSX.Element;
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;

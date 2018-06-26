@@ -16,7 +16,10 @@ module TimePicker {
         value: string;
         /** Callback function executed on user input. */
         handleFieldChange: ( fieldValue: string, fieldName: string ) => void;
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * @default false
+         */
         disabled?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
@@ -33,7 +36,10 @@ module TimePicker {
         maxHour?: number;
         /** CSS class wrapping the component. */
         containerClass?: string;
-        /** Will show a mandatory asterisk on the input label. */
+        /**
+         * Will show a mandatory asterisk on the input label.
+         * @default false
+         */
         mandatory?: boolean;
 
         /** Hide props from documentation */
