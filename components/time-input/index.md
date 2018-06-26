@@ -29,7 +29,7 @@ const ExampleTimeInput = reduxForm({
     minutesInterval={10}
     minHour={min.hours()}
     maxHour={max.hours()}
-    containerClass='padded pos-relative'
+    containerClass='col-lg-12 col-xs-12 padding-none'
     mandatory={true}
 />
 ```

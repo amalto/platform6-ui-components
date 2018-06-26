@@ -28,7 +28,7 @@ const handleRemovedLanguage = language => {
     handleLanguageChange={handleLanguageChange}
     handleAddedLanguage={handleAddedLanguage}
     handleRemovedLanguage={handleRemovedLanguage}
-    containerClass='padded'
+    containerClass='col-lg-12 col-xs-12 padding-none'
     locale='en-US'
 />
 ```

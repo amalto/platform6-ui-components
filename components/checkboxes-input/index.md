@@ -24,7 +24,6 @@ const options = [
     options={options}
     disabled={false}
     help='Helper text'
-    containerClass='padded'
     inputClass='info-color mgr-10'
     collapseErrorSpace={true}
 />

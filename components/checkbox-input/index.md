@@ -18,7 +18,6 @@ const ExampleCheckboxInput = reduxForm({
     label='CheckboxInput example'
     disabled={false}
     help='Helper text'
-    containerClass='padded'
     inputClass='info-color'
     collapseErrorSpace={true}
 />

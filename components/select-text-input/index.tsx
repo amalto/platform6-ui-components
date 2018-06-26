@@ -14,7 +14,8 @@ import * as classNames from 'classnames'
 import { Styles } from './styles'
 
 /**
- * Text input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Select Text input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * It allow you to select an option from a list or type your own text.
  */
 namespace SelectTextInput {
     export interface Props extends BaseFieldProps {

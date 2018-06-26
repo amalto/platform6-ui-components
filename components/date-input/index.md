@@ -27,6 +27,6 @@ const ExampleDateInput = reduxForm({
     maxDate={max}
     mandatory={true}
     help='Helper text'
-    containerClass='padded pos-relative'
+    containerClass='col-lg-12 col-xs-12 padding-none'
 />
 ```

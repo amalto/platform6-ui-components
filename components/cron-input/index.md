@@ -27,7 +27,6 @@ const handleChange = ( fieldValue ) => {
     handleChange={handleChange}
     label='Cron input example'
     invalid={false}
-    containerClass='padded'
     forceValidation={true}
     locale='en-US'
 />

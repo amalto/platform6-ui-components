@@ -18,7 +18,7 @@ const ExampleTextareaInput = reduxForm({
     label='TextareaInput example'
     disabled={false}
     help='Helper text'
-    containerClass='padded'
+    containerClass='col-lg-12 col-xs-12 padding-none'
     inputClass='text-large'
     collapseErrorSpace={true}
 />

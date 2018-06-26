@@ -25,7 +25,7 @@ const ExampleTypeaheadFormInput = reduxForm({
     label='TypeaheadFormInput example'
     placeholder='Value here'
     help='Helper text'
-    containerClass='padded'
+    containerClass='col-lg-12 col-xs-12 padding-none'
     collapseErrorSpace={true}
 />
 ```

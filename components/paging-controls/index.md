@@ -14,7 +14,7 @@ function handlePageChange( newPage ) {
 }
 
 <IntlProvider locale='en-US'>
-    <PagingControls containerClass='padded'
+    <PagingControls containerClass='col-lg-12 col-xs-12 padding-none'
         currentPage={state.currentPage}
         totalPages={2}
         handlePageChange={handlePageChange}
