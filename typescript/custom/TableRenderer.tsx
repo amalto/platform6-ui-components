@@ -28,31 +28,8 @@ class TableRenderer  extends React.Component<TableRenderer.Props, TableRenderer.
     render() {
         const { columns, rows, getRowKey } = this.props
 
-        // return 	<table className={classes.table}>
-        //     <thead className={classes.tableHead}>
-        //         <tr>
-        //             {columns.map(({ caption }) => (
-        //                 <th key={caption} className={classes.cellHeading}>
-        //                     {caption}
-        //                 </th>
-        //             ))}
-        //         </tr>
-        //     </thead>
-        //     <tbody>
-        //         {rows.map(row => (
-        //             <tr key={getRowKey(row)}>
-        //                 {columns.map(({ render }, index) => (
-        //                     <td key={index} className={classes.cell}>
-        //                         {render(row)}
-        //                     </td>
-        //                 ))}
-        //             </tr>
-        //         ))}
-        //     </tbody>
-        // </table>
-
         return <div className='flex flex-col'>
-            <div className='flex flex-wrap mgb-15 bottom-border'>
+            <div className='flex flex-wrap mgb-15 bottom-border bold text-medium'>
                 {columns.map( ({ caption }, idx) => (
                     <div key={caption} className={classNames( 'flex', {
                         'flex-1': idx < 3,
@@ -62,7 +39,7 @@ class TableRenderer  extends React.Component<TableRenderer.Props, TableRenderer.
             </div>
             {
                 rows.map( row => (
-                    <div key={uuid.v4()} className='flex flex-wrap'>
+                    <div key={uuid.v4()} className='flex flex-wrap text-medium'>
                         {columns.map( ({ render }, idx) => (
                             <div key={idx} className={classNames( 'flex', {
                                 'flex-1': idx < 3,

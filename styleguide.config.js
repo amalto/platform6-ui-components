@@ -124,7 +124,7 @@ module.exports = {
         name: 'Components',
         description: 'All the components provided by Platform 6.',
         ignore: ['**/node_modules/**'],
-        components: 'components/action-button/index.tsx'
+        components: 'components/*/index.tsx'
     },
     {
         name: 'Platform 6 UI',

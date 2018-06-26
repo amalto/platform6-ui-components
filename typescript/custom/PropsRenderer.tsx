@@ -214,8 +214,6 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
         const { name } = type
 
-        console.info('type => ', type)
-
         switch ( name ) {
             case 'arrayOf':
                 return `${type.value.name}[]`
