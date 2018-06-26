@@ -97,13 +97,14 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
             }
     
             return <Code>{showSpaces(unquote(prop.defaultValue.value))}</Code>
-        } else if (prop.required) {
-            return (
-                <Text size="small" color="light">
-                    Required
-                </Text>
-            )
         }
+        // else if (prop.required) {
+        //     return (
+        //         <Text size="small" color="light">
+        //             Required
+        //         </Text>
+        //     )
+        // }
         return ''
     }
 
@@ -261,7 +262,11 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
     private renderName = (prop): JSX.Element => {
         const { name, tags = {} } = prop
 
-        return <Name deprecated={!!tags.deprecated}>{name}</Name>
+        return <Name deprecated={!!tags.deprecated}>
+            {
+                prop.required ? <div className='props-name mandatory'>{name}</div> : name
+            }
+        </Name>
     }
 
     private renderTypeColumn = (prop): JSX.Element => {

@@ -109,6 +109,20 @@
             p {
                 margin-bottom: 0;
             }
+
+            .props-name {
+                position: relative;
+
+                &.mandatory {
+
+                    &:after {
+                        color: $dangerColor;
+                        content: '*';
+                        top: -5px;
+                        position: absolute;
+                    }
+                }
+            }
         }
     }
 }

@@ -7,13 +7,21 @@ import * as classNames from 'classnames'
 module ActionButton {
 
     export interface Props extends React.Props<ActionButton> {
-        /** Action triggered on click event. */
+        /**
+         * Action triggered on click event.
+         * 
+         * @default null
+         */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
         /** Any Font Awesome icon CSS class names like <span className='quote'>fa-info</span> or <span className='quote'>fa-info fa-lg</span>. */
         iconClass?: string
         /** Set the icon color class. Do not use if you don't need it, otherwise, <span className='quote'>btnClass</span> will have trouble handling hover color. */
         colorClass?: string
-        /** Whether or not the input is disabled. */
+        /**
+         * Whether or not the input is disabled.
+         * 
+         * @default false
+         */
         disabled?: boolean
         /** Text that will be displayed in the <span className='quote'>title</span> HTML attribute of the button. */
         tooltipText?: string
