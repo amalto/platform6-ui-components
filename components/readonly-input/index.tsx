@@ -17,7 +17,7 @@ namespace ReadOnlyInput {
         name: string;
         /** Input's label. */
         label?: string | JSX.Element;
-        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
+        /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
         /** CSS class wrapping the component. */
         containerClass?: string;

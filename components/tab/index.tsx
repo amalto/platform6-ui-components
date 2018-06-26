@@ -12,7 +12,7 @@ import * as classNames from 'classnames'
 namespace Tab {
 
     export interface Props extends React.Props<Tab> {
-        /** Id will be used when selecting a tab from <blockquote>Tabs</blockquote> compoenent. */
+        /** Id will be used when selecting a tab from <span className='quote'>Tabs</span> compoenent. */
         id: string;
         /** Icon in front of the title. */
         iconClass?: string;
@@ -20,9 +20,9 @@ namespace Tab {
         title: string;
         /** Closable or not. */
         closable?: boolean;
-        /** Common CSS style shared between <blockquote>Tab</blockquote> from Tabs component. */
+        /** Common CSS style shared between <span className='quote'>Tab</span> from Tabs component. */
         tabStyle?: React.CSSProperties;
-        /** Common CSS class shared between <blockquote>Tab</blockquote> from <blockquote>Tabs</blockquote> component. */
+        /** Common CSS class shared between <span className='quote'>Tab</span> from <span className='quote'>Tabs</span> component. */
         tabClassNames?: string;
         /** CSS class applied only to this tab link. */
         tabLinkUniqueClass?: string;

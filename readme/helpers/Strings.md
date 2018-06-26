@@ -1,6 +1,6 @@
 Methods returning formatted strings.
 
-More informations on <blockquote>dateByLocalToString</blockquote> options [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).
+More informations on <span className='quote'>dateByLocalToString</span> options [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).
 
 More informations about [Service](#service).
 

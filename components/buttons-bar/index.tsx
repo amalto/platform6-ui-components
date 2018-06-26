@@ -49,7 +49,7 @@ module ButtonsBar {
         /** Button list to be displayed. More details on [BtnGroupsProps](#btngroupsprops) */
         btnGroups: BtnGroupsProps[];
         /**
-         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */

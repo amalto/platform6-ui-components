@@ -13,7 +13,7 @@ module Switch {
         value: boolean;
         /** Method triggered when Switch is used. */
         changeHandler: ( value: boolean, name?: string ) => void;
-        /** CSS class of <blockquote>Switch</blockquote> component. */
+        /** CSS class of <span className='quote'>Switch</span> component. */
         cssClass?: string;
         /** Whether the switch input should be align left or not. */
         alignLeft?: boolean;

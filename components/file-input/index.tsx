@@ -36,12 +36,12 @@ module FileInput {
         addFilesToQueue: ( files: File[] ) => void;
 
         /**
-         * Callback function executed when the user clicks on the <blockquote>Delete</blockquote> button of a specific uploaded file.
+         * Callback function executed when the user clicks on the <span className='quote'>Delete</span> button of a specific uploaded file.
          */
         deleteUploadedFile: ( fileName: string ) => void;
 
         /**
-         * Callback function executed when the user clicks on the <blockquote>Cancel</blockquote> button.
+         * Callback function executed when the user clicks on the <span className='quote'>Cancel</span> button.
          */
         cancelSubmit: () => void;
 
@@ -52,7 +52,7 @@ module FileInput {
         maxBytesSize?: number;
 
         /**
-         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */

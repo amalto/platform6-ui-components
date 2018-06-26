@@ -25,13 +25,13 @@ module PagingControls {
         totalPages: number;
         /** Method triggered when changing page. */
         handlePageChange: ( newPage: number | string ) => void;
-        /** Get previous and next context from the <blockquote>handlePageChange</blockquote> props. */
+        /** Get previous and next context from the <span className='quote'>handlePageChange</span> props. */
         byContext?: {
             prevContextToken: string;
             nextContextToken: string;
         }
         /**
-         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */

@@ -20,7 +20,7 @@ module TimePicker {
         disabled?: boolean;
         /** Input label. */
         label?: string | JSX.Element;
-        /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
+        /** Tooltip help displayed when hovering the <span className='quote'>?</span> icon next to label. */
         help?: string;
         /** 
          * Determined the interval in minute between each option from the select input.

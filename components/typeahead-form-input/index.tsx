@@ -26,7 +26,7 @@ namespace TypeaheadFormInput {
         label?: string | JSX.Element;
         /** Input's placeholder. */
         placeholder?: string;
-        /** Tooltip help displayed when hovering the <blockquote>?</blockquote> icon next to label. */
+        /** Tooltip help displayed when hovering the <span className='quote'>?</span> icon next to label. */
         help?: string;
         /** CSS class wrapping the component. */
         containerClass?: string;

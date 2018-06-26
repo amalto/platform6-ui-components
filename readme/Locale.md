@@ -1,4 +1,4 @@
 The languages available will be listed here.
 
-- <blockquote>en-US</blockquote>, English.
-- <blockquote>fr-FR</blockquote>, French.
+- <span className='quote'>en-US</span>, English.
+- <span className='quote'>fr-FR</span>, French.

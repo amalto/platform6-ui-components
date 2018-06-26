@@ -16,7 +16,7 @@ module TogglePanel {
         defaultOpened: boolean;
         /**
          * Totally hide the header.
-         * Props <blockquote>panelTitle</blockquote>, <blockquote>togglable</blockquote>, <blockquote>showSpinner</blockquote>, <blockquote>leftCustomControls</blockquote> and <blockquote>rightCustomControls</blockquote> wont be used if true.
+         * Props <span className='quote'>panelTitle</span>, <span className='quote'>togglable</span>, <span className='quote'>showSpinner</span>, <span className='quote'>leftCustomControls</span> and <span className='quote'>rightCustomControls</span> wont be used if true.
          */
         hideTitle?: boolean;
         /** Alow user to open and close panel. */

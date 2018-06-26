@@ -25,7 +25,7 @@ namespace CodeEditorInput {
         label?: string | JSX.Element;
         /** If true don't allow user to edit content. */
         readonly?: boolean;
-        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
+        /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
         /** CSS class wrapping the component. */
         containerClass?: string;
@@ -44,7 +44,7 @@ namespace CodeEditorInput {
         /** Editor ace session. More details on [AceSession](#acesession) */
         initSession?: AceSession;
         /**
-         * Force save with keyboard shortcuts <blockquote>Ctrl + s</blockquote> or <blockquote>Cmd + s</blockquote>.
+         * Force save with keyboard shortcuts <span className='quote'>Ctrl + s</span> or <span className='quote'>Cmd + s</span>.
          */
         saveEditorContent?: ( session: AceSession ) => void;
         /** Save ace session after each update. */

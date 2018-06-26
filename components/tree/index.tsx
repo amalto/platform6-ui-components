@@ -31,7 +31,7 @@ module Tree {
         /**
          * Function to create a node.
          * Data update logic needs to be implemented based on the provided parameters.
-         * See below for the required data model behind the <blockquote>KeyValDef</blockquote> interface.
+         * See below for the required data model behind the <span className='quote'>KeyValDef</span> interface.
          * More details on [KeyValDef](#keyvaldef).
          */
         createNode?: ( parentId: string, elementName: string, description: string, propertiesMap?: KeyValDef ) => void;
@@ -46,7 +46,7 @@ module Tree {
         /** Set default selected node. */
         defaultSelectedNodeId?: string;
         /**
-         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */

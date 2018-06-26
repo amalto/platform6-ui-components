@@ -115,11 +115,11 @@ module CodeEditor {
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
         /**
-         * Force save with keyboard shortcuts <blockquote>Ctrl + s</blockquote> or <blockquote>Cmd + s</blockquote>.
+         * Force save with keyboard shortcuts <span className='quote'>Ctrl + s</span> or <span className='quote'>Cmd + s</span>.
          */
         saveContent?: ( session: AceSession ) => void;
         /**
-         * Force save with keyboard shortcuts <blockquote>Shift + Ctrl + s</blockquote> or <blockquote>Shift + Cmd + s</blockquote>.
+         * Force save with keyboard shortcuts <span className='quote'>Shift + Ctrl + s</span> or <span className='quote'>Shift + Cmd + s</span>.
          */
         saveMultipleContent?: ( session: AceSession ) => void;
         /**

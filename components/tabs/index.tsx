@@ -30,7 +30,7 @@ module Tabs {
         tabs: JSX.Element[];
         /** Current tab selected. */
         selectedTabId: string;
-        /** Array of all the tab in edit state. <blockquote>Tab</blockquote> title will be in italic. */
+        /** Array of all the tab in edit state. <span className='quote'>Tab</span> title will be in italic. */
         editedTabIds?: string[];
         /** Tabs component CSS style. */
         tabWrapperStyle?: React.CSSProperties;

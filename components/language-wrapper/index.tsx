@@ -37,7 +37,7 @@ module LanguageWrapper {
         /** Disable add and remove of language but still allow user to select language. */
         disabled?: boolean;
         /**
-         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Language to use on the component. e.g: <span className='quote'>n-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */

@@ -22,7 +22,7 @@ namespace TextInput {
         placeholder?: string;
         /** Whether or not the input is disabled. */
         disabled?: boolean;
-        /** Tooltip text displayed when hovering <blockquote>?</blockquote> icon. */
+        /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
         /** CSS class wrapping the component. */
         containerClass?: string;
@@ -30,11 +30,11 @@ namespace TextInput {
         inputClass?: string;
         /** Input's type. */
         type?: string;
-        /** Step between each number if input is of type <blockquote>number</blockquote>. */
+        /** Step between each number if input is of type <span className='quote'>number</span>. */
         step?: number;
         /** Focus the input after being loaded. */
         autofocus?: boolean;
-        /** Randomize input value as a <blockquote>uuid.v1()</blockquote> string. */
+        /** Randomize input value as a <span className='quote'>uuid.v1()</span> string. */
         randomGenerator?: boolean;
         /**
          * Remove the bottom margin which is the default height of the error message

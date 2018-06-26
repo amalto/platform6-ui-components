@@ -34,7 +34,7 @@ module CronInput {
         name: string;
         /** Date value part. More details on [CronValue](#cronvalue). */
         value: CronValue;
-        /** Cron value <blockquote>onChange</blockquote> event. */
+        /** Cron value <span className='quote'>onChange</span> event. */
         handleChange: ( fieldValue: CronValue ) => void;
         /** Input's label. */
         label?: string | JSX.Element;
@@ -45,7 +45,7 @@ module CronInput {
         /** Check cron value on component mount. */
         forceValidation?: boolean;
         /**
-         * Language to use on the component. e.g: <blockquote>en-US</blockquote>.
+         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */

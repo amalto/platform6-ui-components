@@ -24,7 +24,7 @@ module Restricted {
         featureId?: string;
         /** Permissions needed to display children. More details on [PermissionDef](#permissiondef). */
         permissions?: string[] | PermissionDef[];
-        /** Permission need to be in <blockquote>*</blockquote> instance. */
+        /** Permission need to be in <span className='quote'>*</span> instance. */
         needsGlobalPermission?: boolean;
 
         /** Hide props from documentation */

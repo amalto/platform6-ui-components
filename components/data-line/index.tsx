@@ -24,11 +24,11 @@ export module DataLine {
         sgleClickHandler?: () => void;
         /** Double click event handler. */
         dbleClickHandler?: () => void;
-        /** Cell input <blockquote>onChange</blockquote> event. */
+        /** Cell input <span className='quote'>onChange</span> event. */
         cellEditHandler?: ( key: string, value: string ) => void;
         /** Triggered when cell is in edit mode and user press Enter key. */
         enterPressHandler?: () => void;
-        /** Triggered when user press <blockquote>tab</blockquote> key on the last cell of the line in edit mode. */
+        /** Triggered when user press <span className='quote'>tab</span> key on the last cell of the line in edit mode. */
         tabOnLastCellCallback?: () => void;
         /** If true, all cell will be turned into input and would be editable. */
         editMode?: boolean;

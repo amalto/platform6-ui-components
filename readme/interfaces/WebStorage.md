@@ -2,7 +2,7 @@ WebStorage is accesible via service root components.
 
 WebStorage uses [UserModel](#usermodel) interface.
 
-Available <blockquote>locale</blockquote> are listed [here](#locale).
+Available <span className='quote'>locale</span> are listed [here](#locale).
 
 ```typescript
 interface WebStorage {
