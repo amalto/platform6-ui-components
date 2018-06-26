@@ -2,7 +2,7 @@
   "name": "@amalto/key-value-editor",
   "displayName": "KeyValueEditor",
   "description": "A form input that can build a custom key value object.",
-  "version": "1.4.88",
+  "version": "1.4.89",
   "license": "MIT",
   "repository": {
     "type": "git",

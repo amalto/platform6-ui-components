@@ -2,7 +2,7 @@
   "name": "@amalto/file-input",
   "displayName": "FileInput",
   "description": "Input allowing you to select a file.",
-  "version": "1.4.88",
+  "version": "1.4.89",
   "license": "MIT",
   "repository": {
     "type": "git",
