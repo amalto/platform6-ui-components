@@ -2,7 +2,7 @@
   "name": "@amalto/toggle-panel",
   "displayName": "TogglePanel",
   "description": "Panel body which contain a header and a body.",
-  "version": "1.4.26",
+  "version": "1.4.27",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "react-dom": "15.6.2"
   },
   "devDependencies": {
-    "@amalto/action-button": "1.4.27",
+    "@amalto/action-button": "1.4.28",
     "@ava/babel-preset-stage-4": "1.1.0",
     "@types/bootstrap": "3.3.36",
     "@types/classnames": "^2.2.3",
