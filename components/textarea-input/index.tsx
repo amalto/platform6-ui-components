@@ -19,7 +19,7 @@ namespace TextareaInput {
          * Input rows numbers.
          * @default 2
          */
-        row?: number;
+        rows?: number;
         /**
          * Whether or not the input is disabled.
          * @default false
@@ -83,7 +83,7 @@ class TextareaInput extends React.Component<TextareaInput.Props, TextareaInput.S
 
     private renderTextarea = ( field: WrappedFieldProps<any> ) => {
 
-        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, row } = this.props
+        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, rows } = this.props
 
         const { input, meta } = field
 
@@ -96,7 +96,7 @@ class TextareaInput extends React.Component<TextareaInput.Props, TextareaInput.S
 
                 <textarea
                     {...input as any}
-                    row={row || 2}
+                    rows={rows || 2}
                     key={input.name}
                     disabled={disabled}
                     className={classNames( 'form-control input-block', inputClass )} />
