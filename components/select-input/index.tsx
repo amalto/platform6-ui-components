@@ -33,7 +33,7 @@ namespace SelectInput {
         /** CSS class applied to every input from the list. */
         inputClass?: string;
         /**
-         * Hide the space where the error message should appear.
+         * If set to true, it removes the empty option (option without label and value is an empty string) from the select dropdown.
          * @default false
          */
         hideEmptyOption?: boolean;
