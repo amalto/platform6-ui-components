@@ -93,11 +93,11 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         let disabled = !this.state.selectedNode
 
         let editButton = this.state.formOpened === 'EDIT' ? (
-            <button className="btn btn-block btn-warning" onClick={this.editNode}>{this.state.wordings['treeUpdate']}</button>
+            <button type="button" className="btn btn-block btn-warning" onClick={this.editNode}>{this.state.wordings['treeUpdate']}</button>
         ) : null
 
         let createButton = this.state.formOpened === 'CREATE' ? (
-            <button className="btn btn-block btn-success" onClick={this.createNode}>{this.state.wordings['validate']}</button>
+            <button type="button" className="btn btn-block btn-success" onClick={this.createNode}>{this.state.wordings['validate']}</button>
         ) : null
 
         let canModifyTree = this.props.createNode && this.props.editNode && this.props.deleteNode && this.props.displayEmptyValsError
@@ -151,25 +151,25 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             <div>
                 <div className="row text-xs-center">
                     <div className="col-xs-12">
-                        <button disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
+                        <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
                             <span>{this.state.wordings['expand']}</span>
                         </button>
-                        <button disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
+                        <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
                             <span>{this.state.wordings['collapse']}</span>
                         </button>
                         {
                             canModifyTree ? (
                                 <span>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-success right-margin bottom-margin' )} onClick={this.openCreateForm}>
+                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-success right-margin bottom-margin' )} onClick={this.openCreateForm}>
                                         {this.state.wordings['createChild']}
                                     </button>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-warning right-margin bottom-margin' )} onClick={this.openEditForm}>
+                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-warning right-margin bottom-margin' )} onClick={this.openEditForm}>
                                         {this.state.wordings['edit']}
                                     </button>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-danger right-margin bottom-margin' )} onClick={this.deleteNode}>
+                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-danger right-margin bottom-margin' )} onClick={this.deleteNode}>
                                         {this.state.wordings['delete']}
                                     </button>
-                                    <button disabled={disabled} className={classNames( 'btn btn-trans btn-font right-margin bottom-margin', {
+                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-font right-margin bottom-margin', {
                                         'hidden': !this.state.formOpened
                                     } )} onClick={this.clearForm}>
                                         {this.state.wordings['cancel']}
@@ -193,7 +193,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                 const dataDisplay = nodeData.propertiesMap[key].contentType === 'text/plain' ? (
                     <span className="inline-middle">{nodeData.propertiesMap[key].contentBytes}</span>
                 ) : (
-                        <button className="inline-middle btn btn-xs btn-trans btn-info" data-key={key} onClick={this.downloadFile}>
+                        <button type="button" className="inline-middle btn btn-xs btn-trans btn-info" data-key={key} onClick={this.downloadFile}>
                             <span className="fas fa-download" />
                         </button>
                     )
