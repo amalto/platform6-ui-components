@@ -22,6 +22,6 @@ export interface BaseListConfig {
         allowFiltering?: boolean;
         width?: number;
         textAlign?: string;
-        displayFunction?: ( value: any ) => string | JSX.Element;
+        displayFunction?: ( value: any, item: ServiceItemFacade, refreshItems: () => void ) => string | JSX.Element;
     }[];
 }
