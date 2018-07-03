@@ -25,7 +25,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@amalto/platform6-ui": "1.18.0-alpha.6",
     "@amalto/scope-helpers": "1.5.22",
+    "@amalto/service-helpers": "1.0.99",
+    "@amalto/typings": "1.0.36",
     "react": "15.6.2",
     "react-dom": "15.6.2"
   },

@@ -1,7 +1,7 @@
 ### Usage
 
 ```typescript
-import Restricted from '@amalto/restricted-input'
+import Restricted from '@amalto/restricted'
 ```
 
 ```js noeditor

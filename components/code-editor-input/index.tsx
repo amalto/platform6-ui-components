@@ -3,10 +3,7 @@ import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
 import * as uuid from 'uuid'
-
-// Models
-import { UserModel, getUserJson } from './models/UserModel'
-import AceSession from './models/AceSession'
+import { AceSession, UserModel, getUserJson } from '@amalto/typings'
 
 // Components
 import Help from '@amalto/help'

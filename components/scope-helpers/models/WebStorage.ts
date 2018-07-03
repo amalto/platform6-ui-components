@@ -1,4 +1,4 @@
-import { UserModel } from './UserModel'
+import { UserModel } from '@amalto/typings'
 import { AppInstanceModel } from './AppInstanceModel'
 import { Endpoints } from './AppEndpointsModel'
 import { ScopesTree } from './Scopes'
