@@ -23,5 +23,6 @@ export interface BaseListConfig {
         width?: number;
         textAlign?: string;
         displayFunction?: ( value: any, item: ServiceItemFacade, refreshItems: () => void ) => string | JSX.Element;
+        disableSort?: boolean;
     }[];
 }
