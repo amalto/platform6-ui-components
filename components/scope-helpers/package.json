@@ -2,7 +2,7 @@
     "name": "@amalto/scope-helpers",
     "displayName": "ScopeHelpers",
     "description": "Check user permissions.",
-    "version": "1.5.23",
+    "version": "1.5.24",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/tab": "1.5.15",
-        "@amalto/typings": "1.0.36",
+        "@amalto/typings": "1.0.37",
         "react": "15.6.2",
         "uuid": "3.2.1"
     },
