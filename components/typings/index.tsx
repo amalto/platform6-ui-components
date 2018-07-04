@@ -17,6 +17,7 @@ import { AppInstanceModel, AppInstanceSearch } from './models/AppInstanceModel'
 import { ScopeValue, ScopesTree, PermissionDef } from './models/Scopes'
 import { WebStorage } from './models/WebStorage'
 import FileWrapper from './models/FileWrapper'
+import { MultiProcessingErrors } from './models/Errors'
 
 /** Export */
 export { Action }
@@ -37,3 +38,4 @@ export { AppInstanceModel, AppInstanceSearch }
 export { ScopeValue, ScopesTree, PermissionDef }
 export { WebStorage }
 export { FileWrapper }
+export { MultiProcessingErrors }
