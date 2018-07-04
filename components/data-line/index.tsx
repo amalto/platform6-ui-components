@@ -5,12 +5,12 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
+import { CellData } from '@amalto/typings'
 
 // Components 
 import DataItem from './components/DataItem'
 
 // Models
-import { CellData } from './models/DataGrid'
 import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
 
 /**

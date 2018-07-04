@@ -13,6 +13,7 @@ interface ColumnHeader {
     width?: number;
     textAlign?: string;
     disableClick?: boolean;
+    disableSort?: boolean;
 }
 
 interface CellData {
