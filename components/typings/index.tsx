@@ -14,6 +14,7 @@ import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
 import { EndpointsUrl } from './models/EndpointsUrl'
 import { FeatureEndpoint, Endpoints, AppEndpointsModel } from './models/AppEndpointsModel'
 import { AppInstanceModel, AppInstanceSearch } from './models/AppInstanceModel'
+import { ScopeValue, ScopesTree, PermissionDef } from './models/Scopes'
 
 /** Export */
 export { Action }
@@ -31,3 +32,4 @@ export { DisplayTemplate, DisplayTemplateItem }
 export { EndpointsUrl }
 export { FeatureEndpoint, Endpoints, AppEndpointsModel }
 export { AppInstanceModel, AppInstanceSearch }
+export { ScopeValue, ScopesTree, PermissionDef }
