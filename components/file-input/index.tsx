@@ -13,7 +13,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 import FileWrapperDisplay from './components/FileWrapper'
 
 // Models
-import FileWrapper from './models/FileWrapper'
+import { FileWrapper } from '@amalto/typings'
 
 /**
  * Component allowing you to import multiple files.

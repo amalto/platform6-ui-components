@@ -1,7 +1,7 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
-import { NotificationModel, ReduxProps } from '@amalto/typings'
+import { NotificationModel, ReduxProps, FileWrapper } from '@amalto/typings'
 
 // Utils
 import { getStyleDef, compileWordings } from '@amalto/helpers'
@@ -12,7 +12,6 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 // Models
 import { WorkflowActionParam, CustomFormData } from './models/Workflow'
 import { WebApi } from './models/WebApi'
-import FileWrapper from './models/FileWrapper'
 
 // Components
 import FormInput from './components/FormInput'

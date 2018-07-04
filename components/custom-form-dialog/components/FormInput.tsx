@@ -15,7 +15,7 @@ import FileInput from '@amalto/file-input'
 
 // Models
 import { WorkflowActionParam } from '../models/Workflow'
-import FileWrapper from '../models/FileWrapper'
+import { FileWrapper } from '@amalto/typings'
 
 module FormInput {
     export interface Props extends React.Props<FormInput> {
