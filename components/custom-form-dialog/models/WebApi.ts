@@ -1,4 +1,4 @@
-import { EndpointsUrl } from './EndpointsUrl'
+import { EndpointsUrl } from '@amalto/typings'
 
 interface WebApi {
 
