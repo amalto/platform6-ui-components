@@ -2,7 +2,7 @@
   "name": "@amalto/file-importer",
   "displayName": "FileImporter",
   "description": "Modal used to import a file.",
-  "version": "1.4.102",
+  "version": "1.4.103",
   "license": "MIT",
   "repository": {
     "type": "git",
