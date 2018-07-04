@@ -11,6 +11,7 @@ import { ColumnHeader, CellData, DataGridTemplates } from './models/DataGrid'
 import { BatchOperationReport } from './models/BatchOperationReport'
 import AceSession from './models/AceSession'
 import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
+import { EndpointsUrl } from './models/EndpointsUrl'
 
 /** Export */
 export { Action }
@@ -25,3 +26,4 @@ export { ColumnHeader, CellData, DataGridTemplates }
 export { BatchOperationReport }
 export { AceSession }
 export { DisplayTemplate, DisplayTemplateItem }
+export { EndpointsUrl }
