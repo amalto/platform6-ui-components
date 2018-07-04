@@ -1,6 +1,4 @@
-import { UserModel } from '@amalto/typings'
-import { AppInstanceModel } from './AppInstanceModel'
-import { Endpoints } from './AppEndpointsModel'
+import { UserModel, AppInstanceModel, Endpoints } from '@amalto/typings'
 import { ScopesTree } from './Scopes'
 
 export interface WebStorage {

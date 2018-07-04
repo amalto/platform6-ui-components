@@ -11,7 +11,7 @@ import {
 } from '@amalto/wordings'
 
 // Models
-import { Endpoints } from './models/AppEndpointsModel'
+import { Endpoints } from '@amalto/typings'
 import { OrgModel, TreeNodeModel } from './models/Organisation'
 
 // Constants
