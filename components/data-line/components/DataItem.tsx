@@ -7,7 +7,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 
 // Models
-import { DisplayTemplate, DisplayTemplateItem } from '../models/DisplayTemplate'
+import { DisplayTemplate, DisplayTemplateItem } from '@amalto/typings'
 
 module DataItem {
     export interface Props extends React.Props<DataItem> {

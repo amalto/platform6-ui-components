@@ -5,13 +5,10 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
-import { CellData } from '@amalto/typings'
+import { CellData, DisplayTemplate, DisplayTemplateItem } from '@amalto/typings'
 
 // Components 
 import DataItem from './components/DataItem'
-
-// Models
-import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
 
 /**
  * DateLine shouldn't be used outside the DataGrid component else it won't be displayed correctly.
