@@ -16,6 +16,7 @@ import { FeatureEndpoint, Endpoints, AppEndpointsModel } from './models/AppEndpo
 import { AppInstanceModel, AppInstanceSearch } from './models/AppInstanceModel'
 import { ScopeValue, ScopesTree, PermissionDef } from './models/Scopes'
 import { WebStorage } from './models/WebStorage'
+import FileWrapper from './models/FileWrapper'
 
 /** Export */
 export { Action }
@@ -35,3 +36,4 @@ export { FeatureEndpoint, Endpoints, AppEndpointsModel }
 export { AppInstanceModel, AppInstanceSearch }
 export { ScopeValue, ScopesTree, PermissionDef }
 export { WebStorage }
+export { FileWrapper }
