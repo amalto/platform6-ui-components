@@ -1,6 +1,6 @@
 
 // Models
-import { ScopeValue, PermissionDef, ScopesTree } from './models/Scopes'
+import { ScopeValue, PermissionDef, ScopesTree } from '@amalto/typings'
 import { WebStorage } from './models/WebStorage'
 
 // Constants

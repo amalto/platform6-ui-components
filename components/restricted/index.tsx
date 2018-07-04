@@ -2,7 +2,7 @@
 import * as React from 'react'
 
 // Models
-import { PermissionDef, ScopesTree } from './models/Scopes'
+import { PermissionDef, ScopesTree } from '@amalto/typings'
 import { WebStorage } from './models/WebStorage'
 
 // Utils
