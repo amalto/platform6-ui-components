@@ -1,9 +1,4 @@
-
-import { UserModel } from './UserModel'
-import { AppInstanceModel } from './AppInstanceModel'
-import { Endpoints } from './AppEndpointsModel'
-import { ScopesTree } from './Scopes'
-
+```typescript
 export interface WebStorage {
 
     /** logout */
@@ -14,11 +9,12 @@ export interface WebStorage {
     /** Always saved in localStorage (used for app bootstrapping) */
     storeInfraAlertCloseDate: ( date: string ) => void;
 
+    /**  */
     infraAlertCloseDate: string;
 
     /** always saved in localStorage (used for app bootstrapping) */
     storeLastTriggeredUpdate: ( date: string ) => void;
-
+    /**  */
     lastTriggeredUpdate: string;
 
     /**
@@ -68,7 +64,7 @@ export interface WebStorage {
 
     scopesTree: ScopesTree;
 
-    /** saved in sessionStorage */
+     /** saved in sessionStorage */
     storeTempLoginData: ( loginData: Object ) => void;
 
     clearTempLoginData: () => void;
@@ -84,3 +80,4 @@ export interface WebStorage {
 
     locale: string;
 }
+```

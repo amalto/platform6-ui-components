@@ -335,6 +335,14 @@ module.exports = {
                         content: 'readme/typings/Action.md'
                     },
                     {
+                        name: 'AppEndpointsModel',
+                        content: 'readme/typings/AppEndpointsModel.md'
+                    },
+                    {
+                        name: 'AppInstanceModel',
+                        content: 'readme/typings/AppInstanceModel.md'
+                    },
+                    {
                         name: 'AppKey',
                         content: 'readme/typings/AppKey.md'
                     },
@@ -355,8 +363,16 @@ module.exports = {
                         content: 'readme/typings/ColumnHeader.md'
                     },
                     {
+                        name: 'DisplayTemplate',
+                        content: 'readme/typings/DisplayTemplate.md'
+                    },
+                    {
                         name: 'EndpointsUrl',
                         content: 'readme/typings/EndpointsUrl.md'
+                    },
+                    {
+                        name: 'FileWrapper',
+                        content: 'readme/typings/FileWrapper.md'
                     },
                     {
                         name: 'NotificationModel',
@@ -365,6 +381,14 @@ module.exports = {
                     {
                         name: 'OrderDataset',
                         content: 'readme/typings/OrderDataset.md'
+                    },
+                    {
+                        name: 'ReduxProps',
+                        content: 'readme/typings/ReduxProps.md'
+                    },
+                    {
+                        name: 'Scopes',
+                        content: 'readme/typings/Scopes.md'
                     },
                     {
                         name: 'Service',
@@ -377,6 +401,10 @@ module.exports = {
                     {
                         name: 'WebApi',
                         content: 'readme/typings/WebApi.md'
+                    },
+                    {
+                        name: 'WebStorage',
+                        content: 'readme/typings/WebStorage.md'
                     }
                 ]
             },
