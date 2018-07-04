@@ -12,6 +12,8 @@ import { BatchOperationReport } from './models/BatchOperationReport'
 import AceSession from './models/AceSession'
 import { DisplayTemplate, DisplayTemplateItem } from './models/DisplayTemplate'
 import { EndpointsUrl } from './models/EndpointsUrl'
+import { FeatureEndpoint, Endpoints, AppEndpointsModel } from './models/AppEndpointsModel'
+import { AppInstanceModel, AppInstanceSearch } from './models/AppInstanceModel'
 
 /** Export */
 export { Action }
@@ -27,3 +29,5 @@ export { BatchOperationReport }
 export { AceSession }
 export { DisplayTemplate, DisplayTemplateItem }
 export { EndpointsUrl }
+export { FeatureEndpoint, Endpoints, AppEndpointsModel }
+export { AppInstanceModel, AppInstanceSearch }
