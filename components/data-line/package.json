@@ -2,7 +2,7 @@
     "name": "@amalto/data-line",
     "displayName": "DataLine",
     "description": "Line used in DataGrid component.",
-    "version": "1.4.30",
+    "version": "1.4.31",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/typings": "1.0.42",
+        "@amalto/typings": "1.0.43",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2"
