@@ -2,8 +2,7 @@
 import * as React from 'react'
 
 // Models
-import { PermissionDef, ScopesTree } from '@amalto/typings'
-import { WebStorage } from './models/WebStorage'
+import { PermissionDef, ScopesTree, WebStorage } from '@amalto/typings'
 
 // Utils
 import { hasPermission, hasAnyPermission, hasAccessToFeature, canPerformAnyAction } from '@amalto/scope-helpers'
