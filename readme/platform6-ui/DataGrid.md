@@ -3,6 +3,10 @@ DataGrid uses [ColumnHeader](#columnheader), [DataGridTemplates](#datagridtempla
 This component is not a stand alone component because his functionnalities uses actions from the core.
 
 ```typescript
+import { DataGrid } from '@amalto/platform6-ui'
+```
+
+```typescript
 export module DataGrid {
 
         /** Must be added to allow templating. */

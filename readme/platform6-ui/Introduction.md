@@ -12,6 +12,8 @@ TypeScript type definitions for base components and props available in <span cla
 import * as b2portal from '@amalto/platform6-ui'
 ```
 
+Each components and interfaces from this part are importable from this project.
+
 This package should be used when developing the User Interface of your business application.
 
 Some of the components and interfaces in this documentation must be imported from this module.

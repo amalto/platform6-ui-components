@@ -1,3 +1,13 @@
+WebStorage is the interface of the <span className='quote'>webStorage</span> object.
+
+WebStorage uses [UserModel](#usermodel) interface.
+
+Available <span className='quote'>locale</span> are listed [here](#locale).
+
+```typescript
+import { webStorage } from '@amalto/platform6-ui'
+```
+
 ```typescript
 export interface WebStorage {
 

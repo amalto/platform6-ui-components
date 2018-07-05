@@ -133,6 +133,10 @@ module.exports = {
             {
                 name: 'DataGrid',
                 content: 'readme/platform6-ui/DataGrid.md'
+            },
+            {
+                name: 'WebStorage',
+                content: 'readme/platform6-ui/WebStorage.md'
             }
         ]
     },
@@ -215,10 +219,6 @@ module.exports = {
             {
                 name: 'TreeNodeModel',
                 content: 'readme/interfaces/TreeNodeModel.md'
-            },
-            {
-                name: 'WebStorage',
-                content: 'readme/interfaces/WebStorage.md'
             }
         ]
     },
@@ -401,10 +401,6 @@ module.exports = {
                     {
                         name: 'WebApi',
                         content: 'readme/typings/WebApi.md'
-                    },
-                    {
-                        name: 'WebStorage',
-                        content: 'readme/typings/WebStorage.md'
                     }
                 ]
             },
