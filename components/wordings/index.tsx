@@ -653,6 +653,16 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Merci de fermer tout onglet concernant cet élément si vous souhaitez le supprimer'
     },
 
+    result: {
+        'en-US': 'result',
+        'fr-FR': 'résultat'
+    },
+
+    results: {
+        'en-US': 'results',
+        'fr-FR': 'résultats'
+    },
+
     /** b2portal wordings. */
     'register.email.error': {
         'en-US': 'Please enter a valid email address',
