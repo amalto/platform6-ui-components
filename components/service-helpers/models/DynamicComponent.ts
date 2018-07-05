@@ -88,6 +88,9 @@ export interface DynamicComponent extends ReduxProps {
     /** List of complete jobs IDs */
     completeJobs?: number[];
 
+    /** List of finished with error(s) jobs IDs */
+    inErrorJobs?: number[];
+
     /** If any application publisher profile is accessible to user. */
     canSelectAppKey?: boolean;
 
