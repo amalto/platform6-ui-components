@@ -57,14 +57,14 @@ namespace CustomFormDialog {
         deleteFile?: ( fileName: string ) => void;
 
         /** Display the custom confirmation modal. */
-        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[] ) => void;
+        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: any[] ) => void;
         /** Hide the confirmation modal. */
         hideDialog: () => void;
         /** Display a custom notification. More details on [NotificationModel](#notificationmodel). */
         displayNotification: ( notificationOptions: NotificationModel ) => void;
         /** Display an error notification for  */
         handleErrorDisplay: ( error: any ) => void;
-        
+
         /**
          * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
@@ -87,7 +87,7 @@ namespace CustomFormDialog {
         customComponent?: any;
         display?: JSX.Element;
         preventRedraw?: boolean;
-        wordings?: { [id: string]: string};
+        wordings?: { [id: string]: string };
     }
 
     export interface CustomComponentProps extends ReduxProps {
@@ -116,7 +116,7 @@ namespace CustomFormDialog {
         api: WebApi;
         appHistory: History;
         refreshData: () => void;
-        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: string[] ) => void;
+        showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: any[] ) => void;
         hideDialog: () => void;
         displayNotification: ( notificationOptions: NotificationModel ) => void;
         handleErrorDisplay: ( error: any ) => void;
