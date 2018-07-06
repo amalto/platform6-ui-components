@@ -1,7 +1,7 @@
 ```jsx noeditor
 const Pathline = require('../../typescript/custom/Pathline').default;
 
-<Pathline children={JSON.stringify( { name: '@amalto/platform6-ui', version: '1.17.0-alpha.28' } )} />
+<Pathline children={JSON.stringify( { name: '@amalto/platform6-ui', version: '1.18.0-alpha.6' } )} />
 ```
 
 TypeScript type definitions for base components and props available in <span className='quote'>Platform 6</span>
