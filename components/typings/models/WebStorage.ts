@@ -38,7 +38,7 @@ export interface WebStorage {
      * This is to avoid conflicts between multiple browser tabs/windows (like differents selected instance)
      */
 
-    /** saved in sessionStorage */d
+    /** saved in sessionStorage */
     storeUser: ( user: UserModel ) => void;
 
     user: UserModel;
