@@ -40,7 +40,7 @@ module LanguageWrapper {
          */
         disabled?: boolean;
         /**
-         * Language to use on the component. e.g: <span className='quote'>n-US</span>.
+         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
          */
