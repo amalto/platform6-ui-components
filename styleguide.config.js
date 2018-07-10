@@ -131,6 +131,10 @@ module.exports = {
         content: 'readme/platform6-ui/Introduction.md',
         sections: [
             {
+                name: 'Compatibility',
+                content: 'readme/platform6-ui/Compatibility.md'
+            },
+            {
                 name: 'DataGrid',
                 content: 'readme/platform6-ui/DataGrid.md'
             },
