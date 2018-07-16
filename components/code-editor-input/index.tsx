@@ -254,6 +254,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
                 this.setEditorOptions( editorInstance )
             }
 
+            if ( prevProps.height !== height ) {
+                this.setEditorOptions( editorInstance )
+            }
+
             if ( prevProps.resetTick !== this.props.resetTick ) {
                 editorInstance.setValue( this.props.input.value )
                 editorInstance.clearSelection()
@@ -341,10 +345,18 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
         if ( !this.props.height ) {
             editor.setOptions( {
-                minLines: 2,
+                minLines: 1,
                 maxLines: 20
             } )
         }
+        else {
+            editor.setOptions( {
+                minLines: 1,
+                maxLines: 2000
+            } )
+        }
+
+        editor.renderer.setScrollMargin( 8, 8, 0, 0 )
 
         editor.clearSelection()
     }

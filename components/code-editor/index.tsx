@@ -455,6 +455,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
             // this._markerId = this._editor.getSession().addMarker( new Range( range.row, range.column, range.row, range.column + 1 ), 'ace_error-marker', 'fullLine', false )
         }
+
+        editor.renderer.setScrollMargin( 8, 8, 0, 0 )
     }
 
     private isSessionSavable = ( editor: AceAjax.Editor ): boolean => {
