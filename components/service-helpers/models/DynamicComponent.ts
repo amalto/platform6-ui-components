@@ -41,6 +41,13 @@ export interface DynamicComponent extends ReduxProps {
     storeContext?: ( contextData: any ) => void;
 
     /**
+     * Save user json content.
+     * @param { string } userEmail
+     * @param { any } jsonContent Should be a vaild JSON object.
+     */
+    saveUserJSONContent?: ( userEmail: string, jsonContent: any ) => void;
+
+    /**
      * Save template into user configuration settings.
      * @param { UserModel } payload
      */
