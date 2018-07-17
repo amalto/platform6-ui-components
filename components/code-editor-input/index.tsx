@@ -41,7 +41,7 @@ namespace CodeEditorInput {
          * @default 300
          */
         height?: number | string;
-        /** Editor ace session. More details on [AceSession](#acesession) */
+        /** Editor ace session. More details on [AceSession](#acesession). */
         initSession?: AceSession;
         /**
          * Force save with keyboard shortcuts <span className='quote'>Ctrl + s</span> or <span className='quote'>Cmd + s</span>.

@@ -122,6 +122,7 @@ module CodeEditor {
          * Callback executed at first load and after every reload (loadTime changes)
          */
         loadedCallback?: ( editor: ace.Editor ) => void;
+
         /** Hide props from documentation */
 
         /** @ignore */
