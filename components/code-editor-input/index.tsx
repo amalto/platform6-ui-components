@@ -343,16 +343,16 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
         ( editor as any ).setDisplayIndentGuides( showIndent )
 
-        if ( !this.props.height ) {
+        if ( this.props.height ) {
             editor.setOptions( {
                 minLines: 1,
-                maxLines: 20
+                maxLines: null
             } )
         }
         else {
             editor.setOptions( {
                 minLines: 1,
-                maxLines: 2000
+                maxLines: 20
             } )
         }
 
