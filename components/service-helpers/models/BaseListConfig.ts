@@ -25,4 +25,12 @@ export interface BaseListConfig {
         displayFunction?: ( value: any, item: ServiceItemFacade, refreshItems: () => void ) => string | JSX.Element;
         disableSort?: boolean;
     }[];
+    customEndpoints?: {
+        getItems?: string;
+        deleteItems?: string;
+        exportItems?: string;
+        importItems?: string;
+        renameItem?: string;
+        duplicateItem?: string;
+    }
 }
