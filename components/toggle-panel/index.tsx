@@ -53,6 +53,8 @@ module TogglePanel {
         };
         /** CSS style of the panel. */
         customStyle?: React.CSSProperties;
+        /** CSS class for the header. */
+        headerCustomCSS?: string;
 
         /** Hide props from documentation */
 
@@ -125,7 +127,7 @@ class TogglePanel extends React.Component<TogglePanel.Props, TogglePanel.State> 
         return (
 
             <div className="panel panel-default" style={this.props.customStyle}>
-                <div className={classNames( 'panel-heading', {
+                <div className={classNames( `panel-heading ${this.props.headerCustomCSS}`, {
                     'click-pointer': this.props.togglable !== false,
                     'hidden': !!this.props.hideTitle
                 } )}
