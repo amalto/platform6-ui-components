@@ -6,7 +6,7 @@ import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import DatePicker from '@amalto/date-picker'
 
 /**
- * Date input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Date input used on a [redux-form](#reduxform).
  */
 namespace DateInput {
     export interface Props extends BaseFieldProps {

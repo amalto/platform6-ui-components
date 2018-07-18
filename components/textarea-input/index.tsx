@@ -7,7 +7,7 @@ import * as classNames from 'classnames'
 import Help from '@amalto/help'
 
 /**
- * Textarea input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Textarea input used on a [redux-form](#reduxform).
  */
 namespace TextareaInput {
     export interface Props extends BaseFieldProps {

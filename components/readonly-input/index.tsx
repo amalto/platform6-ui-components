@@ -9,7 +9,7 @@ import Help from '@amalto/help'
 import * as classNames from 'classnames'
 
 /**
- * Readonly input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Readonly input used on a [redux-form](#reduxform).
  */
 namespace ReadOnlyInput {
     export interface Props extends BaseFieldProps {

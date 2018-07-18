@@ -145,6 +145,10 @@ module.exports = {
         ]
     },
     {
+        name: 'ReduxForm',
+        content: 'readme/redux-form/Description.md'
+    },
+    {
         name: 'Interfaces',
         content: 'readme/interfaces/Description.md',
         sections: [

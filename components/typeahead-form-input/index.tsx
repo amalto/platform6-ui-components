@@ -8,7 +8,7 @@ import Help from '@amalto/help'
 import Typeahead from '@amalto/typeahead-input'
 
 /**
- * Typeahead input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Typeahead input used on a [redux-form](#reduxform).
  */
 namespace TypeaheadFormInput {
     export interface Props extends BaseFieldProps {

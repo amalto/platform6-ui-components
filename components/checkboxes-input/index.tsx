@@ -11,7 +11,7 @@ import { addValToArrayNoDup, removeValFromArrayNoDup } from '@amalto/helpers'
 import Help from '@amalto/help'
 
 /**
- * Checkboxes inputs used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Checkboxes inputs used on a [redux-form](#reduxform).
  */
 namespace CheckboxesInput {
     export interface Props extends BaseFieldProps {

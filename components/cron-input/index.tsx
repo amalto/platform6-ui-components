@@ -24,7 +24,7 @@ export const CRON_VALIDATION = {
 }
 
 /**
- * Cron input scheduler used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Cron input scheduler used on a [redux-form](#reduxform).
  * 
  * CronInput uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */

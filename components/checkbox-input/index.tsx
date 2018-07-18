@@ -8,7 +8,7 @@ import * as uuid from 'uuid'
 import Help from '@amalto/help'
 
 /**
- * Checkbox input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Checkbox input used on a [redux-form](#reduxform).
  */
 namespace CheckboxInput {
     export interface Props extends BaseFieldProps {

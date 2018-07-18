@@ -9,7 +9,7 @@ import Help from '@amalto/help'
 import Switch from '@amalto/switch'
 
 /**
- * Switch input used on a [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/).
+ * Switch input used on a [redux-form](#reduxform).
  */
 namespace SwitchInput {
     export interface Props extends BaseFieldProps {
