@@ -43,6 +43,8 @@ namespace TimeInput {
          */
         mandatory?: boolean;
 
+        locale: string;
+
         /** Hide props from documentation */
 
         /** @ignore */
@@ -110,10 +112,10 @@ class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
 
     render() {
 
-        const { name, mandatory } = this.props
+        const { name, mandatory, locale } = this.props
 
         let additionalProps = mandatory ? {
-            validate: required
+            validate: value => required( value, locale )
         } as BaseFieldProps : {}
 
         return name ? (

@@ -100,6 +100,7 @@
     "@amalto/language-wrapper": "1.4.61",
     "@amalto/paging-controls": "1.4.59",
     "@amalto/pdf-viewer": "1.4.60",
+    "@amalto/platform6-ui": "^1.18.0-alpha.6",
     "@amalto/radio-input": "1.4.19",
     "@amalto/readonly-input": "1.4.18",
     "@amalto/restricted": "1.5.17",

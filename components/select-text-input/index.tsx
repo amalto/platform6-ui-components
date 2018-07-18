@@ -1,7 +1,7 @@
 // Modules
 import * as React from 'react'
 import * as uuid from 'uuid'
-import { WrappedFieldProps, Field, BaseFieldProps, Formatter, Normalizer, Parser, Validator } from 'redux-form'
+import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as Radium from 'radium'
 
 // Components

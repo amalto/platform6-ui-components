@@ -185,10 +185,6 @@ module.exports = {
                 content: 'readme/interfaces/DisplayTemplate.md'
             },
             {
-                name: 'FileWrapper',
-                content: 'readme/interfaces/FileWrapper.md'
-            },
-            {
                 name: 'KeyValDef',
                 content: 'readme/interfaces/KeyValDef.md'
             },
