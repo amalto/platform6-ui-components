@@ -2,7 +2,7 @@
   "name": "@amalto/custom-form-dialog",
   "displayName": "CustomFormDialog",
   "description": "Display custom form.",
-  "version": "1.4.112",
+  "version": "1.4.113",
   "license": "MIT",
   "repository": {
     "type": "git",
