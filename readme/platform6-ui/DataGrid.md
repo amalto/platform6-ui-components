@@ -1,6 +1,6 @@
 DataGrid uses [ColumnHeader](#columnheader), [DataGridTemplates](#datagridtemplates) and [WebStorage](#webstorage) Interfaces.
 
-This component is not a stand alone component because his functionnalities uses actions from the core.
+This component is not a stand-alone component because its functionalities use actions from the core.
 
 ```typescript
 import { DataGrid } from '@amalto/platform6-ui'
