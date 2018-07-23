@@ -28,7 +28,7 @@ export const ICON_TYPE = {
     RENAME: 'fas fa-i-cursor',
     COPY: 'far fa-copy',
     SAVE: 'fas fa-save',
-    VIEW: 'fas fa-eye'
+    VIEW: 'fas fa-search'
 }
 
 export const BUTTON_TYPE = {
