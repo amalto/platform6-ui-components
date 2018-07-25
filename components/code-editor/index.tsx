@@ -63,7 +63,7 @@ import 'brace/theme/twilight'
 import 'brace/theme/vibrant_ink'
 import 'brace/theme/xcode'
 
-const Range = ace.acequire( 'ace/range' ).Range
+// const Range = ace.acequire( 'ace/range' ).Range
 
 type AceEditor = ace.Editor
 
