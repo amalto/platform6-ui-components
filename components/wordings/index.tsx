@@ -2790,6 +2790,21 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Messages supprimés'
     },
 
+    messageSaveDisplaySettings: {
+        'en-US': `
+            <div>
+                <span>Do you want to save your modifications?</span><br/>
+                <em class="text-medium">Your preferences (presence, width and order of columns, action related to “Search” and “Reset” buttons...) will be saved in your user profile. Note that you can save specific settings for each display mode (mobile, medium and large screen).</em>
+            </div>
+        `,
+        'fr-FR': `
+            <div>
+                <span>Voulez-vous sauvegarder vos modifications ?</span><br/>
+                <em class="text-medium">Vos préférences d'affichage (présence, largeur et ordre des colonnes, action des boutons “Rechercher” et “Réinitialiser”...) seront enregistrées dans votre profil utilisateur. Vous pouvez sauvegarder des paramètres spécifiques pour chaque mode d'affichage (mobile, moyen et grand écran).</em>
+            </div>
+        `
+    },
+
     multipleDeleteFailure: {
         'en-US': 'message(s) not deleted',
         'fr-FR': 'message(s) non supprimés'
