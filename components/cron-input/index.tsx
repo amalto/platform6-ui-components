@@ -114,7 +114,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['second']}
+                            label={wordings.second}
                             name="second"
                             value={second}
                             handleFieldChange={this.handleFieldChange}
@@ -127,7 +127,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['minute']}
+                            label={wordings.minute}
                             name="minute"
                             value={minute}
                             handleFieldChange={this.handleFieldChange}
@@ -140,7 +140,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['hour']}
+                            label={wordings.hour}
                             name="hour"
                             value={hour}
                             handleFieldChange={this.handleFieldChange}
@@ -153,7 +153,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['dayOfMonth']}
+                            label={wordings.dayOfMonth}
                             name="dayOfMonth"
                             value={dayOfMonth}
                             handleFieldChange={this.handleFieldChange}
@@ -166,7 +166,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['month']}
+                            label={wordings.month}
                             name="month"
                             value={month}
                             handleFieldChange={this.handleFieldChange}
@@ -179,7 +179,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['dayOfWeek']}
+                            label={wordings.dayOfWeek}
                             name="dayOfWeek"
                             value={dayOfWeek}
                             handleFieldChange={this.handleFieldChange}
@@ -192,7 +192,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                     <div className="cron-input-element">
                         <ValidatedInput
-                            label={wordings['year']}
+                            label={wordings.year}
                             name="year"
                             value={year}
                             handleFieldChange={this.handleFieldChange}
@@ -204,7 +204,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
                     </div>
 
                     <div className="cron-input-element text-center">
-                        <label>{wordings['enabled']}</label>
+                        <label>{wordings.enabled}</label>
                         <Switch
                             id={`cron_enabled_control_${ name }`}
                             value={enabled}
@@ -214,7 +214,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
                 </div>
 
-                {invalid && <p className="validation-error-message">{wordings['inputInvalid']}</p>}
+                {invalid && <p className="validation-error-message">{wordings.inputInvalid}</p>}
 
             </div>
         )

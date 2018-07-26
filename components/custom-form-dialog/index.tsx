@@ -238,7 +238,7 @@ class CustomFormDialog extends React.Component<CustomFormDialog.Props, CustomFor
                 dialogContent = (
                     <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
                         <span className="fas fa-exclamation-triangle right-spaced" />
-                        <span>{wordings['loadingError']}</span>
+                        <span>{wordings.loadingError}</span>
                     </div>
                 )
             }
@@ -247,7 +247,7 @@ class CustomFormDialog extends React.Component<CustomFormDialog.Props, CustomFor
             dialogContent = (
                 <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
                     <span className="fas fa-exclamation-triangle right-spaced" />
-                    <span>{wordings['loadingError']}</span>
+                    <span>{wordings.loadingError}</span>
                 </div>
             )
         }
@@ -256,7 +256,7 @@ class CustomFormDialog extends React.Component<CustomFormDialog.Props, CustomFor
             <TogglePanel panelTitle={this.props.title}
                 defaultOpened={true} togglable={false}
                 cancelBtn={{
-                    label: wordings['cancel'],
+                    label: wordings.cancel,
                     action: this.props.closeForm
                 }}>
 

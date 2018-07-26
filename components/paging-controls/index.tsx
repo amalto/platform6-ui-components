@@ -66,6 +66,8 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
 
     render() {
 
+        const { wordings } = this.state
+
         const { containerClass, currentPage, totalPages, byContext } = this.props
 
         //basic paging control by page number        
@@ -97,7 +99,7 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                     </button>
 
                     <span className="btn btn-primary btn-trans text-element no-border-right">
-                        <span className="right-spaced">{this.state.wordings['page']}</span>
+                        <span className="right-spaced">{wordings.page}</span>
                         <strong className="right-spaced">
                             {
                                 byContext ? <FormattedNumber value={currentPage} /> : (
@@ -112,7 +114,7 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                                 )
                             }
                         </strong>
-                        <span className="right-spaced">{this.state.wordings['of']}</span>
+                        <span className="right-spaced">{wordings.of}</span>
                         <span><FormattedNumber value={totalPages} /></span>
                     </span>
 

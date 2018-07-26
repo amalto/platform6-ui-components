@@ -67,8 +67,8 @@ test('getWordingsInUserLanguage should return right wordings', t => {
     const enWordings = getWordingsInUserLanguage('en-US');
     const frWordings = getWordingsInUserLanguage('fr-FR');
 
-    t.is(enWordings['save'], 'Save');
-    t.is(frWordings['save'], 'Sauvegarder');
+    t.is(enWordings.save, 'Save');
+    t.is(frWordings.save, 'Sauvegarder');
 });
 
 // compileWordings
@@ -76,8 +76,8 @@ test('compileWordings should return right wording', t => {
     const enWordings = compileWordings(WORDINGS, 'en-US');
     const frWordings = compileWordings(WORDINGS, 'fr-FR');
 
-    t.is(enWordings['hello'], 'Hello World!');
-    t.is(frWordings['hello'], 'Bonjour le monde !');
+    t.is(enWordings.hello, 'Hello World!');
+    t.is(frWordings.hello, 'Bonjour le monde !');
 });
 
 // getGravatarUrl
@@ -321,14 +321,14 @@ test('getI18nLabel: get wanted translation', t => {
             'es-ES': 'Hola mundo!'
         }
     }
-    t.is(getI18nLabel('en-US', wordings['hello']), 'Hello World!');
-    t.not(getI18nLabel('en-EN', wordings['hello']), 'Hello World!');
-    t.is(getI18nLabel('en-EN', wordings['hello'], true), 'Hello World!');
-    t.is(getI18nLabel('en-EN', wordings['hello'], true, true), 'Hello World!');
-    t.is(getI18nLabel('en-EN', wordings['hello']), 'Hello le monde!');
-    t.is(getI18nLabel('fr-FR', wordings['hello']), 'Bonjour le monde !');
-    t.is(getI18nLabel('es-ES', wordings['hello']), 'Hola mundo!');
-    t.is(getI18nLabel('pt-PT', wordings['hello']), 'Hello World!');
+    t.is(getI18nLabel('en-US', wordings.hello), 'Hello World!');
+    t.not(getI18nLabel('en-EN', wordings.hello), 'Hello World!');
+    t.is(getI18nLabel('en-EN', wordings.hello, true), 'Hello World!');
+    t.is(getI18nLabel('en-EN', wordings.hello, true, true), 'Hello World!');
+    t.is(getI18nLabel('en-EN', wordings.hello), 'Hello le monde!');
+    t.is(getI18nLabel('fr-FR', wordings.hello), 'Bonjour le monde !');
+    t.is(getI18nLabel('es-ES', wordings.hello), 'Hola mundo!');
+    t.is(getI18nLabel('pt-PT', wordings.hello), 'Hello World!');
 });
 
 // getJSTreeData

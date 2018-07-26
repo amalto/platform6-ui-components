@@ -85,6 +85,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
     render() {
 
+        const { wordings, impFileType } = this.state
         const hideControls = this.props.hideControls || {}
 
         return (
@@ -96,7 +97,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                             <h3 className={classNames( 'panel-title', {
                                 'has-spinner': this.props.processing
                             } )}>
-                                {this.state.wordings['importDataFromFile']}
+                                {wordings.importDataFromFile}
                             </h3>
                             {this.props.processing && <div className="spinner-container"><Spinner /></div>}
                         </div>
@@ -105,16 +106,16 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
                             <div className="row bottom-margin">
                                 <div className="col-xs-12 text-center toggle-form">
-                                    <h5 className="upper bottom-margin">{this.state.wordings['selectedFile']}</h5>
+                                    <h5 className="upper bottom-margin">{wordings.selectedFile}</h5>
 
                                     <p className="bottom-spaced">
-                                        <span className="label label-success text-small">{this.state.wordings['name'].toLowerCase()}</span>
+                                        <span className="label label-success text-small">{wordings.name.toLowerCase()}</span>
                                         <br />
                                         <em>{this.props.fileData.name}</em>
                                     </p>
 
                                     <p className="margin-none">
-                                        <span className="label label-success text-small">{this.state.wordings['size'].toLowerCase()}</span>
+                                        <span className="label label-success text-small">{wordings.size.toLowerCase()}</span>
                                         <br />
                                         <em>{formatFileSize( this.props.fileData.size )}</em>
                                     </p>
@@ -125,10 +126,10 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
                                 <div className={classNames( 'col-xs-12 col-sm-6', { 'hidden': hideControls.fileType === true } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fileType']}</label>
+                                        <label>{wordings.fileType}</label>
                                         <select className="form-control" name="impFileType"
                                             onChange={this.handleConfigChange}
-                                            value={this.state.impFileType}>
+                                            value={impFileType}>
                                             <option value="CSV">CSV</option>
                                             <option value="EXCEL">Excel</option>
                                         </select>
@@ -136,14 +137,14 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                 </div>
 
                                 <div className={classNames( 'col-xs-12 col-sm-6', {
-                                    'hidden': this.state.impFileType === 'EXCEL' || hideControls.separator === true
+                                    'hidden': impFileType === 'EXCEL' || hideControls.separator === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['fieldsSeparator']}</label>
+                                        <label>{wordings.fieldsSeparator}</label>
                                         <select className="form-control" name="impFileSeparator"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileSeparator}
-                                            disabled={this.state.impFileType === 'EXCEL'}>
+                                            disabled={impFileType === 'EXCEL'}>
                                             <option value=",">,</option>
                                             <option value=";">;</option>
                                         </select>
@@ -151,30 +152,30 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                 </div>
 
                                 <div className={classNames( 'col-xs-12 col-sm-6', {
-                                    'hidden': this.state.impFileType === 'EXCEL' || hideControls.quoteChar === true
+                                    'hidden': impFileType === 'EXCEL' || hideControls.quoteChar === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['quoteChar']}</label>
+                                        <label>{wordings.quoteChar}</label>
                                         <select className="form-control" name="impFileQuoteChar"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileQuoteChar}
-                                            disabled={this.state.impFileType === 'EXCEL'}>
+                                            disabled={impFileType === 'EXCEL'}>
                                             <option value="'">'</option>
                                             <option value='"'>"</option>
-                                            <option value="">{this.state.wordings['none']}</option>
+                                            <option value="">{wordings.none}</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className={classNames( 'col-xs-12 col-sm-6', {
-                                    'hidden': this.state.impFileType === 'EXCEL' || hideControls.encoding === true
+                                    'hidden': impFileType === 'EXCEL' || hideControls.encoding === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['encoding']}</label>
+                                        <label>{wordings.encoding}</label>
                                         <select className="form-control" name="impFileEncoding"
                                             onChange={this.handleConfigChange}
                                             value={this.state.impFileEncoding}
-                                            disabled={this.state.impFileType === 'EXCEL'}>
+                                            disabled={impFileType === 'EXCEL'}>
                                             <option value="utf-8">utf-8</option>
                                             <option value="iso8859-1">iso8859-1</option>
                                             <option value="cp-1252">cp-1252</option>
@@ -186,7 +187,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': hideControls.headers === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['headerOnFirstRow']}</label>
+                                        <label>{wordings.headerOnFirstRow}</label>
                                         <Switch id="fileImporterHasHeaders"
                                             value={this.state.impFileHasHeaders}
                                             name="impFileHasHeaders"
@@ -199,7 +200,7 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
                                     'hidden': hideControls.overwrite === true
                                 } )}>
                                     <div className="form-group">
-                                        <label>{this.state.wordings['overwriteExistingData']}</label>
+                                        <label>{wordings.overwriteExistingData}</label>
                                         <Switch id="fileImporterOverwrite"
                                             value={this.state.impFileOverwrite}
                                             name="impFileOverwrite"
@@ -214,14 +215,14 @@ class FileImporter extends React.Component<FileImporter.Props, FileImporter.Stat
 
                         <div className="panel-footer">
                             <button type="button" className="btn btn-font btn-trans" onClick={this.props.cancelHandler}>
-                                {this.state.wordings['cancel']}
+                                {wordings.cancel}
                             </button>
 
                             <button type="button"
                                 className="btn btn-success pull-right"
                                 onClick={this.submitHandler}
                                 disabled={this.props.processing}>
-                                {this.state.wordings['submit']}
+                                {wordings.submit}
                             </button>
                         </div>
                     </div>

@@ -74,7 +74,7 @@ class FormInput extends React.Component<FormInput.Props, FormInput.State> {
                 {
                     input = (
                         <select {...baseInputProps} onChange={this.handleInput}>
-                            <option value="">{wordings['selectValue']}</option>
+                            <option value="">{wordings.selectValue}</option>
                             {
                                 inputDef.choices.map( ( choice, idx ) => {
                                     let choiceLabel = choice.i18nLabelMap ? choice.i18nLabelMap[language] : choice.value
@@ -130,7 +130,7 @@ class FormInput extends React.Component<FormInput.Props, FormInput.State> {
                     ) : (
                             <div>
                                 <button className="btn btn-sm btn-font btn-trans" onClick={this.props.newFileUploadSession}>
-                                    {wordings['addFiles']}
+                                    {wordings.addFiles}
                                 </button>
                             </div>
                         )

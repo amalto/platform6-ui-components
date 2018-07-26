@@ -75,7 +75,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
 
         const { containerClass, style } = this.props
 
-        const { loading, loadingError } = this.state
+        const { loading, loadingError, wordings } = this.state
 
         return (
 
@@ -86,7 +86,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
                         <div className="padded">
                             <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
                                 <span className="fas fa-exclamation-triangle right-spaced" />
-                                <span>{this.state.wordings['pdfLoadingError']}</span>
+                                <span>{wordings.pdfLoadingError}</span>
                             </div>
                         </div> ) : (
                             <div>

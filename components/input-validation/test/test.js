@@ -28,22 +28,22 @@ test('InputValidation: testing validation methods', t => {
 
     t.is(checked(true, 'en-US'), undefined);
     t.is(checked(true, 'fr-FR'), undefined);
-    t.is(checked(false, 'fr-FR'), frWordings['inputvalidation.required']);
+    t.is(checked(false, 'fr-FR'), frWordings.inputvalidation.required);
 
     t.is(required('inputvalidation.required', 'en-US'), undefined);
     t.is(required('inputvalidation.required', 'fr-FR'), undefined);
-    t.is(required('', 'en-US'), enWordings['inputvalidation.required']);
-    t.is(required(undefined, 'fr-FR'), frWordings['inputvalidation.required']);
+    t.is(required('', 'en-US'), enWordings.inputvalidation.required);
+    t.is(required(undefined, 'fr-FR'), frWordings.inputvalidation.required);
 
     t.is(email('valid@email.com', 'en-US'), undefined);
-    t.is(email('invalid@email-com', 'fr-FR'), frWordings['inputvalidation.invalid.email']);
-    t.is(email('invalid@email-com', 'en-US'), enWordings['inputvalidation.invalid.email']);
+    t.is(email('invalid@email-com', 'fr-FR'), frWordings.inputvalidation.invalid.email);
+    t.is(email('invalid@email-com', 'en-US'), enWordings.inputvalidation.invalid.email);
 
     t.is(number('123456789', 'en-US'), undefined);
-    t.is(number('123456789a', 'fr-FR'), frWordings['inputvalidation.invalid.number']);
-    t.is(number('123456789a', 'en-US'), enWordings['inputvalidation.invalid.number']);
+    t.is(number('123456789a', 'fr-FR'), frWordings.inputvalidation.invalid.number);
+    t.is(number('123456789a', 'en-US'), enWordings.inputvalidation.invalid.number);
 
     t.is(https('https://www.valid-https.com', 'en-US'), undefined);
-    t.is(https('http://www.valid-https.com', 'fr-FR'), frWordings['inputvalidation.invalid.https.url']);
-    t.is(https('www.valid-https.com', 'en-US'), enWordings['inputvalidation.invalid.https.url']);
+    t.is(https('http://www.valid-https.com', 'fr-FR'), frWordings.inputvalidation.invalid.https.url);
+    t.is(https('www.valid-https.com', 'en-US'), enWordings.inputvalidation.invalid.https.url);
 });

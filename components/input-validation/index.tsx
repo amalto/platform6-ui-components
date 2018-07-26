@@ -9,7 +9,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 const error = ( id: string, locale: string ) => {
     const wordings = compileWordings( MULTILANGUAGE_WORDINGS, locale )
 
-    return wordings[id] || wordings['invalidField'] || 'Error'
+    return wordings[id] || wordings.invalidField || 'Error'
 }
 
 export const checked = ( value: boolean, locale: string ) => value ? undefined : error( 'fieldRequired', locale )

@@ -74,6 +74,8 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
     render() {
 
+        const { wordings } = this.state
+
         const { readonly } = this.props
 
         let keyValueStore = this.getKeyValueStore( this.props.keyValues )
@@ -98,11 +100,11 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                                     disabled={readonly}
                                     onChange={this.handleKeyChange}
                                     data-idx={idx}
-                                    placeholder={this.state.wordings['key']}
+                                    placeholder={wordings.key}
                                 />
                             ) : (
                                     <span className="control-align">
-                                        {keyVal.key || this.state.wordings['selectFile']}
+                                        {keyVal.key || wordings.selectFile}
                                     </span>
                                 )
                         }
@@ -116,18 +118,18 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
                                     disabled={readonly}
                                     onChange={this.handleValueChange}
                                     data-key={keyVal.key}
-                                    placeholder={this.state.wordings['value']}
+                                    placeholder={wordings.value}
                                 />
                             ) : (
                                     keyVal.contentBytes ? (
                                         <button type="button" className="btn btn-info btn-trans" onClick={() => this.downloadFile( keyVal.key )}>
                                             <span className="fas fa-download right-spaced" />
-                                            <span>{this.state.wordings['download']}</span>
+                                            <span>{wordings.download}</span>
                                         </button>
                                     ) : (
                                             <span className="btn btn-block upload-btn btn-font btn-trans">
                                                 <span className="fas fa-upload right-spaced" />
-                                                <span>{this.state.wordings['uploadFile']}</span>
+                                                <span>{wordings.uploadFile}</span>
                                                 <input type="file" className="upload-input" onChange={this.handleFileUpload} data-idx={idx} data-key={keyVal.key} />
                                             </span>
                                         )
@@ -146,12 +148,12 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
                 {!readonly ? ( <div>
                     <button type="button" className="btn btn-trans btn-info right-margin" onClick={this.addKeyValue.bind( this )}
-                        data-toggle="tooltip" data-original-title={this.state.wordings['addTextProperty']}>
+                        data-toggle="tooltip" data-original-title={wordings.addTextProperty}>
                         <span className="fas fa-plus right-spaced" />
                         <span className="fas fa-font" />
                     </button>
                     <button type="button" className="btn btn-trans btn-info" onClick={this.addKeyValue.bind( this, true )}
-                        data-toggle="tooltip" data-original-title={this.state.wordings['addFileProperty']}>
+                        data-toggle="tooltip" data-original-title={wordings.addFileProperty}>
                         <span className="fas fa-plus right-spaced" />
                         <span className="far fa-file" />
                     </button>

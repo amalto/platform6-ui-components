@@ -113,9 +113,9 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                         !!filename && !!filesize
                             ? <span className='italic'>
                                 <span>
-                                    <span className='black-color bold'>{wordings['name']}:</span> {filename}</span>, <span><span className='black-color bold'>{wordings['size']}:</span> {formatFileSize( filesize )}</span>
+                                    <span className='black-color bold'>{wordings.name}:</span> {filename}</span>, <span><span className='black-color bold'>{wordings.size}:</span> {formatFileSize( filesize )}</span>
                             </span>
-                            : !fileUploaded ? <span className='italic'>{wordings['noFileChosen']}</span> : <span className='italic'>{wordings['fileUploaded']}</span>
+                            : !fileUploaded ? <span className='italic'>{wordings.noFileChosen}</span> : <span className='italic'>{wordings.fileUploaded}</span>
                     }
 
                 </div>
@@ -125,12 +125,12 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                 {
                     ( input.value && displayPreview && fileContent ) ?
                         <div className="hidden-xs top-spaced">
-                            <em><small>{label && <span className="right-spaced">{label}</span>}{wordings['previewLowerCase']}</small></em>
+                            <em><small>{label && <span className="right-spaced">{label}</span>}{wordings.previewLowerCase}</small></em>
                             <pre className="code-preview-sm">{fileContent}</pre>
                         </div> : null
                 }
 
-                {this.state.loadingError ? <p className="validation-error-message">{wordings['fileUploadFailed']}</p> : null}
+                {this.state.loadingError ? <p className="validation-error-message">{wordings.fileUploadFailed}</p> : null}
 
             </div>
         )
