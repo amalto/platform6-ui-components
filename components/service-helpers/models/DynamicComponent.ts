@@ -154,7 +154,7 @@ export interface DynamicComponent extends ReduxProps {
     renderBaseServiceList?: ( config: BaseListConfig ) => JSX.Element;
 
     /**
-     * Refresh the state of the service (running/stopped/running but needs restarting).
+     * Refresh the status of the service (running/stopped/running but needs restarting).
      */
     refreshServiceStatus?: () => void;
 
