@@ -2940,7 +2940,6 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Tâche traitée !'
     },
 
-    // Generic wordings (to be used in services by external devs)
     view: {
         'en-US': 'View',
         'fr-FR': 'Afficher'
@@ -2949,5 +2948,20 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     nameAlreadyUsed: {
         'en-US': 'This name is already used.',
         'fr-FR': 'Ce nom est déjà utilisé.'
+    },
+
+    unknown: {
+        'en-US': 'Unknown',
+        'fr-FR': 'Inconnu'
+    },
+
+    serviceStatusConfigChanged: {
+        'en-US': 'Service configuration has changed since last start',
+        'fr-FR': 'La configuration du service a changé depuis le dernier démarrage'
+    },
+
+    serviceStatus: {
+        'en-US': 'Service status:',
+        'fr-FR': 'État du service :'
     }
 }
