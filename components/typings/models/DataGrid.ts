@@ -41,4 +41,6 @@ interface DataGridTemplates {
     }
 }
 
-export { ColumnHeader, CellData, DataGridTemplates }
+type DisplayMode = 'mobile' | 'laptop' | 'desktop'
+
+export { ColumnHeader, CellData, DataGridTemplates, DisplayMode }
