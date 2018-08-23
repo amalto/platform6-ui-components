@@ -5,7 +5,7 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
-import { CellData, DisplayTemplate, DisplayTemplateItem } from '@amalto/typings'
+import { CellData, DisplayTemplate, DisplayTemplateItem, DisplayMode, ColumnHeader } from '@amalto/typings'
 
 // Components 
 import DataItem from './components/DataItem'
@@ -42,10 +42,15 @@ export module DataLine {
         /** CSS class applied to the line. */
         cssClass?: string;
 
-        /** Handle cells width, aligment, color, order and display mode (desktop, laptop or mobile). More details on [DisplayTemplate](#displaytemplate). */
-        displayTemplate?: DisplayTemplate;
 
         /** Hide props from documentation */
+
+        /** @ignore */
+        displayMode?: DisplayMode;//this is auto added by the datagrid component
+        /** @ignore */
+        columnHeaders?: ColumnHeader[];//this is auto added by the datagrid component
+        /** @ignore */
+        displayTemplate?: DisplayTemplate;//this is auto added by the datagrid component
 
         /** @ignore */
         children?: React.ReactNode;
@@ -64,22 +69,21 @@ export class DataLine extends React.Component<DataLine.Props, any> {
 
     render() {
 
-        const { displayTemplate, cells, editMode, cellEditHandler, tabOnLastCellCallback, enterPressHandler } = this.props
+        const { displayTemplate, cells, editMode, cellEditHandler, tabOnLastCellCallback, enterPressHandler, dbleClickHandler, displayMode, columnHeaders } = this.props
 
         let filteredAndSortedCells = cells
 
-        if ( displayTemplate ) {
+        if ( displayTemplate && displayMode !== 'mobile' ) {
             filteredAndSortedCells = cells.filter( cellData => {
-                //FIXME
-                /* hardcoded access to desktop display mode */
+
                 if ( displayTemplate[cellData.columnId] ) {
-                    return displayTemplate[cellData.columnId].desktop.display !== false
+                    return displayTemplate[cellData.columnId][displayMode].display !== false
                 }
 
                 return true
             } ).sort( ( cellA, cellB ) => {
-                if ( displayTemplate[cellA.columnId] && displayTemplate[cellA.columnId].desktop && displayTemplate[cellB.columnId] && displayTemplate[cellB.columnId].desktop ) {
-                    return displayTemplate[cellA.columnId].desktop.order - displayTemplate[cellB.columnId].desktop.order
+                if ( displayTemplate[cellA.columnId] && displayTemplate[cellA.columnId][displayMode] && displayTemplate[cellB.columnId] && displayTemplate[cellB.columnId][displayMode] ) {
+                    return displayTemplate[cellA.columnId][displayMode].order - displayTemplate[cellB.columnId][displayMode].order
                 }
 
                 return 0
@@ -87,6 +91,19 @@ export class DataLine extends React.Component<DataLine.Props, any> {
         }
 
         let cellsDisplay = filteredAndSortedCells.map( ( cellData, idx ) => {
+
+            let label = undefined
+
+            if ( columnHeaders && columnHeaders.length ) {
+                for ( let i = 0; i < columnHeaders.length; i++ ) {
+                    const colHeader = columnHeaders[i]
+                    if ( colHeader.id === cellData.columnId ) {
+                        label = colHeader.label
+                        break;
+                    }
+                }
+            }
+
             return (
                 <DataItem key={idx}
                     columnId={cellData.columnId}
@@ -97,12 +114,15 @@ export class DataLine extends React.Component<DataLine.Props, any> {
                     enterPressCallback={enterPressHandler}
                     editMode={editMode}
                     readOnly={cellData.readOnly}
+                    allowDisplayAsTextAreaOnReadonly={cellData.allowDisplayAsTextAreaOnReadonly}
                     isEdited={cellData.isEdited}
                     lastEditable={cellData.lastEditable}
-                    allowDisplayAsTextAreaOnReadonly={cellData.allowDisplayAsTextAreaOnReadonly}
                     options={cellData.options}
                     validate={cellData.validate}
-                    tabOnLastCellCallback={tabOnLastCellCallback} />
+                    tabOnLastCellCallback={tabOnLastCellCallback}
+                    displayMode={displayMode}
+                    label={label}
+                />
             )
         } )
 
@@ -112,15 +132,19 @@ export class DataLine extends React.Component<DataLine.Props, any> {
             additionalProps.onClick = this.props.sgleClickHandler
         }
 
-        if ( this.props.dbleClickHandler ) {
-            additionalProps.onDoubleClick = this.props.dbleClickHandler
+        if ( dbleClickHandler ) {
+            additionalProps.onDoubleClick = dbleClickHandler
         }
 
         return (
-            <div style={this.props.style} className={classNames( this.props.cssClass, 'card-item inline-item', {
-                'dg-new-line': this.props.isNew
+            <div style={this.props.style} className={classNames( 'card-item', this.props.cssClass, {
+                "dg-new-line": this.props.isNew,
+                "inline-item": displayMode !== 'mobile',
+                "tile mgb-10 block-tile": displayMode === 'mobile'
             } )} {...additionalProps}>
-                <div className='card-item-content'>
+                <div className={classNames( {
+                    "card-item-content": displayMode !== 'mobile'
+                } )}>
                     {cellsDisplay}
                 </div>
             </div>

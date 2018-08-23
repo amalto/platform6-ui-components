@@ -7,7 +7,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 
 // Models
-import { DisplayTemplate, DisplayTemplateItem } from '@amalto/typings'
+import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typings'
 
 module DataItem {
     export interface Props extends React.Props<DataItem> {
@@ -29,6 +29,8 @@ module DataItem {
         }[];
         validate?: ( value: string ) => any;
         displayTemplate?: DisplayTemplate;
+        displayMode: DisplayMode;
+        label?: JSX.Element | string;
     }
 
     export interface State {
@@ -48,20 +50,17 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
 
     render() {
 
-        const { options, editCallback, editMode, readOnly, isEdited, lastEditable, allowDisplayAsTextAreaOnReadonly, tabOnLastCellCallback, displayTemplate, displayValue, columnId, cssClass } = this.props
+        const { options, editCallback, editMode, readOnly, allowDisplayAsTextAreaOnReadonly, isEdited, lastEditable, tabOnLastCellCallback, displayTemplate, displayValue, columnId, cssClass, displayMode, label } = this.props
 
         const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
 
-        //FIXME
-        /* hardcoded access to desktop display mode */
-
-        let userStyles: React.CSSProperties = itemDisplaySettings ? {
-            width: itemDisplaySettings.desktop.width,
-            textAlign: itemDisplaySettings.desktop.textAlign,
+        let userStyles: React.CSSProperties = displayMode === 'mobile' ? {} : ( itemDisplaySettings ? {
+            width: itemDisplaySettings[displayMode].width,
+            textAlign: itemDisplaySettings[displayMode].textAlign,
             color: itemDisplaySettings.color
         } : {
                 width: 150
-            }
+            } )
 
         let additionalProps = {} as React.HTMLAttributes<any>
 
@@ -113,9 +112,15 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
         /* This shouldn't be modified without extra modifications on other parts of the project */
 
         return (
-            <div className={classNames( 'card-item-value inline-item-value', cssClass, {
+            <div className={classNames( cssClass, {
+                'card-item-value inline-item-value': displayMode !== 'mobile',
+                'inline-block mgb-10 mgr-20 align-top break-all': displayMode === 'mobile' && columnId !== 'actions',
+                'mgt-10 mgb-10 text-center mobile-action-buttons': displayMode === 'mobile' && columnId === 'actions',
                 'dg-cell-edited': isEdited
             } )} style={userStyles} {...additionalProps}>
+
+                {displayMode === 'mobile' && columnId !== 'actions' ? <label className="dimmed">{label || columnId}</label> : null}
+
                 {_displayValue}
             </div>
         )
