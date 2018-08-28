@@ -159,6 +159,13 @@ export interface DynamicComponent extends ReduxProps {
     refreshServiceStatus?: () => void;
 
     /**
+     * Lock the service
+     * 
+     * @param { boolean } lock
+     */
+    lockService?: ( lock: boolean ) => void;
+
+    /**
      * Language to use on the component. e.g: "en-US".
      * Locales available at [Locale](#locale).
      */
