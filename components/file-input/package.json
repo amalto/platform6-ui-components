@@ -2,7 +2,7 @@
     "name": "@amalto/file-input",
     "displayName": "FileInput",
     "description": "Input allowing you to select a file.",
-    "version": "1.4.108",
+    "version": "1.4.109",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -28,11 +28,11 @@
         "@amalto/helpers": "1.4.102",
         "@amalto/typings": "1.0.45",
         "@amalto/wordings": "1.4.54",
-        "react-dropzone": "4.2.5",
         "classnames": "2.2.5",
         "jquery": "3.3.1",
         "react": "15.6.2",
-        "react-dom": "15.6.2"
+        "react-dom": "15.6.2",
+        "react-dropzone": "4.2.5"
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "1.1.0",
