@@ -17,7 +17,7 @@ interface ColumnHeader {
 }
 
 interface CellData {
-    displayValue: JSX.Element | string;
+    displayValue: JSX.Element | string | number;
     columnId: string;
     cssClass?: string;
     display?: boolean;

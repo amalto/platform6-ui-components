@@ -2,7 +2,7 @@
 interface CellData {
 
     /** Cell to display.  */
-    displayValue: JSX.Element | string;
+    displayValue: JSX.Element | string | number;
 
     /** Column id corresponding to the header id. */
     columnId: string;
