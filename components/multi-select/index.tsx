@@ -4,14 +4,10 @@
 
 // Modules
 import * as React from 'react'
-import * as moment from 'moment'
 import * as classNames from 'classnames'
-import * as b2portal from '@amalto/platform6-ui'
-
-const { webStorage } = b2portal
 
 //utils & stores
-import { removeValFromArrayNoDup, addValToArrayNoDup, isNotEmpty } from '@amalto/helpers'
+import { removeValFromArrayNoDup, addValToArrayNoDup } from '@amalto/helpers'
 
 //components & models
 import Help from '@amalto/help'
@@ -97,8 +93,6 @@ class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> 
 
     //handles display of a search criteria input
     render() {
-
-        let language = this.state.locale.substr( 0, 2 ).toUpperCase()
         const { label, value, options } = this.props
 
         return this.renderDropdownInput( label, value, options.map( o => o.label ) )
@@ -202,7 +196,7 @@ class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> 
                 <div className={classNames( 'form-group', containerClass )}>
                     {
                         label
-                            ? <label className={classNames( { 'bold': this.props.initialValue !== selectValue } )}>
+                            ? <label className={classNames( { 'bold': initialValue !== selectValue } )}>
                                 {filterDisplayName}
                                 {help && <Help text={help} />}
                             </label>
