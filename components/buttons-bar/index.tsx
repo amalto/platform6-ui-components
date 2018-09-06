@@ -11,6 +11,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 // Utils
 import { compileWordings } from '@amalto/helpers'
+import { locale } from 'moment';
 
 /**
  * Component allowing you to display a set of buttons as well as a search input if needed.
@@ -45,11 +46,12 @@ module ButtonsBar {
         /** Button list to be displayed. More details on [BtnGroupsProps](#btngroupsprops) */
         btnGroups: BtnGroupsProps[];
         /**
-         * Language to use on the component. e.g: <span className='quote'>en-US</span>.
+         * Language to use on the component which determine the search input's placeholder language. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
+         * @default 'en-US'
          */
-        locale: string;
+        locale?: string;
 
         /** Hide props from documentation */
 
@@ -75,7 +77,7 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
 
         this.state = {
             searchValue: props.handleSearch && props.searchValue || '',
-            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale || 'en-US' )
         }
     }
 
@@ -146,7 +148,7 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
                 }
 
                 {
-                    handleSearch ? (
+                    handleSearch && locale ? (
                         <div className="btn-group btn-group-sm icon-input pull-right">
                             <form onSubmit={this.handleSearch}>
                                 <input
