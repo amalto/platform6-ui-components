@@ -18,9 +18,9 @@ namespace DateInput {
         help?: string;
         /** CSS class wrapping the component. */
         containerClass?: string;
-        /** All dates before this one will be disabled in the date picker. */
+        /** All dates before this one will be disabled in the date picker. Must be readable by [moment](https://momentjs.com). */
         minDate?: string;
-        /** All dates after this one will be disabled in the date picker. */
+        /** All dates after this one will be disabled in the date picker. Must be readable by [moment](https://momentjs.com). */
         maxDate?: string;
         /**
          * Will show a mandatory asterisk on the input label. Will disable the <span className='quote'>clear selected date</span> button.

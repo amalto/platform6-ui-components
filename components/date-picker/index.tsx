@@ -21,7 +21,10 @@ module DatePicker {
     export interface Props extends React.Props<DatePicker> {
         /** Input name in the DOM. */
         name: string;
-        /** Default value of the date picker. You can put the current value in here, usually stored in the state of the parent component. */
+        /**
+         * Default value of the date picker. Must be readable by [moment](https://momentjs.com).
+         * You can put the current value in here, usually stored in the state of the parent component.
+         */
         defaultValue: string;
         /**
          * Date <span className='quote'>onChange</span> event. More details on [DateInputEvent](#dateinputevent).
@@ -29,9 +32,9 @@ module DatePicker {
         handleDateChangeEvent?: ( event: DateInputEvent ) => void;
         /** Callback function executed on user input. */
         handleDateChange?: ( date: string ) => void;
-        /** All dates before this one will be disabled in the date picker. */
+        /** All dates before this one will be disabled in the date picker. Must be readable by [moment](https://momentjs.com). */
         minDate?: string;
-        /** All dates after this one will be disabled in the date picker. */
+        /** All dates after this one will be disabled in the date picker. Must be readable by [moment](https://momentjs.com). */
         maxDate?: string;
         /**
          * Will show a mandatory asterisk on the input label. Will disable the <span className='quote'>clear selected date</span> button.
