@@ -11,7 +11,7 @@ import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typin
 
 module DataItem {
     export interface Props extends React.Props<DataItem> {
-        displayValue: JSX.Element | string;
+        displayValue: JSX.Element | string | number;
         columnId: string;
         cssClass?: string;
         editCallback?: ( key: string, value: string ) => void;

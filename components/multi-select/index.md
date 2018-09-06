@@ -27,7 +27,5 @@ const handleChange = ( e ) => {
     help='Helper text'
     containerClass='col-lg-12 col-xs-12 padding-none'
     inputClass='info-color'
-    // hideEmptyOption={true}
-    // collapseErrorSpace={true}
 />
 ```
