@@ -140,7 +140,7 @@ class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> 
                 <div className={classNames( 'form-group', containerClass )} style={{ position: 'relative' }} ref={div => this.dropdownCtn = div}>
                     {
                         label
-                            ? <label className={classNames( { 'bold': JSON.stringify( this.props.initialValue || [] ) !== JSON.stringify( selectValue ) } )}>
+                            ? <label>
                                 {filterDisplayName}
                                 {help && <Help text={help} />}
                             </label>
@@ -184,7 +184,6 @@ class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> 
         else {
 
             const selectValue: string = value as string || ''
-            const initialValue: string = this.props.initialValue as string || ''
 
             let choices = options.map( ( choice, idx ) => {
                 return (
@@ -196,7 +195,7 @@ class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> 
                 <div className={classNames( 'form-group', containerClass )}>
                     {
                         label
-                            ? <label className={classNames( { 'bold': initialValue !== selectValue } )}>
+                            ? <label>
                                 {filterDisplayName}
                                 {help && <Help text={help} />}
                             </label>
