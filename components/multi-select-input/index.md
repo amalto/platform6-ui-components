@@ -45,6 +45,7 @@ const SimpleForm = ( props ) => {
 const ExampleSimpleForm = reduxForm({
     form: 'form-textarea-input-example',
     onSubmit: ( data ) => { console.info('data => ', data)},
+    initialValues: { 'multi-select-input-example': 'second, third' },
     enableReinitialize: true
 })(SimpleForm);
 
