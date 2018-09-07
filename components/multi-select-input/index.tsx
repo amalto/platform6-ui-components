@@ -39,9 +39,6 @@ module MultiSelectInput {
 
         fieldLineHeight?: number;
 
-        /** Allow multiple selection. */
-        multiple?: boolean;
-
         /** Triggered when selecting an option. */
         handleChange: ( event: any ) => void;
 
@@ -139,11 +136,6 @@ class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSele
         const extendedStyle: React.CSSProperties = this.getExtendedStyle( fieldLineHeight, input.value )
 
         const selectValue: string[] = isNotEmpty( input.value ) ? ( input.value as string ).split( ',' ) : []
-
-
-
-        console.info( 'input => ', input )
-        console.info( 'selectValue => ', selectValue )
 
         let choices = options.map( ( choice, idx ) => {
 
