@@ -232,4 +232,4 @@ class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> 
 
 }
 
-export { MultiSelect }
+export default MultiSelect
