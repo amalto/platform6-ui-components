@@ -54,7 +54,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
 
         const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
 
-        let userStyles: React.CSSProperties = displayMode === 'mobile' ? {} : ( itemDisplaySettings ? {
+        let userStyles: React.CSSProperties = displayMode === 'mobile' ? {} : ( itemDisplaySettings && itemDisplaySettings[displayMode] ? {
             width: itemDisplaySettings[displayMode].width,
             textAlign: itemDisplaySettings[displayMode].textAlign,
             color: itemDisplaySettings.color
