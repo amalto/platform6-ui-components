@@ -76,7 +76,7 @@ export class DataLine extends React.Component<DataLine.Props, any> {
         if ( displayTemplate && displayMode !== 'mobile' ) {
             filteredAndSortedCells = cells.filter( cellData => {
 
-                if ( displayTemplate[cellData.columnId] ) {
+                if ( displayTemplate[cellData.columnId] && displayTemplate[cellData.columnId][displayMode] ) {
                     return displayTemplate[cellData.columnId][displayMode].display !== false
                 }
 
