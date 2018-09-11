@@ -2970,8 +2970,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Portail'
     },
 
-    platform6: {
-        'en-US': 'Plaform 6',
-        'fr-FR': 'Platform 6'
+    core: {
+        'en-US': 'Core',
+        'fr-FR': 'Core'
     }
 }
