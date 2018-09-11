@@ -12,7 +12,7 @@ export interface BaseListConfig {
     closeTabCallback?: ( closedTabId: string, formId: string ) => void;
     editOnDoubleClick?: boolean;
     openEditTabOnCreation?: boolean;
-    editConditions?: ( () => boolean )[];
+    editConditions?: ( ( item: ServiceItemFacade ) => boolean )[];
     customButtons?: ButtonsBar.BtnGroupsProps[];
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
