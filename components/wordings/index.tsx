@@ -2963,5 +2963,15 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     serviceStatus: {
         'en-US': 'Service status:',
         'fr-FR': 'État du service :'
+    },
+
+    portal: {
+        'en-US': 'Portal',
+        'fr-FR': 'Portail'
+    },
+
+    platform6: {
+        'en-US': 'Plaform 6',
+        'fr-FR': 'Platform 6'
     }
 }
