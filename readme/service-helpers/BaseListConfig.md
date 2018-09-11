@@ -60,6 +60,13 @@ interface BaseListConfig {
     customItemNameValidation?: ( value: string ) => string;
 
     /**
+     * Validation methods' array on permission edit.
+     * 
+     * @param { ServiceItemFacade } item
+     */
+    editConditions?: ( ( item: ServiceItemFacade ) => boolean )[];
+
+    /**
      * Method triggered after a tab has been closed.
      * 
      * @param { string } closedTabId
