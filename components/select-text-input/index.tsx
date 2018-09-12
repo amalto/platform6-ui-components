@@ -40,6 +40,8 @@ namespace SelectTextInput {
         type?: string;
         /** Input's list. */
         options: {
+            leftIcon: string;
+            rightIcon: string;
             value: string | number;
             label?: string;
             disabled?: boolean;
@@ -78,6 +80,8 @@ namespace SelectTextInput {
     export interface State {
         selectOpen?: boolean;
         options?: {
+            leftIcon: string;
+            rightIcon: string;
             value: string | number;
             label?: string;
             disabled?: boolean;
@@ -115,8 +119,8 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
                 <div className={classNames( 'select-text-input', inputClass, {
-                            'btn-prefix': randomGenerator
-                        } )}>
+                    'btn-prefix': randomGenerator
+                } )}>
                     <input
                         {...input as any}
                         key={input.name}
@@ -134,7 +138,17 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
                     {
                         this.state.selectOpen && this.state.options
                             ? <div className='options-list text-medium'>
-                                {this.state.options.map( ({ value, label }) => <div key={value} className='option-item' onClick={() => this.selectOption( label, field )} >{label}</div> )}
+                                {
+                                    this.state.options.map( ( { leftIcon, rightIcon, value, label } ) => (
+                                        <div key={value} className='option-item' onClick={() => this.selectOption( label, field )} >
+                                            <div className='flex flex-row align-items-center'>
+                                                {leftIcon ? <i className={`${ leftIcon } mgr-10`} /> : null}
+                                                <div className='flex-1'>{label}</div>
+                                                {rightIcon ? <i className={`${ rightIcon } mgl-10`} /> : null}
+                                            </div>
+                                        </div>
+                                    ) )
+                                }
                             </div>
                             : null
                     }
@@ -187,7 +201,7 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
 
     private toggleSelectList = ( field: WrappedFieldProps<any> ): void => {
         const value = field.input.value
-        
+
         field.input.onChange( uuid.v1(), undefined, undefined )
         this.setState( { selectOpen: !this.state.selectOpen } as SelectTextInput.State, () => field.input.onChange( value, undefined, undefined ) )
     }
