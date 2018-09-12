@@ -21,6 +21,7 @@ import 'brace/mode/json'
 import 'brace/mode/typescript'
 import 'brace/mode/tsx'
 import 'brace/mode/xml'
+import 'brace/mode/sql'
 
 /**
  * Ace editor theme
