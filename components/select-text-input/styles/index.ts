@@ -24,7 +24,7 @@ export const Styles = {
         backgroundColor: '#FFF',
         overflowX: 'hidden',
         overflowY: 'auto',
-        ':hover': {
+        'div:hover': {
             backgroundColor: '#89BC55',
             color: '#FFF'
         }
