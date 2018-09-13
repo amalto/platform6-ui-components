@@ -42,6 +42,7 @@ namespace SelectTextInput {
         options: {
             leftIcon: string;
             rightIcon: string;
+            iconAlignment?: 'center' | 'baseline';
             value: string | number;
             label?: string;
             disabled?: boolean;
@@ -82,6 +83,7 @@ namespace SelectTextInput {
         options?: {
             leftIcon: string;
             rightIcon: string;
+            iconAlignment?: 'center' | 'baseline';
             value: string | number;
             label?: string;
             disabled?: boolean;
@@ -139,9 +141,9 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
                         this.state.selectOpen && this.state.options
                             ? <div className='options-list text-medium'>
                                 {
-                                    this.state.options.map( ( { leftIcon, rightIcon, value, label } ) => (
+                                    this.state.options.map( ( { leftIcon, rightIcon, iconAlignment, value, label } ) => (
                                         <div key={value} className='option-item' onClick={() => this.selectOption( label, field )} >
-                                            <div className='flex flex-row align-items-center'>
+                                            <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
                                                 {leftIcon ? <i className={`${ leftIcon } mgr-10`} /> : null}
                                                 <div className='flex-1'>{label}</div>
                                                 {rightIcon ? <i className={`${ rightIcon } mgl-10`} /> : null}
