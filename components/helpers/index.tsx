@@ -1,5 +1,5 @@
 // Modules
-import md5 from 'md5'
+var md5 = require( 'md5' )
 import * as base64 from 'base-64'
 import * as classNames from 'classnames'
 

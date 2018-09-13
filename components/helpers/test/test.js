@@ -1,6 +1,6 @@
 import React from 'react';
 
-import md5 from 'md5';
+var md5 = require('md5');
 
 import * as sinon from 'sinon';
 import test from 'ava';
@@ -502,9 +502,9 @@ test.skip('base64Decode: This won\'t be tested because it use base64.decode dire
 
 // deepCopy
 test('deepCopy: Should copy and extend object', t => {
-    const obj1 = {first: 'one', second: 'two'};
-    const obj2 = {third: 'three', fourth: 'four'};
-    const obj3 = {first: 'one', second: 'two', third: 'three', fourth: 'four'};
+    const obj1 = { first: 'one', second: 'two' };
+    const obj2 = { third: 'three', fourth: 'four' };
+    const obj3 = { first: 'one', second: 'two', third: 'three', fourth: 'four' };
 
     t.deepEqual(deepCopy(obj1, obj2), obj3);
 });
@@ -513,8 +513,8 @@ test('deepCopy: Should copy and extend object', t => {
 test('handleDuplicateNameFromArray: Should handle duplicate name', t => {
     const name = 'test';
     const container1 = ['test'];
-    const container2 =['test', 'test_1'];
-    const container3 =['test_1'];
+    const container2 = ['test', 'test_1'];
+    const container3 = ['test_1'];
 
     t.is(handleDuplicateNameFromArray(name, container1), 'test_1');
     t.is(handleDuplicateNameFromArray(name, container2), 'test_2');
@@ -526,14 +526,14 @@ test('handleDuplicateServiceItemName: Should handle duplicate name of ServiceIte
     const item = { appKey: 'appKey1', name: 'test' };
     const item2 = { appKey: 'appKey1', name: 'test2' };
     const items1 = [
-        { appKey: 'appKey1', name: 'test'},
-        { appKey: 'appKey1', name: 'test2'},
-        { appKey: 'appKey1', name: 'test3'},
+        { appKey: 'appKey1', name: 'test' },
+        { appKey: 'appKey1', name: 'test2' },
+        { appKey: 'appKey1', name: 'test3' },
     ];
     const items2 = [
-        { appKey: '', name: 'test'},
-        { appKey: 'appKey1', name: 'test2'},
-        { appKey: 'appKey1', name: 'test2_1'},
+        { appKey: '', name: 'test' },
+        { appKey: 'appKey1', name: 'test2' },
+        { appKey: 'appKey1', name: 'test2_1' },
     ];
 
     t.is(handleDuplicateServiceItemName(item, items1), 'test_1');
@@ -546,5 +546,5 @@ test('dateByLocalToString: Should convert timestamp to date string', t => {
     const timestamp = 1520936526658;
     const dateString = '3/13/2018, 11:22 AM';
 
-    t.is( dateByLocalToString( 'en-US', timestamp ), dateString );
+    t.is(dateByLocalToString('en-US', timestamp), dateString);
 })
