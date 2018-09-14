@@ -71,7 +71,7 @@ test('props should be assigned', t => {
         />
     );
 
-    t.true(wrapper.hasClass('padded card-item inline-item dg-new-line'));
+    t.true(wrapper.hasClass('card-item padded dg-new-line inline-item'));
     t.deepEqual(wrapper.prop('style'), { padding: 5 });
 
     // Click event

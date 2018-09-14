@@ -101,11 +101,13 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     componentDidMount() {
-        this._input.value = this.props.defaultDisplayValue || ''
+        if ( this._input ) {
+            this._input.value = this.props.defaultDisplayValue || ''
+        }
     }
 
     componentDidUpdate( prevProps: SelectText.Props, prevState: SelectText.State ) {
-        if ( prevState.selectOpen !== this.state.selectOpen && !this.state.selectOpen ) {
+        if ( prevState.selectOpen !== this.state.selectOpen && !this.state.selectOpen && this._input ) {
             this._input.value = this.state.displayValue
         }
     }

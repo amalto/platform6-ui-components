@@ -56,5 +56,4 @@ test('MultiSelectInput props should be defined', t => {
     t.is(wrapper.prop('inputClass'), 'info-color');
     t.is(wrapper.prop('hideEmptyOption'), undefined);
     t.is(wrapper.prop('collapseErrorSpace'), undefined);
-    t.pass('FIXME');
 });
