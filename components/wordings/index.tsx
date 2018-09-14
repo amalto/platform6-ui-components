@@ -2711,8 +2711,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     userDeleteAccountConfirm: {
-        'en-US': `<p>Are you sure you want to delete you account?</p>`,
-        'fr-FR': `<p>Êtes-vous sûr(e) de vouloir supprimer votre compte utilisateur ?</p>`
+        'en-US': 'Are you sure you want to delete you account?',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer votre compte utilisateur ?'
     },
 
     userDeleteAccountConfirmSure: {
