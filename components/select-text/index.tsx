@@ -60,6 +60,9 @@ namespace SelectText {
         /** Options are visible or not. */
         selectOpen?: boolean;
 
+        /** Handle input changes. */
+        handleOnChange?: ( displayValue: string ) => void;
+
         /** Hide props from documentation */
 
         /** @ignore */
@@ -185,7 +188,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             selectOpen: false,
             displayValue: value,
             options: this.autocompleteOptions( value as string )
-        } as SelectText.State )
+        } as SelectText.State, () => this.props.handleOnChange && this.props.handleOnChange( this.state.displayValue ) )
     }
 
 }
