@@ -19,7 +19,8 @@ const options = [
         leftIcon: 'fas fa-arrow-right info-color',
         rightIcon: 'fas fa-unlink warning-color',
         value: 'first',
-        label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dolor ligula, efficitur nec nisi a, rutrum posuere libero. Ut convallis eleifend nisi. Aenean semper commodo ultricies. Nullam venenatis elit vel dui luctus vulputate. Morbi semper turpis vel mi euismod, eu efficitur augue iaculis. Mauris eu tristique orci. Morbi ultricies feugiat congue. Sed iaculis dapibus mi a eleifend. Ut quam nisi, semper vel nunc ut, suscipit porttitor lectus. Sed convallis eu est in facilisis. Maecenas fermentum in metus ut pharetra. Proin eu venenatis neque. Integer consequat sagittis nibh, sed mattis turpis mattis ut. Proin fermentum lectus quam, euismod sollicitudin sapien faucibus vel.'
+        iconAlignment: 'center',
+        label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dolor ligula, efficitur nec nisi a, rutrum posuere libero. Ut convallis eleifend nisi. Aenean semper commodo ultricies. Nullam venenatis elit vel dui luctus vulputate. Morbi semper turpis vel mi euismod, eu efficitur augue iaculis. Mauris eu tristique orci.'
         
     },
     { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'second', label: 'second' },
@@ -36,7 +37,6 @@ const options = [
     options={options}
     type='text'
     autofocus={false}
-    randomGenerator={true}
     collapseErrorSpace={true}
 />
 ```

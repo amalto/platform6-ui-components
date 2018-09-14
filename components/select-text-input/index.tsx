@@ -55,11 +55,6 @@ namespace SelectTextInput {
          */
         autofocus?: boolean;
         /**
-         * Randomize input value as a <span className='quote'>uuid.v1()</span> string.
-         * @default false
-         */
-        randomGenerator?: boolean;
-        /**
          * Remove the bottom margin which is the default height of the error message
          * displayed when input is invalid.
          * @default false
@@ -103,7 +98,7 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
 
     private renderText = ( field: WrappedFieldProps<any> ) => {
 
-        const { label, disabled, autofocus, help, containerClass, inputClass, type, step, randomGenerator, placeholder, collapseErrorSpace } = this.props
+        const { label, disabled, autofocus, help, containerClass, inputClass, type, step, placeholder, collapseErrorSpace } = this.props
 
         const { input, meta } = field
 
@@ -120,9 +115,7 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <div className={classNames( 'select-text-input', inputClass, {
-                    'btn-prefix': randomGenerator
-                } )}>
+                <div className={classNames( 'select-text-input', inputClass )}>
                     <input
                         {...input as any}
                         key={input.name}
@@ -156,14 +149,6 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
                     }
                 </div>
 
-                {
-                    randomGenerator ? (
-                        <button type="button" className="btn btn-info input-suffix" onClick={e => this.generateClientSecret( field )}>
-                            <span className="fas fa-random"></span>
-                        </button>
-                    ) : null
-                }
-
                 {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
 
             </div>
@@ -195,10 +180,6 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
         const regExp: RegExp = new RegExp( value )
 
         return this.props.options.filter( o => regExp.test( o.label ) )
-    }
-
-    private generateClientSecret = ( field: WrappedFieldProps<any> ) => {
-        this.setState( { selectOpen: false } as SelectTextInput.State, () => field.input.onChange( uuid.v1(), undefined, undefined ) )
     }
 
     private toggleSelectList = ( field: WrappedFieldProps<any> ): void => {
