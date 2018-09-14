@@ -2718,13 +2718,13 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     userDeleteAccountConfirmSure: {
         'en-US': `
             <p>
-                <h3 className="danger-color bottom-margin text-xxlarge">WARNING</h3>
+                <h3 class="danger-color bottom-margin text-xxlarge">WARNING</h3>
                 <span>Are you <strong>REALLY</strong> sure you want to delete you account? You won't be able to access the portal anymore...</span>
             </p>
         `,
         'fr-FR': `
             <p>
-                <h3 className="danger-color bottom-margin text-xxlarge">ATTENTION</h3>
+                <h3 class="danger-color bottom-margin text-xxlarge">ATTENTION</h3>
                 <span>Êtes-vous <strong>VRAIMENT</strong> sûr(e) de vouloir supprimer votre compte utilisateur ? Vous ne pourrez plus accéder au portail...</span>
             </p>
         `
