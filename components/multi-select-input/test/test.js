@@ -6,51 +6,55 @@ import test from 'ava';
 import Adapter from 'enzyme-adapter-react-15';
 import { shallow, configure } from 'enzyme';
 
-import SelectInput from '../build/index.js';
+import MultiSelectInput from '../build/index.js';
 
 configure({ adapter: new Adapter() });
 
-test.beforeEach('SelectInput component should exist', t => {
-    const ExistSelectInput = reduxForm({
-        form: 'form-select-input-example',
+test.beforeEach('MultiSelectInput component should exist', t => {
+    const ExistMultiSelectInput = reduxForm({
+        form: 'form-multi-select-input-example',
         enableReinitialize: true
-    })(SelectInput);
-    const wrapper = shallow(<ExistSelectInput />);
+    })(MultiSelectInput);
+    const wrapper = shallow(<ExistMultiSelectInput />);
 
     t.true(wrapper.exists());
 });
 
-test('SelectInput props should be defined', t => {
-    const ExampleSelectInput = reduxForm({
-        form: 'form-select-input-example',
+test('MultiSelectInput props should be defined', t => {
+    const ExampleMultiSelectInput = reduxForm({
+        form: 'form-multi-select-input-example',
         enableReinitialize: true
-    })(SelectInput);
+    })(MultiSelectInput);
     const options = [
-        { value: 'first', label: 'first', disabled: false },
-        { value: 'second', label: 'second', disabled: true },
-        { value: 'third', label: 'third', disabled: false }
+        { value: 'first', label: 'first' },
+        { value: 'second', label: 'second' },
+        { value: 'third', label: 'third' }
     ];
     const wrapper = shallow(
-        <ExampleSelectInput name='select-input-example'
-            label='SelectInput example'
+        <ExampleMultiSelectInput name='multi-select-input-example'
+            label='MultiSelectInput example'
             options={options}
-            disabled={false}
+            multiple={true}
+            fieldLineHeight={1.5}
+            locale={'en-US'}
             help='Helper text'
-            containerClass='padded'
-            inputClass='text-large'
-            hideEmptyOption={true}
-            collapseErrorSpace={true}
+            containerClass='col-lg-12 col-xs-12 padding-none'
+            inputClass='info-color'
+            disabled={false}
         />
     )
 
-    t.is(wrapper.prop('form'), 'form-select-input-example');
-    t.is(wrapper.prop('name'), 'select-input-example');
-    t.is(wrapper.prop('label'), 'SelectInput example');
+    // console.info(wrapper.prop('form'));
+
+    t.is(wrapper.prop('form'), 'form-multi-select-input-example');
+    t.is(wrapper.prop('name'), 'multi-select-input-example');
+    t.is(wrapper.prop('label'), 'MultiSelectInput example');
     t.deepEqual(wrapper.prop('options'), options);
     t.is(wrapper.prop('disabled'), false);
     t.is(wrapper.prop('help'), 'Helper text');
-    t.is(wrapper.prop('containerClass'), 'padded');
-    t.is(wrapper.prop('inputClass'), 'text-large');
-    t.is(wrapper.prop('hideEmptyOption'), true);
-    t.is(wrapper.prop('collapseErrorSpace'), true);
+    t.is(wrapper.prop('containerClass'), 'col-lg-12 col-xs-12 padding-none');
+    t.is(wrapper.prop('inputClass'), 'info-color');
+    t.is(wrapper.prop('hideEmptyOption'), undefined);
+    t.is(wrapper.prop('collapseErrorSpace'), undefined);
+    t.pass('FIXME');
 });

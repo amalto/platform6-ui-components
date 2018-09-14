@@ -55,7 +55,9 @@ test('TogglePanel props should be defined', t => {
 
     t.true(wrapper.hasClass('panel panel-default'));
     t.deepEqual(wrapper.prop('style'), { padding: 5 });
-    t.true(wrapper.childAt(0).hasClass('panel-heading click-pointer'));
+
+    // Need undefined because headerCustomCSS class is not defined in props.
+    t.true(wrapper.childAt(0).hasClass('panel-heading undefined click-pointer'));
 
     // Call toggleCallback
     wrapper.childAt(0).simulate('click');

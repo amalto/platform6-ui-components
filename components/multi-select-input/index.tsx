@@ -256,4 +256,4 @@ class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSele
 
 }
 
-export { MultiSelectInput }
+export default MultiSelectInput
