@@ -2,7 +2,7 @@
   "name": "@amalto/select-text-input",
   "displayName": "SelectTextInput",
   "description": "Select and text input used on platform6.",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT",
   "repository": {
     "type": "git",
