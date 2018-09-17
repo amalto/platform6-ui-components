@@ -9,6 +9,11 @@ import * as ace from 'brace'
 import { AceSession, UserModel } from '@amalto/typings'
 
 /**
+ * Ace Editor modules
+ */
+import 'brace/ext/searchbox'
+
+/**
  * Ace editor mode
  */
 import 'brace/mode/csharp'
@@ -63,8 +68,6 @@ import 'brace/theme/tomorrow_night_eighties'
 import 'brace/theme/twilight'
 import 'brace/theme/vibrant_ink'
 import 'brace/theme/xcode'
-
-// const Range = ace.acequire( 'ace/range' ).Range
 
 type AceEditor = ace.Editor
 
@@ -455,12 +458,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         // Not save in user settings
         editor.setHighlightActiveLine( displaySettings.highlight || true )
         displaySettings.fontFamily && editor.setOption( 'fontFamily', displaySettings.fontFamily )
-
-        if ( displaySettings.marker ) {
-            const range = displaySettings.marker
-
-            // this._markerId = this._editor.getSession().addMarker( new Range( range.row, range.column, range.row, range.column + 1 ), 'ace_error-marker', 'fullLine', false )
-        }
 
         editor.renderer.setScrollMargin( 8, 8, 0, 0 )
     }

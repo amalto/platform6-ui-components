@@ -9,7 +9,10 @@ import { AceSession, UserModel, getUserJson } from '@amalto/typings'
 // Components
 import Help from '@amalto/help'
 
-// type AceEditor = AceAjax.Editor
+/**
+ * Ace Editor modules
+ */
+import 'brace/ext/searchbox'
 
 /**
  * Ace editor mode
