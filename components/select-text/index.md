@@ -15,7 +15,8 @@ const options = [
         
     },
     { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'second', label: 'second' },
-    { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'third', label: 'third' }
+    { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'third', label: 'third', disabled: true },
+    { leftIcon: 'fas fa-asterisk warning-color', rightIcon: 'fas fa-unlink warning-color', value: '*', label: '*' }
 ];
 
 <SelectText name='select-text-input-example'

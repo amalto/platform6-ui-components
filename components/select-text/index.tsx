@@ -153,10 +153,12 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                             ? <div className='options-list text-medium'>
                                 {
                                     this.state.options.map( ( { leftIcon, rightIcon, iconAlignment, value, label, disabled } ) => (
-                                        <div key={value} className={classNames( 'option-item', {
-                                            'option-item-selected': this.state.displayValue === label,
-                                            'option-item-disabled': disabled
-                                        } )} onClick={() => this.selectOption( label )}>
+                                        <div key={value}
+                                            className={classNames( 'option-item', {
+                                                'option-item-selected': this.state.displayValue === label,
+                                                'option-item-disabled': disabled
+                                            } )}
+                                            onClick={disabled ? null : () => this.selectOption( label )}>
                                             <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
                                                 {leftIcon ? <i className={`${ leftIcon } mgr-10`} /> : null}
                                                 <div className='flex-1'>{label}</div>
@@ -176,9 +178,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private autocompleteOptions = ( value: string ) => {
-        const regExp: RegExp = new RegExp( value )
+        // const regExp: RegExp = new RegExp( value )
 
-        return this.props.options.filter( o => regExp.test( o.label ) )
+        // return this.props.options.filter( o => regExp.test( o.label ) )
+        return this.props.options.filter( o => o.label.indexOf( value ) >= 0 )
     }
 
     private toggleSelectList = (): void => {
