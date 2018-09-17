@@ -76,6 +76,8 @@ namespace SelectText {
     export interface State {
         selectOpen?: boolean;
         displayValue?: string;
+        focused?: string;
+        lockFocus?: boolean;
         options?: {
             leftIcon?: string;
             rightIcon?: string;
@@ -96,6 +98,8 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         this.state = {
             selectOpen: false,
             displayValue: props.defaultDisplayValue || '',
+            focused: null,
+            lockFocus: false,
             options: props.options
         }
     }
@@ -122,7 +126,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         }
 
         return (
-            <div className={classNames( 'form-group', containerClass )}>
+            <div id={`wrapper-${ name }`} tabIndex={1} className={classNames( 'form-group', containerClass )} style={{ outline: 'none' }} onFocus={this.onFocusWrapper} onBlur={this.onBlur}>
 
                 <Radium.Style scopeSelector='.select-text-input' rules={Styles.selectTextInput} />
                 <Radium.Style scopeSelector='.select-text-input.btn-prefix' rules={Styles.selectTextInputBtnPreffix} />
@@ -135,7 +139,9 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
                 <div className='select-text-input'>
-                    <input name={name}
+                    <input id={`input-${ name }`}
+                        name={name}
+                        onFocus={this.onFocusInput}
                         ref={dom => this._input = dom}
                         onChange={e => autocompleteInput( e.currentTarget.value )}
                         type={type || 'text'}
@@ -149,10 +155,11 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         'fas fa-caret-down': !this.state.selectOpen,
                         'fas fa-caret-up': this.state.selectOpen,
                         'default-color': disabled
-                    } )} onClick={disabled ? null : () => this.toggleSelectList()} />
+                    } )} onClick={disabled ? null : () => this.toggleSelectList()}
+                    />
                     {
                         this.state.selectOpen && this.state.options
-                            ? <div className='options-list text-medium'>
+                            ? <div className='options-list text-medium fade in'>
                                 {
                                     this.state.options.map( ( { leftIcon, rightIcon, iconAlignment, value, label, disabled } ) => (
                                         <div key={value}
@@ -179,12 +186,46 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
     }
 
+    private onFocusWrapper = ( e ): void => {
+        e.stopPropagation()
+        this.setState( {
+            focused: e.currentTarget.id,
+            lockFocus: this.state.focused !== e.currentTarget.id
+        } )
+    }
+
+    private onFocusInput = ( e ): void => {
+        e.stopPropagation()
+        this.setState( {
+            focused: e.currentTarget.id,
+            lockFocus: this.state.focused !== e.currentTarget.id,
+            selectOpen: true
+        } )
+    }
+
+    private onBlur = ( e ): void => {
+        if ( this.state.focused ) {
+            setTimeout( () => {
+                this.setState( {
+                    selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
+                    options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayValue ),
+                    focused: this.state.lockFocus ? this.state.focused : null,
+                    lockFocus: false
+                } as SelectText.State )
+            }, 0 )
+        }
+    }
+
     private autocompleteOptions = ( value: string ) => {
         return this.props.options.filter( o => o.label.indexOf( value ) >= 0 )
     }
 
     private toggleSelectList = (): void => {
-        this.setState( { selectOpen: !this.state.selectOpen, options: this.autocompleteOptions( this.state.displayValue ) } as SelectText.State )
+        this.setState( {
+            selectOpen: !this.state.selectOpen,
+            options: this.autocompleteOptions( this.state.displayValue ),
+            lockFocus: this.state.selectOpen ? true : false
+        } as SelectText.State )
     }
 
     private selectOption = ( value: React.ReactText ): void => {
@@ -193,6 +234,8 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         this.setState( {
             selectOpen: false,
             displayValue: value,
+            focused: null,
+            lockFocus: false,
             options: this.autocompleteOptions( value as string )
         } as SelectText.State, () => this.props.handleOnChange && this.props.handleOnChange( this.state.displayValue ) )
     }
