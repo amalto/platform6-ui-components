@@ -133,7 +133,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <div className={classNames( 'select-text-input', inputClass )}>
+                <div className='select-text-input'>
                     <input name={name}
                         ref={dom => this._input = dom}
                         onChange={e => autocompleteInput( e.currentTarget.value )}
@@ -142,12 +142,13 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         placeholder={placeholder}
                         disabled={disabled}
                         autoFocus={autofocus}
-                        className='form-control padr-20'
+                        className={classNames( 'form-control padr-20', inputClass, { 'default-color': disabled } )}
                     />
                     <i className={classNames( 'selector', {
                         'fas fa-caret-down': !this.state.selectOpen,
-                        'fas fa-caret-up': this.state.selectOpen
-                    } )} onClick={() => this.toggleSelectList()} />
+                        'fas fa-caret-up': this.state.selectOpen,
+                        'default-color': disabled
+                    } )} onClick={disabled ? null : () => this.toggleSelectList()} />
                     {
                         this.state.selectOpen && this.state.options
                             ? <div className='options-list text-medium'>
