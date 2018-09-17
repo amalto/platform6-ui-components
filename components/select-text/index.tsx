@@ -77,8 +77,8 @@ namespace SelectText {
         selectOpen?: boolean;
         displayValue?: string;
         options?: {
-            leftIcon: string;
-            rightIcon: string;
+            leftIcon?: string;
+            rightIcon?: string;
             iconAlignment?: 'center' | 'baseline';
             value: string | number;
             label?: string;
