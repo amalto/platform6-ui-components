@@ -190,7 +190,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         e.stopPropagation()
         this.setState( {
             focused: e.currentTarget.id,
-            lockFocus: this.state.focused !== e.currentTarget.id
+            lockFocus: !!this.state.focused
         } )
     }
 
@@ -198,7 +198,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         e.stopPropagation()
         this.setState( {
             focused: e.currentTarget.id,
-            lockFocus: this.state.focused !== e.currentTarget.id,
+            lockFocus: !!this.state.focused,
             selectOpen: true
         } )
     }
@@ -223,8 +223,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     private toggleSelectList = (): void => {
         this.setState( {
             selectOpen: !this.state.selectOpen,
-            options: this.autocompleteOptions( this.state.displayValue ),
-            lockFocus: this.state.selectOpen ? true : false
+            options: this.autocompleteOptions( this.state.displayValue )
         } as SelectText.State )
     }
 
