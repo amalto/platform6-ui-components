@@ -25,8 +25,9 @@ export const Styles = {
         overflowX: 'hidden',
         overflowY: 'auto',
         'div:hover': {
-            backgroundColor: '#89BC55',
-            color: '#FFF'
+            color: '#262626',
+            textDecoration: 'none',
+            backgroundColor: '#f5f5f5'
         }
     },
     'option-item': {
@@ -34,8 +35,19 @@ export const Styles = {
         cursor: 'pointer',
         wordBreak: 'break-all'
     },
+    'option-item-disabled': {
+        color: '#5c606b',
+        textDecoration: 'none',
+        backgroundColor: 'transparent',
+        cursor: 'not-allowed',
+        fontStyle: 'italic'
+    },
     'option-item-selected': {
-        backgroundColor: '#89BC55',
-        color: '#FFF'
+        backgroundColor: '#89BC55 !important',
+        color: '#FFF !important',
+        'div': {
+            backgroundColor: '#89BC55 !important',
+            color: '#FFF !important'
+        }
     }
 }

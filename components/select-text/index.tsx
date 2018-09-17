@@ -129,6 +129,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 <Radium.Style scopeSelector='.options-list' rules={Styles['options-list']} />
                 <Radium.Style scopeSelector='.option-item' rules={Styles['option-item']} />
                 <Radium.Style scopeSelector='.option-item-selected' rules={Styles['option-item-selected']} />
+                <Radium.Style scopeSelector='.option-item-disabled' rules={Styles['option-item-disabled']} />
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
@@ -151,9 +152,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         this.state.selectOpen && this.state.options
                             ? <div className='options-list text-medium'>
                                 {
-                                    this.state.options.map( ( { leftIcon, rightIcon, iconAlignment, value, label } ) => (
+                                    this.state.options.map( ( { leftIcon, rightIcon, iconAlignment, value, label, disabled } ) => (
                                         <div key={value} className={classNames( 'option-item', {
-                                            'option-item-selected': this.state.displayValue === label
+                                            'option-item-selected': this.state.displayValue === label,
+                                            'option-item-disabled': disabled
                                         } )} onClick={() => this.selectOption( label )}>
                                             <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
                                                 {leftIcon ? <i className={`${ leftIcon } mgr-10`} /> : null}
