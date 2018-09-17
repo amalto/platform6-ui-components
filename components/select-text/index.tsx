@@ -39,8 +39,8 @@ namespace SelectText {
         type?: string;
         /** Input's list. */
         options: {
-            leftIcon: string;
-            rightIcon: string;
+            leftIcon?: string;
+            rightIcon?: string;
             iconAlignment?: 'center' | 'baseline';
             value: string | number;
             label?: string;
