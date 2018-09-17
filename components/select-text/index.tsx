@@ -103,6 +103,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     componentDidMount() {
         if ( this._input ) {
             this._input.value = this.props.defaultDisplayValue || ''
+            this.setState( { options: this.autocompleteOptions( this._input.value ) } as SelectText.State )
         }
     }
 
@@ -179,14 +180,11 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private autocompleteOptions = ( value: string ) => {
-        // const regExp: RegExp = new RegExp( value )
-
-        // return this.props.options.filter( o => regExp.test( o.label ) )
         return this.props.options.filter( o => o.label.indexOf( value ) >= 0 )
     }
 
     private toggleSelectList = (): void => {
-        this.setState( { selectOpen: !this.state.selectOpen } as SelectText.State )
+        this.setState( { selectOpen: !this.state.selectOpen, options: this.autocompleteOptions( this.state.displayValue ) } as SelectText.State )
     }
 
     private selectOption = ( value: React.ReactText ): void => {
