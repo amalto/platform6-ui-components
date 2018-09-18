@@ -217,7 +217,11 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private autocompleteOptions = ( value: string ) => {
-        return this.props.options.filter( o => o.label.indexOf( value ) >= 0 )
+        const escapedValue: string = value.replace( /[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&' )
+        const regExp: RegExp = new RegExp( `^${ escapedValue }` )
+
+        // Escape special charaters from instance name.
+        return this.props.options.filter( o => !value || regExp.test( o.label ) )
     }
 
     private toggleSelectList = (): void => {

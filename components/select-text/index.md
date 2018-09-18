@@ -16,6 +16,8 @@ const options = [
     },
     { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'second', label: 'second' },
     { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'third', label: 'third', disabled: true },
+    { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'toto', label: 'toto' },
+    { leftIcon: 'fas fa-arrow-right info-color', rightIcon: 'fas fa-unlink warning-color', value: 'titi', label: 'titi' },
     { leftIcon: 'fas fa-asterisk warning-color', rightIcon: 'fas fa-unlink warning-color', value: '*', label: '*' }
 ];
 
