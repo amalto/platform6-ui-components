@@ -1,6 +1,6 @@
 # SelectText
 
-Select and text input used in Platform 6.
+Select combined with a text input used in Platform 6.
 
 ## Install
 To install the SelectText component run:
