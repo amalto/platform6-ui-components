@@ -92,6 +92,8 @@ namespace SelectText {
             label?: string;
             disabled?: boolean;
         }[];
+        hasLeftIcon?: boolean;
+        hasRightIcon?: boolean;
     }
 }
 
@@ -106,12 +108,15 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             displayValue: props.defaultDisplayValue || '',
             focused: null,
             lockFocus: false,
-            options: props.options
+            options: props.options,
+            hasLeftIcon: false,
+            hasRightIcon: false
         }
     }
 
     componentDidMount() {
         loadTooltips( ReactDOM.findDOMNode( this ) )
+        this.initnializeConfig()
         if ( this._input ) {
             this._input.value = this.props.defaultDisplayValue || ''
             this.setState( { options: this.autocompleteOptions( this._input.value ) } as SelectText.State )
@@ -123,6 +128,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         if ( prevState.selectOpen !== this.state.selectOpen && !this.state.selectOpen && this._input ) {
             this._input.value = this.state.displayValue
         }
+
+        if ( prevProps.options !== this.props.options ) {
+            this.initnializeConfig()
+        }
     }
 
     componentWillUnmount() {
@@ -132,6 +141,8 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     render() {
 
         const { name, label, help, type, step, placeholder, disabled, autofocus, containerClass, inputClass } = this.props
+
+        const { hasLeftIcon, hasRightIcon } = this.state
 
         const autocompleteInput = ( value: string ) => {
             this.setState( { options: this.autocompleteOptions( value ) } as SelectText.State )
@@ -182,23 +193,17 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                                             } )}
                                             onClick={disabled ? null : () => this.selectOption( label )}>
                                             <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
-                                                {
-                                                    leftIcon
-                                                        ? <i className={`${ leftIcon } mgr-10`}
-                                                            data-toggle='tooltip'
-                                                            data-original-title={leftIconTooltip}
-                                                        />
-                                                        : null
-                                                }
+                                                <i className={`${ leftIcon } mgr-10`}
+                                                    style={{ paddingRight: leftIcon || !hasLeftIcon ? 0 : 13 }}
+                                                    data-toggle='tooltip'
+                                                    data-original-title={leftIconTooltip}
+                                                />
                                                 <div className='flex-1'>{label}</div>
-                                                {
-                                                    rightIcon
-                                                        ? <i className={`${ rightIcon } mgl-10`}
-                                                            data-toggle='tooltip'
-                                                            data-original-title={rightIconTooltip}
-                                                        />
-                                                        : null
-                                                }
+                                                <i className={`${ rightIcon } mgl-10`}
+                                                    style={{ paddingLeft: rightIcon || !hasRightIcon ? 0 : 13 }}
+                                                    data-toggle='tooltip'
+                                                    data-original-title={rightIconTooltip}
+                                                />
                                             </div>
                                         </div>
                                     ) )
@@ -231,16 +236,16 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private onBlur = ( e ): void => {
-        if ( this.state.focused ) {
-            setTimeout( () => {
-                this.setState( {
-                    selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
-                    options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayValue ),
-                    focused: this.state.lockFocus ? this.state.focused : null,
-                    lockFocus: false
-                } as SelectText.State )
-            }, 0 )
-        }
+        // if ( this.state.focused ) {
+        //     setTimeout( () => {
+        //         this.setState( {
+        //             selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
+        //             options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayValue ),
+        //             focused: this.state.lockFocus ? this.state.focused : null,
+        //             lockFocus: false
+        //         } as SelectText.State )
+        //     }, 0 )
+        // }
     }
 
     private autocompleteOptions = ( value: string ) => {
@@ -268,6 +273,20 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             lockFocus: false,
             options: this.autocompleteOptions( value as string )
         } as SelectText.State, () => this.props.handleOnChange && this.props.handleOnChange( this.state.displayValue ) )
+    }
+
+    private initnializeConfig = (): void => {
+        let hasLeftIcon: boolean = this.state.hasLeftIcon
+        let hasRightIcon: boolean = this.state.hasRightIcon
+
+        this.state.options.forEach( o => {
+            hasLeftIcon = !o.leftIcon ? hasLeftIcon : true
+            hasRightIcon = !o.rightIcon ? hasRightIcon : true
+        } )
+
+        console.info( 'initnializeConfig :: hasLeftIcon => ', hasLeftIcon )
+        console.info( 'initnializeConfig :: hasRightIcon => ', hasRightIcon )
+        this.setState( { hasLeftIcon, hasRightIcon } )
     }
 
 }
