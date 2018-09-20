@@ -14,9 +14,6 @@ export const Styles = {
         right: 8
     },
     'options-list': {
-        borderBottom: '1px solid #e8ebed',
-        borderRight: '1px solid #e8ebed',
-        borderLeft: '1px solid #e8ebed',
         userSelect: 'none',
         position: 'absolute',
         width: '100%',
@@ -36,17 +33,21 @@ export const Styles = {
         wordBreak: 'break-all'
     },
     'option-item-disabled': {
-        color: '#5c606b',
+        color: '#5c606b !important',
         textDecoration: 'none',
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent !important',
         cursor: 'not-allowed',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        'div': {
+            color: '#5c606b !important',
+            backgroundColor: 'transparent !important'
+        }
     },
     'option-item-selected': {
-        backgroundColor: '#89BC55 !important',
+        backgroundColor: '#61A653 !important',
         color: '#FFF !important',
         'div': {
-            backgroundColor: '#89BC55 !important',
+            backgroundColor: '#61A653 !important',
             color: '#FFF !important'
         }
     }
