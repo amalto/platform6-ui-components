@@ -2,7 +2,7 @@
   "name": "@amalto/custom-form-dialog",
   "displayName": "CustomFormDialog",
   "description": "Display custom form.",
-  "version": "1.4.126",
+  "version": "1.4.127",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/file-input": "1.4.115",
-    "@amalto/helpers": "1.4.108",
+    "@amalto/file-input": "1.4.116",
+    "@amalto/helpers": "1.4.109",
     "@amalto/spinner": "1.4.20",
     "@amalto/switch": "1.4.22",
     "@amalto/toggle-panel": "1.4.30",
