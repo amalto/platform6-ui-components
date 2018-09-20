@@ -28,7 +28,7 @@ export const Styles = {
         }
     },
     'option-item': {
-        padding: '2px 10px',
+        padding: '3px 10px',
         cursor: 'pointer',
         wordBreak: 'break-all'
     },
