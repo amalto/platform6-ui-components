@@ -228,10 +228,12 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
     private onFocusInput = ( e ): void => {
         e.stopPropagation()
+        this._input.value = ''
         this.setState( {
             focused: e.currentTarget.id,
             lockFocus: !!this.state.focused,
-            selectOpen: true
+            selectOpen: true,
+            options: this.autocompleteOptions( '' )
         } )
     }
 
@@ -257,9 +259,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private toggleSelectList = (): void => {
+        this._input.value = this.state.selectOpen ? this.state.displayValue : ''
         this.setState( {
             selectOpen: !this.state.selectOpen,
-            options: this.autocompleteOptions( this.state.displayValue )
+            options: this.autocompleteOptions( this._input.value )
         } as SelectText.State )
     }
 
