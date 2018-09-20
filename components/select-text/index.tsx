@@ -148,6 +148,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         step={!type || type !== 'number' ? undefined : step}
                         placeholder={placeholder}
                         disabled={disabled}
+                        autoComplete='off'
                         autoFocus={autofocus}
                         className={classNames( 'form-control padr-20', inputClass, { 'default-color': disabled } )}
                     />
