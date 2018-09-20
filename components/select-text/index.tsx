@@ -236,16 +236,16 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private onBlur = ( e ): void => {
-        // if ( this.state.focused ) {
-        //     setTimeout( () => {
-        //         this.setState( {
-        //             selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
-        //             options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayValue ),
-        //             focused: this.state.lockFocus ? this.state.focused : null,
-        //             lockFocus: false
-        //         } as SelectText.State )
-        //     }, 0 )
-        // }
+        if ( this.state.focused ) {
+            setTimeout( () => {
+                this.setState( {
+                    selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
+                    options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayValue ),
+                    focused: this.state.lockFocus ? this.state.focused : null,
+                    lockFocus: false
+                } as SelectText.State )
+            }, 0 )
+        }
     }
 
     private autocompleteOptions = ( value: string ) => {
@@ -284,8 +284,6 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             hasRightIcon = !o.rightIcon ? hasRightIcon : true
         } )
 
-        console.info( 'initnializeConfig :: hasLeftIcon => ', hasLeftIcon )
-        console.info( 'initnializeConfig :: hasRightIcon => ', hasRightIcon )
         this.setState( { hasLeftIcon, hasRightIcon } )
     }
 
