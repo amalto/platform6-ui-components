@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@amalto/help": "1.4.21",
+        "@amalto/helpers": "1.4.109",
         "classnames": "2.2.5",
         "radium": "0.24.0",
         "react": "15.6.2",

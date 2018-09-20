@@ -1,10 +1,12 @@
 // Modules
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import * as uuid from 'uuid'
 import * as Radium from 'radium'
 
 // Components
 import Help from '@amalto/help'
+import { loadTooltips, unloadTooltips } from '@amalto/helpers'
 
 // Utils
 import * as classNames from 'classnames'
@@ -40,7 +42,9 @@ namespace SelectText {
         /** Input's list. */
         options: {
             leftIcon?: string;
+            leftIconTooltip?: string;
             rightIcon?: string;
+            rightIconTooltip?: string;
             iconAlignment?: 'center' | 'baseline';
             value: string | number;
             label?: string;
@@ -80,7 +84,9 @@ namespace SelectText {
         lockFocus?: boolean;
         options?: {
             leftIcon?: string;
+            leftIconTooltip?: string;
             rightIcon?: string;
+            rightIconTooltip?: string;
             iconAlignment?: 'center' | 'baseline';
             value: string | number;
             label?: string;
@@ -105,6 +111,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     componentDidMount() {
+        loadTooltips( ReactDOM.findDOMNode( this ) )
         if ( this._input ) {
             this._input.value = this.props.defaultDisplayValue || ''
             this.setState( { options: this.autocompleteOptions( this._input.value ) } as SelectText.State )
@@ -112,9 +119,14 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     componentDidUpdate( prevProps: SelectText.Props, prevState: SelectText.State ) {
+        loadTooltips( ReactDOM.findDOMNode( this ) )
         if ( prevState.selectOpen !== this.state.selectOpen && !this.state.selectOpen && this._input ) {
             this._input.value = this.state.displayValue
         }
+    }
+
+    componentWillUnmount() {
+        unloadTooltips( ReactDOM.findDOMNode( this ) )
     }
 
     render() {
@@ -162,7 +174,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         this.state.selectOpen && this.state.options
                             ? <div className='options-list text-medium fade in'>
                                 {
-                                    this.state.options.map( ( { leftIcon, rightIcon, iconAlignment, value, label, disabled } ) => (
+                                    this.state.options.map( ( { leftIcon, leftIconTooltip, rightIcon, rightIconTooltip, iconAlignment, value, label, disabled } ) => (
                                         <div key={value}
                                             className={classNames( 'option-item', {
                                                 'option-item-selected': this.state.displayValue === label,
@@ -170,9 +182,23 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                                             } )}
                                             onClick={disabled ? null : () => this.selectOption( label )}>
                                             <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
-                                                {leftIcon ? <i className={`${ leftIcon } mgr-10`} /> : null}
+                                                {
+                                                    leftIcon
+                                                        ? <i className={`${ leftIcon } mgr-10`}
+                                                            data-toggle='tooltip'
+                                                            data-original-title={leftIconTooltip}
+                                                        />
+                                                        : null
+                                                }
                                                 <div className='flex-1'>{label}</div>
-                                                {rightIcon ? <i className={`${ rightIcon } mgl-10`} /> : null}
+                                                {
+                                                    rightIcon
+                                                        ? <i className={`${ rightIcon } mgl-10`}
+                                                            data-toggle='tooltip'
+                                                            data-original-title={rightIconTooltip}
+                                                        />
+                                                        : null
+                                                }
                                             </div>
                                         </div>
                                     ) )
