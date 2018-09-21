@@ -9,14 +9,19 @@ import * as classNames from 'classnames'
 // Models
 import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typings'
 
+// constants
+const STRING_MAX_LENGTH = 300
+
 module DataItem {
     export interface Props extends React.Props<DataItem> {
         displayValue: JSX.Element | string | number;
+        displayValueMaxLength?: number;
         columnId: string;
         cssClass?: string;
         editCallback?: ( key: string, value: string ) => void;
         enterPressCallback?: () => void;
         tabOnLastCellCallback?: () => void;
+        displayContextMenu?: ( columnId: string, value: string, posX: number, posY: number ) => void;
         editMode?: boolean;
         readOnly?: boolean;
         isEdited?: boolean;
@@ -36,6 +41,8 @@ module DataItem {
     export interface State {
         showAsTextarea?: boolean;
         invalidMsg?: string;
+        valueMaxLength?: number;
+        contentTooLong?: boolean;
     }
 }
 
@@ -44,13 +51,34 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
         super( props )
         this.state = {
             showAsTextarea: false,
-            invalidMsg: undefined
+            invalidMsg: undefined,
+            valueMaxLength: props.displayValueMaxLength || STRING_MAX_LENGTH,
+            contentTooLong: false
+        }
+    }
+
+    componentDidMount() {
+        const displayValueLimit: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH
+
+        if ( typeof this.props.displayValue === 'string' && this.props.displayValue.length > displayValueLimit ) {
+            this.setState( { contentTooLong: true } )
+        }
+    }
+
+    componentDidUpdate( prevProps: DataItem.Props, prevState: DataItem.State ) {
+        if ( prevProps.displayValueMaxLength !== this.props.displayValueMaxLength || prevProps.displayValue !== this.props.displayValue ) {
+            const valueMaxLength: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH
+
+            this.setState( {
+                contentTooLong: typeof this.props.displayValue === 'string' && this.props.displayValue.length > valueMaxLength,
+                valueMaxLength
+            } )
         }
     }
 
     render() {
 
-        const { options, editCallback, editMode, readOnly, allowDisplayAsTextAreaOnReadonly, isEdited, lastEditable, tabOnLastCellCallback, displayTemplate, displayValue, columnId, cssClass, displayMode, label } = this.props
+        const { options, editCallback, editMode, readOnly, allowDisplayAsTextAreaOnReadonly, isEdited, lastEditable, tabOnLastCellCallback, displayContextMenu, displayTemplate, displayValue, columnId, cssClass, displayMode, label } = this.props
 
         const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
 
@@ -92,7 +120,11 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
                     </div>
                 )
             )
-        ) : <div>{displayValue || '-'}</div>
+        ) : (
+                <div onContextMenu={displayContextMenu && this.displayContextMenu}>
+                    {this.truncateDisplayValue( displayValue )}
+                </div>
+            )
 
         if ( allowDisplayAsTextAreaOnReadonly && readOnly && typeof displayValue === 'string' ) {
             additionalProps.onDoubleClick = this.toggleTextareaDisplay
@@ -167,6 +199,32 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
             event.preventDefault()
             this.props.tabOnLastCellCallback()
         }
+    }
+
+    /**
+ * This method allow you to get the columnId and the display value if the cell data.
+ * You will be able to handle truncated long display value with a context menu.
+ * 
+ * e.g: Using copy to clipboard.
+ */
+    private displayContextMenu = ( e ) => {
+        e.preventDefault()
+        this.props.displayContextMenu( this.props.columnId, this.props.displayValue as string, e.clientX, e.clientY )
+    }
+
+    /**
+     * Truncate display value inside the cell only if the displayValue is a string.
+     * Note that it won't work on JSX.Element, you will have to truncate the content yourself.
+     */
+    private truncateDisplayValue = ( displayValue: string | JSX.Element | number ): string | JSX.Element | number => {
+        if ( !displayValue ) return '-'
+
+        if ( typeof displayValue !== 'string' ) return displayValue
+
+        const { contentTooLong, valueMaxLength } = this.state
+        const truncatedValue: string = contentTooLong ? displayValue.substring( 0, valueMaxLength ) + '...' : displayValue
+
+        return truncatedValue
     }
 
 }
