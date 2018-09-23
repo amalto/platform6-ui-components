@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import Dropzone from 'react-dropzone'
+var Dropzone = require( 'react-dropzone' )
 import * as classNames from 'classnames'
 
 // Utils
