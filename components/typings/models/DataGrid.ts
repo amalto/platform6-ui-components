@@ -18,6 +18,7 @@ interface ColumnHeader {
 
 interface CellData {
     displayValue: JSX.Element | string | number;
+    displayValueMaxLength?: boolean;
     columnId: string;
     cssClass?: string;
     display?: boolean;
