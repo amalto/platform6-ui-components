@@ -2,6 +2,8 @@
 import * as React from 'react'
 import * as PDFJS from 'pdfjs-dist'
 
+PDFJS.workerSrc = require( 'pdfjs-dist/build/pdf.worker.entry.js' )
+
 // Utils
 import { compileWordings } from '@amalto/helpers'
 
@@ -11,6 +13,8 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 // Components
 import Spinner from '@amalto/spinner'
 import PagingControls from '@amalto/paging-controls'
+
+import pdfjs from 'pdfjs-dist'
 
 /**
  * Display pdf content.

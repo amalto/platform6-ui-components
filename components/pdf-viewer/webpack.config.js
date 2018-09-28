@@ -4,11 +4,11 @@ const fs = require('fs');
 
 module.exports = {
     entry: {
-        // the entry points of our app
-        main: './index.tsx',
-
         // has to set the pdf.worker path else you won't be able to use the pdf framework
-        'pdf.worker': 'pdfjs-dist/build/pdf.worker.entry.js'
+        'pdfjs.worker': 'pdfjs-dist/build/pdf.worker.js',
+
+        // the entry points of our app
+        main: './index.tsx'
     },
 
     output: {
