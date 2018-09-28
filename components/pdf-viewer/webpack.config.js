@@ -3,10 +3,13 @@ const webpack = require('webpack');
 const fs = require('fs');
 
 module.exports = {
-    entry: [
+    entry: {
         // the entry points of our app
-        './index.tsx'
-    ],
+        main: './index.tsx',
+
+        // has to set the pdf.worker path else you won't be able to use the pdf framework
+        'pdf.worker': 'node_modules/pdfjs-dist/build/pdf.worker.entry'
+    },
 
     output: {
         // the output bundle
