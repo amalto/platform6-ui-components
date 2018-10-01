@@ -2,7 +2,7 @@
     "name": "@amalto/helpers",
     "displayName": "Helpers",
     "description": "Helpers functions used across Platform 6 core and components.",
-    "version": "1.4.110",
+    "version": "1.4.111",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/typings": "1.0.47",
-        "@amalto/wordings": "1.4.58",
+        "@amalto/wordings": "1.4.59",
         "base-64": "0.1.0",
         "classnames": "2.2.5",
         "md5": "2.2.1",
