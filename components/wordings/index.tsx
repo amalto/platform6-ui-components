@@ -1073,6 +1073,71 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Voir la source'
     },
 
+    editTransaction: {
+        'en-US': 'Edit transaction',
+        'fr-FR': 'Éditer la transaction'
+    },
+
+    viewTransaction: {
+        'en-US': 'View transaction',
+        'fr-FR': 'Voir la transaction'
+    },
+
+    reprocessTransaction: {
+        'en-US': 'Reprocess transaction',
+        'fr-FR': 'Relancer la transaction'
+    },
+
+    flagTransaction: {
+        'en-US': 'Flag transaction',
+        'fr-FR': 'Marquer la transaction'
+    },
+
+    createTransaction: {
+        'en-US': 'Create transaction',
+        'fr-FR': 'Créer une transaction'
+    },
+
+    transactionsDeleted: {
+        'en-US': 'Transactions deleted',
+        'fr-FR': 'Transactions supprimés'
+    },
+
+    lockedTransaction: {
+        'en-US': 'This transaction is currently locked',
+        'fr-FR': 'Cette transaction est verrouillée'
+    },
+
+    reloadTransaction: {
+        'en-US': 'Reload transaction',
+        'fr-FR': 'Recharger la transaction'
+    },
+
+    printTransaction: {
+        'en-US': 'Print transaction',
+        'fr-FR': 'Imprimer la transaction'
+    },
+
+    createdTransactionsIds: {
+        'en-US': 'Created transaction(s) ID(s):',
+        'fr-FR': 'ID(s) de la/des transaction(s) créé(s) :'
+    },
+
+    fetchTransactionFailure: {
+        'en-US': 'Transaction cannot be loaded',
+        'fr-FR': 'La transaction ne peut être chargée'
+    },
+
+    multipleTransactionReprocessImpossible: {
+        'en-US': 'One or more of the selected transactions cannot be reprocessed. Please check your selection and retry!',
+        'fr-FR': 'Une ou plusieurs des transactions sélectionnées ne peuvent pas être relancées. Merci de verifier votre sélection et de réessayer !'
+    },
+
+    multipleTransactionDeleteImpossible: {
+        'en-US': 'One or more of the selected transactions cannot be deleted. Please check your selection and retry!',
+        'fr-FR': 'Une ou plusieurs des transactions sélectionnées ne peuvent pas être supprimées. Merci de verifier votre sélection et de réessayer !'
+    },
+
     editMessage: {
         'en-US': 'Edit message',
         'fr-FR': 'Éditer le message'

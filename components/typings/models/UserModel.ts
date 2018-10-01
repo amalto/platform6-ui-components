@@ -27,10 +27,14 @@ module UserModel {
             };
         };
         preferredLanguage?: string;
-        //base64 string or absolute url to image file
+        // base64 string or absolute url to image file
         avatar?: string;
-        //delay of messages list auto-refresh (in seconds)
+
+        // Delay of messages list auto-refresh (in seconds)
+        // Use transactions if core version > 5.20.0, otherwise use messages
         messagesAutoRefresh?: number;
+        transactionsAutoRefresh?: number;
+
         displayTemplates?: {
             [appInstanceName: string]: {
                 [viewName: string]: DisplayTemplate;
