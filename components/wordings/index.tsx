@@ -1173,6 +1173,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Accueil'
     },
 
+    transactions: {
+        'en-US': 'Transactions',
+        'fr-FR': 'Transaction'
+    },
+
     reports: {
         'en-US': 'Reports',
         'fr-FR': 'Rapports'
