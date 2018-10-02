@@ -209,7 +209,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                                                     data-toggle='tooltip'
                                                     data-original-title={leftIconTooltip}
                                                 />
-                                                <div className='flex-1' style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</div>
+                                                <div className='flex-1' style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} data-toggle='tooltip' data-original-title={label}>{label}</div>
                                                 <i className={`${ rightIcon } mgl-10`}
                                                     style={{ paddingLeft: rightIcon || !hasRightIcon ? 0 : 13 }}
                                                     data-toggle='tooltip'
