@@ -331,11 +331,16 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             // Up arrow
             case 38: {
                 const { options, displayValue, displayLabel } = this.state
-                const selectedOption = options.findIndex( opt => opt.value === displayValue )
+                const selectedOption: number = options.findIndex( opt => opt.value === displayValue )
+                let prevOption: number = selectedOption
+
+                for ( let i = prevOption; prevOption === selectedOption && i > 0; --i ) {
+                    prevOption = !options[i].disabled ? i : prevOption
+                }
 
                 this.setState( {
-                    displayValue: selectedOption > 0 ? options[selectedOption - 1].value : displayValue,
-                    displayLabel: selectedOption > 0 ? options[selectedOption - 1].label : displayLabel
+                    displayValue: options[prevOption].value,
+                    displayLabel: options[prevOption].label
                 } )
                 break
             }
@@ -343,11 +348,16 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             // Down arrow
             case 40: {
                 const { options, displayValue, displayLabel } = this.state
-                const selectedOption = options.findIndex( opt => opt.value === displayValue )
+                const selectedOption: number = options.findIndex( opt => opt.value === displayValue )
+                let nextOption: number = selectedOption
+
+                for ( let i = nextOption; nextOption === selectedOption && i < options.length; ++i ) {
+                    nextOption = !options[i].disabled ? i : nextOption
+                }
 
                 this.setState( {
-                    displayValue: selectedOption < options.length - 1 ? options[selectedOption + 1].value : displayValue,
-                    displayLabel: selectedOption < options.length - 1 ? options[selectedOption + 1].label : displayLabel
+                    displayValue: options[nextOption].value,
+                    displayLabel: options[nextOption].label
                 } )
                 break
             }
