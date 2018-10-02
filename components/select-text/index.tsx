@@ -197,6 +197,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                                 {
                                     this.state.options.map( ( { leftIcon, leftIconTooltip, rightIcon, rightIconTooltip, iconAlignment, value, label, disabled } ) => (
                                         <div key={value}
+                                            id={`opt-${ value }`}
                                             className={classNames( 'option-item', {
                                                 'option-item-selected': this.state.displayValue === value,
                                                 'option-item-disabled': disabled
@@ -285,6 +286,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     private selectOption = ( value: React.ReactText, label: string ): void => {
         this._input.value = value as string
         this._input.blur()
+        this.scrollToTop()
 
         this.setState( {
             selectOpen: false,
@@ -343,7 +345,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 this.setState( {
                     displayValue: options[prevOption].value,
                     displayLabel: options[prevOption].label
-                } )
+                }, () => this.scrollToOption( this.state.displayValue.toString() ) )
                 break
             }
 
@@ -360,11 +362,23 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 this.setState( {
                     displayValue: options[nextOption].value,
                     displayLabel: options[nextOption].label
-                } )
+                }, () => this.scrollToOption( this.state.displayValue.toString() ) )
                 break
             }
             default: { }
         }
+    }
+
+    private scrollToTop = () => {
+        const el = ReactDOM.findDOMNode( document.getElementById( `input-${ this.props.name }` ) )
+
+        el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
+    }
+
+    private scrollToOption = ( value: string ) => {
+        const el = ReactDOM.findDOMNode( document.getElementById( `opt-${ value }` ) )
+
+        el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
     }
 
     private getOptionFromValue = ( value: string | number, options: SelectText.Option[] ) => {
