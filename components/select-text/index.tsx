@@ -246,11 +246,11 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private onBlur = ( e ): void => {
-        // if ( this.state.focused ) {
-        //     setTimeout( () => {
-        //         this.reset()
-        //     }, 0 )
-        // }
+        if ( this.state.focused ) {
+            setTimeout( () => {
+                this.reset()
+            }, 0 )
+        }
     }
 
     private reset = () => {

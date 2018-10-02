@@ -383,6 +383,10 @@ module.exports = {
                         content: 'readme/typings/NotificationModel.md'
                     },
                     {
+                        name: 'Option',
+                        content: 'readme/typings/Option.md'
+                    },
+                    {
                         name: 'OrderDataset',
                         content: 'readme/typings/OrderDataset.md'
                     },
