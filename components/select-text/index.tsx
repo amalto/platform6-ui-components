@@ -80,17 +80,6 @@ namespace SelectText {
         hasLeftIcon?: boolean;
         hasRightIcon?: boolean;
     }
-
-    export interface Option {
-        leftIcon?: string;
-        leftIconTooltip?: string;
-        rightIcon?: string;
-        rightIconTooltip?: string;
-        iconAlignment?: 'center' | 'baseline';
-        value: string | number;
-        label?: string;
-        disabled?: boolean;
-    }
 }
 
 class SelectText extends React.Component<SelectText.Props, SelectText.State> {
@@ -380,7 +369,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
     }
 
-    private getOptionFromValue = ( value: string | number, options: SelectText.Option[] ) => {
+    private getOptionFromValue = ( value: string | number, options: Option[] ) => {
         const opt = options.find( opt => opt.value.toString() === value.toString() )
 
         return opt
