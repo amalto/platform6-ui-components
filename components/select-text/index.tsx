@@ -41,8 +41,6 @@ namespace SelectText {
         type?: string;
         /** Input's list. */
         options: Option[];
-        /** Step between each number if input is of type <span className='quote'>number</span>. */
-        step?: number;
         /**
          * Focus the input after being loaded.
          * @default false
@@ -148,7 +146,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
     render() {
 
-        const { name, label, help, type, step, placeholder, disabled, autofocus, containerClass, inputClass } = this.props
+        const { name, label, help, type, placeholder, disabled, autofocus, containerClass, inputClass } = this.props
 
         const { hasLeftIcon, hasRightIcon } = this.state
 
@@ -178,7 +176,6 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         ref={dom => this._input = dom}
                         onChange={e => autocompleteInput( e.currentTarget.value.toString() )}
                         type={type || 'text'}
-                        step={!type || type !== 'number' ? undefined : step}
                         placeholder={placeholder}
                         disabled={inputDisabled}
                         autoComplete='off'
