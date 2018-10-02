@@ -40,16 +40,7 @@ namespace SelectText {
         /** Input's type. */
         type?: string;
         /** Input's list. */
-        options: {
-            leftIcon?: string;
-            leftIconTooltip?: string;
-            rightIcon?: string;
-            rightIconTooltip?: string;
-            iconAlignment?: 'center' | 'baseline';
-            value: string | number;
-            label?: string;
-            disabled?: boolean;
-        }[];
+        options: Option[];
         /** Step between each number if input is of type <span className='quote'>number</span>. */
         step?: number;
         /**
@@ -65,7 +56,7 @@ namespace SelectText {
         selectOpen?: boolean;
 
         /** Handle input changes. */
-        handleOnChange?: ( displayValue: string ) => void;
+        handleOnChange?: ( displayValue: string | number ) => void;
 
         /** Hide props from documentation */
 
@@ -79,21 +70,26 @@ namespace SelectText {
 
     export interface State {
         selectOpen?: boolean;
-        displayValue?: string;
+        displayLabel?: string;
+        displayValue?: string | number;
+        currentLabel?: string;
+        currentValue?: string | number;
         focused?: string;
         lockFocus?: boolean;
-        options?: {
-            leftIcon?: string;
-            leftIconTooltip?: string;
-            rightIcon?: string;
-            rightIconTooltip?: string;
-            iconAlignment?: 'center' | 'baseline';
-            value: string | number;
-            label?: string;
-            disabled?: boolean;
-        }[];
+        options?: Option[];
         hasLeftIcon?: boolean;
         hasRightIcon?: boolean;
+    }
+
+    export interface Option {
+        leftIcon?: string;
+        leftIconTooltip?: string;
+        rightIcon?: string;
+        rightIconTooltip?: string;
+        iconAlignment?: 'center' | 'baseline';
+        value: string | number;
+        label?: string;
+        disabled?: boolean;
     }
 }
 
@@ -103,9 +99,15 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
     constructor( props: SelectText.Props ) {
         super( props )
+
+        const opt = this.getOptionFromValue( props.defaultDisplayValue, props.options )
+
         this.state = {
             selectOpen: false,
+            displayLabel: opt && opt.label || '',
             displayValue: props.defaultDisplayValue || '',
+            currentLabel: opt && opt.label || '',
+            currentValue: props.defaultDisplayValue || '',
             focused: null,
             lockFocus: false,
             options: props.options,
@@ -126,7 +128,12 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     componentDidUpdate( prevProps: SelectText.Props, prevState: SelectText.State ) {
         loadTooltips( ReactDOM.findDOMNode( this ) )
         if ( prevState.selectOpen !== this.state.selectOpen && !this.state.selectOpen && this._input ) {
-            this._input.value = this.state.displayValue
+            this._input.value = this.state.displayLabel
+        }
+
+        if ( prevState.selectOpen !== this.state.selectOpen ) {
+            if ( this.state.selectOpen ) document.addEventListener( 'keydown', this.handleKeyboardShortcut )
+            else document.removeEventListener( 'keydown', this.handleKeyboardShortcut )
         }
 
         if ( prevProps.options !== this.props.options ) {
@@ -136,6 +143,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
     componentWillUnmount() {
         unloadTooltips( ReactDOM.findDOMNode( this ) )
+        document.removeEventListener( 'keydown', this.handleKeyboardShortcut )
     }
 
     render() {
@@ -188,10 +196,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                                     this.state.options.map( ( { leftIcon, leftIconTooltip, rightIcon, rightIconTooltip, iconAlignment, value, label, disabled } ) => (
                                         <div key={value}
                                             className={classNames( 'option-item', {
-                                                'option-item-selected': this.state.displayValue === label,
+                                                'option-item-selected': this.state.displayValue === value,
                                                 'option-item-disabled': disabled
                                             } )}
-                                            onClick={disabled ? null : () => this.selectOption( label )}>
+                                            onClick={disabled ? null : () => this.selectOption( value, label )}>
                                             <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
                                                 <i className={`${ leftIcon } mgr-10`}
                                                     style={{ paddingRight: leftIcon || !hasLeftIcon ? 0 : 13 }}
@@ -240,14 +248,20 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     private onBlur = ( e ): void => {
         if ( this.state.focused ) {
             setTimeout( () => {
-                this.setState( {
-                    selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
-                    options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayValue ),
-                    focused: this.state.lockFocus ? this.state.focused : null,
-                    lockFocus: false
-                } as SelectText.State )
+                this.reset()
             }, 0 )
         }
+    }
+
+    private reset = () => {
+        this.setState( {
+            selectOpen: this.state.lockFocus ? this.state.selectOpen : false,
+            options: this.state.lockFocus ? this.state.options : this.autocompleteOptions( this.state.displayLabel ),
+            focused: this.state.lockFocus ? this.state.focused : null,
+            displayLabel: this.state.currentLabel,
+            displayValue: this.state.currentValue,
+            lockFocus: false
+        } as SelectText.State, () => this._input.blur() )
     }
 
     private autocompleteOptions = ( value: string ) => {
@@ -259,19 +273,23 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private toggleSelectList = (): void => {
-        this._input.value = this.state.selectOpen ? this.state.displayValue : ''
+        this._input.value = this.state.selectOpen ? this.state.displayLabel : ''
         this.setState( {
             selectOpen: !this.state.selectOpen,
             options: this.autocompleteOptions( this._input.value )
         } as SelectText.State )
     }
 
-    private selectOption = ( value: React.ReactText ): void => {
+    private selectOption = ( value: React.ReactText, label: string ): void => {
         this._input.value = value as string
+        this._input.blur()
 
         this.setState( {
             selectOpen: false,
             displayValue: value,
+            displayLabel: label,
+            currentValue: value,
+            currentLabel: label,
             focused: null,
             lockFocus: false,
             options: this.autocompleteOptions( value as string )
@@ -288,6 +306,59 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         } )
 
         this.setState( { hasLeftIcon, hasRightIcon } )
+    }
+
+    private handleKeyboardShortcut = ( event ) => {
+
+        switch ( event.keyCode ) {
+
+            // ESC
+            case 27: {
+
+                // Close select text
+                this.reset()
+                break
+            }
+
+            // Enter
+            case 13: {
+
+                // Select option
+                this.selectOption( this.state.displayValue, this.state.displayLabel )
+                break
+            }
+
+            // Up arrow
+            case 38: {
+                const { options, displayValue, displayLabel } = this.state
+                const selectedOption = options.findIndex( opt => opt.value === displayValue )
+
+                this.setState( {
+                    displayValue: selectedOption > 0 ? options[selectedOption - 1].value : displayValue,
+                    displayLabel: selectedOption > 0 ? options[selectedOption - 1].label : displayLabel
+                } )
+                break
+            }
+
+            // Down arrow
+            case 40: {
+                const { options, displayValue, displayLabel } = this.state
+                const selectedOption = options.findIndex( opt => opt.value === displayValue )
+
+                this.setState( {
+                    displayValue: selectedOption < options.length - 1 ? options[selectedOption + 1].value : displayValue,
+                    displayLabel: selectedOption < options.length - 1 ? options[selectedOption + 1].label : displayLabel
+                } )
+                break
+            }
+            default: { }
+        }
+    }
+
+    private getOptionFromValue = ( value: string | number, options: SelectText.Option[] ) => {
+        const opt = options.find( opt => opt.value === value )
+
+        return opt
     }
 
 }
