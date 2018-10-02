@@ -120,6 +120,7 @@
         "@amalto/tree": "^1.4.58",
         "@amalto/typeahead-form-input": "^1.4.18",
         "@amalto/typeahead-input": "^1.4.18",
+        "@amalto/typings": "^1.0.50",
         "@amalto/validated-input": "^1.4.18",
         "@amalto/wordings": "^1.4.37",
         "babel-preset-react": "6.24.1",

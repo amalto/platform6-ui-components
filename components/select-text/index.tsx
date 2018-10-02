@@ -8,6 +8,8 @@ import * as Radium from 'radium'
 import Help from '@amalto/help'
 import { loadTooltips, unloadTooltips } from '@amalto/helpers'
 
+// Models
+import { Option } from '@amalto/typings'
 // Utils
 import * as classNames from 'classnames'
 
