@@ -18,6 +18,7 @@ import { ScopeValue, ScopesTree, PermissionDef } from './models/Scopes'
 import { WebStorage } from './models/WebStorage'
 import FileWrapper from './models/FileWrapper'
 import { MultiProcessingErrors } from './models/Errors'
+import { Option } from './models/Option'
 
 /** Export */
 export { Action }
@@ -39,3 +40,4 @@ export { ScopeValue, ScopesTree, PermissionDef }
 export { WebStorage }
 export { FileWrapper }
 export { MultiProcessingErrors }
+export { Option }
