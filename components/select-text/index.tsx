@@ -105,9 +105,9 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         this.state = {
             selectOpen: false,
             displayLabel: opt && opt.label || '',
-            displayValue: props.defaultDisplayValue || '',
+            displayValue: opt && opt.value || '',
             currentLabel: opt && opt.label || '',
-            currentValue: props.defaultDisplayValue || '',
+            currentValue: opt && opt.value || '',
             focused: null,
             lockFocus: false,
             options: props.options,
@@ -120,7 +120,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         loadTooltips( ReactDOM.findDOMNode( this ) )
         this.initnializeConfig()
         if ( this._input ) {
-            this._input.value = this.props.defaultDisplayValue || ''
+            this._input.value = this.state.displayLabel || ''
             this.setState( { options: this.autocompleteOptions( this._input.value ) } as SelectText.State )
         }
     }
@@ -156,6 +156,8 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             this.setState( { options: this.autocompleteOptions( value ) } as SelectText.State )
         }
 
+        const inputDisabled: boolean = disabled || this.state.options.length === 0
+
         return (
             <div id={`wrapper-${ name }`} tabIndex={1} className={classNames( 'form-group', containerClass )} style={{ outline: 'none' }} onFocus={this.onFocusWrapper} onBlur={this.onBlur}>
 
@@ -178,7 +180,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         type={type || 'text'}
                         step={!type || type !== 'number' ? undefined : step}
                         placeholder={placeholder}
-                        disabled={disabled}
+                        disabled={inputDisabled}
                         autoComplete='off'
                         autoFocus={autofocus}
                         className={classNames( 'form-control padr-20', inputClass, { 'default-color': disabled } )}
@@ -186,8 +188,8 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                     <i className={classNames( 'selector', {
                         'fas fa-caret-down': !this.state.selectOpen,
                         'fas fa-caret-up': this.state.selectOpen,
-                        'default-color': disabled
-                    } )} onClick={disabled ? null : () => this.toggleSelectList()}
+                        'default-color': inputDisabled
+                    } )} onClick={inputDisabled ? null : () => this.toggleSelectList()}
                     />
                     {
                         this.state.selectOpen && this.state.options
