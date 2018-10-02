@@ -256,7 +256,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private autocompleteOptions = ( value: string ) => {
-        const escapedValue: string = value.replace( /[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&' )
+        const escapedValue: string = value.replace( /[-[\]{}()*+?.,\\^$|#\s]/gi, '\\$&' )
         const regExp: RegExp = new RegExp( `^${ escapedValue }` )
 
         // Escape special charaters from instance name.
