@@ -187,7 +187,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                                         <div key={value}
                                             id={`opt-${ value }`}
                                             className={classNames( 'option-item', {
-                                                'option-item-selected': this.state.displayValue.toString() === value.toString(),
+                                                'option-item-selected': this.state.currentValue.toString() === value.toString() || this.state.displayValue.toString() === value.toString(),
                                                 'option-item-disabled': disabled
                                             } )}
                                             onClick={disabled ? null : () => this.selectOption( value.toString(), label.toString() )}>
