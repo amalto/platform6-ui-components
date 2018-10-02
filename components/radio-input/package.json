@@ -2,7 +2,7 @@
   "name": "@amalto/radio-input",
   "displayName": "RadioInput",
   "description": "Radio input used on platform6.",
-  "version": "1.4.27",
+  "version": "1.4.28",
   "license": "MIT",
   "repository": {
     "type": "git",

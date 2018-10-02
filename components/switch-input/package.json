@@ -2,7 +2,7 @@
   "name": "@amalto/switch-input",
   "displayName": "SwitchInput",
   "description": "Switch input used on platform6.",
-  "version": "1.4.28",
+  "version": "1.4.29",
   "license": "MIT",
   "repository": {
     "type": "git",
