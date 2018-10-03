@@ -326,7 +326,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 const selectedOption: number = options.findIndex( opt => opt.value.toString() === displayValue.toString() )
                 let prevOption: number = selectedOption
 
-                for ( let i = prevOption; prevOption === selectedOption && i > 0; --i ) {
+                for ( let i = prevOption; prevOption === selectedOption && i >= 0; --i ) {
                     prevOption = !options[i].disabled ? i : prevOption
                 }
 

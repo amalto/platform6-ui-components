@@ -11,8 +11,6 @@ const options = [
         value: 'first',
         iconAlignment: 'center',
         label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dolor ligula, efficitur nec nisi a, rutrum posuere libero. Ut convallis eleifend nisi. Aenean semper commodo ultricies. Nullam venenatis elit vel dui luctus vulputate. Morbi semper turpis vel mi euismod, eu efficitur augue iaculis. Mauris eu tristique orci.',
-        disabled: true
-        
     },
     { leftIcon: 'fas fa-arrow-right info-color', leftIconTooltip: 'second left icon', rightIcon: 'fas fa-unlink warning-color', rightIconTooltip: 'second right icon', value: 'second', label: 'second' },
     { value: 'third', label: 'third', disabled: true },
