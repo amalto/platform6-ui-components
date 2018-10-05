@@ -1148,6 +1148,16 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Êtes-vous sûr(e) de vouloir relancer les transactions sélectionnéss ?'
     },
 
+    multipleTransactionsReprocessSuccess: {
+        'en-US': 'Transactions reprocessed',
+        'fr-FR': 'Transactions relancées'
+    },
+
+    multipleTransactionsReprocessFailure: {
+        'en-US': 'transaction(s) not reprocessed',
+        'fr-FR': 'transaction(s) non relancée(s)'
+    },
+
     editMessage: {
         'en-US': 'Edit message',
         'fr-FR': 'Éditer le message'
