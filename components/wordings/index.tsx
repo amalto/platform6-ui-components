@@ -1138,6 +1138,16 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Une ou plusieurs des transactions sélectionnées ne peuvent pas être supprimées. Merci de verifier votre sélection et de réessayer !'
     },
 
+    confirmMultipleTransactionsDelete: {
+        'en-US': 'Are you sure you want to delete the selected transactions?',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer les transactions sélectionnées ?'
+    },
+
+    confirmMultipleTransactionsReprocess: {
+        'en-US': 'Are you sure you want to reprocess the selected transactions?',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir relancer les transactions sélectionnéss ?'
+    },
+
     editMessage: {
         'en-US': 'Edit message',
         'fr-FR': 'Éditer le message'
