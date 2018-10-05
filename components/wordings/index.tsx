@@ -3043,5 +3043,45 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     core: {
         'en-US': 'Core',
         'fr-FR': 'Core'
+    },
+
+    deleteInstance: {
+        'en-US': 'Delete instance',
+        'fr-fr': 'Supprimer l\'instance'
+    },
+
+    editInstance: {
+        'en-US': 'Edit instance',
+        'fr-fr': 'Éditer l\'instance'
+    },
+
+    duplicateInstance: {
+        'en-US': 'Create a new instance with prefilled data from this one',
+        'fr-fr': 'Créer une nouvelle instance à partir de celle-ci'
+    },
+
+    createOrganization: {
+        'en-US': 'Create organization',
+        'fr-fr': 'Créer une organisation'
+    },
+
+    baseContext: {
+        'en-US': 'Base context',
+        'fr-fr': 'Contexte de base'
+    },
+
+    infoPath: {
+        'en-US': 'Info path',
+        'fr-fr': 'Chemin vers les informations'
+    },
+
+    communityPortalURL: {
+        'en-US': 'Community portal URL',
+        'fr-fr': 'URL du portail de la communauté'
+    },
+
+    organizationRootId: {
+        'en-US': 'Organization (Root ID)',
+        'fr-fr': 'ID de la racine de l\'organisation'
     }
 }
