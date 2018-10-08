@@ -128,6 +128,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         if ( prevProps.options !== this.props.options ) {
             this.initnializeConfig()
         }
+
+        if ( prevState.options !== this.state.options ) {
+            console.info( 'options => ', this.state.options )
+        }
     }
 
     componentWillUnmount() {
@@ -256,11 +260,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private autocompleteOptions = ( value: string ) => {
-        const escapedValue: string = value.replace( /[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&' )
-        const regExp: RegExp = new RegExp( `^${ escapedValue }`, 'gi' )
-
         // Escape special charaters from instance name.
-        return this.props.options.filter( o => !value || regExp.test( o.label ) )
+        return this.props.options.filter( o => {
+            return !value || o.label.toString().toLocaleLowerCase().indexOf( value.toLocaleLowerCase() ) === 0 ? o : null
+        } )
     }
 
     private toggleSelectList = (): void => {
@@ -327,12 +330,12 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 let prevOption: number = selectedOption
 
                 for ( let i = prevOption; prevOption === selectedOption && i >= 0; --i ) {
-                    prevOption = !options[i].disabled ? i : prevOption
+                    prevOption = options[i] && !options[i].disabled ? i : prevOption
                 }
 
                 this.setState( {
-                    displayValue: options[prevOption].value.toString(),
-                    displayLabel: options[prevOption].label.toString()
+                    displayValue: options[prevOption] ? options[prevOption].value.toString() : displayValue,
+                    displayLabel: options[prevOption] ? options[prevOption].label.toString() : displayLabel
                 }, () => this.scrollToOption( this.state.displayValue.toString() ) )
                 break
             }
@@ -344,12 +347,12 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 let nextOption: number = selectedOption
 
                 for ( let i = nextOption; nextOption === selectedOption && i < options.length; ++i ) {
-                    nextOption = !options[i].disabled ? i : nextOption
+                    nextOption = options[i] && !options[i].disabled ? i : nextOption
                 }
 
                 this.setState( {
-                    displayValue: options[nextOption].value.toString(),
-                    displayLabel: options[nextOption].label.toString()
+                    displayValue: options[nextOption] ? options[nextOption].value.toString() : displayValue,
+                    displayLabel: options[nextOption] ? options[nextOption].label.toString() : displayLabel
                 }, () => this.scrollToOption( this.state.displayValue.toString() ) )
                 break
             }
@@ -364,9 +367,11 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private scrollToOption = ( value: string ) => {
-        const el = ReactDOM.findDOMNode( document.getElementById( `opt-${ value }` ) )
+        if ( document.getElementById( `opt-${ value }` ) ) {
+            const el = ReactDOM.findDOMNode( document.getElementById( `opt-${ value }` ) )
 
-        el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
+            el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
+        }
     }
 
     private getOptionFromValue = ( value: string | number, options: Option[] ) => {
