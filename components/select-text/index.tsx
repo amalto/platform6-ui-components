@@ -173,7 +173,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                         type={type || 'text'}
                         placeholder={placeholder}
                         disabled={inputDisabled}
-                        autoComplete='off'
+                        autoComplete='new-password'
                         autoFocus={autofocus}
                         className={classNames( 'form-control padr-20', inputClass, { 'default-color': disabled } )}
                     />
