@@ -45,11 +45,11 @@ test('SelectText props should be defined', t => {
     );
 
     t.is(wrapper.hasClass('form-group padded'), true);
-    t.is(wrapper.childAt(6).childAt(1).prop('text'), 'Helper text');
-    t.is(wrapper.childAt(7).hasClass('select-text-input text-large'), true);
-    t.is(wrapper.childAt(7).childAt(0).prop('name'), 'select-text-example');
-    t.is(wrapper.childAt(7).childAt(0).prop('type'), 'text');
-    t.is(wrapper.childAt(7).childAt(0).prop('autoFocus'), true);
-    t.is(wrapper.childAt(7).childAt(0).prop('disabled'), false);
-    t.is(wrapper.childAt(7).childAt(0).prop('placeholder'), 'SelectText placeholder');
+    t.is(wrapper.childAt(7).childAt(1).prop('text'), 'Helper text');
+    t.is(wrapper.childAt(8).hasClass('select-text-input'), true);
+    t.is(wrapper.childAt(8).childAt(0).prop('name'), 'select-text-example');
+    t.is(wrapper.childAt(8).childAt(0).prop('type'), 'text');
+    t.is(wrapper.childAt(8).childAt(0).prop('autoFocus'), true);
+    t.is(wrapper.childAt(8).childAt(0).prop('disabled'), false);
+    t.is(wrapper.childAt(8).childAt(0).prop('placeholder'), 'SelectText placeholder');
 });

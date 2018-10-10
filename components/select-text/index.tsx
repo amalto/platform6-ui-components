@@ -84,12 +84,13 @@ namespace SelectText {
 
 class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
+    private _body = null
     private _input: HTMLInputElement = null
 
     constructor( props: SelectText.Props ) {
         super( props )
 
-        const opt = this.getOptionFromValue( props.defaultDisplayValue, props.options )
+        const opt = this.getOptionFromValue( props.defaultDisplayValue, props.options || [] )
 
         this.state = {
             selectOpen: false,
@@ -99,25 +100,25 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             currentValue: opt && opt.value || '',
             focused: null,
             lockFocus: false,
-            options: props.options,
+            options: props.options || [],
             hasLeftIcon: false,
             hasRightIcon: false
         }
     }
 
     componentDidMount() {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
+        loadTooltips( this._body )
         this.initnializeConfig()
         if ( this._input ) {
-            this._input.value = this.state.displayLabel.toString() || ''
+            this._input.value = this.state.displayLabel ? this.state.displayLabel.toString() : ''
             this.setState( { options: this.autocompleteOptions( this._input.value ) } as SelectText.State )
         }
     }
 
     componentDidUpdate( prevProps: SelectText.Props, prevState: SelectText.State ) {
-        loadTooltips( ReactDOM.findDOMNode( this ) )
+        loadTooltips( this._body )
         if ( prevState.selectOpen !== this.state.selectOpen && !this.state.selectOpen && this._input ) {
-            this._input.value = this.state.displayLabel.toString()
+            this._input.value = this.state.displayLabel ? this.state.displayLabel.toString() : ''
         }
 
         if ( prevState.selectOpen !== this.state.selectOpen ) {
@@ -135,13 +136,13 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     componentWillUnmount() {
-        unloadTooltips( ReactDOM.findDOMNode( this ) )
+        unloadTooltips( this._body )
         document.removeEventListener( 'keydown', this.handleKeyboardShortcut )
     }
 
     render() {
 
-        const { name, label, help, type, placeholder, disabled, autofocus, containerClass, inputClass } = this.props
+        const { name, label, help, type, placeholder, disabled, autofocus, containerClass, inputClass, options } = this.props
 
         const { hasLeftIcon, hasRightIcon } = this.state
 
@@ -149,10 +150,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             this.setState( { options: this.autocompleteOptions( value ) } as SelectText.State )
         }
 
-        const inputDisabled: boolean = disabled || this.props.options.length === 0
+        const inputDisabled: boolean = disabled || options && options.length === 0
 
         return (
-            <div id={`wrapper-${ name }`} tabIndex={1} className={classNames( 'form-group', containerClass )} style={{ outline: 'none' }} onFocus={this.onFocusWrapper} onBlur={this.onBlur}>
+            <div id={`wrapper-${ name }`} ref={dom => this._body = dom} tabIndex={1} className={classNames( 'form-group', containerClass )} style={{ outline: 'none' }} onFocus={this.onFocusWrapper} onBlur={this.onBlur}>
 
                 <Radium.Style scopeSelector='.select-text-input' rules={Styles.selectTextInput} />
                 <Radium.Style scopeSelector='.select-text-input.btn-prefix' rules={Styles.selectTextInputBtnPreffix} />
@@ -375,7 +376,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private getOptionFromValue = ( value: string | number, options: Option[] ) => {
-        const opt = options.find( opt => opt.value.toString() === value.toString() )
+        const opt = options.find( opt => {
+            if ( !opt.value || !value ) return null
+            else return opt.value.toString() === value.toString()
+        } )
 
         return opt
     }
