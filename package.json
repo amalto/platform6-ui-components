@@ -61,7 +61,7 @@
         "jstree": "3.3.5",
         "lerna": "2.8.0",
         "markdown-loader": "2.0.2",
-        "node-sass": "4.7.2",
+        "node-sass": "^4.9.3",
         "path": "0.12.7",
         "react-addons-test-utils": "15.6.2",
         "react-docgen": "2.20.0",
