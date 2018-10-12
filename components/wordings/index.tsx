@@ -1158,6 +1158,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'transaction(s) non relancée(s)'
     },
 
+    confirmCloseTransactionSubmit: {
+        'en-US': 'Are you sure you want to close this message submission session?',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir terminer cette session de création de message ?'
+    },
+
     editMessage: {
         'en-US': 'Edit message',
         'fr-FR': 'Éditer le message'
