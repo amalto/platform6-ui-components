@@ -2,7 +2,7 @@
     "name": "@amalto/checkboxes-input",
     "displayName": "CheckboxesInput",
     "description": "Checkboxes input used on platform6.",
-    "version": "1.4.131",
+    "version": "1.4.132",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,8 +25,8 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.4.21",
-        "@amalto/helpers": "1.4.118",
+        "@amalto/help": "1.4.22",
+        "@amalto/helpers": "1.4.119",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",
