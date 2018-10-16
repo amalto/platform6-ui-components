@@ -130,9 +130,6 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             this.initnializeConfig()
         }
 
-        if ( prevState.options !== this.state.options ) {
-            console.info( 'options => ', this.state.options )
-        }
     }
 
     componentWillUnmount() {
