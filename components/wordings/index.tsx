@@ -3060,6 +3060,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'La configuration du service a changé depuis le dernier démarrage'
     },
 
+    restartServiceForChanges: {
+        'en-US': 'Restart the service to take changes into account',
+        'fr-FR': 'Redémarrer le service pour prendre en compte les changements'
+    },
+
     serviceStatus: {
         'en-US': 'Service status:',
         'fr-FR': 'État du service :'
