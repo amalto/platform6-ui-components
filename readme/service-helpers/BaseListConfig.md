@@ -87,5 +87,49 @@ interface BaseListConfig {
      * Custom buttons to be added in the "ButtonsBar" component.
      */
     customButtons?: ButtonsBar.BtnGroupsProps[];
+
+    /**
+     * Append custom actions to service items.
+     */
+    customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
+    
+    /**
+     * Set default actions column width.
+     */
+    customActionsColumnWidth?: number;
+
+    /**
+     * Append custom column to DataGrid.
+     */
+    customColumns?: {
+        columnId: string;
+        label: string | JSX.Element;
+        defaultVisible?: boolean;
+        allowFiltering?: boolean;
+        width?: number;
+        textAlign?: string;
+        displayFunction?: ( value: any, item: ServiceItemFacade, refreshItems: () => void ) => string | JSX.Element;
+        disableSort?: boolean;
+    }[];
+
+    /**
+     * Default sort parameters on initialization.
+     */
+    defaultSortParams: {
+        sortColumn: string;
+        sortDirection: 'ASC' | 'DESC';
+    };
+
+    /**
+     * Overwrite default endpoints.
+     */
+    customEndpoints?: {
+        getItems?: string;
+        deleteItems?: string;
+        exportItems?: string;
+        importItems?: string;
+        renameItem?: string;
+        duplicateItem?: string;
+    };
 }
 ```

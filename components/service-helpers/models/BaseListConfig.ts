@@ -26,6 +26,10 @@ export interface BaseListConfig {
         displayFunction?: ( value: any, item: ServiceItemFacade, refreshItems: () => void ) => string | JSX.Element;
         disableSort?: boolean;
     }[];
+    defaultSortParams: {
+        sortColumn: string;
+        sortDirection: 'ASC' | 'DESC';
+    };
     customEndpoints?: {
         getItems?: string;
         deleteItems?: string;
@@ -33,5 +37,5 @@ export interface BaseListConfig {
         importItems?: string;
         renameItem?: string;
         duplicateItem?: string;
-    }
+    };
 }
