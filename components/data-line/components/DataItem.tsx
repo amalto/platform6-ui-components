@@ -146,7 +146,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
         return (
             <div className={classNames( cssClass, {
                 'card-item-value inline-item-value': displayMode !== 'mobile',
-                'inline-block mgb-10 mgr-20 align-top break-all': displayMode === 'mobile' && columnId !== 'actions',
+                'inline-block mgb-10 mgr-20 align-top break-word': displayMode === 'mobile' && columnId !== 'actions',
                 'mgt-10 mgb-10 text-center mobile-action-buttons': displayMode === 'mobile' && columnId === 'actions',
                 'dg-cell-edited': isEdited
             } )} style={userStyles} {...additionalProps}>
