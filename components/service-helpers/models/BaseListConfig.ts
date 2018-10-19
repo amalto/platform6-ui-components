@@ -26,7 +26,7 @@ export interface BaseListConfig {
         displayFunction?: ( value: any, item: ServiceItemFacade, refreshItems: () => void ) => string | JSX.Element;
         disableSort?: boolean;
     }[];
-    defaultSortParams: {
+    defaultSortParams?: {
         sortColumn: string;
         sortDirection: 'ASC' | 'DESC';
     };

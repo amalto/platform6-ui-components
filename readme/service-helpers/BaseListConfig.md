@@ -115,7 +115,7 @@ interface BaseListConfig {
     /**
      * Default sort parameters on initialization.
      */
-    defaultSortParams: {
+    defaultSortParams?: {
         sortColumn: string;
         sortDirection: 'ASC' | 'DESC';
     };
