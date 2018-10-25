@@ -528,6 +528,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Chemin vers la cible'
     },
 
+    targetFilePath: {
+        'en-US': 'Target file path',
+        'fr-FR': 'Chemin vers le fichier'
+    },
+
     properties: {
         'en-US': 'Properties',
         'fr-FR': 'Propriétés'
