@@ -5,6 +5,7 @@ export interface BaseListConfig {
     viewTabRenderer?: ( viewId: string, item: ServiceItemFacade, closeTab: () => void, refreshItems: () => void ) => JSX.Element;
     editTabRenderer: ( editId: string, item: ServiceItemFacade, closeTab: () => void, items: ServiceItemFacades, formId: string, refreshItems: () => void ) => JSX.Element;
     addTabRenderer: ( addId: string, closeTab: () => void, items: ServiceItemFacades, formId: string, openEditTab?: ( tabId: string, id: Id ) => void ) => JSX.Element;
+    gridStatusMessage?: string | JSX.Element;
     readPermission?: string;
     editPermission?: string;
     deletePermission?: string;

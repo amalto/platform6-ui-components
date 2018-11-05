@@ -35,6 +35,11 @@ interface BaseListConfig {
     addTabRenderer: ( addId: string, closeTab: () => void, items: ServiceItemFacades, formId: string, openEditTab?: ( tabId: string, id: Id ) => void ) => JSX.Element;
 
     /**
+     * Display data grid status message below the buttons bar and above the data grid.
+     */
+    gridStatusMessage?: string | JSX.Element;
+
+    /**
      * Complete read permission, e.g: "home=read".
      * If not provided, will use the service id, e.g: "{serviceId}=read".
      */
