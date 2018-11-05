@@ -13,6 +13,7 @@ export interface BaseListConfig {
     editOnDoubleClick?: boolean;
     openEditTabOnCreation?: boolean;
     editConditions?: ( ( item: ServiceItemFacade ) => boolean )[];
+    getListCallback?: ( items: ServiceItemFacades ) => void;
     customButtons?: ButtonsBar.BtnGroupsProps[];
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;

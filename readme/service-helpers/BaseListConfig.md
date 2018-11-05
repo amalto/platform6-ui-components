@@ -67,6 +67,13 @@ interface BaseListConfig {
     editConditions?: ( ( item: ServiceItemFacade ) => boolean )[];
 
     /**
+     * Callback after calling the get items list endpoint
+     * 
+     * @param { ServiceItemFacades } items Service items list.
+     */
+    getListCallback?: ( items: ServiceItemFacades ) => void;
+
+    /**
      * Method triggered after a tab has been closed.
      * 
      * @param { string } closedTabId
