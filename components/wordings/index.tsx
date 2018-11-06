@@ -3123,5 +3123,10 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     organizationRootId: {
         'en-US': 'Organization (Root ID)',
         'fr-fr': 'ID de la racine de l\'organisation'
+    },
+
+    itemType: {
+        'en-US': 'Item Type',
+        'fr-fr': 'Type d\'élément'
     }
 }
