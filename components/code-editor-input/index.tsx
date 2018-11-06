@@ -109,6 +109,10 @@ namespace CodeEditorInput {
          * Force save with keyboard shortcuts <span className='quote'>Ctrl + s</span> or <span className='quote'>Cmd + s</span>.
          */
         saveEditorContent?: ( session: AceSession ) => void;
+        /**
+         * Force save with keyboard shortcuts <span className='quote'>Shift + Ctrl + s</span> or <span className='quote'>Shift + Cmd + s</span>.
+         */
+        saveMultipleContent?: ( session: AceSession ) => void;
         /** Save ace session after each update. */
         saveSession?: ( session: AceSession ) => void;
         /** Editor visual settings. More details on [Settings](#codeeditorinputsettings). */
@@ -201,6 +205,7 @@ namespace CodeEditor {
         height?: number | string;
         initSession?: AceSession;
         saveEditorContent?: ( session: AceSession ) => void;
+        saveMultipleContent?: ( session: AceSession ) => void;
         saveSession?: ( session: AceSession ) => void;
         displaySettings?: CodeEditorInput.Settings;
         resetTick?: number;
@@ -291,6 +296,18 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
                 bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
                 exec: ( currentEditor ) => {
                     this.props.saveEditorContent && this.props.saveEditorContent( $.extend( {}, initSession, {
+                        savable: this.isSessionSavable( currentEditor ),
+                        cursorPosition: currentEditor.getCursorPosition()
+                    } ) )
+                }
+            } )
+
+            // Shorcut to save multiple ace session.
+            editor.commands.addCommand( {
+                name: 'save all',
+                bindKey: { win: 'Shift-Ctrl-S', mac: 'Shift-Command-S' },
+                exec: ( currentEditor ) => {
+                    this.props.saveMultipleContent && this.props.saveMultipleContent( $.extend( {}, initSession, {
                         savable: this.isSessionSavable( currentEditor ),
                         cursorPosition: currentEditor.getCursorPosition()
                     } ) )
