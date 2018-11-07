@@ -257,7 +257,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             this.props.saveSession( this.getAceSession( this._editor ) )
         }
 
-        const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
+        // const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
         const doUpdate = ( newDoc || nextProps.loadTime > this._firstChangeTime )
 
         this._editor.setReadOnly( nextProps.readonly )
@@ -282,8 +282,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
             this.setEditorSession( this._editor, nextProps )
         }
         doUpdate && this.setEditorSession( this._editor, nextProps )
-        displaySettingsChanged && this._markerId && this._editor.getSession().removeMarker( this._markerId )
-        displaySettingsChanged && this.setEditorOptions( this._editor, nextProps )
+        this._markerId && this._editor.getSession().removeMarker( this._markerId )
+        this.setEditorOptions( this._editor, nextProps )
 
         if ( nextProps.moveToEndOfFile ) {
             this._editor.getSelection().moveCursorFileEnd()
