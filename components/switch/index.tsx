@@ -46,9 +46,11 @@ class Switch extends React.Component<Switch.Props, any> {
                 <div className={classNames( 'onoffswitch', {
                     'left-align': this.props.alignLeft
                 } )}>
-                    <input type="checkbox" className="onoffswitch-checkbox" id={this.props.id}
+                    <input type="checkbox" className={classNames( 'onoffswitch-checkbox', {
+                        'disabled': this.props.disabled
+                    } )} id={this.props.id}
                         checked={this.props.value}
-                        onChange={!this.props.disabled ? this.handleChange : () => {}}
+                        onChange={!this.props.disabled ? this.handleChange : () => { }}
                         name={this.props.name || this.props.id}
                     />
                     <label className="onoffswitch-label" htmlFor={this.props.id}>
