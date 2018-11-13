@@ -363,14 +363,14 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     private scrollToTop = () => {
         const el = ReactDOM.findDOMNode( document.getElementById( `input-${ this.props.name }` ) )
 
-        el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
+        el.scrollIntoView( { behavior: 'smooth', block: 'end' } )
     }
 
     private scrollToOption = ( value: string ) => {
         if ( document.getElementById( `opt-${ value }` ) ) {
             const el = ReactDOM.findDOMNode( document.getElementById( `opt-${ value }` ) )
 
-            el.scrollIntoView( { behavior: 'smooth', block: 'center' } )
+            el.scrollIntoView( { behavior: 'smooth', block: 'end' } )
         }
     }
 
