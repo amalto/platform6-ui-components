@@ -11,7 +11,7 @@ import Help from '@amalto/help'
 module ValidatedInput {
     export interface Props extends React.Props<ValidatedInput> {
         /** Input Key to be able to handle input refresh. */
-        key?: string;
+        inputKey?: string;
         /** Input name in the DOM. */
         name: string;
         /** Input value. */
@@ -74,6 +74,8 @@ module ValidatedInput {
         /** @ignore */
         children?: React.ReactNode;
         /** @ignore */
+        key?: React.ReactText;
+        /** @ignore */
         ref?: React.Ref<ValidatedInput>;
     }
 
@@ -93,11 +95,11 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
 
     render() {
 
-        const { key, name, label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = this.props
+        const { inputKey, name, label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = this.props
 
         const inputDisplay = this.props.choices ? (
             <select className={classNames( 'form-control', inputClass )}
-                key={key ? key : null}
+                key={inputKey}
                 name={name}
                 value={value}
                 onChange={this.handleChange}
@@ -112,7 +114,7 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
             </select>
         ) : (
                 <input type="text" className={classNames( 'form-control', inputClass )}
-                    key={key ? key : null}
+                    key={inputKey}
                     name={name}
                     value={value}
                     onChange={this.handleChange}
