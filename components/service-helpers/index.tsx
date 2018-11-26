@@ -8,7 +8,8 @@ import {
     ServiceItemFacade,
     ServiceItemFacades,
     ServiceItem,
-    ServiceItems
+    ServiceItems,
+    ServiceStatus
 } from './models/ServiceHelpers'
 
 import { BaseListConfig } from './models/BaseListConfig'
@@ -234,7 +235,8 @@ export {
     ServiceItemFacade,
     ServiceItemFacades,
     ServiceItem,
-    ServiceItems
+    ServiceItems,
+    ServiceStatus
 }
 
 export { BaseListConfig }
