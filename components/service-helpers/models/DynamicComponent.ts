@@ -11,8 +11,6 @@ import {
 
 import { BaseListConfig } from './BaseListConfig'
 
-import { ServiceStatus } from './ServiceHelpers'
-
 export interface DynamicComponent extends ReduxProps {
 
     /** Interface used to perform all the api call to the server. */
@@ -75,11 +73,6 @@ export interface DynamicComponent extends ReduxProps {
      * @param { string } tabId
      */
     setStatus?: ( hasUnsavedChanges: boolean, tabId?: string ) => void;
-
-    /**
-     * Get current serbvie eadt
-     */
-    getCurrentServiceStatus?: () => ServiceStatus;
 
     /** Component height. */
     height?: number;

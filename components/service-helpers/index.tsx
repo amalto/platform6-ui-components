@@ -235,8 +235,7 @@ export {
     ServiceItemFacade,
     ServiceItemFacades,
     ServiceItem,
-    ServiceItems,
-    ServiceStatus
+    ServiceItems
 }
 
 export { BaseListConfig }
