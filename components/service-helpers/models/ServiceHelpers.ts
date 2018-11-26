@@ -29,3 +29,5 @@ export declare type ServiceItems = ServiceItem[]
 export declare type ServiceItemFacades = ServiceItemFacade[]
 
 export declare type Ids = Id[]
+
+export type ServiceStatus = 'SERVICE_STATE_STARTED' | 'SERVICE_STATE_STARTED_RESTART' | 'SERVICE_STATE_STOPPED' | 'LOADING' | 'UNKNOWN'
