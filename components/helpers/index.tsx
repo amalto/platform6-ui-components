@@ -256,8 +256,11 @@ function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: b
     link.href = url
     link['download'] = fileName
 
+    // You have to attach the element in order for Firefox to be able to trigger events.
+    document.body.appendChild( link );
     //trigger the download
     link.click()
+    document.body.removeChild( link );
 
     URL.revokeObjectURL( url )
 }
