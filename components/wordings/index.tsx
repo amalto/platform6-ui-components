@@ -2119,6 +2119,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'cette tâche ?'
     },
 
+    workItemsConfirmTextEnd: {
+        'en-US': 'those work items?',
+        'fr-FR': 'ces tâches ?'
+    },
+
     frameFormTitleLanguageSsettings: {
         'en-US': 'Language settings',
         'fr-FR': 'Paramètre des langues'
