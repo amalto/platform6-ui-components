@@ -1288,6 +1288,16 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Tâches'
     },
 
+    workflowTask: {
+        'en-US': 'Workflow Task',
+        'fr-FR': 'Tâche'
+    },
+
+    workflowTasksMultiTasks: {
+        'en-US': 'Workflow tasks multi task',
+        'fr-FR': 'Actions sur les tâches'
+    },
+
     tables: {
         'en-US': 'Tables',
         'fr-FR': 'Tables'
