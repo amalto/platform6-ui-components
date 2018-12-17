@@ -1294,8 +1294,13 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     workflowTasksMultiTasks: {
-        'en-US': 'Workflow tasks multi task',
+        'en-US': 'Workflow multi task',
         'fr-FR': 'Actions sur les tâches'
+    },
+
+    noWorkflowTasksAvailable: {
+        'en-US': 'No common actions available for the selected tasks',
+        'fr-FR': 'Aucune actions commune pour les tâches sélectionnées'
     },
 
     tables: {
