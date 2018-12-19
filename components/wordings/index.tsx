@@ -3075,6 +3075,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Message d\'erreur'
     },
 
+    itemProcessed: {
+        'en-US': 'Item processed!',
+        'fr-FR': 'Élément traitée !'
+    },
+
     workItemProcessed: {
         'en-US': 'Work item processed!',
         'fr-FR': 'Tâche traitée !'
