@@ -3080,6 +3080,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Tâche traitée !'
     },
 
+    workflowTaskProcessed: {
+        'en-US': 'Workflow taksk processed!',
+        'fr-FR': 'Tâche traitée !'
+    },
+
     view: {
         'en-US': 'View',
         'fr-FR': 'Afficher'
