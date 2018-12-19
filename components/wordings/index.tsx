@@ -2139,6 +2139,21 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'ces tâches ?'
     },
 
+    confirmTextStart: {
+        'en-US': 'Are you sure you want to',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir'
+    },
+
+    workflowTaskConfirmTextEnd: {
+        'en-US': 'this workflow task?',
+        'fr-FR': 'cette tâche ?'
+    },
+
+    workflowTasksConfirmTextEnd: {
+        'en-US': 'those workflow tasks?',
+        'fr-FR': 'ces tâches ?'
+    },
+
     frameFormTitleLanguageSsettings: {
         'en-US': 'Language settings',
         'fr-FR': 'Paramètre des langues'
