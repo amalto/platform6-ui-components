@@ -30,7 +30,7 @@
         "@types/jsdom": "11.0.4",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
-        "ava": "0.25.0",
+        "ava": "0.24.0",
         "babel-preset-react": "6.24.1",
         "babel-register": "6.26.0",
         "base-64": "0.1.0",

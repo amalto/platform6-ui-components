@@ -43,7 +43,7 @@
         "@types/react-dom": "15.5.6",
         "@types/redux-form": "6.6.1",
         "@types/uuid": "3.4.3",
-        "ava": "0.25.0",
+        "ava": "0.24.0",
         "babel-preset-react": "6.24.1",
         "babel-register": "6.26.0",
         "enzyme": "3.3.0",
