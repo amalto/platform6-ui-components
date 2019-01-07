@@ -2,7 +2,7 @@
     "name": "@amalto/multi-select",
     "displayName": "MultiSelect",
     "description": "Multi select used on platform6.",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.4.22",
+        "@amalto/help": "1.4.23",
         "classnames": "2.2.5",
         "react": "15.6.2",
         "react-dom": "15.6.2",
