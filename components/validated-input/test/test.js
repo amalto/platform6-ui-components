@@ -57,8 +57,8 @@ test('ValidatedInput props should be define', t => {
     t.is(wrapper.childAt(0).childAt(0).text(), 'test-validated-input-label');
     t.is(wrapper.childAt(0).childAt(1).prop('text'), 'validated-input help');
     t.true(wrapper.childAt(1).hasClass('text-small'));
-    t.is(wrapper.childAt(1).prop('value'), 'this is a test');
-    t.not(wrapper.childAt(1).prop('value'), 'test');
+    t.is(wrapper.childAt(1).prop('defaultValue'), 'this is a test');
+    t.not(wrapper.childAt(1).prop('defaultValue'), 'test');
     t.is(wrapper.childAt(1).prop('placeholder'), 'validated-input placeholder');
     t.not(wrapper.childAt(1).prop('placeholder'), 'placeholder');
     t.is(wrapper.childAt(1).prop('autoComplete'), true);

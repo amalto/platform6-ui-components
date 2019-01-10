@@ -30,6 +30,16 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Annuler'
     },
 
+    undo: {
+        'en-US': 'Undo',
+        'fr-FR': 'Annuler'
+    },
+
+    clear: {
+        'en-US': 'Clear',
+        'fr-FR': 'Nettoyer'
+    },
+
     email: {
         'en-US': 'Email',
         'fr-FR': 'Email'
