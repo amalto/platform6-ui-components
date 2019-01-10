@@ -1308,6 +1308,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Actions sur les tâches'
     },
 
+    handleWorkflowTasks: {
+        'en-US': 'Handle workflow task(s)',
+        'fr-FR': 'Traiter tâche(s)'
+    },
+
     noWorkflowTasksAvailable: {
         'en-US': 'No common actions available for the selected tasks',
         'fr-FR': 'Aucune actions commune pour les tâches sélectionnées'
@@ -1361,6 +1366,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     flags: {
         'en-US': 'Flags',
         'fr-FR': 'Marqueurs'
+    },
+
+    setFlags: {
+        'en-US': 'Set flags',
+        'fr-FR': 'Marquer'
     },
 
     availableFields: {
