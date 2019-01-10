@@ -2,7 +2,7 @@
     "name": "@amalto/restricted",
     "displayName": "Restricted",
     "description": "Display or hide children depending on permissions.",
-    "version": "1.5.96",
+    "version": "1.5.97",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -27,7 +27,7 @@
     "dependencies": {
         "@amalto/platform6-ui": "2.0.0-alpha.2",
         "@amalto/scope-helpers": "1.5.40",
-        "@amalto/service-helpers": "1.0.170",
+        "@amalto/service-helpers": "1.0.171",
         "@amalto/typings": "1.0.51",
         "react": "15.6.2",
         "react-dom": "15.6.2"
