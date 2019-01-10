@@ -448,6 +448,21 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Sauvegarder tout'
     },
 
+    saveAsPNG: {
+        'en-US': 'Save as PNG',
+        'fr-FR': 'Sauvegarder en PNG'
+    },
+
+    saveAsJPEG: {
+        'en-US': 'Save as JPEG',
+        'fr-FR': 'Sauvegarder en JPEG'
+    },
+
+    saveAsSVG: {
+        'en-US': 'Save as SVG',
+        'fr-FR': 'Sauvegarder en SVG'
+    },
+
     run: {
         'en-US': 'Run',
         'fr-FR': 'Exécuter'

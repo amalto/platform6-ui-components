@@ -139,7 +139,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                                         } )}
                                         onClick={e => this.save()}
                                         disabled={!dirty}>
-                                        {wordings.save_as_png}
+                                        {wordings.saveAsPNG}
                                     </button>
 
                                     <button type='button'
@@ -148,12 +148,12 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                                         } )}
                                         onClick={e => this.save()}
                                         disabled={!dirty}>
-                                        {wordings.save_as_jpeg}
+                                        {wordings.saveAsJPEG}
                                     </button>
 
                                     <button type='button' className={classNames( 'btn btn-primary btn-trans', {
                                         'not-allowed': !dirty
-                                    } )} onClick={e => this.save()} disabled={!dirty}>{wordings.save_as_svg}</button>
+                                    } )} onClick={e => this.save()} disabled={!dirty}>{wordings.saveAsSVG}</button>
 
                                 </div>
 
