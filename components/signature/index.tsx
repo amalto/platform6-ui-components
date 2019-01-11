@@ -2,12 +2,20 @@
 import * as React from 'react'
 import * as SignaturePad from 'react-signature-pad-wrapper'
 import classNames from 'classnames'
+import * as Radium from 'radium'
+
+// Components
+import ButtonsBar from '@amalto/buttons-bar'
 
 // Utils
 import { getWordings } from '@amalto/helpers'
+import { BUTTON_TYPE } from '@amalto/service-helpers'
 
 // Constants
 import { WORDINGS } from './constants/wordings'
+
+// Styles
+import { Styles } from './styles'
 
 module Signature {
     export interface Props extends React.ClassAttributes<Signature> {
@@ -32,8 +40,8 @@ module Signature {
         /** Container class. */
         containerCss?: string;
 
-        /** Save signature data. */
-        saveSignature: ( data: any ) => void;
+        /** Save signature data and return the value as a base64 formated uri. */
+        saveSignature: ( data: string ) => void;
 
         /**
          * Clear save image callback.
@@ -91,6 +99,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
 
         const canvasOptions = {
             onEnd: this.onEnd,
+            style: { margin: 0 },
             backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
         }
 
@@ -101,64 +110,20 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
 
         return (
             <div className={containerCss}>
-                <div className='form-group pt-3'>
+
+                <Radium.Style scopeSelector='.canvas-wrapper' rules={Styles.canvas_wrapper} />
+
+                <div className='form-group'>
                     <label>{label}</label>
-                    <div className='form-control' style={{ height: '100%' }}>
-                        <SignaturePad
-                            ref={ref => this.signaturePad = ref} options={canvasOptions}
-                            height={height} width={width}
-                            redrawOnResize={true}
-                        />
-                        <div className='btn-toolbar btn-group-toggle'>
-                            <div className='btn-group' style={{ width: '100%' }}>
-
-                                <div style={{ float: 'left' }}>
-
-                                    <button type='button'
-                                        className={classNames( 'btn btn-font btn-trans', {
-                                            'not-allowed': !dirty
-                                        } )} onClick={this.clear}>
-                                        {wordings.clear}
-                                    </button>
-
-                                    <button type='button'
-                                        className={classNames( 'btn btn-warning btn-trans', {
-                                            'not-allowed': !dirty
-                                        } )} onClick={e => this.undo()}
-                                        disabled={currentImgDataIdx < 0 || !dirty}>
-                                        {wordings.undo}
-                                    </button>
-
-                                </div>
-
-                                <div style={{ float: 'right' }}>
-
-                                    <button type='button'
-                                        className={classNames( 'btn btn-primary btn-trans', {
-                                            'not-allowed': !dirty
-                                        } )}
-                                        onClick={e => this.save()}
-                                        disabled={!dirty}>
-                                        {wordings.saveAsPNG}
-                                    </button>
-
-                                    <button type='button'
-                                        className={classNames( 'btn btn-primary btn-trans', {
-                                            'not-allowed': !dirty
-                                        } )}
-                                        onClick={e => this.save()}
-                                        disabled={!dirty}>
-                                        {wordings.saveAsJPEG}
-                                    </button>
-
-                                    <button type='button' className={classNames( 'btn btn-primary btn-trans', {
-                                        'not-allowed': !dirty
-                                    } )} onClick={e => this.save()} disabled={!dirty}>{wordings.saveAsSVG}</button>
-
-                                </div>
-
-                            </div>
+                    <div>
+                        <div className='form-control canvas-wrapper mgb-5'>
+                            <SignaturePad
+                                ref={ref => this.signaturePad = ref} options={canvasOptions}
+                                height={height} width={width}
+                                redrawOnResize={true}
+                            />
                         </div>
+                        {this.generateBtnsBar()}
                     </div>
                 </div>
             </div>
@@ -168,8 +133,56 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     componentDidMount() {
         if ( !!this.signaturePad && !!this.props.defaultSignature ) {
             this.signaturePad.fromDataURL( this.props.defaultSignature )
-            console.info( this.signaturePad )
         }
+    }
+
+    private generateBtnsBar = (): JSX.Element => {
+        const { wordings, dirty } = this.state
+
+        const leftBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [
+                {
+                    clickAction: this.clear,
+                    cssClass: BUTTON_TYPE.FONT,
+                    text: wordings.clear,
+                    disabled: !dirty
+                },
+                {
+                    clickAction: this.undo,
+                    cssClass: BUTTON_TYPE.ORANGE,
+                    text: wordings.undo,
+                    disabled: !dirty
+                }
+            ],
+            cssClass: 'btn-group-xs'
+        }
+
+        const rightBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [
+                {
+                    clickAction: this.save,
+                    cssClass: BUTTON_TYPE.PRIMARY,
+                    text: wordings.saveAsPNG,
+                    disabled: !dirty
+                },
+                {
+                    clickAction: this.save,
+                    cssClass: BUTTON_TYPE.PRIMARY,
+                    text: wordings.saveAsJPEG,
+                    disabled: !dirty
+                },
+                {
+                    clickAction: this.save,
+                    cssClass: BUTTON_TYPE.PRIMARY,
+                    text: wordings.saveAsSVG,
+                    disabled: !dirty
+                }
+            ],
+            cssClass: 'btn-group-xs',
+            style: { float: 'right' }
+        }
+
+        return <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={this.props.locale} />
     }
 
     private onEnd = ( event: any ): void => {
