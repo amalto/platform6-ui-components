@@ -5,7 +5,9 @@ import Signature from '@amalto/signature'
 ```
 
 ```javascript
-initialState = { imageData: null };
+const img = require('./constants/img.ts').img;
+
+initialState = { imageData: img };
 
 <div style={{ width: 350, margin: 'auto' }}>
     <Signature label='Signature example' defaultSignature={state.imageData}

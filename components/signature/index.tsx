@@ -85,7 +85,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         this.state = {
             savedType: null,
             imgData: !props.defaultSignature ? [] : [props.defaultSignature],
-            currentImgDataIdx: -1,
+            currentImgDataIdx: !props.defaultSignature ? -1 : 0,
             signatureClear: true,
             dirty: false,
             wordings: getWordings( { WORDINGS }, props.locale || 'en-US' )
