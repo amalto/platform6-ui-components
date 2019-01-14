@@ -161,7 +161,13 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                     clickAction: this.clear,
                     cssClass: BUTTON_TYPE.FONT,
                     text: wordings.clear,
-                    disabled: !dirty || !imgData
+                    disabled: !imgData
+                },
+                {
+                    clickAction: this.reset,
+                    cssClass: BUTTON_TYPE.FONT,
+                    text: wordings.reset,
+                    disabled: !dirty
                 }
             ],
             cssClass: 'btn-group-xs'
@@ -191,6 +197,11 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
             signatureClear: this.signaturePad.isEmpty(),
             imgData: null,
         }, () => this.props.clearSignature && this.props.clearSignature() )
+    }
+
+    private reset = (): void => {
+        this.signaturePad.fromDataURL( this.state.imgData )
+        this.setState( { imgData: this.props.defaultSignature } )
     }
 
     private save = (): void => {
