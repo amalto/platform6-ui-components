@@ -87,6 +87,7 @@ module Signature {
 class Signature extends React.Component<Signature.Props, Signature.State> {
 
     private signaturePad = null
+    private clearTimeout = null
 
     constructor( props: Signature.Props ) {
         super( props )
@@ -107,6 +108,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         // Set canvas options width white background by default because some media doesn't support transaparent background.
         const canvasOptions = {
             style: { margin: 0 },
+            onEnd: this.onEnd,
             backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
         }
 
@@ -118,7 +120,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                 <div className='form-group'>
                     <label>{label}</label>
                     <div>
-                        <div className='form-control canvas-wrapper mgb-5'>
+                        <div className='form-control canvas-wrapper text-center mgb-5'>
                             {
                                 !readonly ? (
                                     <SignaturePad
@@ -142,6 +144,12 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         if ( !!this.signaturePad && !!this.props.defaultSignature ) {
             this.signaturePad.fromDataURL( this.props.defaultSignature )
         }
+
+        window.addEventListener( 'resize', this.handleResize )
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener( 'resize', this.handleResize )
     }
 
     private generateBtnsBar = (): JSX.Element => {
@@ -153,7 +161,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                     clickAction: this.clear,
                     cssClass: BUTTON_TYPE.FONT,
                     text: wordings.clear,
-                    disabled: !dirty || !!imgData
+                    disabled: !dirty || !imgData
                 }
             ],
             cssClass: 'btn-group-xs'
@@ -187,6 +195,21 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
 
     private save = (): void => {
         this.props.saveSignature && this.props.saveSignature( this.signaturePad.toDataURL( this.state.imgData ) )
+    }
+
+    private onEnd = (): void => {
+        this.setState( { dirty: true } )
+    }
+
+    private handleResize = ( event: any ): void => {
+        if ( !this.clearTimeout ) {
+            this.clearTimeout = window.setTimeout( () => {
+                this.clearTimeout = null
+                this.state.imgData && this.signaturePad.fromDataURL( this.state.imgData )
+            }, 500 )
+        } else {
+            window.clearTimeout( this.clearTimeout )
+        }
     }
 }
 
