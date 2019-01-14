@@ -30,11 +30,6 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Annuler'
     },
 
-    undo: {
-        'en-US': 'Undo',
-        'fr-FR': 'Annuler'
-    },
-
     clear: {
         'en-US': 'Clear',
         'fr-FR': 'Nettoyer'
@@ -448,19 +443,9 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Sauvegarder tout'
     },
 
-    saveAsPNG: {
-        'en-US': 'Save as PNG',
-        'fr-FR': 'Sauvegarder en PNG'
-    },
-
-    saveAsJPEG: {
-        'en-US': 'Save as JPEG',
-        'fr-FR': 'Sauvegarder en JPEG'
-    },
-
-    saveAsSVG: {
-        'en-US': 'Save as SVG',
-        'fr-FR': 'Sauvegarder en SVG'
+    saveToProfile: {
+        'en-US': 'Save to profile',
+        'fr-FR': 'Sauvegarder dans le profil'
     },
 
     run: {

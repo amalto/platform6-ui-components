@@ -77,8 +77,7 @@ module Signature {
 
     export interface State {
         savedType: string;
-        imgData: string[];
-        currentImgDataIdx: number;
+        imgData: string;
         signatureClear: boolean;
         dirty: boolean;
         wordings?: { [id: string]: string };
@@ -93,8 +92,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         super( props )
         this.state = {
             savedType: null,
-            imgData: !props.defaultSignature ? [] : [props.defaultSignature],
-            currentImgDataIdx: !props.defaultSignature ? -1 : 0,
+            imgData: props.defaultSignature,
             signatureClear: true,
             dirty: false,
             wordings: getWordings( { WORDINGS }, props.locale || 'en-US' )
@@ -104,11 +102,10 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     render() {
         const { label, backgroundColor, containerCss, height, width, readonly } = this.props
 
-        const { wordings, dirty, imgData, currentImgDataIdx } = this.state
+        const { imgData } = this.state
 
         // Set canvas options width white background by default because some media doesn't support transaparent background.
         const canvasOptions = {
-            onEnd: this.onEnd,
             style: { margin: 0 },
             backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
         }
@@ -130,7 +127,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                                         redrawOnResize={true}
                                     />
                                 ) : (
-                                        <img src={imgData[0]} />
+                                        <img src={imgData} />
                                     )
                             }
                         </div>
@@ -148,7 +145,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     }
 
     private generateBtnsBar = (): JSX.Element => {
-        const { wordings, dirty } = this.state
+        const { wordings, dirty, imgData } = this.state
 
         const leftBtn: ButtonsBar.BtnGroupsProps = {
             btns: [
@@ -156,13 +153,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                     clickAction: this.clear,
                     cssClass: BUTTON_TYPE.FONT,
                     text: wordings.clear,
-                    disabled: !dirty
-                },
-                {
-                    clickAction: this.undo,
-                    cssClass: BUTTON_TYPE.ORANGE,
-                    text: wordings.undo,
-                    disabled: !dirty
+                    disabled: !dirty || !!imgData
                 }
             ],
             cssClass: 'btn-group-xs'
@@ -173,19 +164,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                 {
                     clickAction: this.save,
                     cssClass: BUTTON_TYPE.PRIMARY,
-                    text: wordings.saveAsPNG,
-                    disabled: !dirty
-                },
-                {
-                    clickAction: this.save,
-                    cssClass: BUTTON_TYPE.PRIMARY,
-                    text: wordings.saveAsJPEG,
-                    disabled: !dirty
-                },
-                {
-                    clickAction: this.save,
-                    cssClass: BUTTON_TYPE.PRIMARY,
-                    text: wordings.saveAsSVG,
+                    text: wordings.saveToProfile,
                     disabled: !dirty
                 }
             ],
@@ -196,53 +175,18 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         return <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={this.props.locale} />
     }
 
-    private onEnd = ( event: any ): void => {
-
-        if ( event.target && event.target.getContext ) {
-            const currentValue: string = event.target.getContext( '2d' ).canvas.toDataURL()
-
-            const updatedImgData = this.state.imgData.concat( [currentValue] )
-
-            this.state.signatureClear && this.setState( {
-                dirty: true,
-                imgData: updatedImgData,
-                currentImgDataIdx: this.state.currentImgDataIdx + 1
-            }, () => {
-                this.signaturePad.fromDataURL( this.state.imgData[this.state.currentImgDataIdx] )
-            } )
-        }
-    }
-
-    private undo = (): void => {
-        const updatedImgData = [...this.state.imgData]
-
-        updatedImgData.pop()
-        this.setState( {
-            dirty: this.state.currentImgDataIdx - 1 < 0 ? false : true,
-            imgData: updatedImgData,
-            currentImgDataIdx: this.state.currentImgDataIdx - 1
-        }, () => {
-            if ( this.state.currentImgDataIdx < 0 ) {
-                this.signaturePad.clear()
-            } else {
-                this.signaturePad.fromDataURL( this.state.imgData[this.state.currentImgDataIdx] )
-            }
-        } )
-    }
-
     private clear = (): void => {
         this.signaturePad.clear()
 
         this.setState( {
             dirty: false,
             signatureClear: this.signaturePad.isEmpty(),
-            imgData: [],
-            currentImgDataIdx: -1
+            imgData: null,
         }, () => this.props.clearSignature && this.props.clearSignature() )
     }
 
     private save = (): void => {
-        this.props.saveSignature && this.props.saveSignature( this.signaturePad.toDataURL( this.state.imgData[this.state.currentImgDataIdx] ) )
+        this.props.saveSignature && this.props.saveSignature( this.signaturePad.toDataURL( this.state.imgData ) )
     }
 }
 
