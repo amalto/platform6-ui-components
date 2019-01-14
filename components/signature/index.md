@@ -9,11 +9,16 @@ const img = require('./constants/img.ts').img;
 
 initialState = { imageData: img };
 
+const saveSignature = ( data ) => {
+    setState( { imageData: data } );
+};
+
 <div style={{ width: 350, margin: 'auto' }}>
     <Signature label='Signature example' defaultSignature={state.imageData}
         height={350}
         width={300}
-        saveSignature={data => setState( { imageData: data } )}
+        readonly={false}
+        saveSignature={saveSignature}
         clearSignature={() => setState( { imageData: null } )}
         locale='en-US'
     />

@@ -26,7 +26,10 @@ module Signature {
         /** Default signature loaded. */
         defaultSignature?: string;
 
-        /** Set signature background-color, set transparant background only on compatible media. */
+        /**
+         * Set signature background-color, set transparant background only on compatible media.
+         * @default "rgb(255, 255, 255)"
+         */
         backgroundColor?: string;
 
         /** Canvas height. */
@@ -40,8 +43,14 @@ module Signature {
         /** Container class. */
         containerCss?: string;
 
+        /**
+         * If true, just display the signature and hide the buttons bar.
+         * @default false
+         */
+        readonly?: boolean;
+
         /** Save signature data and return the value as a base64 formated uri. */
-        saveSignature: ( data: string ) => void;
+        saveSignature?: ( data: string ) => void;
 
         /**
          * Clear save image callback.
@@ -93,19 +102,15 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     }
 
     render() {
-        const { label, backgroundColor, containerCss, height, width } = this.props
+        const { label, backgroundColor, containerCss, height, width, readonly } = this.props
 
-        const { dirty, currentImgDataIdx, wordings } = this.state
+        const { wordings, dirty, imgData, currentImgDataIdx } = this.state
 
+        // Set canvas options width white background by default because some media doesn't support transaparent background.
         const canvasOptions = {
             onEnd: this.onEnd,
             style: { margin: 0 },
             backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
-        }
-
-        const style = {
-            height,
-            width
         }
 
         return (
@@ -117,13 +122,19 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                     <label>{label}</label>
                     <div>
                         <div className='form-control canvas-wrapper mgb-5'>
-                            <SignaturePad
-                                ref={ref => this.signaturePad = ref} options={canvasOptions}
-                                height={height} width={width}
-                                redrawOnResize={true}
-                            />
+                            {
+                                !readonly ? (
+                                    <SignaturePad
+                                        ref={ref => this.signaturePad = ref} options={canvasOptions}
+                                        height={height} width={width}
+                                        redrawOnResize={true}
+                                    />
+                                ) : (
+                                        <img src={imgData[0]} />
+                                    )
+                            }
                         </div>
-                        {this.generateBtnsBar()}
+                        {!readonly ? this.generateBtnsBar() : null}
                     </div>
                 </div>
             </div>
@@ -231,7 +242,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     }
 
     private save = (): void => {
-        this.props.saveSignature( this.signaturePad.toDataURL( this.state.imgData[this.state.currentImgDataIdx] ) )
+        this.props.saveSignature && this.props.saveSignature( this.signaturePad.toDataURL( this.state.imgData[this.state.currentImgDataIdx] ) )
     }
 }
 
