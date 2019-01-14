@@ -118,7 +118,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                 <Radium.Style scopeSelector='.canvas-wrapper' rules={Styles.canvas_wrapper} />
 
                 <div className='form-group'>
-                    <label>{label}</label>
+                    {label ? <label>{label}</label> : null}
                     <div>
                         <div className='form-control canvas-wrapper text-center mgb-5'>
                             {
