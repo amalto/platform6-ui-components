@@ -60,6 +60,7 @@ module UserModel {
 
 interface UserModel {
     userEmail?: string;
+    userSignature?: string;
     realm?: string;
     enabled?: boolean;
     passwordIn?: string;
