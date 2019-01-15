@@ -58,6 +58,11 @@ module Signature {
         clearSignature?: () => void;
 
         /**
+         * Triggered when canvas has been edited.
+         */
+        onChange?: ( data: string ) => void;
+
+        /**
          * Language to use on the component which determine the search input's placeholder language. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).
          * Accessible via [WebStorage](#webstorage).
@@ -209,7 +214,9 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     }
 
     private onEnd = (): void => {
-        this.setState( { dirty: true } )
+        this.setState( { dirty: true }, () => {
+            this.props.onChange && this.props.onChange( this.signaturePad.toDataURL( this.state.imgData ) )
+        } )
     }
 
     private handleResize = ( event: any ): void => {
