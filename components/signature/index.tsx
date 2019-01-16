@@ -171,8 +171,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
                 {
                     clickAction: this.reset,
                     cssClass: BUTTON_TYPE.FONT,
-                    text: wordings.reset,
-                    disabled: !dirty
+                    text: wordings.reset
                 }
             ],
             cssClass: 'btn-group-xs'
