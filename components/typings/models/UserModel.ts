@@ -30,6 +30,9 @@ module UserModel {
         // base64 string or absolute url to image file
         avatar?: string;
 
+        // base64 uri of electronical signature
+        signature?: string;
+
         // Delay of messages list auto-refresh (in seconds)
         // Use transactions if core version > 5.20.0, otherwise use messages
         messagesAutoRefresh?: number;
@@ -60,7 +63,6 @@ module UserModel {
 
 interface UserModel {
     userEmail?: string;
-    userSignature?: string;
     realm?: string;
     enabled?: boolean;
     passwordIn?: string;
