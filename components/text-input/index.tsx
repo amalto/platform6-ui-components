@@ -30,11 +30,11 @@ namespace TextInput {
         /** CSS class wrapping the component. */
         containerClass?: string;
         /** Style wrapping the component. */
-        containerStyle?: string;
+        containerStyle?: React.CSSProperties;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
         /** Styles applied to every input from the list. */
-        inputStyle?: string;
+        inputStyle?: React.CSSProperties;
         /** Input's type. */
         type?: string;
         /** Step between each number if input is of type <span className='quote'>number</span>. */
@@ -82,14 +82,15 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
 
     private renderText = ( field: WrappedFieldProps<any> ) => {
 
-        const { label, disabled, autofocus, help, containerClass, inputClass, type, step, randomGenerator, placeholder, collapseErrorSpace } = this.props
+        const { label, disabled, autofocus, help, containerClass, containerStyle, inputClass, inputStyle, type, step, randomGenerator, placeholder, collapseErrorSpace } = this.props
 
         const { input, meta } = field
 
         return (
             <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error
-            } )}>
+            } )}
+                style={containerStyle}>
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
@@ -103,7 +104,8 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
                     autoFocus={autofocus}
                     className={classNames( 'form-control input-block', inputClass, {
                         'btn-prefix': randomGenerator
-                    } )} />
+                    } )}
+                    style={inputStyle} />
 
                 {
                     randomGenerator ? (
