@@ -19,7 +19,7 @@ const saveSignature = ( data ) => {
         width={300}
         readonly={false}
         saveSignature={saveSignature}
-        clearSignature={() => setState( { imageData: null } )}
+        clearSignature={() => console.info('clear signature')}
         locale='en-US'
     />
 </div>
