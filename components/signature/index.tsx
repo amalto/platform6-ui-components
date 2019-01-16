@@ -205,8 +205,10 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     }
 
     private reset = (): void => {
-        this.signaturePad.fromDataURL( this.state.imgData )
-        this.setState( { imgData: this.props.defaultSignature } )
+        this.setState(
+            { imgData: this.props.defaultSignature },
+            () => this.signaturePad.fromDataURL( this.state.imgData )
+        )
     }
 
     private save = (): void => {
