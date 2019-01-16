@@ -29,8 +29,12 @@ namespace TextInput {
         help?: string;
         /** CSS class wrapping the component. */
         containerClass?: string;
+        /** Style wrapping the component. */
+        containerStyle?: string;
         /** CSS class applied to every input from the list. */
         inputClass?: string;
+        /** Styles applied to every input from the list. */
+        inputStyle?: string;
         /** Input's type. */
         type?: string;
         /** Step between each number if input is of type <span className='quote'>number</span>. */
