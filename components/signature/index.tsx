@@ -216,8 +216,8 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
     }
 
     private onEnd = (): void => {
-        this.setState( { dirty: true }, () => {
-            this.props.onChange && this.props.onChange( this.signaturePad.toDataURL( this.state.imgData ) )
+        this.setState( { dirty: true, imgData: this.signaturePad.toDataURL() }, () => {
+            this.props.onChange && this.props.onChange( this.state.imgData )
         } )
     }
 
