@@ -16,6 +16,7 @@ export interface BaseListConfig {
     editConditions?: ( ( item: ServiceItemFacade ) => boolean )[];
     getListCallback?: ( items: ServiceItemFacades ) => void;
     customButtons?: ButtonsBar.BtnGroupsProps[];
+    selectionContextMenu?: JSX.Element;
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
     customColumns?: {

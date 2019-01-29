@@ -101,6 +101,11 @@ interface BaseListConfig {
     customButtons?: ButtonsBar.BtnGroupsProps[];
 
     /**
+     * Display context menu on right click on tables.
+     */
+    selectionContextMenu?: JSX.Element;
+
+    /**
      * Append custom actions to service items.
      */
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
