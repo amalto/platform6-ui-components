@@ -17,6 +17,11 @@ export interface BaseListConfig {
     getListCallback?: ( items: ServiceItemFacades ) => void;
     customButtons?: ButtonsBar.BtnGroupsProps[];
     selectionContextMenu?: JSX.Element;
+    customContextMenuActions?: {
+        icon: string;
+        label: string;
+        action: ( items: ServiceItemFacades ) => void;
+    }[];
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
     customColumns?: {

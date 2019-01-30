@@ -106,6 +106,15 @@ interface BaseListConfig {
     selectionContextMenu?: JSX.Element;
 
     /**
+     * Custom context menu actions
+     */
+    customContextMenuActions?: {
+        icon: string;
+        label: string;
+        action: ( items: ServiceItemFacades ) => void;
+    }[]
+
+    /**
      * Append custom actions to service items.
      */
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
