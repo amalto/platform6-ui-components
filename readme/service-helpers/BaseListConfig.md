@@ -112,6 +112,7 @@ interface BaseListConfig {
         icon: string;
         label: string;
         action: ( items: ServiceItemFacades ) => void;
+        refreshAfterAction?: boolean;
     }[]
 
     /**

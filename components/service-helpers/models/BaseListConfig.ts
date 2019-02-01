@@ -21,6 +21,7 @@ export interface BaseListConfig {
         icon: string;
         label: string;
         action: ( items: ServiceItemFacades ) => void;
+        refreshAfterAction?: boolean;
     }[];
     customItemActions?: ( item: ServiceItemFacade ) => JSX.Element;
     customActionsColumnWidth?: number;
