@@ -111,7 +111,7 @@ interface BaseListConfig {
     customContextMenuActions?: {
         icon: string;
         label: string;
-        action: ( items: ServiceItemFacades ) => void;
+        action: ( items: ServiceItemFacades, actionCallback?: () => void ) => void;
         refreshAfterAction?: boolean;
     }[]
 
