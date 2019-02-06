@@ -104,7 +104,7 @@ class Menu extends React.Component<Menu.Props, any> {
                 }
                 <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
                     {
-                        entries.map( ( e, idx ) => {
+                        entries.map( e => {
                             return (
                                 <Link key={`link_${ e.label }`}
                                     entry={e}

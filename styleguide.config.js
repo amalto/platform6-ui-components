@@ -134,6 +134,9 @@ module.exports = {
             },
             {
                 components: 'components/menu/index.tsx'
+            },
+            {
+                components: 'components/header/index.tsx'
             }
         ]
     },

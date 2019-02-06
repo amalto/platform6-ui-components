@@ -30,7 +30,7 @@ class Link extends React.Component<Link.Props, any> {
 
         return (
             <li
-                onClick={e => selectEntry( entry.label )}
+                onClick={() => selectEntry( entry.label )}
                 className={classNames( {
                     'text-small': hideLabel
                 } )}
