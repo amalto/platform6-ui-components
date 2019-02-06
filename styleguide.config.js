@@ -120,11 +120,22 @@ module.exports = {
         name: 'Introduction',
         content: 'readme/Introduction.md'
     },
+    // {
+    //     name: 'Components',
+    //     description: 'All the components provided by Platform 6.',
+    //     ignore: ['**/node_modules/**'],
+    //     components: 'components/*/index.tsx'
+    // },
     {
-        name: 'Components',
-        description: 'All the components provided by Platform 6.',
-        ignore: ['**/node_modules/**'],
-        components: 'components/*/index.tsx'
+        name: 'UI component',
+        sections: [
+            {
+                components: 'components/sidebar/index.tsx'
+            },
+            {
+                components: 'components/menu/index.tsx'
+            }
+        ]
     },
     {
         name: 'Platform 6 UI',
