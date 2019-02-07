@@ -1,9 +1,9 @@
-# Sidebar
+# Header
 
-Sidebar component.
+Header component.
 
 ## Install
-To install the Sidebar component run:
+To install the Header component run:
 ```terminal
-npm install --save @amalto/sidebar
+npm install --save @amalto/header
 ```

@@ -128,16 +128,12 @@ module.exports = {
     // },
     {
         name: 'Page components',
-        sections: [
-            {
-                components: 'components/sidebar/index.tsx'
-            },
-            {
-                components: 'components/menu/index.tsx'
-            },
-            {
-                components: 'components/header/index.tsx'
-            }
+        components: [
+            'components/sidebar/index.tsx',
+            'components/menu/index.tsx',
+            'components/header/index.tsx',
+            'components/container/index.tsx',
+            'components/toggle-panel/index.tsx'
         ]
     },
     {

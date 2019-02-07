@@ -1,7 +1,7 @@
 {
-    "name": "@amalto/header",
-    "displayName": "Header",
-    "description": "Customizable header.",
+    "name": "@amalto/container",
+    "displayName": "Container",
+    "description": "Customizable container.",
     "version": "1.0.0",
     "license": "MIT",
     "repository": {
