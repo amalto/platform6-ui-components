@@ -11,7 +11,9 @@ const selectEntry = ( entry ) => {
     setState( { selectedEntry: entry } )
 };
 
-<div style={{ position: 'relative' }}>
+// In this example the `header` position is set to `absolute` instead of `fixed` because it should stay in the example container.
+
+<section style={{ position: 'relative' }}>
     <Header backgroundColor='#fff'
         imgSrc='images/logo.png'
         url='#'
@@ -37,25 +39,12 @@ const selectEntry = ( entry ) => {
                     { label: 'Frames', icon: 'fa-fw far fa-window-maximize', url: '#menu' },
                     { label: 'Counters', icon: 'fa-fw fas fa-tachometer-alt', url: '#menu' },
                     { label: 'Scripts', icon: 'fa-fw fas fa-terminal', url: '#menu' },
-                    { label: 'Homes2', icon: 'fa-fw fa-fw fas fa-home', url: '#menu' },
-                    { label: 'Reports2', icon: 'fa-fw fas fa-chart-area', url: '#menu' },
-                    { label: 'Frames2', icon: 'fa-fw far fa-window-maximize', url: '#menu' },
-                    { label: 'Counters2', icon: 'fa-fw fas fa-tachometer-alt', url: '#menu' },
-                    { label: 'Scripts2', icon: 'fa-fw fas fa-terminal', url: '#menu' },
-                    { label: 'Homes3', icon: 'fa-fw fa-fw fas fa-home', url: '#menu' },
-                    { label: 'Reports3', icon: 'fa-fw fas fa-chart-area', url: '#menu' },
-                    { label: 'Frames3', icon: 'fa-fw far fa-window-maximize', url: '#menu' },
-                    { label: 'Counters3', icon: 'fa-fw fas fa-tachometer-alt', url: '#menu' },
-                    { label: 'Scripts3', icon: 'fa-fw fas fa-terminal', url: '#menu' },
-                    { label: 'Homes4', icon: 'fa-fw fa-fw fas fa-home', url: '#menu' },
-                    { label: 'Reports4', icon: 'fa-fw fas fa-chart-area', url: '#menu' },
-                    { label: 'Frames4', icon: 'fa-fw far fa-window-maximize', url: '#menu' },
-                    { label: 'Counters4', icon: 'fa-fw fas fa-tachometer-alt', url: '#menu' },
-                    { label: 'Scripts4', icon: 'fa-fw fas fa-terminal', url: '#menu' }
+                    { label: 'Administration', icon: 'fa-fw fas fa-cogs', url: '#menu' },
+                    { label: 'Organizations', icon: 'fa-fw fas fa-sitemap', url: '#menu' }
                 ]
             }
             >
         </Menu>
     </Sidebar>
-</div>
+</section>
 ```

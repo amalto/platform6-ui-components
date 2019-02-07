@@ -4,6 +4,8 @@ import * as classNames from 'classnames'
 
 import { Entry } from '../models/Entry'
 
+import { styles } from '../styles/link'
+
 module Link {
 
     export interface Props extends React.Props<Link> {
@@ -26,7 +28,11 @@ class Link extends React.Component<Link.Props, any> {
     render() {
         const { entry, linkStyle, hideLabel, activeStyle, selectEntry } = this.props
 
-        const finalStyle = !!activeStyle ? { ...linkStyle, ...activeStyle, ':hover': undefined } : linkStyle
+        const finalStyle = !!activeStyle ? { ...linkStyle, ...activeStyle, ...styles.menuLink, ':hover': undefined } : { ...linkStyle, ...styles.menuLink }
+
+        if ( !hideLabel ) {
+            delete finalStyle.textAlign
+        }
 
         return (
             <li
@@ -34,27 +40,13 @@ class Link extends React.Component<Link.Props, any> {
                 className={classNames( {
                     'text-small': hideLabel
                 } )}
-                style={{
-                    marginTop: 2,
-                    listStyle: 'none',
-                    padding: 0,
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap'
-                }}>
-                <a href={entry.url} style={[this.getLinkStyle(), finalStyle]}>
-                    <span className={entry.icon} style={{ marginRight: 5 }} />
+                style={[styles.itemList]}>
+                <a href={entry.url} style={[finalStyle]}>
+                    <span className={entry.icon} style={{ marginRight: !hideLabel ? 5 : 0 }} />
                     {!hideLabel ? <span>{entry.label}</span> : null}
                 </a>
             </li>
         )
-    }
-
-    private getLinkStyle = (): React.CSSProperties => {
-        return {
-            display: 'block',
-            padding: '9px 10px',
-            borderTopLeftRadius: 4, borderTopRightRadius: 4, borderBottomRightRadius: 4, borderBottomLeftRadius: 4
-        }
     }
 }
 

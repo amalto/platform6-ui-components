@@ -127,7 +127,7 @@ module.exports = {
     //     components: 'components/*/index.tsx'
     // },
     {
-        name: 'UI component',
+        name: 'Page components',
         sections: [
             {
                 components: 'components/sidebar/index.tsx'
@@ -141,7 +141,7 @@ module.exports = {
         ]
     },
     {
-        name: 'Platform 6 UI',
+        name: 'External resources',
         content: 'readme/platform6-ui/Introduction.md',
         sections: [
             {
