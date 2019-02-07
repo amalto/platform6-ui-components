@@ -120,22 +120,74 @@ module.exports = {
         name: 'Introduction',
         content: 'readme/Introduction.md'
     },
-    // {
-    //     name: 'Components',
-    //     description: 'All the components provided by Platform 6.',
-    //     ignore: ['**/node_modules/**'],
-    //     components: 'components/*/index.tsx'
-    // },
     {
-        name: 'Page components',
-        components: [
-            'components/sidebar/index.tsx',
-            'components/menu/index.tsx',
-            'components/header/index.tsx',
-            'components/container/index.tsx',
-            'components/toggle-panel/index.tsx'
+        name: 'Components',
+        description: 'All the components provided by Platform 6.',
+        ignore: ['**/node_modules/**'],
+        sections: [
+            {
+                name: 'Page construction',
+                components: [
+                    'components/sidebar/index.tsx',
+                    'components/menu/index.tsx',
+                    'components/header/index.tsx',
+                    'components/container/index.tsx'
+                ]
+            },
+            {
+                name: 'Inputs',
+                components: [
+                    'components/checkbox-input/index.tsx',
+                    'components/checkboxes-input/index.tsx',
+                    'components/code-editor-input/index.tsx',
+                    'components/cron-input/index.tsx',
+                    'components/date-input/index.tsx',
+                    'components/file-input/index.tsx',
+                    'components/file-upload-input/index.tsx',
+                    'components/multi-select-input/index.tsx',
+                    'components/radio-input/index.tsx',
+                    'components/readonly-input/index.tsx',
+                    'components/select-input/index.tsx',
+                    'components/select-text-input/index.tsx',
+                    'components/switch-input/index.tsx',
+                    'components/text-input/index.tsx',
+                    'components/textarea-input/index.tsx',
+                    'components/typeahead-form-input/index.tsx',
+                    'components/typeahead-input/index.tsx',
+                    'components/validated-input/index.tsx'
+                ]
+            },
+            {
+                name: 'Modules',
+                components: [
+                    'components/action-button/index.tsx',
+                    'components/buttons-bar/index.tsx',
+                    'components/code-editor/index.tsx',
+                    'components/color-picker/index.tsx',
+                    'components/data-line/index.tsx',
+                    'components/date-picker/index.tsx',
+                    'components/file-importer/index.tsx',
+                    'components/help/index.tsx',
+                    'components/key-value-editor/index.tsx',
+                    'components/language-wrapper/index.tsx',
+                    'components/multi-select/index.tsx',
+                    'components/paging-controls/index.tsx',
+                    'components/pdf-viewer/index.tsx',
+                    'components/restricted/index.tsx',
+                    'components/select-text/index.tsx',
+                    'components/signature/index.tsx',
+                    'components/spinner/index.tsx',
+                    'components/switch/index.tsx',
+                    'components/tab/index.tsx',
+                    'components/tabs/index.tsx',
+                    'components/time-picker/index.tsx',
+                    'components/toggle-panel/index.tsx',
+                    'components/tree/index.tsx'
+                ]
+            },
         ]
     },
+
     {
         name: 'External resources',
         content: 'readme/platform6-ui/Introduction.md',
@@ -151,13 +203,14 @@ module.exports = {
             {
                 name: 'WebStorage',
                 content: 'readme/platform6-ui/WebStorage.md'
+            },
+            {
+                name: 'ReduxForm',
+                content: 'readme/redux-form/Description.md'
             }
         ]
     },
-    {
-        name: 'ReduxForm',
-        content: 'readme/redux-form/Description.md'
-    },
+
     {
         name: 'Interfaces',
         content: 'readme/interfaces/Description.md',
@@ -198,10 +251,10 @@ module.exports = {
                 name: 'KeyValDef',
                 content: 'readme/interfaces/KeyValDef.md'
             },
-            {
-                name: 'Marker',
-                content: 'readme/interfaces/Marker.md'
-            },
+            // {
+            //     name: 'Marker',
+            //     content: 'readme/interfaces/Marker.md'
+            // },
             {
                 name: 'PDFSource',
                 content: 'readme/interfaces/PDFSource.md'
