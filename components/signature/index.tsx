@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import * as SignaturePad from 'react-signature-pad-wrapper'
+import SignaturePad from 'react-signature-pad-wrapper'
 import classNames from 'classnames'
 import * as Radium from 'radium'
 

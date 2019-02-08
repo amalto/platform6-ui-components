@@ -1,13 +1,13 @@
 {
-  "lerna": "2.4.0",
-  "packages": [
-    "components/*"
-  ],
-  "commands": {
-    "init": {
-      "exact": true
-    }
-  },
-  "private": false,
-  "version": "independent"
+    "lerna": "2.4.0",
+    "packages": [
+        "components/*"
+    ],
+    "command": {
+        "init": {
+            "exact": true
+        }
+    },
+    "private": false,
+    "version": "independent"
 }
