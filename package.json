@@ -18,7 +18,7 @@
     "scripts": {
         "bootstrap": "lerna bootstrap --hoist",
         "build": "lerna run build",
-        "test": "ava --verbose",
+        "test": "nyc ava --verbose",
         "update_p6_version": "node update_platform6_version.js",
         "prepare": "npm run bootstrap",
         "prepublish": "npm run bootstrap",

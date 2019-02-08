@@ -19,7 +19,7 @@
     "scripts": {
         "setup": "npm install",
         "build": "rm -rf ./build/; tsc",
-        "test": "ava ./test/test.js --verbose"
+        "test": "nyc ava ./test/test.js --verbose"
     },
     "publishConfig": {
         "access": "public"
