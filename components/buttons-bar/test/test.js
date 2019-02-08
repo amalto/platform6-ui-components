@@ -54,8 +54,6 @@ test('Check ButtonsBar props', t => {
         />
     );
 
-    console.info(wrapper.childAt(1).childAt(1).props());
-
     // Buttons group
     t.true(wrapper.hasClass('btn-toolbar'));
     t.true(wrapper.childAt(0).hasClass('btn-group'));
