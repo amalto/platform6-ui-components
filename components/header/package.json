@@ -2,7 +2,7 @@
     "name": "@amalto/header",
     "displayName": "Header",
     "description": "Customizable header.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "repository": {
         "type": "git",
