@@ -9,5 +9,5 @@ import Sidebar from '@amalto/sidebar'
     width={300}
     height={300}>
     <div style={{color: 'white' }}>Sidebar</div>
-    </Sidebar>
+</Sidebar>
 ```

@@ -19,7 +19,7 @@ module Menu {
         title: string;
 
         /** Entries */
-        entries?: Entry[];
+        entries: Entry[];
 
         hideLabel?: boolean;
 

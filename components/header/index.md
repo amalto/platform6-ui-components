@@ -18,7 +18,7 @@ const selectEntry = ( entry ) => {
         imgSrc='images/logo.png'
         url='#'
         mainStyle={{ position: 'absolute !important', width: '100%' }}
-        clickAction={() => setState({ reduceMenu: !state.reduceMenu })}
+        burgerAction={() => setState({ reduceMenu: !state.reduceMenu })}
         height={70}>
     </Header>
 

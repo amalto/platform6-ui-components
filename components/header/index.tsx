@@ -30,7 +30,7 @@ module Header {
         url: string;
 
         /** Burger click action */
-        clickAction: () => void;
+        burgerAction: () => void;
 
         /** Hide props from documentation */
 
@@ -49,7 +49,7 @@ class Header extends React.Component<Header.Props, any> {
     }
 
     render() {
-        const { mainCss, mainStyle, backgroundColor, height, imgSrc, url, clickAction } = this.props
+        const { mainCss, mainStyle, backgroundColor, height, imgSrc, url, burgerAction } = this.props
 
         return (
             <header className={mainCss} style={{
@@ -60,8 +60,8 @@ class Header extends React.Component<Header.Props, any> {
                 zIndex: 200,
                 ...mainStyle,
             }}>
-                <Brand backgroundColor='#fff' imgSrc={imgSrc} url={url} />
-                <Burger clickAction={clickAction} />
+                <Brand backgroundColor={backgroundColor} imgSrc={imgSrc} url={url} />
+                <Burger burgerAction={burgerAction} />
             </header>
         )
     }
