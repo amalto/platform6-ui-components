@@ -25,21 +25,26 @@
         "access": "public"
     },
     "dependencies": {
-        "classnames": "2.2.5",
+        "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
     "devDependencies": {
-        "@ava/babel-preset-stage-4": "1.1.0",
+        "@ava/babel-preset-stage-4": "2.0.0",
+        "@ava/babel-preset-transform-test-files": "^4.0.1",
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-syntax-jsx": "^7.2.0",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.0.0",
         "@types/bootstrap": "3.3.36",
         "@types/classnames": "^2.2.3",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
-        "ava": "0.24.0",
+        "ava": "1.2.1",
         "babel-preset-react": "6.24.1",
-        "babel-register": "6.26.0",
         "enzyme": "3.3.0",
         "enzyme-adapter-react-15": "1.0.5",
+        "nyc": "^13.2.0",
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
         "sinon": "4.2.2",
@@ -52,13 +57,22 @@
         "failWithoutAssertions": false,
         "powerAssert": true,
         "require": [
-            "babel-register"
+            "@babel/register"
         ],
         "babel": {
-            "presets": [
-                "@ava/stage-4",
-                "react"
-            ]
+            "extensions": [
+                "js",
+                "jsx"
+            ],
+            "testOptions": {
+                "plugins": [
+                    "@babel/plugin-syntax-jsx"
+                ],
+                "presets": [
+                    "@ava/babel-preset-stage-4",
+                    "@babel/preset-react"
+                ]
+            }
         }
     }
 }

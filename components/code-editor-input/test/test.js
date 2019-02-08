@@ -2,7 +2,7 @@ import * as React from 'react';
 import { reduxForm } from 'redux-form';
 
 import test from 'ava';
-import * as sinon from 'sinon';
+// import * as sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-15';
 import { shallow, configure } from 'enzyme';
 

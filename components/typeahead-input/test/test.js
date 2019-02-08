@@ -1,13 +1,13 @@
-import * as React from 'react';
+// import * as React from 'react';
 
 import test from 'ava';
-import * as sinon from 'sinon';
-import Adapter from 'enzyme-adapter-react-15';
-import { shallow, configure } from 'enzyme';
+// import * as sinon from 'sinon';
+// import Adapter from 'enzyme-adapter-react-15';
+// import { shallow, configure } from 'enzyme';
 
-import TypeaheadInput from '../build/index.js';
+// import TypeaheadInput from '../build/index.js';
 
-configure({ adapter: new Adapter() });
+// configure({ adapter: new Adapter() });
 
 // test.beforeEach('TypeaheadInput component should exist', t => {
 //     const collection = ['first', 'second', 'third'];
