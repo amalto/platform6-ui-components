@@ -42,7 +42,7 @@ class Sidebar extends React.Component<Sidebar.Props, any> {
         const { mainCss, mainStyle, backgroundColor, width, height, children } = this.props
 
         return (
-            <div className={mainCss} style={{ ...mainStyle, width, height, backgroundColor, overflow: 'auto' }}>
+            <div className={mainCss} style={{ width, height, backgroundColor, overflow: 'auto', ...mainStyle }}>
                 {children}
             </div>
         )
