@@ -18,7 +18,7 @@ module Burger {
         mainStyle?: React.CSSProperties;
 
         /** Burger click action */
-        clickAction: () => void;
+        burgerAction: () => void;
 
         /** Hide props from documentation */
 
@@ -37,12 +37,12 @@ class Burger extends React.Component<Burger.Props, any> {
     }
 
     render() {
-        const { mainCss, mainStyle, clickAction } = this.props
+        const { mainCss, mainStyle, burgerAction } = this.props
 
         return (
             <div className={mainCss} style={{ display: 'table', position: 'relative', height: '100%', ...mainStyle }}>
                 <Radium.StyleRoot style={{ display: 'table-cell', verticalAlign: 'middle' }}>
-                    <button style={{ padding: 20, height: '100%', border: 'none', backgroundColor: '#fff', outline: 'none', ...styles.hover }} onClick={clickAction} type='button'>
+                    <button style={{ padding: 20, height: '100%', border: 'none', backgroundColor: '#fff', outline: 'none', ...styles.hover }} onClick={burgerAction} type='button'>
                         <span className='fas fa-bars' style={{ color: '#3a3a3a' }} />
                     </button>
                 </Radium.StyleRoot>
