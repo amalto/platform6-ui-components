@@ -9,6 +9,6 @@ const initialState = {
     templatesChanged: false
 };
 
-export function datagridReducer(state = initialState, action) {
+export function datagridReducer( state = initialState, /** action */ ) {
     return state
 }

@@ -94,7 +94,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         const { wordings } = this.state
         const { filesQueue } = this.props
 
-        const files: FileWrapper[] = $.map( filesQueue, ( file, key ) => file )
+        const files: FileWrapper[] = $.map( filesQueue, file => file )
 
         const filesDisplay = files.map( ( file, idx ) => {
             return (

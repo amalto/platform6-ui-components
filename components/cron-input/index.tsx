@@ -220,7 +220,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
         )
     }
 
-    private handleFieldChange = ( fieldValue: string, fieldName: string, isInvalid: boolean ) => {
+    private handleFieldChange = ( fieldValue: string, fieldName: string ) => {
         this.setState( {
             [fieldName]: fieldValue
         }, () => {

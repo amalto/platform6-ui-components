@@ -466,13 +466,15 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         } )
     }
 
-    private setUpTree = ( id: string, data: TreeNodeModel, defaultSelectedNodeId?: string ): JSTree => {
+    // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
+    // https://github.com/Microsoft/TypeScript/issues/9458
+    private setUpTree = ( __id: string, data: TreeNodeModel, defaultSelectedNodeId?: string ): JSTree => {
         let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
 
         let tree = $.jstree.create( treeContainer, {
             core: {
                 data: data,
-                check_callback: function ( operation, node, node_parent, node_position, more ) {
+                check_callback: function ( operation, /**  node, node_parent, node_position, more */ ) {
                     return operation !== 'move_node'
                 },
                 multiple: false,
@@ -486,7 +488,9 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
         tree.hide_dots()
 
-        $( treeContainer ).on( 'select_node.jstree', ( event, selected ) => {
+        // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
+        // https://github.com/Microsoft/TypeScript/issues/9458
+        $( treeContainer ).on( 'select_node.jstree', ( __event, selected ) => {
             this.setState( {
                 selectedNode: this.getDecodedNode( selected.node ),
                 editedNode: null,
@@ -497,7 +501,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             }
         } )
 
-        $( treeContainer ).on( 'deselect_node.jstree', ( event, selected ) => {
+        $( treeContainer ).on( 'deselect_node.jstree', ( /** event, selected */ ) => {
             this.setState( {
                 selectedNode: null,
                 editedNode: null,

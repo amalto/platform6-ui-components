@@ -34,9 +34,9 @@
         "@types/react": "15.6.10",
         "ava": "1.2.1",
         "nyc": "^13.2.0",
-        "ts-loader": "3.2.0",
+        "ts-loader": "5.3.3",
         "typescript": "2.6.2",
-        "webpack": "3.10.0"
+        "webpack": "^4.29.3"
     },
     "dependencies": {
         "react": "15.6.2",

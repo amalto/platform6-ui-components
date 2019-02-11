@@ -205,7 +205,7 @@ class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
         return picker
     }
 
-    private clearDate = ( event: any ) => {
+    private clearDate = () => {
         this.state.datePickerInstance.setDate( '', true )
 
         if ( this.props.handleDateChange ) {

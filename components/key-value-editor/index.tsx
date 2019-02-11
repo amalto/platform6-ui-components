@@ -223,7 +223,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
         const file: File = event.target.files[0]
         const isTextPlain = file.type && file.type === 'text/plain'
 
-        reader.onload = ( e: any ) => {
+        reader.onload = () => {
             try {
                 const fileContent: string = reader.result
                 let fileData: string = ''

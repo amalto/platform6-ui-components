@@ -83,7 +83,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         }
     }
 
-    componentDidUpdate( prevProps: FileInput.Props, prevState: FileInput.State ) {
+    componentDidUpdate( prevProps: FileInput.Props ) {
         if ( prevProps.filename !== this.props.filename ) this.setState( { filename: this.props.filename } as FileInput.State )
         if ( prevProps.filesize !== this.props.filesize ) this.setState( { filesize: this.props.filesize } as FileInput.State )
     }
@@ -144,11 +144,11 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         const reader = new FileReader()
 
         if ( file ) {
-            reader.onload = ( e: any ) => {
+            reader.onload = () => {
                 this.setState( { fileContent: reader.result } as FileUploadInput.State )
             }
 
-            reader.onerror = ( e: any ) => {
+            reader.onerror = () => {
                 this.setState( { loadingError: true } )
             }
 

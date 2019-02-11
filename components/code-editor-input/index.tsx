@@ -318,7 +318,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
         } )
     }
 
-    componentDidUpdate( prevProps: CodeEditor.Props, prevState: CodeEditor.State ) {
+    componentDidUpdate( prevProps: CodeEditor.Props ) {
 
         const { editorInstance } = this.state
 

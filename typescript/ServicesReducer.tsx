@@ -11,6 +11,6 @@ const initialState = {
     serviceContext: {}
 };
 
-export function servicesReducer(state = initialState, action) {
+export function servicesReducer( state = initialState, /** action */ ) {
     return state
 }

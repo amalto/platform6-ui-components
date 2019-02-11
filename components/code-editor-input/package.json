@@ -45,8 +45,9 @@
         "react-addons-test-utils": "15.6.2",
         "react-test-renderer": "15.6.2",
         "sinon": "4.2.2",
+        "ts-loader": "5.3.3",
         "typescript": "2.6.2",
-        "webpack": "3.10.0"
+        "webpack": "^4.29.3"
     },
     "dependencies": {
         "@amalto/help": "1.4.23",
@@ -58,8 +59,7 @@
         "react-redux": "5.0.6",
         "redux": "3.7.2",
         "redux-form": "6.6.1",
-        "uuid": "3.2.1",
-        "webpack": "3.10.0"
+        "uuid": "3.2.1"
     },
     "ava": {
         "concurrency": 5,

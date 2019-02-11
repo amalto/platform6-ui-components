@@ -32,6 +32,6 @@ const initialState = {
     loadingTimer: 0
 };
 
-export function mainReducer(state = initialState, action) {
+export function mainReducer( state = initialState, /** action */ ) {
     return state
 }

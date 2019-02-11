@@ -90,7 +90,9 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
 
         $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
 
-        $( '.typeahead' ).bind( 'typeahead:select', ( ( event: any, suggestion: any ) => {
+        // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
+        // https://github.com/Microsoft/TypeScript/issues/9458
+        $( '.typeahead' ).bind( 'typeahead:select', ( ( __event: any, suggestion: any ) => {
             handleInputChange( suggestion )
         } ) as any )
     }

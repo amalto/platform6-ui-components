@@ -109,7 +109,7 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
                                         value={currentPage}
                                         onChange={this.handleGoToPageInput}
                                         ref={input => this.goToPageInput = input}
-                                        onFocus={e => { this.goToPageInput.select() }}
+                                        onFocus={() => { this.goToPageInput.select() }}
                                     />
                                 )
                             }

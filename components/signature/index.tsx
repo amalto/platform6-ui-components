@@ -220,7 +220,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         } )
     }
 
-    private handleResize = ( event: any ): void => {
+    private handleResize = (): void => {
         if ( !this.clearTimeout ) {
             this.clearTimeout = window.setTimeout( () => {
                 this.clearTimeout = null

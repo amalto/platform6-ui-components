@@ -65,7 +65,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
         }
     }
 
-    componentDidUpdate( prevProps: DataItem.Props, prevState: DataItem.State ) {
+    componentDidUpdate( prevProps: DataItem.Props ) {
         if ( prevProps.displayValueMaxLength !== this.props.displayValueMaxLength || prevProps.displayValue !== this.props.displayValue ) {
             const valueMaxLength: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH
 

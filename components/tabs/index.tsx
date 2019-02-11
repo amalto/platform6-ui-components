@@ -86,7 +86,7 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
                         {tab.props.iconClass ? <i className={classNames( `${ tab.props.iconClass } right-spaced` )}></i> : null}
                         {tab.props.title}
                     </a>
-                    {tab.props.closable ? <button className="close" onClick={e => this.closeTab( tab.props.id )}>&times;</button> : null}
+                    {tab.props.closable ? <button className="close" onClick={() => this.closeTab( tab.props.id )}>&times;</button> : null}
                 </li>
             )
         } )

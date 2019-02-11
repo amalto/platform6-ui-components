@@ -109,7 +109,7 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
 
                 {
                     randomGenerator ? (
-                        <button type="button" className="btn btn-info input-suffix" onClick={e => this.generateClientSecret( field )}>
+                        <button type="button" className="btn btn-info input-suffix" onClick={() => this.generateClientSecret( field )}>
                             <span className="fas fa-random"></span>
                         </button>
                     ) : null

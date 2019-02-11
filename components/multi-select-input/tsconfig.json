@@ -3,6 +3,7 @@
         "target": "es5",
         "module": "commonjs",
         "noImplicitAny": false,
+        "noUnusedParameters": true,
         "noUnusedLocals": true,
         "removeComments": true,
         "outDir": "./build",

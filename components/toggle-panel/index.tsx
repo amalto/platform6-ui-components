@@ -167,7 +167,7 @@ class TogglePanel extends React.Component<TogglePanel.Props, TogglePanel.State> 
         }
     }
 
-    private togglePanelContent = ( event: any ): void => {
+    private togglePanelContent = (): void => {
         if ( this.props.togglable !== false ) {
             this.setState( {
                 opened: !this.state.opened
