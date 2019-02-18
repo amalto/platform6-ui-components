@@ -2,7 +2,7 @@
     "name": "@amalto/menu",
     "displayName": "Menu",
     "description": "Customizable menu.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "MIT",
     "repository": {
         "type": "git",
