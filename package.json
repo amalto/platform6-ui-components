@@ -24,7 +24,7 @@
         "prepublish": "npm run bootstrap",
         "publish": "lerna publish --yes --exact patch -- --production --access public --registry=https://registry.npmjs.org/",
         "publish:version": "lerna publish --yes patch --exact -- --production --access public --registry=https://registry.npmjs.org/",
-        "publish:force": "lerna publish --yes patch --exact --force-publish=* -- --production --access public --registry=https://registry.npmjs.org/",
+        "publish:force": "lerna publish --yes patch --exact --force-publish=* -- --production --no-verify-registry --no-verify-access --access public --registry=https://registry.npmjs.org/",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build"
