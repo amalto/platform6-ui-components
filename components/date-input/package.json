@@ -2,7 +2,7 @@
     "name": "@amalto/date-input",
     "displayName": "DateInput",
     "description": "Date input used on platform6.",
-    "version": "1.5.1",
+    "version": "1.6.0",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,8 +25,8 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/date-picker": "1.5.1",
-        "@amalto/help": "1.5.1",
+        "@amalto/date-picker": "1.6.0",
+        "@amalto/help": "1.5.2",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",
