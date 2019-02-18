@@ -17,8 +17,7 @@ const selectEntry = ( entry ) => {
     </span>
 
     <Sidebar width={!state.reduceMenu ? undefined : 60} height={200} backgroundColor='#3a3a3a' mainStyle={{marginTop: 10}}>
-        <Menu backgroundColor='#3a3a3a'
-            mainColor='#89bc55'
+        <Menu mainColor='#89bc55'
             textColor='#b3b8c3'
             subColor='#fff'
             hoverTextColor='#000'
