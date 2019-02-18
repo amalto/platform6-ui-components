@@ -41,5 +41,6 @@
     "dependencies": {
         "react": "15.6.2",
         "redux": "3.7.2"
-    }
+    },
+    "gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e"
 }
