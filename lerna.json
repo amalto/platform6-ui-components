@@ -1,8 +1,5 @@
 {
     "lerna": "2.4.0",
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
-    },
     "packages": [
         "components/*"
     ],
