@@ -24,7 +24,7 @@
         "prepublish": "npm run bootstrap",
         "publish": "lerna publish from-git --yes --exact patch -- --production --access public",
         "publish:version": "lerna publish from-git --yes patch --exact -- --production --access public",
-        "publish:force": "lerna publish from-git --yes patch --exact --force-publish=* --no-verify-registry --no-verify-access -- --production --access public",
+        "publish:force": "lerna publish from-git --yes patch --exact --force-publish=* -- --production --access public",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build"
