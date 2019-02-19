@@ -54,7 +54,7 @@
         "ts-loader": "5.3.3",
         "typeahead.js": "0.11.1",
         "typescript": "2.6.2",
-        "webpack": "^4.29.3"
+        "webpack": "^4.29.5"
     },
     "ava": {
         "concurrency": 5,

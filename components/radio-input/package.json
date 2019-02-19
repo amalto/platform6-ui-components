@@ -59,7 +59,7 @@
         "sinon": "4.2.2",
         "ts-loader": "5.3.3",
         "typescript": "2.6.2",
-        "webpack": "^4.29.3"
+        "webpack": "^4.29.5"
     },
     "ava": {
         "concurrency": 5,
