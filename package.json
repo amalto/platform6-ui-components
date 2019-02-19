@@ -61,7 +61,7 @@
         "jsdom": "11.6.2",
         "json-loader": "0.5.7",
         "jstree": "3.3.5",
-        "lerna": "3.11.0",
+        "lerna": "3.13.0",
         "markdown-loader": "2.0.2",
         "modernizr": "3.6.0",
         "node-sass": "^4.11.0",
