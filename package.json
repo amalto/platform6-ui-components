@@ -22,9 +22,9 @@
         "update_p6_version": "node update_platform6_version.js",
         "prepare": "npm run bootstrap",
         "prepublish": "npm run bootstrap",
-        "release": "lerna publish from-git --yes --exact --registry=https://registry.npmjs.org/ patch -- --production --access public",
-        "release:version": "lerna publish from-git --yes --registry=https://registry.npmjs.org/ patch --exact -- --production --access public",
-        "release:force": "lerna publish from-git --yes --registry=https://registry.npmjs.org/ patch --exact --force-publish=* -- --production --access public",
+        "release": "lerna publish from-package --yes --exact --registry=https://registry.npmjs.org/ patch -- --production --access public",
+        "release:version": "lerna publish from-package --yes --registry=https://registry.npmjs.org/ patch --exact -- --production --access public",
+        "release:force": "lerna publish from-package --yes --registry=https://registry.npmjs.org/ patch --exact --force-publish=* -- --production --access public",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build"
