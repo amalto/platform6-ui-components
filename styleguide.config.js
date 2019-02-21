@@ -130,7 +130,7 @@ module.exports = {
                 components: [
                     'components/sidebar/index.tsx',
                     'components/menu/index.tsx',
-                    'components/header/index.tsx',
+                    'components/header-bar/index.tsx',
                     'components/container/index.tsx'
                 ]
             },

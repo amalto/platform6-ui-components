@@ -5,16 +5,16 @@ import Brand from './components/Brand'
 import Burger from './components/Burger'
 
 /**
- * Customisable Header.
+ * Customisable HeaderBar.
  */
-module Header {
+module HeaderBar {
 
-    export interface Props extends React.Props<Header> {
+    export interface Props extends React.Props<HeaderBar> {
 
-        /** Header css */
+        /** HeaderBar css */
         mainCss?: string;
 
-        /** Header style */
+        /** HeaderBar style */
         mainStyle?: React.CSSProperties;
 
         /** Background color */
@@ -39,12 +39,12 @@ module Header {
         /** @ignore */
         key?: React.ReactText;
         /** @ignore */
-        ref?: React.Ref<Header>;
+        ref?: React.Ref<HeaderBar>;
     }
 }
 
-class Header extends React.Component<Header.Props, any> {
-    constructor( props: Header.Props ) {
+class HeaderBar extends React.Component<HeaderBar.Props, any> {
+    constructor( props: HeaderBar.Props ) {
         super( props )
     }
 
@@ -68,4 +68,4 @@ class Header extends React.Component<Header.Props, any> {
 }
 
 
-export default Header
+export default HeaderBar

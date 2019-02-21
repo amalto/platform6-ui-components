@@ -14,17 +14,16 @@ const selectEntry = ( entry ) => {
 // In this example the `header` position is set to `absolute` instead of `fixed` because it should stay in the example container.
 
 <section style={{ position: 'relative' }}>
-    <Header backgroundColor='#fff'
+    <HeaderBar backgroundColor='#fff'
         imgSrc='images/logo.png'
         url='#'
         mainStyle={{ position: 'absolute !important', width: '100%' }}
         burgerAction={() => setState({ reduceMenu: !state.reduceMenu, sidebarSize: !state.reduceMenu ? 60 : 300 })}
         height={70}>
-    </Header>
+    </HeaderBar>
 
     <Sidebar width={state.sidebarSize} height={200} backgroundColor='#3a3a3a' mainStyle={{margin: 0, display: 'inline-block' }}>
-        <Menu backgroundColor='#3a3a3a'
-            mainColor='#89bc55'
+        <Menu mainColor='#89bc55'
             textColor='#b3b8c3'
             subColor='#fff'
             hoverTextColor='#000'
