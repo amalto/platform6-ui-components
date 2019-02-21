@@ -46,12 +46,12 @@ const selectEntry = ( entry ) => {
         </Menu>
     </Sidebar>
     <Container mainStyle={{
-        backgroundColor: '#f0f3f3',
         position: 'absolute',
         display: 'inline-block',
         padding: 10,
         height: 'calc( 100% - 75px)',
-        width: `calc( 100% - ${state.sidebarSize}px)`}}>
+        width: `calc( 100% - ${state.sidebarSize}px)`}}
+        backgroundColor={'#f0f3f3'}>
         <TogglePanel panelTitle='Container' defaultOpened={true} togglable={false} customStyle={{height: '100%'}}>
         </TogglePanel>
     </Container>
