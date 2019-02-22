@@ -27,7 +27,7 @@
     "dependencies": {
         "classnames": "^2.2.6",
         "popper.js": "1.12.9",
-        "react": "15.6.2",
+        "react": "16.8.3",
         "react-dom": "15.6.2"
     },
     "devDependencies": {

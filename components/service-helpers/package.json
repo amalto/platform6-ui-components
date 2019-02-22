@@ -32,7 +32,7 @@
         "@amalto/typings": "1.1.5",
         "@amalto/wordings": "1.5.5",
         "classnames": "^2.2.6",
-        "react": "15.6.2"
+        "react": "16.8.3"
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "2.0.0",

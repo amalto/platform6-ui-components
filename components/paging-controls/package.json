@@ -28,7 +28,7 @@
         "@amalto/helpers": "1.5.5",
         "@amalto/wordings": "1.5.5",
         "classnames": "^2.2.6",
-        "react": "15.6.2",
+        "react": "16.8.3",
         "react-dom": "15.6.2",
         "react-intl": "2.4.0"
     },

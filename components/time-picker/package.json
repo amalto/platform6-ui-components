@@ -28,7 +28,7 @@
         "@amalto/help": "1.5.5",
         "classnames": "^2.2.6",
         "moment": "2.20.1",
-        "react": "15.6.2",
+        "react": "16.8.3",
         "react-dom": "15.6.2"
     },
     "devDependencies": {

@@ -29,7 +29,7 @@
         "@amalto/scope-helpers": "1.6.5",
         "@amalto/service-helpers": "1.1.5",
         "@amalto/typings": "1.1.5",
-        "react": "15.6.2",
+        "react": "16.8.3",
         "react-dom": "15.6.2"
     },
     "devDependencies": {

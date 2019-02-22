@@ -27,7 +27,7 @@
     "dependencies": {
         "@amalto/tab": "1.6.5",
         "@amalto/typings": "1.1.5",
-        "react": "15.6.2",
+        "react": "16.8.3",
         "uuid": "3.2.1"
     },
     "devDependencies": {
