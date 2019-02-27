@@ -90,7 +90,7 @@ class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
         }
     }
 
-    private renderTimeInput = ( field: WrappedFieldProps<any> ) => {
+    private renderTimeInput = ( field: WrappedFieldProps ) => {
 
         const { containerClass, mandatory } = this.props
         const { input, meta } = field

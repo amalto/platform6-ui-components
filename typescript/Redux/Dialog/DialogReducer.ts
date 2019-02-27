@@ -6,7 +6,7 @@ import { Reducer } from 'redux'
 import DialogState from './DialogState'
 import * as DialogActions from "./DialogActions"
 import { Action } from '../Globals'
-import ReduxThunk, { ThunkAction } from 'redux-thunk'
+import { ThunkAction } from 'redux-thunk'
 
 
 const reducer = ( initialState: DialogState ): Reducer<DialogState> => {
@@ -23,7 +23,24 @@ const reducer = ( initialState: DialogState ): Reducer<DialogState> => {
 
                 case DialogActions.SHOW_DIALOG:
                     {
-                        const { title, body, confirmAction, cancelAction, confirmLevel, itemsList, modalReadyCallback } = action.value as { title: string, body: string, confirmAction?: Action | ThunkAction<void, DialogState, any>, cancelAction?: Action | ThunkAction<void, DialogState, any>, confirmLevel: string, itemsList?: string[], modalReadyCallback?: () => void }
+                        const {
+                            title,
+                            body,
+                            confirmAction,
+                            cancelAction,
+                            confirmLevel,
+                            itemsList,
+                            modalReadyCallback
+                        } = action.value as {
+                            title: string,
+                            body: string,
+                            confirmAction?: Action | ThunkAction<void, DialogState, any, Action>,
+                            cancelAction?: Action | ThunkAction<void, DialogState, any, Action>,
+                            confirmLevel: string,
+                            itemsList?: string[],
+                            modalReadyCallback?: () => void
+                        }
+
                         return $.extend( {}, state, {
                             isShowing: true,
                             title,
@@ -38,7 +55,7 @@ const reducer = ( initialState: DialogState ): Reducer<DialogState> => {
 
                 case DialogActions.HIDE_DIALOG:
                     {
-                        console.info('HIDE_DIALOG :: state => ', state)
+                        console.info( 'HIDE_DIALOG :: state => ', state )
                         return $.extend( {}, state, { isShowing: false } )
                     }
             }

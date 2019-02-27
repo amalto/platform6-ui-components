@@ -1,7 +1,6 @@
 // Modules
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as uuid from 'uuid'
 import * as Radium from 'radium'
 
 // Components
@@ -361,14 +360,16 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     private scrollToTop = () => {
-        const el = ReactDOM.findDOMNode( document.getElementById( `input-${ this.props.name }` ) )
+        const el = ReactDOM.findDOMNode( document.getElementById( `input-${ this.props.name }` ) ) as HTMLInputElement
+
+        window.scrollTo( 0, el[0] )
 
         el.scrollIntoView( { behavior: 'smooth', block: 'end' } )
     }
 
     private scrollToOption = ( value: string ) => {
         if ( document.getElementById( `opt-${ value }` ) ) {
-            const el = ReactDOM.findDOMNode( document.getElementById( `opt-${ value }` ) )
+            const el = ReactDOM.findDOMNode( document.getElementById( `opt-${ value }` ) ) as HTMLDivElement
 
             el.scrollIntoView( { behavior: 'smooth', block: 'end' } )
         }

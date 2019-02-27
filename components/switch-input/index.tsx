@@ -17,11 +17,6 @@ namespace SwitchInput {
         name: string;
         /** Input's label. */
         label?: string | JSX.Element;
-        /**
-         * Whether or not the input is disabled.
-         * @default false
-         */
-        disabled?: boolean;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
         help?: string;
         /** CSS class wrapping the component. */
@@ -80,9 +75,9 @@ class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> 
         }
     }
 
-    private renderSwitch = ( field: WrappedFieldProps<any> ) => {
+    private renderSwitch = ( field: WrappedFieldProps ) => {
 
-        const { name, label, disabled, help, containerClass, inputClass, alignLeft, collapseErrorSpace } = this.props
+        const { name, label, help, containerClass, inputClass, alignLeft, collapseErrorSpace } = this.props
 
         const { input, meta } = field
 
@@ -95,9 +90,8 @@ class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> 
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <Switch id={`${inputId}_${name}`}
+                <Switch id={`${ inputId }_${ name }`}
                     name={name}
-                    disabled={disabled}
                     value={input.value}
                     cssClass={inputClass}
                     alignLeft={alignLeft}

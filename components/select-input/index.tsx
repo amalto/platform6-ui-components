@@ -87,7 +87,7 @@ class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> 
         }
     }
 
-    private renderSelect = ( field: WrappedFieldProps<any> ) => {
+    private renderSelect = ( field: WrappedFieldProps ) => {
 
         const { label, options, disabled, help, containerClass, inputClass, hideEmptyOption, collapseErrorSpace } = this.props
 

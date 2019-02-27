@@ -98,7 +98,7 @@ module MultiSelectInput {
 
 class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSelectInput.State> {
 
-    private textArea: HTMLTextAreaElement = null
+    // private textArea: HTMLTextAreaElement = null
     private dropdownCtn: HTMLDivElement;
 
     constructor( props: MultiSelectInput.Props ) {
@@ -128,7 +128,7 @@ class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSele
 
     /** Components */
 
-    private renderMultiSelectInput = ( field: WrappedFieldProps<any> ) => {
+    private renderMultiSelectInput = ( field: WrappedFieldProps ) => {
         const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace, fieldLineHeight } = this.props
 
         const { input, meta } = field
@@ -196,7 +196,7 @@ class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSele
 
                 <textarea
                     {...input as any}
-                    ref={dom => this.textArea = dom}
+                    // ref={dom => this.textArea = dom}
                     key={input.name}
                     disabled={disabled}
                     className='hidden' />
@@ -225,12 +225,12 @@ class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSele
         return extendedStyle
     }
 
-    private selectOption = ( event: any, field: WrappedFieldProps<any>, selectValue: string[], option: string ) => {
+    private selectOption = ( event: any, field: WrappedFieldProps, selectValue: string[], option: string ) => {
         event.preventDefault()
         this.handleChoiceSelect( field, selectValue, option, event.ctrlKey || event.metaKey )
     }
 
-    private handleChoiceSelect = ( field: WrappedFieldProps<any>, currentSelection: string[], choice: string, cmdOrCtrlKeyOn?: boolean ) => {
+    private handleChoiceSelect = ( field: WrappedFieldProps, currentSelection: string[], choice: string, cmdOrCtrlKeyOn?: boolean ) => {
 
         const newSelection: string[] = currentSelection.indexOf( choice ) !== -1
             ? removeValFromArrayNoDup( currentSelection as string[], choice )
@@ -251,7 +251,7 @@ class MultiSelectInput extends React.Component<MultiSelectInput.Props, MultiSele
             $( event.currentTarget ).scrollTop( 0 )
         }
 
-        field.input.onChange( newSelection.join( ',' ), undefined, undefined )
+        field.input.onChange( newSelection.join( ',' ) as any, undefined )
     }
 
 }

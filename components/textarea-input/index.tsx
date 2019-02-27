@@ -81,7 +81,7 @@ class TextareaInput extends React.Component<TextareaInput.Props, TextareaInput.S
         }
     }
 
-    private renderTextarea = ( field: WrappedFieldProps<any> ) => {
+    private renderTextarea = ( field: WrappedFieldProps ) => {
 
         const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, rows } = this.props
 

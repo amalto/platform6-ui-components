@@ -72,7 +72,7 @@ class DateInput extends React.Component<DateInput.Props, DateInput.State> {
         }
     }
 
-    private renderDatePicker = ( field: WrappedFieldProps<any> ) => {
+    private renderDatePicker = ( field: WrappedFieldProps ) => {
 
         const { input } = field
 

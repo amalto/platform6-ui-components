@@ -5,6 +5,7 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
+import * as CSS from 'csstype'
 
 // Models
 import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typings'
@@ -13,7 +14,7 @@ import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typin
 const STRING_MAX_LENGTH = 300
 
 module DataItem {
-    export interface Props extends React.Props<DataItem> {
+    export interface Props extends React.ClassAttributes<DataItem> {
         displayValue: JSX.Element | string | number;
         displayValueMaxLength?: number;
         columnId: string;
@@ -82,9 +83,9 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
 
         const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
 
-        let userStyles: React.CSSProperties = displayMode === 'mobile' ? {} : ( itemDisplaySettings && itemDisplaySettings[displayMode] ? {
+        let userStyles: CSS.Properties = displayMode === 'mobile' ? {} as any : ( itemDisplaySettings && itemDisplaySettings[displayMode] ? {
             width: itemDisplaySettings[displayMode].width,
-            textAlign: itemDisplaySettings[displayMode].textAlign,
+            textAlign: itemDisplaySettings[displayMode].textAlign as CSS.TextAlignProperty,
             color: itemDisplaySettings.color
         } : {
                 width: 150

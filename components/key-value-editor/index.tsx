@@ -225,7 +225,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
         reader.onload = () => {
             try {
-                const fileContent: string = reader.result
+                const fileContent: string = reader.result as string
                 let fileData: string = ''
 
                 if ( isTextPlain ) {

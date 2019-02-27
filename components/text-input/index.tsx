@@ -80,7 +80,7 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
         }
     }
 
-    private renderText = ( field: WrappedFieldProps<any> ) => {
+    private renderText = ( field: WrappedFieldProps ) => {
 
         const { label, disabled, autofocus, help, containerClass, containerStyle, inputClass, inputStyle, type, step, randomGenerator, placeholder, collapseErrorSpace } = this.props
 
@@ -138,8 +138,8 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
 
     }
 
-    private generateClientSecret = ( field: WrappedFieldProps<any> ) => {
-        field.input.onChange( uuid.v1(), undefined, undefined )
+    private generateClientSecret = ( field: WrappedFieldProps ) => {
+        field.input.onChange( uuid.v1() as any, undefined )
     }
 
 }

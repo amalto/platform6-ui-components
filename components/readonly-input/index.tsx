@@ -73,7 +73,7 @@ class ReadOnlyInput extends React.Component<ReadOnlyInput.Props, ReadOnlyInput.S
         }
     }
 
-    private renderText = ( field: WrappedFieldProps<any> ) => {
+    private renderText = ( field: WrappedFieldProps ) => {
 
         const { label, help, containerClass, inputClass, collapseErrorSpace } = this.props
 

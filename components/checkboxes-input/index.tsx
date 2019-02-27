@@ -77,7 +77,7 @@ namespace CheckboxesInput {
 }
 
 namespace Checkboxes {
-    export interface Props extends CheckboxesInput.Props, WrappedFieldProps<any> {
+    export interface Props extends CheckboxesInput.Props, WrappedFieldProps {
     }
 }
 
@@ -136,10 +136,10 @@ class Checkboxes extends React.Component<Checkboxes.Props, CheckboxesInput.State
         const selectedValues = input.value ? input.value.filter( ( item: string ) => !!item ) : []
 
         if ( event.target.checked ) {
-            input.onChange( addValToArrayNoDup( selectedValues, event.target.value ), undefined, undefined )
+            input.onChange( addValToArrayNoDup( selectedValues, event.target.value ) as any, undefined )
         }
         else {
-            input.onChange( removeValFromArrayNoDup( selectedValues, event.target.value ), undefined, undefined )
+            input.onChange( removeValFromArrayNoDup( selectedValues, event.target.value ) as any, undefined )
         }
     }
 

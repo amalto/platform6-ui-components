@@ -21,7 +21,7 @@ import {
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 namespace FileInput {
-    export interface Props extends WrappedFieldProps<any> {
+    export interface Props extends WrappedFieldProps {
         /** Input's name used when submitting form. */
         name: string;
         /** File name to display. */
@@ -136,7 +136,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         )
     }
 
-    private setValue = ( event: any, field: WrappedFieldProps<any> ): void => {
+    private setValue = ( event: any, field: WrappedFieldProps ): void => {
         this.setState( { loadingError: false } )
 
         const { input, meta } = field
@@ -155,7 +155,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
             reader.readAsText( file )
 
             this.setState( { filename: file.name, filesize: file.size } as FileUploadInput.State, () => {
-                input.onChange( file, undefined, undefined )
+                input.onChange( file, undefined )
                 this.props.onFileLoaded && this.props.onFileLoaded( this.state.filename, this.state.filesize )
             } )
         }

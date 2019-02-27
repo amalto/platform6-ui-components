@@ -194,7 +194,7 @@ class CodeEditorInput extends React.Component<CodeEditorInput.Props, CodeEditorI
 }
 
 namespace CodeEditor {
-    export interface Props extends WrappedFieldProps<any> {
+    export interface Props extends WrappedFieldProps {
         name: string;
         label?: string;
         readonly?: boolean;
@@ -501,7 +501,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
             initSession.value = editor.getValue()
         }
 
-        input.onChange( editor.getValue(), undefined, undefined )
+        input.onChange( editor.getValue() as any, undefined )
     }
 }
 

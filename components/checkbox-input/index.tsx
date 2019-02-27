@@ -76,7 +76,7 @@ class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.S
         }
     }
 
-    private renderCheckbox = ( field: WrappedFieldProps<any> ) => {
+    private renderCheckbox = ( field: WrappedFieldProps ) => {
 
         const { label, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
 
@@ -94,11 +94,11 @@ class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.S
                         key={input.name}
                         type="checkbox"
                         disabled={disabled}
-                        id={`${inputId}_${input.name}`}
+                        id={`${ inputId }_${ input.name }`}
                         className="form-checkbox"
                         checked={input.value} />
 
-                    <label className="form-checkbox-label" htmlFor={`${inputId}_${input.name}`}>{label}</label>
+                    <label className="form-checkbox-label" htmlFor={`${ inputId }_${ input.name }`}>{label}</label>
 
                     {help && <Help text={help} containerClass='pos-absolute' />}
                 </span>

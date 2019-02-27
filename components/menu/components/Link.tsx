@@ -40,8 +40,8 @@ class Link extends React.Component<Link.Props, any> {
                 className={classNames( {
                     'text-small': hideLabel
                 } )}
-                style={[styles.itemList]}>
-                <a href={entry.url} style={[finalStyle]}>
+                style={styles.itemList}>
+                <a href={entry.url} style={finalStyle}>
                     <span className={entry.icon} style={{ marginRight: !hideLabel ? 5 : 0 }} />
                     {!hideLabel ? <span>{entry.label}</span> : null}
                 </a>

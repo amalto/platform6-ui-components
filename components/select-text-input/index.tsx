@@ -96,7 +96,7 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
         }
     }
 
-    private renderText = ( field: WrappedFieldProps<any> ) => {
+    private renderText = ( field: WrappedFieldProps ) => {
 
         const { label, disabled, autofocus, help, containerClass, inputClass, type, step, placeholder, collapseErrorSpace } = this.props
 
@@ -182,15 +182,15 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
         return this.props.options.filter( o => regExp.test( o.label ) )
     }
 
-    private toggleSelectList = ( field: WrappedFieldProps<any> ): void => {
+    private toggleSelectList = ( field: WrappedFieldProps ): void => {
         const value = field.input.value
 
-        field.input.onChange( uuid.v1(), undefined, undefined )
-        this.setState( { selectOpen: !this.state.selectOpen } as SelectTextInput.State, () => field.input.onChange( value, undefined, undefined ) )
+        field.input.onChange( uuid.v1() as any, undefined )
+        this.setState( { selectOpen: !this.state.selectOpen } as SelectTextInput.State, () => field.input.onChange( value, undefined ) )
     }
 
-    private selectOption = ( value: React.ReactText, field: WrappedFieldProps<any> ): void => {
-        this.setState( { selectOpen: false } as SelectTextInput.State, () => field.input.onChange( value, undefined, undefined ) )
+    private selectOption = ( value: React.ReactText, field: WrappedFieldProps ): void => {
+        this.setState( { selectOpen: false } as SelectTextInput.State, () => field.input.onChange( value as any, undefined ) )
     }
 
 }

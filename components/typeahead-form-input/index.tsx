@@ -80,7 +80,7 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
         }
     }
 
-    private renderInput = ( field: WrappedFieldProps<any> ) => {
+    private renderInput = ( field: WrappedFieldProps ) => {
 
         const { name, label, help, containerClass, collection, remote, collapseErrorSpace, display, datumTokenizer, placeholder } = this.props
 

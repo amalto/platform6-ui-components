@@ -1,4 +1,6 @@
-export const styles = {
+import * as React from 'react'
+
+export const styles: { [id: string]: React.CSSProperties } = {
     itemList: {
         marginTop: 2,
         listStyle: 'none',
