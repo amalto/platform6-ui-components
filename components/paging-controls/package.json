@@ -31,8 +31,8 @@
         "enzyme-adapter-react-16": "^1.9.1",
         "prop-types": "^15.7.2",
         "react": "^16.8.3",
-        "react-form": "3.5.7",
-        "react-intl": "2.4.0"
+        "react-form": "^3.5.7",
+        "react-intl": "^2.8.0"
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "2.0.0",
