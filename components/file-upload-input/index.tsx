@@ -251,7 +251,7 @@ class FileUploadInput extends React.Component<FileUploadInput.Props, FileUploadI
             component: FileInput
         }
 
-        return <Field {...baseFieldProps} {...this.props} />
+        return <Field {...baseFieldProps} />
 
     }
 

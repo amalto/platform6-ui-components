@@ -9,10 +9,10 @@ import CheckboxInput from '@amalto/checkbox-input'
 ```javascript
 const { reduxForm } = require('redux-form');
 
-const ExampleCheckboxInput = reduxForm({
+const ExampleCheckboxInput = reduxForm( {
     form: 'form-checkbox-input-example',
     enableReinitialize: true
-})(CheckboxInput);
+} )( CheckboxInput );
 
 <ExampleCheckboxInput name='checkbox-input-example'
     label='CheckboxInput example'

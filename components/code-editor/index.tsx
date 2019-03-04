@@ -164,14 +164,16 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     private _firstChangeTime: number
     private _editorPanel: HTMLDivElement
     private _editor: AceEditor
-    // Should be NodeJS.Timer but actual version of node js only have the prototype that return number
-    private _clearTimeout: any = null
+
     private _canUpdate: boolean = false
     private _cursorLastPosition: { row: number, column: number } = { row: 0, column: 0 }
 
     constructor( props: CodeEditor.Props ) {
         super( props )
         this._firstChangeTime = -1
+
+        window.addEventListener( 'resize', () => this.resizeEditor() )
+        this._markerId && this._editor.getSession().removeMarker( this._markerId )
     }
 
     render() {
@@ -192,11 +194,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         )
     }
 
-    componentWillMount() {
-        window.addEventListener( 'resize', () => this.resizeEditor() )
-        this._markerId && this._editor.getSession().removeMarker( this._markerId )
-    }
-
     componentDidMount() {
 
         this._editor = ace.edit( this.props.docId )
@@ -210,13 +207,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         this.resizeEditor()
         !this.props.readonly && this.focus( this.props.aceSession )
-
-        // this._clearTimeout = setInterval(() => {
-        //     if ( this._canUpdate ) {
-        //         this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
-        //         this._canUpdate = false
-        //     }
-        // }, 12000)
 
         // Needed to be able to access this from editor onblur event
         const self = this
@@ -238,8 +228,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
         //save current session
         this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ), { cursorPosition: this._cursorLastPosition } ) )
-
-        // clearInterval( this._clearTimeout )
 
         //destroy the editor
         this._editor && this._editor.destroy()

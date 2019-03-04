@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, Field, BaseFieldProps, WrappedFieldInputProps } from 'redux-form'
 import * as classNames from 'classnames'
 import * as uuid from 'uuid'
 
@@ -76,20 +76,19 @@ namespace CheckboxesInput {
     }
 }
 
-namespace Checkboxes {
-    export interface Props extends CheckboxesInput.Props, WrappedFieldProps {
-    }
-}
+class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesInput.State> {
 
-class Checkboxes extends React.Component<Checkboxes.Props, CheckboxesInput.State> {
-
-    constructor( props: Checkboxes.Props ) {
+    constructor( props: CheckboxesInput.Props ) {
         super( props )
+        this.state = {
+
+        }
     }
 
-    render() {
+    private renderCheckboxesInput = ( field: WrappedFieldProps ): JSX.Element => {
+        const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
 
-        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, options, input, meta } = this.props
+        const { input, meta } = field
 
         const inputId: string = uuid.v4()
 
@@ -112,7 +111,7 @@ class Checkboxes extends React.Component<Checkboxes.Props, CheckboxesInput.State
                                     disabled={disabled}
                                     id={`${ inputId }_${ input.name }_${ idx }`}
                                     value={opt.value}
-                                    onChange={( e ) => this.handleChange( e )}
+                                    onChange={( e ) => this.handleChange( e, input )}
                                     checked={input.value.indexOf( opt.value ) !== -1} />
 
                                 <label className="form-checkbox-label" htmlFor={`${ inputId }_${ input.name }_${ idx }`}>{opt.label || opt.value}</label>
@@ -129,34 +128,9 @@ class Checkboxes extends React.Component<Checkboxes.Props, CheckboxesInput.State
         )
     }
 
-    private handleChange = ( event: any ) => {
-
-        const { input } = this.props
-
-        const selectedValues = input.value ? input.value.filter( ( item: string ) => !!item ) : []
-
-        if ( event.target.checked ) {
-            input.onChange( addValToArrayNoDup( selectedValues, event.target.value ) as any, undefined )
-        }
-        else {
-            input.onChange( removeValFromArrayNoDup( selectedValues, event.target.value ) as any, undefined )
-        }
-    }
-
-}
-
-class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesInput.State> {
-
-    constructor( props: CheckboxesInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
-    }
-
     render() {
 
-        const { name, label, options, disabled, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn, options } = this.props
 
         const baseFieldProps: BaseFieldProps = {
             name,
@@ -169,10 +143,22 @@ class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesI
 
         return options && options.length ? (
 
-            <Field {...baseFieldProps} {...this.props as any} component={Checkboxes} />
+            <Field {...baseFieldProps} component={this.renderCheckboxesInput} />
 
         ) : null
 
+    }
+
+    private handleChange = ( event: any, input: WrappedFieldInputProps ) => {
+
+        const selectedValues = input.value ? input.value.filter( ( item: string ) => !!item ) : []
+
+        if ( event.target.checked ) {
+            input.onChange( addValToArrayNoDup( selectedValues, event.target.value ) as any, undefined )
+        }
+        else {
+            input.onChange( removeValFromArrayNoDup( selectedValues, event.target.value ) as any, undefined )
+        }
     }
 
 }

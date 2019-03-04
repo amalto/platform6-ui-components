@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, Field, BaseFieldProps, WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form'
 import * as classNames from 'classnames'
 import * as uuid from 'uuid'
 import * as ace from 'brace'
@@ -76,8 +76,9 @@ type AceEditor = ace.Editor
 /**
  * Code editor inputs used on a [redux-form](#reduxform).
  */
-namespace CodeEditorInput {
+module CodeEditorInput {
     export interface Props extends BaseFieldProps {
+
         /** Input's name used when submitting form. */
         name: string;
         /** Input's label. */
@@ -103,6 +104,10 @@ namespace CodeEditorInput {
          * @default 300
          */
         height?: number | string;
+        /** Form unique id. */
+        form?: string;
+        /** Initial form value. */
+        initialValues?: any;
         /** Editor ace session. More details on [AceSession](#acesession). */
         initSession?: AceSession;
         /**
@@ -151,6 +156,11 @@ namespace CodeEditorInput {
         withRef?: any
     }
 
+    export interface State {
+        editorId?: string;
+        editorInstance?: AceEditor;
+    }
+
     export interface Settings {
         theme?: string;
         fontSize?: string;
@@ -159,19 +169,21 @@ namespace CodeEditorInput {
         showIndent?: boolean;
         wrap?: boolean;
     }
-
-    export interface State {
-
-    }
 }
 
 class CodeEditorInput extends React.Component<CodeEditorInput.Props, CodeEditorInput.State> {
 
+    private input: WrappedFieldInputProps = null;
+    private meta: WrappedFieldMetaProps = null;
+    private editorCtn: HTMLDivElement = null;
+    private aceSession: AceAjax.IEditSession = null;
+
     constructor( props: CodeEditorInput.Props ) {
         super( props )
         this.state = {
-
+            editorId: uuid.v4()
         }
+        this.editorCtn = undefined
     }
 
     render() {
@@ -187,75 +199,7 @@ class CodeEditorInput extends React.Component<CodeEditorInput.Props, CodeEditorI
             warn
         }
 
-        return <Field {...baseFieldProps} {...this.props} component={CodeEditor} />
-
-    }
-
-}
-
-namespace CodeEditor {
-    export interface Props extends WrappedFieldProps {
-        name: string;
-        label?: string;
-        readonly?: boolean;
-        help?: string;
-        containerClass?: string;
-        inputClass?: string;
-        mode?: string;
-        height?: number | string;
-        initSession?: AceSession;
-        saveEditorContent?: ( session: AceSession ) => void;
-        saveMultipleContent?: ( session: AceSession ) => void;
-        saveSession?: ( session: AceSession ) => void;
-        displaySettings?: CodeEditorInput.Settings;
-        resetTick?: number;
-        user?: UserModel;
-    }
-
-    export interface State {
-        editorId?: string;
-        editorInstance?: AceEditor;
-    }
-}
-
-class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
-
-    private editorCtn: HTMLDivElement;
-    private aceSession: AceAjax.IEditSession = null;
-
-    constructor( props: CodeEditor.Props ) {
-        super( props )
-        this.state = {
-            editorId: uuid.v4()
-        }
-        this.editorCtn = undefined
-    }
-
-    render() {
-
-        const { label, readonly, help, containerClass, inputClass, height, input, meta } = this.props
-
-        const { editorId } = this.state
-
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                <div
-                    id={editorId}
-                    key={input.name}
-                    className={classNames( 'form-control input-block', inputClass )}
-                    ref={dom => this.editorCtn = dom}
-                    style={height ? { height: height } : null}
-                />
-
-                {( meta.touched && !!meta.error ) && <p className="validation-error-message">{meta.error}</p>}
-
-            </div>
-        )
+        return <Field {...baseFieldProps} component={this.renderCodeEditorInput} />
     }
 
     componentDidMount() {
@@ -263,7 +207,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
             editorInstance: ace.edit( this.state.editorId )
         }, () => {
 
-            const { mode, readonly, initSession, input, displaySettings } = this.props
+            const { mode, readonly, initSession, displaySettings } = this.props
 
             const editor = this.state.editorInstance
 
@@ -271,8 +215,13 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
             editor.$blockScrolling = Infinity
 
-            if ( input.value ) {
-                editor.setValue( input.value )
+
+            if ( this.props.initialValues ) {
+                editor.setValue( this.props.initialValues[this.props.name] )
+            }
+
+            if ( this.input.value ) {
+                editor.setValue( this.input.value )
             }
 
             if ( initSession ) {
@@ -318,7 +267,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
         } )
     }
 
-    componentDidUpdate( prevProps: CodeEditor.Props ) {
+    componentDidUpdate( prevProps: CodeEditorInput.Props ) {
 
         const { editorInstance } = this.state
 
@@ -338,7 +287,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
             }
 
             if ( prevProps.resetTick !== this.props.resetTick ) {
-                editorInstance.setValue( this.props.input.value )
+                console.info( 'CodeEditorInput::componentDidUpdate::input => ', this.input )
+                editorInstance.setValue( this.input && this.input.value )
                 editorInstance.clearSelection()
             }
         }
@@ -364,6 +314,35 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
         }
 
+    }
+
+    private renderCodeEditorInput = ( field: WrappedFieldProps ): JSX.Element => {
+        const { label, readonly, help, containerClass, inputClass, height } = this.props
+
+        const { editorId } = this.state
+
+        this.input = field.input
+        this.meta = field.meta
+
+        return (
+            <div className={classNames( 'form-group', containerClass, {
+                'invalid': this.meta.touched && !!this.meta.error
+            } )}>
+
+                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
+
+                <div
+                    id={editorId}
+                    key={this.input.name}
+                    className={classNames( 'form-control input-block', inputClass )}
+                    ref={dom => this.editorCtn = dom}
+                    style={height ? { height: height } : null}
+                />
+
+                {( this.meta.touched && !!this.meta.error ) && <p className="validation-error-message">{this.meta.error}</p>}
+
+            </div>
+        )
     }
 
     private setEditorOptions = ( editor: AceEditor ) => {
@@ -493,7 +472,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
     }
 
     private editorOnChange = ( e ): void => {
-        const { initSession, input } = this.props
+        const { initSession } = this.props
         const editor = this.state.editorInstance
 
         if ( initSession ) {
@@ -501,7 +480,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
             initSession.value = editor.getValue()
         }
 
-        input.onChange( editor.getValue() as any, undefined )
+        this.input.onChange( editor.getValue() as any, undefined )
     }
 }
 

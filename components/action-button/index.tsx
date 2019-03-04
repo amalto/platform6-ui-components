@@ -6,7 +6,7 @@ import * as classNames from 'classnames'
  */
 module ActionButton {
 
-    export interface Props extends React.Props<ActionButton> {
+    export interface Props extends React.ClassAttributes<ActionButton> {
         /** Action triggered on click event. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
         /** Any Font Awesome icon CSS class names like <span className='quote'>fa-info</span> or <span className='quote'>fa-info fa-lg</span>. */
@@ -38,23 +38,16 @@ module ActionButton {
     }
 }
 
-class ActionButton extends React.Component<ActionButton.Props, any> {
+class ActionButton extends React.PureComponent<ActionButton.Props, any> {
     constructor( props: ActionButton.Props ) {
         super( props )
     }
 
     render() {
-        var handleClick = null
-        if ( this.props.disabled ) {
-            handleClick = ''
-        }
-        else {
-            handleClick = this.props.clickAction
-        }
-
         return (
             <span className={classNames( 'action-icon-button', this.props.btnClass, { 'disabled': this.props.disabled } )}
-                onClick={handleClick} data-toggle="tooltip" data-original-title={this.props.disabled ? this.props.disabledTooltipText : this.props.tooltipText}>
+                onClick={this.props.disabled ? undefined : this.props.clickAction}
+                data-toggle="tooltip" data-original-title={this.props.disabled ? this.props.disabledTooltipText : this.props.tooltipText}>
                 <span className={classNames( this.props.iconClass, this.props.colorClass )}></span>
             </span>
         )
