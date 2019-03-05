@@ -1,12 +1,15 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
+
+// Hooks
+import Icon from './components/icon'
+import Container from './components/container'
 
 /**
  * Small button with an icon instead of text.
  */
 module ActionButton {
 
-    export interface Props extends React.ClassAttributes<ActionButton> {
+    export interface Props {
         /** Action triggered on click event. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
         /** Any Font Awesome icon CSS class names like <span className='quote'>fa-info</span> or <span className='quote'>fa-info fa-lg</span>. */
@@ -26,15 +29,6 @@ module ActionButton {
          * This can be used to space the icon from any other content.
          */
         btnClass?: string
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<ActionButton>;
     }
 }
 
@@ -45,14 +39,11 @@ class ActionButton extends React.PureComponent<ActionButton.Props, any> {
 
     render() {
         return (
-            <span className={classNames( 'action-icon-button', this.props.btnClass, { 'disabled': this.props.disabled } )}
-                onClick={this.props.disabled ? undefined : this.props.clickAction}
-                data-toggle="tooltip" data-original-title={this.props.disabled ? this.props.disabledTooltipText : this.props.tooltipText}>
-                <span className={classNames( this.props.iconClass, this.props.colorClass )}></span>
-            </span>
+            <Container clickAction={this.props.clickAction} disabled={this.props.disabled} tooltipText={this.props.tooltipText} disabledTooltipText={this.props.disabledTooltipText} btnClass={this.props.btnClass}>
+                <Icon iconClass={this.props.iconClass} colorClass={this.props.colorClass} />
+            </Container>
         )
     }
 }
-
 
 export default ActionButton

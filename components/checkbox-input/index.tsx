@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import { reduxForm, WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
 import * as uuid from 'uuid'
 

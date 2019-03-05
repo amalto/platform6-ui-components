@@ -296,7 +296,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
     private resizeEditor = (): void => {
 
-        let h = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 )
+        // let h = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 )
 
         if ( this.props.height ) {
             $( this._editorPanel ).height( this.props.height )
