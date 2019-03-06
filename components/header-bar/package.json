@@ -49,6 +49,7 @@
     },
     "gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e",
     "dependencies": {
+        "jss-global": "^3.0.0",
         "prop-types": "^15.7.2"
     }
 }

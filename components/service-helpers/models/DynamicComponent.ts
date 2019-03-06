@@ -1,7 +1,6 @@
 // Models
 import {
     AppKey,
-    RunningJob,
     NotificationModel,
     BatchOperationReport,
     WebApi,

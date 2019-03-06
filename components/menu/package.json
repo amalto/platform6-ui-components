@@ -43,13 +43,14 @@
         "react-test-renderer": "^16.8.3",
         "sinon": "4.2.2",
         "source-map-loader": "0.2.3",
-        "ts-loader": "5.3.3",
+        "ts-loader": "^5.3.3",
         "typescript": "^3.3.3333",
         "webpack": "^4.29.5"
     },
     "dependencies": {
         "classnames": "^2.2.6",
         "enzyme-adapter-react-16": "^1.9.1",
+        "jss-global": "^3.0.0",
         "prop-types": "^15.7.2",
         "radium": "^0.25.1",
         "react": "^16.8.3",

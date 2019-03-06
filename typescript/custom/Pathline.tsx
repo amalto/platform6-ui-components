@@ -30,11 +30,11 @@ class CustomPathline extends React.Component<CustomPathline.Props, CustomPathlin
                 <tbody>
                     <tr>
                         <td><span className='text-small'>Install</span></td>
-                        <td><span className='text-small'><Pathline classes={{}} children={`npm install --save ${name}`} /></span></td>
+                        <td><span className='text-small'><Pathline classes={{}} children={`npm install --save ${ name }`} /></span></td>
                     </tr>
                     <tr>
                         <td><span className='text-small'>npm</span></td>
-                        <td><span className='text-small'><Link classes={{}} href={`https://www.npmjs.com/package/${name}`} target='_blank'>{name}</Link></span></td>
+                        <td><span className='text-small'><Link classes={{}} href={`https://www.npmjs.com/package/${ name }`} target='_blank'>{name}</Link></span></td>
                     </tr>
                     <tr>
                         <td><span className='text-small'>Version</span></td>
@@ -49,7 +49,7 @@ class CustomPathline extends React.Component<CustomPathline.Props, CustomPathlin
         if ( json ) {
             try {
                 const parsedData = JSON.parse( json )
-    
+
                 return parsedData
             } catch ( err ) {
                 return null
@@ -58,6 +58,6 @@ class CustomPathline extends React.Component<CustomPathline.Props, CustomPathlin
 
         return null
     }
- }
+}
 
 export default CustomPathline

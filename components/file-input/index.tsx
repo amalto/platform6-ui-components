@@ -1,7 +1,6 @@
 // Modules
 import * as React from 'react'
-import Dropzone from 'react-dropzone'
-import * as classNames from 'classnames'
+// import Dropzone from 'react-dropzone'
 
 // Utils
 import { compileWordings, formatFileSize } from '@amalto/helpers'
@@ -11,6 +10,7 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 // Components
 import FileWrapperDisplay from './components/FileWrapper'
+import DropzoneInput from './components/DropzoneInput'
 
 // Models
 import { FileWrapper } from '@amalto/typings'
@@ -109,18 +109,18 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
             )
         } )
 
-        let dropzone = (
-            <Dropzone className="col-xs-12 file-drop-zone" onDrop={this.onDrop}
-                disableClick={this.state.submitDisabled}
-                accept={this.props.mimeTypeAccepted} maxSize={this.props.maxBytesSize}>
+        // let dropzone = (
+        //     <Dropzone className="col-xs-12 file-drop-zone" onDrop={this.onDrop}
+        //         disableClick={this.state.submitDisabled}
+        //         accept={this.props.mimeTypeAccepted} maxSize={this.props.maxBytesSize}>
 
-                <div className="drop-zone-title">
-                    <span>{wordings.dropZoneTitle}</span><br />
-                    <span className="subtitle">{wordings.dropZoneSubtitle}</span>
-                </div>
+        //         <div className="drop-zone-title" {...getRootProps()}>
+        //             <span>{wordings.dropZoneTitle}</span><br />
+        //             <span className="subtitle">{wordings.dropZoneSubtitle}</span>
+        //         </div>
 
-            </Dropzone>
-        )
+        //     </Dropzone>
+        // )
 
         let cancelBtn = (
             <div className="top-margin">
@@ -144,7 +144,13 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                 <div className="row">
 
                     <div className="col-xs-12 col-sm-5">
-                        {dropzone}
+                        <DropzoneInput onDrop={this.onDrop}
+                            disabled={this.state.submitDisabled}
+                            mimeTypeAccepted={this.props.mimeTypeAccepted}
+                            maxBytesSize={this.props.maxBytesSize}
+                            locale={this.props.locale}
+                        />
+                        {/* {dropzone} */}
                     </div>
 
                     <div className="col-xs-12 col-sm-7">

@@ -1,7 +1,7 @@
 // Modules
 import * as React from 'react'
 import Group from 'react-group'
-const javascriptStringify = require('javascript-stringify')
+const javascriptStringify = require( 'javascript-stringify' )
 
 // Components
 import Table from 'react-styleguidist/lib/rsg-components/Table'
@@ -56,34 +56,34 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
         // Workaround for issue https://github.com/reactjs/react-docgen/issues/221
         // If prop has defaultValue it can not be required
-        if (prop.defaultValue) {
-            if (prop.type || prop.flowType) {
+        if ( prop.defaultValue ) {
+            if ( prop.type || prop.flowType ) {
                 const propName = prop.type ? prop.type.name : prop.flowType.type
-    
-                if (defaultValueBlacklist.indexOf(prop.defaultValue.value) > -1) {
-                    return <Code>{showSpaces(unquote(prop.defaultValue.value))}</Code>
-                } else if (propName === 'func' || propName === 'function') {
+
+                if ( defaultValueBlacklist.indexOf( prop.defaultValue.value ) > -1 ) {
+                    return <Code>{showSpaces( unquote( prop.defaultValue.value ) )}</Code>
+                } else if ( propName === 'func' || propName === 'function' ) {
                     return <Text
                         size="small"
                         color="light"
                         underlined
-                        title={showSpaces(unquote(prop.defaultValue.value))}>
+                        title={showSpaces( unquote( prop.defaultValue.value ) )}>
                         Function
                     </Text>
-                } else if (propName === 'shape' || propName === 'object') {
+                } else if ( propName === 'shape' || propName === 'object' ) {
                     try {
                         // We eval source code to be able to format the defaultProp here. This
                         // can be considered safe, as it is the source code that is evaled,
                         // which is from a known source and safe by default
                         // eslint-disable-next-line no-eval
-                        const object = eval(`(${prop.defaultValue.value})`)
+                        const object = eval( `(${ prop.defaultValue.value })` )
 
                         return (
-                            <Text size="small" color="light" underlined title={javascriptStringify.stringifyObject(object, null, 2)}>
+                            <Text size="small" color="light" underlined title={javascriptStringify.stringifyObject( object, null, 2 )}>
                                 Shape
                             </Text>
                         )
-                    } catch (e) {
+                    } catch ( e ) {
                         // eval will throw if it contains a reference to a property not in the
                         // local scope. To avoid any breakage we fall back to rendering the
                         // prop without any formatting
@@ -95,8 +95,8 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
                     }
                 }
             }
-    
-            return <Code>{showSpaces(unquote(prop.defaultValue.value))}</Code>
+
+            return <Code>{showSpaces( unquote( prop.defaultValue.value ) )}</Code>
         }
         // else if (prop.required) {
         //     return (
@@ -110,10 +110,10 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
     private renderDescription = ( prop ): JSX.Element => {
         const { description, tags = {} } = prop
-        const extra = this.renderExtra(prop)
-        const args = [...(tags.arg || []), ...(tags.argument || []), ...(tags.param || [])]
-        const returnDocumentation = (tags.return && tags.return[0]) || (tags.returns && tags.returns[0])
-    
+        const extra = this.renderExtra( prop )
+        const args = [...( tags.arg || [] ), ...( tags.argument || [] ), ...( tags.param || [] )]
+        const returnDocumentation = ( tags.return && tags.return[0] ) || ( tags.returns && tags.returns[0] )
+
         return (
             <div>
                 {description && <Markdown text={description} />}
@@ -126,12 +126,12 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
     }
 
     private renderEnum = ( prop ): JSX.Element => {
-        if (!Array.isArray(getType(prop).value)) {
-            return <span>{getType(prop).value}</span>
+        if ( !Array.isArray( getType( prop ).value ) ) {
+            return <span>{getType( prop ).value}</span>
         }
-    
+
         const values = getType( prop ).value.map( ( { value } ) => (
-            <Code key={value}>{showSpaces(unquote(value))}</Code>
+            <Code key={value}>{showSpaces( unquote( value ) )}</Code>
         ) )
         return (
             <span>
@@ -145,12 +145,12 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
     private renderUnion = ( prop ): JSX.Element => {
         if ( !Array.isArray( getType( prop ).value ) ) {
-            return <span>{getType(prop).value}</span>
+            return <span>{getType( prop ).value}</span>
         }
-    
+
         const values = getType( prop ).value.map( ( value, index ) => (
-            <Type key={`${value.name}-${index}`}>{this.renderType( value )}</Type>
-        ))
+            <Type key={`${ value.name }-${ index }`}>{this.renderType( value )}</Type>
+        ) )
         return (
             <span>
                 One of type:{' '}
@@ -185,7 +185,7 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
     private renderExtra = ( prop ): JSX.Element | JSX.Element[] => {
         const type = getType( prop )
-    
+
         if ( !type ) return null
 
         switch ( type.name ) {
@@ -217,22 +217,22 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
         switch ( name ) {
             case 'arrayOf':
-                return `${type.value.name}[]`
+                return `${ type.value.name }[]`
             case 'objectOf':
-                return `{${this.renderType( type.value )}}`
+                return `{${ this.renderType( type.value ) }}`
             case 'instanceOf':
                 return type.value
             default:
                 return name
         }
     }
-    
+
     private renderFlowType = ( type ): string | JSX.Element => {
-        if (!type) return 'unknown'
-    
+        if ( !type ) return 'unknown'
+
         const { name, raw, value } = type
-    
-        switch (name) {
+
+        switch ( name ) {
             case 'literal':
                 return value
             case 'signature':
@@ -259,7 +259,7 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
     }
 
     /** Components */
-    private renderName = (prop): JSX.Element => {
+    private renderName = ( prop ): JSX.Element => {
         const { name, tags = {} } = prop
 
         return <Name deprecated={!!tags.deprecated}>
@@ -269,11 +269,11 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
         </Name>
     }
 
-    private renderTypeColumn = (prop): JSX.Element => {
-        if (prop.flowType) {
+    private renderTypeColumn = ( prop ): JSX.Element => {
+        if ( prop.flowType ) {
             return <Type>{this.renderFlowType( getType( prop ) )}</Type>
         }
-        return <Type>{this.renderType( getType (prop ) )}</Type>
+        return <Type>{this.renderType( getType( prop ) )}</Type>
     }
 }
 

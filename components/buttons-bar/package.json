@@ -43,7 +43,7 @@
         "react-addons-test-utils": "^15.6.2",
         "react-test-renderer": "^16.8.3",
         "sinon": "4.2.2",
-        "ts-loader": "5.3.3",
+        "ts-loader": "^5.3.3",
         "typescript": "^3.3.3333",
         "webpack": "^4.29.5"
     },
@@ -52,6 +52,7 @@
         "@amalto/wordings": "1.5.5",
         "classnames": "^2.2.6",
         "enzyme-adapter-react-16": "^1.9.1",
+        "jss-global": "^3.0.0",
         "prop-types": "^15.7.2",
         "react": "^16.8.3"
     },

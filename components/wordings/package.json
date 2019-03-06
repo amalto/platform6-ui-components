@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "enzyme-adapter-react-16": "^1.9.1",
+        "jss-global": "^3.0.0",
         "prop-types": "^15.7.2",
         "react": "^16.8.3"
     },
@@ -38,7 +39,7 @@
         "@types/jquery": "^3.3.29",
         "ava": "1.2.1",
         "nyc": "^13.2.0",
-        "ts-loader": "5.3.3",
+        "ts-loader": "^5.3.3",
         "typescript": "^3.3.3333",
         "webpack": "^4.29.5"
     },
