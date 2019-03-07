@@ -110,18 +110,24 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
                 {inputs}
 
-                {!readonly ? ( <div>
-                    <button type="button" className="btn btn-trans btn-info right-margin" onClick={this.addKeyValue.bind( this )}
-                        data-toggle="tooltip" data-original-title={wordings.addTextProperty}>
-                        <span className="fas fa-plus right-spaced" />
-                        <span className="fas fa-font" />
-                    </button>
-                    <button type="button" className="btn btn-trans btn-info" onClick={this.addKeyValue.bind( this, true )}
-                        data-toggle="tooltip" data-original-title={wordings.addFileProperty}>
-                        <span className="fas fa-plus right-spaced" />
-                        <span className="far fa-file" />
-                    </button>
-                </div> ) : null}
+                {
+                    !readonly
+                        ? (
+                            <React.Fragment>
+                                <button type="button" className="btn btn-trans btn-info right-margin" onClick={this.addKeyValue.bind( this )}
+                                    data-toggle="tooltip" data-original-title={wordings.addTextProperty}>
+                                    <span className="fas fa-plus right-spaced" />
+                                    <span className="fas fa-font" />
+                                </button>
+                                <button type="button" className="btn btn-trans btn-info" onClick={this.addKeyValue.bind( this, true )}
+                                    data-toggle="tooltip" data-original-title={wordings.addFileProperty}>
+                                    <span className="fas fa-plus right-spaced" />
+                                    <span className="far fa-file" />
+                                </button>
+                            </React.Fragment>
+                        )
+                        : null
+                }
 
             </div>
         )

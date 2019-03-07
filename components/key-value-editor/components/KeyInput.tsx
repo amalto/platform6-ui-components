@@ -7,7 +7,7 @@ import KeyValueEditor from '../index'
 import { WORDINGS } from '../constants/wordings'
 
 // Utils
-import { compileWordings } from '@amalto/helpers'
+import { compileWordings, getWordings } from '@amalto/helpers'
 
 module KeyInput {
     export interface Props {
@@ -33,7 +33,8 @@ function KeyInput( props: KeyInput.Props ) {
     let keyVal = props.keyValueStore[props.dataIdx]
 
     React.useEffect( () => {
-        setWordings( compileWordings( WORDINGS, props.locale ) )
+        console.info( 'KeyInput::useEffect::locale => ', props.locale )
+        setWordings( getWordings( WORDINGS, props.locale ) )
     }, [props.locale] )
 
     React.useEffect( () => {
@@ -45,10 +46,12 @@ function KeyInput( props: KeyInput.Props ) {
 
             {
                 !props.readonly
-                    ? <div className="form-group col-xs-2 text-center" style={{ paddingRight: 0 }}>
-                        <span className="fas fa-minus-circle danger-color control-align click-pointer"
-                            data-value={keyVal.key} onClick={props.removeKeyValue} />
-                    </div>
+                    ? (
+                        <div className="form-group col-xs-2 text-center" style={{ paddingRight: 0 }}>
+                            <span className="fas fa-minus-circle danger-color control-align click-pointer"
+                                data-idx={props.dataIdx} onClick={props.removeKeyValue} />
+                        </div>
+                    )
                     : null
             }
 
@@ -74,7 +77,8 @@ function KeyInput( props: KeyInput.Props ) {
                                         : <p className="validation-error-message">&nbsp;</p>
                                 }
                             </React.Fragment>
-                        ) : (
+                        )
+                        : (
                             <span className="control-align">
                                 {keyVal.key || wordings.selectFile}
                             </span>
