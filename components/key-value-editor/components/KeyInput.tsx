@@ -33,7 +33,6 @@ function KeyInput( props: KeyInput.Props ) {
     let keyVal = props.keyValueStore[props.dataIdx]
 
     React.useEffect( () => {
-        console.info( 'KeyInput::useEffect::locale => ', props.locale )
         setWordings( getWordings( WORDINGS, props.locale ) )
     }, [props.locale] )
 

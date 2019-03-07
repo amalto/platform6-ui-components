@@ -32,18 +32,12 @@ module ActionButton {
     }
 }
 
-class ActionButton extends React.PureComponent<ActionButton.Props, any> {
-    constructor( props: ActionButton.Props ) {
-        super( props )
-    }
-
-    render() {
-        return (
-            <Container clickAction={this.props.clickAction} disabled={this.props.disabled} tooltipText={this.props.tooltipText} disabledTooltipText={this.props.disabledTooltipText} btnClass={this.props.btnClass}>
-                <Icon iconClass={this.props.iconClass} colorClass={this.props.colorClass} />
-            </Container>
-        )
-    }
+function ActionButton( props: ActionButton.Props ) {
+    return (
+        <Container clickAction={props.clickAction} disabled={props.disabled} tooltipText={props.tooltipText} disabledTooltipText={props.disabledTooltipText} btnClass={props.btnClass}>
+            <Icon iconClass={props.iconClass} colorClass={props.colorClass} />
+        </Container>
+    )
 }
 
 export default ActionButton

@@ -1,12 +1,11 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
 
 // Constants
 import { languageIso, Language } from './constants/Data'
 
 // Utils
-import { addValToArrayNoDup, removeValFromArrayNoDup, compileWordings } from '@amalto/helpers'
+import { compileWordings } from '@amalto/helpers'
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -148,7 +147,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
     }
 
     private handleLanguageSelection = ( lang: Language ) => {
-        const { supportedLanguages, handleAddedLanguage } = this.props
+        const { handleAddedLanguage } = this.props
         const selectedLanguage = languageIso.filter( language => lang && language.languageCode === lang.languageCode )
 
         if ( selectedLanguage.length === 1 ) {
