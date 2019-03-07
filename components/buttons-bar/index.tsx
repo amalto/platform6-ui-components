@@ -59,19 +59,13 @@ module ButtonsBar {
 function ButtonsBar( props: ButtonsBar.Props ) {
     const { handleSearch, searchValue, btnGroups, locale } = props
 
-    const [isoSearchValue, setIsoSearchValue] = React.useState( '' )
-
-    React.useEffect( () => {
-        setIsoSearchValue( searchValue )
-    }, [searchValue] )
-
     return btnGroups && btnGroups.length || handleSearch ? (
 
         <div className="btn-toolbar">
 
             {btnGroups.map( ( btnGroup, idx ) => ( <BtnGroup key={idx} {...btnGroup} /> ) )}
 
-            <SearchForm handleSearch={handleSearch} searchValue={isoSearchValue} locale={locale} />
+            <SearchForm handleSearch={handleSearch} searchValue={searchValue} locale={locale} />
 
         </div>
 
