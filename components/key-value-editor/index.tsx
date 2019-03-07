@@ -1,9 +1,13 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
+import * as base64 from 'base-64'
+import * as uuid from 'uuid'
+
+// Components
+import KeyInput from './components/KeyInput'
 
 // Utils
-import { compileWordings, isValidKeyChar, downloadDataFile } from '@amalto/helpers'
+import { compileWordings, isValidKeyChar, downloadDataFile, base64Decode } from '@amalto/helpers'
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -17,7 +21,9 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 namespace KeyValueEditor {
 
     export interface KeyValDef {
-        [key: string]: {
+        [idx: string]: {
+            key: string;
+            value: string;
             contentType: string;
             contentBytes: string;
         };
@@ -25,6 +31,7 @@ namespace KeyValueEditor {
 
     export interface KeyValStoreDef {
         [idx: string]: {
+            value: string;
             key: string;
             contentType: string;
             contentBytes: string
@@ -82,62 +89,19 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
         let inputs = Object.keys( keyValueStore ).map( idx => {
 
-            let keyVal = keyValueStore[idx]
-
             return (
-                <div className="row" key={idx}>
-
-                    {!readonly ? <div className="form-group col-xs-2 text-center" style={{ paddingRight: 0 }}>
-                        <span className="fas fa-minus-circle danger-color control-align click-pointer"
-                            data-key={keyVal.key} onClick={this.removeKeyValue} />
-                    </div> : null}
-
-                    <div className="form-group col-xs-5">
-                        {
-                            keyVal.contentType === 'text/plain' ? (
-                                <input type="text" className="form-control"
-                                    value={keyVal.key}
-                                    disabled={readonly}
-                                    onChange={this.handleKeyChange}
-                                    data-idx={idx}
-                                    placeholder={wordings.key}
-                                />
-                            ) : (
-                                    <span className="control-align">
-                                        {keyVal.key || wordings.selectFile}
-                                    </span>
-                                )
-                        }
-                    </div>
-
-                    <div className="form-group col-xs-5">
-                        {
-                            keyVal.contentType === 'text/plain' ? (
-                                <textarea className="form-control"
-                                    value={keyVal.contentBytes}
-                                    disabled={readonly}
-                                    onChange={this.handleValueChange}
-                                    data-key={keyVal.key}
-                                    placeholder={wordings.value}
-                                />
-                            ) : (
-                                    keyVal.contentBytes ? (
-                                        <button type="button" className="btn btn-info btn-trans" onClick={() => this.downloadFile( keyVal.key )}>
-                                            <span className="fas fa-download right-spaced" />
-                                            <span>{wordings.download}</span>
-                                        </button>
-                                    ) : (
-                                            <span className="btn btn-block upload-btn btn-font btn-trans">
-                                                <span className="fas fa-upload right-spaced" />
-                                                <span>{wordings.uploadFile}</span>
-                                                <input type="file" className="upload-input" onChange={this.handleFileUpload} data-idx={idx} data-key={keyVal.key} />
-                                            </span>
-                                        )
-                                )
-                        }
-                    </div>
-
-                </div>
+                <KeyInput key={idx}
+                    dataIdx={idx}
+                    keyValueStore={keyValueStore}
+                    readonly={readonly}
+                    removeKeyValue={this.removeKeyValue}
+                    handleKeyChange={this.handleKeyChange}
+                    handleValueChange={this.handleValueChange}
+                    handleFileUpload={this.handleFileUpload}
+                    downloadFile={this.downloadFile}
+                    keyAlreadyUsed={this.keyAlreadyUsed}
+                    locale={this.props.locale}
+                />
             )
         } )
 
@@ -171,9 +135,10 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
     private addKeyValue = ( file?: boolean ) => {
         let keyValueStore = this.getKeyValueStore( this.props.keyValues )
 
-        let idx = Object.keys( keyValueStore ).length
+        let idx = uuid.v4()
 
-        keyValueStore[( idx + 1 ).toString()] = {
+        keyValueStore[idx] = {
+            value: '',
             key: '',
             contentType: file === true ? 'application/octet-stream' : 'text/plain',
             contentBytes: ''
@@ -184,9 +149,9 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
     private removeKeyValue = ( event: any ) => {
         let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
-        const key: string = event.currentTarget.getAttribute( 'data-key' )
+        const idx: string = event.currentTarget.getAttribute( 'data-idx' )
 
-        delete keyValuesUpdate[key]
+        delete keyValuesUpdate[idx]
 
         this.props.handleChange( keyValuesUpdate )
     }
@@ -197,6 +162,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
             let keyValueStore = this.getKeyValueStore( this.props.keyValues )
 
             keyValueStore[idx] = {
+                value: keyValueStore[idx].value,
                 key: event.target.value,
                 contentType: keyValueStore[idx].contentType,
                 contentBytes: keyValueStore[idx].contentBytes
@@ -208,15 +174,17 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
     private handleValueChange = ( event: any ) => {
         let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
-        const key: string = event.currentTarget.getAttribute( 'data-key' )
+        const idx: string = event.currentTarget.getAttribute( 'data-idx' )
+        const value: string = event.target.value
 
-        keyValuesUpdate[key].contentBytes = event.target.value
+        keyValuesUpdate[idx].value = value
+        keyValuesUpdate[idx].contentBytes = base64.encode( value )
 
         this.props.handleChange( keyValuesUpdate )
     }
 
     private handleFileUpload = ( event: any ): void => {
-        const key: string = event.currentTarget.getAttribute( 'data-key' )
+        // const value: string = event.currentTarget.getAttribute( 'data-value' )
         const idx = event.currentTarget.getAttribute( 'data-idx' )
 
         let reader = new FileReader()
@@ -237,7 +205,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
                 let keyValueStore = this.getKeyValueStore( this.props.keyValues )
 
-                keyValueStore[idx].key = file.name || 'default_file_' + idx
+                keyValueStore[idx].value = file.name || 'default_file_' + idx
                 keyValueStore[idx].contentBytes = fileData
 
                 if ( file.type ) {
@@ -263,12 +231,11 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
 
     private getKeyValueStore = ( keyValues: KeyValDef ): KeyValStoreDef => {
         let kvStore = {} as KeyValStoreDef
-        let i = 0
 
         for ( var key in keyValues ) {
-            i++
-            kvStore[i] = {
-                key: key,
+            kvStore[key] = {
+                key: keyValues[key].key,
+                value: base64.decode( keyValues[key].contentBytes ),
                 contentType: keyValues[key].contentType,
                 contentBytes: keyValues[key].contentBytes
             }
@@ -283,13 +250,30 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
         for ( let idx in keyValueStore ) {
             let keyVal = keyValueStore[idx]
 
-            keyValues[keyVal.key] = {
+            keyValues[idx] = {
+                key: keyVal.key,
+                value: keyValues[keyVal.key]
+                    && keyValues[keyVal.key] && base64.decode( keyValues[keyVal.key].contentBytes )
+                    || '',
                 contentType: keyVal.contentType,
                 contentBytes: keyVal.contentBytes
             }
         }
 
         return keyValues
+    }
+
+    // Input validation
+    private keyAlreadyUsed = ( idx: string, key: string ): boolean => {
+        const keyValuesWithoutCurrentKey = $.extend( {}, this.props.keyValues )
+
+        delete keyValuesWithoutCurrentKey[idx]
+
+        const keys: string[] = Object.keys( keyValuesWithoutCurrentKey ).map( id => (
+            keyValuesWithoutCurrentKey[id].key
+        ) )
+
+        return keys.some( k => k === key )
     }
 
 }

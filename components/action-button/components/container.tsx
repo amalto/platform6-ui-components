@@ -31,7 +31,7 @@ function Container( props: Container.Props ) {
     // Set tooltip title and onclick event
     React.useEffect( () => {
         setOriginalTitle( props.disabled ? props.disabledTooltipText : props.tooltipText )
-    }, [props.disabled] )
+    }, [props.disabled, props.disabledTooltipText, props.tooltipText] )
 
     // Set button classname
     React.useEffect( () => {

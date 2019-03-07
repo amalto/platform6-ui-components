@@ -33,7 +33,7 @@ function SearchForm( props: SearchForm.Props ) {
     // Set search value
     React.useEffect( () => {
         setSearchValue( props.searchValue )
-    }, [props.locale] )
+    }, [props.searchValue] )
 
     // Search input
     const handleSearch = ( event: React.FormEvent<HTMLFormElement> ) => {
