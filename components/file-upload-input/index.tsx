@@ -2,10 +2,9 @@
  * Created by Christopher VUONG
  */
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 // Modules
-import { WrappedFieldInputProps, WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 
 // Components
 import Help from '@amalto/help'
@@ -139,7 +138,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
     private setValue = ( event: any, field: WrappedFieldProps ): void => {
         this.setState( { loadingError: false } )
 
-        const { input, meta } = field
+        const { input } = field
         const file = event.target.files[0]
         const reader = new FileReader()
 
@@ -240,7 +239,7 @@ class FileUploadInput extends React.Component<FileUploadInput.Props, FileUploadI
     }
 
     render() {
-        const { name, label, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn } = this.props
         const baseFieldProps: BaseFieldProps = {
             name,
             format,

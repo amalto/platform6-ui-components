@@ -109,19 +109,6 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
             )
         } )
 
-        // let dropzone = (
-        //     <Dropzone className="col-xs-12 file-drop-zone" onDrop={this.onDrop}
-        //         disableClick={this.state.submitDisabled}
-        //         accept={this.props.mimeTypeAccepted} maxSize={this.props.maxBytesSize}>
-
-        //         <div className="drop-zone-title" {...getRootProps()}>
-        //             <span>{wordings.dropZoneTitle}</span><br />
-        //             <span className="subtitle">{wordings.dropZoneSubtitle}</span>
-        //         </div>
-
-        //     </Dropzone>
-        // )
-
         let cancelBtn = (
             <div className="top-margin">
                 <button type="button" className="btn btn-sm btn-danger btn-trans" onClick={this.props.cancelSubmit}>
@@ -150,7 +137,6 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                             maxBytesSize={this.props.maxBytesSize}
                             locale={this.props.locale}
                         />
-                        {/* {dropzone} */}
                     </div>
 
                     <div className="col-xs-12 col-sm-7">
