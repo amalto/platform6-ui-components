@@ -7,7 +7,7 @@ import * as uuid from 'uuid'
 import KeyInput from './components/KeyInput'
 
 // Utils
-import { compileWordings, isValidKeyChar, downloadDataFile, base64Decode } from '@amalto/helpers'
+import { getWordings, isValidKeyChar, downloadDataFile, base64Decode } from '@amalto/helpers'
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -75,7 +75,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
     constructor( props: KeyValueEditor.Props ) {
         super( props )
         this.state = {
-            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
+            wordings: getWordings( MULTILANGUAGE_WORDINGS, props.locale )
         }
     }
 
@@ -235,7 +235,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
         for ( var key in keyValues ) {
             kvStore[key] = {
                 key: keyValues[key].key,
-                value: base64.decode( keyValues[key].contentBytes ),
+                value: base64Decode( keyValues[key].contentBytes ),
                 contentType: keyValues[key].contentType,
                 contentBytes: keyValues[key].contentBytes
             }
@@ -253,7 +253,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
             keyValues[idx] = {
                 key: keyVal.key,
                 value: keyValues[keyVal.key]
-                    && keyValues[keyVal.key] && base64.decode( keyValues[keyVal.key].contentBytes )
+                    && keyValues[keyVal.key] && base64Decode( keyValues[keyVal.key].contentBytes )
                     || '',
                 contentType: keyVal.contentType,
                 contentBytes: keyVal.contentBytes

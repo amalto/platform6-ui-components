@@ -99,7 +99,7 @@ function KeyInput( props: KeyInput.Props ) {
                             keyVal.contentBytes
                                 ? (
                                     <button type="button" className="btn btn-info btn-trans"
-                                        onClick={() => props.downloadFile( keyVal.key )}>
+                                        onClick={() => props.downloadFile( props.dataIdx )}>
                                         <span className="fas fa-download right-spaced" />
                                         <span>{wordings.download}</span>
                                     </button>
