@@ -34,7 +34,7 @@ module ButtonsBar {
         type?: string;
     }
 
-    export interface Props extends React.Props<ButtonsBar> {
+    export interface Props {
         /** Handle search value. */
         handleSearch?: ( searchValue: string ) => void;
         /** Search value usually used with list beneath it. */
@@ -48,15 +48,6 @@ module ButtonsBar {
          * @default 'en-US'
          */
         locale?: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<ButtonsBar>;
     }
 
     export interface State {
@@ -65,34 +56,26 @@ module ButtonsBar {
 
 }
 
-class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
+function ButtonsBar( props: ButtonsBar.Props ) {
+    const { handleSearch, searchValue, btnGroups, locale } = props
 
-    constructor( props: ButtonsBar.Props ) {
-        super( props )
-    }
+    const [isoSearchValue, setIsoSearchValue] = React.useState( '' )
 
-    componentDidUpdate( prevProps: ButtonsBar.Props ) {
-        if ( prevProps.searchValue !== this.props.searchValue && this.props.handleSearch ) {
-            this.setState( { searchValue: this.props.searchValue } as ButtonsBar.State )
-        }
-    }
+    React.useEffect( () => {
+        setIsoSearchValue( searchValue )
+    }, [searchValue] )
 
-    render() {
+    return btnGroups && btnGroups.length || handleSearch ? (
 
-        const { handleSearch, searchValue, btnGroups, locale } = this.props
+        <div className="btn-toolbar">
 
-        return btnGroups && btnGroups.length || handleSearch ? (
+            {btnGroups.map( ( btnGroup, idx ) => ( <BtnGroup key={idx} {...btnGroup} /> ) )}
 
-            <div className="btn-toolbar">
+            <SearchForm handleSearch={handleSearch} searchValue={isoSearchValue} locale={locale} />
 
-                {btnGroups.map( ( btnGroup, idx ) => ( <BtnGroup key={idx} {...btnGroup} /> ) )}
+        </div>
 
-                <SearchForm handleSearch={handleSearch} searchValue={searchValue} locale={locale} />
-
-            </div>
-
-        ) : null
-    }
+    ) : null
 }
 
 export default ButtonsBar
