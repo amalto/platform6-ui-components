@@ -36,83 +36,26 @@ namespace CheckboxInput {
 
         /** Hide props from documentation */
 
-        // /** @ignore */
-        // children?: React.ReactNode;
-        // /** @ignore */
-        // key?: React.ReactText;
-        // /** @ignore */
-        // ref?: React.Ref<CheckboxInput>;
+        /** redux-form props */
 
-        // /** redux-form props */
-
-        // /** @ignore */
-        // component?: any,
-        // /** @ignore */
-        // format?: any,
-        // /** @ignore */
-        // normalize?: any,
-        // /** @ignore */
-        // props?: any,
-        // /** @ignore */
-        // parse?: any,
-        // /** @ignore */
-        // validate?: any,
-        // /** @ignore */
-        // warn?: any,
-        // /** @ignore */
-        // withRef?: any
+        /** @ignore */
+        component?: any,
+        /** @ignore */
+        format?: any,
+        /** @ignore */
+        normalize?: any,
+        /** @ignore */
+        props?: any,
+        /** @ignore */
+        parse?: any,
+        /** @ignore */
+        validate?: any,
+        /** @ignore */
+        warn?: any,
+        /** @ignore */
+        withRef?: any
     }
-
-    // export interface State {
-
-    // }
 }
-
-// class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.State> {
-
-//     constructor( props: CheckboxInput.Props ) {
-//         super( props )
-//         this.state = {
-
-//         }
-//     }
-
-//     private renderCheckbox = ( field: WrappedFieldProps ) => {
-
-//         const { label, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
-
-//         return (
-//             <CheckBox label={label} help={help}
-//                 containerClass={containerClass} inputClass={inputClass}
-//                 collapseErrorSpace={collapseErrorSpace}
-//                 disabled={disabled}
-//                 field={field}
-//             />
-//         )
-//     }
-
-//     render() {
-
-//         const { name, label, format, normalize, parse, validate, warn } = this.props
-
-//         let baseFieldProps: BaseFieldProps = {
-//             name,
-//             format,
-//             normalize,
-//             parse,
-//             validate,
-//             warn
-//         }
-
-//         return label ? (
-
-//             <Field {...baseFieldProps} component={CheckboxInput} />
-
-//         ) : null
-
-//     }
-
-// }
 
 function CheckboxInput( props: CheckboxInput.Props ) {
     const {
