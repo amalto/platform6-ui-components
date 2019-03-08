@@ -88,6 +88,9 @@ function editNode( id, elementName, description, propertiesMap, parentNodeId ) {
         encodedProppertiesMap[key].contentBytes = base64.encode(encodedProppertiesMap[key].contentBytes)
     })
 
+    console.info('editNode::propertiesMap => ', propertiesMap)
+    console.info('editNode::encodedProppertiesMap => ', encodedProppertiesMap)
+
     const nodeToEdit = {
         id,
         text: elementName,

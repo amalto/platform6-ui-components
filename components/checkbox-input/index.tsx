@@ -1,11 +1,12 @@
 // Modules
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-import * as classNames from 'classnames'
-import * as uuid from 'uuid'
+// import * as classNames from 'classnames'
+// import * as uuid from 'uuid'
 
 // Components
-import Help from '@amalto/help'
+// import Help from '@amalto/help'
+import CheckBox from './components/CheckBox'
 
 /**
  * Checkbox input used on a [redux-form](#reduxform).
@@ -35,101 +36,125 @@ namespace CheckboxInput {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<CheckboxInput>;
+        // /** @ignore */
+        // children?: React.ReactNode;
+        // /** @ignore */
+        // key?: React.ReactText;
+        // /** @ignore */
+        // ref?: React.Ref<CheckboxInput>;
 
-        /** redux-form props */
+        // /** redux-form props */
 
-        /** @ignore */
-        component?: any,
-        /** @ignore */
-        format?: any,
-        /** @ignore */
-        normalize?: any,
-        /** @ignore */
-        props?: any,
-        /** @ignore */
-        parse?: any,
-        /** @ignore */
-        validate?: any,
-        /** @ignore */
-        warn?: any,
-        /** @ignore */
-        withRef?: any
+        // /** @ignore */
+        // component?: any,
+        // /** @ignore */
+        // format?: any,
+        // /** @ignore */
+        // normalize?: any,
+        // /** @ignore */
+        // props?: any,
+        // /** @ignore */
+        // parse?: any,
+        // /** @ignore */
+        // validate?: any,
+        // /** @ignore */
+        // warn?: any,
+        // /** @ignore */
+        // withRef?: any
     }
 
-    export interface State {
+    // export interface State {
 
-    }
+    // }
 }
 
-class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.State> {
+// class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.State> {
 
-    constructor( props: CheckboxInput.Props ) {
-        super( props )
-        this.state = {
+//     constructor( props: CheckboxInput.Props ) {
+//         super( props )
+//         this.state = {
 
-        }
+//         }
+//     }
+
+//     private renderCheckbox = ( field: WrappedFieldProps ) => {
+
+//         const { label, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
+
+//         return (
+//             <CheckBox label={label} help={help}
+//                 containerClass={containerClass} inputClass={inputClass}
+//                 collapseErrorSpace={collapseErrorSpace}
+//                 disabled={disabled}
+//                 field={field}
+//             />
+//         )
+//     }
+
+//     render() {
+
+//         const { name, label, format, normalize, parse, validate, warn } = this.props
+
+//         let baseFieldProps: BaseFieldProps = {
+//             name,
+//             format,
+//             normalize,
+//             parse,
+//             validate,
+//             warn
+//         }
+
+//         return label ? (
+
+//             <Field {...baseFieldProps} component={CheckboxInput} />
+
+//         ) : null
+
+//     }
+
+// }
+
+function CheckboxInput( props: CheckboxInput.Props ) {
+    const {
+        name,
+        label,
+        help,
+        containerClass,
+        inputClass,
+        collapseErrorSpace,
+        disabled,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
+    } = props
+
+    let baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
 
-    private renderCheckbox = ( field: WrappedFieldProps ) => {
-
-        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
-
-        const { input, meta } = field
-
-        const inputId: string = uuid.v4()
-
+    const renderCheckboxInput = ( field: WrappedFieldProps ): JSX.Element => {
         return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
-
-                <span className={classNames( 'form-checkbox-wrapper', inputClass )}>
-                    <input {...input as any}
-                        key={input.name}
-                        type="checkbox"
-                        disabled={disabled}
-                        id={`${ inputId }_${ input.name }`}
-                        className="form-checkbox"
-                        checked={input.value} />
-
-                    <label className="form-checkbox-label" htmlFor={`${ inputId }_${ input.name }`}>{label}</label>
-
-                    {help && <Help text={help} containerClass='pos-absolute' />}
-                </span>
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-
-            </div>
+            <CheckBox label={label}
+                help={help}
+                containerClass={containerClass} inputClass={inputClass}
+                collapseErrorSpace={collapseErrorSpace} disabled={disabled}
+                field={field}
+            />
         )
     }
 
-    render() {
+    return label ? (
 
-        const { name, label, format, normalize, parse, validate, warn } = this.props
+        <Field {...baseFieldProps} component={renderCheckboxInput} />
 
-        let baseFieldProps: BaseFieldProps = {
-            name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
-
-        return label ? (
-
-            <Field {...baseFieldProps} component={this.renderCheckbox} />
-
-        ) : null
-
-    }
-
+    ) : null
 }
 
 

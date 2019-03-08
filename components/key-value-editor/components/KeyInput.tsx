@@ -7,7 +7,7 @@ import KeyValueEditor from '../index'
 import { WORDINGS } from '../constants/wordings'
 
 // Utils
-import { compileWordings, getWordings } from '@amalto/helpers'
+import { getWordings } from '@amalto/helpers'
 
 module KeyInput {
     export interface Props {

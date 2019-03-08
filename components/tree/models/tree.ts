@@ -1,4 +1,8 @@
 
+import KeyValueEditor from '@amalto/key-value-editor'
+
+declare type KeyValDef = KeyValueEditor.KeyValDef
+
 export interface OrgModel {
     id?: string;
     parentId?: string;
@@ -10,12 +14,7 @@ export interface OrgModel {
 
 export interface TreeNodeDataModel {
     description?: string;
-    propertiesMap?: {
-        [key: string]: {
-            contentType: string;
-            contentBytes: string;
-        };
-    };
+    propertiesMap?: KeyValDef;
     parentId?: string;
     childNames?: string[];
 }
@@ -32,19 +31,4 @@ export interface TreeNodeModel {
         disabled?: boolean;
         selected?: boolean;
     }
-}
-
-export interface KeyValDef {
-    [key: string]: {
-        contentType: string;
-        contentBytes: string;
-    };
-}
-
-export interface KeyValStoreDef {
-    [idx: string]: {
-        key: string;
-        contentType: string;
-        contentBytes: string
-    };
 }

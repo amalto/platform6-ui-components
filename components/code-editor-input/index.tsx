@@ -287,7 +287,6 @@ class CodeEditorInput extends React.Component<CodeEditorInput.Props, CodeEditorI
             }
 
             if ( prevProps.resetTick !== this.props.resetTick ) {
-                console.info( 'CodeEditorInput::componentDidUpdate::input => ', this.input )
                 editorInstance.setValue( this.input && this.input.value )
                 editorInstance.clearSelection()
             }

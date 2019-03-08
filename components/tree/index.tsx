@@ -13,7 +13,9 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 import KeyValueEditor from '@amalto/key-value-editor'
 
 // Models
-import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tree'
+import { TreeNodeModel, OrgModel } from './models/tree'
+
+declare type KeyValDef = KeyValueEditor.KeyValDef
 
 /**
  * Organize custom tree allowing you to manage nodes and attached data to it.
@@ -193,7 +195,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                 const nodeData = node.data as OrgModel
 
                 const dataDisplay = nodeData.propertiesMap[key].contentType === 'text/plain' ? (
-                    <span className="inline-middle">{nodeData.propertiesMap[key].contentBytes}</span>
+                    <span className="inline-middle">{base64Decode( nodeData.propertiesMap[key].contentBytes )}</span>
                 ) : (
                         <button type="button" className="inline-middle btn btn-xs btn-trans btn-info" data-key={key} onClick={this.downloadFile}>
                             <span className="fas fa-download" />
@@ -202,7 +204,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
                 return (
                     <li key={key}>
-                        <em className="right-spaced inline-middle">{key}</em>
+                        <em className="right-spaced inline-middle">{nodeData.propertiesMap[key].key}</em>
                         <span className="fas fa-long-arrow-alt-right right-spaced inline-middle" />
                         {dataDisplay}
                     </li>
@@ -315,7 +317,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         if ( this.state.selectedNode ) {
             const keyValues: KeyValDef = this.state.selectedNode.data.propertiesMap
             const key: string = event.currentTarget.getAttribute( 'data-key' )
-            downloadDataFile( keyValues[key].contentBytes, keyValues[key].contentType, key )
+            downloadDataFile( keyValues[key].contentBytes, keyValues[key].contentType, keyValues[key].key )
         }
     }
 
@@ -353,14 +355,19 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         let { editedNode, wordings } = this.state
 
         let errors: string[] = []
-        if ( isNotEmpty( editedNode.elementName ) ) {
-            if ( this.state.selectedNode.data.childNames.indexOf( editedNode.elementName ) !== -1 ) {
-                errors.push( wordings.invalidUniqueNodeName )
+        if ( !!this.state.selectedNode.data.childNames ) {
+
+            if ( isNotEmpty( editedNode.elementName ) ) {
+                if ( this.state.selectedNode.data.childNames.indexOf( editedNode.elementName ) !== -1 ) {
+                    errors.push( wordings.invalidUniqueNodeName )
+                }
             }
+            else {
+                errors.push( wordings.name )
+            }
+
         }
-        else {
-            errors.push( wordings.name )
-        }
+
 
         if ( !isNotEmpty( editedNode.description ) ) {
             errors.push( wordings.description )
@@ -382,15 +389,16 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     }
 
     private openEditForm = () => {
+        const { selectedNode } = this.state
 
         this.setState( {
             formOpened: 'EDIT',
             editedNode: {
-                id: this.state.selectedNode.id,
-                parentId: this.state.selectedNode.data.parentId,
-                elementName: this.state.selectedNode.text,
-                description: this.state.selectedNode.data && this.state.selectedNode.data.description,
-                propertiesMap: this.state.selectedNode.data && this.state.selectedNode.data.propertiesMap
+                id: selectedNode.id,
+                parentId: selectedNode.data.parentId,
+                elementName: selectedNode.text,
+                description: selectedNode.data && selectedNode.data.description,
+                propertiesMap: selectedNode.data && selectedNode.data.propertiesMap
             }
         } )
     }
@@ -531,6 +539,10 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
             for ( const key in nodeKeyValues ) {
                 if ( nodeKeyValues[key].contentType === 'text/plain' ) {
+                    const decodedContentBytes: string = base64Decode( nodeKeyValues[key].contentBytes )
+                    console.info( 'getDecodedNode::contentBytes => ', nodeKeyValues[key].contentBytes )
+                    console.info( 'getDecodedNode::decodedContentBytes => ', decodedContentBytes )
+                    console.info( 'getDecodedNode::base64Decode => ', base64Decode( decodedContentBytes ) )
                     nodeKeyValues[key].contentBytes = base64Decode( nodeKeyValues[key].contentBytes )
                 }
             }
