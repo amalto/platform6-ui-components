@@ -1,20 +1,15 @@
 // Modules
 import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps, WrappedFieldInputProps } from 'redux-form'
-import * as classNames from 'classnames'
-import * as uuid from 'uuid'
-
-// Helpers
-import { addValToArrayNoDup, removeValFromArrayNoDup } from '@amalto/helpers'
+import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 
 // Components
-import Help from '@amalto/help'
+import Checkboxes from './components/Checkboxes'
 
 /**
  * Checkboxes inputs used on a [redux-form](#reduxform).
  */
 namespace CheckboxesInput {
-    export interface Props extends BaseFieldProps {
+    export interface Props {
         /** Input's name used when submitting form. */
         name: string;
         /** Input's list. */
@@ -44,13 +39,6 @@ namespace CheckboxesInput {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<CheckboxesInput>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -70,98 +58,52 @@ namespace CheckboxesInput {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-
-    }
 }
 
-class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesInput.State> {
+function CheckboxesInput( props: CheckboxesInput.Props ) {
 
-    constructor( props: CheckboxesInput.Props ) {
-        super( props )
-        this.state = {
+    const {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn,
+        label,
+        options,
+        disabled,
+        help,
+        containerClass,
+        inputClass,
+        collapseErrorSpace
+    } = props
 
-        }
+    const baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
 
-    private renderCheckboxesInput = ( field: WrappedFieldProps ): JSX.Element => {
-        const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
-
-        const { input, meta } = field
-
-        const inputId: string = uuid.v4()
-
+    const renderCheckboxesInput = ( field: WrappedFieldProps ): JSX.Element => {
         return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                <div className={classNames( 'fieldset', {
-                    'invalid': meta.touched && !!meta.error
-                } )}>
-                    {
-                        options.filter( opt => !!opt.value ).map( ( opt, idx ) => (
-                            <span className={classNames( 'form-checkbox-wrapper', inputClass )} key={idx}>
-                                <input
-                                    type="checkbox"
-                                    className="form-checkbox"
-                                    disabled={disabled}
-                                    id={`${ inputId }_${ input.name }_${ idx }`}
-                                    value={opt.value}
-                                    onChange={( e ) => this.handleChange( e, input )}
-                                    checked={input.value.indexOf( opt.value ) !== -1} />
-
-                                <label className="form-checkbox-label" htmlFor={`${ inputId }_${ input.name }_${ idx }`}>{opt.label || opt.value}</label>
-                            </span>
-                        ) )
-                    }
-                </div>
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-
-                <input type="hidden" {...input as any} />
-
-            </div>
+            <Checkboxes label={label}
+                help={help} options={options}
+                containerClass={containerClass} inputClass={inputClass}
+                collapseErrorSpace={collapseErrorSpace}
+                disabled={disabled}
+                field={field}
+            />
         )
     }
 
-    render() {
+    return options && options.length ? (
 
-        const { name, format, normalize, parse, validate, warn, options } = this.props
+        <Field {...baseFieldProps} component={renderCheckboxesInput} />
 
-        const baseFieldProps: BaseFieldProps = {
-            name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
-
-        return options && options.length ? (
-
-            <Field {...baseFieldProps} component={this.renderCheckboxesInput} />
-
-        ) : null
-
-    }
-
-    private handleChange = ( event: any, input: WrappedFieldInputProps ) => {
-
-        const selectedValues = input.value ? input.value.filter( ( item: string ) => !!item ) : []
-
-        if ( event.target.checked ) {
-            input.onChange( addValToArrayNoDup( selectedValues, event.target.value ) as any, undefined )
-        }
-        else {
-            input.onChange( removeValFromArrayNoDup( selectedValues, event.target.value ) as any, undefined )
-        }
-    }
-
+    ) : null
 }
-
 
 export default CheckboxesInput
