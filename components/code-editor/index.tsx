@@ -113,7 +113,7 @@ function CodeEditor( props: CodeEditor.Props ) {
     React.useEffect( () => {
         if ( !!editor ) {
             !!props.readonly && editor.focus()
-            editor.editor = editorDiv
+            editor.editorDiv = editorDiv
         }
 
     } )

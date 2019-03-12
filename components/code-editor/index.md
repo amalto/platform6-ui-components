@@ -11,6 +11,9 @@ import CodeEditor from '@amalto/code-editor'
         mode='javascript'
         loadTime={new Date().valueOf()}
         docId='code-editor-playground'
+        displaySettings={{
+            wrap: true
+        }}
         readonly={false}
     />
 </div>

@@ -1,12 +1,11 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
 /**
  * Customisable Container.
  */
 module Container {
 
-    export interface Props extends React.Props<Container> {
+    export interface Props {
 
         /** Container css */
         mainCss?: string;
@@ -21,31 +20,17 @@ module Container {
         height?: number | string;
 
         children?: React.ReactNode;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Container>;
     }
 }
 
-class Container extends React.Component<Container.Props, any> {
-    constructor( props: Container.Props ) {
-        super( props )
-    }
+function Container( props: Container.Props ) {
+    const { mainCss, mainStyle, backgroundColor, height, children } = props
 
-    render() {
-        const { mainCss, mainStyle, backgroundColor, height, children } = this.props
-
-        return (
-            <section className={mainCss} style={{ backgroundColor, height, ...mainStyle }}>
-                {children}
-            </section>
-        )
-    }
+    return (
+        <section className={mainCss} style={{ backgroundColor, height, ...mainStyle }}>
+            {children}
+        </section>
+    )
 }
-
 
 export default Container

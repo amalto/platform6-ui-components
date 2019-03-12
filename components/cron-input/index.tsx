@@ -2,11 +2,8 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-// Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
 // Utils
-import { compileWordings } from '@amalto/helpers'
+import { getWordings } from '@amalto/helpers'
 
 // Components
 import Switch from '@amalto/switch'
@@ -23,13 +20,15 @@ export const CRON_VALIDATION = {
     YEAR: /[^\,\-\*\/0-9]/
 }
 
+export const DEFAULT_VALUE = '*'
+
 /**
  * Cron input scheduler used on a [redux-form](#reduxform).
  * 
  * CronInput uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */
 module CronInput {
-    export interface Props extends React.Props<CronInput> {
+    export interface Props {
         /** Input's name. */
         name: string;
         /** Date value part. More details on [CronValue](#cronvalue). */
@@ -53,15 +52,6 @@ module CronInput {
          * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<CronInput>;
     }
 
     export interface State {
@@ -89,163 +79,157 @@ module CronInput {
     }
 }
 
-class CronInput extends React.Component<CronInput.Props, CronInput.State> {
+function CronInput( props: CronInput.Props ) {
+    const { name, invalid, containerClass, forceValidation } = props
 
-    constructor( props: CronInput.Props ) {
-        super( props )
-        this.state = {
-            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
-        }
+    const [wordings, setWordings] = React.useState( {} as any )
+    const [value, setValue] = React.useState( {
+        enabled: true
+    } as CronInput.CronValue )
 
-        $.extend( this.state, props.value )
+    const { enabled, second, minute, hour, dayOfMonth, month, dayOfWeek, year } = value
+
+    const handleFieldChange = ( fieldValue: string | boolean, fieldName: string ) => {
+        console.info( $.extend( {}, value, { [fieldName]: fieldValue } ) )
+        setValue( $.extend( {}, value, { [fieldName]: fieldValue } ) as CronInput.CronValue )
     }
 
-    render() {
+    // Initialize cron input value
+    React.useEffect( () => {
+        setValue( $.extend( {
+            second: DEFAULT_VALUE,
+            minute: DEFAULT_VALUE,
+            hour: DEFAULT_VALUE,
+            dayOfMonth: DEFAULT_VALUE,
+            month: DEFAULT_VALUE,
+            dayOfWeek: DEFAULT_VALUE,
+            year: DEFAULT_VALUE
+        }, props.value ) )
+    }, [] )
 
-        const { name, invalid, containerClass, forceValidation } = this.props
-        const { wordings, enabled, second, minute, hour, dayOfMonth, month, dayOfWeek, year } = this.state
+    // Set wordings
+    React.useEffect( () => {
+        setWordings( getWordings( {}, props.locale ) )
+    }, [props.locale] )
 
-        return (
-            <div className={classNames( 'fieldset', containerClass )}>
+    // Trigger props handleChanged method only when value has been updated
+    React.useCallback( () => {
+        props.handleChange( value )
+    }, [value] )
 
-                {this.props.label ? <label>{this.props.label}</label> : null}
+    return (
+        <div className={classNames( 'fieldset', containerClass )}>
 
-                <div className="cron-input-wrapper clearfix">
+            {props.label ? <label>{props.label}</label> : null}
 
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.second}
-                            name="second"
-                            value={second}
-                            handleFieldChange={this.handleFieldChange}
-                            help="0-59 / * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.SECOND.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
+            <div className="cron-input-wrapper clearfix">
 
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.minute}
-                            name="minute"
-                            value={minute}
-                            handleFieldChange={this.handleFieldChange}
-                            help="0-59 / * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.MINUTE.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
-
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.hour}
-                            name="hour"
-                            value={hour}
-                            handleFieldChange={this.handleFieldChange}
-                            help="0-23 / * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.HOUR.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
-
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.dayOfMonth}
-                            name="dayOfMonth"
-                            value={dayOfMonth}
-                            handleFieldChange={this.handleFieldChange}
-                            help="1-31 W L / ? * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.DAY_OF_MONTH.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
-
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.month}
-                            name="month"
-                            value={month}
-                            handleFieldChange={this.handleFieldChange}
-                            help="1-12 JAN-DEC / * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.MONTH.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
-
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.dayOfWeek}
-                            name="dayOfWeek"
-                            value={dayOfWeek}
-                            handleFieldChange={this.handleFieldChange}
-                            help="1-7 SUN-SAT # L / ? * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.DAY_OF_WEEK.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
-
-                    <div className="cron-input-element">
-                        <ValidatedInput
-                            label={wordings.year}
-                            name="year"
-                            value={year}
-                            handleFieldChange={this.handleFieldChange}
-                            help="empty 1970-2099 / * - ,"
-                            validate={( value: string ) => !CRON_VALIDATION.YEAR.test( value )}
-                            formSubmitted={forceValidation}
-                            disabled={!enabled}
-                        />
-                    </div>
-
-                    <div className="cron-input-element text-center">
-                        <label>{wordings.enabled}</label>
-                        <Switch
-                            id={`cron_enabled_control_${ name }`}
-                            value={enabled}
-                            changeHandler={( value: boolean ) => { this.setState( { enabled: value }, () => { this.props.handleChange( this.getCronValue() ) } ) }}
-                        />
-                    </div>
-
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.second}
+                        name="second"
+                        value={second}
+                        handleFieldChange={handleFieldChange}
+                        help="0-59 / * - ,"
+                        validate={( newSecond: string ) => !CRON_VALIDATION.SECOND.test( newSecond )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
                 </div>
 
-                {invalid && <p className="validation-error-message">{wordings.inputInvalid}</p>}
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.minute}
+                        name="minute"
+                        value={minute}
+                        handleFieldChange={handleFieldChange}
+                        help="0-59 / * - ,"
+                        validate={( newMinute: string ) => !CRON_VALIDATION.MINUTE.test( newMinute )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
+                </div>
+
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.hour}
+                        name="hour"
+                        value={hour}
+                        handleFieldChange={handleFieldChange}
+                        help="0-23 / * - ,"
+                        validate={( newHour: string ) => !CRON_VALIDATION.HOUR.test( newHour )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
+                </div>
+
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.dayOfMonth}
+                        name="dayOfMonth"
+                        value={dayOfMonth}
+                        handleFieldChange={handleFieldChange}
+                        help="1-31 W L / ? * - ,"
+                        validate={( newDayOfMonth: string ) => !CRON_VALIDATION.DAY_OF_MONTH.test( newDayOfMonth )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
+                </div>
+
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.month}
+                        name="month"
+                        value={month}
+                        handleFieldChange={handleFieldChange}
+                        help="1-12 JAN-DEC / * - ,"
+                        validate={( newMonth: string ) => !CRON_VALIDATION.MONTH.test( newMonth )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
+                </div>
+
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.dayOfWeek}
+                        name="dayOfWeek"
+                        value={dayOfWeek}
+                        handleFieldChange={handleFieldChange}
+                        help="1-7 SUN-SAT # L / ? * - ,"
+                        validate={( newDayOfWeek: string ) => !CRON_VALIDATION.DAY_OF_WEEK.test( newDayOfWeek )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
+                </div>
+
+                <div className="cron-input-element">
+                    <ValidatedInput
+                        label={wordings.year}
+                        name="year"
+                        value={year}
+                        handleFieldChange={handleFieldChange}
+                        help="empty 1970-2099 / * - ,"
+                        validate={( newYear: string ) => !CRON_VALIDATION.YEAR.test( newYear )}
+                        formSubmitted={forceValidation}
+                        disabled={!enabled}
+                    />
+                </div>
+
+                <div className="cron-input-element text-center">
+                    <label>{wordings.enabled}</label>
+                    <Switch
+                        id={`cron_enabled_control_${ name }`}
+                        value={enabled}
+                        changeHandler={( isEnabled: boolean ) => { handleFieldChange( isEnabled, 'enabled' ) }}
+                    />
+                </div>
 
             </div>
-        )
-    }
 
-    private handleFieldChange = ( fieldValue: string, fieldName: string ) => {
-        this.setState( {
-            [fieldName]: fieldValue
-        }, () => {
-            this.props.handleChange( this.getCronValue() )
-        } )
-    }
+            {invalid && <p className="validation-error-message">{wordings.inputInvalid}</p>}
 
-    private getCronValue = (): CronInput.CronValue => {
-
-        const stateCopy: CronInput.State = JSON.parse( JSON.stringify( this.state ) )
-
-        return {
-            enabled: stateCopy.enabled,
-            second: stateCopy.second,
-            minute: stateCopy.minute,
-            hour: stateCopy.hour,
-            dayOfMonth: stateCopy.dayOfMonth,
-            month: stateCopy.month,
-            dayOfWeek: stateCopy.dayOfWeek,
-            year: stateCopy.year
-        }
-
-    }
-
+        </div>
+    )
 }
-
 
 export default CronInput
