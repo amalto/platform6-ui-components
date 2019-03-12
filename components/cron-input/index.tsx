@@ -90,7 +90,6 @@ function CronInput( props: CronInput.Props ) {
     const { enabled, second, minute, hour, dayOfMonth, month, dayOfWeek, year } = value
 
     const handleFieldChange = ( fieldValue: string | boolean, fieldName: string ) => {
-        console.info( $.extend( {}, value, { [fieldName]: fieldValue } ) )
         setValue( $.extend( {}, value, { [fieldName]: fieldValue } ) as CronInput.CronValue )
     }
 
