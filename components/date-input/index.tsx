@@ -31,13 +31,6 @@ namespace DateInput {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<any>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -57,48 +50,26 @@ namespace DateInput {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-
-    }
 }
 
-class DateInput extends React.Component<DateInput.Props, DateInput.State> {
+function renderDatePicker( field: WrappedFieldProps, props: DateInput.Props ) {
 
-    constructor( props: DateInput.Props ) {
-        super( props )
-        this.state = {
+    const { input } = field
 
-        }
-    }
-
-    private renderDatePicker = ( field: WrappedFieldProps ) => {
-
-        const { input } = field
-
-        return (
-            <DatePicker
-                {...this.props}
-                defaultValue={input.value}
-                handleDateChange={input.onChange as any}
-                mandatory={this.props.mandatory}
-            />
-        )
-    }
-
-    render() {
-
-        const { name } = this.props
-
-        return name ? (
-
-            <Field name={name} component={this.renderDatePicker} />
-
-        ) : null
-
-    }
-
+    return (
+        <DatePicker
+            {...props}
+            defaultValue={input.value}
+            handleDateChange={input.onChange as any}
+            mandatory={props.mandatory}
+        />
+    )
 }
 
+function DateInput( props: DateInput.Props ) {
+    const { name } = props
+
+    return name ? ( <Field name={name} component={( field: WrappedFieldProps, props: DateInput.Props ) => renderDatePicker( field, props )} /> ) : null
+}
 
 export default DateInput
