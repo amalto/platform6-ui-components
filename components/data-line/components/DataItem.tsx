@@ -14,7 +14,7 @@ import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typin
 const STRING_MAX_LENGTH = 300
 
 module DataItem {
-    export interface Props extends React.ClassAttributes<DataItem> {
+    export interface Props {
         displayValue: JSX.Element | string | number;
         displayValueMaxLength?: number;
         columnId: string;
@@ -38,196 +38,211 @@ module DataItem {
         displayMode: DisplayMode;
         label?: JSX.Element | string;
     }
+}
 
-    export interface State {
-        showAsTextarea?: boolean;
-        invalidMsg?: string;
-        valueMaxLength?: number;
-        contentTooLong?: boolean;
+// Close textarea on cell
+function closeTextareaDisplay( event: React.KeyboardEvent<any>, setShowAsTextarea: ( value: boolean ) => void ) {
+    //detect ESC key (onKeyUp event)
+    if ( event.keyCode === 27 ) {
+        setShowAsTextarea( false )
     }
 }
 
-class DataItem extends React.Component<DataItem.Props, DataItem.State> {
-    constructor( props: DataItem.Props ) {
-        super( props )
-        this.state = {
-            showAsTextarea: false,
-            invalidMsg: undefined,
-            valueMaxLength: props.displayValueMaxLength || STRING_MAX_LENGTH,
-            contentTooLong: false
+// Display textarea component on cell
+function toggleTextareaDisplay( showAsTextarea: boolean, setShowAsTextarea: ( value: boolean ) => void ) {
+    setShowAsTextarea( !showAsTextarea )
+}
+
+// Textarea onChange handler
+function handleEdit( event: any, setTextareaValue: ( value: string ) => void ) {
+    setTextareaValue( event.target.value )
+}
+
+// Check check ENTER key
+function keyPressHandler( event: React.KeyboardEvent<any>, invalidMsg: string, enterPressCallback: () => void, isEdited: boolean ) {
+    if ( event.charCode === 13 ) {
+
+        event.preventDefault()
+
+        if ( !invalidMsg && enterPressCallback && isEdited ) {
+            enterPressCallback()
         }
     }
+}
 
-    componentDidMount() {
-        const displayValueLimit: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH
-
-        if ( typeof this.props.displayValue === 'string' && this.props.displayValue.length > displayValueLimit ) {
-            this.setState( { contentTooLong: true } )
-        }
+// Handle TAB key
+function handleTabPress( event: React.KeyboardEvent<any>, tabOnLastCellCallback: () => void ) {
+    if ( event.keyCode === 9 ) {
+        event.preventDefault()
+        tabOnLastCellCallback()
     }
+}
 
-    componentDidUpdate( prevProps: DataItem.Props ) {
-        if ( prevProps.displayValueMaxLength !== this.props.displayValueMaxLength || prevProps.displayValue !== this.props.displayValue ) {
-            const valueMaxLength: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH
+/**
+* This method allow you to get the columnId and the display value if the cell data.
+* You will be able to handle truncated long display value with a context menu.
+* 
+* e.g: Using copy to clipboard.
+*/
+function internalDisplayContextMenu( e, columnId: string, displayValue: string, displayContextMenu: ( columnId: string, value: string, posX: number, posY: number ) => void ) {
+    e.preventDefault()
+    displayContextMenu( columnId, displayValue as string, e.clientX, e.clientY )
+}
 
-            this.setState( {
-                contentTooLong: typeof this.props.displayValue === 'string' && this.props.displayValue.length > valueMaxLength,
-                valueMaxLength
-            } )
+/**
+ * Truncate display value inside the cell only if the displayValue is a string.
+ * Note that it won't work on JSX.Element, you will have to truncate the content yourself.
+ */
+function truncateDisplayValue( displayValue: string | JSX.Element | number, contentTooLong: boolean, valueMaxLength: number ): string | JSX.Element | number {
+    if ( !displayValue ) return '-'
+
+    if ( typeof displayValue !== 'string' ) return displayValue
+
+    return contentTooLong ? displayValue.substring( 0, valueMaxLength ) + '...' : displayValue
+
+}
+
+function DataItem( props: DataItem.Props ) {
+    const {
+        options,
+        editCallback,
+        editMode,
+        readOnly,
+        allowDisplayAsTextAreaOnReadonly,
+        isEdited,
+        lastEditable,
+        tabOnLastCellCallback,
+        displayContextMenu,
+        displayTemplate,
+        displayValue,
+        columnId,
+        cssClass,
+        displayMode,
+        label
+    } = props
+
+    // Initialize state
+    const [textareaValue, setTextareaValue] = React.useState( '' )
+    const [showAsTextarea, setShowAsTextarea] = React.useState( false )
+    const [invalidMsg, setInvalidMsg] = React.useState( undefined )
+    const [valueMaxLength, setValueMaxLength] = React.useState( props.displayValueMaxLength || STRING_MAX_LENGTH )
+    const [contentTooLong, setContentTooLong] = React.useState( false )
+
+    // Component did mount
+    React.useEffect( () => {
+        const displayValueLimit: number = props.displayValueMaxLength || STRING_MAX_LENGTH
+
+        if ( typeof props.displayValue === 'string' && props.displayValue.length > displayValueLimit ) {
+            setContentTooLong( true )
         }
-    }
+    }, [] )
 
-    render() {
+    // Component did update
+    React.useEffect( () => {
+        const valueMaxLength: number = props.displayValueMaxLength || STRING_MAX_LENGTH
 
-        const { options, editCallback, editMode, readOnly, allowDisplayAsTextAreaOnReadonly, isEdited, lastEditable, tabOnLastCellCallback, displayContextMenu, displayTemplate, displayValue, columnId, cssClass, displayMode, label } = this.props
+        setContentTooLong( typeof props.displayValue === 'string' && props.displayValue.length > valueMaxLength )
+        setValueMaxLength( valueMaxLength )
+    }, [props.displayValueMaxLength, props.displayValue] )
 
-        const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
+    // Triggered only if textareaValue has changed
+    React.useEffect( () => {
+        const newInvalidMsg: string = props.validate && props.validate( textareaValue ) || undefined
 
-        let userStyles: CSS.Properties = displayMode === 'mobile' ? {} as any : ( itemDisplaySettings && itemDisplaySettings[displayMode] ? {
-            width: itemDisplaySettings[displayMode].width,
-            textAlign: itemDisplaySettings[displayMode].textAlign as CSS.TextAlignProperty,
-            color: itemDisplaySettings.color
-        } : {
-                width: 150
-            } )
+        if ( newInvalidMsg !== invalidMsg ) {
+            setInvalidMsg( invalidMsg )
+        } else {
+            props.editCallback( props.columnId, textareaValue )
+        }
+    }, [textareaValue] )
 
-        let additionalProps = {} as React.HTMLAttributes<any>
+    // Triggered only if invalidMsg has changed ( setInvalidMsg has been triggered )
+    React.useEffect( () => {
+        props.editCallback( props.columnId, textareaValue )
+    }, [invalidMsg] )
 
-        const editable = editCallback && editMode && !readOnly
+    const itemDisplaySettings: DisplayTemplateItem = displayTemplate ? displayTemplate[columnId] : null
 
-        const tabPressHandler: React.HTMLAttributes<any> = isEdited && lastEditable && tabOnLastCellCallback ? {
-            onKeyDown: this.handleTabPress
-        } : {}
-
-        let _displayValue = editable ? (
-            ( options && options.length ? (
-                <div className="form-inline">
-                    <select className="form-control form-control-sm" onChange={this.handleEdit}>
-                        {options.map( ( opt, idx ) => <option key={idx} value={opt.value} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
-                    </select>
-                </div>
-            ) : (
-                    <div>
-                        <div className="form-inline">
-                            <textarea className={classNames( "form-control form-control-sm", {
-                                "invalid": !!this.state.invalidMsg
-                            } )}
-                                value={displayValue as string || ''}
-                                onChange={this.handleEdit}
-                                onKeyPress={this.keyPressHandler} {...tabPressHandler}
-                            />
-                        </div>
-                        {!this.state.invalidMsg ? null : <span className='danger-color text-xsmall'>{this.state.invalidMsg}</span>}
-                    </div>
-                )
-            )
-        ) : (
-                <div onContextMenu={displayContextMenu && this.displayContextMenu}>
-                    {this.truncateDisplayValue( displayValue )}
-                </div>
-            )
-
-        if ( allowDisplayAsTextAreaOnReadonly && readOnly && typeof displayValue === 'string' ) {
-            additionalProps.onDoubleClick = this.toggleTextareaDisplay
-
-            if ( this.state.showAsTextarea ) {
-                _displayValue = (
-                    <div className="form-inline">
-                        <textarea className="form-control form-control-sm" value={displayValue as string || ''} onKeyUp={this.closeTextareaDisplay}
-                            disabled={true} readOnly={true} />
-                    </div>
-                )
+    let userStyles: CSS.Properties = displayMode === 'mobile'
+        ? {} as any
+        : ( itemDisplaySettings && itemDisplaySettings[displayMode]
+            ? {
+                width: itemDisplaySettings[displayMode].width,
+                textAlign: itemDisplaySettings[displayMode].textAlign as CSS.TextAlignProperty,
+                color: itemDisplaySettings.color
             }
-        }
+            : { width: 150 } )
 
-        /* IMPORTANT - BE CAREFUL */
-        /* the .dg-cell-edited is used in some files to select the first edited input of a datagrid ! */
-        /* This shouldn't be modified without extra modifications on other parts of the project */
+    let additionalProps = {} as React.HTMLAttributes<any>
 
-        return (
-            <div className={classNames( cssClass, {
-                'card-item-value inline-item-value': displayMode !== 'mobile',
-                'inline-block mgb-10 mgr-20 align-top break-word': displayMode === 'mobile' && columnId !== 'actions',
-                'mgt-10 mgb-10 text-center mobile-action-buttons': displayMode === 'mobile' && columnId === 'actions',
-                'dg-cell-edited': isEdited
-            } )} style={userStyles} {...additionalProps}>
+    const editable = editCallback && editMode && !readOnly
 
-                {displayMode === 'mobile' && columnId !== 'actions' ? <label className="dimmed">{label || columnId}</label> : null}
+    const tabPressHandler: React.HTMLAttributes<any> = isEdited && lastEditable && tabOnLastCellCallback ? {
+        onKeyDown: ( e: React.KeyboardEvent<HTMLTextAreaElement> ) => handleTabPress( e, tabOnLastCellCallback )
+    } : {}
 
-                {_displayValue}
+    let _displayValue = editable ? (
+        ( options && options.length ? (
+            <div className="form-inline">
+                <select className="form-control form-control-sm" onChange={( e: React.ChangeEvent<HTMLSelectElement> ) => handleEdit( e, setTextareaValue )}>
+                    {options.map( ( opt, idx ) => <option key={idx} value={opt.value} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
+                </select>
+            </div>
+        ) : (
+                <div>
+                    <div className="form-inline">
+                        <textarea className={classNames( "form-control form-control-sm", {
+                            "invalid": !!invalidMsg
+                        } )}
+                            value={displayValue as string || ''}
+                            onChange={this.handleEdit}
+                            onKeyPress={( e: React.KeyboardEvent<HTMLTextAreaElement> ) => keyPressHandler( e, invalidMsg, props.enterPressCallback, props.isEdited )}
+                            {...tabPressHandler}
+                        />
+                    </div>
+                    {!invalidMsg ? null : <span className='danger-color text-xsmall'>{invalidMsg}</span>}
+                </div>
+            )
+        )
+    ) : (
+            <div onContextMenu={
+                displayContextMenu
+                    ? ( e: React.MouseEvent<HTMLDivElement, MouseEvent> ) => internalDisplayContextMenu( e, columnId, displayValue.toString(), displayContextMenu )
+                    : undefined}>
+                {truncateDisplayValue( displayValue, contentTooLong, valueMaxLength )}
             </div>
         )
-    }
 
-    private closeTextareaDisplay = ( event: React.KeyboardEvent<any> ) => {
-        //detect ESC key (onKeyUp event)
-        if ( event.keyCode === 27 ) {
-            this.setState( {
-                showAsTextarea: false
-            } )
+    if ( allowDisplayAsTextAreaOnReadonly && readOnly && typeof displayValue === 'string' ) {
+        additionalProps.onDoubleClick = ( _e: React.MouseEvent<HTMLDivElement, MouseEvent> ) => toggleTextareaDisplay( showAsTextarea, setShowAsTextarea )
+
+        if ( showAsTextarea ) {
+            _displayValue = (
+                <div className="form-inline">
+                    <textarea className="form-control form-control-sm" value={displayValue as string || ''} onKeyUp={e => closeTextareaDisplay( e, setShowAsTextarea )}
+                        disabled={true} readOnly={true} />
+                </div>
+            )
         }
     }
 
-    private toggleTextareaDisplay = () => {
-        this.setState( { showAsTextarea: !this.state.showAsTextarea } )
-    }
+    /* IMPORTANT - BE CAREFUL */
+    /* the .dg-cell-edited is used in some files to select the first edited input of a datagrid ! */
+    /* This shouldn't be modified without extra modifications on other parts of the project */
 
-    private handleEdit = ( event: any ) => {
-        const value: string = event.target.value
-        const invalidMsg: string = this.props.validate && this.props.validate( value ) || undefined
+    return (
+        <div className={classNames( cssClass, {
+            'card-item-value inline-item-value': displayMode !== 'mobile',
+            'inline-block mgb-10 mgr-20 align-top break-word': displayMode === 'mobile' && columnId !== 'actions',
+            'mgt-10 mgb-10 text-center mobile-action-buttons': displayMode === 'mobile' && columnId === 'actions',
+            'dg-cell-edited': isEdited
+        } )} style={userStyles} {...additionalProps}>
 
-        if ( invalidMsg !== this.state.invalidMsg ) {
-            this.setState( { invalidMsg } as DataItem.State, () => this.props.editCallback( this.props.columnId, value ) )
-        } else {
-            this.props.editCallback( this.props.columnId, value )
-        }
+            {displayMode === 'mobile' && columnId !== 'actions' ? <label className="dimmed">{label || columnId}</label> : null}
 
-    }
-
-    private keyPressHandler = ( event: React.KeyboardEvent<any> ) => {
-        if ( event.charCode === 13 ) {
-
-            event.preventDefault()
-
-            if ( !this.state.invalidMsg && this.props.enterPressCallback && this.props.isEdited ) {
-                this.props.enterPressCallback()
-            }
-        }
-    }
-
-    private handleTabPress = ( event: React.KeyboardEvent<any> ) => {
-        if ( event.keyCode === 9 ) {
-            event.preventDefault()
-            this.props.tabOnLastCellCallback()
-        }
-    }
-
-    /**
- * This method allow you to get the columnId and the display value if the cell data.
- * You will be able to handle truncated long display value with a context menu.
- * 
- * e.g: Using copy to clipboard.
- */
-    private displayContextMenu = ( e ) => {
-        e.preventDefault()
-        this.props.displayContextMenu( this.props.columnId, this.props.displayValue as string, e.clientX, e.clientY )
-    }
-
-    /**
-     * Truncate display value inside the cell only if the displayValue is a string.
-     * Note that it won't work on JSX.Element, you will have to truncate the content yourself.
-     */
-    private truncateDisplayValue = ( displayValue: string | JSX.Element | number ): string | JSX.Element | number => {
-        if ( !displayValue ) return '-'
-
-        if ( typeof displayValue !== 'string' ) return displayValue
-
-        const { contentTooLong, valueMaxLength } = this.state
-        const truncatedValue: string = contentTooLong ? displayValue.substring( 0, valueMaxLength ) + '...' : displayValue
-
-        return truncatedValue
-    }
-
+            {_displayValue}
+        </div>
+    )
 }
 
 export default DataItem

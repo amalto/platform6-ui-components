@@ -5,7 +5,7 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
-import { CellData, DisplayTemplate, DisplayTemplateItem, DisplayMode, ColumnHeader } from '@amalto/typings'
+import { CellData, DisplayTemplate, DisplayMode, ColumnHeader } from '@amalto/typings'
 
 // Components 
 import DataItem from './components/DataItem'
@@ -14,7 +14,7 @@ import DataItem from './components/DataItem'
  * DateLine shouldn't be used outside the DataGrid component else it won't be displayed correctly.
  */
 export module DataLine {
-    export interface Props extends React.Props<DataLine> {
+    export interface Props {
         /** Cells to be displayed. More details on [CellData](#celldata). */
         cells: CellData[];
         /** Single click event handler. */
@@ -54,106 +54,102 @@ export module DataLine {
         /** @ignore */
         displayTemplate?: DisplayTemplate;//this is auto added by the datagrid component
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<DataLine>;
     }
 }
 
-export class DataLine extends React.Component<DataLine.Props, any> {
+function DataLine( props: DataLine.Props ) {
+    const {
+        displayTemplate,
+        cells,
+        editMode,
+        cellEditHandler,
+        tabOnLastCellCallback,
+        displayContextMenu,
+        enterPressHandler,
+        dbleClickHandler,
+        displayMode,
+        columnHeaders
+    } = props
 
-    constructor( props: DataLine.Props ) {
-        super( props )
-    }
+    let filteredAndSortedCells = displayTemplate && displayMode !== 'mobile'
+        ? cells.filter( cellData => {
 
-    render() {
-
-        const { displayTemplate, cells, editMode, cellEditHandler, tabOnLastCellCallback, displayContextMenu, enterPressHandler, dbleClickHandler, displayMode, columnHeaders } = this.props
-
-        let filteredAndSortedCells = cells
-
-        if ( displayTemplate && displayMode !== 'mobile' ) {
-            filteredAndSortedCells = cells.filter( cellData => {
-
-                if ( displayTemplate[cellData.columnId] && displayTemplate[cellData.columnId][displayMode] ) {
-                    return displayTemplate[cellData.columnId][displayMode].display !== false
-                }
-
-                return true
-            } ).sort( ( cellA, cellB ) => {
-                if ( displayTemplate[cellA.columnId] && displayTemplate[cellA.columnId][displayMode] && displayTemplate[cellB.columnId] && displayTemplate[cellB.columnId][displayMode] ) {
-                    return displayTemplate[cellA.columnId][displayMode].order - displayTemplate[cellB.columnId][displayMode].order
-                }
-
-                return 0
-            } )
-        }
-
-        let cellsDisplay = filteredAndSortedCells.map( ( cellData, idx ) => {
-
-            let label = undefined
-
-            if ( columnHeaders && columnHeaders.length ) {
-                for ( let i = 0; i < columnHeaders.length; i++ ) {
-                    const colHeader = columnHeaders[i]
-                    if ( colHeader.id === cellData.columnId ) {
-                        label = colHeader.label
-                        break;
-                    }
-                }
+            if ( displayTemplate[cellData.columnId] && displayTemplate[cellData.columnId][displayMode] ) {
+                return displayTemplate[cellData.columnId][displayMode].display !== false
             }
 
-            return (
-                <DataItem key={idx}
-                    columnId={cellData.columnId}
-                    displayValue={cellData.displayValue}
-                    cssClass={cellData.cssClass}
-                    displayTemplate={displayTemplate}
-                    editCallback={cellEditHandler}
-                    enterPressCallback={enterPressHandler}
-                    editMode={editMode}
-                    readOnly={cellData.readOnly}
-                    allowDisplayAsTextAreaOnReadonly={cellData.allowDisplayAsTextAreaOnReadonly}
-                    isEdited={cellData.isEdited}
-                    lastEditable={cellData.lastEditable}
-                    options={cellData.options}
-                    validate={cellData.validate}
-                    tabOnLastCellCallback={tabOnLastCellCallback}
-                    displayContextMenu={displayContextMenu}
-                    displayMode={displayMode}
-                    label={label}
-                />
-            )
+            return true
+        } ).sort( ( cellA,
+            cellB ) => {
+            if ( displayTemplate[cellA.columnId] && displayTemplate[cellA.columnId][displayMode] && displayTemplate[cellB.columnId] && displayTemplate[cellB.columnId][displayMode] ) {
+                return displayTemplate[cellA.columnId][displayMode].order - displayTemplate[cellB.columnId][displayMode].order
+            }
+
+            return 0
         } )
+        : cells
 
-        let additionalProps = {} as React.HTMLAttributes<any>
+    let cellsDisplay = filteredAndSortedCells.map( ( cellData, idx ) => {
 
-        if ( this.props.sgleClickHandler ) {
-            additionalProps.onClick = this.props.sgleClickHandler
-        }
+        let label = undefined
 
-        if ( dbleClickHandler ) {
-            additionalProps.onDoubleClick = dbleClickHandler
+        if ( columnHeaders && columnHeaders.length ) {
+            for ( let i = 0; i < columnHeaders.length; i++ ) {
+                const colHeader = columnHeaders[i]
+
+                if ( colHeader.id === cellData.columnId ) {
+                    label = colHeader.label
+                    break;
+                }
+            }
         }
 
         return (
-            <div style={this.props.style} className={classNames( 'card-item', this.props.cssClass, {
-                "dg-new-line": this.props.isNew,
-                "inline-item": displayMode !== 'mobile',
-                "tile mgb-10 block-tile": displayMode === 'mobile'
-            } )} {...additionalProps}>
-                <div className={classNames( {
-                    "card-item-content": displayMode !== 'mobile'
-                } )}>
-                    {cellsDisplay}
-                </div>
-            </div>
+            <DataItem key={idx}
+                columnId={cellData.columnId}
+                displayValue={cellData.displayValue}
+                cssClass={cellData.cssClass}
+                displayTemplate={displayTemplate}
+                editCallback={cellEditHandler}
+                enterPressCallback={enterPressHandler}
+                editMode={editMode}
+                readOnly={cellData.readOnly}
+                allowDisplayAsTextAreaOnReadonly={cellData.allowDisplayAsTextAreaOnReadonly}
+                isEdited={cellData.isEdited}
+                lastEditable={cellData.lastEditable}
+                options={cellData.options}
+                validate={cellData.validate}
+                tabOnLastCellCallback={tabOnLastCellCallback}
+                displayContextMenu={displayContextMenu}
+                displayMode={displayMode}
+                label={label}
+            />
         )
+    } )
+
+    let additionalProps = {} as React.HTMLAttributes<any>
+
+    if ( props.sgleClickHandler ) {
+        additionalProps.onClick = props.sgleClickHandler
     }
 
+    if ( dbleClickHandler ) {
+        additionalProps.onDoubleClick = dbleClickHandler
+    }
+
+    return (
+        <div style={props.style} className={classNames( 'card-item', props.cssClass, {
+            "dg-new-line": props.isNew,
+            "inline-item": displayMode !== 'mobile',
+            "tile mgb-10 block-tile": displayMode === 'mobile'
+        } )} {...additionalProps}>
+            <div className={classNames( {
+                "card-item-content": displayMode !== 'mobile'
+            } )}>
+                {cellsDisplay}
+            </div>
+        </div>
+    )
 }
 
 export { CellData }
