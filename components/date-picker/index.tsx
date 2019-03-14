@@ -18,7 +18,7 @@ module DatePicker {
         }
     }
 
-    export interface Props extends React.Props<DatePicker> {
+    export interface Props {
         /** Input name in the DOM. */
         name: string;
         /**
@@ -51,13 +51,6 @@ module DatePicker {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<DatePicker>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -77,10 +70,6 @@ module DatePicker {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-        datePickerInstance?: Pikaday
-    }
 }
 
 /**
@@ -88,141 +77,113 @@ module DatePicker {
  * There is a few customizations like a minimum and a maximum date range
  * of date available.
  */
-class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
 
-    private _nameInput = HTMLInputElement = null
+function setUpDatePicker( nameInput: React.MutableRefObject<HTMLDivElement>, props: DatePicker.Props ): Pikaday {
+    let config: Pikaday.PikadayOptions = {
+        field: nameInput.current,
+        format: 'YYYY-MM-DD',
+        position: 'bottom left',
+        onSelect: function () {
 
-    constructor( props: DatePicker.Props ) {
-        super( props )
-        this.state = {
-            datePickerInstance: null
-        }
-    }
+            if ( props.handleDateChange ) {
+                props.handleDateChange( picker.toString() )
+            }
 
-    render() {
-
-        // if ( this.props.mandatory && !this.props.defaultValue ) {
-        //     console.error( 'Mandatory DatePicker must have a defaultValue property (YYYY-MM-DD formatted string)' )
-        //     return null
-        // }
-
-        let disableClearBtn = true
-        if ( this.state.datePickerInstance ) {
-            let picker = this.state.datePickerInstance
-            if ( this.props.defaultValue && !this.props.mandatory ) {
-                disableClearBtn = false
+            if ( props.handleDateChangeEvent ) {
+                let event: DatePicker.DateInputEvent = {
+                    target: {
+                        value: picker.toString(),
+                        name: props.name
+                    }
+                }
+                props.handleDateChangeEvent( event )
             }
         }
-
-        return (
-            <div className={classNames( this.props.containerClass, {
-                'form-group': this.props.mandatory || !!this.props.label,
-                'mandatory pos-relative': this.props.mandatory
-            } )}>
-
-                {this.props.label ? <label>{this.props.label}{this.props.help && <Help text={this.props.help} />}</label> : null}
-
-                <div style={{ paddingTop: 1, paddingBottom: 1 }} className="input-group input-group-sm">
-                    <input type="text" className="form-control datepicker" ref={dom => this._nameInput = dom}
-                        readOnly name={this.props.name}
-                    />
-                    <span className="input-group-btn">
-                        <button disabled={disableClearBtn || this.props.mandatory} className="btn btn-default" type="button" onClick={this.clearDate}>
-                            <span className="fas fa-fw fa-times"></span>
-                        </button>
-                    </span>
-                </div>
-
-            </div>
-
-        )
     }
 
-    componentDidMount() {
-        let picker = this.setUpDatePicker()
-
-        this.setState( {
-            datePickerInstance: picker
-        } )
+    if ( props.minDate ) {
+        config.minDate = moment( props.minDate ).toDate()
     }
 
-    componentDidUpdate() {
-        if ( this.state.datePickerInstance ) {
-            let picker = this.state.datePickerInstance
+    if ( props.maxDate ) {
+        config.maxDate = moment( props.maxDate ).toDate()
+    }
 
-            if ( this.props.defaultValue ) {
-                picker.setDate( moment( this.props.defaultValue ).format(), true )
+    let picker = new Pikaday( config )
+
+    return picker
+}
+
+function clearDate( name: string, datePickerInstance: Pikaday, handleDateChangeEvent: ( event: DatePicker.DateInputEvent ) => void, handleDateChange: ( date: string ) => void ) {
+    datePickerInstance.setDate( '', true )
+
+    if ( handleDateChange ) { handleDateChange( '' ) }
+
+    if ( handleDateChangeEvent ) {
+        let clearEvent: DatePicker.DateInputEvent = { target: { value: '', name } }
+
+        handleDateChangeEvent( clearEvent )
+    }
+}
+
+function DatePicker( props: DatePicker.Props ) {
+
+    const nameInput = React.useRef( null )
+    const [datePickerInstance, setDatePickerInstance] = React.useState( null )
+
+    // Component did mount
+    React.useEffect( () => {
+        setDatePickerInstance( setUpDatePicker( nameInput, props ) )
+
+        return !!datePickerInstance ? datePickerInstance.destroy() : () => { }
+    }, [] )
+
+    // Component did update
+    React.useEffect( () => {
+        if ( !!datePickerInstance ) {
+            if ( props.defaultValue ) {
+                datePickerInstance.setDate( moment( props.defaultValue ).format(), true )
             }
             else {
-                picker.setDate( '', true )
+                datePickerInstance.setDate( '', true )
             }
         }
-    }
+    } )
 
-    componentWillUnmount() {
-        if ( this.state.datePickerInstance ) {
-            this.state.datePickerInstance.destroy()
+    let disableClearBtn = true
+
+    if ( datePickerInstance ) {
+        if ( props.defaultValue && !props.mandatory ) {
+            disableClearBtn = false
         }
     }
 
-    private setUpDatePicker = (): Pikaday => {
-        let el = this._nameInput
+    return (
+        <div className={classNames( props.containerClass, {
+            'form-group': props.mandatory || !!props.label,
+            'mandatory pos-relative': props.mandatory
+        } )}>
 
-        let component = this
+            {props.label ? <label>{props.label}{props.help && <Help text={props.help} />}</label> : null}
 
-        let config: Pikaday.PikadayOptions = {
-            field: el,
-            format: 'YYYY-MM-DD',
-            position: 'bottom left',
-            onSelect: function () {
+            <div style={{ paddingTop: 1, paddingBottom: 1 }} className="input-group input-group-sm">
+                <input type="text" className="form-control datepicker" ref={nameInput}
+                    readOnly name={props.name}
+                />
+                <span className="input-group-btn">
+                    <button disabled={disableClearBtn || props.mandatory}
+                        className="btn btn-default" type="button"
+                        onClick={
+                            ( _e: React.MouseEvent<HTMLButtonElement, MouseEvent> ) =>
+                                clearDate( props.name, datePickerInstance, props.handleDateChangeEvent, props.handleDateChange )
+                        }>
+                        <span className="fas fa-fw fa-times"></span>
+                    </button>
+                </span>
+            </div>
 
-                if ( component.props.handleDateChange ) {
-                    component.props.handleDateChange( picker.toString() )
-                }
-
-                if ( component.props.handleDateChangeEvent ) {
-                    let event: DatePicker.DateInputEvent = {
-                        target: {
-                            value: picker.toString(),
-                            name: component.props.name
-                        }
-                    }
-                    component.props.handleDateChangeEvent( event )
-                }
-            }
-        }
-
-        if ( component.props.minDate ) {
-            config.minDate = moment( component.props.minDate ).toDate()
-        }
-
-        if ( component.props.maxDate ) {
-            config.maxDate = moment( component.props.maxDate ).toDate()
-        }
-
-        let picker = new Pikaday( config )
-
-        return picker
-    }
-
-    private clearDate = () => {
-        this.state.datePickerInstance.setDate( '', true )
-
-        if ( this.props.handleDateChange ) {
-            this.props.handleDateChange( '' )
-        }
-
-        if ( this.props.handleDateChangeEvent ) {
-            let clearEvent: DatePicker.DateInputEvent = {
-                target: {
-                    value: '',
-                    name: this.props.name
-                }
-            }
-            this.props.handleDateChangeEvent( clearEvent )
-        }
-    }
-
+        </div>
+    )
 }
 
 export default DatePicker
