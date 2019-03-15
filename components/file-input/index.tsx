@@ -3,14 +3,12 @@ import * as React from 'react'
 // import Dropzone from 'react-dropzone'
 
 // Utils
-import { compileWordings, formatFileSize } from '@amalto/helpers'
-
-// Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+import { getWordings, formatFileSize } from '@amalto/helpers'
 
 // Components
 import FileWrapperDisplay from './components/FileWrapper'
 import DropzoneInput from './components/DropzoneInput'
+import InvalidFiles from './components/InvalidFiles'
 
 // Models
 import { FileWrapper } from '@amalto/typings'
@@ -22,7 +20,7 @@ import { FileWrapper } from '@amalto/typings'
  */
 module FileInput {
 
-    export interface Props extends React.ClassAttributes<FileInput> {
+    export interface Props {
         /**
          * Uploaded files list.
          */
@@ -57,21 +55,6 @@ module FileInput {
          * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<FileInput>;
-    }
-
-    export interface State {
-        wordings?: { [key: string]: string };
-        submitDisabled?: boolean;
-        invalidFiles?: File[];
     }
 }
 
@@ -79,123 +62,94 @@ module FileInput {
  * FileInput allow you to upload several files.
  * You can click or drag and drop inside the block to do so.
  */
-class FileInput extends React.Component<FileInput.Props, FileInput.State> {
+function FileInput( props: FileInput.Props ) {
+    const { addFilesToQueue, deleteUploadedFile, cancelSubmit, mimeTypeAccepted, maxBytesSize, filesQueue, locale } = props
 
-    constructor( props: FileInput.Props ) {
-        super( props )
-        this.state = {
-            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
-            submitDisabled: false,
-            invalidFiles: []
-        }
-    }
+    const [wordings, setWordings] = React.useState( getWordings( {}, props.locale ) )
+    const [invalidFiles, setInvalidFiles] = React.useState( [] )
 
-    render() {
-        const { wordings } = this.state
-        const { filesQueue } = this.props
+    const files: FileWrapper[] = $.map( filesQueue, file => file )
 
-        const files: FileWrapper[] = $.map( filesQueue, file => file )
+    // Set wordings
+    React.useEffect( () => setWordings( getWordings( {}, props.locale ) ), [] )
 
-        const filesDisplay = files.map( ( file, idx ) => {
-            return (
-                <FileWrapperDisplay key={idx} fileName={file.sourceFile.name}
-                    fileSize={file.sourceFile.size}
-                    deleteUploadedFile={this.deleteUploadedFile}
-                    uploaded={file.uploadEnded}
-                    progress={file.uploadProgress}
-                    processSuccess={file.processSuccess}
-                    processState={file.processState}
-                />
-            )
-        } )
-
-        let cancelBtn = (
-            <div className="top-margin">
-                <button type="button" className="btn btn-sm btn-danger btn-trans" onClick={this.props.cancelSubmit}>
-                    {wordings.cancel}
-                </button>
-            </div>
-        )
-
-        let errors = this.state.invalidFiles.map( ( file, idx ) => {
-            return (
-                <div key={idx}>
-                    <span><strong>{file.name}</strong> - </span><em>{formatFileSize( file.size )}, {file.type || wordings.unknownFormat}</em>
-                </div>
-            )
-        } )
-
+    const filesDisplay = files.map( ( file, idx ) => {
         return (
-            <div className="file-input">
+            <FileWrapperDisplay key={idx} fileName={file.sourceFile.name}
+                fileSize={file.sourceFile.size}
+                deleteUploadedFile={deleteUploadedFile}
+                uploaded={file.uploadEnded}
+                progress={file.uploadProgress}
+                processSuccess={file.processSuccess}
+                processState={file.processState}
+            />
+        )
+    } )
 
-                <div className="row">
+    let cancelBtn = (
+        <div className="top-margin">
+            <button type="button" className="btn btn-sm btn-danger btn-trans" onClick={cancelSubmit}>
+                {wordings.cancel}
+            </button>
+        </div>
+    )
 
-                    <div className="col-xs-12 col-sm-5">
-                        <DropzoneInput onDrop={this.onDrop}
-                            disabled={this.state.submitDisabled}
-                            mimeTypeAccepted={this.props.mimeTypeAccepted}
-                            maxBytesSize={this.props.maxBytesSize}
-                            locale={this.props.locale}
-                        />
-                    </div>
+    const errors = invalidFiles.map( ( file, idx ) => (
+        <div key={idx}>
+            <span><strong>{file.name}</strong> - </span><em>{formatFileSize( file.size )}, {file.type || wordings.unknownFormat}</em>
+        </div>
+    ) )
 
-                    <div className="col-xs-12 col-sm-7">
-                        <div className="file-list">
-                            <ul style={{ margin: 0 }}>
-                                {filesDisplay}
-                            </ul>
+    return (
+        <div className="file-input">
 
-                            {
-                                this.state.invalidFiles.length ? (
-                                    <div className="alert alert-danger alert-dismissable top-margin text-medium">
-                                        <button type="button" className="close" onClick={this.closeInvalidFilesAlert}>&times;</button>
-                                        <div className="bottom-spaced">
-                                            <strong className="right-spaced">{wordings.invalidFile}</strong>
-                                            <span className="fas fa-info-circle click-pointer" data-toggle="collapse" data-target="#inputFormatInfo" />
-                                            <div id="inputFormatInfo" className="collapse top-spaced font-color" style={{ paddingLeft: 20 }}>
-                                                {this.props.mimeTypeAccepted ? <div><strong className="right-spaced">{wordings.contentType}</strong><span>{this.props.mimeTypeAccepted}</span></div> : null}
-                                                {this.props.maxBytesSize ? <div><strong className="right-spaced">{wordings.maxSize}</strong><span>{formatFileSize( this.props.maxBytesSize )}</span></div> : null}
-                                            </div>
-                                        </div>
-                                        {errors}
-                                    </div>
-                                ) : null
-                            }
-                        </div>
-                    </div>
+            <div className="row">
 
+                <div className="col-xs-12 col-sm-5">
+                    <DropzoneInput onDrop={( files, rejectedFiles ) => onDrop( files, rejectedFiles, addFilesToQueue, invalidFiles, setInvalidFiles )}
+                        disabled={false}
+                        mimeTypeAccepted={mimeTypeAccepted}
+                        maxBytesSize={maxBytesSize}
+                        locale={locale}
+                    />
                 </div>
 
-                {cancelBtn}
+                <div className="col-xs-12 col-sm-7">
+                    <div className="file-list">
+                        <ul style={{ margin: 0 }}>
+                            {filesDisplay}
+                        </ul>
+
+                        {
+                            invalidFiles.length ? (
+                                <InvalidFiles mimeTypeAccepted={mimeTypeAccepted}
+                                    maxBytesSize={maxBytesSize}
+                                    errors={errors}
+                                    closeInvalidFilesAlert={() => setInvalidFiles( [] )}
+                                    wordings={wordings}
+                                />
+                            ) : null
+                        }
+                    </div>
+                </div>
 
             </div>
-        )
 
-    }
+            {cancelBtn}
 
-    private onDrop = ( files: File[], rejectedFiles: File[] ): void => {
-        if ( files.length ) {
-            this.props.addFilesToQueue( files )
-        }
-
-        if ( rejectedFiles.length ) {
-            this.setState( {
-                invalidFiles: this.state.invalidFiles.concat( rejectedFiles )
-            } )
-        }
-    }
-
-    private closeInvalidFilesAlert = (): void => {
-        this.setState( {
-            invalidFiles: []
-        } )
-    }
-
-    private deleteUploadedFile = ( fileName: string ): void => {
-        this.props.deleteUploadedFile( fileName )
-    }
-
+        </div>
+    )
 }
 
+function onDrop(
+    files: File[],
+    rejectedFiles: File[],
+    addFilesToQueue: ( files: File[] ) => void,
+    invalidFiles: File[],
+    setInvalidFiles: ( files: File[] ) => void
+): void {
+    if ( files.length ) { addFilesToQueue( files ) }
+    if ( rejectedFiles.length ) { setInvalidFiles( invalidFiles.concat( rejectedFiles ) ) }
+}
 
 export default FileInput
