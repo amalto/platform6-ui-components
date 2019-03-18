@@ -35,7 +35,7 @@ namespace KeyValueEditor {
         }
     }
 
-    export interface Props extends React.ClassAttributes<KeyValueEditor> {
+    export interface Props {
         /** Handle values changes. More details on [KeyValDef](#keyvaldef). */
         handleChange: ( keyValues: KeyValDef ) => void;
         /** Current keyValues data. */
@@ -48,15 +48,6 @@ namespace KeyValueEditor {
         locale: string;
         /** Whether or not the editor is active. */
         readonly?: boolean;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<KeyValueEditor>;
     }
 
     export interface State {
@@ -67,218 +58,210 @@ namespace KeyValueEditor {
 declare type KeyValDef = KeyValueEditor.KeyValDef
 declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef
 
-class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
+function KeyValueEditor( props: KeyValueEditor.Props ) {
+    const [wordings, setWordings] = React.useState( {} as any )
 
-    constructor( props: KeyValueEditor.Props ) {
-        super( props )
-        this.state = {
-            wordings: getWordings( {}, props.locale )
-        }
-    }
+    const { keyValues, handleChange, readonly, locale } = props
 
-    render() {
+    // Set wordings
+    React.useEffect( () => {
+        setWordings( getWordings( {}, props.locale ) )
+    }, [props.locale] )
 
-        const { wordings } = this.state
+    let keyValueStore = getKeyValueStore( keyValues )
 
-        const { readonly } = this.props
-
-        let keyValueStore = this.getKeyValueStore( this.props.keyValues )
-
-        let inputs = Object.keys( keyValueStore ).map( idx => {
-
-            return (
-                <KeyInput key={idx}
-                    dataIdx={idx}
-                    keyValueStore={keyValueStore}
-                    readonly={readonly}
-                    removeKeyValue={this.removeKeyValue}
-                    handleKeyChange={this.handleKeyChange}
-                    handleValueChange={this.handleValueChange}
-                    handleFileUpload={this.handleFileUpload}
-                    downloadFile={this.downloadFile}
-                    keyAlreadyUsed={this.keyAlreadyUsed}
-                    locale={this.props.locale}
-                />
-            )
-        } )
+    let inputs = Object.keys( keyValueStore ).map( idx => {
 
         return (
-            <div>
-
-                {inputs}
-
-                {
-                    !readonly
-                        ? (
-                            <React.Fragment>
-                                <button type="button" className="btn btn-trans btn-info right-margin" onClick={this.addKeyValue.bind( this )}
-                                    data-toggle="tooltip" data-original-title={wordings.addTextProperty}>
-                                    <span className="fas fa-plus right-spaced" />
-                                    <span className="fas fa-font" />
-                                </button>
-                                <button type="button" className="btn btn-trans btn-info" onClick={this.addKeyValue.bind( this, true )}
-                                    data-toggle="tooltip" data-original-title={wordings.addFileProperty}>
-                                    <span className="fas fa-plus right-spaced" />
-                                    <span className="far fa-file" />
-                                </button>
-                            </React.Fragment>
-                        )
-                        : null
-                }
-
-            </div>
+            <KeyInput key={idx}
+                dataIdx={idx}
+                keyValueStore={keyValueStore}
+                readonly={readonly}
+                removeKeyValue={e => { removeKeyValue( e, keyValues, handleChange ) }}
+                handleKeyChange={e => { handleKeyChange( e, keyValues, handleChange ) }}
+                handleValueChange={e => { handleValueChange( e, keyValues, handleChange ) }}
+                handleFileUpload={e => { handleFileUpload( e, keyValues, handleChange ) }}
+                downloadFile={key => { downloadFile( key, keyValues ) }}
+                keyAlreadyUsed={( id, key ) => keyAlreadyUsed( id, key, keyValues )}
+                wordings={wordings}
+            />
         )
+    } )
 
+    return (
+        <div>
+
+            {inputs}
+
+            {
+                !readonly
+                    ? (
+                        <React.Fragment>
+                            <button type="button" className="btn btn-trans btn-info right-margin" onClick={_e => addKeyValue( keyValues, handleChange )}
+                                data-toggle="tooltip" data-original-title={wordings.addTextProperty}>
+                                <span className="fas fa-plus right-spaced" />
+                                <span className="fas fa-font" />
+                            </button>
+                            <button type="button" className="btn btn-trans btn-info" onClick={_e => addKeyValue( keyValues, handleChange, true )}
+                                data-toggle="tooltip" data-original-title={wordings.addFileProperty}>
+                                <span className="fas fa-plus right-spaced" />
+                                <span className="far fa-file" />
+                            </button>
+                        </React.Fragment>
+                    )
+                    : null
+            }
+
+        </div>
+    )
+}
+
+function downloadFile( key: string, keyValues: KeyValueEditor.KeyValDef ): void {
+    downloadDataFile( keyValues[key].contentBytes, keyValues[key].contentType, key )
+}
+
+function addKeyValue( keyValues: KeyValueEditor.KeyValDef, handleChange: ( keyValues: KeyValDef ) => void, file?: boolean ): void {
+    let keyValueStore = getKeyValueStore( keyValues )
+
+    let idx = uuid.v4()
+
+    keyValueStore[idx] = {
+        value: '',
+        key: '',
+        contentType: file === true ? 'application/octet-stream' : 'text/plain',
+        contentBytes: ''
     }
 
-    private downloadFile = ( key: string ) => {
-        downloadDataFile( this.props.keyValues[key].contentBytes, this.props.keyValues[key].contentType, key )
-    }
+    handleChange( getKeyValuesObject( keyValueStore ) )
+}
 
-    private addKeyValue = ( file?: boolean ) => {
-        let keyValueStore = this.getKeyValueStore( this.props.keyValues )
+function removeKeyValue( event: React.MouseEvent<HTMLSpanElement, MouseEvent>, keyValues: KeyValueEditor.KeyValDef, handleChange: ( keyValues: KeyValDef ) => void ): void {
+    let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( keyValues ) )
+    const idx: string = event.currentTarget.getAttribute( 'data-idx' )
 
-        let idx = uuid.v4()
+    delete keyValuesUpdate[idx]
+
+    handleChange( keyValuesUpdate )
+}
+
+function handleKeyChange( event: React.ChangeEvent<HTMLInputElement>, keyValues: KeyValueEditor.KeyValDef, handleChange: ( keyValues: KeyValDef ) => void ): void {
+    if ( isValidKeyChar( event.target.value ) || !event.target.value ) {
+        let idx = event.currentTarget.getAttribute( 'data-idx' )
+        let keyValueStore = getKeyValueStore( keyValues )
 
         keyValueStore[idx] = {
-            value: '',
-            key: '',
-            contentType: file === true ? 'application/octet-stream' : 'text/plain',
-            contentBytes: ''
+            value: keyValueStore[idx].value,
+            key: event.target.value,
+            contentType: keyValueStore[idx].contentType,
+            contentBytes: keyValueStore[idx].contentBytes
         }
 
-        this.props.handleChange( this.getKeyValuesObject( keyValueStore ) )
+        handleChange( getKeyValuesObject( keyValueStore ) )
     }
+}
 
-    private removeKeyValue = ( event: any ) => {
-        let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
-        const idx: string = event.currentTarget.getAttribute( 'data-idx' )
+function handleValueChange( event: React.ChangeEvent<HTMLTextAreaElement>, keyValues: KeyValueEditor.KeyValDef, handleChange: ( keyValues: KeyValDef ) => void ): void {
+    let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( keyValues ) )
+    const idx: string = event.currentTarget.getAttribute( 'data-idx' )
+    const value: string = event.target.value
 
-        delete keyValuesUpdate[idx]
+    keyValuesUpdate[idx].value = value
+    keyValuesUpdate[idx].contentBytes = base64.encode( value )
 
-        this.props.handleChange( keyValuesUpdate )
-    }
+    handleChange( keyValuesUpdate )
+}
 
-    private handleKeyChange = ( event: any ) => {
-        if ( isValidKeyChar( event.target.value ) || !event.target.value ) {
-            let idx = event.currentTarget.getAttribute( 'data-idx' )
-            let keyValueStore = this.getKeyValueStore( this.props.keyValues )
+function handleFileUpload( event: React.ChangeEvent<HTMLInputElement>, keyValues: KeyValueEditor.KeyValDef, handleChange: ( keyValues: KeyValDef ) => void ): void {
+    // const value: string = event.currentTarget.getAttribute( 'data-value' )
+    const idx = event.currentTarget.getAttribute( 'data-idx' )
 
-            keyValueStore[idx] = {
-                value: keyValueStore[idx].value,
-                key: event.target.value,
-                contentType: keyValueStore[idx].contentType,
-                contentBytes: keyValueStore[idx].contentBytes
-            }
+    let reader = new FileReader()
+    const file: File = event.target.files[0]
+    const isTextPlain = file.type && file.type === 'text/plain'
 
-            this.props.handleChange( this.getKeyValuesObject( keyValueStore ) )
-        }
-    }
+    reader.onload = () => {
+        try {
+            const fileContent: string = reader.result as string
+            let fileData: string = ''
 
-    private handleValueChange = ( event: any ) => {
-        let keyValuesUpdate: KeyValDef = JSON.parse( JSON.stringify( this.props.keyValues ) )
-        const idx: string = event.currentTarget.getAttribute( 'data-idx' )
-        const value: string = event.target.value
-
-        keyValuesUpdate[idx].value = value
-        keyValuesUpdate[idx].contentBytes = base64.encode( value )
-
-        this.props.handleChange( keyValuesUpdate )
-    }
-
-    private handleFileUpload = ( event: any ): void => {
-        // const value: string = event.currentTarget.getAttribute( 'data-value' )
-        const idx = event.currentTarget.getAttribute( 'data-idx' )
-
-        let reader = new FileReader()
-        const file: File = event.target.files[0]
-        const isTextPlain = file.type && file.type === 'text/plain'
-
-        reader.onload = () => {
-            try {
-                const fileContent: string = reader.result as string
-                let fileData: string = ''
-
-                if ( isTextPlain ) {
-                    fileData = fileContent
-                }
-                else if ( fileContent.split( ',' ).length === 2 ) {
-                    fileData = fileContent.split( ',' )[1]
-                }
-
-                let keyValueStore = this.getKeyValueStore( this.props.keyValues )
-
-                keyValueStore[idx].value = file.name || 'default_file_' + idx
-                keyValueStore[idx].contentBytes = fileData
-
-                if ( file.type ) {
-                    keyValueStore[idx].contentType = file.type
-                }
-
-                this.props.handleChange( this.getKeyValuesObject( keyValueStore ) )
-            }
-            catch ( error ) {
-                console.log( 'File reading error: ', error )
-            }
-        }
-
-        if ( file ) {
             if ( isTextPlain ) {
-                reader.readAsText( file )
+                fileData = fileContent
             }
-            else {
-                reader.readAsDataURL( file )
+            else if ( fileContent.split( ',' ).length === 2 ) {
+                fileData = fileContent.split( ',' )[1]
             }
+
+            let keyValueStore = getKeyValueStore( keyValues )
+
+            keyValueStore[idx].value = file.name || 'default_file_' + idx
+            keyValueStore[idx].contentBytes = fileData
+
+            if ( file.type ) {
+                keyValueStore[idx].contentType = file.type
+            }
+
+            handleChange( getKeyValuesObject( keyValueStore ) )
+        }
+        catch ( error ) {
+            console.log( 'File reading error: ', error )
         }
     }
 
-    private getKeyValueStore = ( keyValues: KeyValDef ): KeyValStoreDef => {
-        let kvStore = {} as KeyValStoreDef
-
-        for ( var key in keyValues ) {
-            kvStore[key] = {
-                key: keyValues[key].key,
-                value: base64Decode( keyValues[key].contentBytes ),
-                contentType: keyValues[key].contentType,
-                contentBytes: keyValues[key].contentBytes
-            }
+    if ( file ) {
+        if ( isTextPlain ) {
+            reader.readAsText( file )
         }
-
-        return kvStore
-    }
-
-    private getKeyValuesObject = ( keyValueStore: KeyValStoreDef ): KeyValDef => {
-        let keyValues = {} as KeyValDef
-
-        for ( let idx in keyValueStore ) {
-            let keyVal = keyValueStore[idx]
-
-            keyValues[idx] = {
-                key: keyVal.key,
-                value: keyValues[keyVal.key]
-                    && keyValues[keyVal.key] && base64Decode( keyValues[keyVal.key].contentBytes )
-                    || '',
-                contentType: keyVal.contentType,
-                contentBytes: keyVal.contentBytes
-            }
+        else {
+            reader.readAsDataURL( file )
         }
+    }
+}
 
-        return keyValues
+function getKeyValueStore( keyValues: KeyValDef ): KeyValStoreDef {
+    let kvStore = {} as KeyValStoreDef
+
+    for ( var key in keyValues ) {
+        kvStore[key] = {
+            key: keyValues[key].key,
+            value: base64Decode( keyValues[key].contentBytes ),
+            contentType: keyValues[key].contentType,
+            contentBytes: keyValues[key].contentBytes
+        }
     }
 
-    // Input validation
-    private keyAlreadyUsed = ( idx: string, key: string ): boolean => {
-        const keyValuesWithoutCurrentKey = $.extend( {}, this.props.keyValues )
+    return kvStore
+}
 
-        delete keyValuesWithoutCurrentKey[idx]
+function getKeyValuesObject( keyValueStore: KeyValStoreDef ): KeyValDef {
+    let keyValues = {} as KeyValDef
 
-        const keys: string[] = Object.keys( keyValuesWithoutCurrentKey ).map( id => (
-            keyValuesWithoutCurrentKey[id].key
-        ) )
+    for ( let idx in keyValueStore ) {
+        let keyVal = keyValueStore[idx]
 
-        return keys.some( k => k === key )
+        keyValues[idx] = {
+            key: keyVal.key,
+            value: keyValues[keyVal.key]
+                && keyValues[keyVal.key] && base64Decode( keyValues[keyVal.key].contentBytes )
+                || '',
+            contentType: keyVal.contentType,
+            contentBytes: keyVal.contentBytes
+        }
     }
 
+    return keyValues
+}
+
+// Input validation
+function keyAlreadyUsed( idx: string, key: string, keyValues: KeyValDef ): boolean {
+    const keyValuesWithoutCurrentKey = $.extend( {}, keyValues )
+
+    delete keyValuesWithoutCurrentKey[idx]
+
+    const keys: string[] = Object.keys( keyValuesWithoutCurrentKey ).map( id => (
+        keyValuesWithoutCurrentKey[id].key
+    ) )
+
+    return keys.some( k => k === key )
 }
 
 export default KeyValueEditor

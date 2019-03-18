@@ -3,12 +3,6 @@ import * as classNames from 'classnames'
 
 import KeyValueEditor from '../index'
 
-// Wordings
-import { WORDINGS } from '../constants/wordings'
-
-// Utils
-import { getWordings } from '@amalto/helpers'
-
 module KeyInput {
     export interface Props {
         dataIdx: string;
@@ -20,21 +14,18 @@ module KeyInput {
         handleFileUpload: ( event: React.ChangeEvent<HTMLInputElement> ) => void;
         downloadFile: ( key: string ) => void;
         keyAlreadyUsed: ( idx: string, key: string ) => boolean;
-        locale: string;
+        wordings: { [id: string]: string };
     }
 }
 
 // Use React 16.6.x Hooks
 function KeyInput( props: KeyInput.Props ) {
 
-    const [wordings, setWordings] = React.useState( {} as any )
+    const { wordings } = props
+
     const [invalidKey, setInvalidKey] = React.useState( false )
 
     let keyVal = props.keyValueStore[props.dataIdx]
-
-    React.useEffect( () => {
-        setWordings( getWordings( WORDINGS, props.locale ) )
-    }, [props.locale] )
 
     React.useEffect( () => {
         setInvalidKey( props.keyAlreadyUsed( props.dataIdx, keyVal.key ) )
