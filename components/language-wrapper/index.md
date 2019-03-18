@@ -13,13 +13,13 @@ const handleLanguageChange = language => setState({ selectedLanguage: language }
 const handleAddedLanguage = language => {
     setState({
         supportedLanguages: addValToArrayNoDup(state.supportedLanguages, language),
-        selectedLanguage: state.selectedLanguage !== language || 'EN'
+        selectedLanguage: language || 'EN'
     })
 };
 const handleRemovedLanguage = language => {
     setState({
         supportedLanguages: removeValFromArrayNoDup(state.supportedLanguages, language),
-        selectedLanguage: state.selectedLanguage !== language || 'EN'
+        selectedLanguage: state.selectedLanguage !== language ? language : 'EN'
     })
 };
 
