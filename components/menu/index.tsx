@@ -1,6 +1,5 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
 
 // Models
 import { Entry } from './models/Entry'
@@ -13,7 +12,7 @@ import Link from './components/Link'
  */
 module Menu {
 
-    export interface Props extends React.Props<Menu> {
+    export interface Props {
 
         /** Title */
         title: string;
@@ -40,86 +39,60 @@ module Menu {
 
         /** Hover text color */
         hoverTextColor: string;
-
-        /** Menu width */
-        width?: number | string;
-
-        /** Menu height */
-        height?: number | string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Menu>;
     }
 
-    export interface State {
-    }
 }
 
-class Menu extends React.Component<Menu.Props, any> {
-    constructor( props: Menu.Props ) {
-        super( props )
+function Menu( props: Menu.Props ) {
+    const { title, entries, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor } = props
 
-        this.state = {}
+    const activeStyle = {
+        color: subColor,
+        backgroundColor: mainColor
     }
 
-    render() {
-        const { title, entries, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
+    const styles = {
+        'menu-link': {
+            color: textColor,
 
-        const activeStyle = {
-            color: subColor,
-            backgroundColor: mainColor
-        }
-
-        const styles = {
-            'menu-link': {
-                color: textColor,
-
-                ':hover': {
-                    color: hoverTextColor,
-                    backgroundColor: subColor
-                }
+            ':hover': {
+                color: hoverTextColor,
+                backgroundColor: subColor
             }
         }
-
-        return (
-            <div style={!hideLabel ? {} : { paddingTop: 10 }}>
-                {
-                    !hideLabel ? (
-                        <h5 style={{
-                            color: mainColor,
-                            fontWeight: 400,
-                            fontSize: '1.25em',
-                            padding: '10px 10px 5px',
-                            textTransform: 'uppercase'
-                        }}>
-                            <span style={{ fontSize: '.813em' }}>{title}</span>
-                        </h5>
-                    ) : null
-                }
-                <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
-                    {
-                        entries.map( e => {
-                            return (
-                                <Link key={`link_${ e.label }`}
-                                    entry={e}
-                                    linkStyle={styles['menu-link']}
-                                    hideLabel={hideLabel}
-                                    selectEntry={selectEntry}
-                                    activeStyle={selectedEntry === e.label ? activeStyle : null} />
-                            )
-                        } )
-                    }
-                </ul>
-            </div>
-        )
     }
-}
 
+    return (
+        <div style={!hideLabel ? {} : { paddingTop: 10 }}>
+            {
+                !hideLabel ? (
+                    <h5 style={{
+                        color: mainColor,
+                        fontWeight: 400,
+                        fontSize: '1.25em',
+                        padding: '10px 10px 5px',
+                        textTransform: 'uppercase'
+                    }}>
+                        <span style={{ fontSize: '.813em' }}>{title}</span>
+                    </h5>
+                ) : null
+            }
+            <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
+                {
+                    entries.map( e => {
+                        return (
+                            <Link key={`link_${ e.label }`}
+                                entry={e}
+                                linkStyle={styles['menu-link']}
+                                hideLabel={hideLabel}
+                                selectEntry={selectEntry}
+                                activeStyle={selectedEntry === e.label ? activeStyle : null} />
+                        )
+                    } )
+                }
+            </ul>
+        </div>
+    )
+}
 
 export default Menu
