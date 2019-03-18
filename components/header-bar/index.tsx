@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
 import Brand from './components/Brand'
 import Burger from './components/Burger'
@@ -9,7 +8,7 @@ import Burger from './components/Burger'
  */
 module HeaderBar {
 
-    export interface Props extends React.Props<HeaderBar> {
+    export interface Props {
 
         /** HeaderBar css */
         mainCss?: string;
@@ -17,7 +16,7 @@ module HeaderBar {
         /** HeaderBar style */
         mainStyle?: React.CSSProperties;
 
-        /** Background color */
+        /** Background color */1
         backgroundColor: string;
 
         /** Dimension */
@@ -31,41 +30,26 @@ module HeaderBar {
 
         /** Burger click action */
         burgerAction: () => void;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<HeaderBar>;
     }
 }
 
-class HeaderBar extends React.Component<HeaderBar.Props, any> {
-    constructor( props: HeaderBar.Props ) {
-        super( props )
-    }
+function HeaderBar( props: HeaderBar.Props ) {
 
-    render() {
-        const { mainCss, mainStyle, backgroundColor, height, imgSrc, url, burgerAction } = this.props
+    const { mainCss, mainStyle, backgroundColor, height, imgSrc, url, burgerAction } = props
 
-        return (
-            <header className={mainCss} style={{
-                height: height || 70,
-                backgroundColor,
-                overflow: 'auto',
-                position: 'fixed',
-                zIndex: 200,
-                ...mainStyle,
-            }}>
-                <Brand backgroundColor={backgroundColor} imgSrc={imgSrc} url={url} />
-                <Burger burgerAction={burgerAction} />
-            </header>
-        )
-    }
+    return (
+        <header className={mainCss} style={{
+            height: height || 70,
+            backgroundColor,
+            overflow: 'auto',
+            position: 'fixed',
+            zIndex: 200,
+            ...mainStyle,
+        }}>
+            <Brand backgroundColor={backgroundColor} imgSrc={imgSrc} url={url} />
+            <Burger burgerAction={burgerAction} />
+        </header>
+    )
 }
-
 
 export default HeaderBar

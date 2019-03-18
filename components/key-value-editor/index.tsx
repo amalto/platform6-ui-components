@@ -9,9 +9,6 @@ import KeyInput from './components/KeyInput'
 // Utils
 import { getWordings, isValidKeyChar, downloadDataFile, base64Decode } from '@amalto/helpers'
 
-// Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
 /**
  * Map component where you can assiociate keys with texts or files.
  *
@@ -75,7 +72,7 @@ class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEdito
     constructor( props: KeyValueEditor.Props ) {
         super( props )
         this.state = {
-            wordings: getWordings( MULTILANGUAGE_WORDINGS, props.locale )
+            wordings: getWordings( {}, props.locale )
         }
     }
 
