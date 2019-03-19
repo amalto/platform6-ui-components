@@ -5,11 +5,12 @@ import * as classNames from 'classnames'
 
 // Components
 import Help from '@amalto/help'
+import Select from './components/Select'
 
 /**
  * Select input used on a [redux-form](#reduxform).
  */
-namespace SelectInput {
+module SelectInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
         name: string;
@@ -46,13 +47,6 @@ namespace SelectInput {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<SelectInput>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -78,68 +72,45 @@ namespace SelectInput {
     }
 }
 
-class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> {
+function SelectInput( props: SelectInput.Props ) {
+    const { options, name, disabled, format, hideEmptyOption, collapseErrorSpace, normalize, parse, validate, warn, containerClass, help, label, inputClass } = props
 
-    constructor( props: SelectInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
+    let baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
 
-    private renderSelect = ( field: WrappedFieldProps ) => {
+    const renderSelect = ( field: WrappedFieldProps ) => {
+        const selectProps: Select.Props = {
+            name,
+            label,
+            options,
+            disabled,
+            help,
+            containerClass,
+            inputClass,
+            hideEmptyOption,
+            collapseErrorSpace,
+            field
+        }
 
-        const { label, options, disabled, help, containerClass, inputClass, hideEmptyOption, collapseErrorSpace } = this.props
+        return <Select {...selectProps} />
+    }
 
-        const { input, meta } = field
-
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
+    return options && options.length ? (
+        <Field {...baseFieldProps} component={renderSelect} />
+    ) : (
+            <div className={classNames( 'form-group', containerClass )}>
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                <select {...input as any}
-                    className={classNames( 'form-control', inputClass )}
-                    disabled={disabled}>
-
-                    {hideEmptyOption ? null : <option value=""></option>}
-
-                    {options.map( ( opt, idx ) => <option key={idx} value={opt.value} disabled={opt.disabled}>{opt.label || opt.value}</option> )}
-
+                <select className={classNames( 'form-control', inputClass )}
+                    disabled={true}>
                 </select>
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
             </div>
         )
-    }
-
-    render() {
-
-        const { options, name, format, normalize, parse, validate, warn, containerClass, help, label, inputClass } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
-            name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
-
-        return options && options.length ? (
-            <Field {...baseFieldProps} component={this.renderSelect} />
-        ) : (
-                <div className={classNames( 'form-group', containerClass )}>
-                    {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-                    <select className={classNames( 'form-control', inputClass )}
-                        disabled={true}>
-                    </select>
-                </div>
-            )
-    }
-
 }
-
 
 export default SelectInput
