@@ -5,16 +5,11 @@ import * as PDFJS from 'pdfjs-dist'
 PDFJS.workerSrc = require( 'pdfjs-dist/build/pdf.worker.entry.js' )
 
 // Utils
-import { compileWordings } from '@amalto/helpers'
-
-// Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
+import { getWordings } from '@amalto/helpers'
 
 // Components
 import Spinner from '@amalto/spinner'
 import PagingControls from '@amalto/paging-controls'
-
-import pdfjs from 'pdfjs-dist'
 
 /**
  * Display pdf content.
@@ -23,7 +18,7 @@ import pdfjs from 'pdfjs-dist'
  * which are accessible at the root component of your service.
  */
 namespace PdfViewer {
-    export interface Props extends React.Props<PdfViewer> {
+    export interface Props {
         /** Pdf data. More details on [PDFSource](#pdfsource). */
         pdfSource: PDFSource;
         /** CSS class wrapping the component. */
@@ -38,15 +33,6 @@ namespace PdfViewer {
          * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<PdfViewer>;
     }
 
     export interface State {
@@ -58,161 +44,152 @@ namespace PdfViewer {
     }
 }
 
-class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
+function PdfViewer( props: PdfViewer.Props ) {
+    const { containerClass, style, locale } = props
 
+    const [shouldRenderPage, setShouldRenderPage] = React.useState( false )
+    const [wordings, setWordings] = React.useState( {} as any )
+    const [loading, setLoading] = React.useState( false )
+    const [loadingError, setLoadingError] = React.useState( false )
+    const [currentPage, setCurrentPage] = React.useState( 1 )
+    const [pdf, setPdf] = React.useState( undefined )
+    const pdfCtn = React.useRef( null )
 
-    private pdfCtn: HTMLCanvasElement
+    React.useEffect( () => {
+        setWordings( getWordings( {}, props.locale ) )
+    }, [props.locale] )
 
-    constructor( props: PdfViewer.Props ) {
-        super( props )
-
-        this.state = {
-            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
-            pdf: undefined,
-            loading: false,
-            loadingError: false,
-            currentPage: 1
+    React.useEffect( () => {
+        if ( !props.pdfSource ) {
+            loadPDF( props, { setLoading, setPdf, setShouldRenderPage, setLoadingError } )
         }
+
+        return pdf && pdf.destroy()
+    }, [] )
+
+    React.useEffect( () => {
+        if ( props.pdfSource ) {
+            loadPDF( props, { setLoading, setPdf, setShouldRenderPage, setLoadingError } )
+        }
+    }, [props.reloadTick] )
+
+    React.useEffect( () => {
+        if ( !!shouldRenderPage ) {
+            renderPage( pdf, pdfCtn, setCurrentPage, 1 )
+        }
+    }, [shouldRenderPage] )
+
+    const handlePageChange = ( pageNumber: number, scale?: number ): void => {
+        renderPage( pdf, pdfCtn, setCurrentPage, pageNumber, scale )
     }
 
-    render() {
+    return (
 
-        const { containerClass, style } = this.props
+        <div className={containerClass} style={style}>
 
-        const { loading, loadingError, wordings } = this.state
-
-        return (
-
-            <div className={containerClass} style={style}>
-
-                {
-                    loading ? <div className="padded"><Spinner /></div> : ( loadingError ? (
-                        <div className="padded">
-                            <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
-                                <span className="fas fa-exclamation-triangle right-spaced" />
-                                <span>{wordings.pdfLoadingError}</span>
-                            </div>
-                        </div> ) : (
-                            <div>
-                                {this.getPagingControls()}
-                                <canvas ref={dom => this.pdfCtn = dom} />
-                            </div>
-                        )
+            {
+                loading ? <div className="padded"><Spinner /></div> : ( loadingError ? (
+                    <div className="padded">
+                        <div className="text-medium danger-color" style={{ lineHeight: '22px' }}>
+                            <span className="fas fa-exclamation-triangle right-spaced" />
+                            <span>{wordings.pdfLoadingError}</span>
+                        </div>
+                    </div> ) : (
+                        <div>
+                            {getPagingControls( pdf, currentPage, handlePageChange, locale )}
+                            <canvas ref={pdfCtn} />
+                        </div>
                     )
-                }
+                )
+            }
 
+        </div>
+
+    )
+}
+
+function getPagingControls( pdf: PDFDocumentProxy, currentPage: number, handlePageChange: ( pageNumber: number, scale?: number ) => void, locale: string ): JSX.Element {
+    if ( pdf ) {
+        return (
+            <div className="btn-toolbar-centered bottom-spaced">
+                <PagingControls containerClass="btn-group btn-group-sm"
+                    totalPages={pdf.numPages || 1}
+                    currentPage={currentPage}
+                    handlePageChange={handlePageChange}
+                    locale={locale}
+                />
             </div>
-
         )
     }
 
-    componentDidMount() {
-        if ( this.props.pdfSource ) {
-            this.loadPDF()
-        }
+    return null
+
+}
+
+async function loadPDF(
+    props: PdfViewer.Props,
+    methods: {
+        setLoading: ( loading: boolean ) => void,
+        setPdf: ( pdf: PDFDocumentProxy ) => void,
+        setShouldRenderPage: ( renderPage: boolean ) => void,
+        setLoadingError: ( loadingError: boolean ) => void
+    }
+) {
+
+    const { setLoading, setPdf, setShouldRenderPage, setLoadingError } = methods
+
+    setLoading( true )
+
+    const { pdfSource } = props
+
+    try {
+        const pdf = await PDFJS.getDocument( pdfSource )
+
+        setPdf( pdf )
+        setLoading( false )
+        setShouldRenderPage( true )
+    }
+    catch ( e ) {
+        console.error( 'Failed loading PDF', e )
+
+        setLoading( false )
+        setLoadingError( true )
     }
 
-    componentWillUnmount() {
-        if ( this.state.pdf ) {
-            this.state.pdf.destroy()
-        }
-    }
+}
 
-    componentDidUpdate( prevProps: PdfViewer.Props ) {
-        if ( prevProps.reloadTick !== this.props.reloadTick && this.props.pdfSource ) {
-            this.loadPDF()
-        }
-    }
+async function renderPage( pdf: PDFDocumentProxy, pdfCtn: React.MutableRefObject<HTMLCanvasElement>, setCurrentPage: ( page: number ) => void, pageNumber: number, scale?: number ) {
 
-    private getPagingControls = () => {
-        const { pdf, currentPage } = this.state
+    const renderedScale = scale || 1.5
 
-        if ( pdf ) {
-            return (
-                <div className="btn-toolbar-centered bottom-spaced">
-                    <PagingControls containerClass="btn-group btn-group-sm"
-                        totalPages={pdf.numPages || 1}
-                        currentPage={currentPage}
-                        handlePageChange={this.renderPage}
-                        locale={this.props.locale}
-                    />
-                </div>
-            )
-        }
-
-        return null
-
-    }
-
-    private loadPDF = async () => {
-
-        this.setState( {
-            loading: true
-        } )
-
-        const { pdfSource } = this.props
+    if ( pdf ) {
 
         try {
-            const pdf = await PDFJS.getDocument( pdfSource )
+            const page = await pdf.getPage( pageNumber )
 
-            this.setState( {
-                pdf,
-                loading: false
-            }, () => {
-                this.renderPage( 1 )
-            } )
+            let viewport = page.getViewport( renderedScale )
 
+            let canvas = pdfCtn.current
+            let context = canvas.getContext( '2d' )
+
+            canvas.height = viewport.height
+            canvas.width = viewport.width
+
+            let renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            }
+
+            await page.render( renderContext )
+
+            setCurrentPage( pageNumber )
         }
         catch ( e ) {
-            console.error( 'Failed loading PDF', e )
-
-            this.setState( {
-                loading: false,
-                loadingError: true
-            } )
-        }
-
-    }
-
-    private renderPage = async ( pageNumber: number, scale?: number ) => {
-
-        const { pdf } = this.state
-
-        const renderedScale = scale || 1.5
-
-        if ( pdf ) {
-
-            try {
-                const page = await pdf.getPage( pageNumber )
-
-                let viewport = page.getViewport( renderedScale )
-
-                let canvas = this.pdfCtn
-                let context = canvas.getContext( '2d' )
-
-                canvas.height = viewport.height
-                canvas.width = viewport.width
-
-                let renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                }
-
-                await page.render( renderContext )
-
-                this.setState( {
-                    currentPage: pageNumber
-                } )
-            }
-            catch ( e ) {
-                console.error( 'Failed rendering PDF page', e )
-            }
-
+            console.error( 'Failed rendering PDF page', e )
         }
 
     }
 
 }
-
 
 export default PdfViewer
