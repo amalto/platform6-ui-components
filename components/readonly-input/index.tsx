@@ -3,15 +3,12 @@ import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 
 // Components
-import Help from '@amalto/help'
-
-// Utils
-import * as classNames from 'classnames'
+import Text from './components/Text'
 
 /**
  * Readonly input used on a [redux-form](#reduxform).
  */
-namespace ReadOnlyInput {
+module ReadOnlyInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
         name: string;
@@ -29,15 +26,6 @@ namespace ReadOnlyInput {
          * @default false
          */
         collapseErrorSpace?: boolean;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<ReadOnlyInput>;
 
         /** redux-form props */
 
@@ -58,60 +46,36 @@ namespace ReadOnlyInput {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-
-    }
 }
 
-class ReadOnlyInput extends React.Component<ReadOnlyInput.Props, ReadOnlyInput.State> {
+function ReadOnlyInput( props: ReadOnlyInput.Props ) {
+    const { name, label, help, containerClass, inputClass, collapseErrorSpace, format, normalize, parse, validate, warn } = props
 
-    constructor( props: ReadOnlyInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
+    let baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
 
-    private renderText = ( field: WrappedFieldProps ) => {
-
-        const { label, help, containerClass, inputClass, collapseErrorSpace } = this.props
-
-        const { input, meta } = field
-
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                <span {...input as any} className={classNames( 'form-static-input', inputClass )}>{input.value}</span>
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-
-            </div>
-        )
-    }
-
-    render() {
-
-        const { name, label, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
+    const renderText = ( field: WrappedFieldProps ) => {
+        const textProps: Text.Props = {
             name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
+            label,
+            help,
+            containerClass,
+            inputClass,
+            collapseErrorSpace,
+            field
         }
 
-        return <Field {...baseFieldProps} component={this.renderText} />
-
+        return <Text {...textProps} />
     }
 
-}
+    return <Field {...baseFieldProps} component={renderText} />
 
+}
 
 export default ReadOnlyInput
