@@ -81,6 +81,177 @@ namespace SelectText {
     }
 }
 
+function SelectText( props: SelectText.Props ) {
+    const { name, label, help, type, placeholder, disabled, autofocus, containerClass, inputClass, options } = props
+
+    // Refs
+    const _body = React.useRef( null )
+    const _input = React.useRef( null )
+
+    // Initialize state
+    const [selectOpen, setSelectOpen] = React.useState( false )
+    const [displayLabel, setDisplayLabel] = React.useState( '' )
+    const [displayValue, setDisplayValue] = React.useState( '' )
+    const [currentLabel, setCurrentLabel] = React.useState( '' )
+    const [currentValue, setCurrentValue] = React.useState( '' )
+    const [focused, setFocused] = React.useState( null )
+    const [lockFocus, setLockFocus] = React.useState( false )
+    const [currentOptions, setCurrentOptions] = React.useState( props.options || [] )
+    const [hasLeftIcon, setHasLeftIcon] = React.useState( false )
+    const [hasRightIcon, setHasRightIcon] = React.useState( false )
+
+    // Initialize
+    React.useEffect( () => {
+        const opt = getOptionFromValue( props.defaultDisplayValue, props.options || [] )
+
+        setDisplayLabel( opt && opt.label || '' )
+        setDisplayValue( opt && opt.value ? opt.value.toString() : '' )
+        setCurrentLabel( opt && opt.label ? opt.label : '' )
+        setCurrentValue( opt && opt.value ? opt.value.toString() : '' )
+    }, [] )
+
+    const autocompleteInput = ( value: string ): void => {
+        setCurrentOptions( autocompleteOptions( value, options ) )
+    }
+
+    const onFocusInput = ( e: React.FocusEvent<HTMLInputElement> ): void => {
+        e.stopPropagation()
+        _input.current.value = ''
+
+        setFocused( e.currentTarget.id )
+        this.setState( {
+            focused: e.currentTarget.id,
+            lockFocus: !!this.state.focused,
+            selectOpen: true,
+            options: this.autocompleteOptions( '' )
+        } )
+    }
+
+    const reset = (): void => {
+        setSelectOpen( lockFocus ? selectOpen : false )
+        setCurrentOptions( lockFocus ? options : autocompleteOptions( displayLabel.toString(), options ) )
+        setFocused( lockFocus ? focused : null )
+        setDisplayLabel( currentLabel )
+        setDisplayValue( currentValue )
+        setLockFocus( false )
+
+        _input.current.blur()
+    }
+
+    const onBlur = (): void => {
+        if ( focused ) {
+            setTimeout( () => { reset() }, 0 )
+        }
+    }
+
+    const inputDisabled: boolean = disabled || options && options.length === 0
+
+    return (
+        <div id={`wrapper-${ name }`} ref={_body} tabIndex={1} className={classNames( 'form-group', containerClass )} style={{ outline: 'none' }} onFocus={onFocusWrapper} onBlur={onBlur}>
+
+            <Radium.Style scopeSelector='.select-text-input' rules={Styles.selectTextInput} />
+            <Radium.Style scopeSelector='.select-text-input.btn-prefix' rules={Styles.selectTextInputBtnPreffix} />
+            <Radium.Style scopeSelector='.selector' rules={Styles.caret} />
+            <Radium.Style scopeSelector='.options-list' rules={Styles['options-list']} />
+            <Radium.Style scopeSelector='.option-item' rules={Styles['option-item']} />
+            <Radium.Style scopeSelector='.option-item-selected' rules={Styles['option-item-selected']} />
+            <Radium.Style scopeSelector='.option-item-disabled' rules={Styles['option-item-disabled']} />
+
+            {label ? <label>{label}{help && <Help text={help} />}</label> : null}
+
+            <div className='select-text-input'>
+                <input id={`input-${ name }`}
+                    name={name}
+                    onFocus={onFocusInput}
+                    ref={_input}
+                    onChange={e => autocompleteInput( e.currentTarget.value.toString() )}
+                    type={type || 'text'}
+                    placeholder={placeholder}
+                    disabled={inputDisabled}
+                    autoComplete='off'
+                    autoCorrect='off'
+                    autoCapitalize='off'
+                    autoFocus={autofocus}
+                    className={classNames( 'form-control padr-20', inputClass, { 'default-color': disabled } )}
+                />
+                <i className={classNames( 'selector', {
+                    'fas fa-caret-down': !selectOpen,
+                    'fas fa-caret-up': selectOpen,
+                    'default-color': inputDisabled
+                } )} onClick={inputDisabled ? null : () => this.toggleSelectList()}
+                />
+                {
+                    selectOpen && currentOptions
+                        ? <div className='options-list text-medium fade in'>
+                            {
+                                currentOptions.map( ( { leftIcon, leftIconTooltip, rightIcon, rightIconTooltip, iconAlignment, value, label, disabled } ) => (
+                                    <div key={value}
+                                        id={`opt-${ value }`}
+                                        className={classNames( 'option-item', {
+                                            'option-item-selected': currentValue.toString() === value.toString() || displayValue.toString() === value.toString(),
+                                            'option-item-disabled': disabled
+                                        } )}
+                                        onClick={disabled ? null : () => this.selectOption( value.toString(), label.toString() )}>
+                                        <div className='flex flex-row' style={{ alignItems: iconAlignment || 'baseline' }}>
+                                            <i className={`${ leftIcon } mgr-10`}
+                                                style={{ paddingRight: leftIcon || !hasLeftIcon ? 0 : 13 }}
+                                                data-toggle='tooltip'
+                                                data-original-title={leftIconTooltip}
+                                            />
+                                            <div className='flex-1' style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} data-toggle='tooltip' data-original-title={label}>{label}</div>
+                                            <i className={`${ rightIcon } mgl-10`}
+                                                style={{ paddingLeft: rightIcon || !hasRightIcon ? 0 : 13 }}
+                                                data-toggle='tooltip'
+                                                data-original-title={rightIconTooltip}
+                                            />
+                                        </div>
+                                    </div>
+                                ) )
+                            }
+                        </div>
+                        : null
+                }
+            </div>
+
+        </div>
+    )
+}
+
+function getOptionFromValue( value: string | number, options: Option[] ) {
+    const opt = options.find( opt => {
+        if ( !opt.value || !value ) return null
+        else return opt.value.toString() === value.toString()
+    } )
+
+    return opt
+}
+
+function onFocusWrapper( e: React.FocusEvent<HTMLDivElement> ): void {
+    e.stopPropagation()
+    this.setState( {
+        focused: e.currentTarget.id,
+        lockFocus: !!this.state.focusedd
+    } )
+}
+
+function onFocusInput( e ): void {
+    e.stopPropagation()
+    this._input.value = ''
+    this.setState( {
+        focused: e.currentTarget.id,
+        lockFocus: !!this.state.focused,
+        selectOpen: true,
+        options: this.autocompleteOptions( '' )
+    } )
+}
+
+function autocompleteOptions( value: string, options: Option[] ) {
+    // Escape special charaters from instance name.
+    return options.filter( o => {
+        return !value || o.label.toString().toLocaleLowerCase().indexOf( value.toLocaleLowerCase() ) === 0 ? o : null
+    } )
+}
+
 class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
     private _body = null
