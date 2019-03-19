@@ -1,12 +1,9 @@
 // Modules
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-import * as classNames from 'classnames'
-import * as uuid from 'uuid'
-
 
 // Components
-import Help from '@amalto/help'
+import Radio from './components/Radio'
 
 /**
  * Radio input used on a [redux-form](#reduxform).
@@ -40,15 +37,6 @@ namespace RadioInput {
          */
         collapseErrorSpace?: boolean;
 
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<RadioInput>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -68,82 +56,41 @@ namespace RadioInput {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-
-    }
 }
 
-class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
+function RadioInput( props: RadioInput.Props ) {
+    const { options, disabled, help, containerClass, inputClass, collapseErrorSpace, name, label, format, normalize, parse, validate, warn } = props
 
-    constructor( props: RadioInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
+    let baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
 
-    private renderRadio = ( field: WrappedFieldProps ) => {
-
-        const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
-
-        const { input, meta } = field
-
-        const inputId: string = uuid.v4()
-
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                {
-                    options.map( ( opt, idx ) => (
-                        <span key={idx} className="form-radio-wrapper right-margin">
-                            <input {...input as any}
-                                key={input.name}
-                                disabled={disabled}
-                                type="radio"
-                                id={`${ inputId }_${ input.name }_${ idx }`}
-                                value={opt.value}
-                                className={classNames( 'form-radio', inputClass )}
-                                checked={input.value === opt.value} />
-
-                            <label htmlFor={`${ inputId }_${ input.name }_${ idx }`}
-                                className="form-radio-label">
-                                {opt.label || opt.value}
-                            </label>
-                        </span>
-                    ) )
-                }
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-            </div>
-        )
-    }
-
-    render() {
-
-        const { options, name, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
+    const renderRadioWithProps = ( field: WrappedFieldProps ) => {
+        const radioProps: Radio.Props = {
             name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
+            label,
+            options,
+            disabled,
+            help,
+            containerClass,
+            inputClass,
+            collapseErrorSpace,
+            field
         }
 
-        return options && options.length ? (
-
-            <Field {...baseFieldProps} component={this.renderRadio} />
-
-        ) : null
-
+        return <Radio {...radioProps} />
     }
 
-}
+    return options && options.length ? (
 
+        <Field {...baseFieldProps} component={renderRadioWithProps} />
+
+    ) : null
+}
 
 export default RadioInput
