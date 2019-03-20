@@ -5,7 +5,7 @@ import * as React from 'react'
  */
 module Sidebar {
 
-    export interface Props extends React.Props<Sidebar> {
+    export interface Props {
 
         /** Sidebar css */
         mainCss?: string;
@@ -22,31 +22,17 @@ module Sidebar {
 
         /** Sibebar content */
         children?: React.ReactNode;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Sidebar>;
     }
 }
 
-class Sidebar extends React.Component<Sidebar.Props, any> {
-    constructor( props: Sidebar.Props ) {
-        super( props )
-    }
+function Sidebar( props: Sidebar.Props ) {
+    const { mainCss, mainStyle, backgroundColor, width, height, children } = props
 
-    render() {
-        const { mainCss, mainStyle, backgroundColor, width, height, children } = this.props
-
-        return (
-            <div className={mainCss} style={{ width, height, backgroundColor, overflow: 'auto', ...mainStyle }}>
-                {children}
-            </div>
-        )
-    }
+    return (
+        <div className={mainCss} style={{ width, height, backgroundColor, overflow: 'auto', ...mainStyle }}>
+            {children}
+        </div>
+    )
 }
-
 
 export default Sidebar
