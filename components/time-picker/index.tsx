@@ -148,7 +148,7 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
     }
 
     private getHoursOptions = (): string[] => {
-        const { minutesInterval, minHour, maxHour } = this.props
+        const { minHour, maxHour } = this.props
 
         let _minHour = minHour || 0
         let _maxHour = maxHour ? maxHour : 24

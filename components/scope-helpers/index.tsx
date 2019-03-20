@@ -1,6 +1,6 @@
 
 // Models
-import { ScopeValue, PermissionDef, ScopesTree, WebStorage } from '@amalto/typings'
+import { ScopeValue, PermissionDef, WebStorage } from '@amalto/typings'
 
 // Constants
 const ASTERISK = '*'
@@ -38,7 +38,7 @@ export function hasAnyPermission( webStorage: WebStorage, permissions: string[] 
                 }
 
                 if ( ( appInstanceValues as string[] ).length ) {
-                    if ( ( appInstanceValues as string[] ).indexOf(( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
+                    if ( ( appInstanceValues as string[] ).indexOf( ( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
                         return true
                     }
                 }
@@ -56,7 +56,7 @@ export function hasAnyPermission( webStorage: WebStorage, permissions: string[] 
                     }
 
                     if ( ( asteriskValues as string[] ).length ) {
-                        if ( ( asteriskValues as string[] ).indexOf(( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
+                        if ( ( asteriskValues as string[] ).indexOf( ( permissions[i] as PermissionDef ).requiredValue ) !== -1 ) {
                             return true
                         }
                     }
@@ -90,7 +90,7 @@ function hasPermissionFor( webStorage: WebStorage, appInstance: string, feature:
 
     return (
         hasAccessToAction( webStorage, appInstance, feature, action ) ||
-        hasAccessToAction( webStorage,  appInstance, feature, ASTERISK ) ||
+        hasAccessToAction( webStorage, appInstance, feature, ASTERISK ) ||
         hasAccessToAction( webStorage, appInstance, ASTERISK, ASTERISK ) ||
         hasAccessToAction( webStorage, ASTERISK, feature, action ) ||
         hasAccessToAction( webStorage, ASTERISK, feature, ASTERISK ) ||

@@ -111,7 +111,7 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
 
     render() {
 
-        const { name, label, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn } = this.props
 
         let baseFieldProps: BaseFieldProps = {
             name,

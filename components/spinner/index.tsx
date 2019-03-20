@@ -55,7 +55,7 @@ class Spinner extends React.Component<Spinner.Props, any> {
         return (
 
             <div className='spinner' style={spinnerStyle}>
-                <img src={spinner} alt='Loading...' width={this.props.size || 32} height={this.props.size || 32} />
+                <img src={spinner} alt='Loading...' width={size || 32} height={size || 32} />
             </div>
 
         )

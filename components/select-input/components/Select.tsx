@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
 
 import Help from '@amalto/help'

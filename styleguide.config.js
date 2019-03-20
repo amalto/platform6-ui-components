@@ -144,7 +144,7 @@ module.exports = {
                     'components/date-input/index.tsx',
                     'components/file-input/index.tsx',
                     'components/file-upload-input/index.tsx',
-                    // 'components/multi-select-input/index.tsx',
+                    'components/multi-select-input/index.tsx',
                     'components/radio-input/index.tsx',
                     'components/readonly-input/index.tsx',
                     'components/select-input/index.tsx',

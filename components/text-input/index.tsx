@@ -123,7 +123,7 @@ class TextInput extends React.Component<TextInput.Props, TextInput.State> {
 
     render() {
 
-        const { name, label, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn } = this.props
 
         let baseFieldProps: BaseFieldProps = {
             name,

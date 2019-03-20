@@ -1,6 +1,3 @@
-// Modules
-import * as React from 'react'
-
 export interface Wordings {
     [key: string]: {
         [lang: string]: string

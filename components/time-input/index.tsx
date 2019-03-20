@@ -4,7 +4,6 @@ import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import * as classNames from 'classnames'
 
 // Components
-import Help from '@amalto/help'
 import TimePicker from '@amalto/time-picker'
 
 // Utils
@@ -120,7 +119,7 @@ class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
 
         return name ? (
 
-            <Field name={name} component={this.renderTimeInput} {...additionalProps } />
+            <Field name={name} component={this.renderTimeInput} {...additionalProps} />
 
         ) : null
 

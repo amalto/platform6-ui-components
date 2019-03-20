@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Radium, { Styles } from 'radium'
+import Radium from 'radium'
 import * as classNames from 'classnames'
 
 import { Entry } from '../models/Entry'

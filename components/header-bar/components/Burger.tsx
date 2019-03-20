@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 import Radium from 'radium'
 
 import { styles } from '../styles/burger'

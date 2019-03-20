@@ -47,16 +47,21 @@ const options = [
     { leftIcon: 'fas fa-asterisk warning-color', rightIcon: 'fas fa-unlink warning-color', value: '*25', label: '*25' }
 ];
 
+initialState = {
+    defaultDisplayValue: 'second'
+    };
+
 <SelectText name='select-text-input-example'
     label='SelectText example'
     placeholder='SelectText placeholder'
     disabled={false}
-    defaultDisplayValue={'second'}
+    defaultDisplayValue={state.defaultDisplayValue}
     help='Helper text'
     containerClass='col-lg-12 col-xs-12 padding-none'
     inputClass='text-large'
     options={options}
     type='text'
     autofocus={false}
+    handleOnChange={ value => setState( { defaultDisplayValue: value } ) }
 />
 ```

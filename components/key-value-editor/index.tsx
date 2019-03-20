@@ -65,8 +65,8 @@ function KeyValueEditor( props: KeyValueEditor.Props ) {
 
     // Set wordings
     React.useEffect( () => {
-        setWordings( getWordings( {}, props.locale ) )
-    }, [props.locale] )
+        setWordings( getWordings( {}, locale ) )
+    }, [locale] )
 
     let keyValueStore = getKeyValueStore( keyValues )
 

@@ -5,14 +5,7 @@
 // Modules
 import * as React from 'react'
 import * as classNames from 'classnames'
-import * as uuid from 'uuid'
 import * as PerfectScrollbar from 'react-perfect-scrollbar'
-
-// Utils
-import { compileWordings } from '@amalto/helpers'
-
-// Components
-import Tab from '@amalto/tab'
 
 /**
  * Tabs management component allowing you to display custom content.
@@ -64,7 +57,7 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
 
     render() {
 
-        const { tabs, closeTab, tabWrapperStyle, tabLinkStyle, selectedTabId, editedTabIds } = this.props
+        const { tabs, tabWrapperStyle, tabLinkStyle, selectedTabId, editedTabIds } = this.props
 
         const tabsContent: JSX.Element[] = tabs.map( tab => {
             return (

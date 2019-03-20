@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { WrappedFieldProps, WrappedFieldInputProps } from 'redux-form'
 
 // Utils
-import { formatFileSize, deepCopy } from '@amalto/helpers'
+import { formatFileSize } from '@amalto/helpers'
 
 // Components
 import Help from '@amalto/help'

@@ -157,7 +157,7 @@ class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextI
 
     render() {
 
-        const { name, label, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn } = this.props
         const autocompleteInput = ( value: string ) => {
             this.setState( { options: this.autocompleteOptions( value ) } as SelectTextInput.State )
             return !normalize ? value : normalize( value )
