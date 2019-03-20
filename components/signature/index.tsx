@@ -10,14 +10,11 @@ import ButtonsBar from '@amalto/buttons-bar'
 import { getWordings } from '@amalto/helpers'
 import { BUTTON_TYPE } from '@amalto/service-helpers'
 
-// Constants
-import { WORDINGS } from './constants/wordings'
-
 // Styles
 import { Styles } from './styles'
 
 module Signature {
-    export interface Props extends React.ClassAttributes<Signature> {
+    export interface Props {
 
         /** Signature label. */
         label?: string | JSX.Element;
@@ -69,106 +66,119 @@ module Signature {
          */
         locale?: string;
 
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Signature>;
-    }
-
-    export interface State {
-        savedType: string;
-        imgData: string;
-        signatureClear: boolean;
-        dirty: boolean;
-        wordings?: { [id: string]: string };
     }
 }
 
-class Signature extends React.Component<Signature.Props, Signature.State> {
+function Signature( props: Signature.Props ) {
+    const { label, backgroundColor, containerCss, height, width, readonly } = props
 
-    private signaturePad = null
-    private clearTimeout = null
+    const _signaturePad = React.useRef( null )
+    let _clearTimeout = null
 
-    constructor( props: Signature.Props ) {
-        super( props )
-        this.state = {
-            savedType: null,
-            imgData: props.defaultSignature,
-            signatureClear: true,
-            dirty: false,
-            wordings: getWordings( { WORDINGS }, props.locale || 'en-US' )
-        }
+    const [imgData, setImgData] = React.useState( props.defaultSignature )
+    const [signatureClear, setSignatureClear] = React.useState( true )
+    const [dirty, setDirty] = React.useState( false )
+    const [wordings, setWordings] = React.useState( getWordings( {}, props.locale ) )
+
+    const [clearTriggered, setClearTriggered] = React.useState( false )
+    const [resetTriggered, setResetTriggered] = React.useState( false )
+    const [onEndTriggered, setOnEndTriggered] = React.useState( false )
+    const [shouldTriggerOnChange, setShouldTriggerOnChange] = React.useState( false )
+
+    const onEnd = (): void => { setOnEndTriggered( true ) }
+
+    // Set canvas options width white background by default because some media doesn't support transaparent background.
+    const canvasOptions = {
+        style: { margin: 0 },
+        onEnd: onEnd,
+        backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
     }
 
-    render() {
-        const { label, backgroundColor, containerCss, height, width, readonly } = this.props
-
-        const { imgData } = this.state
-
-        // Set canvas options width white background by default because some media doesn't support transaparent background.
-        const canvasOptions = {
-            style: { margin: 0 },
-            onEnd: this.onEnd,
-            backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
-        }
-
-        return (
-            <div className={containerCss}>
-
-                <Radium.Style scopeSelector='.canvas-wrapper' rules={Styles.canvas_wrapper} />
-
-                <div className='form-group'>
-                    {label ? <label>{label}</label> : null}
-                    <div>
-                        <div className='form-control canvas-wrapper text-center mgb-5'>
-                            {
-                                !readonly ? (
-                                    <SignaturePad
-                                        ref={ref => this.signaturePad = ref} options={canvasOptions}
-                                        height={height} width={width}
-                                        redrawOnResize={true}
-                                    />
-                                ) : (
-                                        <img src={imgData} />
-                                    )
-                            }
-                        </div>
-                        {!readonly ? this.generateBtnsBar() : null}
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    componentDidMount() {
-        if ( !!this.signaturePad && !!this.props.defaultSignature ) {
-            this.signaturePad.fromDataURL( this.props.defaultSignature )
+    // Initialize
+    React.useEffect( () => {
+        if ( !!_signaturePad.current && !!props.defaultSignature ) {
+            _signaturePad.current.fromDataURL( props.defaultSignature )
         }
 
-        window.addEventListener( 'resize', this.handleResize )
+        window.addEventListener( 'resize', handleResize )
+
+        return () => window.removeEventListener( 'resize', handleResize )
+    }, [] )
+
+    // Set wordings
+    React.useEffect( () => {
+        setWordings( getWordings( {}, props.locale ) )
+    }, [props.locale] )
+
+    // Trigger on end event
+    React.useEffect( () => {
+        if ( onEndTriggered ) {
+            setDirty( true )
+            setImgData( _signaturePad.current.toDataURL() )
+            setOnEndTriggered( false )
+            setShouldTriggerOnChange( true )
+        }
+    }, [onEndTriggered] )
+
+    // Trigger on change props
+    React.useEffect( () => {
+        if ( shouldTriggerOnChange ) {
+            props.onChange && props.onChange( imgData )
+            setShouldTriggerOnChange( false )
+        }
+    }, [shouldTriggerOnChange] )
+
+
+    // Trigger clear
+    React.useEffect( () => {
+        if ( clearTriggered ) {
+            props.clearSignature && props.clearSignature()
+            setClearTriggered( false )
+        }
+    }, [clearTriggered] )
+
+    // Trigger reset
+    React.useEffect( () => {
+        if ( resetTriggered ) {
+            _signaturePad.current.fromDataURL( imgData )
+            setResetTriggered( false )
+        }
+    }, [resetTriggered] )
+
+    // Clear signature component
+    const clear = (): void => {
+        _signaturePad.current.clear()
+
+        setDirty( false )
+        setSignatureClear( _signaturePad.current.isEmpty() )
+        setImgData( null )
+        setClearTriggered( true )
     }
 
-    componentWillUnmount() {
-        window.removeEventListener( 'resize', this.handleResize )
+
+    // Reset signature
+    const reset = (): void => {
+        setImgData( props.defaultSignature )
+        setResetTriggered( true )
     }
 
-    private generateBtnsBar = (): JSX.Element => {
-        const { wordings, dirty, imgData } = this.state
+    // Save trigger
+    const save = (): void => {
+        props.saveSignature && props.saveSignature( _signaturePad.current.toDataURL( imgData ) )
+    }
 
+    // Generate buttons bar
+    const generateBtnsBar = (): JSX.Element => {
         const leftBtn: ButtonsBar.BtnGroupsProps = {
             btns: [
                 {
-                    clickAction: this.clear,
+                    clickAction: clear,
                     cssClass: BUTTON_TYPE.FONT,
                     text: wordings.clear,
                     disabled: !imgData
                 },
                 {
-                    clickAction: this.reset,
+                    clickAction: reset,
                     cssClass: BUTTON_TYPE.FONT,
                     text: wordings.reset
                 }
@@ -179,7 +189,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         const rightBtn: ButtonsBar.BtnGroupsProps = {
             btns: [
                 {
-                    clickAction: this.save,
+                    clickAction: save,
                     cssClass: BUTTON_TYPE.PRIMARY,
                     text: wordings.saveToProfile,
                     disabled: !dirty
@@ -192,43 +202,45 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
         return <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={this.props.locale} />
     }
 
-    private clear = (): void => {
-        this.signaturePad.clear()
-
-        this.setState( {
-            dirty: false,
-            signatureClear: this.signaturePad.isEmpty(),
-            imgData: null,
-        }, () => this.props.clearSignature && this.props.clearSignature() )
-    }
-
-    private reset = (): void => {
-        this.setState(
-            { imgData: this.props.defaultSignature },
-            () => this.signaturePad.fromDataURL( this.state.imgData )
-        )
-    }
-
-    private save = (): void => {
-        this.props.saveSignature && this.props.saveSignature( this.signaturePad.toDataURL( this.state.imgData ) )
-    }
-
-    private onEnd = (): void => {
-        this.setState( { dirty: true, imgData: this.signaturePad.toDataURL() }, () => {
-            this.props.onChange && this.props.onChange( this.state.imgData )
-        } )
-    }
-
-    private handleResize = (): void => {
-        if ( !this.clearTimeout ) {
-            this.clearTimeout = window.setTimeout( () => {
-                this.clearTimeout = null
-                this.state.imgData && this.signaturePad.fromDataURL( this.state.imgData )
+    const handleResize = (): void => {
+        if ( !_clearTimeout ) {
+            _clearTimeout = window.setTimeout( () => {
+                _clearTimeout = null
+                imgData && _signaturePad.current.fromDataURL( imgData )
             }, 500 )
         } else {
-            window.clearTimeout( this.clearTimeout )
+            window.clearTimeout( _clearTimeout )
         }
     }
+
+    return (
+        <div className={containerCss}>
+
+            <Radium.Style scopeSelector='.canvas-wrapper' rules={Styles.canvas_wrapper} />
+
+            <div className='form-group'>
+                {label ? <label>{label}</label> : null}
+                <div>
+                    <div className='form-control canvas-wrapper text-center mgb-5'>
+                        {
+                            !readonly
+                                ? (
+                                    <SignaturePad
+                                        ref={_signaturePad} options={canvasOptions}
+                                        height={height} width={width}
+                                        redrawOnResize={true}
+                                    />
+                                )
+                                : (
+                                    <img src={imgData} />
+                                )
+                        }
+                    </div>
+                    {!readonly ? generateBtnsBar() : null}
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Signature
