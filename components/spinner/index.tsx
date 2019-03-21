@@ -8,7 +8,7 @@ import { spinner } from './images/spinner'
  * Loading spinner.
  */
 module Spinner {
-    export interface Props extends React.Props<Spinner> {
+    export interface Props {
         /** Top position. */
         top?: string | number;
         /** Bottom position. */
@@ -22,45 +22,31 @@ module Spinner {
          * @default 32
          */
         size?: number;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Spinner>;
     }
 }
 
-class Spinner extends React.Component<Spinner.Props, any> {
-    constructor( props: Spinner.Props ) {
-        super( props )
+function Spinner( props: Spinner.Props ) {
+
+    const { top, bottom, right, left, size } = props
+
+    let spinnerStyle: React.CSSProperties = {
+        position: 'relative',
+        display: 'block',
+        margin: 'auto',
+        textAlign: 'center',
+        top,
+        bottom,
+        right,
+        left
     }
 
-    render() {
-        const { top, bottom, right, left, size } = this.props
-        let spinnerStyle: React.CSSProperties = {
-            position: 'relative',
-            display: 'block',
-            margin: 'auto',
-            textAlign: 'center',
-            top,
-            bottom,
-            right,
-            left
-        }
+    return (
 
-        return (
+        <div className='spinner' style={spinnerStyle}>
+            <img src={spinner} alt='Loading...' width={size || 32} height={size || 32} />
+        </div>
 
-            <div className='spinner' style={spinnerStyle}>
-                <img src={spinner} alt='Loading...' width={size || 32} height={size || 32} />
-            </div>
-
-        )
-    }
-
+    )
 }
 
 export default Spinner
