@@ -32,15 +32,6 @@ namespace SwitchInput {
          */
         collapseErrorSpace?: boolean;
 
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<SwitchInput>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -66,18 +57,12 @@ namespace SwitchInput {
     }
 }
 
-class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> {
+function SwitchInput( props: SwitchInput.Props ) {
+    const { name } = props
 
-    constructor( props: SwitchInput.Props ) {
-        super( props )
-        this.state = {
+    const renderSwitch = ( field: WrappedFieldProps ) => {
 
-        }
-    }
-
-    private renderSwitch = ( field: WrappedFieldProps ) => {
-
-        const { name, label, help, containerClass, inputClass, alignLeft, collapseErrorSpace } = this.props
+        const { name, label, help, containerClass, inputClass, alignLeft, collapseErrorSpace } = props
 
         const { input, meta } = field
 
@@ -103,19 +88,11 @@ class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> 
         )
     }
 
-    render() {
+    return name ? (
 
-        const { name } = this.props
+        <Field name={name} component={renderSwitch} />
 
-        return name ? (
-
-            <Field name={name} component={this.renderSwitch} />
-
-        ) : null
-
-    }
-
+    ) : null
 }
-
 
 export default SwitchInput
