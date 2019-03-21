@@ -10,7 +10,7 @@ import * as React from 'react'
  */
 namespace Tab {
 
-    export interface Props extends React.Props<Tab> {
+    export interface Props {
         /** Id will be used when selecting a tab from <span className='quote'>Tabs</span> compoenent. */
         id: string;
         /** Icon in front of the title. */
@@ -32,36 +32,14 @@ namespace Tab {
         tabLinkUniqueStyle?: React.CSSProperties;
         /** Custom render function of the tab content if children are not used. Should be used when tab content is dynamic and depends on parent data. */
         renderer?: () => JSX.Element;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
+        /** Tab component. */
         children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Tab>;
-    }
-
-    export interface State {
 
     }
-
-
 }
 
-class Tab extends React.Component<Tab.Props, Tab.State> {
-
-
-    constructor( props: Tab.Props ) {
-        super( props )
-        this.state = {}
-    }
-
-    render() {
-        return <div>{this.props.children}</div>
-    }
-
+function Tab( props: Tab.Props ) {
+    return <div>{props.children}</div>
 }
 
 export default Tab
