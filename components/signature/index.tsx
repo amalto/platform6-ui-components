@@ -199,7 +199,7 @@ function Signature( props: Signature.Props ) {
             style: { float: 'right' }
         }
 
-        return <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={this.props.locale} />
+        return <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={props.locale} />
     }
 
     const handleResize = (): void => {
