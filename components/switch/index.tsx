@@ -6,7 +6,7 @@ import * as classNames from 'classnames'
  * Switch input.
  */
 module Switch {
-    export interface Props extends React.Props<Switch> {
+    export interface Props {
         /** Input unique id. */
         id: string;
         /** Input value. */
@@ -21,51 +21,34 @@ module Switch {
         name?: string;
         /** Disabled switch. */
         disabled?: boolean;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Switch>;
     }
 }
 
+function Switch( props: Switch.Props ) {
 
-class Switch extends React.Component<Switch.Props, any> {
-    constructor( props: Switch.Props ) {
-        super( props )
+    const handleChange = ( event: React.ChangeEvent<HTMLInputElement> ): void => {
+        props.changeHandler( event.target.checked, event.target.name )
     }
 
-    render() {
-
-        return (
-            <div style={{ paddingTop: 2, paddingBottom: 2 }} className={this.props.cssClass}>
-                <div className={classNames( 'onoffswitch', {
-                    'left-align': this.props.alignLeft
-                } )}>
-                    <input type="checkbox" className='onoffswitch-checkbox' id={this.props.id}
-                        checked={this.props.value}
-                        onChange={!this.props.disabled ? this.handleChange : () => { }}
-                        name={this.props.name || this.props.id}
-                    />
-                    <label className="onoffswitch-label" htmlFor={this.props.id}>
-                        <span className={classNames( 'onoffswitch-inner', {
-                        'disabled': this.props.disabled
+    return (
+        <div style={{ paddingTop: 2, paddingBottom: 2 }} className={props.cssClass}>
+            <div className={classNames( 'onoffswitch', {
+                'left-align': props.alignLeft
+            } )}>
+                <input type="checkbox" className='onoffswitch-checkbox' id={props.id}
+                    checked={props.value}
+                    onChange={!props.disabled ? handleChange : () => { }}
+                    name={props.name || props.id}
+                />
+                <label className="onoffswitch-label" htmlFor={props.id}>
+                    <span className={classNames( 'onoffswitch-inner', {
+                        'disabled': props.disabled
                     } )}></span>
-                        <span className="onoffswitch-switch"></span>
-                    </label>
-                </div>
+                    <span className="onoffswitch-switch"></span>
+                </label>
             </div>
-        )
-    }
-
-    private handleChange = ( event: any ): void => {
-        this.props.changeHandler( event.target.checked, event.target.name )
-    }
-
+        </div>
+    )
 }
 
 export default Switch
