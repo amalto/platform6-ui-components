@@ -152,6 +152,7 @@ module.exports = {
                     'components/switch-input/index.tsx',
                     'components/text-input/index.tsx',
                     'components/textarea-input/index.tsx',
+                    'components/time-input/index.tsx',
                     'components/typeahead-form-input/index.tsx',
                     'components/typeahead-input/index.tsx',
                     'components/validated-input/index.tsx'

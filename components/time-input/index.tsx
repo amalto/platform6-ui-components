@@ -73,25 +73,18 @@ namespace TimeInput {
         withRef?: any
     }
 
-    export interface State {
-        //saved in state to prevent unnecessary loops eachtime a render occurs
-        hoursOptions?: string[];
-        minutesOptions?: string[];
-    }
+    //     export interface State {
+    //         //saved in state to prevent unnecessary loops eachtime a render occurs
+    //         hoursOptions?: string[];
+    //         minutesOptions?: string[];
+    //     }
 }
 
-class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
+function TimeInput( props: TimeInput.Props ) {
 
-    constructor( props: TimeInput.Props ) {
-        super( props )
-        this.state = {
+    const renderTimeInput = ( field: WrappedFieldProps ) => {
 
-        }
-    }
-
-    private renderTimeInput = ( field: WrappedFieldProps ) => {
-
-        const { containerClass, mandatory } = this.props
+        const { containerClass, mandatory } = props
         const { input, meta } = field
 
         let _containerClass = classNames( containerClass, {
@@ -100,7 +93,7 @@ class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
 
         return (
             <TimePicker
-                {...this.props}
+                {...props}
                 containerClass={_containerClass}
                 value={input.value}
                 handleFieldChange={input.onChange as any}
@@ -109,21 +102,17 @@ class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
         )
     }
 
-    render() {
+    const { name, mandatory, locale } = props
 
-        const { name, mandatory, locale } = this.props
+    let additionalProps = mandatory ? {
+        validate: value => required( value, locale )
+    } as BaseFieldProps : {}
 
-        let additionalProps = mandatory ? {
-            validate: value => required( value, locale )
-        } as BaseFieldProps : {}
+    return name ? (
 
-        return name ? (
+        <Field name={name} component={renderTimeInput} {...additionalProps} />
 
-            <Field name={name} component={this.renderTimeInput} {...additionalProps} />
-
-        ) : null
-
-    }
+    ) : null
 
 }
 
