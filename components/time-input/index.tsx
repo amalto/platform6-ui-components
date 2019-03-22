@@ -12,7 +12,7 @@ import { required } from '@amalto/input-validation'
 /**
  * Time input used on a [redux-form](#reduxform).
  */
-namespace TimeInput {
+module TimeInput {
     export interface Props extends BaseFieldProps {
         /** Input name in the DOM. */
         name: string;
@@ -46,13 +46,6 @@ namespace TimeInput {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<TimePicker>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -72,12 +65,6 @@ namespace TimeInput {
         /** @ignore */
         withRef?: any
     }
-
-    //     export interface State {
-    //         //saved in state to prevent unnecessary loops eachtime a render occurs
-    //         hoursOptions?: string[];
-    //         minutesOptions?: string[];
-    //     }
 }
 
 function TimeInput( props: TimeInput.Props ) {

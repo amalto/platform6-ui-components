@@ -9,7 +9,7 @@ import Help from '@amalto/help'
  * Timepicker with few customizations like a minimum and a maximum time range of time available.
  */
 module TimePicker {
-    export interface Props extends React.Props<TimePicker> {
+    export interface Props {
         /** Input name in the DOM. */
         name: string;
         /** Time value. */
@@ -41,15 +41,6 @@ module TimePicker {
          * @default false
          */
         mandatory?: boolean;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<TimePicker>;
     }
 
     export interface State {
@@ -59,48 +50,87 @@ module TimePicker {
     }
 }
 
-class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
+function pad( num: number | string ): string {
+    return ( '00' + num.toString() ).slice( -2 )
+}
 
-    constructor( props: TimePicker.Props ) {
-        super( props )
-        this.state = {
-            hoursOptions: this.getHoursOptions(),
-            minutesOptions: this.getMinutesOptions()
-        }
+// Get hours options
+function getHoursOptions( minHour: number, maxHour: number ): string[] {
+    let _minHour = minHour || 0
+    let _maxHour = maxHour ? maxHour : 24
+
+    if ( _maxHour > 24 || _maxHour < _minHour ) {
+        _maxHour = 24
     }
 
-    render() {
+    let hoursOptions: string[] = []
 
-        const { name, value, label, help, containerClass, mandatory } = this.props
-
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'mandatory pos-relative': mandatory
-            } )}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                {this.renderTimeInput()}
-
-                <input type="hidden" name={name} value={value} />
-
-            </div>
-        )
-
+    for ( let hours = _minHour; hours < _maxHour; hours += 1 ) {
+        hoursOptions.push( pad( hours ) )
     }
 
-    componentDidUpdate( prevProps: TimePicker.Props ) {
-        if ( this.props.minutesInterval !== prevProps.minutesInterval || this.props.minHour !== prevProps.minHour || this.props.maxHour !== prevProps.maxHour ) {
-            this.setState( {
-                hoursOptions: this.getHoursOptions(),
-                minutesOptions: this.getMinutesOptions()
-            } )
-        }
+    return hoursOptions
+}
+
+// Get minutes options
+function getMinutesOptions( minutesInterval: number ): string[] {
+    const interval = minutesInterval || 30
+
+    let minutesOptions: string[] = []
+
+    for ( let mins = 0; mins < 60; mins += interval ) {
+        minutesOptions.push( pad( mins ) )
     }
 
-    private renderTimeInput = () => {
-        const { value, disabled, minHour } = this.props
+    return minutesOptions
+}
 
+function getUpdatedTime( value: string, hours?: string, minutes?: string ): string {
+    const parsedTime = value && value.split( ':' )
+
+    let _hours = parsedTime && parsedTime.length === 2 ? parsedTime[0] : '00'
+    let _minutes = parsedTime && parsedTime.length === 2 ? parsedTime[1] : '00'
+
+    if ( hours ) {
+        _hours = hours
+    }
+
+    if ( minutes ) {
+        _minutes = minutes
+    }
+
+    return pad( _hours ) + ':' + pad( _minutes )
+}
+
+function TimePicker( props: TimePicker.Props ) {
+    const { name, value, label, minHour, help, containerClass, disabled, mandatory, handleFieldChange } = props
+
+    const _input: React.MutableRefObject<HTMLInputElement> = React.useRef( null )
+    const [hoursOptions, setHoursOptions] = React.useState( getHoursOptions( props.minHour, props.maxHour ) )
+    const [minutesOptions, setMinutesOptions] = React.useState( getMinutesOptions( props.minutesInterval ) )
+
+    React.useEffect( () => {
+        setHoursOptions( getHoursOptions( props.minHour, props.maxHour ) )
+        setMinutesOptions( getMinutesOptions( props.minutesInterval ) )
+    }, [props.minutesInterval, props.minHour, props.maxHour] )
+
+    // Set hours
+    const handleHoursChange = ( event: React.ChangeEvent<HTMLSelectElement>, value: string, name: string ): void => {
+        handleFieldChangeWrapper( getUpdatedTime( value, event.target.value ), name )
+    }
+
+    // Set minutes
+    const handleMinutesChange = ( event: React.ChangeEvent<HTMLSelectElement>, value: string, name: string ): void => {
+        handleFieldChangeWrapper( getUpdatedTime( value, undefined, event.target.value ), name )
+    }
+
+    const handleFieldChangeWrapper = ( fieldValue: string, fieldName: string ): void => {
+        handleFieldChange( fieldValue, fieldName )
+        _input.current.value = fieldValue
+    }
+
+    // Render input
+    const renderTimeInput = ( value: string, disabled: boolean, minHour: number ): JSX.Element => {
         const parsedTime = value && value.split( ':' )
 
         const hours = parsedTime && parsedTime.length === 2 ? parsedTime[0] : ( minHour ? this.pad( minHour ) : '00' )
@@ -111,11 +141,11 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
 
                 <select className="form-control input-left"
                     value={hours}
-                    onChange={this.handleHoursChange}
+                    onChange={e => handleHoursChange( e, value, name )}
                     disabled={disabled}>
 
                     {
-                        this.state.hoursOptions.map( ( choice, idx ) => {
+                        hoursOptions.map( ( choice, idx ) => {
                             return <option key={idx} value={choice}>{choice}</option>
                         } )
                     }
@@ -125,11 +155,11 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
 
                 <select className="form-control input-right"
                     value={minutes}
-                    onChange={this.handleMinutesChange}
+                    onChange={e => handleMinutesChange( e, value, name )}
                     disabled={disabled}>
 
                     {
-                        this.state.minutesOptions.map( ( choice, idx ) => {
+                        minutesOptions.map( ( choice, idx ) => {
                             return <option key={idx} value={choice}>{choice}</option>
                         } )
                     }
@@ -139,69 +169,19 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
         )
     }
 
-    private handleHoursChange = ( event: any ) => {
-        this.props.handleFieldChange( this.getUpdatedTime( event.target.value ), this.props.name )
-    }
+    return (
+        <div className={classNames( 'form-group', containerClass, {
+            'mandatory pos-relative': mandatory
+        } )}>
 
-    private handleMinutesChange = ( event: any ) => {
-        this.props.handleFieldChange( this.getUpdatedTime( undefined, event.target.value ), this.props.name )
-    }
+            {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-    private getHoursOptions = (): string[] => {
-        const { minHour, maxHour } = this.props
+            {renderTimeInput( value, disabled, minHour )}
 
-        let _minHour = minHour || 0
-        let _maxHour = maxHour ? maxHour : 24
+            <input ref={_input} type="hidden" name={name} value={value} />
 
-        if ( _maxHour > 24 || _maxHour < _minHour ) {
-            _maxHour = 24
-        }
-
-        let hoursOptions: string[] = []
-
-        for ( let hours = _minHour; hours < _maxHour; hours += 1 ) {
-            hoursOptions.push( this.pad( hours ) )
-        }
-
-        return hoursOptions
-    }
-
-    private getMinutesOptions = (): string[] => {
-        const { minutesInterval } = this.props
-
-        const interval = minutesInterval || 30
-
-        let minutesOptions: string[] = []
-
-        for ( let mins = 0; mins < 60; mins += interval ) {
-            minutesOptions.push( this.pad( mins ) )
-        }
-
-        return minutesOptions
-    }
-
-    private pad = ( num: number | string ) => {
-        return ( '00' + num.toString() ).slice( -2 )
-    }
-
-    private getUpdatedTime = ( hours?: string, minutes?: string ): string => {
-        const { value } = this.props
-        const parsedTime = value && value.split( ':' )
-
-        let _hours = parsedTime && parsedTime.length === 2 ? parsedTime[0] : '00'
-        let _minutes = parsedTime && parsedTime.length === 2 ? parsedTime[1] : '00'
-
-        if ( hours ) {
-            _hours = hours
-        }
-
-        if ( minutes ) {
-            _minutes = minutes
-        }
-
-        return this.pad( _hours ) + ':' + this.pad( _minutes )
-    }
-
+        </div>
+    )
 }
 
 
