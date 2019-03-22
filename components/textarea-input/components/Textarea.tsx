@@ -1,14 +1,12 @@
 // Modules
 import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, BaseFieldProps } from 'redux-form'
+import * as classNames from 'classnames'
 
 // Components
-import Textarea from './components/Textarea'
+import Help from '@amalto/help'
 
-/**
- * Textarea input used on a [redux-form](#reduxform).
- */
-namespace TextareaInput {
+module TextareaInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
         name: string;
@@ -36,6 +34,7 @@ namespace TextareaInput {
          * @default false
          */
         collapseErrorSpace?: boolean;
+        field: WrappedFieldProps
 
         /** Hide props from documentation */
 
@@ -58,54 +57,31 @@ namespace TextareaInput {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-
-    }
 }
 
 function TextareaInput( props: TextareaInput.Props ) {
+    const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, rows, field } = props
 
-    const {
-        name,
-        label,
-        disabled,
-        help,
-        containerClass,
-        inputClass,
-        collapseErrorSpace,
-        rows,
-        format,
-        normalize,
-        parse,
-        validate,
-        warn
-    } = props
+    const { input, meta } = field
 
-    const renderTextarea = ( field: WrappedFieldProps ) => {
-        return <Textarea name={name}
-            label={label}
-            rows={rows}
-            disabled={disabled}
-            help={help}
-            containerClass={containerClass}
-            inputClass={inputClass}
-            collapseErrorSpace={collapseErrorSpace}
-            field={field}
-        />
-    }
+    return (
+        <div className={classNames( 'form-group', containerClass, {
+            'invalid': meta.touched && !!meta.error
+        } )}>
 
-    const baseFieldProps: BaseFieldProps = {
-        name,
-        format,
-        normalize,
-        parse,
-        validate,
-        warn
-    }
+            {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-    return <Field {...baseFieldProps} component={renderTextarea} />
+            <textarea
+                {...input as any}
+                rows={rows || 2}
+                key={input.name}
+                disabled={disabled}
+                className={classNames( 'form-control input-block', inputClass )} />
 
+            {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
+
+        </div>
+    )
 }
 
 export default TextareaInput
