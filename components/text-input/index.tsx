@@ -4,10 +4,7 @@ import * as uuid from 'uuid'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 
 // Components
-import Help from '@amalto/help'
-
-// Utils
-import * as classNames from 'classnames'
+import Input from './components/Input'
 
 /**
  * Text input used on a [redux-form](#reduxform).
@@ -55,94 +52,60 @@ namespace TextInput {
          * @default false
          */
         collapseErrorSpace?: boolean;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<TextInput>;
     }
 
-    export interface State {
-
-    }
 }
 
-class TextInput extends React.Component<TextInput.Props, TextInput.State> {
+function TextInput( props: TextInput.Props ) {
+    const { name, format, normalize, parse, validate, warn } = props
 
-    constructor( props: TextInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
+    let baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
 
-    private renderText = ( field: WrappedFieldProps ) => {
+    const renderText = ( field: WrappedFieldProps ) => {
 
-        const { label, disabled, autofocus, help, containerClass, containerStyle, inputClass, inputStyle, type, step, randomGenerator, placeholder, collapseErrorSpace } = this.props
-
-        const { input, meta } = field
-
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}
-                style={containerStyle}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                <input
-                    {...input as any}
-                    key={input.name}
-                    type={type || 'text'}
-                    step={!type || type !== 'number' ? undefined : step}
-                    placeholder={placeholder}
-                    disabled={disabled}
-                    autoFocus={autofocus}
-                    className={classNames( 'form-control input-block', inputClass, {
-                        'btn-prefix': randomGenerator
-                    } )}
-                    style={inputStyle} />
-
-                {
-                    randomGenerator ? (
-                        <button type="button" className="btn btn-info input-suffix" onClick={() => this.generateClientSecret( field )}>
-                            <span className="fas fa-random"></span>
-                        </button>
-                    ) : null
-                }
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-
-            </div>
-        )
-    }
-
-    render() {
-
-        const { name, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
+        const {
             name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
+            label,
+            disabled,
+            autofocus,
+            help,
+            containerClass,
+            containerStyle,
+            inputClass,
+            inputStyle,
+            type,
+            step,
+            randomGenerator,
+            placeholder,
+            collapseErrorSpace
+        } = props
 
-        return <Field {...baseFieldProps} component={this.renderText} />
-
+        return <Input name={name}
+            label={label}
+            disabled={disabled}
+            autofocus={autofocus}
+            help={help}
+            containerClass={containerClass}
+            containerStyle={containerStyle}
+            inputClass={inputClass}
+            inputStyle={inputStyle}
+            type={type}
+            step={step}
+            randomGenerator={randomGenerator}
+            placeholder={placeholder}
+            collapseErrorSpace={collapseErrorSpace}
+            field={field}
+        />
     }
 
-    private generateClientSecret = ( field: WrappedFieldProps ) => {
-        field.input.onChange( uuid.v1() as any, undefined )
-    }
-
+    return <Field {...baseFieldProps} component={field => renderText( field )} />
 }
-
 
 export default TextInput
