@@ -19,8 +19,6 @@ initialState = {
 };
 
 function handleFieldChange( fieldValue, fieldName ) {
-    console.info('handleFieldChange::fieldValue => ', fieldValue)
-    console.info('handleFieldChange::fieldName => ', fieldName)
     setState( { [fieldName]: { value: fieldValue } } )
 }
 

@@ -9,7 +9,7 @@ import Spinner from '@amalto/spinner'
  * Panel component with configuration buttons.
  */
 module TogglePanel {
-    export interface Props extends React.Props<TogglePanel> {
+    export interface Props {
         /** Header title. */
         panelTitle: string | JSX.Element;
         /**
@@ -56,14 +56,7 @@ module TogglePanel {
         /** CSS class for the header. */
         headerCustomCSS?: string;
 
-        /** Hide props from documentation */
-
-        /** @ignore */
         children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<TogglePanel>;
     }
 
     export interface State {
@@ -72,112 +65,101 @@ module TogglePanel {
 }
 
 
-class TogglePanel extends React.Component<TogglePanel.Props, TogglePanel.State> {
-    constructor( props: TogglePanel.Props ) {
-        super( props )
+function TogglePanel( props: TogglePanel.Props ) {
 
-        this.state = {
-            opened: this.props.defaultOpened
+    const { togglable } = props
+
+    const [opened, setOpened] = React.useState( props.defaultOpened )
+    const [toggledPanel, setToggledPanel] = React.useState( false )
+
+    React.useEffect( () => {
+        if ( toggledPanel ) {
+            props.toggleCallback && props.toggleCallback( opened )
+            setToggledPanel( false )
+        }
+    }, [toggledPanel] )
+
+    function togglePanelContent(): void {
+        if ( togglable !== false ) {
+            setOpened( !opened )
+            setToggledPanel( true )
         }
     }
 
-    render() {
+    let titleSpinner = props.showSpinner ? (
+        <div className="spinner-container">
+            <Spinner />
+        </div>
+    ) : null
 
-        let titleSpinner = this.props.showSpinner ? (
-            <div className="spinner-container">
-                <Spinner />
-            </div>
-        ) : null
+    let lCustomControls = props.leftCustomControls ? (
+        <div className="panel-heading-controls">
+            {props.leftCustomControls}
+        </div>
+    ) : null
 
-        let lCustomControls = this.props.leftCustomControls ? (
-            <div className="panel-heading-controls">
-                {this.props.leftCustomControls}
-            </div>
-        ) : null
+    let rCustomControls = props.rightCustomControls ? (
+        <div className="panel-heading-controls" style={{ right: 0 }}>
+            {props.rightCustomControls}
+        </div>
+    ) : null
 
-        let rCustomControls = this.props.rightCustomControls ? (
-            <div className="panel-heading-controls" style={{ right: 0 }}>
-                {this.props.rightCustomControls}
-            </div>
-        ) : null
+    const cancelBtn = ( props.cancelBtn && props.cancelBtn.label && props.cancelBtn.action ) ? (
+        <button type="button" className={classNames( 'btn', props.cancelBtn.cssClass, {
+            'btn-font btn-trans': !props.cancelBtn.cssClass
+        } )} onClick={props.cancelBtn.action}>
+            {props.cancelBtn.label}
+        </button>
+    ) : null
 
-        const cancelBtn = ( this.props.cancelBtn && this.props.cancelBtn.label && this.props.cancelBtn.action ) ? (
-            <button type="button" className={classNames( 'btn', this.props.cancelBtn.cssClass, {
-                'btn-font btn-trans': !this.props.cancelBtn.cssClass
-            } )} onClick={this.props.cancelBtn.action}>
-                {this.props.cancelBtn.label}
-            </button>
-        ) : null
+    const submitBtn = ( props.submitBtn && props.submitBtn.label && props.submitBtn.action ) ? (
+        <button type="button" className={classNames( 'btn pull-right', props.submitBtn.cssClass, {
+            'btn-success': !props.submitBtn.cssClass
+        } )} onClick={props.submitBtn.action}>
+            {props.submitBtn.label}
+        </button>
+    ) : null
 
-        const submitBtn = ( this.props.submitBtn && this.props.submitBtn.label && this.props.submitBtn.action ) ? (
-            <button type="button" className={classNames( 'btn pull-right', this.props.submitBtn.cssClass, {
-                'btn-success': !this.props.submitBtn.cssClass
-            } )} onClick={this.props.submitBtn.action}>
-                {this.props.submitBtn.label}
-            </button>
-        ) : null
+    let panelFooter = ( cancelBtn || submitBtn ) ? (
+        <div className="panel-footer">
+            {cancelBtn}
+            {submitBtn}
+        </div>
+    ) : null
 
-        let panelFooter = ( cancelBtn || submitBtn ) ? (
-            <div className="panel-footer">
-                {cancelBtn}
-                {submitBtn}
-            </div>
-        ) : null
+    return (
 
-        return (
-
-            <div className="panel panel-default" style={this.props.customStyle}>
-                <div className={classNames( `panel-heading ${ this.props.headerCustomCSS }`, {
-                    'click-pointer': this.props.togglable !== false,
-                    'hidden': !!this.props.hideTitle
-                } )}
-                    onClick={this.togglePanelContent}>
-                    <h3 className={classNames( 'panel-title', {
-                        'has-spinner': this.props.showSpinner
-                    } )}>
-                        {this.props.panelTitle}
-                    </h3>
-                    {titleSpinner}
-                    {lCustomControls}
-                    {rCustomControls}
-                    <div className={classNames( 'actions', { 'hidden': this.props.togglable === false } )}>
-                        <span className={classNames( 'fas', {
-                            'fa-chevron-down': !this.state.opened,
-                            'fa-chevron-up': this.state.opened
-                        }
-                        )} />
-                    </div>
-                </div>
-                <div className={classNames( 'panel-body', {
-                    'hidden': !this.state.opened
+        <div className="panel panel-default" style={props.customStyle}>
+            <div className={classNames( `panel-heading ${ props.headerCustomCSS }`, {
+                'click-pointer': props.togglable !== false,
+                'hidden': !!props.hideTitle
+            } )}
+                onClick={togglePanelContent}>
+                <h3 className={classNames( 'panel-title', {
+                    'has-spinner': props.showSpinner
                 } )}>
-                    {this.props.children}
+                    {props.panelTitle}
+                </h3>
+                {titleSpinner}
+                {lCustomControls}
+                {rCustomControls}
+                <div className={classNames( 'actions', { 'hidden': props.togglable === false } )}>
+                    <span className={classNames( 'fas', {
+                        'fa-chevron-down': !opened,
+                        'fa-chevron-up': opened
+                    }
+                    )} />
                 </div>
-                {panelFooter}
             </div>
+            <div className={classNames( 'panel-body', {
+                'hidden': !opened
+            } )}>
+                {props.children}
+            </div>
+            {panelFooter}
+        </div>
 
-        )
-    }
-
-    componentWillReceiveProps( nextProps: TogglePanel.Props ) {
-        if ( this.props.defaultOpened !== nextProps.defaultOpened ) {
-            this.setState( {
-                opened: nextProps.defaultOpened
-            } )
-        }
-    }
-
-    private togglePanelContent = (): void => {
-        if ( this.props.togglable !== false ) {
-            this.setState( {
-                opened: !this.state.opened
-            }, () => {
-                if ( this.props.toggleCallback ) {
-                    this.props.toggleCallback( this.state.opened )
-                }
-            } )
-        }
-    }
+    )
 
 }
 
