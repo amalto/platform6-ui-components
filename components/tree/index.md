@@ -13,7 +13,7 @@ initialState = { data, errors: [], defaultSelectedNodeId: 'b1' };
 
 /** Add node only if there is no duplicate */
 function addNodeNoDup( currentNode, newNode ) {
-    let children = JSON.parse( JSON.stringify( currentNode.children ) );
+    let children = JSON.parse( JSON.stringify( currentNode.children || [] ) );
 
     if ( currentNode.id === newNode.data.parentId ) {
         const nowNodeExist = children.some( child => child.id === newNode.id || child.text === newNode.text )
@@ -41,8 +41,9 @@ function createNode( parentId, elementName, description, propertiesMap ) {
     const encodedProppertiesMap = propertiesMap && JSON.parse( JSON.stringify( propertiesMap ) ) || {};
 
     Object.keys( encodedProppertiesMap ).forEach( key => {
-        encodedProppertiesMap[key].contentBytes = base64.encode(encodedProppertiesMap[key].contentBytes)
-    })
+        encodedProppertiesMap[key].contentBytes = base64.encode(encodedProppertiesMap[key].contentBytes);
+    });
+
     const newNode = {
         id: uuid.v4(),
         text: elementName,
@@ -50,10 +51,13 @@ function createNode( parentId, elementName, description, propertiesMap ) {
         data: {
             parentId,
             description,
-            propertiesMap: encodedProppertiesMap
+            propertiesMap: encodedProppertiesMap,
+            childNames: []
         },
         state: {
-            selected: true
+            selected: true,
+            opened: false,
+            disabled: false
         }
     };
 
@@ -87,9 +91,6 @@ function editNode( id, elementName, description, propertiesMap, parentNodeId ) {
     Object.keys( encodedProppertiesMap ).forEach( key => {
         encodedProppertiesMap[key].contentBytes = base64.encode(encodedProppertiesMap[key].contentBytes)
     })
-
-    console.info('editNode::propertiesMap => ', propertiesMap)
-    console.info('editNode::encodedProppertiesMap => ', encodedProppertiesMap)
 
     const nodeToEdit = {
         id,
@@ -126,7 +127,7 @@ function removeNode( currentNode, id, elementName, parentNodeId ) {
 function deleteNode( id, elementName, parentNodeId ) {
     const data = JSON.parse( JSON.stringify( state.data ) );
 
-    setState({ data: removeNode( data, id, elementName, parentNodeId ) })
+    setState({ data: removeNode( data, id, elementName, parentNodeId ) });
 }
 
 /** Keep errors into state to be able to handle them */
@@ -135,7 +136,7 @@ function displayEmptyValsError( errors ) {
 }
 
 function selectCallback( node ) {
-    node && setState({ defaultSelectedNodeId: node.id })
+    node && setState({ defaultSelectedNodeId: node.id });
 }
 
 <Tree id='tree-exemple'

@@ -1,21 +1,17 @@
 // Modules
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import * as classNames from 'classnames'
 
 // Utils
-import { compileWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers'
-
-// Wordings
-import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
-
-// Components
-import KeyValueEditor from '@amalto/key-value-editor'
+import { getWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers'
 
 // Models
-import { TreeNodeModel, OrgModel } from './models/tree'
+import { TreeNodeModel, KeyValDef } from './models/tree'
 
-declare type KeyValDef = KeyValueEditor.KeyValDef
+// Components
+import NodeForm from './components/NodeForm'
+import Editor from './components/Editor'
+import NodeProperty from './components/NodeProperty'
+import SelectedDetails from './components/SelectedDetails'
 
 /**
  * Organize custom tree allowing you to manage nodes and attached data to it.
@@ -25,7 +21,7 @@ declare type KeyValDef = KeyValueEditor.KeyValDef
  * which are accessible at the root component of your service.
  */
 module Tree {
-    export interface Props extends React.Props<Tree> {
+    export interface Props {
         /** Any unique DOM ID. */
         id: string;
         /** Data to render as a tree. More details on [TreeNodeModel](#treenodemodel). */
@@ -53,312 +49,174 @@ module Tree {
          * Accessible via [WebStorage](#webstorage).
          */
         locale: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
         children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Tree>;
-    }
-
-    export interface State {
-        treeInstance?: JSTree;
-        selectedNode?: TreeNodeModel;
-        formOpened?: string;
-        editedNode?: OrgModel;
-        maxTreeHeight?: number;
-        wordings?: { [key: string]: string; };
     }
 }
 
-class Tree extends React.Component<Tree.Props, Tree.State> {
+function Tree( props: Tree.Props ) {
 
-    private _tree: HTMLDivElement = null
+    /** References */
+    const _tree: React.MutableRefObject<HTMLDivElement> = React.useRef( null )
 
-    constructor( props: Tree.Props ) {
-        super( props )
-        this.state = {
-            treeInstance: null,
-            selectedNode: null,
-            formOpened: null,
-            editedNode: null,
-            maxTreeHeight: 0,
-            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale )
+    /** Initialize state */
+    const [disabled, setDisabled] = React.useState( false )
+    const [treeInstance, setTreeInstance] = React.useState( null )
+    const [selectedNode, setSelectedNode] = React.useState( null )
+    const [formOpened, setFormOpened] = React.useState( null )
+    const [editedNode, setEditedNode] = React.useState( null )
+    const [maxTreeHeight, setMaxTreeHeight] = React.useState( 0 )
+    const [wordings, setWordings] = React.useState( getWordings( {}, props.locale ) )
+
+    /**
+     * Lifecycle
+     */
+
+    /** Component did mount */
+    React.useEffect( () => {
+        setTreeInstance( setUpTree( props.id, props.data, props.defaultSelectedNodeId ) )
+
+        return () => {
+            if ( treeInstance ) { treeInstance.destroy() }
+            $( _tree.current ).off()
         }
-    }
+    }, [] )
 
-    render() {
+    // Component will mount
+    React.useEffect( () => {
 
-        const { wordings } = this.state
-
-        let disabled = !this.state.selectedNode
-
-        let editButton = this.state.formOpened === 'EDIT' ? (
-            <button type="button" className="btn btn-block btn-warning" onClick={this.editNode}>{wordings.treeUpdate}</button>
-        ) : null
-
-        let createButton = this.state.formOpened === 'CREATE' ? (
-            <button type="button" className="btn btn-block btn-success" onClick={this.createNode}>{wordings.validate}</button>
-        ) : null
-
-        let canModifyTree = this.props.createNode && this.props.editNode && this.props.deleteNode && this.props.displayEmptyValsError
-
-        let cannotModifyNodeName = ( this.state.formOpened !== 'CREATE' && this.state.selectedNode
-            && ( this.state.selectedNode.data.parentId === '0' || this.state.selectedNode.data.parentId === null ) )
-
-        // Disable name input if can't edit it here
-        let nodeForm = this.state.formOpened && canModifyTree ? (
-            <div className="toggle-form bottom-margin">
-                <div className="row">
-
-                    <div className="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <label>{wordings.name}</label>
-                        <input type="text" className="form-control"
-                            value={this.state.editedNode.elementName}
-                            onChange={this.handleElementNameChange}
-                            disabled={cannotModifyNodeName}
-                        />
-                    </div>
-
-                    <div className="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <label>{wordings.description}</label>
-                        <input type="text" className="form-control"
-                            value={this.state.editedNode.description}
-                            onChange={this.handleDescriptionChange}
-                        />
-                    </div>
-
-                    <div className="form-group col-xs-12 col-sm-6 col-md-4 col-lg-6">
-                        <label>{wordings.additionalProperties}</label>
-                        <KeyValueEditor handleChange={this.handlePropertiesChange} keyValues={this.state.editedNode.propertiesMap} locale={this.props.locale} />
-                    </div>
-
-                    <div className="col-xs-12">
-                        <div className="row">
-                            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                <div className="top-margin">
-                                    {editButton}
-                                    {createButton}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        ) : null
-
-        let editor = (
-            <div>
-                <div className="row text-xs-center">
-                    <div className="col-xs-12">
-                        <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
-                            <span>{wordings.expand}</span>
-                        </button>
-                        <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
-                            <span>{wordings.collapse}</span>
-                        </button>
-                        {
-                            canModifyTree ? (
-                                <span>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-success right-margin bottom-margin' )} onClick={this.openCreateForm}>
-                                        {wordings.createChild}
-                                    </button>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-warning right-margin bottom-margin' )} onClick={this.openEditForm}>
-                                        {wordings.edit}
-                                    </button>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-danger right-margin bottom-margin' )} onClick={this.deleteNode}>
-                                        {wordings.delete}
-                                    </button>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-font right-margin bottom-margin', {
-                                        'hidden': !this.state.formOpened
-                                    } )} onClick={this.clearForm}>
-                                        {wordings.cancel}
-                                    </button>
-                                </span>
-                            ) : null
-                        }
-                    </div>
-                </div>
-
-                {nodeForm}
-            </div>
-        )
-
-        const node = this.state.selectedNode
-
-        const selectedNodeProperties = node && node.data && node.data.propertiesMap && !$.isEmptyObject( node.data.propertiesMap ) ?
-            Object.keys( node.data.propertiesMap ).map( key => {
-                const nodeData = node.data as OrgModel
-
-                const dataDisplay = nodeData.propertiesMap[key].contentType === 'text/plain' ? (
-                    <span className="inline-middle">{base64Decode( nodeData.propertiesMap[key].contentBytes )}</span>
-                ) : (
-                        <button type="button" className="inline-middle btn btn-xs btn-trans btn-info" data-key={key} onClick={this.downloadFile}>
-                            <span className="fas fa-download" />
-                        </button>
-                    )
-
-                return (
-                    <li key={key}>
-                        <em className="right-spaced inline-middle">{nodeData.propertiesMap[key].key}</em>
-                        <span className="fas fa-long-arrow-alt-right right-spaced inline-middle" />
-                        {dataDisplay}
-                    </li>
-                )
-            } ) : null
-
-        const selectedDetails = node ? (
-            <div className="top-margin toggle-form">
-
-                <div className="row">
-
-                    <div className="col-xs-12">
-                        <h4 className="upper bottom-spaced">{wordings.selectedNodeDetails}</h4>
-                    </div>
-
-                    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{wordings.name}</div>
-                        <div>{node.text}</div>
-                    </div>
-
-                    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{wordings.id}</div>
-                        <div className="word-wrap"><em>{node.id}</em></div>
-                    </div>
-
-                    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{wordings.description}</div>
-                        <div>{node.data.description}</div>
-                    </div>
-
-                    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div className="text-small font-color-lighter">{wordings.properties}</div>
-                        {selectedNodeProperties ? <ul className="basic-list margin-none">{selectedNodeProperties}</ul> : <span>-</span>}
-                    </div>
-
-                </div>
-
-            </div>
-        ) : null
-
-        return (
-            <div id={this.props.id} className="text-medium">
-
-                <div className="tree-controls-container">
-                    {editor}
-                </div>
-
-                <div style={{ maxHeight: this.state.maxTreeHeight || 'none', overflow: 'auto' }}>
-                    <div ref={dom => this._tree = dom} id={this.props.id} />
-                </div>
-
-                <div className="tree-details-container">
-                    {selectedDetails}
-                    {this.props.children}
-                </div>
-
-            </div>
-        )
-    }
-
-    componentDidMount() {
-        const tree = this.setUpTree( this.props.id, this.props.data, this.props.defaultSelectedNodeId )
-        this.setState( {
-            treeInstance: tree
-        } )
-    }
-
-    componentDidUpdate( prevProps: Tree.Props, prevState: Tree.State ) {
-
-        if ( prevState.selectedNode !== this.state.selectedNode || prevProps.children !== this.props.children ) {
-
-            // window height - tree action buttons container height - details container - header, paddings and nav tabs            
-            let maxTreeHeight = window.innerHeight - $( '#' + this.props.id + ' .tree-controls-container' ).outerHeight() - $( '#' + this.props.id + ' .tree-details-container .toggle-form' ).outerHeight() - 212
-
-            //if we have a user assign form, we reduce a bit more the tree height to fully display selected node details and user assign form (this.props.children)
-            if ( this.props.children ) {
-                maxTreeHeight -= 62
-            }
-
-            this.setState( {
-                maxTreeHeight
-            } )
+        if ( treeInstance ) {
+            treeInstance.destroy( false )
+            setTreeInstance( setUpTree( props.id, props.data, props.defaultSelectedNodeId ) )
+            setSelectedNode( null )
+            setEditedNode( null )
+            setFormOpened( null )
         }
 
-    }
+    }, [props.data] )
 
-    componentWillReceiveProps( nextProps: Tree.Props ) {
-        if ( this.props.data !== nextProps.data ) {
-            if ( this.state.treeInstance ) {
-                this.state.treeInstance.destroy( false )
-                this.setState( {
-                    treeInstance: this.setUpTree( nextProps.id, nextProps.data, nextProps.defaultSelectedNodeId ),
-                    selectedNode: null,
-                    editedNode: null,
-                    formOpened: null
-                } )
-            }
+    /** Set wordings */
+    React.useEffect( () => { setWordings( getWordings( {}, props.locale ) ) }, [props.locale] )
+
+    /** Disabled */
+    React.useEffect( () => { setDisabled( !selectedNode ) }, [selectedNode] )
+
+    /** Component did update */
+    React.useEffect( () => {
+        // window height - tree action buttons container height - details container - header, paddings and nav tabs            
+        let maxTreeHeight = window.innerHeight - $( '#' + props.id + ' .tree-controls-container' ).outerHeight() - $( '#' + props.id + ' .tree-details-container .toggle-form' ).outerHeight() - 212
+
+        //if we have a user assign form, we reduce a bit more the tree height to fully display selected node details and user assign form (props.children)
+        if ( props.children ) {
+            maxTreeHeight -= 62
         }
-    }
 
-    componentWillUnmount() {
-        if ( this.state.treeInstance ) {
-            this.state.treeInstance.destroy()
-        }
-        let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
-        $( treeContainer ).off()
-    }
+        setMaxTreeHeight( maxTreeHeight )
+    }, [selectedNode, props.children] )
 
-    private downloadFile = ( event: any ) => {
-        if ( this.state.selectedNode ) {
-            const keyValues: KeyValDef = this.state.selectedNode.data.propertiesMap
-            const key: string = event.currentTarget.getAttribute( 'data-key' )
-            downloadDataFile( keyValues[key].contentBytes, keyValues[key].contentType, keyValues[key].key )
-        }
-    }
+    /**
+     * Tree update
+     */
 
-    private expandAll = ( event: React.SyntheticEvent<any> ) => {
-        if ( this.state.treeInstance ) {
-            this.state.treeInstance.open_all( this.state.selectedNode, 100 )
-        }
-        if ( event ) {
-            $( event.currentTarget ).blur()
-        }
-    }
-
-    private collapseAll = ( event: React.SyntheticEvent<any> ) => {
-        if ( this.state.treeInstance ) {
-            this.state.treeInstance.close_all( this.state.selectedNode, 100 )
-        }
-        if ( event ) {
-            $( event.currentTarget ).blur()
-        }
-    }
-
-    private openCreateForm = () => {
-
-        this.setState( {
-            formOpened: 'CREATE',
-            editedNode: {
-                parentId: this.state.selectedNode.id,
-                elementName: '',
-                description: ''
-            }
-        } )
-    }
-
-    private createNode = () => {
-        let { editedNode, wordings } = this.state
-
+    /** Edit node informations */
+    const editNode = () => {
         let errors: string[] = []
-        if ( !!this.state.selectedNode.data.childNames ) {
+        if ( !isNotEmpty( editedNode.elementName ) ) {
+            errors.push( wordings.name )
+        }
+        if ( !isNotEmpty( editedNode.description ) ) {
+            errors.push( wordings.description )
+        }
+
+        for ( const key in editedNode.propertiesMap ) {
+            if ( !key ) {
+                errors.push( wordings.propertiesKey )
+            }
+        }
+
+        if ( errors.length > 0 ) {
+            props.displayEmptyValsError( errors )
+        }
+        else {
+            props.editNode( editedNode.id, editedNode.elementName.trim(), editedNode.description, editedNode.propertiesMap, editedNode.parentId )
+            clearForm()
+        }
+    }
+
+    /** Clear node edition form */
+    const clearForm = () => {
+        treeInstance.deselect_node( selectedNode )
+
+        setEditedNode( null )
+        setFormOpened( null )
+        setSelectedNode( null )
+    }
+
+    // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
+    // https://github.com/Microsoft/TypeScript/issues/9458
+    const setUpTree = ( __id: string, data: TreeNodeModel, defaultSelectedNodeId?: string ): JSTree => {
+
+        const tree = $.jstree.create( _tree.current, {
+            core: {
+                data,
+                check_callback: function ( operation, /**  node, node_parent, node_position, more */ ) {
+                    return operation !== 'move_node'
+                },
+                multiple: false,
+                error: undefined
+            },
+            plugins: ['sort'],
+            sort: function ( a: any, b: any ) {
+                return this.get_node( a ).text.localeCompare( this.get_node( b ).text ) < 0 ? -1 : 1
+            }
+        } as JSTreeStaticDefaults )
+
+        tree.hide_dots()
+
+        // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
+        // https://github.com/Microsoft/TypeScript/issues/9458
+        $( _tree.current ).on( 'select_node.jstree', ( __event, selected ) => {
+
+            setSelectedNode( getDecodedNode( selected.node ) )
+            setEditedNode( null )
+            setFormOpened( null )
+
+            if ( props.selectCallback ) {
+                props.selectCallback( selected.node )
+            }
+        } )
+
+        $( _tree.current ).on( 'deselect_node.jstree', ( /** event, selected */ ) => {
+
+            setSelectedNode( null )
+            setEditedNode( null )
+            setFormOpened( null )
+
+            if ( props.selectCallback ) {
+                props.selectCallback( null )
+            }
+        } )
+
+        if ( defaultSelectedNodeId ) {
+            setTimeout( () => {
+                tree._open_to( defaultSelectedNodeId )
+                tree.select_node( defaultSelectedNodeId )
+            }, 500 )
+        }
+
+        return tree
+    }
+
+    /**
+     * Handlers
+     */
+
+    /** Create a new node */
+    const createNode = () => {
+        let errors: string[] = []
+        if ( !!selectedNode.data.childNames ) {
 
             if ( isNotEmpty( editedNode.elementName ) ) {
-                if ( this.state.selectedNode.data.childNames.indexOf( editedNode.elementName ) !== -1 ) {
+                if ( selectedNode.data.childNames.indexOf( editedNode.elementName ) !== -1 ) {
                     errors.push( wordings.invalidUniqueNodeName )
                 }
             }
@@ -380,157 +238,81 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         }
 
         if ( errors.length > 0 ) {
-            this.props.displayEmptyValsError( errors )
+            props.displayEmptyValsError( errors )
         }
         else {
-            this.props.createNode( editedNode.parentId, editedNode.elementName.trim(), editedNode.description, editedNode.propertiesMap )
-            this.clearForm()
+            props.createNode( editedNode.parentId, editedNode.elementName.trim(), editedNode.description, editedNode.propertiesMap )
+            treeInstance.redraw( true )
+            clearForm()
         }
     }
 
-    private openEditForm = () => {
-        const { selectedNode } = this.state
-
-        this.setState( {
-            formOpened: 'EDIT',
-            editedNode: {
-                id: selectedNode.id,
-                parentId: selectedNode.data.parentId,
-                elementName: selectedNode.text,
-                description: selectedNode.data && selectedNode.data.description,
-                propertiesMap: selectedNode.data && selectedNode.data.propertiesMap
-            }
-        } )
+    /**
+     * Expand tree node view to display details
+     * @param {React.SyntheticEvent<HTMLButtonElement, Event>} event 
+     */
+    const expandAll = ( event: React.SyntheticEvent<HTMLButtonElement, Event> ) => {
+        if ( treeInstance ) { treeInstance.open_all( selectedNode, 100 ) }
+        if ( event ) { $( event.currentTarget ).blur() }
     }
 
-    private editNode = () => {
-        let { editedNode, wordings } = this.state
+    /**
+     * Close expanded node's view
+     * @param {React.SyntheticEvent<HTMLButtonElement, Event>} event 
+     */
+    const collapseAll = ( event: React.SyntheticEvent<HTMLButtonElement, Event> ) => {
+        if ( treeInstance ) { treeInstance.close_all( selectedNode, 100 ) }
+        if ( event ) { $( event.currentTarget ).blur() }
+    }
 
-        let errors: string[] = []
-        if ( !isNotEmpty( editedNode.elementName ) ) {
-            errors.push( wordings.name )
-        }
-        if ( !isNotEmpty( editedNode.description ) ) {
-            errors.push( wordings.description )
-        }
-
-        for ( const key in editedNode.propertiesMap ) {
-            if ( !key ) {
-                errors.push( wordings.propertiesKey )
-            }
-        }
-
-        if ( errors.length > 0 ) {
-            this.props.displayEmptyValsError( errors )
-        }
-        else {
-            this.props.editNode( editedNode.id, editedNode.elementName.trim(), editedNode.description, editedNode.propertiesMap, editedNode.parentId )
-            this.clearForm()
+    /**
+     * Download attached files from a node
+     * @param {React.MouseEvent<HTMLButtonElement, MouseEvent>} event 
+     */
+    const downloadFile = ( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
+        if ( selectedNode ) {
+            const keyValues: KeyValDef = selectedNode.data.propertiesMap
+            const key: string = event.currentTarget.getAttribute( 'data-key' )
+            downloadDataFile( keyValues[key].contentBytes, keyValues[key].contentType, keyValues[key].key )
         }
     }
 
-    private deleteNode = () => {
-        this.props.deleteNode( this.state.selectedNode.id, this.state.selectedNode.text, this.state.selectedNode.data.parentId )
-        this.clearForm()
-    }
-
-    private clearForm = () => {
-        this.state.treeInstance.deselect_node( this.state.selectedNode )
-
-        this.setState( {
-            editedNode: null,
-            formOpened: null,
-            selectedNode: null
+    /**
+     * Open creation form
+     */
+    const openCreateForm = () => {
+        setFormOpened( 'CREATE' )
+        setEditedNode( {
+            parentId: selectedNode.id,
+            elementName: '',
+            description: ''
         } )
     }
 
-    private handleElementNameChange = ( event: any ) => {
-        let editedNodeUpdate: OrgModel = JSON.parse( JSON.stringify( this.state.editedNode ) )
-
-        editedNodeUpdate.elementName = event.target.value
-
-        this.setState( {
-            editedNode: editedNodeUpdate
+    /** Open node edit form */
+    const openEditForm = () => {
+        setFormOpened( 'EDIT' )
+        setEditedNode( {
+            id: selectedNode.id,
+            parentId: selectedNode.data.parentId,
+            elementName: selectedNode.text,
+            description: selectedNode.data && selectedNode.data.description,
+            propertiesMap: selectedNode.data && selectedNode.data.propertiesMap
         } )
     }
 
-    private handleDescriptionChange = ( event: any ) => {
-        let editedNodeUpdate: OrgModel = JSON.parse( JSON.stringify( this.state.editedNode ) )
-
-        editedNodeUpdate.description = event.target.value
-
-        this.setState( {
-            editedNode: editedNodeUpdate
-        } )
+    /** Delete node */
+    const deleteNode = () => {
+        props.deleteNode( selectedNode.id, selectedNode.text, selectedNode.data.parentId )
+        clearForm()
     }
 
-    private handlePropertiesChange = ( keyValues?: KeyValDef ) => {
-        let editedNodeUpdate: OrgModel = JSON.parse( JSON.stringify( this.state.editedNode ) )
 
-        editedNodeUpdate.propertiesMap = keyValues
-
-        this.setState( {
-            editedNode: editedNodeUpdate
-        } )
-    }
-
-    // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
-    // https://github.com/Microsoft/TypeScript/issues/9458
-    private setUpTree = ( __id: string, data: TreeNodeModel, defaultSelectedNodeId?: string ): JSTree => {
-        let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
-
-        let tree = $.jstree.create( treeContainer, {
-            core: {
-                data: data,
-                check_callback: function ( operation, /**  node, node_parent, node_position, more */ ) {
-                    return operation !== 'move_node'
-                },
-                multiple: false,
-                error: undefined
-            },
-            plugins: ['sort'],
-            sort: function ( a: any, b: any ) {
-                return this.get_node( a ).text.localeCompare( this.get_node( b ).text ) < 0 ? -1 : 1
-            }
-        } as JSTreeStaticDefaults )
-
-        tree.hide_dots()
-
-        // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
-        // https://github.com/Microsoft/TypeScript/issues/9458
-        $( treeContainer ).on( 'select_node.jstree', ( __event, selected ) => {
-            this.setState( {
-                selectedNode: this.getDecodedNode( selected.node ),
-                editedNode: null,
-                formOpened: null
-            } )
-            if ( this.props.selectCallback ) {
-                this.props.selectCallback( selected.node )
-            }
-        } )
-
-        $( treeContainer ).on( 'deselect_node.jstree', ( /** event, selected */ ) => {
-            this.setState( {
-                selectedNode: null,
-                editedNode: null,
-                formOpened: null
-            } )
-            if ( this.props.selectCallback ) {
-                this.props.selectCallback( null )
-            }
-        } )
-
-        if ( defaultSelectedNodeId ) {
-            setTimeout( () => {
-                tree._open_to( defaultSelectedNodeId )
-                tree.select_node( defaultSelectedNodeId )
-            }, 500 )
-        }
-
-        return tree
-    }
-
-    private getDecodedNode = ( node: TreeNodeModel ): TreeNodeModel => {
+    /**
+     * Return decoded node
+     * @param {TreeNodeModel} node 
+     */
+    const getDecodedNode = ( node: TreeNodeModel ): TreeNodeModel => {
 
         let convertedNode = JSON.parse( JSON.stringify( node ) ) as TreeNodeModel
 
@@ -539,10 +321,6 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
             for ( const key in nodeKeyValues ) {
                 if ( nodeKeyValues[key].contentType === 'text/plain' ) {
-                    const decodedContentBytes: string = base64Decode( nodeKeyValues[key].contentBytes )
-                    console.info( 'getDecodedNode::contentBytes => ', nodeKeyValues[key].contentBytes )
-                    console.info( 'getDecodedNode::decodedContentBytes => ', decodedContentBytes )
-                    console.info( 'getDecodedNode::base64Decode => ', base64Decode( decodedContentBytes ) )
                     nodeKeyValues[key].contentBytes = base64Decode( nodeKeyValues[key].contentBytes )
                 }
             }
@@ -553,6 +331,65 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         return convertedNode
 
     }
+
+    /**
+     * Start rendering component here
+     */
+
+    let canModifyTree = props.createNode && props.editNode && props.deleteNode && props.displayEmptyValsError
+
+    let cannotModifyNodeName = ( formOpened !== 'CREATE' && selectedNode
+        && ( selectedNode.data.parentId === '0' || selectedNode.data.parentId === null ) )
+
+    /** Disable name input if can't edit it here */
+    let nodeForm = formOpened && canModifyTree ? (
+        <NodeForm cannotModifyNodeName={cannotModifyNodeName}
+            editedNode={editedNode} formOpened={formOpened}
+            setEditedNode={setEditedNode} editNode={editNode} createNode={createNode}
+            wordings={wordings} locale={props.locale}
+        />
+    ) : null
+
+    /** Node editor form */
+    let editor = (
+        <Editor formOpened={formOpened} canModifyTree={canModifyTree} disabled={disabled}
+            expandAll={expandAll} collapseAll={collapseAll}
+            openCreateForm={openCreateForm} openEditForm={openEditForm} deleteNode={deleteNode} clearForm={clearForm}
+            wordings={wordings}>
+            {nodeForm}
+        </Editor>
+    )
+
+    const node = selectedNode
+
+    /** Node properties */
+    const selectedNodeProperties = node && node.data && node.data.propertiesMap && !$.isEmptyObject( node.data.propertiesMap ) ?
+        Object.keys( node.data.propertiesMap ).map( key => (
+            <NodeProperty nodeData={node.data} nodeKey={key} downloadFile={downloadFile} />
+        ) ) : null
+
+    const selectedDetails = node ? (
+        <SelectedDetails node={node} selectedNodeProperties={selectedNodeProperties} wordings={wordings} />
+    ) : null
+
+    return (
+        <div id={props.id} className="text-medium">
+
+            <div className="tree-controls-container">
+                {editor}
+            </div>
+
+            <div style={{ maxHeight: maxTreeHeight || 'none', overflow: 'auto' }}>
+                <div ref={_tree} id={props.id} />
+            </div>
+
+            <div className="tree-details-container">
+                {selectedDetails}
+                {props.children}
+            </div>
+
+        </div>
+    )
 
 }
 

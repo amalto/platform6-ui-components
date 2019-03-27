@@ -133,7 +133,7 @@ function TimePicker( props: TimePicker.Props ) {
     const renderTimeInput = ( value: string, disabled: boolean, minHour: number ): JSX.Element => {
         const parsedTime = value && value.split( ':' )
 
-        const hours = parsedTime && parsedTime.length === 2 ? parsedTime[0] : ( minHour ? this.pad( minHour ) : '00' )
+        const hours = parsedTime && parsedTime.length === 2 ? parsedTime[0] : ( minHour ? pad( minHour ) : '00' )
         const minutes = parsedTime && parsedTime.length === 2 ? parsedTime[1] : '00'
 
         return (

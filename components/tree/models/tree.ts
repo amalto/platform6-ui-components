@@ -1,7 +1,7 @@
 
 import KeyValueEditor from '@amalto/key-value-editor'
 
-declare type KeyValDef = KeyValueEditor.KeyValDef
+export declare type KeyValDef = KeyValueEditor.KeyValDef
 
 export interface OrgModel {
     id?: string;

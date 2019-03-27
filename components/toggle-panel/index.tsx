@@ -58,10 +58,6 @@ module TogglePanel {
 
         children?: React.ReactNode;
     }
-
-    export interface State {
-        opened?: boolean
-    }
 }
 
 
