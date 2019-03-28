@@ -1,6 +1,5 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
 
 // Utils
 import { compileWordings, isValidKeyChar, downloadDataFile } from '@amalto/helpers'
@@ -35,7 +34,7 @@ namespace KeyValueEditor {
         /** Handle values changes. More details on [KeyValDef](#keyvaldef). */
         handleChange: ( keyValues: KeyValDef ) => void;
         /** Current keyValues data. */
-        keyValues: KeyValDef
+        keyValues: KeyValDef;
         /**
          * Language to use on the component. e.g: <span className='quote'>en-US</span>.
          * Locales available at [Locale](#locale).

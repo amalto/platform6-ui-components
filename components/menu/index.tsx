@@ -5,9 +5,6 @@ import * as classNames from 'classnames'
 // Models
 import { Entry } from './models/Entry'
 
-// Components
-import Link from './components/Link'
-
 /**
  * Small button with an icon instead of text.
  */
@@ -19,7 +16,9 @@ module Menu {
         title: string;
 
         /** Entries */
-        entries: Entry[];
+        entries: JSX.Element[];
+
+        itemStyle: React.CSSProperties;
 
         hideLabel?: boolean;
 
@@ -27,7 +26,7 @@ module Menu {
         selectedEntry: string;
 
         /** Select entry */
-        selectEntry: ( entry: string ) => void;
+        selectEntry: ( entry: number ) => void;
 
         /** Main color */
         mainColor: string;
@@ -79,6 +78,7 @@ class Menu extends React.Component<Menu.Props, any> {
         const styles = {
             'menu-link': {
                 color: textColor,
+                textAlign: hideLabel ? 'cetner' : undefined,
 
                 ':hover': {
                     color: hoverTextColor,
@@ -104,16 +104,9 @@ class Menu extends React.Component<Menu.Props, any> {
                 }
                 <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
                     {
-                        entries.map( e => {
-                            return (
-                                <Link key={`link_${ e.label }`}
-                                    entry={e}
-                                    linkStyle={styles['menu-link']}
-                                    hideLabel={hideLabel}
-                                    selectEntry={selectEntry}
-                                    activeStyle={selectedEntry === e.label ? activeStyle : null} />
-                            )
-                        } )
+                        entries.map( ( link, idx ) => (
+                            <li className='menu-line' style={{ ...this.props.itemStyle, ...styles['menu-link'] }} key={idx}>{link}</li>
+                        ) )
                     }
                 </ul>
             </div>

@@ -1,0 +1,1 @@
+All the resources here are not provided in the modules but are used in the documentation, you can use those resources if you wan't to test the component with too much customization.

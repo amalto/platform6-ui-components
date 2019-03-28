@@ -187,6 +187,16 @@ module.exports = {
             },
         ]
     },
+    {
+        name: 'Internal resources',
+        content: 'readme/internal/Introduction.md',
+        sections: [
+            {
+                name: 'Menu',
+                content: 'readme/internal/Menu.md'
+            }
+        ]
+    },
 
     {
         name: 'External resources',
