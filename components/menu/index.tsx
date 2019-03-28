@@ -7,6 +7,7 @@ import { Entry } from './models/Entry'
 
 /**
  * Small button with an icon instead of text.
+ * See [Internal Resources](#menu-1)
  */
 module Menu {
 
