@@ -7,7 +7,7 @@ import 'typeahead.js'
  * Typeahead input displaying a filtered dropdown list from your input and your collection.
  */
 module TypeaheadInput {
-    export interface Props extends React.Props<TypeaheadInput> {
+    export interface Props {
         /** Div id. */
         id: string;
         /** Collection of item to be display inside the dropdown list. */
@@ -24,15 +24,6 @@ module TypeaheadInput {
         datumTokenizer?: ( datum: any ) => string[];
         /** Input's placeholder. */
         placeholder?: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<TypeaheadInput>;
     }
 
     export interface RemoteConfig {
@@ -46,26 +37,14 @@ module TypeaheadInput {
 }
 
 
-class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
-    constructor( props: TypeaheadInput.Props ) {
-        super( props )
-    }
+function TypeaheadInput( props: TypeaheadInput.Props ) {
 
-    render() {
+    const { collection, remote, id, value, handleInputChange, display, datumTokenizer, placeholder } = props
 
-        return (
-            <div id={this.props.id}>
-                <input className="form-control typeahead" type="text"
-                    onBlur={this.handleInputBlur}
-                    name={this.props.id}
-                    placeholder={this.props.placeholder} />
-            </div>
-        )
-    }
+    const __input: React.MutableRefObject<HTMLInputElement> = React.useRef( null )
 
-    componentDidMount() {
-
-        const { collection, remote, id, value, handleInputChange, display, datumTokenizer } = this.props
+    // componentDidMount
+    React.useEffect( () => {
 
         let _collection = new Bloodhound( {
             initialize: false,
@@ -77,7 +56,7 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
 
         _collection.initialize()
 
-        $( '.typeahead' ).typeahead( {
+        $( __input.current ).typeahead( {
             hint: true,
             highlight: true,
             minLength: 1
@@ -88,39 +67,42 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
                 display: display
             } )
 
-        $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+        $( __input.current ).typeahead( 'val', display ? display( value ) : value )
 
         // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
         // https://github.com/Microsoft/TypeScript/issues/9458
-        $( '.typeahead' ).bind( 'typeahead:select', ( ( __event: any, suggestion: any ) => {
+        $( __input.current ).bind( 'typeahead:select', ( ( __event: any, suggestion: any ) => {
             handleInputChange( suggestion )
         } ) as any )
-    }
 
-    componentWillUnmount() {
-        $( '.typeahead' ).typeahead( 'destroy' )
-    }
+        return __input ? () => $( __input.current ).typeahead( 'destroy' ) : null
+    }, [] )
 
-    componentDidUpdate( prevProps: TypeaheadInput.Props ) {
+    // Component did update
+    React.useEffect( () => {
+        $( __input.current ).typeahead( 'val', display ? display( value ) : value )
+    }, [props.value] )
 
-        const { display, value } = this.props
-
-        if ( prevProps.value !== value ) {
-            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
-        }
-    }
-
-    private handleInputBlur = ( event: any ) => {
-        const { display, value, handleInputChange } = this.props
+    const handleInputBlur = ( event: React.FocusEvent<HTMLInputElement> ) => {
+        const { display, value, handleInputChange } = props
 
         if ( !event.target.value ) {
             handleInputChange( null )
         }
         else {
-            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+            $( __input.current ).typeahead( 'val', display ? display( value ) : value )
         }
     }
 
+
+    return (
+        <div id={id}>
+            <input ref={__input} className="form-control typeahead" type="text"
+                onBlur={handleInputBlur}
+                name={id}
+                placeholder={placeholder} />
+        </div>
+    )
 }
 
 export default TypeaheadInput
