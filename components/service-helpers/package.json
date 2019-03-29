@@ -2,7 +2,7 @@
     "name": "@amalto/service-helpers",
     "displayName": "ServiceHelpers",
     "description": "Method to template some of the Platform 6 UI components.",
-    "version": "1.1.6",
+    "version": "2.0.0",
     "license": "MIT",
     "repository": {
         "type": "git",
