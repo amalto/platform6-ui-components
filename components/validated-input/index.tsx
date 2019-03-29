@@ -9,7 +9,7 @@ import Help from '@amalto/help'
  * Simple select or input with a validation by regular expression or method check used on a [redux-form](#reduxform).
  */
 module ValidatedInput {
-    export interface Props extends React.Props<ValidatedInput> {
+    export interface Props {
         /** Input name in the DOM. */
         name: string;
         /** Input value. */
@@ -66,111 +66,93 @@ module ValidatedInput {
         containerClass?: string;
         /** Input class. */
         inputClass?: string;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<ValidatedInput>;
-    }
-
-    export interface State {
-        invalidInput?: boolean;
     }
 }
 
-class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInput.State> {
+function ValidatedInput( props: ValidatedInput.Props ) {
 
-    constructor( props: ValidatedInput.Props ) {
-        super( props )
-        this.state = {
-            invalidInput: false
+    const { name, label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = props
+
+    const [invalidInput, setInvalidInput] = React.useState( false )
+    const [toggleInvalidInput, setToggleInvalidInput] = React.useState( false )
+
+    /** Component did mount */
+    React.useEffect( () => {
+        if ( props.validateOnLoad ) { validateField( props.value ) }
+    }, [] )
+
+    /** Callback after invalid input has been set */
+    React.useEffect( () => {
+        if ( toggleInvalidInput ) {
+            props.handleFieldChange( value, props.name, invalidInput )
+            setToggleInvalidInput( false )
         }
-    }
+    }, [toggleInvalidInput] )
 
-    render() {
+    /** formSubmitted has been updated */
+    React.useEffect( () => {
+        if ( props.formSubmitted === true ) { validateField( props.value ) }
+    }, [props.formSubmitted] )
 
-        const { name, label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = this.props
-
-        const inputDisplay = this.props.choices ? (
-            <select className={classNames( 'form-control', inputClass )}
-                key={name}
-                name={name}
-                value={value}
-                onChange={this.handleChange}
-                disabled={disabled}>
-
-                {
-                    choices.map( ( choice, idx ) => {
-                        return <option key={idx} value={choice.value}>{choice.label || choice.value}</option>
-                    } )
-                }
-
-            </select>
-        ) : (
-                <input type="text" className={classNames( 'form-control', inputClass )}
-                    key={name}
-                    name={name}
-                    defaultValue={value}
-                    onChange={this.handleChange}
-                    disabled={disabled}
-                    placeholder={placeholder}
-                    autoComplete={autoComplete}
-                />
-            )
-
-        return (
-
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': this.state.invalidInput,
-                'mandatory': mandatory
-            } )}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
-                {inputDisplay}
-
-                {this.state.invalidInput && errorMessage ? <p className="validation-error-message">{errorMessage}</p> : null}
-
-            </div>
-        )
-
-    }
-
-    componentDidMount() {
-        if ( this.props.validateOnLoad ) {
-            this.validateField( this.props.value, this.props )
-        }
-    }
-
-    componentWillReceiveProps( nextProps: ValidatedInput.Props ) {
-        if ( this.props.formSubmitted !== nextProps.formSubmitted && nextProps.formSubmitted === true ) {
-            this.validateField( nextProps.value, nextProps )
-        }
-    }
-
-    private handleChange = ( event: any ) => {
-        const inputValue = JSON.parse( JSON.stringify( event.target.value ) )
-        this.validateField( inputValue, this.props )
-    }
-
-    private validateField = ( value: string, props: ValidatedInput.Props ) => {
+    /** Validate input */
+    const validateField = ( value: string ) => {
         const emptyButMandatory = !value && !!props.mandatory
         const noMatchRegex = props.regex ? !props.regex.test( value ) : false
         const invalid = props.validate ? !props.validate( value ) : false
 
         if ( !props.disabled ) {
-            this.setState( {
-                invalidInput: emptyButMandatory || noMatchRegex || invalid
-            }, () => {
-                props.handleFieldChange( value, props.name, this.state.invalidInput )
-            } )
+            setInvalidInput( emptyButMandatory || noMatchRegex || invalid )
+            setToggleInvalidInput( true )
         }
     }
 
+    /** onChange event */
+    const handleChange = ( event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement> ) => {
+        validateField( JSON.parse( JSON.stringify( event.target.value ) ) )
+    }
+
+    const inputDisplay = choices ? (
+        <select className={classNames( 'form-control', inputClass )}
+            key={name}
+            name={name}
+            value={value}
+            onChange={handleChange}
+            disabled={disabled}>
+
+            {
+                choices.map( ( choice, idx ) => {
+                    return <option key={idx} value={choice.value}>{choice.label || choice.value}</option>
+                } )
+            }
+
+        </select>
+    ) : (
+            <input type="text" className={classNames( 'form-control', inputClass )}
+                key={name}
+                name={name}
+                defaultValue={value}
+                onChange={handleChange}
+                disabled={disabled}
+                placeholder={placeholder}
+                autoComplete={autoComplete}
+            />
+        )
+
+    return (
+
+        <div className={classNames( 'form-group', containerClass, {
+            'invalid': invalidInput,
+            'mandatory': mandatory
+        } )}>
+
+            {label ? <label>{label}{help && <Help text={help} />}</label> : null}
+
+            {inputDisplay}
+
+            {invalidInput && errorMessage ? <p className="validation-error-message">{errorMessage}</p> : null}
+
+        </div>
+    )
 }
 
 
