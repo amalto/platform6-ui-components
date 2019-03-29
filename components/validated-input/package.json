@@ -2,7 +2,7 @@
     "name": "@amalto/validated-input",
     "displayName": "ValidatedInput",
     "description": "Input component with validation control.",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "license": "MIT",
     "repository": {
         "type": "git",
