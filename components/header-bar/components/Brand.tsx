@@ -41,7 +41,7 @@ class Brand extends React.Component<Brand.Props, any> {
                 style={{
                     ...mainStyle,
                     height: '100%',
-                    width: 240,
+                    maxWidth: 240,
                     backgroundColor,
                     float: 'left',
                     padding: '0px 10px',

@@ -39,7 +39,7 @@ function HeaderBar( props: HeaderBar.Props ) {
 
     return (
         <header className={mainCss} style={{
-            height: height || 70,
+            height,
             backgroundColor,
             overflow: 'auto',
             position: 'fixed',
