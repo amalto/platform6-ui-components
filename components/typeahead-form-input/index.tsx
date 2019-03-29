@@ -7,6 +7,8 @@ import * as classNames from 'classnames'
 import Help from '@amalto/help'
 import Typeahead from '@amalto/typeahead-input'
 
+import { isNotEmpty } from '@amalto/helpers'
+
 /**
  * Typeahead input used on a [redux-form](#reduxform).
  */
@@ -39,13 +41,6 @@ namespace TypeaheadFormInput {
 
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<TypeaheadFormInput>;
-
         /** redux-form props */
 
         /** @ignore */
@@ -71,18 +66,11 @@ namespace TypeaheadFormInput {
     }
 }
 
-class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, TypeaheadFormInput.State> {
+function TypeaheadFormInput( props: TypeaheadFormInput.Props ) {
 
-    constructor( props: TypeaheadFormInput.Props ) {
-        super( props )
-        this.state = {
+    const { name, label, help, containerClass, collection, remote, collapseErrorSpace, display, datumTokenizer, placeholder, format, normalize, parse, validate, warn } = props
 
-        }
-    }
-
-    private renderInput = ( field: WrappedFieldProps ) => {
-
-        const { name, label, help, containerClass, collection, remote, collapseErrorSpace, display, datumTokenizer, placeholder } = this.props
+    const renderInput = ( field: WrappedFieldProps ) => {
 
         const { input, meta } = field
 
@@ -109,26 +97,21 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
         )
     }
 
-    render() {
 
-        const { name, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
-            name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
-
-        return name ? (
-
-            <Field {...baseFieldProps} component={this.renderInput} />
-
-        ) : null
-
+    let baseFieldProps: BaseFieldProps = {
+        name,
+        format,
+        normalize,
+        parse,
+        validate,
+        warn
     }
+
+    return isNotEmpty( name ) ? (
+
+        <Field {...baseFieldProps} component={renderInput} />
+
+    ) : null
 
 }
 
