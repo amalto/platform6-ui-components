@@ -47,7 +47,7 @@
         "webpack": "^4.29.5"
     },
     "dependencies": {
-        "@amalto/helpers": "2.0.0",
+        "@amalto/helpers": "^1.5.8",
         "@amalto/wordings": "1.5.5",
         "base-64": "0.1.0",
         "enzyme-adapter-react-16": "^1.9.1",

@@ -1,12 +1,6 @@
 // Modules
 import * as React from 'react'
 
-// Models
-import { Entry } from './models/Entry'
-
-// Components
-import Link from './components/Link'
-
 /**
  * Small button with an icon instead of text.
  */
@@ -17,8 +11,8 @@ module Menu {
         /** Title */
         title: string;
 
-        /** Entries */
-        entries: Entry[];
+        /** Links */
+        children: React.ReactElement<any>[];
 
         hideLabel?: boolean;
 
@@ -44,12 +38,7 @@ module Menu {
 }
 
 function Menu( props: Menu.Props ) {
-    const { title, entries, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor } = props
-
-    const activeStyle = {
-        color: subColor,
-        backgroundColor: mainColor
-    }
+    const { title, children, hideLabel, mainColor, textColor, subColor, hoverTextColor } = props
 
     const styles = {
         'menu-link': {
@@ -79,16 +68,9 @@ function Menu( props: Menu.Props ) {
             }
             <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
                 {
-                    entries.map( e => {
-                        return (
-                            <Link key={`link_${ e.label }`}
-                                entry={e}
-                                linkStyle={styles['menu-link']}
-                                hideLabel={hideLabel}
-                                selectEntry={selectEntry}
-                                activeStyle={selectedEntry === e.label ? activeStyle : null} />
-                        )
-                    } )
+                    children.map( ( child, idx ) => (
+                        <li className='menu-line' style={{ ...this.props.itemStyle, ...styles['menu-link'] }} key={idx}>{child}</li>
+                    ) )
                 }
             </ul>
         </div>
