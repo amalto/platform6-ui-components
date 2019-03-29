@@ -2,7 +2,7 @@
     "name": "@amalto/action-button",
     "displayName": "ActionButton",
     "description": "Customizable action button.",
-    "version": "1.6.3",
+    "version": "2.0.0",
     "license": "MIT",
     "repository": {
         "type": "git",

@@ -2,7 +2,7 @@
     "name": "@amalto/multi-select-input",
     "displayName": "MultiSelectInput",
     "description": "Multi select input used on platform6.",
-    "version": "1.0.11",
+    "version": "2.0.0",
     "license": "MIT",
     "repository": {
         "type": "git",

@@ -2,7 +2,7 @@
     "name": "@amalto/date-input",
     "displayName": "DateInput",
     "description": "Date input used on platform6.",
-    "version": "1.6.3",
+    "version": "2.0.0",
     "license": "MIT",
     "repository": {
         "type": "git",
