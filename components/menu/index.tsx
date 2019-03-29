@@ -69,7 +69,7 @@ class Menu extends React.Component<Menu.Props, any> {
     }
 
     render() {
-        const { title, entries, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
+        const { title, children, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
 
         const activeStyle = {
             color: subColor,
@@ -105,8 +105,8 @@ class Menu extends React.Component<Menu.Props, any> {
                 }
                 <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
                     {
-                        entries.map( ( link, idx ) => (
-                            <li className='menu-line' style={{ ...this.props.itemStyle, ...styles['menu-link'] }} key={idx}>{link}</li>
+                        ( children as React.ReactElement<any>[] ).map( ( child, idx ) => (
+                            <li className='menu-line' style={{ ...this.props.itemStyle, ...styles['menu-link'] }} key={idx}>{child}</li>
                         ) )
                     }
                 </ul>
