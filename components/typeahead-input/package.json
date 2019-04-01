@@ -2,7 +2,7 @@
     "name": "@amalto/typeahead-input",
     "displayName": "TypeaheadInput",
     "description": "Typeahead input combine a simple input and a select dropdown which allow you to select a value from the keyboard depending on your inputs.",
-    "version": "1.5.9",
+    "version": "1.6.0",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.5.9",
+        "@amalto/help": "^1.6.0",
         "classnames": "^2.2.6",
         "jquery": "3.3.1",
         "react": "15.6.2",
