@@ -1,9 +1,5 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
-
-// Models
-import { Entry } from './models/Entry'
 
 /**
  * Small button with an icon instead of text.
@@ -69,17 +65,18 @@ class Menu extends React.Component<Menu.Props, any> {
     }
 
     render() {
-        const { title, children, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
-
-        const activeStyle = {
-            color: subColor,
-            backgroundColor: mainColor
-        }
+        const { title, children, hideLabel, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
 
         const styles = {
             'menu-link': {
                 color: textColor,
-                textAlign: hideLabel ? 'cetner' : undefined,
+                textAlign: hideLabel ? 'center' : undefined,
+                marginTop: 2,
+                listStyle: 'none',
+                padding: 0,
+                overflow: 'hidden' as any,
+                whiteSpace: 'nowrap',
+                borderRadius: 4,
 
                 ':hover': {
                     color: hoverTextColor,
