@@ -12,9 +12,6 @@ module Menu {
         /** Title */
         title: string;
 
-        /** Entries */
-        entries: JSX.Element[];
-
         itemStyle: React.CSSProperties;
 
         hideLabel?: boolean;

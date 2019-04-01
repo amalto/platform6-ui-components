@@ -14,10 +14,6 @@ const selectEntry = ( event, entry ) => {
     setState( { selectedEntry: entry } );
 };
 
-const entries = [
-
-];
-
 <div>
     <span className='btn btn-trans btn-default' onClick={e => setState( { reduceMenu: !state.reduceMenu } )}>
         <i className='fas fa-bars' />
