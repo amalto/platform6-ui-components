@@ -35,9 +35,7 @@ const selectEntry = ( event, entry ) => {
             hoverTextColor='#000'
             title='Menu'
             hideLabel={state.reduceMenu}
-            selectedEntry={state.selectedEntry}
-            selectEntry={selectEntry}
-            itemStyle={{}}>
+            lineStyle={{}}>
             <a className={classNames( 'menu-link', {
                     'selected': state.selectedEntry === 0,
                     'text-center': state.reduceMenu

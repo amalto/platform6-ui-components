@@ -1,5 +1,8 @@
 // Modules
 import * as React from 'react'
+import * as classNames from 'classnames'
+
+import { isNotEmpty } from '@amalto/helpers'
 
 /**
  * Small button with an icon instead of text.
@@ -12,15 +15,14 @@ module Menu {
         /** Title */
         title: string;
 
-        itemStyle: React.CSSProperties;
+        /** Custom style on li balise */
+        lineStyle: React.CSSProperties;
 
+        /** Custom class on li balise */
+        lineClass?: string;
+
+        /** Hide menu label title */
         hideLabel?: boolean;
-
-        /** current menu entry selected */
-        selectedEntry: string;
-
-        /** Select entry */
-        selectEntry: ( entry: number ) => void;
 
         /** Main color */
         mainColor: string;
@@ -62,24 +64,22 @@ class Menu extends React.Component<Menu.Props, any> {
     }
 
     render() {
-        const { title, children, hideLabel, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
+        const { title, children, lineStyle, lineClass, hideLabel, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
 
-        const styles = {
-            'menu-link': {
-                color: textColor,
-                textAlign: hideLabel ? 'center' : undefined,
-                marginTop: 2,
-                listStyle: 'none',
-                padding: 0,
-                overflow: 'hidden' as any,
-                whiteSpace: 'nowrap',
-                borderRadius: 4,
+        const activeStyle = {
+            color: subColor,
+            backgroundColor: mainColor
+        }
 
-                ':hover': {
-                    color: hoverTextColor,
-                    backgroundColor: subColor
-                }
-            }
+        const defaultLineStyle: React.CSSProperties = {
+            color: textColor,
+            textAlign: hideLabel ? 'center' : undefined,
+            marginTop: 2,
+            listStyle: 'none',
+            padding: 0,
+            overflow: 'hidden' as any,
+            whiteSpace: 'nowrap',
+            borderRadius: 4
         }
 
         return (
@@ -100,7 +100,11 @@ class Menu extends React.Component<Menu.Props, any> {
                 <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
                     {
                         ( children as React.ReactElement<any>[] ).map( ( child, idx ) => (
-                            <li className='menu-line' style={{ ...this.props.itemStyle, ...styles['menu-link'] }} key={idx}>{child}</li>
+                            <li className={classNames( { [lineClass]: isNotEmpty( lineClass ) } )}
+                                style={{ ...lineStyle, ...defaultLineStyle }}
+                                key={idx}>
+                                {child}
+                            </li>
                         ) )
                     }
                 </ul>
