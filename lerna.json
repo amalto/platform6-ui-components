@@ -6,6 +6,11 @@
     "command": {
         "init": {
             "exact": true
+        },
+        "bootstrap": {
+            "npmClientArgs": [
+                "--no-package-lock"
+            ]
         }
     },
     "private": false,
