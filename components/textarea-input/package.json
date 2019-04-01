@@ -2,7 +2,7 @@
     "name": "@amalto/textarea-input",
     "displayName": "TextareaInput",
     "description": "Textarea input used on platform6.",
-    "version": "1.5.8",
+    "version": "1.5.9",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.5.8",
+        "@amalto/help": "1.5.9",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",
