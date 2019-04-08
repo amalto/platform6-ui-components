@@ -55,7 +55,6 @@ class HeaderBar extends React.Component<HeaderBar.Props, any> {
             <header className={mainCss} style={{
                 height,
                 backgroundColor,
-                overflow: 'auto',
                 position: 'fixed',
                 zIndex: 200,
                 ...mainStyle,
