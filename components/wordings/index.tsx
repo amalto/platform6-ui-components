@@ -3155,6 +3155,27 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-fr': 'Supprimer l\'instance'
     },
 
+    integrations: {
+        'en-US': 'Integrations',
+        'fr-FR': 'Intégrations'
+    },
+    integrationsSettings: {
+        'en-US': 'App integration settings',
+        'fr-FR': 'Paramètres d\n'
+    },
+    appSecret: {
+        'en-US': 'App secret',
+        'fr-FR': 'Scecret de l\'application '
+    },
+    redirectUriPath: {
+        'en-US': 'Redirect URI',
+        'fr-FR': 'Redirection URI'
+    },
+    refreshValidUntilRevoked: {
+        'en-US': 'Refresh token(s) valid until revoked',
+        'fr-FR': 'Rafraîchir les token(s) valid jusqu\'à la révocation'
+    },
+
     editInstance: {
         'en-US': 'Edit instance',
         'fr-fr': 'Éditer l\'instance'
