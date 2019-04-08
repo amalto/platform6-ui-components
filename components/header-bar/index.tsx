@@ -32,10 +32,10 @@ module HeaderBar {
         /** Burger click action */
         burgerAction: () => void;
 
+        children?: JSX.Element[];
+
         /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
         /** @ignore */
         key?: React.ReactText;
         /** @ignore */
@@ -62,6 +62,7 @@ class HeaderBar extends React.Component<HeaderBar.Props, any> {
             }}>
                 <Brand backgroundColor={backgroundColor} imgSrc={imgSrc} url={url} />
                 <Burger burgerAction={burgerAction} />
+                {this.props.children}
             </header>
         )
     }
