@@ -99,7 +99,7 @@ class Menu extends React.Component<Menu.Props, any> {
                 }
                 <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
                     {
-                        ( children as React.ReactElement<any>[] ).map( ( child, idx ) => (
+                        ( children as JSX.Element[] ).map( ( child, idx ) => (
                             <li className={classNames( { [lineClass]: isNotEmpty( lineClass ) } )}
                                 style={{ ...lineStyle, ...defaultLineStyle }}
                                 key={idx}>
