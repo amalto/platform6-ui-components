@@ -1,7 +1,7 @@
 ### Usage
 
 ```typescript
-import HeaderBar from '@amalto/header'
+import HeaderBar from '@amalto/header-bar'
 ```
 
 ```javascript
