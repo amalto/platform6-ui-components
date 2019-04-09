@@ -14,8 +14,20 @@ module HeaderBar {
         /** HeaderBar css */
         mainCss?: string;
 
+        /** Image container css */
+        imageContainerCss?: string;
+
+        /** Image css */
+        imageCss?: string;
+
         /** HeaderBar style */
         mainStyle?: React.CSSProperties;
+
+        /** Image container style */
+        imageContainerStyle?: React.CSSProperties;
+
+        /** Image style */
+        imageStyle?: React.CSSProperties;
 
         /** Background color */
         backgroundColor: string;
@@ -50,7 +62,7 @@ class HeaderBar extends React.Component<HeaderBar.Props, any> {
     }
 
     render() {
-        const { mainCss, mainStyle, backgroundColor, height, imgSrc, url, burgerAction } = this.props
+        const { mainCss, imageContainerCss, imageContainerStyle, imageCss, mainStyle, imageStyle, backgroundColor, height, imgSrc, url, burgerAction } = this.props
 
         return (
             <header className={mainCss} style={{
@@ -60,7 +72,7 @@ class HeaderBar extends React.Component<HeaderBar.Props, any> {
                 zIndex: 200,
                 ...mainStyle,
             }}>
-                <Brand backgroundColor={backgroundColor} imgSrc={imgSrc} url={url} />
+                <Brand backgroundColor={backgroundColor} imageContainerCss={imageContainerCss} imageCss={imageCss} imageStyle={imageStyle} imageContainerStyle={imageContainerStyle} imgSrc={imgSrc} url={url} />
                 <Burger burgerAction={burgerAction} />
                 {this.props.children}
             </header>

@@ -8,11 +8,17 @@ module Brand {
 
     export interface Props extends React.Props<Brand> {
 
+        /** Image container css */
+        imageContainerCss?: string;
+
         /** Brand css */
-        mainCss?: string;
+        imageCss?: string;
+
+        /** Image container style */
+        imageContainerStyle?: React.CSSProperties;
 
         /** Brand style */
-        mainStyle?: React.CSSProperties;
+        imageStyle?: React.CSSProperties;
 
         /** Background color */
         backgroundColor: string;
@@ -35,12 +41,11 @@ class Brand extends React.Component<Brand.Props, any> {
     }
 
     render() {
-        const { mainCss, mainStyle, backgroundColor, imgSrc, url } = this.props
+        const { imageCss, imageStyle, imageContainerCss, imageContainerStyle, backgroundColor, imgSrc, url } = this.props
 
         return (
-            <header className={mainCss}
+            <header className={imageContainerCss}
                 style={{
-                    ...mainStyle,
                     height: '100%',
                     maxWidth: 240,
                     backgroundColor,
@@ -48,11 +53,11 @@ class Brand extends React.Component<Brand.Props, any> {
                     padding: '0px 10px',
                     position: 'relative',
                     display: 'table',
-                    textAlign: 'center'
-
+                    textAlign: 'center',
+                    ...imageContainerStyle
                 }}>
-                <a href={url} style={{ display: 'table-cell', verticalAlign: 'middle' }}>
-                    <img src={imgSrc} />
+                <a href={url} className={imageCss} style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                    <img src={imgSrc} className={imageCss} style={imageStyle} />
                 </a>
             </header>
         )
