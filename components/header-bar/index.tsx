@@ -32,6 +32,7 @@ module HeaderBar {
         /** Burger click action */
         burgerAction: () => void;
 
+        /** Header content */
         children?: JSX.Element;
 
         /** Hide props from documentation */
