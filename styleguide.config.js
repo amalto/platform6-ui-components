@@ -116,6 +116,8 @@ module.exports = {
 
     skipComponentsWithoutExample: true,
 
+    pagePerSection: process.env.NODE_ENV !== 'production',
+
     sections: [{
         name: 'Introduction',
         content: 'readme/Introduction.md'
