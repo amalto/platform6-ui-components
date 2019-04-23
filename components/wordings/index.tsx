@@ -1249,13 +1249,54 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     instanceChangeDisabled: {
-        'en-US': 'Instance change isn\'t possible when you are editing users or permission sets',
-        'fr-FR': 'Changer d\'instance est impossible pendant l\'édition d\'utilisateurs ou de groupes de permissions.'
+        'en-US': 'Instance change isn\'t possible when you are editing users, permission sets or integrations',
+        'fr-FR': 'Changer d\'instance est impossible pendant l\'édition d\'utilisateurs, de groupes de permissions ou d\íntégrations.'
     },
 
     quitEdit: {
         'en-US': 'Quit edit',
         'fr-FR': 'Annuler édition'
+    },
+
+    integrations: {
+        'en-US': 'Integrations',
+        'fr-FR': 'Intégrations'
+    },
+    integrationsSettings: {
+        'en-US': 'App integration settings',
+        'fr-FR': 'Paramètres d\intégration'
+    },
+    appSecret: {
+        'en-US': 'App secret',
+        'fr-FR': 'Scecret de l\'application '
+    },
+    redirectUriPath: {
+        'en-US': 'Redirect URI',
+        'fr-FR': 'Redirection URI'
+    },
+    refreshValidUntilRevoked: {
+        'en-US': 'Refresh token(s) valid until revoked',
+        'fr-FR': 'Rafraîchir les token(s) valid jusqu\'à la révocation'
+    },
+    policyList: {
+        'en-US': 'Policy list',
+        'fr-FR': 'Liste des permissions'
+    },
+    addPolicy: {
+        'en-US': 'Add policy',
+        'fr-FR': 'Ajouter une permission'
+    },
+    noPolicy: {
+        'en-US': 'No policy available',
+        'fr-FR': 'Aucune permission disponible'
+    },
+    permissionSetId: {
+        'en-US': 'Permission set ID',
+        'fr-FR': 'ID de la permission'
+    },
+    instanceName: {
+        'en-US': 'Instance name',
+        'fr-FR': 'Nom de l\'instance'
     },
 
     reloadInstancesList: {
