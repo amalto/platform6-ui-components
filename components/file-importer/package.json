@@ -2,7 +2,7 @@
     "name": "@amalto/file-importer",
     "displayName": "FileImporter",
     "description": "Modal used to import a file.",
-    "version": "1.6.6",
+    "version": "1.6.7",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.5.8",
+        "@amalto/helpers": "1.5.9",
         "@amalto/spinner": "1.5.5",
         "@amalto/switch": "1.5.5",
-        "@amalto/wordings": "1.5.8",
+        "@amalto/wordings": "1.5.9",
         "classnames": "^2.2.6",
         "jquery": "3.3.1",
         "react": "15.6.2",
