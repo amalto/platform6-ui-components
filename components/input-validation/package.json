@@ -2,7 +2,7 @@
     "name": "@amalto/input-validation",
     "displayName": "InputValidation",
     "description": "Common input's validation methods.",
-    "version": "1.5.10",
+    "version": "1.5.11",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,8 +25,8 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.5.10",
-        "@amalto/wordings": "1.5.10",
+        "@amalto/helpers": "1.5.11",
+        "@amalto/wordings": "1.5.11",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"
