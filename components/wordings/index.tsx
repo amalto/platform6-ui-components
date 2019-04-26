@@ -478,6 +478,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Réduire'
     },
 
+    appId: {
+        'en-US': 'Application ID',
+        'fr-FR': 'ID d\'application'
+    },
+
     appKey: {
         'en-US': 'Application key',
         'fr-FR': 'Clé d\'application'
