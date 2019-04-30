@@ -1910,6 +1910,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Valider'
     },
 
+    update: {
+        'en-US': 'Update',
+        'fr-FR': 'Valider'
+    },
+
     treeUpdate: {
         'en-US': 'Update',
         'fr-FR': 'Valider'
