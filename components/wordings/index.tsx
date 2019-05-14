@@ -1243,6 +1243,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Date de dernière synchronisation'
     },
 
+    noLastSyncDate: {
+        'en-US': 'No synchronized yet',
+        'fr-FR': 'Aucune synchronisation'
+    },
+
     homeConfigurationInvalidName: {
         'en-US': 'Invalid value. Authorized characters : a-z A-Z 0-9 _ : - .',
         'fr-FR': 'Valeur invalide. Caractères autorisés : a-z A-Z 0-9 _ : - .'
