@@ -1276,6 +1276,10 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'en-US': 'App integration settings',
         'fr-FR': 'Paramètres d\intégration'
     },
+    userDeleteIntegration: {
+        'en-US': 'Are you sure you want to delete this integration?',
+        'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cet intégration ?'
+    },
     appSecret: {
         'en-US': 'App secret',
         'fr-FR': 'Scecret de l\'application '
