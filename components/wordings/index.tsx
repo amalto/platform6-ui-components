@@ -3253,5 +3253,9 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     itemType: {
         'en-US': 'Item Type',
         'fr-fr': 'Type d\'élément'
+    },
+    copiedToClipboard: {
+        'en-US': 'Content has been copied to clipboard.',
+        'fr-FR': 'Le contenu a été copié dans le presse-papier.'
     }
 }
