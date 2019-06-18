@@ -1138,6 +1138,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Imprimer la transaction'
     },
 
+    setDefaultView: {
+        'en-US': 'Set view by default',
+        'fr-FR': 'Définir la vue par défaut'
+    },
+
     createdTransactionsIds: {
         'en-US': 'Created transaction(s) ID(s):',
         'fr-FR': 'ID(s) de la/des transaction(s) créé(s) :'
