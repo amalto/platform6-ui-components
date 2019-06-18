@@ -2,7 +2,7 @@
     "name": "@amalto/tree",
     "displayName": "Tree",
     "description": "A tree component to display data like an organisation tree.",
-    "version": "1.5.15",
+    "version": "1.5.16",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -51,9 +51,9 @@
         "webpack": "^4.29.5"
     },
     "dependencies": {
-        "@amalto/helpers": "1.5.15",
-        "@amalto/key-value-editor": "1.5.15",
-        "@amalto/wordings": "1.5.15",
+        "@amalto/helpers": "1.5.16",
+        "@amalto/key-value-editor": "1.5.16",
+        "@amalto/wordings": "1.5.16",
         "jstree": "3.3.5",
         "react": "15.6.2",
         "react-dom": "15.6.2"
