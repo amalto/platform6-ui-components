@@ -573,3 +573,7 @@ export function getItemsByIdx<T>( collection: Array<T>, indexes: number[] ): Arr
 export function escapeRegExp( text: string ): string {
     return text.replace( /[-[\]{}()*+?.,\\^$|#]/g, '\\$&' );
 }
+
+export function displayString( value: string, defaultValue?: string ): string {
+    return isNotEmpty( value ) ? value : isNotEmpty( defaultValue ) ? defaultValue : '-'
+}
