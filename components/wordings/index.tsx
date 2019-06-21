@@ -1188,6 +1188,21 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Êtes-vous sûr(e) de vouloir terminer cette session de création de message ?'
     },
 
+    confirmTransactionDefaultView: {
+        'en-US': `
+            <div>
+                <span>Do you want to save your modification?</span><br/>
+                <em class="text-medium">Your default view will be saved in your user profile.</em>
+            </div>
+        `,
+        'fr-FR': `
+            <div>
+                <span>Voulez-vous sauvegarder votre modification ?</span><br/>
+                <em class="text-medium">Votre vue par défaut sera enregistrée dans votre profil utilisateur.</em>
+            </div>
+        `
+    },
+
     editMessage: {
         'en-US': 'Edit message',
         'fr-FR': 'Éditer le message'
