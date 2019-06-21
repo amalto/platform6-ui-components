@@ -38,6 +38,10 @@ module UserModel {
         messagesAutoRefresh?: number;
         transactionsAutoRefresh?: number;
 
+        transactions?: {
+            [appInstanceName: string]: string;
+        };
+
         displayTemplates?: {
             [appInstanceName: string]: {
                 [viewName: string]: DisplayTemplate;

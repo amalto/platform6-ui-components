@@ -48,6 +48,11 @@ module UserModel {
         /** Delay of messages list auto-refresh (in seconds). */
         messagesAutoRefresh?: number;
 
+        /** Default transactions view per instance. */
+        transactions?: {
+            [appInstanceName: string]: string;
+        };
+
         /**
          * Template of form and view content.
          * e.g: Search form from message instance.
