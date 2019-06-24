@@ -2,7 +2,7 @@
     "name": "@amalto/signature",
     "displayName": "Signature",
     "description": "Electronical signature component.",
-    "version": "1.1.19",
+    "version": "1.1.20",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/buttons-bar": "1.7.17",
-        "@amalto/helpers": "1.5.19",
-        "@amalto/service-helpers": "1.1.19",
-        "@amalto/wordings": "1.5.17",
+        "@amalto/buttons-bar": "1.7.18",
+        "@amalto/helpers": "1.5.20",
+        "@amalto/service-helpers": "1.1.20",
+        "@amalto/wordings": "1.5.18",
         "classnames": "^2.2.6",
         "radium": "^0.25.1",
         "react": "15.6.2",
