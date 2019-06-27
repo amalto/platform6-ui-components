@@ -50,6 +50,7 @@
         "webpack": "^4.29.5"
     },
     "dependencies": {
+        "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
