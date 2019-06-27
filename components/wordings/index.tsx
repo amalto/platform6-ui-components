@@ -1139,8 +1139,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     setDefaultView: {
-        'en-US': 'Set default view\'s transaction',
-        'fr-FR': 'Définir par défaut la vue de la transaction'
+        'en-US': 'Set as default view',
+        'fr-FR': 'Définir comme vue par défaut'
     },
 
     createdTransactionsIds: {
