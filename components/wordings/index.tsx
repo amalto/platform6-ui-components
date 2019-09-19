@@ -478,6 +478,16 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
         'fr-FR': 'Réduire'
     },
 
+    oauthClientId: {
+        'en-US': 'OAuth client ID',
+        'fr-FR': 'ID OAuth'
+    },
+
+    oauthClientSecret: {
+        'en-US': 'OAuth secret ID',
+        'fr-FR': 'ID secret OAuth'
+    },
+
     appId: {
         'en-US': 'Application ID',
         'fr-FR': 'ID d\'application'
