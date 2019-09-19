@@ -111,7 +111,7 @@
         "@amalto/pdf-viewer": "^1.5.21",
         "@amalto/platform6-ui": "2.5.3",
         "@amalto/radio-input": "^1.6.1",
-        "@amalto/readonly-input": "^1.4.18",
+        "@amalto/readonly-input": "^1.6.1",
         "@amalto/restricted": "^1.6.21",
         "@amalto/scope-helpers": "^1.7.1",
         "@amalto/select-input": "^1.6.1",
