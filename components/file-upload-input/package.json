@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.5.5",
+        "@amalto/help": "1.6.1",
         "@amalto/helpers": "1.5.21",
-        "@amalto/typings": "1.1.6",
-        "@amalto/wordings": "1.5.19",
+        "@amalto/typings": "1.2.3",
+        "@amalto/wordings": "1.5.22",
         "classnames": "^2.2.6",
         "jquery": "3.3.1",
         "react": "15.6.2",

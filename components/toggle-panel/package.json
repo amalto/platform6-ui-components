@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/spinner": "1.5.5",
+        "@amalto/spinner": "1.6.1",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"

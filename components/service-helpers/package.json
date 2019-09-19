@@ -25,12 +25,12 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/action-button": "1.6.4",
+        "@amalto/action-button": "1.7.2",
         "@amalto/buttons-bar": "1.7.19",
-        "@amalto/data-line": "1.6.4",
+        "@amalto/data-line": "1.7.1",
         "@amalto/helpers": "1.5.21",
-        "@amalto/typings": "1.1.6",
-        "@amalto/wordings": "1.5.19",
+        "@amalto/typings": "1.2.3",
+        "@amalto/wordings": "1.5.22",
         "classnames": "^2.2.6",
         "react": "15.6.2"
     },

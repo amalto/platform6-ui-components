@@ -51,7 +51,7 @@
     },
     "dependencies": {
         "@amalto/helpers": "1.5.21",
-        "@amalto/wordings": "1.5.19",
+        "@amalto/wordings": "1.5.22",
         "classnames": "^2.2.6",
         "react": "15.6.2"
     },

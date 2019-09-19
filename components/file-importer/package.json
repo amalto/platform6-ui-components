@@ -26,9 +26,9 @@
     },
     "dependencies": {
         "@amalto/helpers": "1.5.21",
-        "@amalto/spinner": "1.5.5",
-        "@amalto/switch": "1.5.5",
-        "@amalto/wordings": "1.5.19",
+        "@amalto/spinner": "1.6.1",
+        "@amalto/switch": "1.6.1",
+        "@amalto/wordings": "1.5.22",
         "classnames": "^2.2.6",
         "jquery": "3.3.1",
         "react": "15.6.2",
