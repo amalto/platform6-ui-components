@@ -2,7 +2,7 @@
     "name": "@amalto/toggle-panel",
     "displayName": "TogglePanel",
     "description": "Panel body which contain a header and a body.",
-    "version": "1.5.6",
+    "version": "1.6.0",
     "license": "MIT",
     "repository": {
         "type": "git",
