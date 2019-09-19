@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/helpers": "^1.9.0",
-        "@amalto/wordings": "1.5.22",
+        "@amalto/wordings": "^1.9.0",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"

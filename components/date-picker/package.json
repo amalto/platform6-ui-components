@@ -2,7 +2,7 @@
     "name": "@amalto/date-picker",
     "displayName": "DatePicker",
     "description": "DatePicker components.",
-    "version": "1.6.3",
+    "version": "1.9.0",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.5.5",
+        "@amalto/help": "^1.9.0",
         "classnames": "^2.2.6",
         "moment": "2.20.1",
         "pikaday": "1.7.0",

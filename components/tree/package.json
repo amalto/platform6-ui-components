@@ -53,7 +53,7 @@
     "dependencies": {
         "@amalto/helpers": "^1.9.0",
         "@amalto/key-value-editor": "^1.9.0",
-        "@amalto/wordings": "1.5.22",
+        "@amalto/wordings": "^1.9.0",
         "jstree": "3.3.5",
         "react": "15.6.2",
         "react-dom": "15.6.2"

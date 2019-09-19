@@ -51,7 +51,7 @@
         "webpack": "^4.29.5"
     },
     "dependencies": {
-        "@amalto/typings": "1.2.3",
+        "@amalto/typings": "^1.9.0",
         "brace": "0.11.0",
         "react": "15.6.2",
         "react-dom": "15.6.2"
