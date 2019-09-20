@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
+        "noEmit": true,
         "noImplicitAny": false,
         "noUnusedParameters": true,
         "noUnusedLocals": false,
