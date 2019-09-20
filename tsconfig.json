@@ -2,7 +2,6 @@
     "compilerOptions": {
         "target": "es2015",
         "module": "commonjs",
-        "noEmit": true,
         "noImplicitAny": false,
         "noUnusedLocals": false,
         "noUnusedParameters": true,
