@@ -2,7 +2,7 @@
     "name": "@amalto/code-editor-input",
     "displayName": "CodeEditorInput",
     "description": "Editor used in form.",
-    "version": "1.9.2",
+    "version": "1.9.3",
     "license": "MIT",
     "repository": {
         "type": "git",
