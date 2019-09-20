@@ -26,8 +26,8 @@
     },
     "dependencies": {
         "@amalto/platform6-ui": "2.5.3",
-        "@amalto/scope-helpers": "1.7.1",
-        "@amalto/service-helpers": "1.1.21",
+        "@amalto/scope-helpers": "1.9.1",
+        "@amalto/service-helpers": "1.9.1",
         "@amalto/typings": "1.9.1",
         "react": "15.6.2",
         "react-dom": "15.6.2"

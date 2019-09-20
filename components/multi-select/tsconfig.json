@@ -4,7 +4,7 @@
         "module": "commonjs",
         "noImplicitAny": false,
         "noUnusedParameters": true,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
         "removeComments": true,
         "outDir": "./build",
         "jsx": "react",
