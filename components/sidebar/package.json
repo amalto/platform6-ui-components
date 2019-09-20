@@ -2,7 +2,7 @@
     "name": "@amalto/sidebar",
     "displayName": "Sidebar",
     "description": "Customizable sidebar.",
-    "version": "1.9.1",
+    "version": "1.9.2",
     "license": "MIT",
     "repository": {
         "type": "git",
