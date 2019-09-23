@@ -19,12 +19,12 @@ import { OrgModel, TreeNodeModel } from './models/Organisation'
 import { AVAILABLE_LANGUAGES } from './constants/Config'
 import { flagsDef } from './constants/Data'
 
-export const EMAIL_REGEX = /\^\S+@\S+\.\S+$/
+export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 export const COLOR_CODE_REGEX = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
 export const SCOPE_KEYWORD_REGEX = /^[a-zA-Z0-9-_~@$£|€¥§&]+$/
 export const MAP_PROPERTY_KEY_REGEX = /^[a-zA-Z0-9-_]+$/
-export const XML_TAG_REGEX = /\^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
-export const HTTPS_URL_REGEX = /\https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
+export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
+export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
 
 export function getWordings( wordings: { [key: string]: any }, locale: string ): CompiledWordings {
     const combinedWordings: Wordings = deepCopy( MULTILANGUAGE_WORDINGS, wordings )
