@@ -982,7 +982,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
                 <ul className='basic-list top-margin'>
                     {instanceList}
                 </ul>
-                <p>Cette action va le désassocier des instances mentionnés ci-dessus et effacer toute ses informations.</p>
+                <p>Cette action va le désassocier des instances mentionnées ci-dessus et effacer toute ses informations.</p>
                 <p>Ceci est <strong>IRRÉVERSIBLE</strong>, êtes-vous sûr(e) de vouloir continuer ?</p>
             </div>
         `
