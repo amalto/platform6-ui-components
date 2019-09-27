@@ -964,8 +964,28 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     userDeleteConfirm: {
-        'en-US': 'Are you sure you want to delete this user?',
-        'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?'
+        'en-US': `
+            <div>
+                <p>You are about to delete this user: <strong>{userEmail}</strong></p>
+                <p>This user is currently associated with the following instances:</p>
+                <ul className='basic-list top-margin'>
+                    {instanceList}
+                </ul>
+                <p>This action will dissociate this user from all the above mentioned instances and remove all user details.</p>
+                <p>It <strong>CANNOT</strong> be undone, are you sure you want to continue?</p>
+            </div>
+        `,
+        'fr-FR': `
+            <div>
+                <p>Vous êtes sur le point de supprimer cet utilisateur: <strong>{userEmail}</strong></p>
+                <p>Il est actuellement associé à ces instances:</p>
+                <ul className='basic-list top-margin'>
+                    {instanceList}
+                </ul>
+                <p>Cette action va le désassocier des instances mentionnés ci-dessus et effacer toute ses informations.</p>
+                <p>Ceci est <strong>IRRÉVERSIBLE</strong>, êtes-vous sûr(e) de vouloir continuer ?</p>
+            </div>
+        `
     },
 
     userDisassociateConfirm: {
