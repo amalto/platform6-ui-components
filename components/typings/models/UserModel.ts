@@ -80,6 +80,7 @@ interface UserModel {
     policyList?: UserModel.Policy[];
     propertiesMap?: { [key: string]: string };
     orgPositionIdMap?: { [appIntanceName: string]: string[] };
+    ssoConnectionId?: string;
 }
 
 interface UserSearch {
@@ -91,15 +92,15 @@ interface UserSearch {
     orderColumn?: 'EMAIL' | 'LAST_NAME';
 }
 
-function getUserJson( user: UserModel ): UserModel.JsonContent {
+function getUserJson(user: UserModel): UserModel.JsonContent {
     let json = {}
 
-    if ( user && user.jsonContent ) {
+    if (user && user.jsonContent) {
         try {
-            json = JSON.parse( user.jsonContent )
+            json = JSON.parse(user.jsonContent)
         }
-        catch ( error ) {
-            console.log( 'JSON content parsing error: ', error )
+        catch (error) {
+            console.log('JSON content parsing error: ', error)
         }
     }
 
