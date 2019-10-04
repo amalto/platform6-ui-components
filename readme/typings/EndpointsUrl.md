@@ -134,15 +134,15 @@ interface EndpointsUrl {
     ////////////////////////////////////////////////
 
 
-    REQUEST_MESSAGE_SUBMIT_NEW_SESSION: string,
+    REQUEST_MESSAGE_SUBMIT_NEW_SESSION?: string,
 
-    REQUEST_MESSAGE_SUBMIT_ADD_ENTITY: string,
+    REQUEST_MESSAGE_SUBMIT_ADD_ENTITY?: string,
 
-    REQUEST_MESSAGE_SUBMIT_COMPLETE_SESSION: string,
+    REQUEST_MESSAGE_SUBMIT_COMPLETE_SESSION?: string,
 
-    REQUEST_MESSAGE_SUBMIT_LIST_ENTITIES: string,
+    REQUEST_MESSAGE_SUBMIT_LIST_ENTITIES?: string,
 
-    REQUEST_MESSAGE_SUBMIT_DELETE_ENTITY: string,
+    REQUEST_MESSAGE_SUBMIT_DELETE_ENTITY?: string,
 
 
     ////////////////////////////////////////////////
