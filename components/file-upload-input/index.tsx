@@ -29,7 +29,7 @@ namespace FileInput {
         /** File size to display. */
         filesize?: number;
         /** Callback with filename and filesize after load. */
-        onFileLoaded?: (filename: string, filesize: number) => void;
+        onFileLoaded?: ( filename: string, filesize: number ) => void;
         /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering "?" icon. */
@@ -77,20 +77,20 @@ namespace FileInput {
 }
 
 class FileInput extends React.Component<FileInput.Props, FileInput.State> {
-    constructor(props: FileInput.Props) {
-        super(props)
+    constructor( props: FileInput.Props ) {
+        super( props )
         this.state = {
-            wordings: compileWordings(MULTILANGUAGE_WORDINGS, props.locale),
+            wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             loadingError: false,
-            fileContent: null,
+            fileContent: props.input && props.input.value ? props.input.value : null,
             filename: props.filename || null,
             filesize: props.filesize || null
         }
     }
 
-    componentDidUpdate(prevProps: FileInput.Props) {
-        if (prevProps.filename !== this.props.filename) this.setState({ filename: this.props.filename } as FileInput.State)
-        if (prevProps.filesize !== this.props.filesize) this.setState({ filesize: this.props.filesize } as FileInput.State)
+    componentDidUpdate( prevProps: FileInput.Props ) {
+        if ( prevProps.filename !== this.props.filename ) this.setState( { filename: this.props.filename } as FileInput.State )
+        if ( prevProps.filesize !== this.props.filesize ) this.setState( { filesize: this.props.filesize } as FileInput.State )
     }
 
     render() {
@@ -100,9 +100,9 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         const fileUploaded: boolean = !!input.value
 
         return (
-            <div className={classNames('form-group', containerClass, {
+            <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error || this.state.loadingError
-            })}>
+            } )}>
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
@@ -111,24 +111,24 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                         name={name}
                         type="file"
                         disabled={disabled}
-                        className={classNames('pos-absolute upload-input default-pointer', inputClass)}
-                        onChange={(e) => { this.setValue(e, { input, meta }) }} />
+                        className={classNames( 'pos-absolute upload-input default-pointer', inputClass )}
+                        onChange={( e ) => { this.setValue( e, { input, meta } ) }} />
                     <span className='fas fa-upload primary-color mgr-10' />
                     {
                         !!filename && !!filesize
                             ? <span className='italic'>
                                 <span>
-                                    <span className='black-color bold'>{wordings.name}:</span> {filename}</span>, <span><span className='black-color bold'>{wordings.size}:</span> {formatFileSize(filesize)}</span>
+                                    <span className='black-color bold'>{wordings.name}:</span> {filename}</span>, <span><span className='black-color bold'>{wordings.size}:</span> {formatFileSize( filesize )}</span>
                             </span>
                             : !fileUploaded ? <span className='italic'>{wordings.noFileChosen}</span> : <span className='italic'>{wordings.fileUploaded}</span>
                     }
 
                 </div>
 
-                {(meta.touched && !!meta.error) ? <p className="validation-error-message">{meta.error}</p> : (collapseErrorSpace || this.state.loadingError ? null : <p className="validation-error-message">&nbsp;</p>)}
+                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace || this.state.loadingError ? null : <p className="validation-error-message">&nbsp;</p> )}
 
                 {
-                    (input.value && displayPreview && fileContent) ?
+                    ( input.value && displayPreview && fileContent ) ?
                         <div className="hidden-xs top-spaced">
                             <em><small>{label && <span className="right-spaced">{label}</span>}{wordings.previewLowerCase}</small></em>
                             {
@@ -145,38 +145,38 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         )
     }
 
-    private setValue = (event: any, field: WrappedFieldProps<any>): void => {
-        this.setState({ loadingError: false })
+    private setValue = ( event: any, field: WrappedFieldProps<any> ): void => {
+        this.setState( { loadingError: false } )
 
         const { getAsDataUrl } = this.props
         const { input, meta } = field
         const file = event.target.files[0]
         const reader = new FileReader()
 
-        if (file) {
+        if ( file ) {
             reader.onload = () => {
-                this.setState({ fileContent: reader.result } as FileUploadInput.State)
-                if (getAsDataUrl) {
-                    input.onChange(reader.result, undefined, undefined)
+                this.setState( { fileContent: reader.result } as FileUploadInput.State )
+                if ( getAsDataUrl ) {
+                    input.onChange( reader.result, undefined, undefined )
                 }
             }
 
             reader.onerror = () => {
-                this.setState({ loadingError: true })
+                this.setState( { loadingError: true } )
             }
 
-            if (getAsDataUrl) {
-                reader.readAsDataURL(file)
+            if ( getAsDataUrl ) {
+                reader.readAsDataURL( file )
             } else {
-                reader.readAsText(file)
+                reader.readAsText( file )
             }
 
-            this.setState({ filename: file.name, filesize: file.size } as FileUploadInput.State, () => {
-                if (!getAsDataUrl) {
-                    input.onChange(file, undefined, undefined)
+            this.setState( { filename: file.name, filesize: file.size } as FileUploadInput.State, () => {
+                if ( !getAsDataUrl ) {
+                    input.onChange( file, undefined, undefined )
                 }
-                this.props.onFileLoaded && this.props.onFileLoaded(this.state.filename, this.state.filesize)
-            })
+                this.props.onFileLoaded && this.props.onFileLoaded( this.state.filename, this.state.filesize )
+            } )
         }
     }
 }
@@ -194,7 +194,7 @@ namespace FileUploadInput {
         /** File size to display. */
         filesize?: number;
         /** Callback with filename and filesize after load. */
-        onFileLoaded?: (filename: string, filesize: number) => void;
+        onFileLoaded?: ( filename: string, filesize: number ) => void;
         /** Input's label. */
         label?: string | JSX.Element;
         /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
@@ -258,8 +258,8 @@ namespace FileUploadInput {
 
 class FileUploadInput extends React.Component<FileUploadInput.Props, FileUploadInput.State> {
 
-    constructor(props: FileUploadInput.Props) {
-        super(props)
+    constructor( props: FileUploadInput.Props ) {
+        super( props )
         this.state = {}
     }
 
