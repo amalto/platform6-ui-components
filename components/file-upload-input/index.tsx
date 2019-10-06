@@ -82,7 +82,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         this.state = {
             wordings: compileWordings( MULTILANGUAGE_WORDINGS, props.locale ),
             loadingError: false,
-            fileContent: props.input && props.input.value ? props.input.value : null,
+            fileContent: props.displayPreview && props.input && props.input.value ? props.input.value : null,
             filename: props.filename || null,
             filesize: props.filesize || null
         }
