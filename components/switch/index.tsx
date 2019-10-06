@@ -42,7 +42,7 @@ class Switch extends React.Component<Switch.Props, any> {
     render() {
 
         return (
-            <div style={{ paddingTop: 2, paddingBottom: 2 }} className={this.props.cssClass}>
+            <div style={{ paddingTop: 2, paddingBottom: 2, height: 32 }} className={this.props.cssClass}>
                 <div className={classNames( 'onoffswitch', {
                     'left-align': this.props.alignLeft
                 } )}>
@@ -53,8 +53,8 @@ class Switch extends React.Component<Switch.Props, any> {
                     />
                     <label className="onoffswitch-label" htmlFor={this.props.id}>
                         <span className={classNames( 'onoffswitch-inner', {
-                        'disabled': this.props.disabled
-                    } )}></span>
+                            'disabled': this.props.disabled
+                        } )}></span>
                         <span className="onoffswitch-switch"></span>
                     </label>
                 </div>
