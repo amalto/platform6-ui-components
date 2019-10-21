@@ -14,6 +14,7 @@ module UserModel {
         appInstanceDescription?: string
         appInstanceEnabled?: boolean
         permissionSetName?: string
+        appInstanceType?: string;
         permissionSetDescription?: string
         permissionSetEnabled?: boolean
         permissions?: string[]

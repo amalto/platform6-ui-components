@@ -19,6 +19,9 @@ module UserModel {
         
         /** Permission name. */
         permissionSetName?: string
+
+        /** Instance type ( CORE | ACCOUNT | ADMIN ) */
+        appInstanceType?: string;
         
         /** Permission description. */
         permissionSetDescription?: string
