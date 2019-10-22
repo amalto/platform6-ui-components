@@ -56,6 +56,11 @@ module UserModel {
             [appInstanceName: string]: string;
         };
 
+        /** Default workflow tasks view per instance. */
+        workflowTasks?: {
+            [appInstanceName: string]: string;
+        };
+
         /**
          * Template of form and view content.
          * e.g: Search form from message instance.

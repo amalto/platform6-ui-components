@@ -39,7 +39,11 @@ module UserModel {
         messagesAutoRefresh?: number;
         transactionsAutoRefresh?: number;
 
+        // Store default view
         transactions?: {
+            [appInstanceName: string]: string;
+        };
+        workflowTasks?: {
             [appInstanceName: string]: string;
         };
 
