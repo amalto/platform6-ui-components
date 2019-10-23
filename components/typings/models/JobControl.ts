@@ -14,6 +14,7 @@ export interface RunningJob {
     description: {
         [lang: string]: string;
     };
+    result: any;
     created: number;
     lastStatusModified: number;
 }

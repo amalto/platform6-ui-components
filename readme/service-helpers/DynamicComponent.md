@@ -38,7 +38,7 @@ interface DynamicComponent {
      * @param { boolean } hasUnsavedChanges
      * @param { string } tabId
      */
-    setStatus?: ( hasUnsavedChanges: boolean, tabId?: string ) => void;
+    setStatus?: ( hasUnsavedChanges: boolean, tabId?: string g) => void;
     
     /** Component height. */
     height?: number;
@@ -55,9 +55,9 @@ interface DynamicComponent {
     /**
      * Show current job status.
      * @param { string | number } jobId
-     * @param { ( job: RunningJob ) => void } callbackOnComplete
+     * @param { ( result: any ) => void } onSuccess
      */
-    showJobStatus?: ( jobId: string | number, callbackOnComplete?: ( job: RunningJob ) => void ) => void;
+    showJobStatus?: ( jobId: string | number, onSuccess?: ( result: any ) => void ) => void;
     
     /** If any application publisher profile is accessible to user. */
     canSelectAppKey?: boolean;

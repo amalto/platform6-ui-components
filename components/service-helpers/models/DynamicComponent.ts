@@ -89,8 +89,9 @@ export interface DynamicComponent extends ReduxProps {
     /**
      * Show current job status.
      * @param { string | number } jobId
+     * @param { ( result: any ) => void } onSuccess
      */
-    showJobStatus?: ( jobId: string | number ) => void;
+    showJobStatus?: ( jobId: string | number, onSuccess?: ( result: any ) => void ) => void;
 
     /** List of complete jobs IDs */
     completeJobs?: number[];
