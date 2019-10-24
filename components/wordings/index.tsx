@@ -3262,47 +3262,47 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
     deleteInstance: {
         'en-US': 'Delete instance',
-        'fr-fr': 'Supprimer l\'instance'
+        'fr-FR': 'Supprimer l\'instance'
     },
 
     editInstance: {
         'en-US': 'Edit instance',
-        'fr-fr': 'Éditer l\'instance'
+        'fr-FR': 'Éditer l\'instance'
     },
 
     duplicateInstance: {
         'en-US': 'Create a new instance with prefilled data from this one',
-        'fr-fr': 'Créer une nouvelle instance à partir de celle-ci'
+        'fr-FR': 'Créer une nouvelle instance à partir de celle-ci'
     },
 
     createOrganization: {
         'en-US': 'Create organization',
-        'fr-fr': 'Créer une organisation'
+        'fr-FR': 'Créer une organisation'
     },
 
     baseContext: {
         'en-US': 'Base context',
-        'fr-fr': 'Contexte de base'
+        'fr-FR': 'Contexte de base'
     },
 
     infoPath: {
         'en-US': 'Info path',
-        'fr-fr': 'Chemin vers les informations'
+        'fr-FR': 'Chemin vers les informations'
     },
 
     communityPortalURL: {
         'en-US': 'Community portal URL',
-        'fr-fr': 'URL du portail de la communauté'
+        'fr-FR': 'URL du portail de la communauté'
     },
 
     organizationRootId: {
         'en-US': 'Organization (Root ID)',
-        'fr-fr': 'ID de la racine de l\'organisation'
+        'fr-FR': 'ID de la racine de l\'organisation'
     },
 
     itemType: {
         'en-US': 'Item Type',
-        'fr-fr': 'Type d\'élément'
+        'fr-FR': 'Type d\'élément'
     },
     copiedToClipboard: {
         'en-US': 'Content has been copied to clipboard.',
