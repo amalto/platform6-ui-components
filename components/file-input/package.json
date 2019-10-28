@@ -29,7 +29,7 @@
         "@amalto/typings": "1.9.9",
         "@amalto/wordings": "1.9.7",
         "classnames": "^2.2.6",
-        "jquery": "3.3.1",
+        "jquery": "3.4.1",
         "react": "15.6.2",
         "react-dom": "15.6.2",
         "react-dropzone": "4.2.5"
