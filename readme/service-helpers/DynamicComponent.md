@@ -20,6 +20,9 @@ interface DynamicComponent {
     /** Component data to be passed has props. */
     componentData?: any;
     
+    /** Portal run on http. */
+    isHttp?: boolean;
+
     /** Proxy URI used to make request on server. */
     proxyUri?: string;
 
