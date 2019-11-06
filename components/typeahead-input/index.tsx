@@ -105,7 +105,7 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, TypeaheadInpu
                             <ul className='dropdown-menu'>
                                 {
                                     collectionTypes.map( type => (
-                                        <li className={classNames({
+                                        <li key={`collection-${type}-line`} className={classNames({
                                             'active': selectedCollectionType === type
                                         })}>
                                             <a href='#'

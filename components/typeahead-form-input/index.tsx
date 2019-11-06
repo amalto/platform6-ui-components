@@ -122,9 +122,9 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
                     handleInputChange={input.onChange as any}
                     datumTokenizer={datumTokenizer}
                     placeholder={placeholder}
-                    // selectedCollectionType={selectedCollectionType}
-                    // collectionTypes={collectionTypes}
-                    // setCollectionType={setCollectionType}
+                    selectedCollectionType={selectedCollectionType}
+                    collectionTypes={collectionTypes}
+                    setCollectionType={setCollectionType}
                 />
 
                 {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
