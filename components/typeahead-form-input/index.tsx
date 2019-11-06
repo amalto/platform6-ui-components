@@ -37,8 +37,12 @@ namespace TypeaheadFormInput {
          */
         collapseErrorSpace?: boolean;
 
+        /** Current collection type. */
+        selectedCollectionType?: string;
         /** Define the collection type which will display different results on the dropdown list. */
         collectionTypes?: string[];
+        /** Update collection type. */
+        setCollectionType?: ( collectionType: string ) => void;
 
         /** Hide props from documentation */
 
@@ -85,7 +89,21 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
 
     private renderInput = ( field: WrappedFieldProps<any> ) => {
 
-        const { name, label, help, containerClass, collection, remote, collapseErrorSpace, display, datumTokenizer, placeholder } = this.props
+        const {
+            name,
+            label,
+            help,
+            containerClass,
+            collection,
+            remote,
+            collapseErrorSpace,
+            display,
+            datumTokenizer,
+            placeholder,
+            selectedCollectionType,
+            collectionTypes,
+            setCollectionType
+        } = this.props
 
         const { input, meta } = field
 
@@ -104,6 +122,9 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
                     handleInputChange={input.onChange as any}
                     datumTokenizer={datumTokenizer}
                     placeholder={placeholder}
+                    // selectedCollectionType={selectedCollectionType}
+                    // collectionTypes={collectionTypes}
+                    // setCollectionType={setCollectionType}
                 />
 
                 {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}

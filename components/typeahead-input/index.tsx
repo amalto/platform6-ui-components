@@ -46,6 +46,11 @@ module TypeaheadInput {
         ref?: React.Ref<TypeaheadInput>;
     }
 
+    export interface State {
+        typeaheadInputId: string;
+        shouldDisplayDropdown: boolean;
+    }
+
     export interface RemoteConfig {
         url: string;
         prepare?: ( query: string, settings: JQueryAjaxSettings ) => JQueryAjaxSettings;
@@ -57,25 +62,29 @@ module TypeaheadInput {
 }
 
 
-class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
+class TypeaheadInput extends React.Component<TypeaheadInput.Props, TypeaheadInput.State> {
     constructor( props: TypeaheadInput.Props ) {
         super( props )
+
+        this.state = {
+            typeaheadInputId: `#${this.props.id}_typeahead`,
+            shouldDisplayDropdown: isNotEmpty( props.selectedCollectionType ) && !!props.collectionTypes && !!props.setCollectionType
+        }
     }
 
     render() {
 
-        const { selectedCollectionType, collectionTypes, setCollectionType } = this.props
+        const { id, selectedCollectionType, collectionTypes, setCollectionType } = this.props
 
-        const shouldDisplayDropdown: boolean = isNotEmpty( selectedCollectionType ) && !!collectionTypes && !!setCollectionType
+        const { shouldDisplayDropdown } = this.state
 
         return (
-            <div id={this.props.id}>
-                <input className={classNames( 'form-control typeahead', {
-                    'btn-prefix': shouldDisplayDropdown
-                } )}
-                type='text'
+            <div id={id} className='clearfix'>
+                <input className='form-control typeahead'
+                    id={`${id}_typeahead`}
+                    type='text'
                     onBlur={this.handleInputBlur}
-                    name={this.props.id}
+                    name={id}
                     placeholder={this.props.placeholder} />
 
                     {
@@ -119,10 +128,11 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
 
     componentDidMount() {
         this.initialiazeCollection( this.props.collection )
+        this.setTypeaheadClass()
     }
 
     componentWillUnmount() {
-        $( '.typeahead' ).typeahead( 'destroy' )
+        $( this.state.typeaheadInputId ).typeahead( 'destroy' )
     }
 
     componentDidUpdate( prevProps: TypeaheadInput.Props ) {
@@ -130,7 +140,7 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
         const { display, value } = this.props
 
         if ( prevProps.value !== value ) {
-            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+            $( this.state.typeaheadInputId ).typeahead( 'val', display ? display( value ) : value )
         }
 
         if ( prevProps.collection !== this.props.collection ) {
@@ -145,12 +155,14 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
             handleInputChange( null )
         }
         else {
-            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+            $( this.state.typeaheadInputId ).typeahead( 'val', display ? display( value ) : value )
         }
     }
 
     private initialiazeCollection = ( collection ): void => {
         const { remote, id, value, handleInputChange, display, datumTokenizer } = this.props
+
+        const { typeaheadInputId } = this.state
 
         let _collection = new Bloodhound( {
             initialize: false,
@@ -162,7 +174,7 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
 
         _collection.initialize()
 
-        $( '.typeahead' ).typeahead( {
+        $( typeaheadInputId ).typeahead( {
             hint: true,
             highlight: true,
             minLength: 1
@@ -173,18 +185,29 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
                 display: display
             } )
 
-        $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+        $( typeaheadInputId ).typeahead( 'val', display ? display( value ) : value )
 
         // FIXME: When another solution is provided by typescript thant the double underscore, don't forget to make the changes
         // https://github.com/Microsoft/TypeScript/issues/9458
-        $( '.typeahead' ).bind( 'typeahead:select', ( ( __event: any, suggestion: any ) => {
+        $( typeaheadInputId ).bind( 'typeahead:select', ( ( __event: any, suggestion: any ) => {
             handleInputChange( suggestion )
         } ) as any )
+
+
+    }
+
+    private setTypeaheadClass = (): void => {
+        if ( this.state.shouldDisplayDropdown ) {
+            $( this.state.typeaheadInputId ).parent().css('width', '77%')
+            $( this.state.typeaheadInputId ).parent().css('margin-right', '3%')
+            $( this.state.typeaheadInputId ).parent().css('float', 'left')
+        }
     }
 
     private updateCollection = ( collection ): void => {
-        $( '.typeahead' ).typeahead( 'destroy' )
+        $( this.state.typeaheadInputId ).typeahead( 'destroy' )
         this.initialiazeCollection( collection )
+        this.setTypeaheadClass()
     }
 }
 
