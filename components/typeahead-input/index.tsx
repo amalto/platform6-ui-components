@@ -3,6 +3,10 @@ import * as React from 'react'
 
 import 'typeahead.js'
 
+import { isNotEmpty } from '@amalto/helpers'
+
+import * as classNames from 'classnames'
+
 /**
  * Typeahead input displaying a filtered dropdown list from your input and your collection.
  */
@@ -24,6 +28,13 @@ module TypeaheadInput {
         datumTokenizer?: ( datum: any ) => string[];
         /** Input's placeholder. */
         placeholder?: string;
+
+        /** Current collection type. */
+        selectedCollectionType?: string;
+        /** Define the collection type which will display different results on the dropdown list. */
+        collectionTypes?: string[];
+        /** Update collection type. */
+        setCollectionType?: ( collectionType: string ) => void;
 
         /** Hide props from documentation */
 
@@ -53,19 +64,93 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
 
     render() {
 
+        const { selectedCollectionType, collectionTypes, setCollectionType } = this.props
+
+        const shouldDisplayDropdown: boolean = isNotEmpty( selectedCollectionType ) && !!collectionTypes && !!setCollectionType
+
         return (
             <div id={this.props.id}>
-                <input className="form-control typeahead" type="text"
+                <input className={classNames( 'form-control typeahead', {
+                    'btn-prefix': shouldDisplayDropdown
+                } )}
+                type='text'
                     onBlur={this.handleInputBlur}
                     name={this.props.id}
                     placeholder={this.props.placeholder} />
+
+                    {
+                        shouldDisplayDropdown ? (
+                            <div className='btn btn-group btn-group-sm mgt-0 mgl-0 input-suffix'
+                                style={{paddingTop: 0}}>
+                                <button type='button' className='btn btn-info dropdown-toggle full-width'
+                                    data-toggle='dropdown'>
+                                    <span className='right-spaced'>{selectedCollectionType}</span>
+                                    <span className='caret'
+                                    style={{
+                                        right: 5,
+                                        position: 'absolute',
+                                        top: '50%'
+                                    }}></span>
+                                </button>
+
+                            <ul className='dropdown-menu'>
+                                {
+                                    collectionTypes.map( type => (
+                                        <li className={classNames({
+                                            'active': selectedCollectionType === type
+                                        })}>
+                                            <a href='#'
+                                                onClick={ e => {
+                                                    e.preventDefault()
+                                                    setCollectionType( type )
+                                                }}>
+                                                {type}
+                                            </a>
+                                        </li>
+                                    ) )
+                                }
+                            </ul>
+                            </div>
+                        ) : null
+                    }
             </div>
         )
     }
 
     componentDidMount() {
+        this.initialiazeCollection( this.props.collection )
+    }
 
-        const { collection, remote, id, value, handleInputChange, display, datumTokenizer } = this.props
+    componentWillUnmount() {
+        $( '.typeahead' ).typeahead( 'destroy' )
+    }
+
+    componentDidUpdate( prevProps: TypeaheadInput.Props ) {
+
+        const { display, value } = this.props
+
+        if ( prevProps.value !== value ) {
+            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+        }
+
+        if ( prevProps.collection !== this.props.collection ) {
+            this.updateCollection( this.props.collection )
+        }
+    }
+
+    private handleInputBlur = ( event: any ) => {
+        const { display, value, handleInputChange } = this.props
+
+        if ( !event.target.value ) {
+            handleInputChange( null )
+        }
+        else {
+            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
+        }
+    }
+
+    private initialiazeCollection = ( collection ): void => {
+        const { remote, id, value, handleInputChange, display, datumTokenizer } = this.props
 
         let _collection = new Bloodhound( {
             initialize: false,
@@ -97,30 +182,10 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, any> {
         } ) as any )
     }
 
-    componentWillUnmount() {
+    private updateCollection = ( collection ): void => {
         $( '.typeahead' ).typeahead( 'destroy' )
+        this.initialiazeCollection( collection )
     }
-
-    componentDidUpdate( prevProps: TypeaheadInput.Props ) {
-
-        const { display, value } = this.props
-
-        if ( prevProps.value !== value ) {
-            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
-        }
-    }
-
-    private handleInputBlur = ( event: any ) => {
-        const { display, value, handleInputChange } = this.props
-
-        if ( !event.target.value ) {
-            handleInputChange( null )
-        }
-        else {
-            $( '.typeahead' ).typeahead( 'val', display ? display( value ) : value )
-        }
-    }
-
 }
 
 export default TypeaheadInput

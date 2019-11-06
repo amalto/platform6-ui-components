@@ -37,6 +37,9 @@ namespace TypeaheadFormInput {
          */
         collapseErrorSpace?: boolean;
 
+        /** Define the collection type which will display different results on the dropdown list. */
+        collectionTypes?: string[];
+
         /** Hide props from documentation */
 
         /** @ignore */
