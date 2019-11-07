@@ -9,9 +9,17 @@ import TypeaheadFormInput from '@amalto/typeahead-form-input'
 ```javascript
 const { reduxForm } = require('redux-form');
 
-const collection = ['first','second','third'];
+const collection = {
+    '*': ['first','second','third'],
+    'dev': ['fourth','fifth','sixth'],
+    'master': ['seventh','eighth','nineth']
+};
+
+initialState = { value: 'first', selectedCollectionType: '*' }
+
 const display = value => value;
 const datumTokenizer = datum => [datum];
+const setCollectionType = ( type ) => { setState({ selectedCollectionType: type }) }
 
 const ExampleTypeaheadFormInput = reduxForm({
     form: 'form-typeahead-form-input-example',
@@ -19,7 +27,7 @@ const ExampleTypeaheadFormInput = reduxForm({
 })(TypeaheadFormInput);
 
 <ExampleTypeaheadFormInput name='typeahead-form-input-example'
-    collection={collection}
+    collection={collection[state.selectedCollectionType]}
     datumTokenizer={datumTokenizer}
     display={display}
     label='TypeaheadFormInput example'
@@ -27,5 +35,8 @@ const ExampleTypeaheadFormInput = reduxForm({
     help='Helper text'
     containerClass='col-lg-12 col-xs-12 padding-none'
     collapseErrorSpace={true}
+    selectedCollectionType={state.selectedCollectionType}
+    collectionTypes={['*', 'dev', 'master']}
+    setCollectionType={setCollectionType}
 />
 ```

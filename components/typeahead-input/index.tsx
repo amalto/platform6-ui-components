@@ -89,9 +89,8 @@ class TypeaheadInput extends React.Component<TypeaheadInput.Props, TypeaheadInpu
 
                     {
                         shouldDisplayDropdown ? (
-                            <div className='btn btn-group btn-group-sm mgt-0 mgl-0 input-suffix'
-                                style={{paddingTop: 0}}>
-                                <button type='button' className='btn btn-info dropdown-toggle full-width'
+                            <div className='btn btn-group btn-group-sm mgt-0 mgl-0 padding-none input-suffix'>
+                                <button type='button' className='btn btn-info dropdown-toggle full-width ellipsis'
                                     data-toggle='dropdown'>
                                     <span className='right-spaced'>{selectedCollectionType}</span>
                                     <span className='caret'
