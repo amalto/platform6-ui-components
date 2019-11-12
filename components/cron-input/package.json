@@ -30,7 +30,7 @@
         "@amalto/validated-input": "1.9.4",
         "@amalto/wordings": "1.9.7",
         "classnames": "^2.2.6",
-        "jquery": "3.3.1",
+        "jquery": "3.4.0",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
