@@ -122,7 +122,6 @@ class Dialog extends React.Component<any, Dialog.State> {
     private cancelFunction = ( event: any ): void => {
         event.stopPropagation()
 
-        console.info('cancelFunction')
         this.props.dispatch( hideDialog() )
         if ( this.props.cancelAction ) {
             this.props.dispatch( this.props.cancelAction )

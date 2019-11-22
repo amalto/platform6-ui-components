@@ -149,7 +149,7 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
 
                 {
                     handleSearch && locale ? (
-                        <div className="btn-group btn-group-sm icon-input pull-right">
+                        <div className="btn-group btn-group-sm icon-input helvetica pull-right">
                             <form onSubmit={this.handleSearch}>
                                 <input
                                     type="text"
