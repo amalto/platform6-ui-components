@@ -2,7 +2,7 @@
     "name": "@amalto/service-helpers",
     "displayName": "ServiceHelpers",
     "description": "Method to template some of the Platform 6 UI components.",
-    "version": "1.9.17",
+    "version": "1.9.18",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/action-button": "1.9.2",
-        "@amalto/buttons-bar": "1.9.15",
+        "@amalto/buttons-bar": "1.9.16",
         "@amalto/data-line": "1.9.9",
         "@amalto/helpers": "1.9.15",
         "@amalto/typings": "1.9.9",
