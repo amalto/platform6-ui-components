@@ -182,8 +182,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     state: {
-        'en-US': 'State',
-        'fr-FR': 'Région / État'
+		'en-US': 'State / Region',
+		'fr-FR': 'État / Région'
     },
 
     country: {
@@ -192,7 +192,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     zip: {
-        'en-US': 'Zip',
+        'en-US': 'Zip Code',
         'fr-FR': 'Code postal'
     },
 
