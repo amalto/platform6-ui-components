@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/help": "1.9.7",
-        "@amalto/switch": "1.9.5",
+        "@amalto/switch": "1.9.3",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",
