@@ -2,7 +2,7 @@
     "name": "@amalto/key-value-editor",
     "displayName": "KeyValueEditor",
     "description": "A form input that can build a custom key value object.",
-    "version": "1.9.17",
+    "version": "1.9.18",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -49,8 +49,8 @@
         "webpack": "^4.29.5"
     },
     "dependencies": {
-        "@amalto/helpers": "1.9.17",
-        "@amalto/wordings": "1.9.8",
+        "@amalto/helpers": "1.9.18",
+        "@amalto/wordings": "1.9.9",
         "base-64": "0.1.0",
         "react": "15.6.2",
         "react-dom": "15.6.2"

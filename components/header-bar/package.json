@@ -2,7 +2,7 @@
     "name": "@amalto/header-bar",
     "displayName": "HeaderBar",
     "description": "Customizable header.",
-    "version": "1.9.3",
+    "version": "1.9.4",
     "license": "MIT",
     "repository": {
         "type": "git",
