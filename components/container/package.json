@@ -2,7 +2,7 @@
     "name": "@amalto/container",
     "displayName": "Container",
     "description": "Customizable container.",
-    "version": "1.9.5",
+    "version": "1.9.6",
     "license": "MIT",
     "repository": {
         "type": "git",
