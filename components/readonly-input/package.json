@@ -2,7 +2,7 @@
     "name": "@amalto/readonly-input",
     "displayName": "ReadonlyInput",
     "description": "Readonly input used on platform6.",
-    "version": "1.9.7",
+    "version": "1.9.8",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.7",
+        "@amalto/help": "1.9.8",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",

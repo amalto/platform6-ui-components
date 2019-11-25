@@ -2,7 +2,7 @@
     "name": "@amalto/toggle-panel",
     "displayName": "TogglePanel",
     "description": "Panel body which contain a header and a body.",
-    "version": "1.9.9",
+    "version": "1.9.10",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,8 +25,8 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/action-button": "1.9.4",
-        "@amalto/spinner": "1.9.7",
+        "@amalto/action-button": "1.9.5",
+        "@amalto/spinner": "1.9.8",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"
