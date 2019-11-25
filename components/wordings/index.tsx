@@ -183,7 +183,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
     state: {
         'en-US': 'State',
-        'fr-FR': 'État'
+        'fr-FR': 'Région / État'
     },
 
     country: {
