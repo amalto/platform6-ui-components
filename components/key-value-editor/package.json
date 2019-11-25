@@ -33,7 +33,7 @@
         "@babel/register": "^7.0.0",
         "@types/base-64": "0.1.2",
         "@types/classnames": "^2.2.3",
-        "@types/jquery": "3.3.0",
+        "@types/jquery": "^3.3.31",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
         "ava": "1.2.1",

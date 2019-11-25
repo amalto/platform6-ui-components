@@ -27,7 +27,7 @@
     "dependencies": {
         "@amalto/help": "1.9.5",
         "classnames": "^2.2.6",
-        "jquery": "3.3.1",
+        "jquery": "^3.4.1",
         "react": "15.6.2",
         "react-dom": "15.6.2",
         "react-redux": "5.0.6",
@@ -44,7 +44,7 @@
         "@babel/register": "^7.0.0",
         "@types/bootstrap": "3.3.36",
         "@types/classnames": "^2.2.3",
-        "@types/jquery": "3.3.0",
+        "@types/jquery": "^3.3.31",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
         "@types/redux-form": "6.6.1",

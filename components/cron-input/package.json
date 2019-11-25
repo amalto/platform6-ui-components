@@ -30,7 +30,7 @@
         "@amalto/validated-input": "1.9.5",
         "@amalto/wordings": "1.9.7",
         "classnames": "^2.2.6",
-        "jquery": "3.4.0",
+        "jquery": "^3.4.1",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
@@ -42,7 +42,7 @@
         "@babel/preset-react": "^7.0.0",
         "@babel/register": "^7.0.0",
         "@types/classnames": "^2.2.3",
-        "@types/jquery": "3.3.0",
+        "@types/jquery": "^3.3.31",
         "@types/react": "15.6.10",
         "@types/react-dom": "15.5.6",
         "ava": "1.2.1",
