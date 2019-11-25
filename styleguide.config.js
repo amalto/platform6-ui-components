@@ -263,10 +263,6 @@ module.exports = {
                 name: 'KeyValDef',
                 content: 'readme/interfaces/KeyValDef.md'
             },
-            // {
-            //     name: 'Marker',
-            //     content: 'readme/interfaces/Marker.md'
-            // },
             {
                 name: 'PDFSource',
                 content: 'readme/interfaces/PDFSource.md'
