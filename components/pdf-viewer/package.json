@@ -2,7 +2,7 @@
     "name": "@amalto/pdf-viewer",
     "displayName": "PdfViewer",
     "description": "Display pdf.",
-    "version": "1.9.25",
+    "version": "1.9.26",
     "license": "MIT",
     "repository": {
         "type": "git",
