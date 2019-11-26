@@ -2,7 +2,7 @@
     "name": "@amalto/time-picker",
     "displayName": "TimePicker",
     "description": "TimePicker component",
-    "version": "1.9.12",
+    "version": "1.9.13",
     "license": "MIT",
     "repository": {
         "type": "git",

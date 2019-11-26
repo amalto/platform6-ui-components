@@ -2,7 +2,7 @@
     "name": "@amalto/restricted",
     "displayName": "Restricted",
     "description": "Display or hide children depending on permissions.",
-    "version": "1.9.26",
+    "version": "1.9.27",
     "license": "MIT",
     "repository": {
         "type": "git",

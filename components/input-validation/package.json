@@ -2,7 +2,7 @@
     "name": "@amalto/input-validation",
     "displayName": "InputValidation",
     "description": "Common input's validation methods.",
-    "version": "1.9.23",
+    "version": "1.9.24",
     "license": "MIT",
     "repository": {
         "type": "git",
