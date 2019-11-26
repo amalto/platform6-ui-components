@@ -25,9 +25,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.9.21",
-        "@amalto/tab": "1.9.6",
-        "@amalto/wordings": "1.9.12",
+        "@amalto/helpers": "1.9.23",
+        "@amalto/tab": "1.9.8",
+        "@amalto/wordings": "1.9.14",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",

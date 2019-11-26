@@ -25,9 +25,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.10",
-        "@amalto/helpers": "1.9.21",
-        "@amalto/typings": "1.9.13",
+        "@amalto/help": "1.9.12",
+        "@amalto/helpers": "1.9.23",
+        "@amalto/typings": "1.9.15",
         "classnames": "^2.2.6",
         "radium": "^0.25.1",
         "react": "15.6.2",
