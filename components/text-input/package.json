@@ -2,7 +2,7 @@
     "name": "@amalto/text-input",
     "displayName": "TextInput",
     "description": "Text input used on platform6.",
-    "version": "1.9.10",
+    "version": "1.9.11",
     "license": "MIT",
     "repository": {
         "type": "git",
