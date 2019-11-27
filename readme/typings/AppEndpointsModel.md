@@ -19,6 +19,9 @@ export interface FeatureEndpoint {
         iconName?: string;
         iconInlineImage?: string;
 
+        // Define if service should be open by default when going to the instance.
+        defaultRoute?: boolean;
+
         // Name displayed
         label?: {
             [lang: string]: string;
