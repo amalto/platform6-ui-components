@@ -7,6 +7,7 @@ export interface FeatureEndpoint {
         visible?: boolean;
         iconName?: string;
         iconInlineImage?: string;
+        defaultRoute?: boolean;
         label?: {
             [lang: string]: string;
         }
