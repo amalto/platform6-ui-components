@@ -1,13 +1,14 @@
 // Models
 import {
     AppKey,
-    RunningJob,
     NotificationModel,
     BatchOperationReport,
     WebApi,
     UserModel,
     ReduxProps
 } from '@amalto/typings'
+
+import { History } from 'history'
 
 import { BaseListConfig } from './BaseListConfig'
 

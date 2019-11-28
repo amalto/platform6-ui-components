@@ -18,9 +18,12 @@
             "es7",
             "es2016",
             "es2017"
-        ]
+        ],
+        "typeRoots": [],
+        "types": []
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "build"
     ]
 }

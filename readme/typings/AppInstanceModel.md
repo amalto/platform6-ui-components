@@ -9,6 +9,7 @@ module AppInstanceModel {
 
 interface AppInstanceModel {
     name?: string
+    displayName?: string;
     description?: string
     enabled?: boolean
     orgRootId?: string;
