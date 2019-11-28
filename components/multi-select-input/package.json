@@ -2,7 +2,7 @@
     "name": "@amalto/multi-select-input",
     "displayName": "MultiSelectInput",
     "description": "Multi select input used on platform6.",
-    "version": "1.9.17",
+    "version": "1.9.18",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.16",
+        "@amalto/help": "1.9.17",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",
