@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.10",
-        "@amalto/helpers": "1.9.21",
-        "@amalto/typeahead-input": "1.9.12",
-        "@amalto/wordings": "1.9.12",
+        "@amalto/help": "1.9.17",
+        "@amalto/helpers": "1.9.32",
+        "@amalto/typeahead-input": "1.9.18",
+        "@amalto/wordings": "1.9.21",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"

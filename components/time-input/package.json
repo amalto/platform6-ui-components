@@ -25,9 +25,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.10",
-        "@amalto/input-validation": "1.9.21",
-        "@amalto/time-picker": "1.9.10",
+        "@amalto/help": "1.9.17",
+        "@amalto/input-validation": "1.9.31",
+        "@amalto/time-picker": "1.9.16",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",
