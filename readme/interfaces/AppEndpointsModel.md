@@ -30,6 +30,9 @@ export interface FeatureEndpoint {
 
         /** Order on navigation sidebar. */
         weight?: number;
+
+        /** Version of the feature. */
+        version?: string;
     };
 }
 

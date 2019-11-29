@@ -12,6 +12,7 @@ export interface FeatureEndpoint {
             [lang: string]: string;
         }
         weight?: number;
+        version?: string;
     };
 }
 

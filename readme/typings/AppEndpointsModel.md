@@ -29,6 +29,9 @@ export interface FeatureEndpoint {
 
         // Define the position in the sidebar.
         weight?: number;
+
+        // Version of the feature.
+        version?: string;
     };
 }
 
