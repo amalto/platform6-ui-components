@@ -1,7 +1,6 @@
 // Models
 import {
     AppKey,
-    RunningJob,
     NotificationModel,
     BatchOperationReport,
     WebApi,
@@ -10,6 +9,8 @@ import {
 } from '@amalto/typings'
 
 import { BaseListConfig } from './BaseListConfig'
+
+import { History } from 'history'
 
 export interface DynamicComponent extends ReduxProps {
 
