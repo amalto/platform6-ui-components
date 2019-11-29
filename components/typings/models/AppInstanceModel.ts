@@ -13,6 +13,7 @@ module AppInstanceModel {
 
 
 interface AppInstanceModel {
+    displayName?: string;
     name?: string
     description?: string
     enabled?: boolean
