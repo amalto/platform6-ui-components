@@ -2,7 +2,7 @@
     "name": "@amalto/cron-input",
     "displayName": "CronInput",
     "description": "Cron input used to schedule a task.",
-    "version": "1.10.12",
+    "version": "1.10.13",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.9.32",
-        "@amalto/switch": "1.10.8",
-        "@amalto/validated-input": "1.9.16",
-        "@amalto/wordings": "1.9.21",
+        "@amalto/helpers": "1.9.33",
+        "@amalto/switch": "1.10.9",
+        "@amalto/validated-input": "1.9.17",
+        "@amalto/wordings": "1.9.22",
         "classnames": "^2.2.6",
         "jquery": "^3.4.1",
         "react": "15.6.2",
