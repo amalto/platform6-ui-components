@@ -2,7 +2,7 @@
     "name": "@amalto/time-input",
     "displayName": "TimeInput",
     "description": "Time input used on platform6.",
-    "version": "1.9.24",
+    "version": "1.9.34",
     "license": "MIT",
     "repository": {
         "type": "git",

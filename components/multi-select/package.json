@@ -2,7 +2,7 @@
     "name": "@amalto/multi-select",
     "displayName": "MultiSelect",
     "description": "Multi select used on platform6.",
-    "version": "1.9.12",
+    "version": "1.9.18",
     "license": "MIT",
     "repository": {
         "type": "git",

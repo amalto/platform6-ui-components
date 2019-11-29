@@ -2,7 +2,7 @@
     "name": "@amalto/readonly-input",
     "displayName": "ReadonlyInput",
     "description": "Readonly input used on platform6.",
-    "version": "1.9.10",
+    "version": "1.9.16",
     "license": "MIT",
     "repository": {
         "type": "git",
