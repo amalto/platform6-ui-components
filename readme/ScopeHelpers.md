@@ -35,6 +35,18 @@ function hasPermission( webStorage: WebStorage, permission: string, global?: boo
 function hasAnyPermission( webStorage: WebStorage, permissions: string[] | PermissionDef[], global?: boolean ): void;
 
 /**
+ * Check if user has permission for a permission within a specific instance
+ * e.g: Does user has the permission reports=read on instance master,
+ *      where 'reports' is the feature and 'read' the action.
+ *
+ * @param { WebStorage } webStorage - Data store in the browser storage.
+ * @param { string } appInstance - Instance name you are currently using.
+ * @param { string } feature - Feature you want to check the permission on. e.g: reports.
+ * @param { string } action - Action you want to perform. e.g: read.
+ */
+function hasPermissionFor( webStorage: WebStorage, appInstance: string, feature: string, action: string ): boolean;
+
+/**
  * Get item values from permission.
  * e.g: reports=read('Test'), will return ['Test'].
  * @param { WebStorage } webStorage - Data store in the browser storage.

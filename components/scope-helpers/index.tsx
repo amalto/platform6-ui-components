@@ -85,8 +85,12 @@ export function hasAnyPermission( webStorage: WebStorage, permissions: string[] 
 
 }
 
-/** @private */
-function hasPermissionFor( webStorage: WebStorage, appInstance: string, feature: string, action: string ): boolean {
+/**
+ * Check if user has permission for a permission within a specific instance
+ * e.g: Does user has the permission reports=read on instance master,
+ *      where 'reports' is the feature and 'read' the action.
+ */
+export function hasPermissionFor( webStorage: WebStorage, appInstance: string, feature: string, action: string ): boolean {
 
     return (
         hasAccessToAction( webStorage, appInstance, feature, action ) ||
