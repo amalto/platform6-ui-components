@@ -21,6 +21,8 @@ module ValidatedInput {
             value: string;
             label?: string;
         }[];
+        /** Instead of a text input, use a textarea input. */
+        multiline?: boolean;
         /**
          * Regular expression to validate the user input against.
          * If the user input does not match the regex, it will take an invalid appearance.
@@ -93,15 +95,34 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
 
     render() {
 
-        const { name, label, help, value, disabled, choices, placeholder, autoComplete, mandatory, errorMessage, containerClass, inputClass } = this.props
+        const {
+            name,
+            label,
+            help,
+            value,
+            disabled,
+            choices,
+            multiline,
+            placeholder,
+            autoComplete,
+            mandatory,
+            errorMessage,
+            containerClass,
+            inputClass
+        } = this.props
 
-        const inputDisplay = this.props.choices ? (
-            <select className={classNames( 'form-control', inputClass )}
-                key={name}
-                name={name}
-                value={value}
-                onChange={this.handleChange}
-                disabled={disabled}>
+        const inputProps = {
+            className:classNames( 'form-control', inputClass ),
+            key:name,
+            name:name,
+            value:value,
+            onChange:this.handleChange,
+            disabled:disabled
+        }
+
+        const selectDisplay = choices
+        ? (
+            <select {...inputProps}>
 
                 {
                     choices.map( ( choice, idx ) => {
@@ -110,17 +131,23 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
                 }
 
             </select>
-        ) : (
-                <input type="text" className={classNames( 'form-control', inputClass )}
-                    key={name}
-                    name={name}
-                    value={value}
-                    onChange={this.handleChange}
-                    disabled={disabled}
-                    placeholder={placeholder}
-                    autoComplete={autoComplete}
-                />
-            )
+        ) : null
+
+        const textProps = {
+            ...inputProps,
+            placeholder:placeholder,
+            autoComplete:autoComplete
+        }
+
+        const inputDisplay = !choices && !multiline ? (
+            <input type="text" {...textProps}
+            />
+        ) : null
+
+        const textareaDisplay = multiline ? (
+            <textarea {...textProps}
+            />
+        ) : null
 
         return (
 
@@ -131,7 +158,11 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
+                {selectDisplay}
+
                 {inputDisplay}
+
+                {textareaDisplay}
 
                 {this.state.invalidInput && errorMessage ? <p className="validation-error-message">{errorMessage}</p> : null}
 
