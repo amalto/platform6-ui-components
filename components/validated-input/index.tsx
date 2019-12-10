@@ -114,7 +114,7 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
                 <input type="text" className={classNames( 'form-control', inputClass )}
                     key={name}
                     name={name}
-                    defaultValue={value}
+                    value={value}
                     onChange={this.handleChange}
                     disabled={disabled}
                     placeholder={placeholder}
