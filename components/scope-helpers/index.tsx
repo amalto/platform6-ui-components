@@ -46,7 +46,7 @@ export function hasAnyPermission( webStorage: WebStorage, permissions: string[] 
             }
 
             //check values on * instance            
-            if ( !global ) {
+            if ( global ) {
 
                 const asteriskValues = getScopeValues( webStorage, ASTERISK, ( permissions[i] as PermissionDef ).feature, ( permissions[i] as PermissionDef ).action )
 
