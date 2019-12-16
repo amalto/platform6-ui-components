@@ -44,7 +44,7 @@ interface DynamicComponent {
      * @param { boolean } hasUnsavedChanges
      * @param { string } tabId
      */
-    setStatus?: ( hasUnsavedChanges: boolean, tabId?: string g) => void;
+    setStatus?: ( hasUnsavedChanges: boolean, tabId?: string ) => void;
     
     /** Component height. */
     height?: number;
@@ -61,9 +61,10 @@ interface DynamicComponent {
     /**
      * Show current job status.
      * @param { string | number } jobId
+     * @param { boolean } autoCloseOnSuccess
      * @param { ( result: any ) => void } onSuccess
      */
-    showJobStatus?: ( jobId: string | number, onSuccess?: ( result: any ) => void ) => void;
+    showJobStatus?: ( jobId: string | number, autoCloseOnSuccess?: boolean, onSuccess?: (result:any) => void ) => void;
     
     /** If any application publisher profile is accessible to user. */
     canSelectAppKey?: boolean;
