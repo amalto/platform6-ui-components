@@ -2,6 +2,9 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
+// Utils
+import { isNotEmpty } from '@amalto/helpers'
+
 // Components
 import Help from '@amalto/help'
 
@@ -189,7 +192,7 @@ class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInpu
     }
 
     private validateField = ( value: string, props: ValidatedInput.Props ) => {
-        const emptyButMandatory = !value && !!props.mandatory
+        const emptyButMandatory = !isNotEmpty(value) && !!props.mandatory
         const noMatchRegex = props.regex ? !props.regex.test( value ) : false
         const invalid = props.validate ? !props.validate( value ) : false
 
