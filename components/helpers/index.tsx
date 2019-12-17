@@ -248,7 +248,7 @@ export function downloadDataFile( base64DataString: string, contentType: string,
     triggerDataDownload( b64String, fileName, true )
 }
 
-function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: boolean ): void {
+export function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: boolean ): void {
     let url = dataUrl ? data as string : URL.createObjectURL( data )
 
     //create a download link
