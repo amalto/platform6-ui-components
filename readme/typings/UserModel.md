@@ -133,6 +133,11 @@ interface UserModel {
     /** Position of user in each organisation he is associated with. */
     orgPositionIdMap?: { [appIntanceName: string]: string[] };
 
+    /** Instance name related to his id. */
+    orgPositionDisplayNameLookup?: {
+        [instanceName: string]: string;
+    };
+
     /** SSO connection ID used to provision the user */
     ssoConnectionId?:string;
 }

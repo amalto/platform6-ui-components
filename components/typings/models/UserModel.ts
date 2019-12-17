@@ -83,8 +83,15 @@ interface UserModel {
     jsonContent?: string;
     policyDetails?: UserModel.Policy[];
     policyList?: UserModel.Policy[];
-    propertiesMap?: { [key: string]: string };
-    orgPositionIdMap?: { [appIntanceName: string]: string[] };
+    propertiesMap?: {
+        [key: string]: string
+    };
+    orgPositionIdMap?: { 
+        [appIntanceName: string]: string[]
+    };
+    orgPositionDisplayNameLookup?: {
+        [instanceName: string]: string;
+    };
     ssoConnectionId?: string;
 }
 
