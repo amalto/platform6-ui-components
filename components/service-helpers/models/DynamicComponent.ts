@@ -96,7 +96,8 @@ export interface DynamicComponent extends ReduxProps {
     /**
      * Show current job status.
      * @param { string | number } jobId
-     * @param { ( result: any ) => void } onSuccess
+     * @param { boolean } [autoCloseOnSuccess]
+     * @param { ( result: any ) => void } [onSuccess]
      */
     showJobStatus?: ( jobId: string | number, autoCloseOnSuccess?: boolean, onSuccess?: (result:any) => void ) => void;
 
@@ -163,8 +164,10 @@ export interface DynamicComponent extends ReduxProps {
 
     /**
      * Refresh the status of the service (running/stopped/running but needs restarting).
+     * 
+     * @param { ( started: boolean, serviceStatus: string ) => void } [callback]
      */
-    refreshServiceStatus?: () => void;
+    refreshServiceStatus?: ( callback?: ( started: boolean, serviceStatus: string ) => void ) => void;
 
     /**
      * Lock the service

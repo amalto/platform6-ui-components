@@ -42,7 +42,7 @@ interface DynamicComponent {
      * Set dirty status of the component.
      * If true a comfirmation modal will shows up if you try to move to another menu.
      * @param { boolean } hasUnsavedChanges
-     * @param { string } tabId
+     * @param { string } [tabId]
      */
     setStatus?: ( hasUnsavedChanges: boolean, tabId?: string ) => void;
     
@@ -61,8 +61,8 @@ interface DynamicComponent {
     /**
      * Show current job status.
      * @param { string | number } jobId
-     * @param { boolean } autoCloseOnSuccess
-     * @param { ( result: any ) => void } onSuccess
+     * @param { boolean } [autoCloseOnSuccess]
+     * @param { ( result: any ) => void } [onSuccess]
      */
     showJobStatus?: ( jobId: string | number, autoCloseOnSuccess?: boolean, onSuccess?: (result:any) => void ) => void;
     
@@ -119,6 +119,13 @@ interface DynamicComponent {
      * @param { BaseListConfig } config
      */
     renderBaseServiceList?: ( config: BaseListConfig ) => JSX.Element;
+
+    /**
+     * Refresh the status of the service (running/stopped/running but needs restarting).
+     * 
+     * @param { ( started: boolean, serviceStatus: string ) => void } [callback]
+     */
+    refreshServiceStatus?: ( callback?: ( started: boolean, serviceStatus: string ) => void ) => void;
 
     /**
      * Language to use on the component. e.g: "en-US".
