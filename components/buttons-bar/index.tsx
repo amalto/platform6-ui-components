@@ -27,7 +27,7 @@ module ButtonsBar {
     }
 
     export interface ButtonProps {
-        clickAction?: () => void;
+        clickAction?: ( event?: any ) => void;
         cssClass?: string;
         iconClass?: string;
         text?: string;
