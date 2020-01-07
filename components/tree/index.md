@@ -46,7 +46,7 @@ function createNode( parentId, elementName, description, propertiesMap ) {
     const newNode = {
         id: uuid.v4(),
         text: elementName,
-        icon: 'fas fa-fw fa-cube font-color-lighter',
+        icon: 'fas fa-fw fa-th-large font-color-lighter',
         data: {
             parentId,
             description,

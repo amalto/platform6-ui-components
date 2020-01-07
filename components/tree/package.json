@@ -51,8 +51,10 @@
         "webpack": "^4.29.5"
     },
     "dependencies": {
+        "@amalto/buttons-bar": "1.9.35",
         "@amalto/helpers": "1.9.34",
         "@amalto/key-value-editor": "1.9.34",
+        "@amalto/service-helpers": "1.9.40",
         "@amalto/wordings": "1.9.22",
         "jstree": "3.3.5",
         "react": "15.6.2",

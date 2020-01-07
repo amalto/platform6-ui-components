@@ -5,15 +5,17 @@ import * as classNames from 'classnames'
 
 // Utils
 import { compileWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers'
+import { ICON_TYPE, BUTTON_TYPE } from '@amalto/service-helpers'
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 // Components
 import KeyValueEditor from '@amalto/key-value-editor'
+import ButtonsBar from '@amalto/buttons-bar'
 
 // Models
-import { TreeNodeModel, OrgModel, KeyValStoreDef, KeyValDef } from './models/tree'
+import { TreeNodeModel, OrgModel, KeyValDef } from './models/tree'
 
 /**
  * Organize custom tree allowing you to manage nodes and attached data to it.
@@ -153,7 +155,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             <div>
                 <div className="row text-xs-center">
                     <div className="col-xs-12">
-                        <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
+                        {/* <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
                             <span>{wordings.expand}</span>
                         </button>
                         <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
@@ -178,7 +180,8 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
                                     </button>
                                 </span>
                             ) : null
-                        }
+                        } */}
+                        {canModifyTree ? this.renderTreeButtonsBar() : null}
                     </div>
                 </div>
 
@@ -309,6 +312,67 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         }
         let treeContainer = ReactDOM.findDOMNode( this._tree ) as HTMLElement
         $( treeContainer ).off()
+    }
+
+    private renderTreeButtonsBar = (): JSX.Element => {
+        const { wordings } = this.state
+        const disabled = !this.state.selectedNode
+        const expandAllBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [{
+                cssClass: `${BUTTON_TYPE.GREEN} right-margin bottom-margin`,
+                iconClass: 'fas fa-expand',
+                text: wordings.expand,
+                clickAction: this.expandAll,
+                disabled
+            }]
+        }
+        const collapeAllBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [{
+                cssClass: `${BUTTON_TYPE.GREEN} right-margin bottom-margin`,
+                iconClass: 'fas fa-compress',
+                text: wordings.collapse,
+                clickAction: this.collapseAll,
+                disabled
+            }]
+        }
+        const createBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [{
+                cssClass: `${BUTTON_TYPE.GREEN} right-margin bottom-margin`,
+                iconClass: ICON_TYPE.ADD,
+                text: wordings.createChild,
+                clickAction: this.openCreateForm,
+                disabled
+            }]
+        }
+        const editBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [{
+                cssClass: `${BUTTON_TYPE.ORANGE} right-margin bottom-margin`,
+                iconClass: ICON_TYPE.EDIT,
+                text: wordings.edit,
+                clickAction: this.openEditForm,
+                disabled
+            }]
+        }
+        const deleteBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [{
+                cssClass: `${BUTTON_TYPE.RED} right-margin bottom-margin`,
+                iconClass: ICON_TYPE.DELETE,
+                text: wordings.delete,
+                clickAction: this.deleteNode,
+                disabled
+            }]
+        }
+        const clearBtn: ButtonsBar.BtnGroupsProps = {
+            btns: [{
+                cssClass: `${BUTTON_TYPE.GREY} right-margin bottom-margin`,
+                iconClass: ICON_TYPE.UNDO,
+                text: wordings.cancel,
+                clickAction: this.clearForm,
+                disabled
+            }]
+        }
+
+        return <ButtonsBar btnGroups={[expandAllBtn, collapeAllBtn, createBtn, editBtn, deleteBtn, clearBtn]} />
     }
 
     private downloadFile = ( event: any ) => {
