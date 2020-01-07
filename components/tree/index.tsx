@@ -155,32 +155,6 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
             <div>
                 <div className="row text-xs-center">
                     <div className="col-xs-12">
-                        {/* <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.expandAll}>
-                            <span>{wordings.expand}</span>
-                        </button>
-                        <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-primary right-margin bottom-margin' )} onClick={this.collapseAll}>
-                            <span>{wordings.collapse}</span>
-                        </button>
-                        {
-                            canModifyTree ? (
-                                <span>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-success right-margin bottom-margin' )} onClick={this.openCreateForm}>
-                                        {wordings.createChild}
-                                    </button>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-warning right-margin bottom-margin' )} onClick={this.openEditForm}>
-                                        {wordings.edit}
-                                    </button>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-danger right-margin bottom-margin' )} onClick={this.deleteNode}>
-                                        {wordings.delete}
-                                    </button>
-                                    <button type="button" disabled={disabled} className={classNames( 'btn btn-trans btn-font right-margin bottom-margin', {
-                                        'hidden': !this.state.formOpened
-                                    } )} onClick={this.clearForm}>
-                                        {wordings.cancel}
-                                    </button>
-                                </span>
-                            ) : null
-                        } */}
                         {canModifyTree ? this.renderTreeButtonsBar() : null}
                     </div>
                 </div>
@@ -364,7 +338,9 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         }
         const clearBtn: ButtonsBar.BtnGroupsProps = {
             btns: [{
-                cssClass: `${BUTTON_TYPE.GREY} right-margin bottom-margin`,
+                cssClass: classNames( `${BUTTON_TYPE.GREY} right-margin bottom-margin`, {
+                    'hidden': !this.state.formOpened
+                } ),
                 iconClass: ICON_TYPE.UNDO,
                 text: wordings.cancel,
                 clickAction: this.clearForm,
