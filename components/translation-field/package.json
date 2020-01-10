@@ -1,0 +1,71 @@
+{
+	"name": "@amalto/translation-field",
+	"displayName": "TranslationField",
+	"description": "Translation field.",
+	"version": "1.0.0",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/amalto/platform6-ui-components"
+	},
+	"keywords": [
+		"user-interface",
+		"react",
+		"typescript"
+	],
+	"main": "./build/index.js",
+	"typings": "./build/index.d.ts",
+	"author": "Amalto Technologies",
+	"scripts": {
+		"setup": "npm install",
+		"build": "rm -rf ./build/; tsc",
+		"test": "nyc ava ./test/test.js --verbose"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"source-map-loader": "0.2.4",
+		"ts-loader": "^6.2.1",
+		"typescript": "^3.7.2",
+		"webpack": "^4.41.2"
+	},
+	"dependencies": {
+		"@amalto/help": "^1.9.18",
+		"@amalto/action-button": "^1.9.2",
+		"base-64": "^0.1.0",
+		"emotion": "^10.0.23",
+		"fp-ts": "^2.2.0",
+		"react": "^15.6.2",
+		"react-dom": "^15.6.2",
+		"react-grid-layout": "^0.17.1",
+		"react-select": "2.4.4",
+		"rxjs": "^6.5.3",
+		"uuid": "^3.3.3"
+	},
+	"ava": {
+		"concurrency": 5,
+		"failFast": true,
+		"failWithoutAssertions": false,
+		"powerAssert": true,
+		"require": [
+			"@babel/register"
+		],
+		"babel": {
+			"extensions": [
+				"js",
+				"jsx"
+			],
+			"testOptions": {
+				"plugins": [
+					"@babel/plugin-syntax-jsx"
+				],
+				"presets": [
+					"@ava/babel-preset-stage-4",
+					"@babel/preset-react"
+				]
+			}
+		}
+	},
+	"gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e"
+}
