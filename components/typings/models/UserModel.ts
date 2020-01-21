@@ -20,13 +20,7 @@ module UserModel {
         permissions?: string[]
     }
 
-    export interface JsonContent {
-        // JSON string containing the order of Home modules
-        homeSettings?: {
-            [appInstanceName: string]: {
-                [id: string]: OrderDataset[]
-            };
-        };
+    export interface MainJsonContent {
         preferredLanguage?: string;
         // base64 string or absolute url to image file
         avatar?: string;
@@ -47,13 +41,17 @@ module UserModel {
             [appInstanceName: string]: string;
         };
 
+        // JSON string containing the order of Home modules
+        homeSettings?: {
+            [appInstanceName: string]: {
+                [id: string]: OrderDataset[]
+            };
+        };
         displayTemplates?: {
             [appInstanceName: string]: {
                 [viewName: string]: DisplayTemplate;
             };
         };
-
-        dataGridTemplates?: DataGridTemplates;
 
         //ACE preferred settings
         codeEditorSettings?: {
@@ -64,8 +62,14 @@ module UserModel {
             showIndent: boolean;
             wrap: boolean;
         }
-
+        dataGridTemplates?: DataGridTemplates;
         version?: string
+    }
+
+    export interface JsonContent extends MainJsonContent {
+
+        // Usable to add data related to user preferrences.
+        [featureId: string]: unknown;
     }
 
 }
