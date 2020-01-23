@@ -1,8 +1,8 @@
 // Modules
 import * as React from 'react'
-import * as moment from 'moment'
-import * as Pikaday from 'pikaday'
-import * as classNames from 'classnames'
+import { default as moment } from 'moment'
+import { default as Pikaday} from 'pikaday'
+import { default as classNames } from 'classnames'
 
 // Components
 import Help from '@amalto/help'

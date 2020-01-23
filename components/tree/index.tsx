@@ -1,10 +1,10 @@
 // Modules
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Utils
-import { compileWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers'
+import { compileWordings, isNotEmpty, downloadDataFile, base64Decode, displayString } from '@amalto/helpers'
 import { ICON_TYPE, BUTTON_TYPE } from '@amalto/service-helpers'
 
 // Wordings
@@ -93,8 +93,6 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     render() {
 
         const { wordings } = this.state
-
-        let disabled = !this.state.selectedNode
 
         let editButton = this.state.formOpened === 'EDIT' ? (
             <button type="button" className="btn btn-block btn-warning" onClick={this.editNode}>{wordings.treeUpdate}</button>

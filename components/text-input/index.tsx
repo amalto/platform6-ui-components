@@ -7,7 +7,7 @@ import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
 import Help from '@amalto/help'
 
 // Utils
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 /**
  * Text input used on a [redux-form](#reduxform).

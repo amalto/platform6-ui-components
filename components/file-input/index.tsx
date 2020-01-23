@@ -1,7 +1,7 @@
 // Modules
 import * as React from 'react'
 import Dropzone from 'react-dropzone'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Utils
 import { compileWordings, formatFileSize } from '@amalto/helpers'

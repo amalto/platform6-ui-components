@@ -1,8 +1,5 @@
-import { getWordings } from '@amalto/helpers';
-import { webStorage } from '@amalto/platform6-ui';
-
 /* eslint-disable @typescript-eslint/camelcase */
-const _WORDINGS = {
+export const WORDINGS = {
 	lang: {
 		'en-US': 'Language',
 		'fr-FR': 'Langue'
@@ -29,5 +26,3 @@ const _WORDINGS = {
 	}
 };
 /* eslint-enable @typescript-eslint/camelcase */
-
-export const WORDINGS = getWordings(_WORDINGS, webStorage.locale);

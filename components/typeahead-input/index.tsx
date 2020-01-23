@@ -5,7 +5,7 @@ import 'typeahead.js'
 
 import { isNotEmpty } from '@amalto/helpers'
 
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 /**
  * Typeahead input displaying a filtered dropdown list from your input and your collection.

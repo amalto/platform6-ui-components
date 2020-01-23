@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
+import { default as classNames} from 'classnames'
 
 /**
  * Choose a color from a panel.

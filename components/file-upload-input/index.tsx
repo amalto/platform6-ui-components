@@ -11,7 +11,7 @@ import { WrappedFieldInputProps, WrappedFieldProps, Field, BaseFieldProps } from
 import Help from '@amalto/help'
 
 // Utils
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 import {
     formatFileSize,
     compileWordings

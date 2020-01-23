@@ -4,7 +4,7 @@
 
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -65,7 +65,7 @@ module ButtonsBar {
 
     export interface State {
         searchValue?: string;
-        wordings?: { [id: string]: string };
+        wordings: { [id: string]: string };
     }
 
 }

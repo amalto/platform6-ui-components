@@ -1,7 +1,7 @@
 // Modules
 import * as React from 'react'
 import { FormattedNumber } from 'react-intl'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Utils
 import { compileWordings } from '@amalto/helpers'

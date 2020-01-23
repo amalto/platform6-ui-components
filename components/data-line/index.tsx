@@ -4,7 +4,7 @@
 
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 import { CellData, DisplayTemplate, DisplayTemplateItem, DisplayMode, ColumnHeader } from '@amalto/typings'
 
 // Components 

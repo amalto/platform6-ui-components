@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 /**
  * This component is generally used next to input's label. See [RadioInput](#radioinput)

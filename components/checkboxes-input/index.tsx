@@ -1,7 +1,7 @@
 // Modules
 import * as React from 'react'
 import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 import * as uuid from 'uuid'
 
 // Helpers

@@ -42,9 +42,9 @@ export class SelectLanguage extends Component<SelectLanguageProps> {
 		}
 	}
 
-	private getValue(value: ValueType<LanguageCode>): ValueType<Language> {
-		if (value === undefined || value === null) {
-			return value;
+	private getValue(value: ValueType<LanguageCode>): ValueType<Language> | undefined {
+		if ( !value ) {
+			return undefined;
 		} else if (isReadonlyArray(value)) {
 			return languages.filter(c => value.find(v => c.code === v));
 		} else {

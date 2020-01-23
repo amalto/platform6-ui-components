@@ -12,7 +12,7 @@ import DialogState from './DialogState'
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 //modules
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 //actions
 import { hideDialog } from './DialogActions'

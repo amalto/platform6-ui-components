@@ -2,7 +2,7 @@
 var md5 = require( 'md5' )
 import * as React from 'react'
 import * as base64 from 'base-64'
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Wordings
 import {

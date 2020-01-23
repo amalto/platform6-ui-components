@@ -146,7 +146,6 @@ module.exports = {
                     'components/date-input/index.tsx',
                     'components/file-input/index.tsx',
                     'components/file-upload-input/index.tsx',
-                    'components/multi-select-input/index.tsx',
                     'components/radio-input/index.tsx',
                     'components/readonly-input/index.tsx',
                     'components/select-input/index.tsx',
@@ -184,6 +183,7 @@ module.exports = {
                     'components/tabs/index.tsx',
                     'components/time-picker/index.tsx',
                     'components/toggle-panel/index.tsx',
+                    // 'components/translation-field/index.tsx',
                     'components/tree/index.tsx'
                 ]
             },

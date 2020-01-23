@@ -1,4 +1,6 @@
 import ActionButton from '@amalto/action-button';
+import { WebStorage } from '@amalto/typings';
+import { getWordings } from '@amalto/helpers';
 import { css, cx } from 'emotion';
 import React, { ChangeEvent, Component } from 'react';
 import uuid from 'uuid';
@@ -9,18 +11,33 @@ import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
 
 export interface TranslationProps {
+	/** Storage which contain instance and user informations. */
+	webStorage: WebStorage;
+	/** Input name. */
 	name: string;
+	/** Inuput label. */
 	label: string | JSX.Element;
+	/** Language options. */
 	value: { [key: string]: string };
+	/** Is field on readonly. */
 	readOnly?: boolean;
+	/** Triggered every time the value change. */
 	onChange?: (value: { [key: string]: string }) => void;
+	/**
+	 * Language to use on the component which determine the search input's placeholder language. e.g: <span className='quote'>en-US</span>.
+	 * Locales available at [Locale](#locale).
+	 * Accessible via [WebStorage](#webstorage).
+	 * @default 'en-US'
+	 */
+	locale?: string;
 }
 
 interface TranslationState {
 	translations: { id: string; lang: string; value: string }[];
+	wordings?: { [key: string]: string };
 }
 
-class Translation extends Component<TranslationProps, TranslationState> {
+class TranslationField extends Component<TranslationProps, TranslationState> {
 	private defaultLang = 'en';
 
 	private style = css({
@@ -45,7 +62,8 @@ class Translation extends Component<TranslationProps, TranslationState> {
 		}));
 
 		this.state = {
-			translations
+			translations,
+			wordings: getWordings( WORDINGS, props.locale )
 		};
 	}
 
@@ -81,7 +99,7 @@ class Translation extends Component<TranslationProps, TranslationState> {
 					<div style={{ display: this.props.readOnly ? 'none' : 'inline-block' }}>
 						<ActionButton
 							iconClass="fas fa-plus-circle"
-							tooltipText={WORDINGS.translationAdd}
+							tooltipText={this.state.wordings.translationAdd}
 							btnClass="padl-10 primary-color"
 							clickAction={this.addNewLine.bind(this)}
 						/>
@@ -95,7 +113,7 @@ class Translation extends Component<TranslationProps, TranslationState> {
 	}
 
 	protected emptyContent(): JSX.Element {
-		return <div className="padl-10 text-small">{WORDINGS.translationEmpty}</div>;
+		return <div className="padl-10 text-small">{this.state.wordings.translationEmpty}</div>;
 	}
 
 	private lineRender(lang: string, value: string, key: string): JSX.Element {
@@ -124,6 +142,7 @@ class Translation extends Component<TranslationProps, TranslationState> {
 		isDefaultLang?: boolean
 	): JSX.Element {
 		const inputRequired = cx({ inputRequired: !!lang });
+		const { wordings } = this.state
 
 		return (
 			<div
@@ -137,7 +156,7 @@ class Translation extends Component<TranslationProps, TranslationState> {
 						excludes={excludes}
 						value={lang}
 						components={{ Placeholder: PlaceholderWithTooltip }}
-						placeholder={WORDINGS.selectLanguage}
+						placeholder={wordings.selectLanguage}
 						isDisabled={isDefaultLang || readOnly}
 						onChange={onKeyChange}
 					/>
@@ -167,7 +186,7 @@ class Translation extends Component<TranslationProps, TranslationState> {
 							iconClass="fas fa-trash-alt"
 							btnClass="danger-color"
 							disabled={readOnly}
-							tooltipText={WORDINGS.translationDel}
+							tooltipText={wordings.translationDel}
 							clickAction={onRemoveLine}
 						/>
 					</div>
@@ -213,4 +232,4 @@ class Translation extends Component<TranslationProps, TranslationState> {
 	}
 }
 
-export default Translation
+export default TranslationField

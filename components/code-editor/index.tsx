@@ -81,7 +81,7 @@ module CodeEditor {
      */
     export interface Props extends React.Props<CodeEditor> {
         /** Editor height. */
-        height?: number | string;
+        height?: React.ReactText;
         /** Initial content of the editor. */
         value: string;
         /**
@@ -224,12 +224,12 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         this._editor.on( 'blur', function ( e ) {
             const session = self.getAceSession( self._editor )
 
-            if ( self._canUpdate ) {
-                self._cursorLastPosition = e.end
-                session.cursorPosition = self._cursorLastPosition
-                self.props.saveSession && self.props.saveSession( session )
-                self._canUpdate = false
-            }
+                if ( self._canUpdate ) {
+                    self._cursorLastPosition = e.end
+                    session.cursorPosition = self._cursorLastPosition
+                    self.props.saveSession && self.props.saveSession( session )
+                    self._canUpdate = false
+                }
         } );
     }
 

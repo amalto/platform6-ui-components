@@ -8,7 +8,7 @@ import * as Radium from 'radium'
 import Help from '@amalto/help'
 
 // Utils
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Styles
 import { Styles } from './styles'

@@ -11,7 +11,7 @@ import { loadTooltips, unloadTooltips } from '@amalto/helpers'
 // Models
 import { Option } from '@amalto/typings'
 // Utils
-import * as classNames from 'classnames'
+import { default as classNames } from 'classnames'
 
 // Styles
 import { Styles } from './styles'
