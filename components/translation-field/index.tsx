@@ -123,7 +123,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			key,
 			this.onKeyChangeHandler(key),
 			this.onValueChangeHandler(key),
-			(): void => this.removeLine(lang),
+			(): void => this.removeLine(key),
 			this.state.translations.map(t => t.lang).filter(l => !!l),
 			this.props.readOnly,
 			this.defaultLang === lang
