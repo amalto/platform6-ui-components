@@ -93,17 +93,6 @@ module.exports = {
         }
     },
 
-    editorConfig: {
-        theme: 'tomorrow-night-eighties'
-    },
-
-    theme: {
-        color: {
-            sidebarBackground: '#F0F3F3'
-        },
-        sidebarWidth: 300
-    },
-
     showUsage: true,
     showCode: true,
 

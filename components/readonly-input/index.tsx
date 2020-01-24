@@ -1,17 +1,17 @@
 // Modules
-import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import * as React from 'react';
+import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form';
 
 // Components
-import Help from '@amalto/help'
+import Help from '@amalto/help';
 
 // Utils
-import { default as classNames } from 'classnames'
+import { default as classNames } from 'classnames';
 
 /**
  * Readonly input used on a [redux-form](#reduxform).
  */
-namespace ReadOnlyInput {
+namespace ReadonlyInput {
     export interface Props extends BaseFieldProps {
         /** Input's name used when submitting form. */
         name: string;
@@ -37,26 +37,26 @@ namespace ReadOnlyInput {
         /** @ignore */
         key?: React.ReactText;
         /** @ignore */
-        ref?: React.Ref<ReadOnlyInput>;
+        ref?: React.Ref<ReadonlyInput>;
 
         /** redux-form props */
 
         /** @ignore */
-        component?: any,
+        component?: any;
         /** @ignore */
-        format?: any,
+        format?: any;
         /** @ignore */
-        normalize?: any,
+        normalize?: any;
         /** @ignore */
-        props?: any,
+        props?: any;
         /** @ignore */
-        parse?: any,
+        parse?: any;
         /** @ignore */
-        validate?: any,
+        validate?: any;
         /** @ignore */
-        warn?: any,
+        warn?: any;
         /** @ignore */
-        withRef?: any
+        withRef?: any;
     }
 
     export interface State {
@@ -64,9 +64,9 @@ namespace ReadOnlyInput {
     }
 }
 
-class ReadOnlyInput extends React.Component<ReadOnlyInput.Props, ReadOnlyInput.State> {
+class ReadonlyInput extends React.Component<ReadonlyInput.Props, ReadonlyInput.State> {
 
-    constructor( props: ReadOnlyInput.Props ) {
+    constructor( props: ReadonlyInput.Props ) {
         super( props )
         this.state = {
 
@@ -96,7 +96,7 @@ class ReadOnlyInput extends React.Component<ReadOnlyInput.Props, ReadOnlyInput.S
 
     render() {
 
-        const { name, label, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn } = this.props
 
         let baseFieldProps: BaseFieldProps = {
             name,
@@ -114,4 +114,4 @@ class ReadOnlyInput extends React.Component<ReadOnlyInput.Props, ReadOnlyInput.S
 }
 
 
-export default ReadOnlyInput
+export default ReadonlyInput

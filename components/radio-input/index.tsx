@@ -83,7 +83,7 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
         }
     }
 
-    private renderRadio = ( field: WrappedFieldProps<{}> ) => {
+    private renderRadio = ( field: WrappedFieldProps<any> ) => {
 
         const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
 
@@ -135,7 +135,7 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
             warn
         }
 
-        return options && options.length ? (
+        return options && options.length > 0 ? (
 
             <Field {...baseFieldProps} component={this.renderRadio} />
 
