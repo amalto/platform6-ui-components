@@ -90,6 +90,12 @@ module.exports = {
             heading: {
                 'color': '#89bc55'
             }
+        },
+        Playground: {
+            tab: {
+                'position': 'relative',
+                'z-index': '0'
+            }
         }
     },
 
@@ -172,7 +178,7 @@ module.exports = {
                     'components/tabs/index.tsx',
                     'components/time-picker/index.tsx',
                     'components/toggle-panel/index.tsx',
-                    // 'components/translation-field/index.tsx',
+                    'components/translation-field/index.tsx',
                     'components/tree/index.tsx'
                 ]
             },
