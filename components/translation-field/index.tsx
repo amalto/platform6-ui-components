@@ -1,4 +1,5 @@
 import ActionButton from '@amalto/action-button';
+import Help from '@amalto/help';
 import { WebStorage } from '@amalto/typings';
 import { getWordings } from '@amalto/helpers';
 import { css, cx } from 'emotion';
@@ -11,12 +12,16 @@ import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
 
 export interface TranslationProps {
+	/** Set true to disable the support of internationalization. */
+	disableMultilanguage?: boolean;
 	/** Storage which contain instance and user informations. */
 	webStorage: WebStorage;
 	/** Input name. */
 	name: string;
 	/** Inuput label. */
 	label: string | JSX.Element;
+	/** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
+	help?: string;
 	/** Language options. */
 	value: { [key: string]: string };
 	/** Is field on readonly. */
@@ -55,11 +60,22 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	constructor(props: Readonly<TranslationProps>) {
 		super(props);
 
-		const translations = Object.keys(props.value).map(lang => ({
-			id: uuid(),
-			lang,
-			value: props.value[lang]
-		}));
+		const translations = !props.disableMultilanguage
+			? Object.keys(props.value)
+				.map(lang => ({
+					id: uuid(),
+					lang,
+					value: props.value[lang]
+				})
+			)
+			: Object.keys(props.value)
+				.filter(lang => lang === 'en')
+				.map(lang => ({
+					id: uuid(),
+					lang,
+					value: props.value[lang]
+				})
+			);
 
 		this.state = {
 			translations,
@@ -90,13 +106,19 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	}
 
 	render(): JSX.Element | null | false {
+		const { disableMultilanguage, readOnly, label, help, name } = this.props
 		const lines = this.state.translations.map(t => this.lineRender(t.lang, t.value, t.id));
 
 		return (
-			<div className={cx('form-group', this.style)}>
+			<div className={cx(
+				'form-group pos-relative', {
+					'mandatory': disableMultilanguage
+				},
+				this.style
+			)}>
 				<label>
-					{this.props.label}
-					<div style={{ display: this.props.readOnly ? 'none' : 'inline-block' }}>
+					{label}
+					<div style={{ display: disableMultilanguage || readOnly ? 'none' : 'inline-block' }}>
 						<ActionButton
 							iconClass="fas fa-plus-circle"
 							tooltipText={this.state.wordings.translationAdd}
@@ -104,6 +126,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 							clickAction={this.addNewLine.bind(this)}
 						/>
 					</div>
+					{help && <Help text={help} />}
 				</label>
 				<div style={{ paddingLeft: 0, paddingRight: 0 }}>
 					{lines.length === 0 ? this.emptyContent() : lines}
@@ -142,12 +165,13 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		isDefaultLang?: boolean
 	): JSX.Element {
 		const inputRequired = cx({ inputRequired: !!lang });
+		const { name } = this.props
 		const { wordings } = this.state
 
-		return (
+		return !this.props.disableMultilanguage ? (
 			<div
 				key={key}
-				className="row  form-group  mandatory"
+				className="row form-group mandatory"
 				style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
 				<div className="col-xs-12 col-sm-5 col-md-5" style={{ paddingLeft: '0' }}>
 					<SelectLanguage
@@ -165,6 +189,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					<Input
 						key={`${key}-value`}
 						id={`${key}-value`}
+						name={`${name}.${lang}`}
 						value={value}
 						className="form-control"
 						readOnly={readOnly}
@@ -191,6 +216,22 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 						/>
 					</div>
 				</div>
+			</div>
+		) : (
+			<div
+				key={key}
+				className="row form-group"
+				style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
+				<Input
+					key={`${key}-value`}
+					id={`${key}-value`}
+					name={`${name}.${lang}`}
+					value={value}
+					className="form-control"
+					readOnly={readOnly}
+					required={!!lang}
+					onChange={onValueChange}
+				/>
 			</div>
 		);
 	}

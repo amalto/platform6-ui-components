@@ -1,7 +1,7 @@
 {
 	"name": "@amalto/translation-field",
 	"displayName": "TranslationField",
-	"description": "Translation field.",
+	"description": "Select input which allow the internationalization of a value.",
 	"version": "1.0.1",
 	"license": "MIT",
 	"repository": {
@@ -34,7 +34,7 @@
 	},
 	"dependencies": {
 		"@amalto/action-button": "1.9.15",
-		"@amalto/help": "1.9.19",
+		"@amalto/help": "^1.9.19",
 		"base-64": "0.1.0",
 		"emotion": "^10.0.23",
 		"fp-ts": "^2.2.0",
