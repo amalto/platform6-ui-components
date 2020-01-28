@@ -1,8 +1,8 @@
 {
-	"name": "@amalto/translation-field",
-	"displayName": "TranslationField",
-	"description": "Translation field.",
-	"version": "1.0.4",
+	"name": "@amalto/translation-field-input",
+	"displayName": "TranslationFieldInput",
+	"description": "Translation field input used on platform6.",
+	"version": "1.0.0",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -25,27 +25,21 @@
 		"access": "public"
 	},
 	"devDependencies": {
+		"@amalto/typings": "^1.9.26",
 		"@types/react": "15.6.10",
-		"@types/react-select": "2.0.19",
 		"source-map-loader": "0.2.4",
 		"ts-loader": "6.2.1",
 		"typescript": "3.7.2",
 		"webpack": "4.41.2"
 	},
 	"dependencies": {
-		"@amalto/action-button": "1.9.15",
-		"@amalto/help": "^1.9.19",
-		"@amalto/helpers": "^1.9.36",
-		"@amalto/typings": "^1.9.26",
+		"@amalto/translation-field": "^1.0.4",
 		"base-64": "0.1.0",
-		"emotion": "^10.0.23",
-		"fp-ts": "^2.2.0",
 		"react": "15.6.2",
 		"react-dom": "15.6.2",
-		"react-grid-layout": "0.17.1",
-		"react-select": "2.4.4",
-		"rxjs": "6.5.3",
-		"uuid": "3.3.3"
+		"react-redux": "5.0.6",
+		"redux": "3.7.2",
+		"redux-form": "6.6.1"
 	},
 	"ava": {
 		"concurrency": 5,
