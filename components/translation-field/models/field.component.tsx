@@ -74,7 +74,7 @@ export abstract class Field<
 		);
 
 		return (
-			<div>
+			<div style={{width: '100%'}}>
 				{this.renderField(htmlFor, innerClassName, innerProps)}
 				{this.renderError()}
 			</div>

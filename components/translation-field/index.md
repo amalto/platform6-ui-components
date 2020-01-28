@@ -12,6 +12,7 @@ initialState = { value: data };
 <TranslationField name='exemple-transaction-field'
     label='exemple-transaction-field'
     help='English is mandatory'
+    useTextarea={false}
     disableMultilanguage={false}
     value={state.value}
     onChange={( value ) => {

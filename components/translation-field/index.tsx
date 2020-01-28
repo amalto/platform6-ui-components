@@ -8,12 +8,15 @@ import uuid from 'uuid';
 import { LanguageCode } from './constants/languages';
 import { WORDINGS } from './constants/wordings';
 import { Input } from './models/input.field';
+import { Textarea } from './models/textarea.field';
 import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
 
 export interface TranslationProps {
 	/** Set true to disable the support of internationalization. */
 	disableMultilanguage?: boolean;
+	/** Set to true if you want to use textarea instead of text input. */
+	useTextarea?: boolean;
 	/** Storage which contain instance and user informations. */
 	webStorage: WebStorage;
 	/** Input name. */
@@ -68,14 +71,13 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					value: props.value[lang]
 				})
 			)
-			: Object.keys(props.value)
-				.filter(lang => lang === 'en')
-				.map(lang => ({
+			: [
+				{
 					id: uuid(),
-					lang,
-					value: props.value[lang]
-				})
-			);
+					lang: this.defaultLang,
+					value: props.value[this.defaultLang]
+				}
+			];
 
 		this.state = {
 			translations,
@@ -120,9 +122,9 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					{label}
 					<div style={{ display: disableMultilanguage || readOnly ? 'none' : 'inline-block' }}>
 						<ActionButton
-							iconClass="fas fa-plus-circle"
+							iconClass='fas fa-plus-circle'
 							tooltipText={this.state.wordings.translationAdd}
-							btnClass="padl-10 primary-color"
+							btnClass='padl-10 primary-color'
 							clickAction={this.addNewLine.bind(this)}
 						/>
 					</div>
@@ -136,7 +138,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	}
 
 	protected emptyContent(): JSX.Element {
-		return <div className="padl-10 text-small">{this.state.wordings.translationEmpty}</div>;
+		return <div className='padl-10 text-small'>{this.state.wordings.translationEmpty}</div>;
 	}
 
 	private lineRender(lang: string, value: string, key: string): JSX.Element {
@@ -168,15 +170,26 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		const { name } = this.props
 		const { wordings } = this.state
 
+		const valueProps = {
+			key:`${key}-value`,
+			id:`${key}-value`,
+			name:`${name}.${lang}`,
+			value:value,
+			className:'form-control',
+			readOnly:readOnly,
+			required:!!lang,
+			onChange:onValueChange
+		}
+
 		return !this.props.disableMultilanguage ? (
 			<div
 				key={key}
-				className="row form-group mandatory"
+				className='row form-group mandatory'
 				style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
-				<div className="col-xs-12 col-sm-5 col-md-5" style={{ paddingLeft: '0' }}>
+				<div className='col-xs-12 col-sm-5 col-md-5' style={{ paddingLeft: '0' }}>
 					<SelectLanguage
 						key={`${key}-lang`}
-						name="lang"
+						name='lang'
 						excludes={excludes}
 						value={lang}
 						components={{ Placeholder: PlaceholderWithTooltip }}
@@ -186,19 +199,10 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					/>
 				</div>
 				<div className={cx('col-xs-11 col-sm-6 col-md-6', inputRequired)}>
-					<Input
-						key={`${key}-value`}
-						id={`${key}-value`}
-						name={`${name}.${lang}`}
-						value={value}
-						className="form-control"
-						readOnly={readOnly}
-						required={!!lang}
-						onChange={onValueChange}
-					/>
+					{this.renderInput( valueProps )}
 				</div>
 				<div
-					className="col-xs-1 col-sm-1 col-md-1"
+					className='col-xs-1 col-sm-1 col-md-1'
 					style={{
 						paddingRight: 0,
 						display: 'flex',
@@ -208,8 +212,8 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					}}>
 					<div style={{ display: isDefaultLang || readOnly ? 'none' : 'block' }}>
 						<ActionButton
-							iconClass="fas fa-trash-alt"
-							btnClass="danger-color"
+							iconClass='fas fa-trash-alt'
+							btnClass='danger-color'
 							disabled={readOnly}
 							tooltipText={wordings.translationDel}
 							clickAction={onRemoveLine}
@@ -220,20 +224,19 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		) : (
 			<div
 				key={key}
-				className="row form-group"
+				className='row form-group'
 				style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
-				<Input
-					key={`${key}-value`}
-					id={`${key}-value`}
-					name={`${name}.${lang}`}
-					value={value}
-					className="form-control"
-					readOnly={readOnly}
-					required={!!lang}
-					onChange={onValueChange}
-				/>
+				{this.renderInput( valueProps )}
 			</div>
 		);
+	}
+
+	private renderInput( props ): JSX.Element {
+		return this.props.useTextarea ? (
+			<Textarea {...props} />
+		) : (
+			<Input {...props} />
+		)
 	}
 
 	private addNewLine(): void {
