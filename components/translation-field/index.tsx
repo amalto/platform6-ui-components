@@ -141,7 +141,10 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 						? this.emptyContent()
 						: collapseErrorSpace
 							? lines
-							: <div className='validation-error-message'>lines</div>
+							: <div>
+								{lines}
+								<div className='validation-error-message'>&nbsp;</div>
+							</div>
 				}
 			</div>
 		);
