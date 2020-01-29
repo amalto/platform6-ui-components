@@ -1,9 +1,9 @@
-# ActionButton
+# TranslationFieldInput
 
-Icon button used for compact interfaces. A description can be added as a tooltip and is visible by hovering the button.
+Group of selects and inputs which allow you to set a value depending of the language inside a redux form.
 
 ## Install
-To install the ActionButton component run:
+To install the TranslationFieldInput component run:
 ```terminal
-npm install --save @amalto/action-button
+npm install --save @amalto/translation-field-input
 ```

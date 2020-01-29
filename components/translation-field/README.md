@@ -1,9 +1,9 @@
-# ActionButton
+# TranslationField
 
-Icon button used for compact interfaces. A description can be added as a tooltip and is visible by hovering the button.
+Group of selects and inputs which allow you to set a value depending of the language inside.
 
 ## Install
-To install the ActionButton component run:
+To install the TranslationField component run:
 ```terminal
-npm install --save @amalto/action-button
+npm install --save @amalto/translation-field
 ```
