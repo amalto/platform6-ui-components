@@ -28,6 +28,12 @@ export interface TranslationProps extends BaseFieldProps {
 	/** Triggered every time the value change. */
 	onChange?: (value: { [key: string]: string }) => void;
 	/**
+	 * Remove the bottom margin which is the default height of the error message
+	 * displayed when input is invalid.
+	 * @default false
+	 */
+	collapseErrorSpace?: boolean;
+	/**
 	 * Language to use on the component which determine the search input's placeholder language. e.g: <span className='quote'>en-US</span>.
 	 * Locales available at [Locale](#locale).
 	 * Accessible via [WebStorage](#webstorage).

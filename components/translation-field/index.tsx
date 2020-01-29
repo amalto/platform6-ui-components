@@ -32,6 +32,12 @@ export interface TranslationProps {
 	/** Triggered every time the value change. */
 	onChange?: (value: { [key: string]: string }) => void;
 	/**
+	 * Remove the bottom margin which is the default height of the error message
+	 * displayed when input is invalid.
+	 * @default false
+	 */
+	collapseErrorSpace?: boolean;
+	/**
 	 * Language to use on the component which determine the search input's placeholder language. e.g: <span className='quote'>en-US</span>.
 	 * Locales available at [Locale](#locale).
 	 * Accessible via [WebStorage](#webstorage).
@@ -108,7 +114,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	}
 
 	render(): JSX.Element | null | false {
-		const { disableMultilanguage, readOnly, label, help, name } = this.props
+		const { disableMultilanguage, readOnly, label, help, name, collapseErrorSpace } = this.props
 		const lines = this.state.translations.map(t => this.lineRender(t.lang, t.value, t.id));
 
 		return (
@@ -130,15 +136,19 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					</div>
 					{help && <Help text={help} />}
 				</label>
-				<div style={{ paddingLeft: 0, paddingRight: 0 }}>
-					{lines.length === 0 ? this.emptyContent() : lines}
-				</div>
+				{
+					lines.length === 0
+						? this.emptyContent()
+						: collapseErrorSpace
+							? lines
+							: <div className='validation-error-message'>lines</div>
+				}
 			</div>
 		);
 	}
 
 	protected emptyContent(): JSX.Element {
-		return <div className='padl-10 text-small'>{this.state.wordings.translationEmpty}</div>;
+		return <div className='validation-error-message'>{this.state.wordings.translationEmpty}</div>;
 	}
 
 	private lineRender(lang: string, value: string, key: string): JSX.Element {
