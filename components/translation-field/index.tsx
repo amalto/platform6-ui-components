@@ -29,8 +29,8 @@ export interface TranslationProps {
 	value: { [key: string]: string };
 	/** Is field on readonly. */
 	readOnly?: boolean;
-	/** Triggered every time the value change. */
-	onChange?: (value: { [key: string]: string }) => void;
+	/** Callback function executed on user input. */
+	handleFieldChange: ( fieldValue: string, fieldName: string ) => void;
 	/**
 	 * Remove the bottom margin which is the default height of the error message
 	 * displayed when input is invalid.
@@ -89,28 +89,6 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			translations,
 			wordings: getWordings( WORDINGS, props.locale )
 		};
-	}
-
-	componentDidUpdate?(_: Readonly<TranslationProps>, prevState: Readonly<TranslationState>): void {
-		if (this.props.onChange) {
-			const translationToPropagate: { [lang: string]: string } = this.state.translations
-				.filter(t => !!t.lang && !!t.value)
-				.reduce((acc, cur) => ({ ...acc, [cur.lang]: cur.value }), {});
-
-			const previousPropagation: { [lang: string]: string } = prevState.translations
-				.filter(t => !!t.lang && !!t.value)
-				.reduce((acc, cur) => ({ ...acc, [cur.lang]: cur.value }), {});
-
-			const hasNewTranslation =
-				Object.keys(translationToPropagate).length !== Object.keys(previousPropagation).length;
-			const hasValueUpdated = !Object.keys(previousPropagation)
-				.map(key => translationToPropagate[key] === previousPropagation[key])
-				.reduce((acc, cur) => acc && cur, true);
-
-			if (hasNewTranslation || hasValueUpdated) {
-				this.props.onChange(translationToPropagate);
-			}
-		}
 	}
 
 	render(): JSX.Element | null | false {
@@ -278,9 +256,13 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
 	private onValueChangeHandler(id: string): (event: ChangeEvent<HTMLInputElement>) => void {
 		return (event: ChangeEvent<HTMLInputElement>): void => {
+
+			const value: string = event.target.value
 			const translations = this.state.translations.map(t =>
-				t.id === id ? { ...t, value: event.target.value } : t
+				t.id === id ? { ...t, value } : t
 			);
+
+			this.props.handleFieldChange( value, id );
 
 			this.setState({
 				translations: translations
