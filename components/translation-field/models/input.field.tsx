@@ -24,6 +24,7 @@ export class Input extends Field<HTMLInputElement, InputProps> {
 			<input ref={input => (this.ref = input)}
 				className={classNames( className, 'full-width' )}
 				id={id}
+				key={`key_${id}`}
 				{...props}
 			/>
 		);

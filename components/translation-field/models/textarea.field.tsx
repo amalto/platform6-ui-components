@@ -29,6 +29,7 @@ export class Textarea extends Field<HTMLTextAreaElement, TextareaProps> {
 			<textarea ref={input => (this.ref = input)}
 				className={classNames( className, 'full-width' )}
 				id={id}
+				key={`key_${id}`}
 				style={this.styles}
 				{...props}
 			/>
