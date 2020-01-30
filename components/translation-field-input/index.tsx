@@ -92,8 +92,9 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		const { input } = field
 
 		return (
-			<TransactionField value={input.value}
-				{...this.props}
+			<TransactionField {...this.props}
+				value={input.value}
+				handleFieldChange={input.onChange as any}
 			/>
 		)
 	}
