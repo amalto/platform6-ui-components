@@ -2,7 +2,7 @@
     "name": "@amalto/validated-input",
     "displayName": "ValidatedInput",
     "description": "Input component with validation control.",
-    "version": "1.9.23",
+    "version": "1.9.24",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/help": "1.9.19",
-        "@amalto/helpers": "1.9.36",
+        "@amalto/helpers": "1.9.37",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2"
