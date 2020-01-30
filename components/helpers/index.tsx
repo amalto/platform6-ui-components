@@ -347,6 +347,14 @@ export function getAcceptLanguageHeader( locale: string ): string {
     return locale.substr( 0, 2 ).toLowerCase() + ',' + notSelected.join( ',' )
 }
 
+/**
+ * 
+ * @param { string } locale local to be used to get the labels.
+ * @param { { [language: string]: string; } } labelMap map where to get the labels from.
+ * @param { [boolean] } noRegion if true, get the labels by local instead of language.
+ * @param { [boolean] } upper if true search labels by uppercase locale/language.
+ * @returns { string }
+ */
 export function getI18nLabel( locale: string, labelMap: { [language: string]: string; }, noRegion?: boolean, upper?: boolean ): string {
 
     let res = null
@@ -383,6 +391,12 @@ export function getI18nLabel( locale: string, labelMap: { [language: string]: st
 
 }
 
+/**
+ * Get organisation tree datas.
+ * @param { OrgModel } orgTreeData tree to extract the data from.
+ * @param { [string[]] } openedNodes
+ * @returns { TreeNodeModel }
+ */
 export function getJSTreeData( orgTreeData: OrgModel, openedNodes?: string[] ): TreeNodeModel {
 
     return orgTreeData ? {
@@ -410,6 +424,11 @@ export function getJSTreeData( orgTreeData: OrgModel, openedNodes?: string[] ): 
 
 }
 
+/**
+ * Add a tooltip to an element.
+ * @param element where to apply the load.
+ * @returns { void }
+ */
 export function loadTooltips( element: Element ): void {
     if ( !Modernizr.touchevents ) {
         let $elementTooltips = $( element ).find( '[data-toggle="tooltip"]' )
@@ -424,6 +443,11 @@ export function loadTooltips( element: Element ): void {
     }
 }
 
+/**
+ * Remove the tooltip from an element.
+ * @param element where to apply the unload.
+ * @returns { void }
+ */
 export function unloadTooltips( element: Element ): void {
     if ( !Modernizr.touchevents ) {
         let $elementTooltips = $( element ).find( '[data-toggle="tooltip"]' )
@@ -433,6 +457,12 @@ export function unloadTooltips( element: Element ): void {
     }
 }
 
+/**
+ * Get all the values corresponding to the property name.
+ * @param list array of object where to get the value from.
+ * @param propertyName value of the property to get in every object of the list.
+ * @param { { [propValue: string]: any[] } }
+ */
 export function groupByProperty( list: any[], propertyName: string ): { [propValue: string]: any[] } {
     return list.reduce( ( grouped, item ) => {
         let key = item[propertyName]
@@ -446,6 +476,7 @@ export function groupByProperty( list: any[], propertyName: string ): { [propVal
  * Add an element if it isn't already in the array
  * @param array Array to process
  * @param value Value to add
+ * @returns { string[] }
  */
 export function addValToArrayNoDup( array: string[], value: string ): string[] {
     if ( array.indexOf( value ) === -1 ) {
@@ -458,6 +489,7 @@ export function addValToArrayNoDup( array: string[], value: string ): string[] {
  * Remove all element from array that match the value parameter
  * @param array Array to process
  * @param value Value to exclude
+ * @returns { string[] }
  */
 export function removeValFromArrayNoDup( array: string[], value: string ): string[] {
     return array.filter( element => element !== value )
@@ -467,6 +499,7 @@ export function removeValFromArrayNoDup( array: string[], value: string ): strin
  * Get nested value from object and pointed by a doted path
  * @param obj Object to search in
  * @param keyPath Path to search to
+ * @returns { any }
  */
 export function getNestedValue( obj: any, keyPath: string ): any {
 
@@ -490,8 +523,9 @@ export function getNestedValue( obj: any, keyPath: string ): any {
  * @param collection Array to filter
  * @param properties Properties keys to sort the array by
  * @param searchString If given, only return value that contain this value
+ * @returns { any[] }
  */
-export function filterCollection( collection: any[], properties: string[], searchString: string ) {
+export function filterCollection( collection: any[], properties: string[], searchString: string ): any[] {
 
     const searchElements = searchString.toLowerCase().split( ' ' )
 
@@ -516,7 +550,12 @@ export function filterCollection( collection: any[], properties: string[], searc
 
 }
 
-export function base64Decode( encodedData: string ) {
+/**
+ * Decode base64 string.
+ * @param encodedData to be decoded.
+ * @returns { string }
+ */
+export function base64Decode( encodedData: string ): string {
     return base64.decode( encodedData )
 }
 
@@ -524,6 +563,7 @@ export function base64Decode( encodedData: string ) {
  * Copy object data into another object
  * @param data Object to copy and extend
  * @param extensions Object to inject into data
+ * @returns { any }
  */
 export function deepCopy( data: any, extensions?: any ): any {
     return !extensions ? JSON.parse( JSON.stringify( data || {} ) ) : $.extend( {}, data, extensions )
@@ -533,6 +573,7 @@ export function deepCopy( data: any, extensions?: any ): any {
  * Handle dupplicate name from array
  * @param { string } name Name to check
  * @param { string[] } container String to compared to
+ * @returns { string }
  */
 export function handleDuplicateNameFromArray( name: string, container: string[] ): string {
     let firstTime: boolean = true
@@ -556,6 +597,7 @@ export function handleDuplicateNameFromArray( name: string, container: string[] 
  * @param timestamp timestamp in milliseconde
  * @param locale locale to be used
  * @param options options of toLocaleString method
+ * @returns { string }
  */
 export function dateByLocalToString( locale: string, date: number, options?: Intl.DateTimeFormatOptions ): string {
     return new Date( date ).toLocaleString( locale, deepCopy( {
@@ -567,14 +609,55 @@ export function dateByLocalToString( locale: string, date: number, options?: Int
     }, options ) )
 }
 
+/**
+ * Get items from the collection by ids.
+ * @param collection collection where to extract the item from.
+ * @param indexes index of the item to return.
+ * @returns { Array<T> }
+ */
 export function getItemsByIdx<T>( collection: Array<T>, indexes: number[] ): Array<T> {
     return indexes.map( idx => collection[idx] )
 }
 
+/**
+ * Escape special characters from a string.
+ * @param text string to be escaped.
+ * @returns { string }
+ */
 export function escapeRegExp( text: string ): string {
     return text.replace( /[-[\]{}()*+?.,\\^$|#]/g, '\\$&' );
 }
 
+/**
+ * Display the string if it exist, otherwise display a default value.
+ * @param value string to be displayed.
+ * @param defaultValue default value to be used if value is null, undefined or empty.
+ *                     If not set '-' will be used
+ * @returns { string }
+ */
 export function displayString( value: string, defaultValue?: string ): string {
     return isNotEmpty( value ) ? value : isNotEmpty( defaultValue ) ? defaultValue : '-'
+}
+
+/**
+ * Compare 2 json objects which can be serialiazed.
+ * @param first json object to be compared.
+ * @param second json object to compare to.
+ * @returns { boolean }
+ */
+export function areJsonEqual( first: {}, second: {} ): boolean {
+    if ( !first && !second || !first || !second ) {
+        return false
+    }
+
+    const differentLength: boolean = Object.keys( first ).length !== Object.keys( second ).length
+    const areSameKeys: boolean = Object.keys(first)
+        .map(key => second[key] === first[key])
+        .reduce((acc, cur) => acc && cur, true)
+
+    if ( differentLength || !areSameKeys ) {
+        return false
+    }
+
+    return true
 }
