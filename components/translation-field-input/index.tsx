@@ -87,19 +87,20 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		const renderField = ( field: WrappedFieldProps<any> ): JSX.Element => {
 			const { input } = field
 	
+			const onChange = ( value: { [key: string]: string }, input: WrappedFieldInputProps ): void => {
+				input.onChange( value, this.props.name, null )
+			}
+
 			return (
 				<TransactionField {...this.props}
 					value={input.value}
-					onChange={value => {this.onChange.bind( this, value, input )}}
+					onChange={value => onChange( value, input )}
 				/>
 			)
 		}
 
 		return <Field name={this.props.name} component={renderField} />
 	}
-
-	private onChange( value: { [key: string]: string }, input: WrappedFieldInputProps ): void {
-		input.onChange( value, this.props.name, null )	}
 }
 
 export default TranslationField
