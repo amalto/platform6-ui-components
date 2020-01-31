@@ -29,8 +29,8 @@ export interface TranslationProps {
 	value: { [key: string]: string };
 	/** Is field on readonly. */
 	readOnly?: boolean;
-	/** Callback function executed on user input. */
-	handleFieldChange: ( fieldValue: string, fieldName: string ) => void;
+	/** Triggered every time the value change. */
+	onChange?: (value: { [key: string]: string }) => void;
 	/**
 	 * Remove the bottom margin which is the default height of the error message
 	 * displayed when input is invalid.
@@ -261,8 +261,11 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			const translations = this.state.translations.map(t =>
 				t.id === id ? { ...t, value } : t
 			);
-
-			this.props.handleFieldChange( value, id );
+			const data = this.state.translations.reduce((a, b) => {
+                return {...a, [b.lang]: b.value };
+            }, {});
+			
+			this.props.onChange( data );
 
 			this.setState({
 				translations: translations

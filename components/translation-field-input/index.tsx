@@ -1,6 +1,6 @@
 // Modules
 import React, { Component } from 'react';
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form';
+import { WrappedFieldProps, WrappedFieldInputProps, Field, BaseFieldProps } from 'redux-form';
 
 // Utils
 import { WebStorage } from '@amalto/typings';
@@ -90,13 +90,16 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			return (
 				<TransactionField {...this.props}
 					value={input.value}
-					handleFieldChange={input.onChange as any}
+					onChange={value => {this.onChange.bind( this, value, input )}}
 				/>
 			)
 		}
 
 		return <Field name={this.props.name} component={renderField} />
 	}
+
+	private onChange( value: { [key: string]: string }, input: WrappedFieldInputProps ): void {
+		input.onChange( value, this.props.name, null )	}
 }
 
 export default TranslationField
