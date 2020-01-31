@@ -21,8 +21,6 @@ export interface TranslationProps extends BaseFieldProps {
 	label: string | JSX.Element;
 	/** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
 	help?: string;
-	/** Language options. */
-	value: { [key: string]: string };
 	/** Is field on readonly. */
 	readOnly?: boolean;
 	/** Triggered every time the value change. */
@@ -85,18 +83,19 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	}
 
 	render(): JSX.Element | null | false {
-		return <Field name={this.props.name} component={this.renderField.bind( this )} />
-	}
+		
+		const renderField = ( field: WrappedFieldProps<any> ): JSX.Element => {
+			const { input } = field
+	
+			return (
+				<TransactionField {...this.props}
+					value={input.value}
+					handleFieldChange={input.onChange as any}
+				/>
+			)
+		}
 
-	private renderField( field: WrappedFieldProps<any> ): JSX.Element {
-		const { input } = field
-
-		return (
-			<TransactionField {...this.props}
-				value={input.value}
-				handleFieldChange={input.onChange as any}
-			/>
-		)
+		return <Field name={this.props.name} component={renderField} />
 	}
 }
 
