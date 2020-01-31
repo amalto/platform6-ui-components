@@ -92,12 +92,12 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		return (
 			<TransactionField {...this.props}
 				value={input.value}
-				onChange={value => this.onChange.bind( this, value, input )}
+				onChange={value => this.onChange( value, input )}
 			/>
 		)
 	}
 
-	private onChange(  value: { [key: string]: string; }, input: WrappedFieldInputProps ): void {
+	private onChange = (  value: { [key: string]: string; }, input: WrappedFieldInputProps ): void => {
 		input.onChange( value, this.props.name, null )
 	}
 }
