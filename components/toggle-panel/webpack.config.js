@@ -1,6 +1,4 @@
 const { resolve } = require('path');
-const webpack = require('webpack');
-const fs = require('fs');
 
 module.exports = {
     entry: [

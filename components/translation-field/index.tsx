@@ -1,16 +1,25 @@
+// Modules
+import React, { ChangeEvent, Component } from 'react';
+import ReactDOM from 'react-dom';
+import { css, cx } from 'emotion';
+import uuid from 'uuid';
+
+// Components
 import ActionButton from '@amalto/action-button';
 import Help from '@amalto/help';
-import { WebStorage } from '@amalto/typings';
-import { getWordings, deepCopy } from '@amalto/helpers';
-import { css, cx } from 'emotion';
-import React, { ChangeEvent, Component } from 'react';
-import uuid from 'uuid';
-import { LanguageCode } from './constants/languages';
-import { WORDINGS } from './constants/wordings';
 import { Input } from './models/input.field';
 import { Textarea } from './models/textarea.field';
 import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
+
+// Utils & Typings
+import { WebStorage } from '@amalto/typings';
+import { getWordings, deepCopy } from '@amalto/helpers';
+
+// Constants
+import { LanguageCode } from './constants/languages';
+import { WORDINGS } from './constants/wordings';
+
 
 export interface TranslationProps {
 	/** Set mandatory language by default, if not provided 'en' will be used. */
