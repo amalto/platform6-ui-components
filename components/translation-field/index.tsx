@@ -1,6 +1,5 @@
 // Modules
 import React, { ChangeEvent, Component } from 'react';
-import ReactDOM from 'react-dom';
 import { css, cx } from 'emotion';
 import uuid from 'uuid';
 
