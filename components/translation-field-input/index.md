@@ -21,6 +21,7 @@ const ExempleTranslationFieldInput = reduxForm({
 <ExempleTranslationFieldInput name='exemple-transaction-field-input'
     label='exemple-transaction-field-input'
     help='English is mandatory'
+    defaultLanguage='en'
     useTextarea={false}
     disableMultilanguage={false}
 />

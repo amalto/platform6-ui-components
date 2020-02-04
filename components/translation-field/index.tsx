@@ -14,7 +14,7 @@ import { PlaceholderWithTooltip } from './models/select.field';
 
 // Utils & Typings
 import { WebStorage } from '@amalto/typings';
-import { getWordings, deepCopy } from '@amalto/helpers';
+import { getWordings } from '@amalto/helpers';
 
 // Constants
 import { LanguageCode } from './constants/languages';
@@ -60,6 +60,7 @@ export interface TranslationProps {
 declare type TranslationType = { id: string; lang: string; value: string };
 
 interface TranslationState {
+	defaultLang?: string;
 	translations: TranslationType[];
 	wordings?: { [key: string]: string };
 }
@@ -82,25 +83,35 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	constructor(props: Readonly<TranslationProps>) {
 		super(props);
 
-		let translations: TranslationType[] = [{
-			id: uuid(),
-			lang: props.defaultLanguage || this.defaultLang,
-			value: ''
-		}];
+		const defaultLang: string = props.defaultLanguage || this.defaultLang
 
-		if ( !props.disableMultilanguage ) {
-			translations = deepCopy(
-				translations,
-				Object.keys(props.value)
-				.map(lang => ({
-					id: uuid(),
-					lang,
-					value: props.value[lang]
-				}))
-			)
+		let translations: TranslationType[] = Object.keys(props.value)
+			.map(lang => ({
+				id: uuid(),
+				lang,
+				value: props.value[lang]
+			}));
+
+		const defaultLanguageIsProvided: boolean = translations.some( value => {
+			console.info('defaultLanguageIsProvided::value => ', value)
+			console.info('defaultLanguageIsProvided::value.lang === defaultLang => ', value.lang === defaultLang)
+
+			return value.lang === defaultLang
+		} )
+
+		console.info('defaultLanguageIsProvided::defaultLanguageIsProvided => ', defaultLanguageIsProvided)
+
+		if ( !defaultLanguageIsProvided ) {
+			console.info('unshift')
+			translations.unshift( {
+				id: uuid(),
+				lang: defaultLang,
+				value: ''
+			} )
 		}
 
 		this.state = {
+			defaultLang,
 			translations,
 			wordings: getWordings( WORDINGS, props.locale )
 		};
@@ -157,7 +168,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			(): void => this.removeLine(key),
 			this.state.translations.map(t => t.lang).filter(l => !!l),
 			this.props.readOnly,
-			this.defaultLang === lang
+			this.state.defaultLang === lang
 		);
 	}
 
@@ -276,10 +287,9 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			const translations = this.state.translations.map(t =>
 				t.id === id ? { ...t, value } : t
 			);
-			const data = this.state.translations.reduce((a, b) => {
+			const data = translations.reduce((a, b) => {
                 return {...a, [b.lang]: b.value };
             }, {});
-			
 			this.props.onChange( data );
 
 			this.setState({
