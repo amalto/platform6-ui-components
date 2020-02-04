@@ -92,17 +92,9 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 				value: props.value[lang]
 			}));
 
-		const defaultLanguageIsProvided: boolean = translations.some( value => {
-			console.info('defaultLanguageIsProvided::value => ', value)
-			console.info('defaultLanguageIsProvided::value.lang === defaultLang => ', value.lang === defaultLang)
-
-			return value.lang === defaultLang
-		} )
-
-		console.info('defaultLanguageIsProvided::defaultLanguageIsProvided => ', defaultLanguageIsProvided)
+		const defaultLanguageIsProvided: boolean = translations.some( value => value.lang === defaultLang )
 
 		if ( !defaultLanguageIsProvided ) {
-			console.info('unshift')
 			translations.unshift( {
 				id: uuid(),
 				lang: defaultLang,
