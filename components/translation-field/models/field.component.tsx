@@ -1,7 +1,9 @@
-import Help from '@amalto/help';
-import { css, cx } from 'emotion';
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import uuid from 'uuid/v4';
+import { css, cx } from 'emotion';
+
+import Help from '@amalto/help';
 
 interface FieldElement {
 	checkValidity: () => boolean;
