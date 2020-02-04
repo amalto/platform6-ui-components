@@ -1,9 +1,9 @@
-// Modules
+/** Modules */
 import React, { ChangeEvent, Component } from 'react';
 import { css, cx } from 'emotion';
 import uuid from 'uuid';
 
-// Components
+/** Components */
 import ActionButton from '@amalto/action-button';
 import Help from '@amalto/help';
 import { Input } from './models/input.field';
@@ -11,11 +11,11 @@ import { Textarea } from './models/textarea.field';
 import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
 
-// Utils & Typings
+/** Utils & Typings */
 import { WebStorage } from '@amalto/typings';
 import { getWordings } from '@amalto/helpers';
 
-// Constants
+/** Constants */
 import { LanguageCode } from './constants/languages';
 import { WORDINGS } from './constants/wordings';
 

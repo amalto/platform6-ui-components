@@ -1,11 +1,11 @@
-// Modules
+/** Modules */
 import React, { Component } from 'react';
 import { WrappedFieldProps, WrappedFieldInputProps, Field, BaseFieldProps } from 'redux-form';
 
-// Utils
+/** Utils */
 import { WebStorage } from '@amalto/typings';
 
-// Components
+/** Components */
 import TransactionField from '@amalto/translation-field';
 
 export interface TranslationProps extends BaseFieldProps {
