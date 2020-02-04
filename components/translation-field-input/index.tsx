@@ -9,6 +9,8 @@ import { WebStorage } from '@amalto/typings';
 import TransactionField from '@amalto/translation-field';
 
 export interface TranslationProps extends BaseFieldProps {
+	/** Set mandatory language by default, if not provided 'en' will be used. */
+	defaultLanguage?: string;
 	/** Set true to disable the support of internationalization. */
 	disableMultilanguage?: boolean;
 	/** Set to true if you want to use textarea instead of text input. */

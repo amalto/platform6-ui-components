@@ -1,7 +1,7 @@
 import ActionButton from '@amalto/action-button';
 import Help from '@amalto/help';
 import { WebStorage } from '@amalto/typings';
-import { getWordings } from '@amalto/helpers';
+import { getWordings, deepCopy } from '@amalto/helpers';
 import { css, cx } from 'emotion';
 import React, { ChangeEvent, Component } from 'react';
 import uuid from 'uuid';
@@ -13,6 +13,8 @@ import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
 
 export interface TranslationProps {
+	/** Set mandatory language by default, if not provided 'en' will be used. */
+	defaultLanguage?: string;
 	/** Set true to disable the support of internationalization. */
 	disableMultilanguage?: boolean;
 	/** Set to true if you want to use textarea instead of text input. */
@@ -46,8 +48,10 @@ export interface TranslationProps {
 	locale?: string;
 }
 
+declare type TranslationType = { id: string; lang: string; value: string };
+
 interface TranslationState {
-	translations: { id: string; lang: string; value: string }[];
+	translations: TranslationType[];
 	wordings?: { [key: string]: string };
 }
 
@@ -69,21 +73,23 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	constructor(props: Readonly<TranslationProps>) {
 		super(props);
 
-		const translations = !props.disableMultilanguage
-			? Object.keys(props.value)
+		let translations: TranslationType[] = [{
+			id: uuid(),
+			lang: props.defaultLanguage || this.defaultLang,
+			value: ''
+		}];
+
+		if ( !props.disableMultilanguage ) {
+			translations = deepCopy(
+				translations,
+				Object.keys(props.value)
 				.map(lang => ({
 					id: uuid(),
 					lang,
 					value: props.value[lang]
-				})
+				}))
 			)
-			: [
-				{
-					id: uuid(),
-					lang: this.defaultLang,
-					value: props.value[this.defaultLang]
-				}
-			];
+		}
 
 		this.state = {
 			translations,
@@ -92,7 +98,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	}
 
 	render(): JSX.Element | null | false {
-		const { disableMultilanguage, readOnly, label, help, name, collapseErrorSpace } = this.props
+		const { disableMultilanguage, readOnly, label, help, collapseErrorSpace } = this.props
 		const lines = this.state.translations.map(t => this.lineRender(t.lang, t.value, t.id));
 
 		return (
