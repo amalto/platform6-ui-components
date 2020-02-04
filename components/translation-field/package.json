@@ -26,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@types/react": "15.6.10",
+		"@types/react-dom": "15.5.6",
 		"@types/react-select": "2.0.19",
 		"source-map-loader": "0.2.4",
 		"ts-loader": "6.2.1",
