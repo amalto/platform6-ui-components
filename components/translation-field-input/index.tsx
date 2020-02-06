@@ -2,9 +2,6 @@
 import React, { Component } from 'react';
 import { WrappedFieldProps, WrappedFieldInputProps, Field, BaseFieldProps } from 'redux-form';
 
-/** Utils */
-import { WebStorage } from '@amalto/typings';
-
 /** Components */
 import TransactionField from '@amalto/translation-field';
 
@@ -15,8 +12,6 @@ export interface TranslationProps extends BaseFieldProps {
 	disableMultilanguage?: boolean;
 	/** Set to true if you want to use textarea instead of text input. */
 	useTextarea?: boolean;
-	/** Storage which contain instance and user informations. */
-	webStorage: WebStorage;
 	/** Input name. */
 	name: string;
 	/** Inuput label. */

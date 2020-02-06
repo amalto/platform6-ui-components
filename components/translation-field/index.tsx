@@ -12,7 +12,6 @@ import { SelectLanguage } from './models/language.field';
 import { PlaceholderWithTooltip } from './models/select.field';
 
 /** Utils & Typings */
-import { WebStorage } from '@amalto/typings';
 import { getWordings } from '@amalto/helpers';
 
 /** Constants */
@@ -27,8 +26,6 @@ export interface TranslationProps {
 	disableMultilanguage?: boolean;
 	/** Set to true if you want to use textarea instead of text input. */
 	useTextarea?: boolean;
-	/** Storage which contain instance and user informations. */
-	webStorage: WebStorage;
 	/** Input name. */
 	name: string;
 	/** Inuput label. */
