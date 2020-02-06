@@ -24,10 +24,16 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"peerDependencies": {
+		"react": "^15.6.2",
+		"react-dom": "^15.6.2"
+	},
 	"devDependencies": {
 		"@types/react": "15.6.10",
 		"@types/react-dom": "15.5.6",
 		"@types/react-select": "2.0.19",
+		"react": "15.6.2",
+		"react-dom": "15.6.2",
 		"source-map-loader": "0.2.4",
 		"ts-loader": "6.2.1",
 		"typescript": "3.7.2",
@@ -41,8 +47,6 @@
 		"base-64": "0.1.0",
 		"emotion": "^10.0.23",
 		"fp-ts": "^2.2.0",
-		"react": "15.6.2",
-		"react-dom": "15.6.2",
 		"react-grid-layout": "0.17.1",
 		"react-select": "2.4.4",
 		"rxjs": "6.5.3",
@@ -72,5 +76,6 @@
 			}
 		}
 	},
-	"gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e"
+	"gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e",
+	"optionalDependencies": {}
 }

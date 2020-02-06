@@ -24,10 +24,16 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"peerDependencies": {
+		"react": "^15.6.2",
+		"react-dom": "^15.6.2"
+	},
 	"devDependencies": {
 		"@amalto/typings": "1.9.27",
 		"@types/react": "15.6.10",
 		"@types/react-dom": "15.5.6",
+		"react": "^15.6.2",
+		"react-dom": "^15.6.2",
 		"source-map-loader": "0.2.4",
 		"ts-loader": "6.2.1",
 		"typescript": "3.7.2",
@@ -36,8 +42,6 @@
 	"dependencies": {
 		"@amalto/translation-field": "1.0.15",
 		"base-64": "0.1.0",
-		"react": "15.6.2",
-		"react-dom": "15.6.2",
 		"react-redux": "5.0.6",
 		"redux": "3.7.2",
 		"redux-form": "6.6.1"
