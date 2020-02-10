@@ -251,9 +251,12 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	}
 
 	private removeLine(id: string): void {
-		this.setState({
-			translations: this.state.translations.filter(t => t.id !== id)
-		});
+		const translations = this.state.translations.filter(t => t.id !== id);
+		const data = translations.reduce((a, b) => (
+			{...a, [b.lang]: b.value }
+		), {});
+		this.props.onChange( data );
+		this.setState({ translations });
 	}
 
 	private onKeyChangeHandler(id: string): (lang: LanguageCode | undefined | null) => void {
