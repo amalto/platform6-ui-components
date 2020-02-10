@@ -62,7 +62,7 @@ interface TranslationState {
 }
 
 class TranslationField extends Component<TranslationProps, TranslationState> {
-	private defaultLang = 'en';
+	private defaultLang = 'EN';
 
 	private style = css({
 		'.inputRequired:after': {
