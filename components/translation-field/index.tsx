@@ -1,5 +1,5 @@
 /** Modules */
-import React, { ChangeEvent, Component } from 'react';
+import React, { ChangeEvent, Component, CSSProperties } from 'react';
 import { css, cx } from 'emotion';
 import uuid from 'uuid';
 
@@ -13,6 +13,7 @@ import { PlaceholderWithTooltip } from './models/select.field';
 
 /** Utils & Typings */
 import { getWordings } from '@amalto/helpers';
+import { ICON_TYPE, BUTTON_TYPE } from '@amalto/service-helpers';
 
 /** Constants */
 import { LanguageCode } from './constants/languages';
@@ -186,12 +187,19 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			onChange:onValueChange
 		}
 
+		const trashStyle:  CSSProperties = {
+			display: isDefaultLang || readOnly ? 'none' : 'block',
+			position: 'absolute',
+			top: 4,
+			right: 45
+		}
+
 		return !this.props.disableMultilanguage ? (
 			<div
 				key={key}
-				className='row form-group mandatory'
-				style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
-				<div className='col-xs-12 col-sm-5 col-md-5' style={{ paddingLeft: '0' }}>
+				className='form-group mandatory inline-block full-width'
+				style={{ marginLeft: 0, marginRight: 0 }}>
+				<div className='col-xs-12 col-sm-6 col-md-6 mgb-5' style={{ paddingLeft: 0 }}>
 					<SelectLanguage
 						key={`${key}-lang`}
 						name='lang'
@@ -202,28 +210,18 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 						isDisabled={isDefaultLang || readOnly}
 						onChange={onKeyChange}
 					/>
-				</div>
-				<div className={cx('col-xs-11 col-sm-6 col-md-6', inputRequired)}>
-					{this.renderInput( valueProps )}
-				</div>
-				<div
-					className='col-xs-1 col-sm-1 col-md-1'
-					style={{
-						paddingRight: 0,
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
-						textAlign: 'end'
-					}}>
-					<div style={{ display: isDefaultLang || readOnly ? 'none' : 'block' }}>
+					<div style={trashStyle}>
 						<ActionButton
-							iconClass='fas fa-trash-alt'
-							btnClass='danger-color'
+							iconClass={ICON_TYPE.CLOSE}
+							btnClass='default-color'
 							disabled={readOnly}
 							tooltipText={wordings.translationDel}
 							clickAction={onRemoveLine}
 						/>
 					</div>
+				</div>
+				<div className={cx('col-xs-12 col-sm-6 col-md-6 mgb-5', inputRequired)} style={{ paddingLeft: 0 }}>
+					{this.renderInput( valueProps )}
 				</div>
 			</div>
 		) : (
