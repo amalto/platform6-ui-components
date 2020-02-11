@@ -22,7 +22,7 @@ export const WORDINGS = {
 	},
 	selectLanguage: {
 		'en-US': 'Select language',
-		'fr-FR': 'Selectionnez une lanque'
+		'fr-FR': 'Sélectionnez une langue'
 	}
 };
 /* eslint-enable @typescript-eslint/camelcase */
