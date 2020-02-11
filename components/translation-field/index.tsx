@@ -188,18 +188,24 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		}
 
 		const trashStyle:  CSSProperties = {
-			display: isDefaultLang || readOnly ? 'none' : 'block',
-			position: 'absolute',
-			top: 4,
-			right: 45
+			display: isDefaultLang || readOnly ? 'none' : 'block'
 		}
 
 		return !this.props.disableMultilanguage ? (
 			<div
 				key={key}
 				className='form-group mandatory inline-block full-width'
-				style={{ marginLeft: 0, marginRight: 0 }}>
-				<div className='col-xs-12 col-sm-6 col-md-6 mgb-5' style={{ paddingLeft: 0 }}>
+				style={{ marginLeft: 0, marginRight: 0, position: 'relative' }}>
+				<div className='col-xs-12 col-sm-6 col-md-6 mgb-5 flex' style={{ paddingLeft: 0}}>
+					<div className='flex align-self-center padr-5' style={trashStyle}>
+						<ActionButton
+							iconClass={ICON_TYPE.DELETE}
+							btnClass='danger-color'
+							disabled={readOnly}
+							tooltipText={wordings.translationDel}
+							clickAction={onRemoveLine}
+						/>
+					</div>
 					<SelectLanguage
 						key={`${key}-lang`}
 						name='lang'
@@ -210,15 +216,6 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 						isDisabled={isDefaultLang || readOnly}
 						onChange={onKeyChange}
 					/>
-					<div style={trashStyle}>
-						<ActionButton
-							iconClass={ICON_TYPE.CLOSE}
-							btnClass='default-color'
-							disabled={readOnly}
-							tooltipText={wordings.translationDel}
-							clickAction={onRemoveLine}
-						/>
-					</div>
 				</div>
 				<div className={cx('col-xs-12 col-sm-6 col-md-6 mgb-5', inputRequired)} style={{ paddingLeft: 0 }}>
 					{this.renderInput( valueProps )}
