@@ -1,5 +1,5 @@
 export interface RunningJob {
-    jobId: number | string;
+    jobId: string;
     userEmail: string;
     status: string;
     priority: string;
