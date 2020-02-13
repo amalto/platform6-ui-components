@@ -661,3 +661,32 @@ export function areJsonEqual( first: {}, second: {} ): boolean {
 
     return true
 }
+
+/**
+ * Check if attributes exist on the collection
+ * @param { Object } collection To check from
+ * @param { string[] } attributes path to be checked
+ */
+export function nestedPathAttributesExist( collection: Object, attributes: string[] ): boolean {
+
+    /** No point testing if there is nothing to be tested in the first place. */
+    if ( !collection || $.isEmptyObject( collection ) || !attributes || attributes.length === 0 ) {
+        return false
+    }
+
+    let currentValue: unknown = collection[attributes[0]]
+
+    /** If the first key doesn't exist no point in testing the nested keys. */
+    if ( !currentValue ) {
+        return false
+    }
+
+    /** Remove the first element because it has been tested already. */
+    attributes.shift()
+
+    return !attributes.some( attr => {
+        currentValue = currentValue[attr]
+
+        return !currentValue
+    } )
+}
