@@ -1,7 +1,7 @@
 /** Import */
 import { Action } from './models/Action'
 import { AppKey } from './models/AppKey'
-import { RunningJob, Entity, JOB_PRIORITIES, JOB_STATUSES } from './models/JobControl'
+import { RunningJob, Entity, JOB_STATUSES } from './models/JobControl'
 import { ReduxProps } from './models/ReduxProps'
 import * as Errors from './models/Errors'
 import NotificationModel from './models/NotificationModel'
@@ -23,7 +23,7 @@ import { Option } from './models/Option'
 /** Export */
 export { Action }
 export { AppKey }
-export { RunningJob, Entity, JOB_PRIORITIES, JOB_STATUSES }
+export { RunningJob, Entity, JOB_STATUSES }
 export { ReduxProps }
 export { Errors }
 export { NotificationModel }
