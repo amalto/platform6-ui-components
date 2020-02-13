@@ -1,5 +1,5 @@
 export interface RunningJob {
-    jobId: number;
+    jobId: number | string;
     userEmail: string;
     status: string;
     priority: string;
@@ -47,10 +47,4 @@ export const JOB_STATUSES = {
     INERROR: 'INERROR',
     RUNNING: 'RUNNING',
     QUEUED: 'QUEUED'
-}
-export const JOB_PRIORITIES = {
-    HIGH: 'HIGH',
-    MEDIUM: 'MEDIUM',
-    LOW: 'LOW',
-    VERYLOW: 'VERYLOW'
 }
