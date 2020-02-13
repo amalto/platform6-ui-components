@@ -2,7 +2,7 @@
     "name": "@amalto/helpers",
     "displayName": "Helpers",
     "description": "Helpers functions used across Platform 6 core and components.",
-    "version": "1.9.38",
+    "version": "1.9.39",
     "license": "MIT",
     "repository": {
         "type": "git",
