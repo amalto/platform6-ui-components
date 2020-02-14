@@ -102,10 +102,10 @@ export interface DynamicComponent extends ReduxProps {
     showJobStatus?: ( jobId: string | number, autoCloseOnSuccess?: boolean, onSuccess?: (result:any) => void ) => void;
 
     /** List of complete jobs IDs */
-    completeJobs?: number[];
+    completeJobs?: string[];
 
     /** List of finished with error(s) jobs IDs */
-    inErrorJobs?: number[];
+    inErrorJobs?: string[];
 
     /** If any application publisher profile is accessible to user. */
     canSelectAppKey?: boolean;
