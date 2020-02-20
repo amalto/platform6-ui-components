@@ -3241,8 +3241,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     restartServiceForChanges: {
-        'en-US': 'Restart the service to take changes into account',
-        'fr-FR': 'Redémarrer le service pour prendre en compte les changements'
+        'en-US': 'The configuration of this service has been modified. A restart of this service may be required.',
+        'fr-FR': 'La configuration de ce service a été modifiée. Il est conseillé de le redémarrer.'
     },
 
     serviceStatus: {
