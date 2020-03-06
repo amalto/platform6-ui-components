@@ -25,8 +25,8 @@
 		"access": "public"
 	},
 	"peerDependencies": {
-		"react": "^15.6.2",
-		"react-dom": "^15.6.2"
+		"react": "15.6.2",
+		"react-dom": "15.6.2"
 	},
 	"devDependencies": {
 		"@types/react": "15.6.10",
@@ -45,7 +45,7 @@
 		"@amalto/helpers": "1.9.43",
 		"@amalto/typings": "1.9.30",
 		"base-64": "0.1.0",
-		"emotion": "^10.0.23",
+		"emotion": "^10.0.27",
 		"fp-ts": "^2.2.0",
 		"react-grid-layout": "0.17.1",
 		"react-select": "2.4.4",
