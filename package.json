@@ -110,7 +110,7 @@
         "@amalto/language-wrapper": "^1.9.36",
         "@amalto/paging-controls": "^1.9.34",
         "@amalto/pdf-viewer": "^1.9.34",
-        "@amalto/platform6-ui": "^2.8.3",
+        "@amalto/platform6-ui": "^2.9.3",
         "@amalto/radio-input": "^1.9.16",
         "@amalto/readonly-input": "^1.9.16",
         "@amalto/restricted": "^1.9.34",
