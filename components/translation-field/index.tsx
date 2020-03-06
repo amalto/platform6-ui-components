@@ -89,14 +89,23 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 				value: props.value[lang]
 			}));
 
-		const defaultLanguageIsProvided: boolean = translations.some( value => value.lang === defaultLang )
+		const defaultLanguage: TranslationType[] = translations.filter( value => value.lang === defaultLang )
 
-		if ( !defaultLanguageIsProvided ) {
+		if ( !defaultLanguage ) {
 			translations.unshift( {
 				id: uuid(),
 				lang: defaultLang,
 				value: ''
 			} )
+		} else {
+			// Get and sorted all translations except the default one.
+			const stortedTranslation: TranslationType[] = translations
+				.filter( value => value.lang !== defaultLang )
+				.sort( (first, second) => {
+					return first.lang.localeCompare( second.lang )
+				} )
+
+			translations = [...defaultLanguage, ...stortedTranslation]
 		}
 
 		this.state = {
