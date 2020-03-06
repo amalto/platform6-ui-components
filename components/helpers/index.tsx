@@ -690,3 +690,12 @@ export function nestedPathAttributesExist( collection: Object, attributes: strin
         return !currentValue
     } )
 }
+
+/**
+ * Check if both items are equals
+ * @param { Object } first 
+ * @param { Object } second 
+ */
+export function isSameObject( first: Object, second: Object ): boolean {
+    return JSON.stringify( first || {} ) === JSON.stringify( second || {} )
+}
