@@ -97,4 +97,11 @@ function getJSTreeData( orgTreeData: OrgModel, openedNodes?: string[] ): TreeNod
  * @param { number[] } indexes
  */
 function getItemsByIdx<T>( collection: Array<T>, indexes: number[] ): Array<T>;
+
+/**
+ * Check if both items are equals
+ * @param { Object } first 
+ * @param { Object } second 
+ */
+export function isSameObject( first: Object, second: Object ): boolean;
 ```
