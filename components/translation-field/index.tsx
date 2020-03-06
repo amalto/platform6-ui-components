@@ -269,8 +269,13 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 				return;
 			}
 
+			const translations = this.state.translations.map(t =>
+				(t.id === id ? { ...t, lang } : t)
+			);
+			this.props.onChange( this.convertTranslationTypeToLangMap( translations ) );
+
 			this.setState({
-				translations: this.state.translations.map(t => (t.id === id ? { ...t, lang } : t))
+				translations
 			});
 		};
 	}
@@ -280,17 +285,20 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
 			const value: string = event.target.value
 			const translations = this.state.translations.map(t =>
-				t.id === id ? { ...t, value } : t
+				(t.id === id ? { ...t, value } : t)
 			);
-			const data = translations.reduce((a, b) => {
-                return {...a, [b.lang]: b.value };
-            }, {});
-			this.props.onChange( data );
+			this.props.onChange( this.convertTranslationTypeToLangMap( translations ) );
 
 			this.setState({
-				translations: translations
+				translations
 			});
 		};
+	}
+
+	private convertTranslationTypeToLangMap( translations: TranslationType[] ): { [lang: string]: string } {
+		return translations.reduce((a, b) => {
+			return {...a, [b.lang]: b.value };
+		}, {});
 	}
 }
 
