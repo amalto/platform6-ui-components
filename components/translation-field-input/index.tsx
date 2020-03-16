@@ -69,7 +69,7 @@ interface TranslationState {
 
 }
 
-class TranslationField extends Component<TranslationProps, TranslationState> {
+class TranslationFieldInput extends Component<TranslationProps, TranslationState> {
 
 	constructor(props: Readonly<TranslationProps>) {
 		super(props);
@@ -83,20 +83,20 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		return <Field name={this.props.name} component={this.renderField} />
 	}
 
-	private renderField = ( field: WrappedFieldProps<any> ): JSX.Element => {
+	private renderField = (field: WrappedFieldProps<any>): JSX.Element => {
 		const { input } = field
 
 		return (
 			<TransactionField {...this.props}
 				value={input.value}
-				onChange={value => this.onChange( value, input )}
+				onChange={value => this.onChange(value, input)}
 			/>
 		)
 	}
 
-	private onChange = (  value: { [key: string]: string; }, input: WrappedFieldInputProps ): void => {
-		input.onChange( value, this.props.name, null )
+	private onChange = (value: { [key: string]: string; }, input: WrappedFieldInputProps): void => {
+		input.onChange(value, this.props.name, null)
 	}
 }
 
-export default TranslationField
+export default TranslationFieldInput
