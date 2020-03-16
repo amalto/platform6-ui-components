@@ -2,7 +2,7 @@
 	"name": "@amalto/translation-field-input",
 	"displayName": "TranslationFieldInput",
 	"description": "Translation field input used on platform6.",
-	"version": "1.0.29",
+	"version": "1.0.30",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
