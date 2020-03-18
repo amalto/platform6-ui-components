@@ -2,7 +2,7 @@
     "name": "@amalto/paging-controls",
     "displayName": "PagingControls",
     "description": "Toolbar managing paging.",
-    "version": "1.9.46",
+    "version": "1.9.47",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/helpers": "1.9.44",
+        "@amalto/helpers": "1.9.45",
         "@amalto/wordings": "1.9.26",
         "classnames": "^2.2.6",
         "react": "15.6.2",
