@@ -12,6 +12,11 @@ export interface AppKey {
         [lang: string]: string;
     },
 
+    /** Name on any languages. */
+    appNameMap: {
+        [lang: string]: string;
+    };
+
     /** Publisher name. */
     publisherName: string;
 
