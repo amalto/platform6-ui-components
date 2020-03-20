@@ -13,7 +13,7 @@ import { PlaceholderWithTooltip } from './models/select.field';
 
 /** Utils & Typings */
 import { getWordings } from '@amalto/helpers';
-import { ICON_TYPE, BUTTON_TYPE } from '@amalto/service-helpers';
+import { ICON_TYPE } from '@amalto/service-helpers';
 
 /** Constants */
 import { LanguageCode } from './constants/languages';
@@ -34,7 +34,7 @@ export interface TranslationProps {
 	/** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
 	help?: string;
 	/** Language options. */
-	value: { [key: string]: string };
+	value?: { [key: string]: string };
 	/** Is field on readonly. */
 	readOnly?: boolean;
 	/** Triggered every time the value change. */
@@ -82,36 +82,40 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
 		const defaultLang: string = props.defaultLanguage || this.defaultLang
 
-		let translations: TranslationType[] = Object.keys(props.value)
+		let translations: TranslationType[] = Object.keys(props.value || {})
 			.map(lang => ({
 				id: uuid(),
 				lang,
 				value: props.value[lang]
 			}));
 
-		const defaultLanguage: TranslationType[] = translations.filter( value => value.lang === defaultLang )
+		const defaultLanguage: boolean = translations.some(value => value.lang === defaultLang)
 
-		if ( !defaultLanguage ) {
-			translations.unshift( {
-				id: uuid(),
-				lang: defaultLang,
-				value: ''
-			} )
-		} else {
-			// Get and sorted all translations except the default one.
-			const stortedTranslation: TranslationType[] = translations
-				.filter( value => value.lang !== defaultLang )
-				.sort( (first, second) => {
-					return first.lang.localeCompare( second.lang )
-				} )
-
-			translations = [...defaultLanguage, ...stortedTranslation]
+		if (!defaultLanguage) {
+			translations
+				.push({
+					id: uuid(),
+					lang: defaultLang,
+					value: ''
+				})
 		}
+
+		// Get and sorted all translations except the default one.
+		translations = translations
+			.sort((first, second) => {
+				if (first.lang === defaultLang) {
+					return - 1
+				} else if (second.lang === defaultLang) {
+					return 1
+				}
+
+				return first.lang.localeCompare(second.lang)
+			})
 
 		this.state = {
 			defaultLang,
 			translations,
-			wordings: getWordings( WORDINGS, props.locale )
+			wordings: getWordings(WORDINGS, props.locale)
 		};
 	}
 
@@ -122,8 +126,8 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		return (
 			<div className={cx(
 				'form-group pos-relative', {
-					'mandatory': disableMultilanguage
-				},
+				'mandatory': disableMultilanguage
+			},
 				this.style
 			)}>
 				<label>
@@ -186,17 +190,17 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		const { wordings } = this.state
 
 		const valueProps = {
-			key:`${key}-value`,
-			id:`${key}-value`,
-			name:`${name}.${lang}`,
-			value:value,
-			className:'form-control',
-			readOnly:readOnly,
-			required:!!lang,
-			onChange:onValueChange
+			key: `${key}-value`,
+			id: `${key}-value`,
+			name: `${name}.${lang}`,
+			value: value,
+			className: 'form-control',
+			readOnly: readOnly,
+			required: !!lang,
+			onChange: onValueChange
 		}
 
-		const trashStyle:  CSSProperties = {
+		const trashStyle: CSSProperties = {
 			display: isDefaultLang || readOnly ? 'none' : 'block'
 		}
 
@@ -205,7 +209,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 				key={key}
 				className='form-group mandatory inline-block full-width'
 				style={{ marginLeft: 0, marginRight: 0, position: 'relative' }}>
-				<div className='col-xs-12 col-sm-6 col-md-6 mgb-5 flex' style={{ paddingLeft: 0}}>
+				<div className='col-xs-12 col-sm-6 col-md-6 mgb-5 flex' style={{ paddingLeft: 0 }}>
 					<div className='flex align-self-center padr-5' style={trashStyle}>
 						<ActionButton
 							iconClass={ICON_TYPE.DELETE}
@@ -227,25 +231,25 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 					/>
 				</div>
 				<div className={cx('col-xs-12 col-sm-6 col-md-6 mgb-5', inputRequired)} style={{ paddingLeft: 0 }}>
-					{this.renderInput( valueProps )}
+					{this.renderInput(valueProps)}
 				</div>
 			</div>
 		) : (
-			<div
-				key={key}
-				className='row form-group'
-				style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
-				{this.renderInput( valueProps )}
-			</div>
-		);
+				<div
+					key={key}
+					className='row form-group'
+					style={{ marginLeft: 0, marginRight: 0, display: 'flex' }}>
+					{this.renderInput(valueProps)}
+				</div>
+			);
 	}
 
-	private renderInput( props ): JSX.Element {
+	private renderInput(props): JSX.Element {
 		return this.props.useTextarea ? (
 			<Textarea {...props} />
 		) : (
-			<Input {...props} />
-		)
+				<Input {...props} />
+			)
 	}
 
 	private addNewLine(): void {
@@ -257,9 +261,9 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 	private removeLine(id: string): void {
 		const translations = this.state.translations.filter(t => t.id !== id);
 		const data = translations.reduce((a, b) => (
-			{...a, [b.lang]: b.value }
+			{ ...a, [b.lang]: b.value }
 		), {});
-		this.props.onChange( data );
+		this.props.onChange(data);
 		this.setState({ translations });
 	}
 
@@ -272,7 +276,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			const translations = this.state.translations.map(t =>
 				(t.id === id ? { ...t, lang } : t)
 			);
-			this.props.onChange( this.convertTranslationTypeToLangMap( translations ) );
+			this.props.onChange(this.convertTranslationTypeToLangMap(translations));
 
 			this.setState({
 				translations
@@ -287,7 +291,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 			const translations = this.state.translations.map(t =>
 				(t.id === id ? { ...t, value } : t)
 			);
-			this.props.onChange( this.convertTranslationTypeToLangMap( translations ) );
+			this.props.onChange(this.convertTranslationTypeToLangMap(translations));
 
 			this.setState({
 				translations
@@ -295,9 +299,9 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		};
 	}
 
-	private convertTranslationTypeToLangMap( translations: TranslationType[] ): { [lang: string]: string } {
+	private convertTranslationTypeToLangMap(translations: TranslationType[]): { [lang: string]: string } {
 		return translations.reduce((a, b) => {
-			return {...a, [b.lang]: b.value };
+			return { ...a, [b.lang]: b.value };
 		}, {});
 	}
 }
