@@ -11,6 +11,7 @@ export interface ServiceItemFacade extends Id {
     description?: string
     calculatedContentMode?: string
     appInfo?: string
+    appName?: string
     lastModifiedBy?: string
     lastModifiedDate?: number
     revisionId?: string

@@ -25,6 +25,9 @@ export interface ServiceItemFacade extends Id {
     /** Appliction informations. */
     appInfo?: string;
 
+    /** Appliction name. */
+    appName?: string;
+
     /** User's email whom have last modified the item. */
     lastModifiedBy?: string;
 

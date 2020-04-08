@@ -30,6 +30,9 @@ export interface ServiceItemFacade extends Id {
     /** Information on the application. */
     appInfo?: string
 
+    /** Appliction name. */
+    appName?: string;
+
     /** Last user who has modified the item. */
     lastModifiedBy?: string
 

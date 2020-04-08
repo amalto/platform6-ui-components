@@ -182,8 +182,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     state: {
-		'en-US': 'State / Region',
-		'fr-FR': 'État / Région'
+        'en-US': 'State / Region',
+        'fr-FR': 'État / Région'
     },
 
     country: {
@@ -501,6 +501,11 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     appInfo: {
         'en-US': 'Application info',
         'fr-FR': 'Information sur l\'application'
+    },
+
+    appName: {
+        'en-US': 'Application name',
+        'fr-FR': 'Nom de l\'application'
     },
 
     lastModification: {
