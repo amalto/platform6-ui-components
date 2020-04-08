@@ -2,7 +2,7 @@
     "name": "@amalto/select-text",
     "displayName": "SelectText",
     "description": "Select and text input used on platform6.",
-    "version": "1.9.49",
+    "version": "1.9.50",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@amalto/help": "1.9.21",
-        "@amalto/helpers": "1.9.45",
+        "@amalto/helpers": "1.9.46",
         "@amalto/typings": "1.9.32",
         "classnames": "^2.2.6",
         "radium": "^0.25.1",
