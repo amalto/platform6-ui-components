@@ -17,6 +17,15 @@ export namespace Auth {
         redirect_uri: string;
         state?: string;
     }
+    export interface GETParameters {
+        disableCache?: boolean;
+        disableTimeout?: boolean;
+        fullResponse?: boolean
+        queryParameters?: any;
+        retry?: boolean;
+        retryCount?: number;
+        url: string;
+    }
     export interface TokenData {
         access_token: string;
         token_type: string;
@@ -94,7 +103,7 @@ interface WebApi {
 
     /** Queries */
     get: (
-        url: string,
+        urlOrParams: string | GETParameters,
         queryParameters?: any,
         disableTimeout?: boolean,
         fullResponse?: boolean

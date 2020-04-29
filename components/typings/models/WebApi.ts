@@ -57,7 +57,7 @@ interface WebApi {
     download: (url: string, queryParameters?: Object) => Promise<any>
     staticGet: (url: string, queryParameters?: any, disableTimeout?: boolean, fullResponse?: boolean) => Promise<any>
 
-    get: (parameters: GETParameters) => Promise<any>;
+    get: (urlOrParams: string | GETParameters, queryParameters?: any, disableTimeout?: boolean, fullResponse?: boolean, disableCache?: boolean) => Promise<any>;
     del: (url: string, queryParameters?: any, disableTimeout?: boolean, bodyParameters?: any) => Promise<any>
     post: (url: string, bodyParameters?: any, queryParameters?: any, disableTimeout?: boolean, formUrlEncoded?: boolean) => Promise<any>
     postWithFile: (url: string, fieldName: string, file: any, fieldsParameters?: { [fieldName: string]: string }, queryParameters?: any) => Promise<any>
