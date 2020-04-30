@@ -20,6 +20,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface P6Spinner {
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +30,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLP6SpinnerElement extends Components.P6Spinner, HTMLStencilElement {
+    }
+    var HTMLP6SpinnerElement: {
+        prototype: HTMLP6SpinnerElement;
+        new (): HTMLP6SpinnerElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "p6-spinner": HTMLP6SpinnerElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +56,11 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface P6Spinner {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "p6-spinner": P6Spinner;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +68,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
         }
     }
 }

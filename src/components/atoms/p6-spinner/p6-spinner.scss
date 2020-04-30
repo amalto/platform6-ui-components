@@ -1,0 +1,10 @@
+:host {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        object-fit: contain;
+        object-position: center;
+    }
+  }
