@@ -1,5 +1,10 @@
+import readme from './readme.md';
+
 export default {
-  title: 'My Component'
+  title: 'My Component',
+  parameters: {
+    notes: readme,
+  }
 };
 
 export const Default = () => `
