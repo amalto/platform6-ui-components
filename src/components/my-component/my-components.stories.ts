@@ -1,7 +1,7 @@
 import readme from './readme.md';
 
 export default {
-  title: 'My Component',
+  title: 'Demo/My Component',
   parameters: {
     notes: readme,
   }

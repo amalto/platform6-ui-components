@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Mode, Type, } from "./components/atoms/p6-button/p6-button";
 export namespace Components {
     interface MyComponent {
         /**
@@ -20,6 +21,28 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface P6Button {
+        /**
+          * Disabled - If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * Mode - set the mode of the button
+         */
+        "mode": Mode;
+        /**
+          * Outlined
+         */
+        "outlined": boolean;
+        /**
+          * Type - type of the button.
+         */
+        "type": Type;
+        /**
+          * Waiting - If set, shows a waiting/busy indicator
+         */
+        "waiting": boolean;
+    }
     interface P6Spinner {
     }
 }
@@ -30,6 +53,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLP6ButtonElement extends Components.P6Button, HTMLStencilElement {
+    }
+    var HTMLP6ButtonElement: {
+        prototype: HTMLP6ButtonElement;
+        new (): HTMLP6ButtonElement;
+    };
     interface HTMLP6SpinnerElement extends Components.P6Spinner, HTMLStencilElement {
     }
     var HTMLP6SpinnerElement: {
@@ -38,6 +67,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "p6-button": HTMLP6ButtonElement;
         "p6-spinner": HTMLP6SpinnerElement;
     }
 }
@@ -56,10 +86,33 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface P6Button {
+        /**
+          * Disabled - If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Mode - set the mode of the button
+         */
+        "mode"?: Mode;
+        /**
+          * Outlined
+         */
+        "outlined"?: boolean;
+        /**
+          * Type - type of the button.
+         */
+        "type"?: Type;
+        /**
+          * Waiting - If set, shows a waiting/busy indicator
+         */
+        "waiting"?: boolean;
+    }
     interface P6Spinner {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "p6-button": P6Button;
         "p6-spinner": P6Spinner;
     }
 }
@@ -68,6 +121,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "p6-button": LocalJSX.P6Button & JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
             "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
         }
     }

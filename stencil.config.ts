@@ -11,10 +11,6 @@ export const config: Config = {
     },
     {
       type: 'docs-readme'
-    },
-    {
-      type: 'www',
-      serviceWorker: null // disable service workers
     }
   ],
   plugins: [
@@ -24,12 +20,7 @@ export const config: Config = {
       ],
       injectGlobalPaths: [
         './src/global/_variable.scss',
-        './node_modules/bulma/sass/utilities/initial-variables.sass',
-        './node_modules/bulma/sass/utilities/functions.sass',
-        './node_modules/bulma/sass/utilities/derived-variables.sass',
-        './node_modules/bulma/sass/utilities/animations.sass',
-        './node_modules/bulma/sass/utilities/mixins.sass',
-        './node_modules/bulma/sass/utilities/controls.sass',
+        './node_modules/bulma/sass/utilities/_all.sass'
       ]
     })
   ],
