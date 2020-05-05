@@ -1,0 +1,7 @@
+@import 'src/global/atoms/anchor';
+
+:host {
+  .link {
+    @include anchor;
+  }
+}

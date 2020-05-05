@@ -1,0 +1,23 @@
+@mixin anchor {
+  @extend %control;
+
+  color: $danger;
+  font-family: $family-primary;
+  background-color: transparent;
+  border: none;
+
+  height: inherit;
+  margin: 0;
+  padding: 0;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: bulmaDarken($primary, 25%);
+    text-decoration: underline;
+  }
+  &:visited {
+    color: bulmaDarken($primary, 50%);
+  }
+}

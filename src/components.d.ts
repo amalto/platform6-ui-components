@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Mode, Type, } from "./components/atoms/p6-button/p6-button";
+import { Target, } from "./components/atoms/p6-link/p6-link";
 export namespace Components {
     interface MyComponent {
         /**
@@ -43,6 +44,24 @@ export namespace Components {
          */
         "waiting": boolean;
     }
+    interface P6Link {
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
+         */
+        "download": string | undefined;
+        /**
+          * The URL that the hyperlink points to.  Links are not restricted to HTTP-based URLs — they can use any URL scheme supported by browsers.
+         */
+        "href": string | undefined;
+        /**
+          * Sets or retrieves the relationship between the object and the destination of the link. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types). Only applies when an `href` is provided.
+         */
+        "rel": string | undefined;
+        /**
+          * Sets or retrieves the window or frame at which to target content. Only applies when an `href` is provided.
+         */
+        "target": Target | undefined;
+    }
     interface P6Spinner {
     }
 }
@@ -59,6 +78,12 @@ declare global {
         prototype: HTMLP6ButtonElement;
         new (): HTMLP6ButtonElement;
     };
+    interface HTMLP6LinkElement extends Components.P6Link, HTMLStencilElement {
+    }
+    var HTMLP6LinkElement: {
+        prototype: HTMLP6LinkElement;
+        new (): HTMLP6LinkElement;
+    };
     interface HTMLP6SpinnerElement extends Components.P6Spinner, HTMLStencilElement {
     }
     var HTMLP6SpinnerElement: {
@@ -68,6 +93,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "p6-button": HTMLP6ButtonElement;
+        "p6-link": HTMLP6LinkElement;
         "p6-spinner": HTMLP6SpinnerElement;
     }
 }
@@ -108,11 +134,30 @@ declare namespace LocalJSX {
          */
         "waiting"?: boolean;
     }
+    interface P6Link {
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
+         */
+        "download"?: string | undefined;
+        /**
+          * The URL that the hyperlink points to.  Links are not restricted to HTTP-based URLs — they can use any URL scheme supported by browsers.
+         */
+        "href"?: string | undefined;
+        /**
+          * Sets or retrieves the relationship between the object and the destination of the link. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types). Only applies when an `href` is provided.
+         */
+        "rel"?: string | undefined;
+        /**
+          * Sets or retrieves the window or frame at which to target content. Only applies when an `href` is provided.
+         */
+        "target"?: Target | undefined;
+    }
     interface P6Spinner {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "p6-button": P6Button;
+        "p6-link": P6Link;
         "p6-spinner": P6Spinner;
     }
 }
@@ -122,6 +167,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "p6-button": LocalJSX.P6Button & JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
+            "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
             "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
         }
     }

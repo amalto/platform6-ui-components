@@ -9,7 +9,7 @@ export type Type = 'submit' | 'reset' | 'button'
   shadow: true,
 })
 export class P6Button {
-  @Element() el;
+  @Element() private el: { closest: (arg0: string) => HTMLFormElement | undefined; };
   /**
    * Mode - set the mode of the button
    */
