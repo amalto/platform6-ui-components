@@ -24,7 +24,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "bulma": "^0.8.2"
+    "bulma": "^0.8.2",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -37,6 +38,7 @@
     "@storybook/addon-notes": "^5.3.18",
     "@storybook/addon-viewport": "^5.3.18",
     "@storybook/html": "^5.3.18",
+    "@types/classnames": "^2.2.10",
     "@types/jest": "24.9.1",
     "@types/puppeteer": "2.0.1",
     "babel-loader": "^8.1.0",
