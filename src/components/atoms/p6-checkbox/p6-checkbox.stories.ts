@@ -1,3 +1,5 @@
+import { decorate } from '@storybook/addon-actions';
+
 import readme from './readme.md';
 
 export default {
@@ -8,30 +10,38 @@ export default {
   }
 };
 
-export const Default = () => `
-  <p6-checkbox label="Hellow world"></p6-checkbox>
-`;
+const id = "0123456789";
+
+export const Default = () => {
+  const form = document.createElement('form');
+  const checkbox1 = document.createElement('p6-checkbox');
+  const submit = document.createElement('button');
+
+  const decorateChekbox = decorate([
+    args => (
+      [{ checked: args[0].target.elements[0].checked }]
+    )
+  ]);
+
+  form.method = 'get';
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    decorateChekbox.action('submit')(e);
+  });
+
+  checkbox1.checked = true;
+  checkbox1.id = id;
+  checkbox1.label = 'Checked by default';
+
+  submit.innerHTML = 'send';
+  submit.type = 'submit';
+
+  form.appendChild(checkbox1);
+  form.appendChild(submit);
+
+  return form;
+};
 
 export const Disabled = () => `
-  <p6-checkbox label="Disabled checkbox" disabled="true"></p6-checkbox>
+  <p6-checkbox checked="true" disabled="true" id="${id}" label="Disabled checkbox"></p6-checkbox>
 `;
-
-// SmallContainer.story = {
-//   name: 'Small container'
-// }
-
-// export const VerticalContainer = () => `
-//   <p6-checkbox style="width: 10.5rem; height: 21rem; background: #eee"></p6-checkbox>
-// `;
-
-// VerticalContainer.story = {
-//   name: 'Vertical container'
-// }
-
-// export const HorizontalContainer = () => `
-//   <p6-checkbox style="width: 21rem; height: 10.5rem; background: #eee"></p6-checkbox>
-// `;
-
-// HorizontalContainer.story = {
-//   name: 'Horizontal container'
-// }
