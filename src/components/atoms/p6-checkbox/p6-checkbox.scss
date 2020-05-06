@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+
+  label {
+
+    input,
+    .checkbox {
+      cursor: pointer;
+    }
+
+    &.checkbox {
+      input,
+      span {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

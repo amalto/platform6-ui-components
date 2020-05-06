@@ -44,6 +44,16 @@ export namespace Components {
          */
         "waiting": boolean;
     }
+    interface P6Checkbox {
+        /**
+          * Disable
+         */
+        "disabled"?: boolean;
+        /**
+          * label of the checkbox
+         */
+        "label": string;
+    }
     interface P6Link {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
@@ -78,6 +88,12 @@ declare global {
         prototype: HTMLP6ButtonElement;
         new (): HTMLP6ButtonElement;
     };
+    interface HTMLP6CheckboxElement extends Components.P6Checkbox, HTMLStencilElement {
+    }
+    var HTMLP6CheckboxElement: {
+        prototype: HTMLP6CheckboxElement;
+        new (): HTMLP6CheckboxElement;
+    };
     interface HTMLP6LinkElement extends Components.P6Link, HTMLStencilElement {
     }
     var HTMLP6LinkElement: {
@@ -93,6 +109,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "p6-button": HTMLP6ButtonElement;
+        "p6-checkbox": HTMLP6CheckboxElement;
         "p6-link": HTMLP6LinkElement;
         "p6-spinner": HTMLP6SpinnerElement;
     }
@@ -134,6 +151,16 @@ declare namespace LocalJSX {
          */
         "waiting"?: boolean;
     }
+    interface P6Checkbox {
+        /**
+          * Disable
+         */
+        "disabled"?: boolean;
+        /**
+          * label of the checkbox
+         */
+        "label"?: string;
+    }
     interface P6Link {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
@@ -157,6 +184,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "my-component": MyComponent;
         "p6-button": P6Button;
+        "p6-checkbox": P6Checkbox;
         "p6-link": P6Link;
         "p6-spinner": P6Spinner;
     }
@@ -167,6 +195,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "p6-button": LocalJSX.P6Button & JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
+            "p6-checkbox": LocalJSX.P6Checkbox & JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
             "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
             "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
         }
