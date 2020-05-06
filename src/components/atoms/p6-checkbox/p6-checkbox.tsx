@@ -1,12 +1,23 @@
-import { Component, Host, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
+import { Component, Element, Host, h, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'p6-checkbox',
-  styleUrl: 'p6-checkbox.scss',
-  shadow: true,
+  styleUrl: './p6-checkbox.scss',
+  scoped: true,
 })
 export class P6Checkbox {
+
+  @Element() private host: HTMLElement;
+
+  /**
+   * Checkbox name
+   */
+  @Prop() name?: string;
+
+  /**
+   * Initial value
+   */
+  @Prop() checked?: boolean = false;
 
   /**
    * Disable
@@ -14,23 +25,47 @@ export class P6Checkbox {
   @Prop() disabled?: boolean = false;
 
   /**
-   * label of the checkbox
+   * labels of the checkboxes
    */
   @Prop() label: string;
 
+  /**
+   * State of the checkbox
+   */
+  @State() isChecked: boolean;
+
+  private _onClick() {
+    this.isChecked = !this.isChecked;
+  }
+
+  componentWillLoad() {
+    this.name = this.host.id;
+    this.isChecked = this.checked;
+  }
+
   render() {
-    const { disabled, label } = this;
+    const {
+      name,
+      isChecked,
+      disabled,
+      host,
+      label
+    } = this;
+
+    const inputId: string = `${host.id}-input`;
 
     return (
       <Host>
-        <label class={classNames('checkbox', {
-          'disabled': disabled
-        })}>
-          <input type="checkbox" disabled={disabled} />
-          <span class={classNames({
-            'has-text-grey-light': disabled
-          })}>{label}</span>
-        </label>
+        <div class={disabled ? 'disabled' : ''}>
+          <input checked={isChecked}
+            disabled={disabled}
+            id={inputId}
+            name={name || host.id}
+            onClick={this._onClick}
+            type="checkbox"
+          />
+          <label htmlFor={inputId}>{label}</label>
+        </div>
       </Host>
     );
   }

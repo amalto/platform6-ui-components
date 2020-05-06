@@ -20,8 +20,7 @@ export const config: Config = {
       ],
       injectGlobalPaths: [
         './src/global/_variable.scss',
-        './node_modules/bulma/sass/utilities/_all.sass',
-        './node_modules/bulma/sass/base/helpers.sass'
+        './node_modules/bulma/sass/utilities/_all.sass'
       ]
     })
   ],

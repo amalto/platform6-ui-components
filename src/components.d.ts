@@ -46,13 +46,22 @@ export namespace Components {
     }
     interface P6Checkbox {
         /**
+          * Initial value
+         */
+        "checked"?: boolean;
+        /**
           * Disable
          */
         "disabled"?: boolean;
         /**
-          * label of the checkbox
+          * labels of the checkboxes
          */
         "label": string;
+        /**
+          * Checkbox name
+          * @default id
+         */
+        "name"?: string;
     }
     interface P6Link {
         /**
@@ -153,13 +162,22 @@ declare namespace LocalJSX {
     }
     interface P6Checkbox {
         /**
+          * Initial value
+         */
+        "checked"?: boolean;
+        /**
           * Disable
          */
         "disabled"?: boolean;
         /**
-          * label of the checkbox
+          * labels of the checkboxes
          */
         "label"?: string;
+        /**
+          * Checkbox name
+          * @default id
+         */
+        "name"?: string;
     }
     interface P6Link {
         /**
