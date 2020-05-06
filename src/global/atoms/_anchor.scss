@@ -1,7 +1,7 @@
 @mixin anchor {
   @extend %control;
 
-  color: $danger;
+  color: $primary;
   font-family: $family-primary;
   background-color: transparent;
   border: none;
@@ -14,10 +14,10 @@
   cursor: pointer;
 
   &:hover {
-    color: bulmaDarken($primary, 25%);
+    color: bulmaDarken($primary, 2.5%);
     text-decoration: underline;
   }
   &:visited {
-    color: bulmaDarken($primary, 50%);
+    color: bulmaDarken($primary, 5.0%);
   }
 }
