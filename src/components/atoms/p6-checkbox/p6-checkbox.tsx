@@ -18,11 +18,6 @@ export class P6Checkbox {
   @Prop() disabled: boolean = false;
 
   /**
-   * labels of the checkboxes
-   */
-  @Prop() label!: string;
-
-  /**
    * Checkbox name
    */
   @Prop() name!: string;
@@ -44,8 +39,7 @@ export class P6Checkbox {
     const {
       name,
       isChecked,
-      disabled,
-      label
+      disabled
     } = this;
 
     const inputId: string = `${name}-input`;
@@ -59,7 +53,9 @@ export class P6Checkbox {
           onClick={this._onClick}
           type="checkbox"
         />
-        <label htmlFor={inputId}>{label}</label>
+        <label htmlFor={inputId}>
+          <slot />
+        </label>
       </Host>
     );
   }
