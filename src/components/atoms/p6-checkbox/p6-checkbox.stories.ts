@@ -31,7 +31,7 @@ export const Default = () => {
 
   checkbox1.checked = true;
   checkbox1.id = id;
-  checkbox1.label = 'Checked by default';
+  checkbox1.innerHTML = 'Checked by default';
 
   submit.innerHTML = 'send';
   submit.type = 'submit';
@@ -43,5 +43,5 @@ export const Default = () => {
 };
 
 export const Disabled = () => `
-  <p6-checkbox checked="true" disabled="true" label="Disabled checkbox" name="${id}"></p6-checkbox>
+  <p6-checkbox checked="true" disabled="true" name="${id}">Disabled checkbox</p6-checkbox>
 `;

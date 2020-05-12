@@ -54,10 +54,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * labels of the checkboxes
-         */
-        "label": string;
-        /**
           * Checkbox name
          */
         "name": string;
@@ -168,10 +164,6 @@ declare namespace LocalJSX {
           * Disable
          */
         "disabled"?: boolean;
-        /**
-          * labels of the checkboxes
-         */
-        "label": string;
         /**
           * Checkbox name
          */
