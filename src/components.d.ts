@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Mode, Type, } from "./components/atoms/p6-button/p6-button";
+import { Type as Type1, } from "./components/atoms/p6-input/p6-input";
 import { Target, } from "./components/atoms/p6-link/p6-link";
 export namespace Components {
     interface MyComponent {
@@ -58,6 +59,50 @@ export namespace Components {
          */
         "name": string;
     }
+    interface P6Input {
+        "disabled": boolean;
+        /**
+          * The maximum length or value
+         */
+        "max": string;
+        /**
+          * The minimum length or value
+         */
+        "min": string;
+        "multiline": boolean;
+        /**
+          * The name of the input.
+         */
+        "name": string;
+        /**
+          * Pattern the value must match to be valid.
+         */
+        "pattern": string;
+        /**
+          * content to be appear in the form control when the form control is empty
+         */
+        "placeholder": string;
+        /**
+          * marks an element that can't be edited.
+         */
+        "readonly": boolean;
+        /**
+          * marks an element that can't be submitted without a value.
+         */
+        "required": boolean;
+        /**
+          * the content type of the input.
+         */
+        "type": Type;
+        /**
+          * the value of the input.
+         */
+        "value": string;
+        /**
+          * shows a waiting indicator
+         */
+        "waiting": boolean;
+    }
     interface P6Link {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
@@ -98,6 +143,12 @@ declare global {
         prototype: HTMLP6CheckboxElement;
         new (): HTMLP6CheckboxElement;
     };
+    interface HTMLP6InputElement extends Components.P6Input, HTMLStencilElement {
+    }
+    var HTMLP6InputElement: {
+        prototype: HTMLP6InputElement;
+        new (): HTMLP6InputElement;
+    };
     interface HTMLP6LinkElement extends Components.P6Link, HTMLStencilElement {
     }
     var HTMLP6LinkElement: {
@@ -114,6 +165,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "p6-button": HTMLP6ButtonElement;
         "p6-checkbox": HTMLP6CheckboxElement;
+        "p6-input": HTMLP6InputElement;
         "p6-link": HTMLP6LinkElement;
         "p6-spinner": HTMLP6SpinnerElement;
     }
@@ -169,6 +221,50 @@ declare namespace LocalJSX {
          */
         "name": string;
     }
+    interface P6Input {
+        "disabled"?: boolean;
+        /**
+          * The maximum length or value
+         */
+        "max"?: string;
+        /**
+          * The minimum length or value
+         */
+        "min"?: string;
+        "multiline"?: boolean;
+        /**
+          * The name of the input.
+         */
+        "name": string;
+        /**
+          * Pattern the value must match to be valid.
+         */
+        "pattern"?: string;
+        /**
+          * content to be appear in the form control when the form control is empty
+         */
+        "placeholder"?: string;
+        /**
+          * marks an element that can't be edited.
+         */
+        "readonly"?: boolean;
+        /**
+          * marks an element that can't be submitted without a value.
+         */
+        "required"?: boolean;
+        /**
+          * the content type of the input.
+         */
+        "type"?: Type;
+        /**
+          * the value of the input.
+         */
+        "value"?: string;
+        /**
+          * shows a waiting indicator
+         */
+        "waiting"?: boolean;
+    }
     interface P6Link {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
@@ -193,6 +289,7 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "p6-button": P6Button;
         "p6-checkbox": P6Checkbox;
+        "p6-input": P6Input;
         "p6-link": P6Link;
         "p6-spinner": P6Spinner;
     }
@@ -204,6 +301,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "p6-button": LocalJSX.P6Button & JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
             "p6-checkbox": LocalJSX.P6Checkbox & JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
+            "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;
             "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
             "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
         }
