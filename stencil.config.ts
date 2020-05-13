@@ -13,6 +13,7 @@ export const config: Config = {
       type: 'docs-readme'
     }
   ],
+  globalStyle: 'src/global/global.scss',
   plugins: [
     sass({
       includePaths: [
@@ -20,7 +21,9 @@ export const config: Config = {
       ],
       injectGlobalPaths: [
         './src/global/_variable.scss',
-        './node_modules/bulma/sass/utilities/_all.sass'
+        './node_modules/bulma/sass/utilities/_all.sass',
+        './node_modules/bulma/sass/form/shared.sass'
+        
       ]
     })
   ],
