@@ -18,10 +18,6 @@ describe('p6-button', () => {
       component = await page.find('p6-button')
       innerButton = await page.find('p6-button >>> button');
     });
-  
-    it('renders', async () => {
-      expect(component).toHaveClass('hydrated');
-    });
     
     it('fires a click event', async () => {
       const spy = await page.spyOnEvent('click', 'document');

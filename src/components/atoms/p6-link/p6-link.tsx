@@ -42,7 +42,6 @@ export class P6Link {
     ? {} 
     : {rel: this.rel, href: this.href, target: this.target, download: this.download}
     
-    console.log(attrs, TagType === 'button' )
     return (
       <Host>
         <TagType class="link" {...attrs}>
