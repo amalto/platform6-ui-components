@@ -62,7 +62,6 @@ describe('p6-link', () => {
   });
 
   it.each(otherProperties)('uses %s if the href property is defined', async (props, value) => {
-    console.log(value)
     const page = await newSpecPage({
       components: [P6Link],
       html: `<p6-link href="/defined" ${props}="${value}">link</p6-link>`,

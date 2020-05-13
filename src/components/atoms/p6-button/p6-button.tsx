@@ -51,11 +51,12 @@ export class P6Button {
   }
 
   render() {
-    const mode = this.isUndefined(this.mode) || this.mode === 'default' ? undefined : `is-${this.mode}`
-    const appearance = !!this.outlined ? 'is-outlined' : undefined
-    const waiting = !!this.waiting ? 'is-loading' : undefined
-
-    const classes = ['button', appearance, waiting, mode].filter(c => !!c).join(' ')
+    const classes = {
+      'button': true, 
+      [`is-${this.mode}`]: !(this.isUndefined(this.mode) || this.mode === 'default'),
+      'is-outlined' : !!this.outlined, 
+      'is-loading': !!this.waiting, 
+    }
 
     return (
       <Host>
