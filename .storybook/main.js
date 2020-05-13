@@ -5,7 +5,6 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     '@storybook/addon-knobs',
-    '@storybook/addon-notes/register-panel',
-    '@storybook/addon-viewport/register'
+    '@storybook/addon-notes/register-panel'
   ]
 };
