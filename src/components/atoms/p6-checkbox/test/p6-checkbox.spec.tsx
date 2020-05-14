@@ -26,7 +26,7 @@ describe('p6-checkbox', () => {
       `,
     });
     expect(page.root).toEqualHtml(`
-      <p6-checkbox class="disabled" disabled="true" name="${id}">
+      <p6-checkbox disabled="true" name="${id}">
         <input id="${id}-input" disabled="" name="${id}" type="checkbox" />
         <label htmlFor="${id}-input">Disabled checkbox</label>
       </p6-checkbox>

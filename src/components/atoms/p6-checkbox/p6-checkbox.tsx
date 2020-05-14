@@ -7,6 +7,8 @@ import { Component, Host, h, Prop, State } from '@stencil/core';
 })
 export class P6Checkbox {
 
+  private _input: HTMLInputElement = null;
+
   /**
    * Initial value
    */
@@ -35,22 +37,25 @@ export class P6Checkbox {
     this.isChecked = this.checked;
   }
 
+  componentDidLoad() {
+    this._input.disabled = this.disabled;
+  }
+
   render() {
     const {
       name,
-      isChecked,
-      disabled
+      isChecked
     } = this;
 
     const inputId: string = `${name}-input`;
 
     return (
-      <Host class={disabled ? 'disabled' : ''}>
+      <Host>
         <input checked={isChecked}
-          disabled={disabled}
           id={inputId}
           name={name}
           onClick={this._onClick}
+          ref={dom => this._input = dom}
           type="checkbox"
         />
         <label htmlFor={inputId}>
