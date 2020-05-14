@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Listen, Prop, State } from "@stencil/core";
 import { cleanupAttributes } from "~utils/attribute";
 
-export type Type =
+export type P6InputType =
   | "email"
   | "number"
   | "password"
@@ -52,7 +52,7 @@ export class P6Input {
   /**
    * the content type of the input.
    */
-  @Prop() type: Type = "text";
+  @Prop() type: P6InputType = "text";
   /**
    * the value of the input.
    */
@@ -73,8 +73,7 @@ export class P6Input {
   }
 
   componentDidLoad() {
-    this.checkValidity();
-    this.hasError = !!this.validationMessage;
+    this.lostFocusHandler();
   }
 
   render() {
