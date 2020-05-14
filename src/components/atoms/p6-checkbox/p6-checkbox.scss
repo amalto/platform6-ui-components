@@ -7,16 +7,17 @@
     cursor: pointer;
   }
 
-  &.disabled {
-    input,
-    label {
-      color: $input-disabled-color;
-      cursor: not-allowed;
-    }
+  input:checked + label::before {
+    content: "✓";
+    color: $success;
+    font-size: $size-small;
+  }
 
-    input:checked + label::after {
-      color: $input-disabled-color;
-    }
+
+  input[disabled]:checked + label,
+  input[disabled]:checked + label::before {
+    color: $input-disabled-color !important;
+    cursor: not-allowed;
   }
 
   input {
@@ -26,7 +27,7 @@
 
   label {
     user-select: none;
-    font-size: $size-normal;
+    font-size: $size-small;
     line-height: 13px;
     display: inline-block;
     vertical-align: top;
@@ -45,11 +46,6 @@
       margin-right: 5px;
     }
 
-  }
-
-  input:checked + label::before {
-    content: "✓";
-    color: $success;
   }
 
 }

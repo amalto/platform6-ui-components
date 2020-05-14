@@ -15,7 +15,7 @@ const id = "0123456789";
 export const Default = () => {
   const form = document.createElement('form');
   const checkbox1 = document.createElement('p6-checkbox');
-  const submit = document.createElement('button');
+  const submit = document.createElement('p6-button');
 
   const decorateChekbox = decorate([
     args => (
