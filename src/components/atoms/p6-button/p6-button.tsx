@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
+import { isEmpty } from '~utils/attribute';
+import { Mode, Size } from '~shared/types';
 
-export type Mode = 'danger' | 'warning' | 'default' | 'info' | 'success' | 'primary'
-export type Type = 'submit' | 'reset' | 'button'
+export type P6ButtonType = 'submit' | 'reset' | 'button'
 
 @Component({
   tag: 'p6-button',
@@ -9,9 +10,11 @@ export type Type = 'submit' | 'reset' | 'button'
   shadow: true,
 })
 export class P6Button {
+  
   @Element() private el: { closest: (arg0: string) => HTMLFormElement | undefined; };
+  
   /**
-   * Mode - set the mode of the button
+   * set the mode of the button
    */
   @Prop() mode: Mode = 'default';
 
@@ -21,19 +24,24 @@ export class P6Button {
   @Prop() outlined: boolean = false;
 
   /**
-   * Waiting - If set, shows a waiting/busy indicator
+   * If set, shows a waiting/busy indicator
    */
   @Prop() waiting: boolean = false;
 
   /**
-   * Type - type of the button.
+   * set the size of the button
    */
-  @Prop() type: Type = 'submit';
+  @Prop() size: Size = "default";
+
+  /**
+   * type of the button.
+   */
+  @Prop() type: P6ButtonType = 'submit';
 
   /**
   * Disabled - If `true`, the user cannot interact with the button.
   */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop() disabled = false;
 
   @Listen('click')
   clickDelegationHandler() {
@@ -53,7 +61,8 @@ export class P6Button {
   render() {
     const classes = {
       'button': true, 
-      [`is-${this.mode}`]: !(this.isUndefined(this.mode) || this.mode === 'default'),
+      [`is-${this.mode}`]: !isEmpty(this.mode) && this.mode !== 'default',
+      [`is-${this.size}`]: !isEmpty(this.size) && this.size !== 'default',
       'is-outlined' : !!this.outlined, 
       'is-loading': !!this.waiting, 
     }
@@ -65,9 +74,5 @@ export class P6Button {
         </button>
       </Host>
     );
-  }
-
-  private isUndefined(value: Mode | undefined | 'undefined'): value is undefined {
-    return value === undefined || value === 'undefined'
   }
 }
