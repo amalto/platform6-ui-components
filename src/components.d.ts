@@ -5,18 +5,37 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Mode, Type, } from "./components/atoms/p6-button/p6-button";
+import { Mode, Size, } from "~shared/types";
+import { P6ButtonType, } from "./components/atoms/p6-button/p6-button";
 import { IconName, IconPrefix, } from "@fortawesome/fontawesome-svg-core";
-import { Type as Type1, } from "./components/atoms/p6-input/p6-input";
+import { P6InputType, } from "./components/atoms/p6-input/p6-input";
 import { Target, } from "./components/atoms/p6-link/p6-link";
 export namespace Components {
+    interface P6Action {
+        /**
+          * If `true`, the user cannot interact with the Action.
+         */
+        "disabled": boolean;
+        /**
+          * set the mode of the action
+         */
+        "mode": Mode;
+        /**
+          * set the size of the action
+         */
+        "size": Size;
+        /**
+          * If set, shows a waiting/busy indicator
+         */
+        "waiting": boolean;
+    }
     interface P6Button {
         /**
           * Disabled - If `true`, the user cannot interact with the button.
          */
         "disabled": boolean;
         /**
-          * Mode - set the mode of the button
+          * set the mode of the button
          */
         "mode": Mode;
         /**
@@ -24,11 +43,15 @@ export namespace Components {
          */
         "outlined": boolean;
         /**
-          * Type - type of the button.
+          * set the size of the button
          */
-        "type": Type;
+        "size": Size;
         /**
-          * Waiting - If set, shows a waiting/busy indicator
+          * type of the button.
+         */
+        "type": P6ButtonType;
+        /**
+          * If set, shows a waiting/busy indicator
          */
         "waiting": boolean;
     }
@@ -94,7 +117,7 @@ export namespace Components {
         /**
           * the content type of the input.
          */
-        "type": Type;
+        "type": P6InputType;
         /**
           * the value of the input.
          */
@@ -162,6 +185,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLP6ActionElement extends Components.P6Action, HTMLStencilElement {
+    }
+    var HTMLP6ActionElement: {
+        prototype: HTMLP6ActionElement;
+        new (): HTMLP6ActionElement;
+    };
     interface HTMLP6ButtonElement extends Components.P6Button, HTMLStencilElement {
     }
     var HTMLP6ButtonElement: {
@@ -211,6 +240,7 @@ declare global {
         new (): HTMLP6SwitchElement;
     };
     interface HTMLElementTagNameMap {
+        "p6-action": HTMLP6ActionElement;
         "p6-button": HTMLP6ButtonElement;
         "p6-checkbox": HTMLP6CheckboxElement;
         "p6-icon": HTMLP6IconElement;
@@ -222,13 +252,31 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface P6Action {
+        /**
+          * If `true`, the user cannot interact with the Action.
+         */
+        "disabled"?: boolean;
+        /**
+          * set the mode of the action
+         */
+        "mode"?: Mode;
+        /**
+          * set the size of the action
+         */
+        "size"?: Size;
+        /**
+          * If set, shows a waiting/busy indicator
+         */
+        "waiting"?: boolean;
+    }
     interface P6Button {
         /**
           * Disabled - If `true`, the user cannot interact with the button.
          */
         "disabled"?: boolean;
         /**
-          * Mode - set the mode of the button
+          * set the mode of the button
          */
         "mode"?: Mode;
         /**
@@ -236,11 +284,15 @@ declare namespace LocalJSX {
          */
         "outlined"?: boolean;
         /**
-          * Type - type of the button.
+          * set the size of the button
          */
-        "type"?: Type;
+        "size"?: Size;
         /**
-          * Waiting - If set, shows a waiting/busy indicator
+          * type of the button.
+         */
+        "type"?: P6ButtonType;
+        /**
+          * If set, shows a waiting/busy indicator
          */
         "waiting"?: boolean;
     }
@@ -306,7 +358,7 @@ declare namespace LocalJSX {
         /**
           * the content type of the input.
          */
-        "type"?: Type;
+        "type"?: P6InputType;
         /**
           * the value of the input.
          */
@@ -373,6 +425,7 @@ declare namespace LocalJSX {
         "name": string;
     }
     interface IntrinsicElements {
+        "p6-action": P6Action;
         "p6-button": P6Button;
         "p6-checkbox": P6Checkbox;
         "p6-icon": P6Icon;
@@ -387,6 +440,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "p6-action": LocalJSX.P6Action & JSXBase.HTMLAttributes<HTMLP6ActionElement>;
             "p6-button": LocalJSX.P6Button & JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
             "p6-checkbox": LocalJSX.P6Checkbox & JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
             "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;

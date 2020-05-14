@@ -1,5 +1,5 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { Type } from '../p6-button';
+import { P6ButtonType } from '../p6-button';
 
 describe('p6-button', () => {
   let page: E2EPage;
@@ -71,7 +71,7 @@ describe('p6-button', () => {
     });
 
     it('can submit a form when type is "submit"', async () => {      
-      await page.$eval("p6-button", (elm: Element & { type: Type}) => {
+      await page.$eval("p6-button", (elm: Element & { type: P6ButtonType}) => {
         elm.type = 'submit';
       });
   
@@ -83,7 +83,7 @@ describe('p6-button', () => {
     });
 
     it('can reset a form when type is "reset"', async () => {      
-      await page.$eval("p6-button", (elm: Element & { type: Type}) => {
+      await page.$eval("p6-button", (elm: Element & { type: P6ButtonType}) => {
         elm.type = 'reset';
       });
   
@@ -95,7 +95,7 @@ describe('p6-button', () => {
     });
 
     it("doesn't trigger form handlers when type is a button", async () => {      
-      await page.$eval("p6-button", (elm: Element & { type: Type}) => {
+      await page.$eval("p6-button", (elm: Element & { type: P6ButtonType}) => {
         elm.type = 'button';
       });
   
