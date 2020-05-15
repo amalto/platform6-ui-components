@@ -7,20 +7,20 @@
     cursor: pointer;
   }
 
-  input:checked + label::after {
-    content: "●";
-    color: $success;
-    position: absolute;
-    left: 2.5px;
-    font-size: $size-normal;
+  input:checked + label::before {
+    background-color: $success;
   }
 
-  input[readonly]:checked + label::after,
-  input[disabled]:checked + label::after,
+  input[readonly]:checked + label::before,
+  input[disabled]:checked + label::before {
+    background-color: $input-disabled-color;
+    cursor: not-allowed;
+  }
+
   input[readonly]:checked + label,
-  input[disabled]:checked + label  {
-      color: $input-disabled-color;
-      cursor: not-allowed;
+  input[disabled]:checked + label {
+    color: $input-disabled-color;
+    cursor: not-allowed;
   }
 
   input {
@@ -40,11 +40,17 @@
     width: auto;
 
     &::before {
-      content: "○";
-      vertical-align: top;
-      font-size: $size-large;
-      color: $input-border-color;
+      content: "";
+      background-color: transparent;
+      border: 1px solid $input-border-color;
+      border-radius: 50px;
+      box-shadow: inset 0 0 0 2px $input-background-color;
+      display: inline-block;
+      height: 10px;
       margin-right: 5px;
+      padding: 5px;
+      vertical-align: top;
+      width: 10px;
     }
 
   }
