@@ -1,11 +1,11 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'p6-checkbox',
-  styleUrl: './p6-checkbox.scss',
+  tag: 'p6-switch',
+  styleUrl: './p6-switch.scss',
   scoped: true,
 })
-export class P6Checkbox {
+export class P6Switch {
 
   /**
    * Initial value
@@ -18,7 +18,7 @@ export class P6Checkbox {
   @Prop() disabled: boolean = false;
 
   /**
-   * Checkbox name
+   * Switch name
    */
   @Prop() name!: string;
 

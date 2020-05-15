@@ -145,6 +145,20 @@ export namespace Components {
     }
     interface P6Spinner {
     }
+    interface P6Switch {
+        /**
+          * Initial value
+         */
+        "checked": boolean;
+        /**
+          * Disable
+         */
+        "disabled": boolean;
+        /**
+          * Switch name
+         */
+        "name": string;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -189,6 +203,12 @@ declare global {
         prototype: HTMLP6SpinnerElement;
         new (): HTMLP6SpinnerElement;
     };
+    interface HTMLP6SwitchElement extends Components.P6Switch, HTMLStencilElement {
+    }
+    var HTMLP6SwitchElement: {
+        prototype: HTMLP6SwitchElement;
+        new (): HTMLP6SwitchElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "p6-button": HTMLP6ButtonElement;
@@ -197,6 +217,7 @@ declare global {
         "p6-link": HTMLP6LinkElement;
         "p6-radio": HTMLP6RadioElement;
         "p6-spinner": HTMLP6SpinnerElement;
+        "p6-switch": HTMLP6SwitchElement;
     }
 }
 declare namespace LocalJSX {
@@ -336,6 +357,20 @@ declare namespace LocalJSX {
     }
     interface P6Spinner {
     }
+    interface P6Switch {
+        /**
+          * Initial value
+         */
+        "checked"?: boolean;
+        /**
+          * Disable
+         */
+        "disabled"?: boolean;
+        /**
+          * Switch name
+         */
+        "name": string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "p6-button": P6Button;
@@ -344,6 +379,7 @@ declare namespace LocalJSX {
         "p6-link": P6Link;
         "p6-radio": P6Radio;
         "p6-spinner": P6Spinner;
+        "p6-switch": P6Switch;
     }
 }
 export { LocalJSX as JSX };
@@ -357,6 +393,7 @@ declare module "@stencil/core" {
             "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
             "p6-radio": LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
             "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
+            "p6-switch": LocalJSX.P6Switch & JSXBase.HTMLAttributes<HTMLP6SwitchElement>;
         }
     }
 }

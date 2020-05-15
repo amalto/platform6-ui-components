@@ -1,0 +1,61 @@
+:host {
+  display: block;
+
+  input,
+  label {
+    cursor: pointer;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  label::after {
+    content: "●";
+    font-size: $size-xlarge;
+    left: 0px;
+    position: absolute;
+    top: 4px;
+    transition: .4s;
+  }
+
+  input + label::after {
+    color: $input-border-color;
+  }
+
+  input:checked + label::after {
+    color: $success;
+    transform: translateX(16px);
+  }
+
+  input[disabled]:checked + label,
+  input[disabled]:checked + label::after {
+    color: $input-disabled-color !important;
+    cursor: not-allowed;
+  }
+
+  label {
+    user-select: none;
+    font-size: $size-small;
+    line-height: 13px;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    position: relative;
+
+    &::before {
+      background-color: $input-background-color;
+      border: 1px solid $input-border-color;
+      border-radius: 50px;
+      content: "";
+      display: inline-block;
+      height: 20px;
+      margin-right: 5px;
+      vertical-align: middle;
+      width: 35px;
+    }
+
+  }
+
+}
