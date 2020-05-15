@@ -1,0 +1,56 @@
+:host {
+  display: inline-block;
+  font-family: $family-primary;
+
+  input,
+  label {
+    cursor: pointer;
+  }
+
+  input:checked + label::before {
+    background-color: $success;
+    box-shadow: inset 0 0 0 2px $input-background-color;
+  }
+
+  input[readonly]:checked + label::before,
+  input[disabled]:checked + label::before {
+      background-color: $input-disabled-color;
+      cursor: not-allowed;
+  }
+
+  input[readonly]:checked + label,
+  input[disabled]:checked + label {
+    color: $input-disabled-color;
+    cursor: not-allowed;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+    display: inline-block;
+    font-size: $size-normal;
+    line-height: 13px;
+    margin-right: $gap-size * 1px;
+    position: relative;
+    user-select: none;
+    vertical-align: top;
+    width: auto;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: top;
+      width: 10px;
+      height: 10px;
+      border: 1px solid $input-border-color;
+      background-color: $input-background-color;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+  }
+}
