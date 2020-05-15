@@ -1,0 +1,51 @@
+:host {
+  display: inline-block;
+  font-family: $family-primary;
+
+  input,
+  label {
+    cursor: pointer;
+  }
+
+  input:checked + label::after {
+    content: "●";
+    color: $success;
+    position: absolute;
+    left: 2.5px;
+    font-size: $size-normal;
+  }
+
+  input[readonly]:checked + label::after,
+  input[disabled]:checked + label::after,
+  input[readonly]:checked + label,
+  input[disabled]:checked + label  {
+      color: $input-disabled-color;
+      cursor: not-allowed;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+    display: inline-block;
+    font-size: $size-normal;
+    line-height: 13px;
+    margin-right: $gap-size * 1px;
+    position: relative;
+    user-select: none;
+    vertical-align: top;
+    width: auto;
+
+    &::before {
+      content: "○";
+      vertical-align: top;
+      font-size: $size-large;
+      color: $input-border-color;
+      margin-right: 5px;
+    }
+
+  }
+}

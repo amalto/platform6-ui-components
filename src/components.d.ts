@@ -121,6 +121,28 @@ export namespace Components {
          */
         "target": Target | undefined;
     }
+    interface P6Radio {
+        /**
+          * Initial value
+         */
+        "checked": boolean;
+        /**
+          * Disable
+         */
+        "disabled": boolean;
+        /**
+          * Radio name
+         */
+        "name": string;
+        /**
+          * Readonly
+         */
+        "readonly": boolean;
+        /**
+          * Value
+         */
+        "value": string | number;
+    }
     interface P6Spinner {
     }
 }
@@ -155,6 +177,12 @@ declare global {
         prototype: HTMLP6LinkElement;
         new (): HTMLP6LinkElement;
     };
+    interface HTMLP6RadioElement extends Components.P6Radio, HTMLStencilElement {
+    }
+    var HTMLP6RadioElement: {
+        prototype: HTMLP6RadioElement;
+        new (): HTMLP6RadioElement;
+    };
     interface HTMLP6SpinnerElement extends Components.P6Spinner, HTMLStencilElement {
     }
     var HTMLP6SpinnerElement: {
@@ -167,6 +195,7 @@ declare global {
         "p6-checkbox": HTMLP6CheckboxElement;
         "p6-input": HTMLP6InputElement;
         "p6-link": HTMLP6LinkElement;
+        "p6-radio": HTMLP6RadioElement;
         "p6-spinner": HTMLP6SpinnerElement;
     }
 }
@@ -283,6 +312,28 @@ declare namespace LocalJSX {
          */
         "target"?: Target | undefined;
     }
+    interface P6Radio {
+        /**
+          * Initial value
+         */
+        "checked"?: boolean;
+        /**
+          * Disable
+         */
+        "disabled"?: boolean;
+        /**
+          * Radio name
+         */
+        "name": string;
+        /**
+          * Readonly
+         */
+        "readonly"?: boolean;
+        /**
+          * Value
+         */
+        "value": string | number;
+    }
     interface P6Spinner {
     }
     interface IntrinsicElements {
@@ -291,6 +342,7 @@ declare namespace LocalJSX {
         "p6-checkbox": P6Checkbox;
         "p6-input": P6Input;
         "p6-link": P6Link;
+        "p6-radio": P6Radio;
         "p6-spinner": P6Spinner;
     }
 }
@@ -303,6 +355,7 @@ declare module "@stencil/core" {
             "p6-checkbox": LocalJSX.P6Checkbox & JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
             "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;
             "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
+            "p6-radio": LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
             "p6-spinner": LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
         }
     }
