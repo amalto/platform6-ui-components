@@ -1,13 +1,5 @@
-import {
-  Component,
-  Element,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State
-} from "@stencil/core";
-import { cleanupAttributes } from "../../../utils/attribute";
+import { Component, Element, h, Host, Listen, Prop, State } from "@stencil/core";
+import { cleanupAttributes } from "~utils/attribute";
 
 export type Type =
   | "email"

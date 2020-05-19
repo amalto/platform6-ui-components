@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
+    "baseUrl": ".",
     "declaration": false,
     "experimentalDecorators": true,
     "lib": [
@@ -14,7 +15,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "paths": {
+      "~components/*" : ["./src/components/*"],
+      "~global/*" : ["./src/global/*"],
+      "~utils/*" : ["./src/utils/*"]
+    }
   },
   "include": [
     "src",
