@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Listen } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
 
 export type Mode = 'danger' | 'warning' | 'default' | 'info' | 'success' | 'primary'
 export type Type = 'submit' | 'reset' | 'button'

@@ -1,4 +1,4 @@
-import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { Type } from '../p6-button';
 
 describe('p6-button', () => {

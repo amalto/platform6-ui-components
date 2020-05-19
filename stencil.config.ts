@@ -29,5 +29,12 @@ export const config: Config = {
   ],
   devServer: {
     openBrowser: false
+  },
+  testing: {
+    moduleNameMapper: {
+      "~components/(.*)" : "<rootDir>/src/components/$1",
+      "~global/(.*)" : "<rootDir>/src/global/$1",
+      "~utils/(.*)" : "<rootDir>/src/utils/$1"
+    }
   }
 };
