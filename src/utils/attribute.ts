@@ -1,5 +1,5 @@
 
-function isUndefined(value: unknown): boolean {
+export function isEmpty(value: unknown): boolean {
     return value === undefined 
     || value === "undefined"
     || value === null 
@@ -9,6 +9,6 @@ function isUndefined(value: unknown): boolean {
 
 export function cleanupAttributes(attributes: { [key: string]: unknown }): { [key: string]: unknown } {
     return Object.entries(attributes)
-        .filter(attr => !isUndefined(attr[1]))
+        .filter(attr => !isEmpty(attr[1]))
         .reduce((acc, cur) => ({ ...acc, [cur[0]]: cur[1] }), {})
 }
