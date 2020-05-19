@@ -6,23 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Mode, Type, } from "./components/atoms/p6-button/p6-button";
+import { IconName, IconPrefix, } from "@fortawesome/fontawesome-svg-core";
 import { Type as Type1, } from "./components/atoms/p6-input/p6-input";
 import { Target, } from "./components/atoms/p6-link/p6-link";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
     interface P6Button {
         /**
           * Disabled - If `true`, the user cannot interact with the button.
@@ -58,6 +45,20 @@ export namespace Components {
           * Checkbox name
          */
         "name": string;
+    }
+    interface P6Icon {
+        /**
+          * Style prefix
+         */
+        "iconPrefix": IconPrefix;
+        /**
+          * Icon name
+         */
+        "name": IconName;
+        /**
+          * transformation performed on the icon.
+         */
+        "transform": string;
     }
     interface P6Input {
         "disabled": boolean;
@@ -161,12 +162,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLP6ButtonElement extends Components.P6Button, HTMLStencilElement {
     }
     var HTMLP6ButtonElement: {
@@ -178,6 +173,12 @@ declare global {
     var HTMLP6CheckboxElement: {
         prototype: HTMLP6CheckboxElement;
         new (): HTMLP6CheckboxElement;
+    };
+    interface HTMLP6IconElement extends Components.P6Icon, HTMLStencilElement {
+    }
+    var HTMLP6IconElement: {
+        prototype: HTMLP6IconElement;
+        new (): HTMLP6IconElement;
     };
     interface HTMLP6InputElement extends Components.P6Input, HTMLStencilElement {
     }
@@ -210,9 +211,9 @@ declare global {
         new (): HTMLP6SwitchElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
         "p6-button": HTMLP6ButtonElement;
         "p6-checkbox": HTMLP6CheckboxElement;
+        "p6-icon": HTMLP6IconElement;
         "p6-input": HTMLP6InputElement;
         "p6-link": HTMLP6LinkElement;
         "p6-radio": HTMLP6RadioElement;
@@ -221,20 +222,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface P6Button {
         /**
           * Disabled - If `true`, the user cannot interact with the button.
@@ -270,6 +257,20 @@ declare namespace LocalJSX {
           * Checkbox name
          */
         "name": string;
+    }
+    interface P6Icon {
+        /**
+          * Style prefix
+         */
+        "iconPrefix"?: IconPrefix;
+        /**
+          * Icon name
+         */
+        "name": IconName;
+        /**
+          * transformation performed on the icon.
+         */
+        "transform"?: string;
     }
     interface P6Input {
         "disabled"?: boolean;
@@ -372,9 +373,9 @@ declare namespace LocalJSX {
         "name": string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
         "p6-button": P6Button;
         "p6-checkbox": P6Checkbox;
+        "p6-icon": P6Icon;
         "p6-input": P6Input;
         "p6-link": P6Link;
         "p6-radio": P6Radio;
@@ -386,9 +387,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "p6-button": LocalJSX.P6Button & JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
             "p6-checkbox": LocalJSX.P6Checkbox & JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
+            "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;
             "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;
             "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
             "p6-radio": LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;

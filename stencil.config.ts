@@ -13,7 +13,8 @@ export const config: Config = {
       type: 'docs-readme'
     }
   ],
-  globalStyle: 'src/global/global.scss',
+  globalScript: 'src/global/init.ts',
+  globalStyle: 'src/global/base.scss',
   plugins: [
     sass({
       includePaths: [
