@@ -1,36 +1,36 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 
-describe('P6-action', () => {
+describe('p6-action', () => {
   let page: E2EPage;
   let component: E2EElement;
   let innerButton: any;
 
   it('renders', async () => {
-    page = await newE2EPage({html: '<P6-action></P6-action>'});
-    component = await page.find('P6-action')
+    page = await newE2EPage({html: '<p6-action></p6-action>'});
+    component = await page.find('p6-action')
     expect(component).toHaveClass('hydrated');
   });
 
   describe('on click', () => {
     beforeEach(async () => {
-      page = await newE2EPage({html: '<P6-action></P6-action>'});
-      component = await page.find('P6-action')
-      innerButton = await page.find('P6-action >>> button');
+      page = await newE2EPage({html: '<p6-action></p6-action>'});
+      component = await page.find('p6-action')
+      innerButton = await page.find('p6-action >>> button');
     });
     
     it('fires a click event', async () => {
-      const spy = await page.spyOnEvent('click', 'document');
+      const clickHandler = await page.spyOnEvent('click', 'document');
   
-      expect(spy.events.length).toEqual(0);
+      expect(clickHandler.events.length).toEqual(0);
       await innerButton.click();
-      expect(spy.events.length).toEqual(1);
+      expect(clickHandler.events.length).toEqual(1);
     });
   
     it('can call its onClick callback', async () => {
       const clickHandler = jest.fn();
       await page.exposeFunction("clickHandler", clickHandler);
       
-      await page.$eval("P6-action", (elm: HTMLElement) => {
+      await page.$eval("p6-action", (elm: HTMLElement) => {
         elm.onclick = this.clickHandler;
       });
   
@@ -39,6 +39,33 @@ describe('P6-action', () => {
       expect(clickHandler).not.toHaveBeenCalled();
       await innerButton.click();
       expect(clickHandler).toHaveBeenCalledTimes(1);
+    });
+
+    it("should not fires a click event when disabled", async () => {
+      page = await newE2EPage({html: '<p6-action disabled></p6-action>'});
+      innerButton = await page.find('p6-action >>> button');
+      const clickHandler = await page.spyOnEvent('click', 'document');
+  
+      expect(clickHandler.events.length).toEqual(0);
+      await innerButton.click();
+      expect(clickHandler.events.length).toEqual(0);
+    });
+  
+    it("should not call its onClick callback when disabled", async () => {
+      const clickHandler = jest.fn();
+      page = await newE2EPage({html: '<p6-action disabled></p6-action>'});
+      innerButton = await page.find('p6-action >>> button');
+      await page.exposeFunction("clickHandler", clickHandler);
+      
+      await page.$eval("p6-action", (elm: HTMLElement) => {
+        elm.onclick = this.clickHandler;
+      });
+  
+      await page.waitForChanges();
+  
+      expect(clickHandler).not.toHaveBeenCalled();
+      await innerButton.click();
+      expect(clickHandler).not.toHaveBeenCalledTimes(1);
     });
   });
 });
