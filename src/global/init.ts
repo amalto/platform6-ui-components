@@ -1,5 +1,5 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHamburger } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function() {
@@ -7,5 +7,5 @@ export default function() {
 }
 
 function initializeIcons() {
-    library.add(faHamburger)
+    library.add(fas.faHamburger, fas.faHome)
 }
