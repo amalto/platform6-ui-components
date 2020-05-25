@@ -1,0 +1,13 @@
+@import "bulma/sass/elements/button";
+
+@each $name, $pair in $colors {
+  $color: nth($pair, 1);
+  $color-invert: nth($pair, 2);
+  .is-#{$name} {
+    &.is-inverted {
+      &.is-loading::after {
+        border-color: transparent transparent $color $color !important;
+      }
+    }
+  }
+}
