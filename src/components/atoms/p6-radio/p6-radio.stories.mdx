@@ -1,0 +1,64 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import { action, decorate } from "@storybook/addon-actions";
+
+import readme from "./readme.md";
+
+<Meta title="Atoms/Radio" component="p6-radio" parameters={{ notes: readme }} />
+
+# Radio
+
+<Story name="Default" parameters={{ docs: { disable: true } }}>
+  {() => {
+    const decorateForm = decorate([
+      (args) => {
+        return [
+          {
+            checked: args[0].target.elements[0].checked,
+            value: args[0].target.elements[0].value,
+          },
+          {
+            checked: args[0].target.elements[1].checked,
+            value: args[0].target.elements[1].value,
+          },
+          {
+            checked: args[0].target.elements[2].checked,
+            value: args[0].target.elements[2].value,
+          },
+        ];
+      },
+    ]);
+    const id = "0123456789";
+    const formContent = `
+      <div class="control">
+        <p6-radio value="first"  name=${id}>first</p6-radio>
+        <p6-radio value="second" name=${id}>second</p6-radio>
+        <p6-radio value="third"  name=${id}>third</p6-radio>
+      </div>
+      <p6-button>send</p6-button>
+    `;
+    const form = document.createElement("form");
+    form.noValidate = true;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      decorateForm.action("submit")(e);
+    });
+    form.innerHTML = formContent;
+    return form;
+  }}
+</Story>
+
+<Preview>
+  <Story name="Disabled" height="42px">
+    {`
+      <p6-radio checked="true" disabled="true" name="disabled-example">Disabled radio</p6-radio>
+    `}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Readonly" height="42px">
+    {`
+      <p6-radio checked="true" readonly="true" name="readonly-example">Readonly radio</p6-radio>
+    `}
+  </Story>
+</Preview>

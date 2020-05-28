@@ -1,4 +1,9 @@
-import { icon, IconName, IconPrefix, parse } from "@fortawesome/fontawesome-svg-core";
+import {
+  icon,
+  IconName,
+  IconPrefix,
+  parse,
+} from "@fortawesome/fontawesome-svg-core";
 import { Component, Element, h, Prop } from "@stencil/core";
 import { cleanupAttributes, isEmpty } from "~utils/attribute";
 
@@ -7,10 +12,10 @@ export type IconStyle = IconPrefix;
 @Component({
   tag: "p6-icon",
   styleUrl: "p6-icon.scss",
-  shadow: true
+  shadow: true,
 })
 export class P6Icon {
-  @Element() host!: HTMLElement;
+  @Element() host!: HTMLP6IconElement;
 
   /**
    * Icon name
@@ -25,18 +30,20 @@ export class P6Icon {
   /**
    * transformation performed on the icon.
    */
-  @Prop() transform: string;
+  @Prop() transform: string | undefined;
 
-  render() {
+  render(): JSX.Element | null {
     const transform = isEmpty(this.transform)
       ? undefined
-      : parse.transform(this.transform);
+      : parse.transform(this.transform as string);
+
     const img = icon(
       { prefix: this.iconPrefix, iconName: this.name },
       cleanupAttributes({ transform })
     );
 
     if (img === undefined) {
+      // eslint-disable-next-line no-console
       console.debug(
         `p6-icon : could not find icon ${this.name} (style: ${this.iconPrefix})`
       );

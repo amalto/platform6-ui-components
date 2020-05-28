@@ -1,33 +1,34 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from "@stencil/core";
 
-export type Href = string | undefined
-export type Target = '_blank' | '_self' | '_parent' | '_top'
+export type Href = string | undefined;
+export type Target = "_blank" | "_self" | "_parent" | "_top";
 
 @Component({
-  tag: 'p6-link',
-  styleUrl: 'p6-link.scss',
+  tag: "p6-link",
+  styleUrl: "p6-link.scss",
   shadow: true,
 })
 export class P6Link {
   /**
-   * The URL that the hyperlink points to. 
+   * The URL that the hyperlink points to.
    * Links are not restricted to HTTP-based URLs — they can use any URL scheme supported by browsers.
    */
-  @Prop() href: string | undefined
-    /**
+  @Prop() href: string | undefined;
+
+  /**
    * Sets or retrieves the relationship between the object and the destination of the link.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    * Only applies when an `href` is provided.
    */
   @Prop() rel: string | undefined;
 
- /**
-  *  Sets or retrieves the window or frame at which to target content.
+  /**
+   *  Sets or retrieves the window or frame at which to target content.
    * Only applies when an `href` is provided.
    */
   @Prop() target: Target | undefined;
 
-    /**
+  /**
    * This attribute instructs browsers to download a URL instead of navigating to
    * it, so the user will be prompted to save it as a local file. If the attribute
    * has a value, it is used as the pre-filled file name in the Save prompt
@@ -36,19 +37,25 @@ export class P6Link {
    */
   @Prop() download: string | undefined;
 
-  render() {
-    const TagType = !!this.href ? 'a' : 'button'
-    const attrs = TagType === 'button' 
-    ? {} 
-    : {rel: this.rel, href: this.href, target: this.target, download: this.download}
-    
+  render(): JSX.Element {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const TagType = this.href !== undefined ? "a" : "button";
+    const attrs =
+      TagType === "button"
+        ? {}
+        : {
+            rel: this.rel,
+            href: this.href,
+            target: this.target,
+            download: this.download,
+          };
+
     return (
       <Host>
         <TagType class="link" {...attrs}>
-          <slot></slot>
+          <slot />
         </TagType>
       </Host>
     );
   }
-
 }

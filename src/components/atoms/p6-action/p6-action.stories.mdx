@@ -1,37 +1,48 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 import { Meta, Preview, Story } from "@storybook/addon-docs/blocks";
 import { select, text, boolean, withKnobs } from "@storybook/addon-knobs";
 import readme from "./readme.md";
 
-
-<Meta title="Atoms/Action" parameters={{ notes: readme }} />
+<Meta
+  title="Atoms/Action"
+  component="p6-action"
+  parameters={{ notes: readme }}
+/>
 
 # Action
 
-`p6-icon` provides icon from [Font Awesome](https://fontawesome.com/)
-
-
-<Story name="Default" parameters={{docs:{disable:true}}} decorators={[withKnobs]}>
-    {(el) => {
-    const modes = ['danger', 'warning', 'default', 'info', 'success', 'primary']
-    const sizes = ['small', 'default', 'normal', 'medium', 'large']
-    const kModes = select('Modes', modes, 'default');
-    const kSize = select('Size', sizes, 'default');
+<Story
+  name="Default"
+  parameters={{ docs: { disable: true } }}
+  decorators={[withKnobs]}
+>
+  {(el) => {
+    const modes = [
+      "danger",
+      "warning",
+      "default",
+      "info",
+      "success",
+      "primary",
+    ];
+    const sizes = ["small", "default", "normal", "medium", "large"];
+    const kModes = select("Modes", modes, "default");
+    const kSize = select("Size", sizes, "default");
     const kWaiting = boolean("Waiting", false);
     const kDisabled = boolean("Disabled", false);
-    const kTransform = text('Transformation');
-    const component = document.createElement('p6-action')
+    const kTransform = text("Transformation");
+    const component = document.createElement("p6-action");
     component.mode = kModes;
     component.waiting = kWaiting;
     component.disabled = kDisabled;
     component.size = kSize;
-    component.addEventListener('click', action('Click'));
-    component.innerHTML = `<p6-icon name="home" transform=${kTransform} />`
+    component.addEventListener("click", action("Click"));
+    component.innerHTML = `<p6-icon name="home" transform=${kTransform} />`;
     return component;
-    }}
+  }}
 </Story>
 
 <Preview>

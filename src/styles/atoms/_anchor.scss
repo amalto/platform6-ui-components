@@ -5,11 +5,9 @@
   font-family: $family-primary;
   background-color: transparent;
   border: none;
-
   height: inherit;
   margin: 0;
   padding: 0;
-
   text-decoration: none;
   cursor: pointer;
 
@@ -18,6 +16,6 @@
     text-decoration: underline;
   }
   &:visited {
-    color: bulmaDarken($primary, 5.0%);
+    color: bulmaDarken($primary, 5%);
   }
 }

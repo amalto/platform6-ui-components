@@ -1,0 +1,72 @@
+{
+    "parserOptions": {
+        "project": ["./tsconfig.json", "./tsconfig.lint.json"],
+        "ecmaFeatures": {
+            "jsx": true // Allows for the parsing of JSX
+        }
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "eslint-comments",
+        "jest",
+        "promise"
+      ],
+    "extends": [
+        "airbnb-typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@stencil/recommended",
+        "plugin:eslint-comments/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:jest/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:promise/recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        // @see https://github.com/iamturns/eslint-config-airbnb-typescript/issues/95
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+              "selector": "default",
+              "format": ["camelCase"]
+            },
+            {
+              "selector": "variable",
+              "format": ["camelCase", "UPPER_CASE"]
+            },
+            {
+              "selector": "parameter",
+              "format": ["camelCase"]
+            },
+            {
+              "selector": "typeLike",
+              "format": ["PascalCase"]
+            }
+        ],
+        "jsx-a11y/label-has-associated-control": [2, {
+            "assert": "either"
+        }],
+
+
+        "import/prefer-default-export": "off",
+        "react/no-unknown-property": [2, { "ignore": ["class"] }],
+
+        "react/jsx-props-no-spreading": "off"
+    },
+    "settings": {
+      "react": {
+        "pragma": "h"
+      },
+      "import/resolver": {
+        "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+      },
+      "linkComponents": [
+        "Hyperlink",
+        {"name": "Link", "linkAttribute": "href"}
+      ]
+    }
+}

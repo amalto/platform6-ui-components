@@ -1,39 +1,35 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
-  tag: 'p6-checkbox',
-  styleUrl: './p6-checkbox.scss',
+  tag: "p6-checkbox",
+  styleUrl: "./p6-checkbox.scss",
   scoped: true,
 })
 export class P6Checkbox {
-
   /**
    * Initial value
    */
-  @Prop() checked: boolean = false;
+  @Prop() checked = false;
 
   /**
    * Disable
    */
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
 
   /**
    * Checkbox name
    */
   @Prop() name!: string;
 
-  render() {
-    const {
-      name,
-      checked,
-      disabled
-    } = this;
+  render(): JSX.Element {
+    const { name, checked, disabled } = this;
 
-    const inputId: string = `${name}-input`;
+    const inputId = `${name}-input`;
 
     return (
       <Host>
-        <input checked={checked}
+        <input
+          checked={checked}
           disabled={disabled}
           id={inputId}
           name={name}
@@ -45,5 +41,4 @@ export class P6Checkbox {
       </Host>
     );
   }
-
 }

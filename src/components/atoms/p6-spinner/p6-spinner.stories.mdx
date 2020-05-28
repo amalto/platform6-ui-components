@@ -1,0 +1,43 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+
+import readme from "./readme.md";
+
+<Meta
+  title="Atoms/Spinner"
+  component="p6-spinner"
+  parameters={{ notes: readme }}
+/>
+
+# Spinner
+
+<Preview>
+  <Story name="Default" height="42px">
+    {`
+      <p6-spinner style="width: 4.2rem; height: 4.2rem"></p6-spinner>
+    `}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Small container" height="42px">
+    {`
+      <p6-spinner style="width: 1rem; height: 1rem"></p6-spinner>
+    `}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Vertical container" height="42px">
+    {`
+      <p6-spinner style="width: 10.5rem; height: 21rem; background: #eee"></p6-spinner>
+    `}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Horizontal container" height="42px">
+    {`
+      <p6-spinner style="width: 21rem; height: 10.5rem; background: #eee"></p6-spinner>
+    `}
+  </Story>
+</Preview>

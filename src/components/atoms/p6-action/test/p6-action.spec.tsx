@@ -1,13 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { P6Action } from '../p6-action';
+import { newSpecPage } from "@stencil/core/testing";
+import { P6Action } from "../p6-action";
 
-describe('p6-action', () => {
+describe("p6-action", () => {
+  describe("mode", () => {
+    const modes = ["danger", "warning", "info", "success", "primary"];
 
-  describe('mode', () => {
-
-    const modes = ['danger', 'warning', 'info', 'success', 'primary']
-
-    it.each(modes)('has the class "is-%s" when mode is "%s"', async(mode) => {
+    it.each(modes)('has the class "is-%s" when mode is "%s"', async (mode) => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action mode=${mode}></p6-action>`,
@@ -23,7 +21,7 @@ describe('p6-action', () => {
       `);
     });
 
-    it('does not add class when mode is default', async() => {
+    it("does not add class when mode is default", async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action mode="default"></p6-action>`,
@@ -39,7 +37,7 @@ describe('p6-action', () => {
       `);
     });
 
-    it('does not add class when mode is undefined', async() => {
+    it("does not add class when mode is undefined", async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action mode=${undefined}></p6-action>`,
@@ -54,10 +52,10 @@ describe('p6-action', () => {
         </p6-action>
       `);
     });
-  })
+  });
 
-  describe('waiting', () => {
-    it('has a "is-loading" class when waiting is true', async() => {
+  describe("waiting", () => {
+    it('has a "is-loading" class when waiting is true', async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action waiting="true"></p6-action>`,
@@ -72,7 +70,7 @@ describe('p6-action', () => {
         </p6-action>
       `);
     });
-    it('has no "is-loading" class when waiting is false', async() => {
+    it('has no "is-loading" class when waiting is false', async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action waiting="false"></p6-action>`,
@@ -87,10 +85,10 @@ describe('p6-action', () => {
         </p6-action>
       `);
     });
-  })
+  });
 
-  describe('disabled', () => {
-    it('has a "disabled" attribute on the button when disabled is true', async() => {
+  describe("disabled", () => {
+    it('has a "disabled" attribute on the button when disabled is true', async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action disabled="true"></p6-action>`,
@@ -105,7 +103,7 @@ describe('p6-action', () => {
         </p6-action>
       `);
     });
-    it('has no "disabled" attribute on the button when disabled is false', async() => {
+    it('has no "disabled" attribute on the button when disabled is false', async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action disabled="false"></p6-action>`,
@@ -120,12 +118,12 @@ describe('p6-action', () => {
         </p6-action>
       `);
     });
-  })
+  });
 
-  describe('size',() =>{
-    const sizes = ['small', 'normal', 'medium', 'large']
+  describe("size", () => {
+    const sizes = ["small", "normal", "medium", "large"];
 
-    it.each(sizes)('has the class "is-%s" when size is "%s"', async(size) => {
+    it.each(sizes)('has the class "is-%s" when size is "%s"', async (size) => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action size=${size}></p6-action>`,
@@ -141,7 +139,7 @@ describe('p6-action', () => {
       `);
     });
 
-    it('does not add class when size is default', async() => {
+    it("does not add class when size is default", async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action size="default"></p6-action>`,
@@ -156,5 +154,5 @@ describe('p6-action', () => {
         </p6-action>
       `);
     });
-  })
+  });
 });

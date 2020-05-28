@@ -11,30 +11,6 @@
     opacity: 0;
   }
 
-  label::after {
-    content: "●";
-    font-size: $size-xlarge;
-    left: 0px;
-    position: absolute;
-    top: 4px;
-    transition: .4s;
-  }
-
-  input + label::after {
-    color: $input-border-color;
-  }
-
-  input:checked + label::after {
-    color: $success;
-    transform: translateX(16px);
-  }
-
-  input[disabled]:checked + label,
-  input[disabled]:checked + label::after {
-    color: $input-disabled-color !important;
-    cursor: not-allowed;
-  }
-
   label {
     user-select: none;
     font-size: $size-small;
@@ -55,7 +31,29 @@
       vertical-align: middle;
       width: 35px;
     }
-
   }
 
+  label::after {
+    content: "●";
+    font-size: $size-xlarge;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    transition: 0.4s;
+  }
+
+  input + label::after {
+    color: $input-border-color;
+  }
+
+  input:checked + label::after {
+    color: $success;
+    transform: translateX(16px);
+  }
+
+  input[disabled]:checked + label,
+  input[disabled]:checked + label::after {
+    color: $input-disabled-color !important;
+    cursor: not-allowed;
+  }
 }

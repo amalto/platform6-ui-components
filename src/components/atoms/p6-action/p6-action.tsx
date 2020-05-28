@@ -1,11 +1,11 @@
-import { Component, h, Prop, Host } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 import { Mode, Size } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 
 @Component({
   tag: "p6-action",
   styleUrl: "p6-action.scss",
-  shadow: true
+  shadow: true,
 })
 export class P6Action {
   /**
@@ -16,7 +16,7 @@ export class P6Action {
   /**
    * If set, shows a waiting/busy indicator
    */
-  @Prop() waiting: boolean = false;
+  @Prop() waiting = false;
 
   /**
    * If `true`, the user cannot interact with the Action.
@@ -28,20 +28,20 @@ export class P6Action {
    */
   @Prop() size: Size = "default";
 
-  render() {
+  render(): JSX.Element {
     const classes = {
-      "button": true,
+      button: true,
       "is-text": true,
       "is-inverted": true,
       "is-loading": !!this.waiting,
       [`is-${this.mode}`]: !(isEmpty(this.mode) || this.mode === "default"),
-      [`is-${this.size}`]: !isEmpty(this.size) && this.size !== "default"
+      [`is-${this.size}`]: !isEmpty(this.size) && this.size !== "default",
     };
 
     return (
       <Host>
         <button class={classes} type="button" disabled={this.disabled}>
-          <slot></slot>
+          <slot />
         </button>
       </Host>
     );

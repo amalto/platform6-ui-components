@@ -1,32 +1,31 @@
-import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { isEmpty } from '~utils/attribute';
-import { Mode, Size } from '~shared/types';
+import { Component, Element, h, Prop } from "@stencil/core";
+import { Mode, Size } from "~shared/types";
+import { isEmpty } from "~utils/attribute";
 
-export type P6ButtonType = 'submit' | 'reset' | 'button'
+export type P6ButtonType = "submit" | "reset" | "button";
 
 @Component({
-  tag: 'p6-button',
-  styleUrl: 'p6-button.scss',
+  tag: "p6-button",
+  styleUrl: "p6-button.scss",
   shadow: true,
 })
 export class P6Button {
-  
-  @Element() private el: { closest: (arg0: string) => HTMLFormElement | undefined; };
-  
+  @Element() host?: HTMLP6ButtonElement;
+
   /**
    * set the mode of the button
    */
-  @Prop() mode: Mode = 'default';
+  @Prop() mode: Mode = "default";
 
   /**
    * Outlined
    */
-  @Prop() outlined: boolean = false;
+  @Prop() outlined = false;
 
   /**
    * If set, shows a waiting/busy indicator
    */
-  @Prop() waiting: boolean = false;
+  @Prop() waiting = false;
 
   /**
    * set the size of the button
@@ -36,43 +35,46 @@ export class P6Button {
   /**
    * type of the button.
    */
-  @Prop() type: P6ButtonType = 'submit';
+  @Prop() type: P6ButtonType = "submit";
 
   /**
-  * Disabled - If `true`, the user cannot interact with the button.
-  */
+   * Disabled - If `true`, the user cannot interact with the button.
+   */
   @Prop() disabled = false;
 
-  @Listen('click')
-  clickDelegationHandler() {
-    if((this.type === 'submit' || this.type === 'reset')) {
-      const form = this.el.closest('form');
-      if (form) {
-        const nativeButton = document.createElement('button');
+  private clickDelegationHandler = (): void => {
+    if (this.type === "submit" || this.type === "reset") {
+      const form = this.host?.closest("form");
+      if (form !== null && form !== undefined) {
+        const nativeButton = document.createElement("button");
         nativeButton.type = this.type;
-        nativeButton.style.display = 'none';
-        form.appendChild(nativeButton); 
+        nativeButton.style.display = "none";
+        form.appendChild(nativeButton);
         nativeButton.click();
         form.removeChild(nativeButton);
       }
     }
-  }
+  };
 
-  render() {
+  render(): JSX.Element {
     const classes = {
-      'button': true, 
-      [`is-${this.mode}`]: !isEmpty(this.mode) && this.mode !== 'default',
-      [`is-${this.size}`]: !isEmpty(this.size) && this.size !== 'default',
-      'is-outlined' : !!this.outlined, 
-      'is-loading': !!this.waiting, 
-    }
+      button: true,
+      [`is-${this.mode}`]: !isEmpty(this.mode) && this.mode !== "default",
+      [`is-${this.size}`]: !isEmpty(this.size) && this.size !== "default",
+      "is-outlined": !!this.outlined,
+      "is-loading": !!this.waiting,
+    };
 
     return (
-      <Host>
-        <button class={classes} type={this.type} disabled={this.disabled}>
-          <slot></slot>
-        </button>
-      </Host>
+      <button
+        class={classes}
+        // eslint-disable-next-line react/button-has-type
+        type={this.type}
+        disabled={this.disabled}
+        onClick={this.clickDelegationHandler}
+      >
+        <slot />
+      </button>
     );
   }
 }

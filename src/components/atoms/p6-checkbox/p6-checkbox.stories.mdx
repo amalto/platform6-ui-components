@@ -1,0 +1,43 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import { action, decorate } from "@storybook/addon-actions";
+
+import readme from "./readme.md";
+
+<Meta
+  title="Atoms/Checkbox"
+  component="p6-checkbox"
+  parameters={{ notes: readme }}
+/>
+
+# Checkbox
+
+<Story name="Default" parameters={{ docs: { disable: true } }}>
+  {() => {
+    const decorateForm = decorate([
+      (args) => [{ checked: args[0].target.elements[0].checked }],
+    ]);
+    const id = "0123456789";
+    const formContent = `
+      <div class="control">
+        <p6-checkbox checked="true" name=${id}>Checked by default</p6-checkbox>
+      </div>
+      <p6-button>send</p6-button>
+    `;
+    const form = document.createElement("form");
+    form.noValidate = true;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      decorateForm.action("submit")(e);
+    });
+    form.innerHTML = formContent;
+    return form;
+  }}
+</Story>
+
+<Preview>
+  <Story name="Disabled" height="42px">
+    {`
+      <p6-checkbox checked="true" disabled="true" name="disabled-example">Disabled checkbox</p6-checkbox>
+    `}
+  </Story>
+</Preview>

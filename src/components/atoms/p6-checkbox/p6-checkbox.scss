@@ -7,19 +7,6 @@
     cursor: pointer;
   }
 
-  input:checked + label::before {
-    content: "✓";
-    color: $success;
-    font-size: $size-small;
-  }
-
-
-  input[disabled]:checked + label,
-  input[disabled]:checked + label::before {
-    color: $input-disabled-color !important;
-    cursor: not-allowed;
-  }
-
   input {
     position: absolute;
     opacity: 0;
@@ -45,7 +32,17 @@
       border-radius: 2px;
       margin-right: 5px;
     }
-
   }
 
+  input:checked + label::before {
+    content: "✓";
+    color: $success;
+    font-size: $size-small;
+  }
+
+  input[disabled]:checked + label,
+  input[disabled]:checked + label::before {
+    color: $input-disabled-color !important;
+    cursor: not-allowed;
+  }
 }
