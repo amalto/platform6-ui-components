@@ -1,23 +1,46 @@
-import { Story, Preview, Meta } from '@storybook/addon-docs/blocks';
-import { boolean, select, number, text as kText, withKnobs } from "@storybook/addon-knobs";
-import { action, decorate } from '@storybook/addon-actions';
-import readme from './readme.md';
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import {
+  boolean,
+  select,
+  number,
+  text as kText,
+  withKnobs,
+} from "@storybook/addon-knobs";
+import { action, decorate } from "@storybook/addon-actions";
+import readme from "./readme.md";
 
-<Meta title="Atoms/Input" parameters={{ notes: readme }}/>
+<Meta title="Atoms/Input" component="p6-input" parameters={{ notes: readme }} />
 
 # Input
 
 `p6-input` provides a input. if the type property is 'text' and the multiline property is true, an textarea tag will be rendered
 
-<Story name="Default" parameters={{ docs: { disable: true } }} decorators={[withKnobs]}>
+<Story
+  name="Default"
+  parameters={{ docs: { disable: true } }}
+  decorators={[withKnobs]}
+>
   {() => {
-    const inputTypes = ["email", "number", "password", "search", "tel", "text", "url"]
-    const values = decorate([args => Array.from(args[0].target.elements).filter(i => !!i.name).map(i => ({name: i.name, value: i.value}))]);
-    const kTypes = select('Types', inputTypes, 'text');
-    const kPattern = kText('Pattern');
-    const kPlaceholder = kText('Placeholder');
-    const kMin = number('Min');
-    const kMax = number('Max');
+    const inputTypes = [
+      "email",
+      "number",
+      "password",
+      "search",
+      "tel",
+      "text",
+      "url",
+    ];
+    const values = decorate([
+      (args) =>
+        Array.from(args[0].target.elements)
+          .filter((i) => !!i.name)
+          .map((i) => ({ name: i.name, value: i.value })),
+    ]);
+    const kTypes = select("Types", inputTypes, "text");
+    const kPattern = kText("Pattern");
+    const kPlaceholder = kText("Placeholder");
+    const kMin = number("Min");
+    const kMax = number("Max");
     const kMultiline = boolean("Multiline", false);
     const kReadonly = boolean("Readonly", false);
     const kRequired = boolean("Required", false);
@@ -40,11 +63,15 @@ import readme from './readme.md';
           <p6-button class="button is-link">Submit</p6-button>
         </div>
       </div>
-    `
-    const form = document.createElement('form')
+    `;
+    const form = document.createElement("form");
     form.noValidate = true;
-    form.addEventListener('submit', (e) => {e.preventDefault(); values.action('values')(e);action('event')(e)});
-    form.innerHTML = formContent
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      values.action("values")(e);
+      action("event")(e);
+    });
+    form.innerHTML = formContent;
     return form;
   }}
 </Story>

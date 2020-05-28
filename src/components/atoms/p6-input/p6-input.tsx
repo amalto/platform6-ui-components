@@ -1,4 +1,13 @@
-import { Component, Element, h, Host, Listen, Prop, State } from "@stencil/core";
+import {
+  Component,
+  Element,
+  h,
+  Host,
+  Listen,
+  Method,
+  Prop,
+  State,
+} from "@stencil/core";
 import { cleanupAttributes } from "~utils/attribute";
 
 export type P6InputType =
@@ -13,70 +22,88 @@ export type P6InputType =
 @Component({
   tag: "p6-input",
   styleUrl: "p6-input.scss",
-  scoped: true
+  scoped: true,
 })
 export class P6Input {
-  @Element() host!: HTMLElement;
+  @Element() host!: HTMLP6InputElement;
 
-  @Prop() disabled: boolean = false;
+  /**
+   * the input is not available for interaction. The value will not be submitted with the form
+   */
+  @Prop() disabled = false;
+
   /**
    * The maximum length or value
    */
-  @Prop() max: string;
+  @Prop() max: string | undefined;
+
   /**
    * The minimum length or value
    */
-  @Prop() min: string;
+  @Prop() min: string | undefined;
 
-  @Prop() multiline: boolean = false;
+  /**
+   * Enables multiline support (with a <textarea> instead of an <input>)
+   */
+  @Prop() multiline = false;
+
   /**
    * The name of the input.
    */
   @Prop() name!: string;
+
   /**
    * Pattern the value must match to be valid.
    */
-  @Prop() pattern: string;
+  @Prop() pattern: string | undefined;
+
   /**
    * content to be appear in the form control when the form control is empty
    */
-  @Prop() placeholder: string;
+  @Prop() placeholder: string | undefined;
+
   /**
    * marks an element that can't be edited.
    */
-  @Prop() readonly: boolean = false;
+  @Prop() readonly = false;
+
   /**
    * marks an element that can't be submitted without a value.
    */
-  @Prop() required: boolean = false;
+  @Prop() required = false;
+
   /**
    * the content type of the input.
    */
   @Prop() type: P6InputType = "text";
+
   /**
    * the value of the input.
    */
-  @Prop() value: string;
+  @Prop() value: string | undefined;
+
   /**
    * shows a waiting indicator
    */
-  @Prop() waiting: boolean = false;
+  @Prop() waiting = false;
 
-  @State() hasError: boolean = false;
+  @State() hasError = false;
 
   private nativeInput: HTMLInputElement | HTMLTextAreaElement | undefined;
 
+  // eslint-disable-next-line @stencil/prefer-vdom-listener
   @Listen("focusout")
-  lostFocusHandler() {
+  public lostFocusHandler(): void {
     this.checkValidity();
-    this.hasError = !!this.validationMessage;
+    this.hasError =
+      this.validationMessage !== "" && this.validationMessage !== undefined;
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     this.lostFocusHandler();
   }
 
-  render() {
+  render(): JSX.Element {
     const render =
       this.type === "text" && this.multiline
         ? this.textareaRender.bind(this)
@@ -84,18 +111,18 @@ export class P6Input {
 
     const classes = {
       "is-danger": this.hasError,
-      "is-static": !!this.readonly
+      "is-static": !!this.readonly,
     };
 
     const containerClass = {
       control: true,
-      "is-loading": !!this.waiting
+      "is-loading": !!this.waiting,
     };
 
     return (
       <Host aria-disabled={this.disabled ? "true" : null}>
         <label class="label" htmlFor={`${this.name}-input`}>
-          <slot></slot>
+          <slot />
         </label>
         <div class={containerClass}>
           {render(`${this.name}-input`, classes)}
@@ -105,16 +132,20 @@ export class P6Input {
     );
   }
 
-  get validity() {
+  get validity(): ValidityState | undefined {
     return this.nativeInput?.validity;
   }
 
-  get validationMessage(): string {
-    return this.nativeInput?.validationMessage || "";
+  get validationMessage(): string | undefined {
+    return this.nativeInput?.validationMessage;
   }
 
-  checkValidity() {
-    this.nativeInput?.checkValidity();
+  /**
+   * Returns whether a form will validate when it is submitted, without having to submit it.
+   */
+  @Method()
+  async checkValidity(): Promise<boolean> {
+    return this.nativeInput?.checkValidity() || true;
   }
 
   private inputRender(
@@ -123,11 +154,12 @@ export class P6Input {
   ): JSX.Element {
     const attrs = cleanupAttributes({
       ...this.getCommonAttrs(),
-      ...this.getInputAttrs()
+      ...this.getInputAttrs(),
     });
+
     return (
       <input
-        ref={(input: HTMLInputElement) => (this.nativeInput = input)}
+        ref={this.setInputRef.bind(this)}
         id={id}
         class={{ ...classes, input: true }}
         {...attrs}
@@ -142,11 +174,11 @@ export class P6Input {
   ): JSX.Element {
     const attrs = cleanupAttributes({
       ...this.getCommonAttrs(),
-      ...this.getTextareaAttrs()
+      ...this.getTextareaAttrs(),
     });
     return (
       <textarea
-        ref={(input: HTMLTextAreaElement) => (this.nativeInput = input)}
+        ref={this.setInputRef.bind(this)}
         id={id}
         class={{ ...classes, textarea: true }}
         {...attrs}
@@ -163,35 +195,37 @@ export class P6Input {
       placeholder: this.placeholder,
       readOnly: this.readonly,
       required: this.required,
-      pattern: this.pattern
     };
   }
+
   private getInputAttrs(): { [key: string]: unknown } {
     const minMax =
       this.type === "number"
         ? {
             min: this.min,
-            max: this.max
+            max: this.max,
           }
         : {
             minLength: this.min,
-            maxLength: this.max
+            maxLength: this.max,
           };
 
     const common = {
       type: this.type,
-      value: this.value
+      value: this.value,
+      pattern: this.pattern,
     };
 
     return {
       ...minMax,
-      ...common
+      ...common,
     };
   }
+
   private getTextareaAttrs(): { [key: string]: unknown } {
     return {
       minLength: this.min,
-      maxLength: this.max
+      maxLength: this.max,
     };
   }
 
@@ -199,5 +233,11 @@ export class P6Input {
     return this.hasError && !this.readonly ? (
       <p class="help is-danger">{this.validationMessage}</p>
     ) : null;
+  }
+
+  private setInputRef(
+    ref: HTMLInputElement | HTMLTextAreaElement | undefined
+  ): void {
+    this.nativeInput = ref;
   }
 }

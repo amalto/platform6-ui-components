@@ -1,0 +1,9 @@
+dist/
+www/
+loader/
+
+.idea/
+.vscode/
+.sass-cache/
+.versions/
+node_modules/

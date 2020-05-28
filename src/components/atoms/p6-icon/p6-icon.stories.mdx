@@ -7,26 +7,46 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 
 import readme from "./readme.md";
 
-<Meta title="Atoms/Icon" parameters={{ notes: readme }} />
+<Meta title="Atoms/Icon" component="p6-icon" parameters={{ notes: readme }} />
 
 # Icon
 
 `p6-icon` provides icon from [Font Awesome](https://fontawesome.com/)
 
-<Story name="Default" parameters={{docs:{disable:true}}} decorators={[withKnobs]}>
+<Story
+  name="Default"
+  parameters={{ docs: { disable: true } }}
+  decorators={[withKnobs]}
+>
   {() => {
     library.add(
-      fab.faAccessibleIcon, fab.faAutoprefixer, fab.faFontAwesome, fab.faGit, fab.faHtml5,
-      fas.faCat, fas.faInfoCircle, fas.faCheckSquare, fas.faHome, fas.faTimes
-    )
+      fab.faAccessibleIcon,
+      fab.faAutoprefixer,
+      fab.faFontAwesome,
+      fab.faGit,
+      fab.faHtml5,
+      fas.faCat,
+      fas.faInfoCircle,
+      fas.faCheckSquare,
+      fas.faHome,
+      fas.faTimes
+    );
     const names = [
-        'accessible-icon', 'autoprefixer', 'font-awesome', 'git', 'html5',
-        'cat', 'info-circle', 'check-square', 'home', 'times'
+      "accessible-icon",
+      "autoprefixer",
+      "font-awesome",
+      "git",
+      "html5",
+      "cat",
+      "info-circle",
+      "check-square",
+      "home",
+      "times",
     ];
-    const prefix = ["fab", "fas"]
-    const kPrefix = select('Style', ["fab", "fas"], 'fab');
-    const kName = select('Name', names , 'font-awesome');
-    const kTransform = text('Transformation');
+    const prefix = ["fab", "fas"];
+    const kPrefix = select("Style", ["fab", "fas"], "fab");
+    const kName = select("Name", names, "font-awesome");
+    const kTransform = text("Transformation");
     return `<p6-icon name=${kName} icon-prefix=${kPrefix} transform=${kTransform}></p6-icon>`;
   }}
 </Story>

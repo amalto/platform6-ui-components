@@ -1,14 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { P6Radio } from '../p6-radio';
+import { newSpecPage } from "@stencil/core/testing";
+import { P6Radio } from "../p6-radio";
 
-describe('p6-radio', () => {
-
-  const name: string = 'radio-input';
+describe("p6-radio", () => {
+  const name = "radio-input";
   const value: string = name;
-  const extraClass: string = 'mgr-5';
-  const id: string = `${name}-${value}-input`;
+  const extraClass = "mgr-5";
+  const id = `${name}-${value}-input`;
 
-  it('defaut p6-radio', async () => {
+  it("defaut p6-radio", async () => {
     const page = await newSpecPage({
       components: [P6Radio],
       html: `

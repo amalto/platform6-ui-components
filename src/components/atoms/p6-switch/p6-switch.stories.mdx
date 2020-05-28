@@ -2,39 +2,35 @@ import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import { decorate } from "@storybook/addon-actions";
 import readme from "./readme.md";
 
-<Meta title="Atoms/Switch" parameters = {{ notes: readme }} />
+<Meta title="Atoms/Switch" parameters={{ notes: readme }} />
 
 # Switch
 
 `p6-switch` provide a switch component which allow you to _enable_ or _disable_ a field.
 
 <Story name="Default" parameters={{ docs: { disable: true } }} height="86px">
-{
-  () => {
+  {() => {
     const id = "switch-default";
-    const form = document.createElement('form');
-    const p6Switch = document.createElement('p6-switch');
-    const submit = document.createElement('p6-button');
+    const form = document.createElement("form");
+    const p6Switch = document.createElement("p6-switch");
+    const submit = document.createElement("p6-button");
     const decorateChekbox = decorate([
-      args => (
-        [{ checked: args[0].target.elements[0].checked }]
-      )
+      (args) => [{ checked: args[0].target.elements[0].checked }],
     ]);
-    form.method = 'get';
-    form.addEventListener('submit', e => {
+    form.method = "get";
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      decorateChekbox.action('submit')(e);
+      decorateChekbox.action("submit")(e);
     });
     p6Switch.checked = true;
     p6Switch.name = id;
-    p6Switch.innerHTML = 'Switch on by default';
-    submit.innerHTML = 'send';
-    submit.type = 'submit';
+    p6Switch.innerHTML = "Switch on by default";
+    submit.innerHTML = "send";
+    submit.type = "submit";
     form.appendChild(p6Switch);
     form.appendChild(submit);
     return form;
-  }
-}
+  }}
 </Story>
 
 ### Default
@@ -43,7 +39,7 @@ Basic implementation enabled by default.
 
 <Preview>
   <Story name="Enabled" height="44px">
-  {`
+    {`
     <p6-switch checked="true" name="switch-enabled">
       Default switch
     </p6-switch>
@@ -57,7 +53,7 @@ The `disabled` _prop_ will keep you from editing it. In the case you are using i
 
 <Preview>
   <Story name="Disabled" height="44px">
-  {`
+    {`
     <p6-switch checked="true" disabled="true" name="switch-disabled">
       Disabled switch
     </p6-switch>

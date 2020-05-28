@@ -1,13 +1,12 @@
-import { Component, Element, Host, h, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from "@stencil/core";
 
 @Component({
-  tag: 'p6-radio',
-  styleUrl: './p6-radio.scss',
+  tag: "p6-radio",
+  styleUrl: "./p6-radio.scss",
   scoped: true,
 })
 export class P6Radio {
-
-  @Element() host: HTMLElement;
+  @Element() host?: HTMLP6RadioElement;
 
   /**
    * Radio name
@@ -17,17 +16,17 @@ export class P6Radio {
   /**
    * Initial value
    */
-  @Prop() checked: boolean = false;
+  @Prop() checked = false;
 
   /**
    * Disable
    */
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
 
   /**
    * Readonly
    */
-  @Prop() readonly: boolean = false;
+  @Prop() readonly = false;
 
   /**
    * Value
@@ -37,36 +36,30 @@ export class P6Radio {
   /**
    * State of the radio
    */
-  @State() isChecked: boolean;
+  @State() isChecked = false;
 
-  private _onClick() {
+  private clickHandler(): void {
     this.isChecked = !this.isChecked;
   }
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     this.isChecked = this.checked;
   }
 
-  render() {
-    const {
-      host,
-      name,
-      isChecked,
-      disabled,
-      readonly,
-      value
-    } = this;
+  render(): JSX.Element {
+    const { host, name, isChecked, disabled, readonly, value } = this;
 
-    const inputId: string = `${name}-${value}-input`;
+    const inputId = `${name}-${value}-input`;
 
     return (
-      <Host class={host.className}>
-        <input checked={isChecked}
+      <Host class={host?.className}>
+        <input
+          checked={isChecked}
           id={inputId}
           disabled={disabled}
           name={name}
-          onClick={this._onClick}
-          readonly={readonly}
+          onClick={this.clickHandler}
+          readOnly={readonly}
           type="radio"
           value={value}
         />
@@ -76,5 +69,4 @@ export class P6Radio {
       </Host>
     );
   }
-
 }

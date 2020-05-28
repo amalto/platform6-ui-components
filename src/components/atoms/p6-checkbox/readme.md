@@ -1,9 +1,6 @@
 # p6-checkbox
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -13,7 +10,6 @@
 | `disabled`          | `disabled` | Disable       | `boolean` | `false`     |
 | `name` _(required)_ | `name`     | Checkbox name | `string`  | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
