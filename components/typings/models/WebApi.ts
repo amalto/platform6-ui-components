@@ -39,6 +39,7 @@ export interface GETParameters {
     queryParameters?: any;
     retry?: boolean;
     retryCount?: number;
+    retryDelay?: number;
     url: string;
 }
 
