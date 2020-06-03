@@ -52,6 +52,12 @@ When creating new component tags, we recommend _not_ using `stencil` in the comp
 
 Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
 
+## Create a component
+
+- Run `stencil generate atoms/p6-my-component`
+- Rename the `.css` file to `.scss`
+- Create documentation `npm run build`
+- Open storybook: `npm run storybook`
 
 ## Using this component
 
