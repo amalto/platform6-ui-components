@@ -6,7 +6,7 @@
  */
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Mode, Size } from "~shared/types";
+import { Mode, Position, Size } from "~shared/types";
 import { P6ButtonType } from "./components/atoms/p6-button/p6-button";
 import { P6InputType } from "./components/atoms/p6-input/p6-input";
 import { Target } from "./components/atoms/p6-link/p6-link";
@@ -68,6 +68,20 @@ export namespace Components {
      * Checkbox name
      */
     name: string;
+  }
+  interface P6Help {
+    /**
+     * Tooltip mode
+     */
+    mode: Mode;
+    /**
+     * Tooltip position (default position is top)
+     */
+    position: Position;
+    /**
+     * Tooltip text
+     */
+    text: string;
   }
   interface P6Icon {
     /**
@@ -215,6 +229,11 @@ declare global {
     prototype: HTMLP6CheckboxElement;
     new (): HTMLP6CheckboxElement;
   };
+  interface HTMLP6HelpElement extends Components.P6Help, HTMLStencilElement {}
+  var HTMLP6HelpElement: {
+    prototype: HTMLP6HelpElement;
+    new (): HTMLP6HelpElement;
+  };
   interface HTMLP6IconElement extends Components.P6Icon, HTMLStencilElement {}
   var HTMLP6IconElement: {
     prototype: HTMLP6IconElement;
@@ -253,6 +272,7 @@ declare global {
     "p6-action": HTMLP6ActionElement;
     "p6-button": HTMLP6ButtonElement;
     "p6-checkbox": HTMLP6CheckboxElement;
+    "p6-help": HTMLP6HelpElement;
     "p6-icon": HTMLP6IconElement;
     "p6-input": HTMLP6InputElement;
     "p6-link": HTMLP6LinkElement;
@@ -319,6 +339,20 @@ declare namespace LocalJSX {
      * Checkbox name
      */
     name: string;
+  }
+  interface P6Help {
+    /**
+     * Tooltip mode
+     */
+    mode?: Mode;
+    /**
+     * Tooltip position (default position is top)
+     */
+    position?: Position;
+    /**
+     * Tooltip text
+     */
+    text: string;
   }
   interface P6Icon {
     /**
@@ -443,6 +477,7 @@ declare namespace LocalJSX {
     "p6-action": P6Action;
     "p6-button": P6Button;
     "p6-checkbox": P6Checkbox;
+    "p6-help": P6Help;
     "p6-icon": P6Icon;
     "p6-input": P6Input;
     "p6-link": P6Link;
@@ -461,6 +496,7 @@ declare module "@stencil/core" {
         JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
       "p6-checkbox": LocalJSX.P6Checkbox &
         JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
+      "p6-help": LocalJSX.P6Help & JSXBase.HTMLAttributes<HTMLP6HelpElement>;
       "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;
       "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;
       "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;

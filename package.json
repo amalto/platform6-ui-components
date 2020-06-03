@@ -36,8 +36,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@stencil/core": "^1.13.0",
-    "bulma": "^0.8.2"
+    "bulma": "^0.8.2",
+    "@creativebulma/bulma-tooltip": "^1.2.0",
+    "@stencil/core": "1.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
