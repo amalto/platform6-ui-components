@@ -8,7 +8,7 @@ import readme from "./readme.md";
 
 <Meta title="Atoms/Help" component="p6-help" parameters={{ notes: readme }} />
 
-# Icon
+# Help
 
 `p6-help` provides an help icon from [Font Awesome](https://fontawesome.com/) with a tooltip
 
@@ -18,7 +18,6 @@ import readme from "./readme.md";
   decorators={[withKnobs]}
 >
   {() => {
-    library.add(faQuestionCircle);
     const kPosition = select(
       "Position",
       ["top", "right", "bottom", "left"],
@@ -37,7 +36,6 @@ import readme from "./readme.md";
 <Preview>
   <Story name="Display on the right" height="42px">
     {() => {
-      library.add(faQuestionCircle);
       return '<p6-help text="Tooltip" position="right"></p6-help>';
     }}
   </Story>

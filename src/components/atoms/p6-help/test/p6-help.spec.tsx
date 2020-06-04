@@ -16,29 +16,29 @@ describe("p6-help", () => {
   });
 
   describe("with position", () => {
-    ["right", "left", "top", "bottom"].forEach((position) => {
-      it(position, async () => {
+    it.each(["right", "left", "top", "bottom"])(
+      "%s",
+      async (position: string) => {
         const page = await newSpecPage({
           components: [P6Help],
           html: `<p6-help text="Position ${position}" position="${position}"></p6-help>`,
         });
 
         expect(page.root).toMatchSnapshot();
-      });
-    });
+      }
+    );
   });
 
   describe("with mode", () => {
-    ["danger", "warning", "default", "info", "success", "primary"].forEach(
-      (mode) => {
-        it(mode, async () => {
-          const page = await newSpecPage({
-            components: [P6Help],
-            html: `<p6-help text="Mode ${mode}" mode="${mode}"></p6-help>`,
-          });
-
-          expect(page.root).toMatchSnapshot();
+    it.each(["danger", "warning", "default", "info", "success", "primary"])(
+      "%s",
+      async (mode) => {
+        const page = await newSpecPage({
+          components: [P6Help],
+          html: `<p6-help text="Mode ${mode}" mode="${mode}"></p6-help>`,
         });
+
+        expect(page.root).toMatchSnapshot();
       }
     );
   });
