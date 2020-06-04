@@ -23,37 +23,22 @@ export class P6Help {
    */
   @Prop() mode: Mode = "default";
 
-  private iconName: IconName = "question-circle";
-
-  private getPositionClassname(): string {
-    // has-tooltip-top is not an existing class
-    if (this.position === "top") {
-      return "";
-    }
-
-    return `has-tooltip-${this.position}`;
-  }
-
-  private getModeClassname(): string {
-    // has-tooltip-default is not an existing class
-    if (this.mode === "default") {
-      return "";
-    }
-
-    return `has-tooltip-${this.mode}`;
-  }
-
   render(): JSX.Element | null {
-    const img = icon({ prefix: "fas", iconName: this.iconName });
+    const iconName: IconName = "question-circle";
+    const img = icon({ prefix: "fas", iconName });
 
     if (img === undefined) {
       // eslint-disable-next-line no-console
-      console.debug(`p6-help : could not find icon ${this.iconName}`);
+      console.debug(`p6-help : could not find icon ${iconName}`);
       return null;
     }
     return (
       <div
-        class={`has-tooltip-arrow ${this.getPositionClassname()} ${this.getModeClassname()}`}
+        class={{
+          "has-tooltip-arrow": true,
+          [`has-tooltip-${this.position}`]: "top" != this.position,
+          [`has-tooltip-${this.mode}`]: "default" != this.mode,
+        }}
         innerHTML={img.html[0]}
         data-tooltip={this.text}
       />
