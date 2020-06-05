@@ -31,29 +31,32 @@
       vertical-align: middle;
       width: 35px;
     }
-  }
 
-  label::after {
-    content: "●";
-    font-size: $size-xlarge;
-    left: 0;
-    position: absolute;
-    top: 4px;
-    transition: 0.4s;
-  }
-
-  input + label::after {
-    color: $input-border-color;
+    &::after {
+      content: "";
+      background-color: $input-border-color;
+      border-radius: 50px;
+      height: 15px;
+      left: 2px;
+      position: absolute;
+      transition: 0.4s;
+      top: 2.5px;
+      width: 15px;
+    }
   }
 
   input:checked + label::after {
-    color: $success;
-    transform: translateX(16px);
+    background-color: $success;
+    transform: translateX(15px);
   }
 
-  input[disabled]:checked + label,
-  input[disabled]:checked + label::after {
+  input[disabled]:checked + label {
     color: $input-disabled-color !important;
+    cursor: not-allowed;
+  }
+
+  input[disabled]:checked + label::after {
+    background-color: $input-disabled-color;
     cursor: not-allowed;
   }
 }

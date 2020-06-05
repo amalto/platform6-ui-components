@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                          | Type                                                                     | Default     |
@@ -12,7 +11,6 @@
 | `size`     | `size`     | set the size of the action                           | `"default" \| "large" \| "medium" \| "normal" \| "small"`                | `"default"` |
 | `waiting`  | `waiting`  | If set, shows a waiting/busy indicator               | `boolean`                                                                | `false`     |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
