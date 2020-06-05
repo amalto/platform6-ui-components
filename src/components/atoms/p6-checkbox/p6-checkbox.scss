@@ -25,8 +25,8 @@
       content: "";
       display: inline-block;
       vertical-align: top;
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       border: 1px solid $input-border-color;
       background-color: $input-background-color;
       border-radius: 2px;
@@ -34,15 +34,26 @@
     }
   }
 
-  input:checked + label::before {
-    content: "✓";
-    color: $success;
-    font-size: $size-small;
+  input:checked + label::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    border-left: 1px solid $success;
+    border-bottom: 1px solid $success;
+    height: 4px;
+    width: 6px;
+    transform: rotate(-45deg);
+    left: 3px;
+    top: 3px;
   }
 
-  input[disabled]:checked + label,
-  input[disabled]:checked + label::before {
+  input[disabled]:checked + label {
     color: $input-disabled-color !important;
+    cursor: not-allowed;
+  }
+
+  input[disabled]:checked + label::after {
+    border-color: $input-disabled-color !important;
     cursor: not-allowed;
   }
 }
