@@ -45,19 +45,49 @@ npm test
 
 Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
 
+## Development
 
-## Naming Components
+### Technical stack
+
+We are using `Stencil`, `Storybook`, `Typescript`, `Sass` to develop our components and `Jest` to test them.
+
+### Naming Components
 
 When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
 
 Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
 
-## Create a component
+### Create a component
 
-- Run `stencil generate atoms/p6-my-component`
+Before creating a component, you have to read more about `atomic design` ( https://bradfrost.com/blog/post/atomic-web-design/ ). Each components are separated into `level`.
+
+- Run `stencil generate {level}/p6-my-component`
 - Rename the `.css` file to `.scss`
 - Create documentation `npm run build`
 - Open storybook: `npm run storybook`
+
+### Validating the code
+
+It is *important* that your code is *consistant*, we use a _linter_ for that and have a few command lines.
+
+- Run the `npm run format` and `npm run postformat`
+- Run `npm run lint` to check your code
+- Run `npm run lint.fix` to fix minor syntax error
+
+If the `npm run lint.fix` didn't managed to fix the code, you will have to do it manually.
+
+### Test
+
+It is important to test your code before publishing it. Our test are done with `Jest` and each web component must have test of his own.
+The test files should be in a `/test` directory.
+
+### Editor
+
+You should use `vscode` if you want to use the _linter_ but later on configuration for other editors will be added.
+
+### Documentation
+
+For our components _stories_ and _preview_ we use `mdx` files which allow us to write them inside _markdown_.
 
 ## Using this component
 
