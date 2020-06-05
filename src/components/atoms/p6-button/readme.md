@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                                     | Type                                                                     | Default     |
@@ -14,7 +13,6 @@
 | `type`     | `type`     | type of the button.                                             | `"button" \| "reset" \| "submit"`                                        | `"submit"`  |
 | `waiting`  | `waiting`  | If set, shows a waiting/busy indicator                          | `boolean`                                                                | `false`     |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

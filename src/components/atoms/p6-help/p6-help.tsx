@@ -30,8 +30,8 @@ export class P6Help {
       <div
         class={{
           "has-tooltip-arrow": true,
-          [`has-tooltip-${this.position}`]: "top" != this.position,
-          [`has-tooltip-${this.mode}`]: "default" != this.mode,
+          [`has-tooltip-${this.position}`]: this.position !== "top",
+          [`has-tooltip-${this.mode}`]: this.mode !== "default",
         }}
         innerHTML={img.html[0]}
         data-tooltip={this.text}
