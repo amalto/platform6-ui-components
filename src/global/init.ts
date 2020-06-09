@@ -1,4 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
 import {
   faAngleDown,
   faHamburger,
@@ -7,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function initializeIcons(): void {
-  library.add(faAngleDown, faHamburger, faHome, faQuestionCircle);
+  library.add(faAngleDown, faHamburger, faHome, faQuestionCircle, faFolderOpen);
 }
 
 export default function (): void {
