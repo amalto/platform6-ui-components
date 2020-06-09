@@ -43,7 +43,7 @@ export class P6Input {
   @Prop() min: string | undefined;
 
   /**
-   * Enables multiline support (with a <textarea> instead of an <input>)
+   * Enables multiline support (with a textarea instead of an input)
    */
   @Prop() multiline = false;
 

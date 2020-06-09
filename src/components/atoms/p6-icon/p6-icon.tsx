@@ -50,6 +50,6 @@ export class P6Icon {
       return null;
     }
 
-    return <div innerHTML={img.html[0]} />;
+    return <span class="icon" innerHTML={img.html[0]} />;
   }
 }
