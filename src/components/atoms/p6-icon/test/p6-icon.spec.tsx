@@ -25,14 +25,14 @@ describe("p6-icon", () => {
       html: `<p6-icon name="chart-bar"></p6-icon>`,
     });
 
-    const svg = page.root.shadowRoot.querySelector("svg");
+    const svg = page.root?.shadowRoot?.querySelector("svg");
     expect(svg).not.toBeNull();
-    expect(svg.getAttribute("data-icon")).toEqual(icon.iconName);
-    expect(svg.getAttribute("data-prefix")).toEqual(icon.prefix);
+    expect(svg?.getAttribute("data-icon")).toEqual(icon.iconName);
+    expect(svg?.getAttribute("data-prefix")).toEqual(icon.prefix);
 
-    const path = svg.querySelector("path");
+    const path = svg?.querySelector("path");
     expect(path).toBeDefined();
-    expect(path.getAttribute("d")).toEqual(icon.icon.reverse().shift());
+    expect(path?.getAttribute("d")).toEqual(icon.icon.reverse().shift());
   });
 
   it("renders nothing and add a debug message when the icon is unknown", async () => {
@@ -47,7 +47,7 @@ describe("p6-icon", () => {
       html: `<p6-icon name="unknown-icon"></p6-icon>`,
     });
 
-    const svg = page.root.shadowRoot.querySelector("svg");
+    const svg = page.root?.shadowRoot?.querySelector("svg");
     expect(svg).toBeNull();
     expect(spyDebug).toHaveBeenCalledTimes(1);
 
@@ -63,19 +63,6 @@ describe("p6-icon", () => {
       html: `<p6-icon name="chart-bar" transform="flip-v rotate-90"></p6-icon>`,
     });
 
-    const svg = page.root.shadowRoot.querySelector("svg");
-    expect(svg).not.toBeNull();
-
-    const g = svg.querySelectorAll("g");
-
-    const hasDoneTransformations =
-      Array.from(g)
-        .map((h) => h.getAttribute("transform"))
-        .filter(
-          (attr) =>
-            attr.includes("rotate(90 0 0)") && attr.includes("scale(1, -1)")
-        ).length > 0;
-
-    expect(hasDoneTransformations).toBeTruthy();
+    expect(page.root).toMatchSnapshot();
   });
 });

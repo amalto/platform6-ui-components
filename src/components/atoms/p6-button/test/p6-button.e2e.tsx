@@ -1,5 +1,4 @@
 import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
-import { P6ButtonType } from "../p6-button";
 
 describe("p6-button", () => {
   let page: E2EPage;
@@ -31,9 +30,9 @@ describe("p6-button", () => {
       const clickHandler = jest.fn();
       await page.exposeFunction("clickHandler", clickHandler);
 
-      await page.$eval("p6-button", (elm: HTMLElement) => {
+      await page.$eval("p6-button", (elm: Element) => {
         // eslint-disable-next-line no-param-reassign
-        elm.onclick = this.clickHandler;
+        (elm as HTMLP6ButtonElement).onclick = clickHandler;
       });
 
       await page.waitForChanges();
@@ -60,9 +59,9 @@ describe("p6-button", () => {
     innerButton = await page.find("p6-button >>> button");
     await page.exposeFunction("clickHandler", clickHandler);
 
-    await page.$eval("p6-button", (elm: HTMLElement) => {
+    await page.$eval("p6-button", (elm: Element) => {
       // eslint-disable-next-line no-param-reassign
-      elm.onclick = this.clickHandler;
+      (elm as HTMLP6ButtonElement).onclick = clickHandler;
     });
 
     await page.waitForChanges();
@@ -90,7 +89,7 @@ describe("p6-button", () => {
       await page.exposeFunction("submitHandler", submitHandler);
       await page.exposeFunction("resetHandler", resetHandler);
 
-      await page.$eval("form", (elm: HTMLFormElement) => {
+      await page.$eval("form", (elm: Element) => {
         const wrapHandler = (handler: jest.Mock<void, unknown[]>) => (
           e: Event
         ): void => {
@@ -98,16 +97,17 @@ describe("p6-button", () => {
           handler();
         };
         /* eslint-disable no-param-reassign */
-        elm.onsubmit = wrapHandler(this.submitHandler);
-        elm.onreset = wrapHandler(this.resetHandler);
+        const form = elm as HTMLFormElement;
+        form.onsubmit = wrapHandler(submitHandler);
+        form.onreset = wrapHandler(resetHandler);
         /* eslint-enable no-param-reassign */
       });
     });
 
     it('can submit a form when type is "submit"', async () => {
-      await page.$eval("p6-button", (elm: Element & { type: P6ButtonType }) => {
+      await page.$eval("p6-button", (elm: Element) => {
         // eslint-disable-next-line no-param-reassign
-        elm.type = "submit";
+        (elm as HTMLP6ButtonElement).type = "submit";
       });
 
       await page.waitForChanges();
@@ -118,9 +118,9 @@ describe("p6-button", () => {
     });
 
     it('can reset a form when type is "reset"', async () => {
-      await page.$eval("p6-button", (elm: Element & { type: P6ButtonType }) => {
+      await page.$eval("p6-button", (elm: Element) => {
         // eslint-disable-next-line no-param-reassign
-        elm.type = "reset";
+        (elm as HTMLP6ButtonElement).type = "reset";
       });
 
       await page.waitForChanges();
@@ -131,9 +131,9 @@ describe("p6-button", () => {
     });
 
     it("doesn't trigger form handlers when type is a button", async () => {
-      await page.$eval("p6-button", (elm: Element & { type: P6ButtonType }) => {
+      await page.$eval("p6-button", (elm: Element) => {
         // eslint-disable-next-line no-param-reassign
-        elm.type = "button";
+        (elm as HTMLP6ButtonElement).type = "button";
       });
 
       await page.waitForChanges();

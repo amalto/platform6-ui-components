@@ -30,9 +30,9 @@ describe("p6-action", () => {
       const clickHandler = jest.fn();
       await page.exposeFunction("clickHandler", clickHandler);
 
-      await page.$eval("p6-action", (elm: HTMLElement) => {
+      await page.$eval("p6-action", (elm: Element) => {
         // eslint-disable-next-line no-param-reassign
-        elm.onclick = this.clickHandler;
+        (elm as HTMLP6ActionElement).onclick = clickHandler;
       });
 
       await page.waitForChanges();
@@ -58,9 +58,9 @@ describe("p6-action", () => {
       innerButton = await page.find("p6-action >>> button");
       await page.exposeFunction("clickHandler", clickHandler);
 
-      await page.$eval("p6-action", (elm: HTMLElement) => {
+      await page.$eval("p6-action", (elm: Element) => {
         // eslint-disable-next-line no-param-reassign
-        elm.onclick = this.clickHandler;
+        (elm as HTMLP6ActionElement).onclick = clickHandler;
       });
 
       await page.waitForChanges();
