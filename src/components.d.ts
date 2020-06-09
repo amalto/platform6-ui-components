@@ -69,6 +69,7 @@ export namespace Components {
      */
     name: string;
   }
+  interface P6Dropdown {}
   interface P6Help {
     /**
      * Tooltip mode
@@ -230,6 +231,13 @@ declare global {
     prototype: HTMLP6CheckboxElement;
     new (): HTMLP6CheckboxElement;
   };
+  interface HTMLP6DropdownElement
+    extends Components.P6Dropdown,
+      HTMLStencilElement {}
+  var HTMLP6DropdownElement: {
+    prototype: HTMLP6DropdownElement;
+    new (): HTMLP6DropdownElement;
+  };
   interface HTMLP6HelpElement extends Components.P6Help, HTMLStencilElement {}
   var HTMLP6HelpElement: {
     prototype: HTMLP6HelpElement;
@@ -280,6 +288,7 @@ declare global {
     "p6-action": HTMLP6ActionElement;
     "p6-button": HTMLP6ButtonElement;
     "p6-checkbox": HTMLP6CheckboxElement;
+    "p6-dropdown": HTMLP6DropdownElement;
     "p6-help": HTMLP6HelpElement;
     "p6-icon": HTMLP6IconElement;
     "p6-input": HTMLP6InputElement;
@@ -349,6 +358,7 @@ declare namespace LocalJSX {
      */
     name: string;
   }
+  interface P6Dropdown {}
   interface P6Help {
     /**
      * Tooltip mode
@@ -487,6 +497,7 @@ declare namespace LocalJSX {
     "p6-action": P6Action;
     "p6-button": P6Button;
     "p6-checkbox": P6Checkbox;
+    "p6-dropdown": P6Dropdown;
     "p6-help": P6Help;
     "p6-icon": P6Icon;
     "p6-input": P6Input;
@@ -507,6 +518,8 @@ declare module "@stencil/core" {
         JSXBase.HTMLAttributes<HTMLP6ButtonElement>;
       "p6-checkbox": LocalJSX.P6Checkbox &
         JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
+      "p6-dropdown": LocalJSX.P6Dropdown &
+        JSXBase.HTMLAttributes<HTMLP6DropdownElement>;
       "p6-help": LocalJSX.P6Help & JSXBase.HTMLAttributes<HTMLP6HelpElement>;
       "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;
       "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-dropdown renders 1`] = `
+<p6-dropdown>
+  <mock:shadow-root>
+    <div class="dropdown">
+      <div class="dropdown-trigger">
+        <p6-button aria-controls="dropdown-menu" aria-haspopup="true" class="button">
+          <slot name="label"></slot>
+          <p6-icon aria-hidden="true" class="icon is-small" name="angle-down"></p6-icon>
+        </p6-button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <span class="dropdown-item" slot="label">
+            Label Slot
+          </span>
+          <p6-link class="dropdown-item" href="#">
+            p6-link
+          </p6-link>
+          <div class="dropdown-item">
+            hello
+            <hr>
+            world
+          </div>
+          <hr class="dropdown-divider">
+          <a class="dropdown-item" href="#">
+            a(nchor)
+          </a>
+        </div>
+      </div>
+    </div>
+  </mock:shadow-root>
+  <span class="dropdown-item" slot="label">
+    Label Slot
+  </span>
+  <p6-link class="dropdown-item" href="#">
+    p6-link
+  </p6-link>
+  <div class="dropdown-item">
+    hello
+    <hr>
+    world
+  </div>
+  <hr class="dropdown-divider">
+  <a class="dropdown-item" href="#">
+    a(nchor)
+  </a>
+</p6-dropdown>
+`;
