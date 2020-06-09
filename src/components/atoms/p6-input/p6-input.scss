@@ -2,18 +2,5 @@
 @import "bulma/sass/form/input-textarea";
 
 :host {
-  display: block;
-  @extend .field;
-
-  .input {
-    display: block;
-  }
-
-  .textarea.is-static {
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    padding-left: 0;
-    padding-right: 0;
-  }
+  @extend .control;
 }

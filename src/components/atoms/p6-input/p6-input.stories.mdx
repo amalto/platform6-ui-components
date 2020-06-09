@@ -13,8 +13,6 @@ import readme from "./readme.md";
 
 # Input
 
-`p6-input` provides a input. if the type property is 'text' and the multiline property is true, an textarea tag will be rendered
-
 <Story
   name="Default"
   parameters={{ docs: { disable: true } }}
@@ -40,8 +38,7 @@ import readme from "./readme.md";
     const kPattern = kText("Pattern");
     const kPlaceholder = kText("Placeholder");
     const kMin = number("Min");
-    const kMax = number("Max");
-    const kMultiline = boolean("Multiline", false);
+    const kMax = number("Max", 42);
     const kReadonly = boolean("Readonly", false);
     const kRequired = boolean("Required", false);
     const kDisabled = boolean("Disabled", false);
@@ -51,13 +48,12 @@ import readme from "./readme.md";
         disabled=${kDisabled}
         max=${kMax}
         min=${kMin}
-        multiline=${kMultiline}
         pattern=${kPattern}
         placeholder=${kPlaceholder}
         readonly=${kReadonly}
         required=${kRequired}
         waiting=${kWaiting}
-        type=${kTypes}>Test input</p6-input>
+        type=${kTypes}></p6-input>
       <div class="field">
         <div class="control">
           <p6-button class="button is-link">Submit</p6-button>
@@ -78,36 +74,30 @@ import readme from "./readme.md";
 
 <Preview>
   <Story name="Text" height="84px">
-    {'<p6-input type="text"/>Text</p6-input>'}
+    {'<p6-input type="text"/></p6-input>'}
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Read only" height="84px">
-    {'<p6-input type="text" readonly value="Input value"/>Read only</p6-input>'}
+    {'<p6-input type="text" readonly value="Input value"/></p6-input>'}
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Disabled" height="84px">
-    {'<p6-input type="text" disabled value="Input value"/>Disabled</p6-input>'}
+    {'<p6-input type="text" disabled value="Input value"/></p6-input>'}
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Waiting" height="168px">
-    {'<p6-input type="text" waiting>Waiting</p6-input>'}
-  </Story>
-</Preview>
-
-<Preview>
-  <Story name="Text and multiline" height="168px">
-    {'<p6-input type="text" multiline>Text & Multiline</p6-input>'}
+    {'<p6-input type="text" waiting></p6-input>'}
   </Story>
 </Preview>
 
 <Preview>
   <Story name="On error" height="84px">
-    {'<p6-input type="text" pattern="42" value="84"/>On error</p6-input>'}
+    {'<p6-input type="text" pattern="42" value="84"/></p6-input>'}
   </Story>
 </Preview>

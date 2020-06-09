@@ -3,12 +3,11 @@ import {
   Element,
   h,
   Host,
-  Listen,
   Method,
   Prop,
   State,
 } from "@stencil/core";
-import { cleanupAttributes } from "~utils/attribute";
+import { cleanupValue, isEmpty } from "~utils/attribute";
 
 export type P6InputType =
   | "email"
@@ -35,17 +34,12 @@ export class P6Input {
   /**
    * The maximum length or value
    */
-  @Prop() max: string | undefined;
+  @Prop() max: number | undefined;
 
   /**
    * The minimum length or value
    */
-  @Prop() min: string | undefined;
-
-  /**
-   * Enables multiline support (with a textarea instead of an input)
-   */
-  @Prop() multiline = false;
+  @Prop() min: number | undefined;
 
   /**
    * The name of the input.
@@ -60,12 +54,12 @@ export class P6Input {
   /**
    * content to be appear in the form control when the form control is empty
    */
-  @Prop() placeholder: string | undefined;
+  @Prop() placeholder = "";
 
   /**
    * marks an element that can't be edited.
    */
-  @Prop() readonly = false;
+  @Prop({ attribute: "readOnly" }) readOnly = false;
 
   /**
    * marks an element that can't be submitted without a value.
@@ -89,55 +83,60 @@ export class P6Input {
 
   @State() hasError = false;
 
-  private nativeInput: HTMLInputElement | HTMLTextAreaElement | undefined;
+  private nativeInput: HTMLInputElement | undefined;
 
-  // eslint-disable-next-line @stencil/prefer-vdom-listener
-  @Listen("focusout")
-  public lostFocusHandler(): void {
-    this.checkValidity();
-    this.hasError =
-      this.validationMessage !== "" && this.validationMessage !== undefined;
+  componentWillLoad(): void {
+    this.host.addEventListener(
+      "focusout",
+      this.internalCheckValidity.bind(this)
+    );
   }
 
   componentDidLoad(): void {
-    this.lostFocusHandler();
+    if (!isEmpty(this.value)) {
+      this.internalCheckValidity();
+    }
   }
 
   render(): JSX.Element {
-    const render =
-      this.type === "text" && this.multiline
-        ? this.textareaRender.bind(this)
-        : this.inputRender.bind(this);
-
-    const classes = {
-      "is-danger": this.hasError,
-      "is-static": !!this.readonly,
-    };
-
     const containerClass = {
-      control: true,
       "is-loading": !!this.waiting,
     };
 
+    const classes = {
+      input: true,
+      "is-danger": this.hasError,
+      "is-static": !!this.readOnly,
+    };
+
     return (
-      <Host aria-disabled={this.disabled ? "true" : null}>
-        <label class="label" htmlFor={`${this.name}-input`}>
-          <slot />
-        </label>
-        <div class={containerClass}>
-          {render(`${this.name}-input`, classes)}
-        </div>
-        {this.renderError()}
+      <Host class={containerClass}>
+        <input
+          class={classes}
+          ref={(input): void => {
+            this.nativeInput = input;
+          }}
+          disabled={this.disabled}
+          name={this.name}
+          pattern={cleanupValue(this.pattern)}
+          placeholder={cleanupValue(this.placeholder)}
+          readOnly={this.readOnly}
+          required={this.required}
+          type={this.type}
+          value={this.value}
+          {...this.minMaxAttrs}
+        />
       </Host>
     );
   }
 
-  get validity(): ValidityState | undefined {
-    return this.nativeInput?.validity;
-  }
-
-  get validationMessage(): string | undefined {
-    return this.nativeInput?.validationMessage;
+  /**
+   * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
+   * It also triggers the standard error message, such as "this is a required field".
+   */
+  @Method()
+  async validationMessage(): Promise<string> {
+    return Promise.resolve(this.nativeInput?.validationMessage || "");
   }
 
   /**
@@ -145,99 +144,26 @@ export class P6Input {
    */
   @Method()
   async checkValidity(): Promise<boolean> {
-    return this.nativeInput?.checkValidity() || true;
+    return Promise.resolve(this.nativeInput?.checkValidity() || true);
   }
 
-  private inputRender(
-    id: string,
-    classes: { [cls: string]: boolean }
-  ): JSX.Element {
-    const attrs = cleanupAttributes({
-      ...this.getCommonAttrs(),
-      ...this.getInputAttrs(),
-    });
-
-    return (
-      <input
-        ref={this.setInputRef.bind(this)}
-        id={id}
-        class={{ ...classes, input: true }}
-        {...attrs}
-        value={this.value}
-      />
-    );
+  private get minMaxAttrs():
+    | { min?: number; max?: number }
+    | { minLength?: number; maxLength?: number } {
+    return this.type === "number"
+      ? {
+          min: this.min,
+          max: this.max,
+        }
+      : {
+          minLength: this.min,
+          maxLength: this.max,
+        };
   }
 
-  private textareaRender(
-    id: string,
-    classes: { [cls: string]: boolean }
-  ): JSX.Element {
-    const attrs = cleanupAttributes({
-      ...this.getCommonAttrs(),
-      ...this.getTextareaAttrs(),
-    });
-    return (
-      <textarea
-        ref={this.setInputRef.bind(this)}
-        id={id}
-        class={{ ...classes, textarea: true }}
-        {...attrs}
-      >
-        {this.value}
-      </textarea>
-    );
-  }
-
-  private getCommonAttrs(): { [key: string]: unknown } {
-    return {
-      disabled: this.disabled,
-      name: this.name,
-      placeholder: this.placeholder,
-      readOnly: this.readonly,
-      required: this.required,
-    };
-  }
-
-  private getInputAttrs(): { [key: string]: unknown } {
-    const minMax =
-      this.type === "number"
-        ? {
-            min: this.min,
-            max: this.max,
-          }
-        : {
-            minLength: this.min,
-            maxLength: this.max,
-          };
-
-    const common = {
-      type: this.type,
-      value: this.value,
-      pattern: this.pattern,
-    };
-
-    return {
-      ...minMax,
-      ...common,
-    };
-  }
-
-  private getTextareaAttrs(): { [key: string]: unknown } {
-    return {
-      minLength: this.min,
-      maxLength: this.max,
-    };
-  }
-
-  private renderError(): JSX.Element | null {
-    return this.hasError && !this.readonly ? (
-      <p class="help is-danger">{this.validationMessage}</p>
-    ) : null;
-  }
-
-  private setInputRef(
-    ref: HTMLInputElement | HTMLTextAreaElement | undefined
-  ): void {
-    this.nativeInput = ref;
+  private async internalCheckValidity(): Promise<void> {
+    await this.checkValidity();
+    const msg = await this.validationMessage();
+    this.hasError = msg !== "";
   }
 }
