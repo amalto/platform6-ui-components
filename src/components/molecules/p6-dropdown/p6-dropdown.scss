@@ -1,0 +1,24 @@
+@import "bulma/sass/components/dropdown";
+
+:host {
+  display: inline-block;
+
+  a.dropdown-item {
+    width: unset;
+  }
+  p6-link.dropdown-item {
+    padding-right: 3rem;
+  }
+
+  p6-link.dropdown-item,
+  p6-button.dropdown-item {
+    &:hover {
+      background-color: $dropdown-item-hover-background-color;
+      color: $dropdown-item-hover-color;
+    }
+    &.is-active {
+      background-color: $dropdown-item-active-background-color;
+      color: $dropdown-item-active-color;
+    }
+  }
+}

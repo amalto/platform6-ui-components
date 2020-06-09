@@ -1,7 +1,11 @@
 @import "src/styles/atoms/anchor";
 
 :host {
+  display: inline-block;
+
   .link {
     @include anchor;
+
+    width: 100%;
   }
 }

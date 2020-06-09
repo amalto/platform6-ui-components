@@ -1,1 +1,9 @@
 @import "bulma/sass/elements/button";
+
+:host {
+  display: inline-block;
+
+  button {
+    width: 100%;
+  }
+}

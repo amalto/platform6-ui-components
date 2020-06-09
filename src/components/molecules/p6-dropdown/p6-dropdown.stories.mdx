@@ -1,0 +1,28 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import { boolean, select, withKnobs, text } from "@storybook/addon-knobs";
+import { action, decorate } from "@storybook/addon-actions";
+
+import readme from "./readme.md";
+
+<Meta
+  title="Molecules/Dropdown"
+  component="p6-dropdown"
+  parameters={{ notes: readme }}
+/>
+
+# Dropdown
+
+<Preview>
+  <Story name="Default" height="336px" decorators={[withKnobs]}>
+    {`
+      <p6-dropdown>
+        <span slot="label">Dropdown label</span>
+        <p6-link href="#" class="dropdown-item">link 1 (with p6-link)</p6-link>
+        <a href="#" class="dropdown-item">link 2 (with HTML anchor)</a>
+        <div><p>You can insert <strong>any type of content</strong> within the dropdown menu.</p></div>
+        <hr />
+        <a href="#" class="dropdown-item">Link after a divider</a>
+      </p6-dropdown>
+    `}
+  </Story>
+</Preview>
