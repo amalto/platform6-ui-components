@@ -2,14 +2,14 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Dependencies
 
 ### Used by
 
-- [p6-waiting](../../templates/p6-waiting)
+ - [p6-waiting](../../templates/p6-waiting)
 
 ### Graph
-
 ```mermaid
 graph TD;
   p6-waiting --> p6-spinner
