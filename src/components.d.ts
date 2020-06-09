@@ -111,15 +111,11 @@ export namespace Components {
     /**
      * The maximum length or value
      */
-    max: string | undefined;
+    max: number | undefined;
     /**
      * The minimum length or value
      */
-    min: string | undefined;
-    /**
-     * Enables multiline support (with a textarea instead of an input)
-     */
-    multiline: boolean;
+    min: number | undefined;
     /**
      * The name of the input.
      */
@@ -131,11 +127,11 @@ export namespace Components {
     /**
      * content to be appear in the form control when the form control is empty
      */
-    placeholder: string | undefined;
+    placeholder: string;
     /**
      * marks an element that can't be edited.
      */
-    readonly: boolean;
+    readOnly: boolean;
     /**
      * marks an element that can't be submitted without a value.
      */
@@ -144,6 +140,10 @@ export namespace Components {
      * the content type of the input.
      */
     type: P6InputType;
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
     /**
      * the value of the input.
      */
@@ -415,15 +415,11 @@ declare namespace LocalJSX {
     /**
      * The maximum length or value
      */
-    max?: string | undefined;
+    max?: number | undefined;
     /**
      * The minimum length or value
      */
-    min?: string | undefined;
-    /**
-     * Enables multiline support (with a textarea instead of an input)
-     */
-    multiline?: boolean;
+    min?: number | undefined;
     /**
      * The name of the input.
      */
@@ -435,11 +431,11 @@ declare namespace LocalJSX {
     /**
      * content to be appear in the form control when the form control is empty
      */
-    placeholder?: string | undefined;
+    placeholder?: string;
     /**
      * marks an element that can't be edited.
      */
-    readonly?: boolean;
+    readOnly?: boolean;
     /**
      * marks an element that can't be submitted without a value.
      */

@@ -8,6 +8,10 @@ export function isEmpty(value: unknown): boolean {
   );
 }
 
+export function cleanupValue<T>(value: T | undefined | null): T | undefined {
+  return isEmpty(value) ? undefined : (value as T);
+}
+
 export function cleanupAttributes(attributes: {
   [key: string]: unknown;
 }): { [key: string]: unknown } {
