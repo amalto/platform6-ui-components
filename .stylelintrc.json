@@ -14,7 +14,14 @@
         "function-name-case": null,
 
         "at-rule-no-unknown": null,
-        "scss/at-rule-no-unknown": true
+        "scss/at-rule-no-unknown": true,
+
+        "selector-type-no-unknown": [
+          true,
+          {
+            "ignoreTypes": ["/^p6-/"]
+          }
+        ]
 
     }
 }
