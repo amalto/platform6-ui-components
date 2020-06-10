@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`p6-tabs Should display the third tab 1`] = `
-<p6-tabs default="third">
+<p6-tabs selected="third">
   <mock:shadow-root>
     <div class="tabs">
       <ul>

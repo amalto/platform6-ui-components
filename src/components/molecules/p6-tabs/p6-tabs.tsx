@@ -1,13 +1,5 @@
-import {
-  Component,
-  Element,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-} from "@stencil/core";
-import { getTabId, isValidTab } from "./utils";
+import { Component, Element, h, Host, Prop } from "@stencil/core";
+import { getTabId, getValidTabs } from "./utils";
 
 export interface Tab {
   id: string;
@@ -25,61 +17,36 @@ export class P6Tabs {
   /**
    * Default tab selected.
    */
-  @Prop() default: string | undefined;
+  // eslint-disable-next-line @stencil/strict-mutable
+  @Prop({ mutable: true }) selected: string | undefined;
 
-  /**
-   * Set selected tab.
-   */
-  @State() tabSelected!: string | undefined;
-
-  /**
-   * Public method to set tabSelected id.
-   * Use this method by keeping a ref of the component.
-   *
-   * @param id Id to be selected
-   */
-  @Method()
-  async setTabSelected(id: string): Promise<void> {
-    if (this.getTabs().some((tab) => tab.id === id)) {
-      this.tabSelected = getTabId(id);
-    }
-  }
-
-  /**
-   * Set selected tab
-   *
-   * @param {MouseEvent} event
-   */
   private handleTabSelection = (event: MouseEvent): void => {
     event.preventDefault();
     const { id } = event.currentTarget as HTMLAnchorElement;
-    this.tabSelected = id;
+    this.selected = id;
   };
 
   private getTabs(): Tab[] {
-    return Array.from(this.host.children)
-      .filter(isValidTab)
-      .map((c) => ({
-        title: c.getAttribute("title") as string,
-        id: c.getAttribute("id") as string,
-      }));
+    return getValidTabs(Array.from(this.host.children)).map((c) => ({
+      title: c.getAttribute("title") as string,
+      id: c.getAttribute("id") as string,
+    }));
   }
 
   private getContent(): JSX.Element {
-    const child = Array.from(this.host.children).filter((c) => {
-      const id = c.getAttribute("id");
-      return isValidTab(c) && getTabId(id as string) === this.tabSelected;
-    })[0];
+    const child = getValidTabs(Array.from(this.host.children)).filter(
+      (c) => getTabId(c.getAttribute("id") as string) === this.selected
+    )[0];
 
     return <div class="tab-content">{child?.innerHTML}</div>;
   }
 
   componentWillLoad(): void {
-    this.tabSelected = getTabId(this.default || this.getTabs()[0]?.id);
+    this.selected = getTabId(this.selected || this.getTabs()[0]?.id);
   }
 
   render(): JSX.Element | null {
-    const { tabSelected } = this;
+    const { selected } = this;
     const tabs = this.getTabs();
 
     if (tabs.length === 0) {
@@ -94,7 +61,7 @@ export class P6Tabs {
               <li>
                 <a
                   class={
-                    tabSelected === getTabId(tab.id) ? "is-active" : undefined
+                    selected === getTabId(tab.id) ? "is-active" : undefined
                   }
                   href={`#${tab.id}`}
                   id={`${getTabId(tab.id)}`}

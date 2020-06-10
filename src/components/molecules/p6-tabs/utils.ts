@@ -1,4 +1,7 @@
-import { isEmpty } from "~utils/attribute";
+export interface Tab extends Element {
+  id: string;
+  title: string;
+}
 
 export function getTabId(id: string): string {
   return `${id}-tab`;
@@ -6,10 +9,8 @@ export function getTabId(id: string): string {
 
 /**
  * A tab is valid only with `id` and `title` attributes.
- * @param { Element } tab
+ * @param { Element[] } tabs
  */
-export function isValidTab(tab: Element): boolean {
-  return (
-    !isEmpty(tab.getAttribute("title")) && !isEmpty(tab.getAttribute("id"))
-  );
+export function getValidTabs(tabs: Element[]): Element[] {
+  return tabs.filter((tab) => "title" in tab && "id" in tab);
 }
