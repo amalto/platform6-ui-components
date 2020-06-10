@@ -65,15 +65,18 @@ export class P6Tabs {
     this.tabSelected = id;
   };
 
+  private isValidTab = (tab: Element): boolean => {
+    return (
+      !isEmpty(tab.getAttribute("title")) && !isEmpty(tab.getAttribute("id"))
+    );
+  };
+
   /**
-   * Get tabs from slot sttributes.
+   * Get tabs from slot attributes.
    */
   private getTabs(): Tab[] {
     return Array.from(this.host.children)
-      .filter(
-        (c) =>
-          !isEmpty(c.getAttribute("title")) && !isEmpty(c.getAttribute("id"))
-      )
+      .filter(this.isValidTab)
       .map((c) => ({
         title: c.getAttribute("title") as string,
         id: c.getAttribute("id") as string,
@@ -84,9 +87,7 @@ export class P6Tabs {
     const child = Array.from(this.host.children).filter((c) => {
       const id = c.getAttribute("id");
       return (
-        !isEmpty(c.getAttribute("title")) &&
-        !isEmpty(id) &&
-        this.getTabId(id as string) === this.tabSelected
+        this.isValidTab(c) && this.getTabId(id as string) === this.tabSelected
       );
     })[0];
 
