@@ -71,6 +71,7 @@ export class P6Button {
         // eslint-disable-next-line react/button-has-type
         type={this.type}
         disabled={this.disabled}
+        aria-disabled={this.disabled ? "true" : null}
         onClick={this.clickDelegationHandler}
       >
         <slot />
