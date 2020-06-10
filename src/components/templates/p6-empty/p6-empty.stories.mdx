@@ -41,11 +41,7 @@ import readme from "./readme.md";
   }}
 </Story>
 
-<Story
-  name="With icon"
-  height="300px"
-  parameters={{ docs: { disable: true } }}
->
+<Story name="With icon" height="300px" parameters={{ docs: { disable: true } }}>
   {() => {
     library.add(
       fas.faInbox,
@@ -53,12 +49,7 @@ import readme from "./readme.md";
       fas.faBoxOpen,
       fas.faFolderOpen
     );
-    const names = [
-      "inbox",
-      "parachute-box",
-      "box-open",
-      "folder-open"
-    ];
+    const names = ["inbox", "parachute-box", "box-open", "folder-open"];
     const kName = select("Icon", names, "inbox");
     return `<p6-empty><p6-icon slot='image' name="${kName}"/></p6-empty>`;
   }}
