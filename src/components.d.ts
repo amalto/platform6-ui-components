@@ -215,7 +215,7 @@ export namespace Components {
         /**
           * Default tab selected.
          */
-        "default": string;
+        "default": string | undefined;
         /**
           * Public method to set tabSelected id. Use this method by keeping a ref of the component.
           * @param id Id to be selected
@@ -528,7 +528,7 @@ declare namespace LocalJSX {
         /**
           * Default tab selected.
          */
-        "default": string;
+        "default"?: string | undefined;
     }
     interface P6Waiting {
     }

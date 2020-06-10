@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property               | Attribute | Description           | Type     | Default     |
-| ---------------------- | --------- | --------------------- | -------- | ----------- |
-| `default` _(required)_ | `default` | Default tab selected. | `string` | `undefined` |
+| Property  | Attribute | Description           | Type                  | Default     |
+| --------- | --------- | --------------------- | --------------------- | ----------- |
+| `default` | `default` | Default tab selected. | `string \| undefined` | `undefined` |
 
 
 ## Methods
