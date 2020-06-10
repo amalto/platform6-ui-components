@@ -91,12 +91,11 @@ export class P6Tabs {
         <div class="tabs">
           <ul>
             {tabs.map((tab) => (
-              <li
-                class={
-                  tabSelected === getTabId(tab.id) ? "is-active" : undefined
-                }
-              >
+              <li>
                 <a
+                  class={
+                    tabSelected === getTabId(tab.id) ? "is-active" : undefined
+                  }
                   href={`#${tab.id}`}
                   id={`${getTabId(tab.id)}`}
                   onClick={this.handleTabSelection}

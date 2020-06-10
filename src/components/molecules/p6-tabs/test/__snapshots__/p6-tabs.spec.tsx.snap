@@ -15,8 +15,8 @@ exports[`p6-tabs Should display the third tab 1`] = `
             Where does it come from?
           </a>
         </li>
-        <li class="is-active">
-          <a href="#third" id="third-tab">
+        <li>
+          <a class="is-active" href="#third" id="third-tab">
             Why do we use it?
           </a>
         </li>
