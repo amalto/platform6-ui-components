@@ -20,7 +20,7 @@ describe("p6-tabs", () => {
     const page = await newSpecPage({
       components: [P6Tabs],
       html: `
-      <p6-tabs default="third">
+      <p6-tabs selected="third">
         <div id="first" title="What is Lorem Ipsum?">1</div>
         <div id="second" title="Where does it come from?">2</div>
         <div id="third" title="Why do we use it?">3</div>
