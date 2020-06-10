@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-button disabled has a "disabled" attribute on the button when disabled is true 1`] = `
+<p6-button disabled="true">
+  <mock:shadow-root>
+    <button aria-disabled="true" class="button" disabled="" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button disabled has no "disabled" attribute on the button when disabled is false 1`] = `
+<p6-button disabled="false">
+  <mock:shadow-root>
+    <button class="button" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode does not add class when mode is default 1`] = `
+<p6-button mode="default">
+  <mock:shadow-root>
+    <button class="button" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode does not add class when mode is undefined 1`] = `
+<p6-button mode="undefined">
+  <mock:shadow-root>
+    <button class="button" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode has the class "is-danger" when mode is "%s" 1`] = `
+<p6-button mode="danger">
+  <mock:shadow-root>
+    <button class="button is-danger" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode has the class "is-info" when mode is "%s" 1`] = `
+<p6-button mode="info">
+  <mock:shadow-root>
+    <button class="button is-info" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode has the class "is-primary" when mode is "%s" 1`] = `
+<p6-button mode="primary">
+  <mock:shadow-root>
+    <button class="button is-primary" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode has the class "is-success" when mode is "%s" 1`] = `
+<p6-button mode="success">
+  <mock:shadow-root>
+    <button class="button is-success" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button mode has the class "is-warning" when mode is "%s" 1`] = `
+<p6-button mode="warning">
+  <mock:shadow-root>
+    <button class="button is-warning" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button outlined has a "is-outlined" class when outlined is true 1`] = `
+<p6-button outlined="true">
+  <mock:shadow-root>
+    <button class="button is-outlined" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button outlined has no "is-outlined" class when outlined is false 1`] = `
+<p6-button outlined="false">
+  <mock:shadow-root>
+    <button class="button" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button size does not add class when size is default 1`] = `
+<p6-button size="default">
+  <mock:shadow-root>
+    <button class="button" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button size has the class "is-large" when size is "%s" 1`] = `
+<p6-button size="large">
+  <mock:shadow-root>
+    <button class="button is-large" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button size has the class "is-medium" when size is "%s" 1`] = `
+<p6-button size="medium">
+  <mock:shadow-root>
+    <button class="button is-medium" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button size has the class "is-normal" when size is "%s" 1`] = `
+<p6-button size="normal">
+  <mock:shadow-root>
+    <button class="button is-normal" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button size has the class "is-small" when size is "%s" 1`] = `
+<p6-button size="small">
+  <mock:shadow-root>
+    <button class="button is-small" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button waiting has a "is-loading" class when waiting is true 1`] = `
+<p6-button waiting="true">
+  <mock:shadow-root>
+    <button class="button is-loading" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;
+
+exports[`p6-button waiting has no "is-loading" class when waiting is false 1`] = `
+<p6-button waiting="false">
+  <mock:shadow-root>
+    <button class="button" type="submit">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-button>
+`;

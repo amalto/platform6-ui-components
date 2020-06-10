@@ -10,15 +10,7 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button mode=${mode}></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button mode=${mode}>
-          <mock:shadow-root>
-            <button class="button is-${mode}" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
 
     it("does not add class when mode is default", async () => {
@@ -26,15 +18,7 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button mode="default"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button mode="default">
-          <mock:shadow-root>
-            <button class="button" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
 
     it("does not add class when mode is undefined", async () => {
@@ -42,15 +26,7 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button mode=${undefined}></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button mode=${undefined}>
-          <mock:shadow-root>
-            <button class="button" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -60,30 +36,14 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button outlined="true"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button outlined="true">
-          <mock:shadow-root>
-            <button class="button is-outlined" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
     it('has no "is-outlined" class when outlined is false', async () => {
       const page = await newSpecPage({
         components: [P6Button],
         html: `<p6-button outlined="false"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button outlined="false">
-          <mock:shadow-root>
-            <button class="button" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -93,30 +53,14 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button waiting="true"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button waiting="true">
-          <mock:shadow-root>
-            <button class="button is-loading" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
     it('has no "is-loading" class when waiting is false', async () => {
       const page = await newSpecPage({
         components: [P6Button],
         html: `<p6-button waiting="false"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button waiting="false">
-          <mock:shadow-root>
-            <button class="button" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -126,30 +70,14 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button disabled="true"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button disabled="true">
-          <mock:shadow-root>
-            <button class="button" disabled type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
     it('has no "disabled" attribute on the button when disabled is false', async () => {
       const page = await newSpecPage({
         components: [P6Button],
         html: `<p6-button disabled="false"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button disabled="false">
-          <mock:shadow-root>
-            <button class="button" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -161,15 +89,7 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button size=${size}></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button size=${size}>
-          <mock:shadow-root>
-            <button class="button is-${size}" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
 
     it("does not add class when size is default", async () => {
@@ -177,15 +97,7 @@ describe("p6-button", () => {
         components: [P6Button],
         html: `<p6-button size="default"></p6-button>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-button size="default">
-          <mock:shadow-root>
-            <button class="button" type="submit">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-button>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 });
