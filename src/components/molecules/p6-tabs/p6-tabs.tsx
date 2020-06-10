@@ -25,7 +25,7 @@ export class P6Tabs {
   /**
    * Default tab selected.
    */
-  @Prop() default!: string;
+  @Prop() default: string | undefined;
 
   /**
    * Set selected tab.
@@ -94,7 +94,7 @@ export class P6Tabs {
   }
 
   componentWillLoad(): void {
-    this.tabSelected = this.getTabId(this.default);
+    this.tabSelected = this.getTabId(this.default || this.getTabs()[0]?.id);
   }
 
   render(): JSX.Element | null {
