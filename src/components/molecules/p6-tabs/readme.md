@@ -1,16 +1,12 @@
 # p6-tabs
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
 | Property  | Attribute | Description           | Type                  | Default     |
 | --------- | --------- | --------------------- | --------------------- | ----------- |
 | `default` | `default` | Default tab selected. | `string \| undefined` | `undefined` |
-
 
 ## Methods
 
@@ -23,9 +19,6 @@ Use this method by keeping a ref of the component.
 
 Type: `Promise<void>`
 
+---
 
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
