@@ -45,11 +45,6 @@ export class P6Tabs {
     }
   }
 
-  /**
-   * Return the formated tab id
-   *
-   * @param { string } id
-   */
   private getTabId = (id: string): string => {
     return `${id}-tab`;
   };
@@ -71,9 +66,6 @@ export class P6Tabs {
     );
   };
 
-  /**
-   * Get tabs from slot attributes.
-   */
   private getTabs(): Tab[] {
     return Array.from(this.host.children)
       .filter(this.isValidTab)
