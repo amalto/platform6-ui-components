@@ -7,7 +7,7 @@ import {
   Prop,
   State,
 } from "@stencil/core";
-import { isEmpty } from "~utils/attribute";
+import { getTabId, isValidTab } from "./utils";
 
 export interface Tab {
   id: string;
@@ -41,13 +41,9 @@ export class P6Tabs {
   @Method()
   async setTabSelected(id: string): Promise<void> {
     if (this.getTabs().some((tab) => tab.id === id)) {
-      this.tabSelected = this.getTabId(id);
+      this.tabSelected = getTabId(id);
     }
   }
-
-  private getTabId = (id: string): string => {
-    return `${id}-tab`;
-  };
 
   /**
    * Set selected tab
@@ -60,15 +56,9 @@ export class P6Tabs {
     this.tabSelected = id;
   };
 
-  private isValidTab = (tab: Element): boolean => {
-    return (
-      !isEmpty(tab.getAttribute("title")) && !isEmpty(tab.getAttribute("id"))
-    );
-  };
-
   private getTabs(): Tab[] {
     return Array.from(this.host.children)
-      .filter(this.isValidTab)
+      .filter(isValidTab)
       .map((c) => ({
         title: c.getAttribute("title") as string,
         id: c.getAttribute("id") as string,
@@ -78,16 +68,14 @@ export class P6Tabs {
   private getContent(): JSX.Element {
     const child = Array.from(this.host.children).filter((c) => {
       const id = c.getAttribute("id");
-      return (
-        this.isValidTab(c) && this.getTabId(id as string) === this.tabSelected
-      );
+      return isValidTab(c) && getTabId(id as string) === this.tabSelected;
     })[0];
 
     return <div class="tab-content">{child?.innerHTML}</div>;
   }
 
   componentWillLoad(): void {
-    this.tabSelected = this.getTabId(this.default || this.getTabs()[0]?.id);
+    this.tabSelected = getTabId(this.default || this.getTabs()[0]?.id);
   }
 
   render(): JSX.Element | null {
@@ -105,14 +93,12 @@ export class P6Tabs {
             {tabs.map((tab) => (
               <li
                 class={
-                  tabSelected === this.getTabId(tab.id)
-                    ? "is-active"
-                    : undefined
+                  tabSelected === getTabId(tab.id) ? "is-active" : undefined
                 }
               >
                 <a
                   href={`#${tab.id}`}
-                  id={`${this.getTabId(tab.id)}`}
+                  id={`${getTabId(tab.id)}`}
                   onClick={this.handleTabSelection}
                 >
                   {tab.title}
