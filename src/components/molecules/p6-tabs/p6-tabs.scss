@@ -14,12 +14,12 @@
     }
 
     li {
-      .is-active a {
+      a.is-active {
         border-bottom-color: $tabs-link-active-border-bottom-color;
         color: $tabs-link-active-color;
       }
 
-      &:hover:not(.is-active) a {
+      a:hover:not(.is-active) {
         border-bottom-color: $tabs-link-hover-border-bottom-color;
         color: $tabs-link-hover-color;
       }

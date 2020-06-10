@@ -1,12 +1,35 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 describe("p6-tabs", () => {
-  it("renders", async () => {
+  it("tab-content should be 3", async () => {
     const page = await newE2EPage();
-    await page.setContent(`<p6-tabs></p6-tabs>`);
+    await page.setContent(`
+      <p6-tabs default="third">
+        <div id="first" title="What is Lorem Ipsum?">1</div>
+        <div id="second" title="Where does it come from?">2</div>
+        <div id="third" title="Why do we use it?">3</div>
+        <div id="fourth" title="Where can I get some?">4</div>
+      </p6-tabs>
+    `);
 
-    const element = await page.find("p6-tabs");
+    const element = await page.find("p6-tabs >>> .tab-content");
 
-    expect(element).toHaveClass("hydrated");
+    expect(element.innerHTML).toBe("3");
+  });
+
+  it("third-tab should have class is-active", async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p6-tabs default="third">
+        <div id="first" title="What is Lorem Ipsum?">1</div>
+        <div id="second" title="Where does it come from?">2</div>
+        <div id="third" title="Why do we use it?">3</div>
+        <div id="fourth" title="Where can I get some?">4</div>
+      </p6-tabs>
+    `);
+
+    const element = await page.find("p6-tabs >>> #third-tab");
+
+    expect(element).toHaveClass("is-active");
   });
 });
