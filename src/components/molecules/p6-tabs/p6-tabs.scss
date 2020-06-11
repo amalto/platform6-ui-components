@@ -1,0 +1,36 @@
+@import "bulma/sass/layout/section";
+@import "bulma/sass/components/tabs";
+@import "src/styles/atoms/_anchor";
+
+:host {
+  display: block;
+
+  .tabs {
+    margin-bottom: 0;
+
+    a {
+      cursor: pointer;
+      text-decoration: none !important;
+    }
+
+    li {
+      .is-active a {
+        border-bottom-color: $tabs-link-active-border-bottom-color;
+        color: $tabs-link-active-color;
+      }
+
+      &:hover:not(.is-active) a {
+        border-bottom-color: $tabs-link-hover-border-bottom-color;
+        color: $tabs-link-hover-color;
+      }
+    }
+
+    ul {
+      margin: 0;
+    }
+  }
+
+  .tab-content {
+    padding: $gap-size * 2 * 1px;
+  }
+}
