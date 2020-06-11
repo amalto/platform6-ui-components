@@ -6,6 +6,7 @@ import {
   faHome,
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import * as CacheUtils from "~utils/cache";
 import { version } from "../../package.json";
 
 function initializeIcons(): void {
@@ -16,4 +17,4 @@ export default function (): void {
   initializeIcons();
 }
 
-export const appVersion = version;
+CacheUtils.setAppVersion(version);

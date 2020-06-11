@@ -1,8 +1,10 @@
 import { getAssetPath } from "@stencil/core";
-import { appVersion } from "~global/init";
+import * as CacheUtils from "~utils/cache";
 
 const defaultLocale = "en";
 const localesAssetDir = "./locales";
+
+const appVersion = CacheUtils.getAppVersion();
 
 export interface L10n {
   [key: string]: string;
@@ -23,14 +25,11 @@ function getCacheKey(componentName: string, locale: string): string {
 }
 
 function writeToCache(componentName: string, locale: string, data: L10n): void {
-  localStorage.setItem(
-    getCacheKey(componentName, locale),
-    JSON.stringify(data)
-  );
+  CacheUtils.setItem(getCacheKey(componentName, locale), JSON.stringify(data));
 }
 
 function readFromCache(componentName: string, locale: string): L10n | null {
-  const storageItem = localStorage.getItem(getCacheKey(componentName, locale));
+  const storageItem = CacheUtils.getItem(getCacheKey(componentName, locale));
   if (storageItem !== null) {
     try {
       const existingTranslations = JSON.parse(storageItem);
