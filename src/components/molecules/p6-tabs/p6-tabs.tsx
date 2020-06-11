@@ -1,10 +1,5 @@
 import { Component, Element, h, Host, Prop } from "@stencil/core";
-import { getTabId, getValidTabs } from "./utils";
-
-export interface Tab {
-  id: string;
-  title: string;
-}
+import { getTabId, isTabValid } from "./utils";
 
 @Component({
   tag: "p6-tabs",
@@ -26,17 +21,14 @@ export class P6Tabs {
     this.selected = id;
   };
 
-  private getTabs(): Tab[] {
-    return getValidTabs(Array.from(this.host.children)).map((c) => ({
-      title: c.getAttribute("title") as string,
-      id: c.getAttribute("id") as string,
-    }));
+  private getTabs(): HTMLElement[] {
+    return Array.from(this.host.children).filter(isTabValid);
   }
 
   private getContent(): JSX.Element {
-    const child = getValidTabs(Array.from(this.host.children)).filter(
-      (c) => getTabId(c.getAttribute("id") as string) === this.selected
-    )[0];
+    const child = this.getTabs().find(
+      (tab) => this.selected === getTabId(tab.id)
+    );
 
     return <div class="tab-content">{child?.innerHTML}</div>;
   }

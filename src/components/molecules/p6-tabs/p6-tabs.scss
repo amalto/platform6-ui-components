@@ -1,6 +1,9 @@
 @import "bulma/sass/layout/section";
 @import "bulma/sass/components/tabs";
 
+$tabs-link-active-border-bottom-color: $success;
+$tabs-link-active-color: $success;
+
 :host {
   display: block;
 
