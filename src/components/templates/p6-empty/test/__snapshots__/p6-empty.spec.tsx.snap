@@ -11,7 +11,41 @@ exports[`p6-empty renders 1`] = `
       </span>
     </slot>
     <slot>
-      Sorry, nothing to display
+      Sorry, nothing to display!
+    </slot>
+  </mock:shadow-root>
+</p6-empty>
+`;
+
+exports[`p6-empty translation Should translate en 1`] = `
+<p6-empty>
+  <mock:shadow-root>
+    <slot name="image">
+      <span class="icon is-large">
+        <svg aria-hidden="true" class="fa-3x fa-folder-open fa-w-18 svg-inline--fa" data-icon="folder-open" data-prefix="far" focusable="false" role="img" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M527.9 224H480v-48c0-26.5-21.5-48-48-48H272l-64-64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h400c16.5 0 31.9-8.5 40.7-22.6l79.9-128c20-31.9-3-73.4-40.7-73.4zM48 118c0-3.3 2.7-6 6-6h134.1l64 64H426c3.3 0 6 2.7 6 6v42H152c-16.8 0-32.4 8.8-41.1 23.2L48 351.4zm400 282H72l77.2-128H528z" fill="currentColor"></path>
+        </svg>
+      </span>
+    </slot>
+    <slot>
+      Sorry, nothing to display!
+    </slot>
+  </mock:shadow-root>
+</p6-empty>
+`;
+
+exports[`p6-empty translation Should translate fr 1`] = `
+<p6-empty>
+  <mock:shadow-root>
+    <slot name="image">
+      <span class="icon is-large">
+        <svg aria-hidden="true" class="fa-3x fa-folder-open fa-w-18 svg-inline--fa" data-icon="folder-open" data-prefix="far" focusable="false" role="img" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M527.9 224H480v-48c0-26.5-21.5-48-48-48H272l-64-64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h400c16.5 0 31.9-8.5 40.7-22.6l79.9-128c20-31.9-3-73.4-40.7-73.4zM48 118c0-3.3 2.7-6 6-6h134.1l64 64H426c3.3 0 6 2.7 6 6v42H152c-16.8 0-32.4 8.8-41.1 23.2L48 351.4zm400 282H72l77.2-128H528z" fill="currentColor"></path>
+        </svg>
+      </span>
+    </slot>
+    <slot>
+      Aucune information à afficher
     </slot>
   </mock:shadow-root>
 </p6-empty>
@@ -28,7 +62,7 @@ exports[`p6-empty with image 1`] = `
       </span>
     </slot>
     <slot>
-      Sorry, nothing to display
+      Sorry, nothing to display!
     </slot>
   </mock:shadow-root>
   <p6-icon name="home" slot="image"></p6-icon>
@@ -46,7 +80,7 @@ exports[`p6-empty with image and message 1`] = `
       </span>
     </slot>
     <slot>
-      Sorry, nothing to display
+      Sorry, nothing to display!
     </slot>
   </mock:shadow-root>
   <p6-icon name="home" slot="image">
@@ -66,7 +100,7 @@ exports[`p6-empty with message 1`] = `
       </span>
     </slot>
     <slot>
-      Sorry, nothing to display
+      Sorry, nothing to display!
     </slot>
   </mock:shadow-root>
   No data!
