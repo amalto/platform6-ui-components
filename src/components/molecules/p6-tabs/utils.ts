@@ -1,8 +1,3 @@
-export interface Tab extends Element {
-  id: string;
-  title: string;
-}
-
 export function getTabId(id: string): string {
   return `${id}-tab`;
 }
