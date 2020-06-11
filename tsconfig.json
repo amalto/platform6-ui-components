@@ -22,7 +22,8 @@
       "~shared/*" : ["./src/shared/*"],
       "~utils/*" : ["./src/utils/*"]
     },
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src",
