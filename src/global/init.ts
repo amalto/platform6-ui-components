@@ -6,6 +6,7 @@ import {
   faHome,
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { version } from "../../package.json";
 
 function initializeIcons(): void {
   library.add(faAngleDown, faHamburger, faHome, faQuestionCircle, faFolderOpen);
@@ -14,3 +15,5 @@ function initializeIcons(): void {
 export default function (): void {
   initializeIcons();
 }
+
+export const appVersion = version;
