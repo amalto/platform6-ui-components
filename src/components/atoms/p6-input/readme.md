@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute     | Description                                                                               | Type                                                                        | Default     |
@@ -19,6 +20,7 @@
 | `value`             | `value`       | the value of the input.                                                                   | `string \| undefined`                                                       | `undefined` |
 | `waiting`           | `waiting`     | shows a waiting indicator                                                                 | `boolean`                                                                   | `false`     |
 
+
 ## Methods
 
 ### `checkValidity() => Promise<boolean>`
@@ -29,6 +31,9 @@ Returns whether a form will validate when it is submitted, without having to sub
 
 Type: `Promise<boolean>`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
