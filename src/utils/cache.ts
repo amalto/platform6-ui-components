@@ -2,14 +2,22 @@ const APP_VERSION_KEY = "appVersion";
 
 const storage = window.localStorage;
 
-export const setItem = (key: string, value: string): void =>
+export function setItem(key: string, value: string): void {
   storage.setItem(key, value);
+}
 
-export const getItem = (key: string): string | null => storage.getItem(key);
+export function getItem(key: string): string | null {
+  return storage.getItem(key);
+}
 
-export const removeItem = (key: string): void => storage.removeItem(key);
+export function removeItem(key: string): void {
+  return storage.removeItem(key);
+}
 
-export const setAppVersion = (version: string): void =>
-  setItem(APP_VERSION_KEY, version);
+export function setAppVersion(version: string): void {
+  return setItem(APP_VERSION_KEY, version);
+}
 
-export const getAppVersion = (): string | null => getItem(APP_VERSION_KEY);
+export function getAppVersion(): string | null {
+  return getItem(APP_VERSION_KEY);
+}
