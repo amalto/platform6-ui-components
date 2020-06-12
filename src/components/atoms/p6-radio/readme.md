@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property             | Attribute  | Description   | Type               | Default     |
@@ -13,7 +12,6 @@
 | `readonly`           | `readonly` | Readonly      | `boolean`          | `false`     |
 | `value` _(required)_ | `value`    | Value         | `number \| string` | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
