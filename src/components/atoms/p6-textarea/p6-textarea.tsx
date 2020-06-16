@@ -8,16 +8,7 @@ import {
   Prop,
   State,
 } from "@stencil/core";
-import { cleanupValue } from "~utils/attribute";
-
-export type P6InputType =
-  | "email"
-  | "number"
-  | "password"
-  | "search"
-  | "tel"
-  | "text"
-  | "url";
+import { cleanupValue, isEmpty } from "~utils/attribute";
 
 @Component({
   tag: "p6-textarea",
@@ -84,8 +75,7 @@ export class P6Textarea implements ComponentInterface {
   }
 
   componentDidLoad(): void {
-    if (this.nativeInput && this.nativeInput.value !== "") {
-      this.nativeInput.value = "qwerty";
+    if (!isEmpty(this.value)) {
       this.internalCheckValidity();
     }
   }

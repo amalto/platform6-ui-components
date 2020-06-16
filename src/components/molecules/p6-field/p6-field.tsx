@@ -35,26 +35,32 @@ export class P6Field implements ComponentInterface {
     }
   }
 
-  render(): JSX.Element {
-    const errorMessage =
-      this.errorMessage !== "" && !this.isReadOnly ? (
-        <p6-hint mode="danger" slot="hint">
-          {this.errorMessage}
-        </p6-hint>
-      ) : null;
+  componentWillRender(): void {
+    const errorHintClassName = "field-auto_hint_message";
+    const errorHintMsg = this.host.querySelector(`.${errorHintClassName}`);
 
+    if (errorHintMsg !== null) {
+      this.host.removeChild(errorHintMsg);
+    }
+
+    if (this.errorMessage !== "" && !this.isReadOnly) {
+      const hint = document.createElement("p6-hint");
+      hint.innerText = this.errorMessage;
+      hint.mode = "danger";
+      hint.slot = "hint";
+      hint.classList.add(errorHintClassName);
+      this.host.appendChild(hint);
+    }
+  }
+
+  render(): JSX.Element {
     return (
       <Host aria-disabled={this.isDisabled ? "true" : null}>
         <label class="label" htmlFor={this.input?.name}>
           <slot name="label" />
           <slot />
         </label>
-        {this.isReadOnly || this.isDisabled ? null : (
-          <div>
-            <slot name="hint" />
-            {errorMessage}
-          </div>
-        )}
+        {this.isReadOnly || this.isDisabled ? null : <slot name="hint" />}
       </Host>
     );
   }

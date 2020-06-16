@@ -5,6 +5,5 @@ exports[`p6-field renders 1`] = `
   <!---->
   <label class="label">
   </label>
-  <div></div>
 </p6-field>
 `;
