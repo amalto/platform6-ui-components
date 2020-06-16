@@ -13,7 +13,7 @@ function initializeIcons(): void {
   library.add(faAngleDown, faHamburger, faHome, faQuestionCircle, faFolderOpen);
 }
 
-export default function (): void {
+export default function main(): void {
   initializeIcons();
 }
 
