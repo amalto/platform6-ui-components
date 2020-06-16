@@ -1,0 +1,19 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { action } from "@storybook/addon-actions";
+import { Meta, Preview, Story } from "@storybook/addon-docs/blocks";
+import { select, text, boolean, withKnobs } from "@storybook/addon-knobs";
+import readme from "./readme.md";
+
+<Meta title="Atoms/Label" component="p6-label" parameters={{ notes: readme }} />
+
+# Label
+
+<Preview>
+  <Story name="Default" height="42px">
+    {`
+      <P6-label>A label</P6-hint>
+    `}
+  </Story>
+</Preview>
