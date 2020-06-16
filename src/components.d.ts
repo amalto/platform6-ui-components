@@ -153,6 +153,7 @@ export namespace Components {
      */
     waiting: boolean;
   }
+  interface P6Label {}
   interface P6Link {
     /**
      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
@@ -311,6 +312,11 @@ declare global {
     prototype: HTMLP6InputElement;
     new (): HTMLP6InputElement;
   };
+  interface HTMLP6LabelElement extends Components.P6Label, HTMLStencilElement {}
+  var HTMLP6LabelElement: {
+    prototype: HTMLP6LabelElement;
+    new (): HTMLP6LabelElement;
+  };
   interface HTMLP6LinkElement extends Components.P6Link, HTMLStencilElement {}
   var HTMLP6LinkElement: {
     prototype: HTMLP6LinkElement;
@@ -363,6 +369,7 @@ declare global {
     "p6-help": HTMLP6HelpElement;
     "p6-icon": HTMLP6IconElement;
     "p6-input": HTMLP6InputElement;
+    "p6-label": HTMLP6LabelElement;
     "p6-link": HTMLP6LinkElement;
     "p6-radio": HTMLP6RadioElement;
     "p6-spinner": HTMLP6SpinnerElement;
@@ -507,6 +514,7 @@ declare namespace LocalJSX {
      */
     waiting?: boolean;
   }
+  interface P6Label {}
   interface P6Link {
     /**
      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). Only applies when an `href` is provided.
@@ -616,6 +624,7 @@ declare namespace LocalJSX {
     "p6-help": P6Help;
     "p6-icon": P6Icon;
     "p6-input": P6Input;
+    "p6-label": P6Label;
     "p6-link": P6Link;
     "p6-radio": P6Radio;
     "p6-spinner": P6Spinner;
@@ -641,6 +650,7 @@ declare module "@stencil/core" {
       "p6-help": LocalJSX.P6Help & JSXBase.HTMLAttributes<HTMLP6HelpElement>;
       "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;
       "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;
+      "p6-label": LocalJSX.P6Label & JSXBase.HTMLAttributes<HTMLP6LabelElement>;
       "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
       "p6-radio": LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
       "p6-spinner": LocalJSX.P6Spinner &
