@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-field renders 1`] = `
+<p6-field>
+  <!---->
+  <label class="label">
+  </label>
+  <div></div>
+</p6-field>
+`;
