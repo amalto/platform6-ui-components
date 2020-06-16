@@ -85,6 +85,12 @@ export namespace Components {
      */
     text: string;
   }
+  interface P6Hint {
+    /**
+     * set the mode of the hint
+     */
+    mode: Mode;
+  }
   interface P6Icon {
     /**
      * Style prefix
@@ -302,6 +308,11 @@ declare global {
     prototype: HTMLP6HelpElement;
     new (): HTMLP6HelpElement;
   };
+  interface HTMLP6HintElement extends Components.P6Hint, HTMLStencilElement {}
+  var HTMLP6HintElement: {
+    prototype: HTMLP6HintElement;
+    new (): HTMLP6HintElement;
+  };
   interface HTMLP6IconElement extends Components.P6Icon, HTMLStencilElement {}
   var HTMLP6IconElement: {
     prototype: HTMLP6IconElement;
@@ -367,6 +378,7 @@ declare global {
     "p6-dropdown": HTMLP6DropdownElement;
     "p6-empty": HTMLP6EmptyElement;
     "p6-help": HTMLP6HelpElement;
+    "p6-hint": HTMLP6HintElement;
     "p6-icon": HTMLP6IconElement;
     "p6-input": HTMLP6InputElement;
     "p6-label": HTMLP6LabelElement;
@@ -453,6 +465,12 @@ declare namespace LocalJSX {
      * Tooltip text
      */
     text: string;
+  }
+  interface P6Hint {
+    /**
+     * set the mode of the hint
+     */
+    mode?: Mode;
   }
   interface P6Icon {
     /**
@@ -622,6 +640,7 @@ declare namespace LocalJSX {
     "p6-dropdown": P6Dropdown;
     "p6-empty": P6Empty;
     "p6-help": P6Help;
+    "p6-hint": P6Hint;
     "p6-icon": P6Icon;
     "p6-input": P6Input;
     "p6-label": P6Label;
@@ -648,6 +667,7 @@ declare module "@stencil/core" {
         JSXBase.HTMLAttributes<HTMLP6DropdownElement>;
       "p6-empty": LocalJSX.P6Empty & JSXBase.HTMLAttributes<HTMLP6EmptyElement>;
       "p6-help": LocalJSX.P6Help & JSXBase.HTMLAttributes<HTMLP6HelpElement>;
+      "p6-hint": LocalJSX.P6Hint & JSXBase.HTMLAttributes<HTMLP6HintElement>;
       "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;
       "p6-input": LocalJSX.P6Input & JSXBase.HTMLAttributes<HTMLP6InputElement>;
       "p6-label": LocalJSX.P6Label & JSXBase.HTMLAttributes<HTMLP6LabelElement>;
