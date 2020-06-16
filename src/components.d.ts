@@ -214,6 +214,52 @@ export namespace Components {
      */
     selected: string | undefined;
   }
+  interface P6Textarea {
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     */
+    checkValidity: () => Promise<boolean>;
+    /**
+     * the input is not available for interaction. The value will not be submitted with the form
+     */
+    disabled: boolean;
+    /**
+     * The maximum length or value
+     */
+    max: number | undefined;
+    /**
+     * The minimum length or value
+     */
+    min: number | undefined;
+    /**
+     * The name of the input.
+     */
+    name: string;
+    /**
+     * content to be appear in the form control when the form control is empty
+     */
+    placeholder: string | undefined;
+    /**
+     * marks an element that can't be edited.
+     */
+    readOnly: boolean;
+    /**
+     * marks an element that can't be submitted without a value.
+     */
+    required: boolean;
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
+    /**
+     * the value of the input.
+     */
+    value: string | undefined;
+    /**
+     * shows a waiting indicator
+     */
+    waiting: boolean;
+  }
   interface P6Waiting {}
 }
 declare global {
@@ -294,6 +340,13 @@ declare global {
     prototype: HTMLP6TabsElement;
     new (): HTMLP6TabsElement;
   };
+  interface HTMLP6TextareaElement
+    extends Components.P6Textarea,
+      HTMLStencilElement {}
+  var HTMLP6TextareaElement: {
+    prototype: HTMLP6TextareaElement;
+    new (): HTMLP6TextareaElement;
+  };
   interface HTMLP6WaitingElement
     extends Components.P6Waiting,
       HTMLStencilElement {}
@@ -315,6 +368,7 @@ declare global {
     "p6-spinner": HTMLP6SpinnerElement;
     "p6-switch": HTMLP6SwitchElement;
     "p6-tabs": HTMLP6TabsElement;
+    "p6-textarea": HTMLP6TextareaElement;
     "p6-waiting": HTMLP6WaitingElement;
   }
 }
@@ -514,6 +568,44 @@ declare namespace LocalJSX {
      */
     selected?: string | undefined;
   }
+  interface P6Textarea {
+    /**
+     * the input is not available for interaction. The value will not be submitted with the form
+     */
+    disabled?: boolean;
+    /**
+     * The maximum length or value
+     */
+    max?: number | undefined;
+    /**
+     * The minimum length or value
+     */
+    min?: number | undefined;
+    /**
+     * The name of the input.
+     */
+    name: string;
+    /**
+     * content to be appear in the form control when the form control is empty
+     */
+    placeholder?: string | undefined;
+    /**
+     * marks an element that can't be edited.
+     */
+    readOnly?: boolean;
+    /**
+     * marks an element that can't be submitted without a value.
+     */
+    required?: boolean;
+    /**
+     * the value of the input.
+     */
+    value?: string | undefined;
+    /**
+     * shows a waiting indicator
+     */
+    waiting?: boolean;
+  }
   interface P6Waiting {}
   interface IntrinsicElements {
     "p6-action": P6Action;
@@ -529,6 +621,7 @@ declare namespace LocalJSX {
     "p6-spinner": P6Spinner;
     "p6-switch": P6Switch;
     "p6-tabs": P6Tabs;
+    "p6-textarea": P6Textarea;
     "p6-waiting": P6Waiting;
   }
 }
@@ -555,6 +648,8 @@ declare module "@stencil/core" {
       "p6-switch": LocalJSX.P6Switch &
         JSXBase.HTMLAttributes<HTMLP6SwitchElement>;
       "p6-tabs": LocalJSX.P6Tabs & JSXBase.HTMLAttributes<HTMLP6TabsElement>;
+      "p6-textarea": LocalJSX.P6Textarea &
+        JSXBase.HTMLAttributes<HTMLP6TextareaElement>;
       "p6-waiting": LocalJSX.P6Waiting &
         JSXBase.HTMLAttributes<HTMLP6WaitingElement>;
     }
