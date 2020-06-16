@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-hint mode does not add class when mode is default 1`] = `
+<p6-hint mode="default">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  default
+</p6-hint>
+`;
+
+exports[`p6-hint mode does not add class when mode is undefined 1`] = `
+<p6-hint mode="undefined">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  undefined
+</p6-hint>
+`;
+
+exports[`p6-hint mode has the class "is-danger" when mode is "%s" 1`] = `
+<p6-hint class="is-danger" mode="danger">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  danger
+</p6-hint>
+`;
+
+exports[`p6-hint mode has the class "is-info" when mode is "%s" 1`] = `
+<p6-hint class="is-info" mode="info">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  info
+</p6-hint>
+`;
+
+exports[`p6-hint mode has the class "is-primary" when mode is "%s" 1`] = `
+<p6-hint class="is-primary" mode="primary">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  primary
+</p6-hint>
+`;
+
+exports[`p6-hint mode has the class "is-success" when mode is "%s" 1`] = `
+<p6-hint class="is-success" mode="success">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  success
+</p6-hint>
+`;
+
+exports[`p6-hint mode has the class "is-warning" when mode is "%s" 1`] = `
+<p6-hint class="is-warning" mode="warning">
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  warning
+</p6-hint>
+`;
+
+exports[`p6-hint renders 1`] = `
+<p6-hint>
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+  hint text
+</p6-hint>
+`;

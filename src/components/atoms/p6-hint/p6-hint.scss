@@ -1,0 +1,12 @@
+@import "bulma/sass/form/tools";
+
+:host {
+  @extend .help;
+}
+
+@each $name, $pair in $colors {
+  $color: nth($pair, 1);
+  :host(.is-#{$name}) {
+    color: $color;
+  }
+}
