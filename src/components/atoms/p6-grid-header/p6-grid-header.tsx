@@ -1,0 +1,18 @@
+import { Component, Element, h, Host } from "@stencil/core";
+
+@Component({
+  tag: "p6-grid-header",
+  styleUrl: "p6-grid-header.scss",
+  scoped: true,
+})
+export class P6GridHeader {
+  @Element() host!: HTMLP6GridHeaderElement;
+
+  render(): JSX.Element {
+    return (
+      <Host>
+        <slot />
+      </Host>
+    );
+  }
+}

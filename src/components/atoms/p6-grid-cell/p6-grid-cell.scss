@@ -1,0 +1,63 @@
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/base/helpers";
+
+:host {
+  display: flex;
+  font-size: $size-7;
+  margin: 0.75em 0em;
+  padding: 0em 0.5em;
+  position: relative;
+
+  &:not(:last-child) {
+    width: 100px;
+  }
+
+  &:last-child {
+    flex-grow: 1;
+  }
+
+  .grid-cell-context-menu {
+    color: $info;
+    display: none;
+
+    div {
+      display: flex;
+      justify-content: center;
+
+      p6-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+p6-grid-header {
+
+  :host {
+    font-weight: $weight-bold !important;
+    justify-content: start;
+
+    .grid-cell-context-menu {
+      cursor: context-menu;
+      display: flex;
+      flex-direction: column;
+      padding: $gap-size * 1px;
+      opacity: 0;
+      position: absolute;
+    }
+    .grid-cell-context-menu:hover {
+      background-color: $white;
+      border: 1px solid $white-ter;
+      left: 0;
+      max-width: 100px;
+      opacity: 1;
+      top: 0;
+      z-index: 100;
+    }
+  }
+
+  :host:not(:last-child) {
+    border-right: 1px solid $grey-lighter;
+    justify-content: center;
+  }
+}
