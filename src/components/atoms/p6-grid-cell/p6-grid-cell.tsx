@@ -10,10 +10,11 @@ import {
   faPlus,
   faSort,
   faTrashAlt,
+  IconName,
 } from "@fortawesome/free-solid-svg-icons";
 import { Component, Element, h, Host, Prop } from "@stencil/core";
+import { Align } from "~shared/types";
 import { isNumber } from "~utils/attribute";
-import { EventCallBack } from "./utils";
 
 library.add(
   faChevronLeft,
@@ -28,6 +29,8 @@ library.add(
   faPalette
 );
 
+export declare type EventCallBack = (event: MouseEvent) => void;
+
 @Component({
   tag: "p6-grid-cell",
   styleUrl: "p6-grid-cell.scss",
@@ -39,7 +42,22 @@ export class P6GridCell {
   /**
    * Cell alignment
    */
-  @Prop() align: "start" | "center" | "end" | undefined;
+  @Prop() align: Align | undefined;
+
+  /**
+   * Text align to the left
+   */
+  @Prop() alignLeft: EventCallBack = () => {};
+
+  /**
+   * Text align to the center
+   */
+  @Prop() alignCenter: EventCallBack = () => {};
+
+  /**
+   * Text align to the right
+   */
+  @Prop() alignRight: EventCallBack = () => {};
 
   /**
    * Click callback
@@ -57,26 +75,66 @@ export class P6GridCell {
   @Prop() dbleClickCallback: EventCallBack | undefined;
 
   /**
+   * Hide column
+   */
+  @Prop() hide: EventCallBack = () => {};
+
+  /**
+   * Reduce column width
+   */
+  @Prop() minus: EventCallBack = () => {};
+
+  /**
    * Move the column to the left
    */
-  @Prop() moveLeft: EventCallBack | undefined;
+  @Prop() moveLeft: EventCallBack = () => {};
 
   /**
    * Move the column to the right
    */
-  @Prop() moveRight: EventCallBack | undefined;
+  @Prop() moveRight: EventCallBack = () => {};
+
+  /**
+   * Raise column width
+   */
+  @Prop() plus: EventCallBack = () => {};
+
+  /**
+   * Toggle colorpicker
+   */
+  @Prop() toggleColor: EventCallBack = () => {};
 
   /**
    * Sort
    */
-  @Prop() sort: EventCallBack | undefined;
+  @Prop() sort: EventCallBack = () => {};
 
   /**
    * Cell width
    */
-  @Prop({ reflect: true }) width: number | string = 100;
+  @Prop() width: number | string = 100;
 
   private clickTimeout: NodeJS.Timeout | undefined = undefined;
+
+  private isCurrentAlign(align: Align): boolean {
+    return align === this.align;
+  }
+
+  private getAlignClass(align: Align): string {
+    return this.isCurrentAlign(align) ? "has-text-info" : "has-text-dark";
+  }
+
+  private renderAlignIcon(
+    align: Align,
+    iconName: IconName,
+    onClick: EventCallBack
+  ): JSX.Element {
+    return (
+      <div class={this.getAlignClass(align)}>
+        <p6-icon name={iconName} onClick={onClick} />
+      </div>
+    );
+  }
 
   private renderContextMenu(): JSX.Element {
     return (
@@ -87,17 +145,17 @@ export class P6GridCell {
           <p6-icon name="chevron-right" onClick={this.moveRight} />
         </div>
         <div>
-          <p6-icon name="trash-alt" />
-          <p6-icon name="minus" />
-          <p6-icon name="plus" />
+          <p6-icon name="trash-alt" onClick={this.hide} />
+          <p6-icon name="minus" onClick={this.minus} />
+          <p6-icon name="plus" onClick={this.plus} />
         </div>
         <div>
-          <p6-icon name="align-left" />
-          <p6-icon name="align-center" />
-          <p6-icon name="align-right" />
+          {this.renderAlignIcon("start", "align-left", this.alignLeft)}
+          {this.renderAlignIcon("center", "align-center", this.alignCenter)}
+          {this.renderAlignIcon("end", "align-right", this.alignRight)}
         </div>
         <div>
-          <p6-icon name="palette" />
+          <p6-icon name="palette" onClick={this.toggleColor} />
         </div>
       </div>
     );
