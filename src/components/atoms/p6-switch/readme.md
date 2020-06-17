@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute  | Description   | Type                                                                                       | Default        |
@@ -40,6 +41,7 @@ It also triggers the standard error message, such as "this is a required field".
 
 Type: `Promise<string>`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
