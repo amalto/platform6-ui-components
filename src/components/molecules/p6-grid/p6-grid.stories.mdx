@@ -15,99 +15,37 @@ import readme from "./readme.md";
 <Preview>
   <Story name="Default" height="300px">
     {() => {
+      const headers = [
+        {color: "blue", id: "col-1", label: "First", width: 150},
+        {id: "col-2", label: "Second", width: 100},
+        {id: "col-3", label: "Third", width: 100},
+        {id: "col-4", label: "Fourth", width: 100},
+      ];
+      const rows = [
+        [
+          {headerId: "col-2", label: "second cell"},
+          {align: "center", color: "blue", headerId: "col-1", label: "first cell", width: 150},
+          {headerId: "col-3", label: "third cell"},
+          {headerId: "col-4", label: "fourth cell"},
+        ],
+        [
+          {headerId: "col-2", label: "second cell"},
+          {headerId: "col-3", label: "third cell"},
+          {align: "center", color: "blue", headerId: "col-1", label: "first cell", width: 150},
+          {headerId: "col-4", label: "fourth cell"},
+        ],
+        [
+          {headerId: "col-2", label: "second cell"},
+          {headerId: "col-3", label: "third cell"},
+          {headerId: "col-4", label: "fourth cell"},
+          {align: "center", color: "blue", headerId: "col-1", label: "first cell", width: 150},
+        ],
+      ];
       const grid = document.createElement("p6-grid");
-      const header = document.createElement("p6-grid-header");
-      const headerCell1 = document.createElement("p6-grid-cell");
-      const headerCell2 = document.createElement("p6-grid-cell");
-      const headerCell3 = document.createElement("p6-grid-cell");
-      const headerCell4 = document.createElement("p6-grid-cell");
       const body = document.createElement("p6-grid-body");
-      const row1 = document.createElement("p6-grid-row");
-      const row1Cell1 = document.createElement("p6-grid-cell");
-      const row1Cell2 = document.createElement("p6-grid-cell");
-      const row1Cell3 = document.createElement("p6-grid-cell");
-      const row1Cell4 = document.createElement("p6-grid-cell");
-      const row2 = document.createElement("p6-grid-row");
-      const row2Cell1 = document.createElement("p6-grid-cell");
-      const row2Cell2 = document.createElement("p6-grid-cell");
-      const row2Cell3 = document.createElement("p6-grid-cell");
-      const row2Cell4 = document.createElement("p6-grid-cell");
-      const row3 = document.createElement("p6-grid-row");
-      const row3Cell1 = document.createElement("p6-grid-cell");
-      const row3Cell2 = document.createElement("p6-grid-cell");
-      const row3Cell3 = document.createElement("p6-grid-cell");
-      const row3Cell4 = document.createElement("p6-grid-cell");
-      const row4 = document.createElement("p6-grid-row");
-      const row4Cell1 = document.createElement("p6-grid-cell");
-      const row4Cell2 = document.createElement("p6-grid-cell");
-      const row4Cell3 = document.createElement("p6-grid-cell");
-      const row4Cell4 = document.createElement("p6-grid-cell");
       grid.id = "default-grid";
-      headerCell1.width = 150;
-      headerCell1.innerHTML = "First";
-      headerCell2.innerHTML = "Second";
-      headerCell3.innerHTML = "Third";
-      headerCell4.innerHTML = "Fourth";
-      header.appendChild(headerCell1);
-      header.appendChild(headerCell2);
-      header.appendChild(headerCell3);
-      header.appendChild(headerCell4);
-      grid.appendChild(header);
-      row1Cell1.align = "center";
-      row1Cell1.color = "blue";
-      row1Cell1.width = 150;
-      row1Cell1.innerHTML = "first cell";
-      row1Cell1.clickCallback = (event) => {
-        console.info("clickCallback");
-      };
-      row1Cell1.dbleClickCallback = (event) => {
-        console.info("dbleClickCallback");
-      };
-      row2Cell1.align = "center";
-      row2Cell1.color = "blue";
-      row2Cell1.width = 150;
-      row2Cell1.innerHTML = "first cell";
-      row3Cell1.align = "center";
-      row3Cell1.color = "blue";
-      row3Cell1.width = 150;
-      row3Cell1.innerHTML = "first cell";
-      row4Cell1.align = "center";
-      row4Cell1.color = "blue";
-      row4Cell1.width = 150;
-      row4Cell1.innerHTML = "first cell";
-      row1Cell2.innerHTML = "second cell";
-      row1Cell3.innerHTML = "third cell";
-      row1Cell4.innerHTML = "fourth cell";
-      row2Cell2.innerHTML = "second cell";
-      row2Cell3.innerHTML = "third cell";
-      row2Cell4.innerHTML = "fourth cell";
-      row3Cell2.innerHTML = "second cell";
-      row3Cell3.innerHTML = "third cell";
-      row3Cell4.innerHTML = "fourth cell";
-      row4Cell2.innerHTML = "second cell";
-      row4Cell3.innerHTML = "third cell";
-      row4Cell4.innerHTML = "fourth cell";
-      row1.appendChild(row1Cell1, row1Cell2, row1Cell3, row1Cell4);
-      row1.appendChild(row1Cell2);
-      row1.appendChild(row1Cell3);
-      row1.appendChild(row1Cell4);
-      row2.appendChild(row2Cell1);
-      row2.appendChild(row2Cell2);
-      row2.appendChild(row2Cell3);
-      row2.appendChild(row2Cell4);
-      row3.appendChild(row3Cell1);
-      row3.appendChild(row3Cell2);
-      row3.appendChild(row3Cell3);
-      row3.appendChild(row3Cell4);
-      row4.appendChild(row4Cell1);
-      row4.appendChild(row4Cell2);
-      row4.appendChild(row4Cell3);
-      row4.appendChild(row4Cell4);
-      body.appendChild(row1);
-      body.appendChild(row2);
-      body.appendChild(row3);
-      body.appendChild(row4);
-      grid.appendChild(body);
+      grid.headers = headers;
+      grid.rows = rows;
       return grid;
     }}
   </Story>

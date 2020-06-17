@@ -4,9 +4,7 @@ $table-head-background-color: $light;
 
 :host {
   display: flex;
-
   background-color: $table-head-background-color;
   border: 1px solid $grey-lighter;
-
   margin-bottom: $gap-size * 1px;
 }

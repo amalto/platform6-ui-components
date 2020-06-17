@@ -1,5 +1,7 @@
 import { enumToArray } from "../utils/enum";
 
+export type Align = "start" | "center" | "end";
+
 export enum Mode {
   danger = 0,
   warning = 1,
