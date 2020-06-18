@@ -38,7 +38,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "bulma": "^0.9.0",
     "@creativebulma/bulma-tooltip": "^1.2.0",
-    "@stencil/core": "1.14.0"
+    "@stencil/core": "1.15.0-2",
+    "choices.js": "9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

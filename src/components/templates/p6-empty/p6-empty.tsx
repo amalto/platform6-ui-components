@@ -6,7 +6,7 @@ import { getL10n, L10n } from "~utils/translations";
   tag: "p6-empty",
   styleUrl: "p6-empty.scss",
   shadow: true,
-  assetsDirs: ["locales"],
+  assetsDir: "locales",
 })
 export class P6Empty {
   @Element() element!: HTMLP6EmptyElement;

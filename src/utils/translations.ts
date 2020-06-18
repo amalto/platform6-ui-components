@@ -2,7 +2,6 @@ import { getAssetPath } from "@stencil/core";
 import { getAppVersion, getItem, setItem } from "~utils/cache";
 
 const defaultLocale = "en";
-const localesAssetDir = "./locales";
 
 const appVersion = getAppVersion();
 
@@ -72,7 +71,7 @@ async function fetchL10n(
 export function getL10n(element: HTMLElement): Promise<L10n> {
   const componentName = element.tagName.toLowerCase();
   const componentLanguage = getClosestLanguage(element);
-  const localesPath = getAssetPath(localesAssetDir);
+  const localesPath = getAssetPath(`./locales`);
 
   return fetchL10n(componentName, componentLanguage, localesPath).catch(() => {
     // eslint-disable-next-line no-console

@@ -201,6 +201,48 @@ export namespace Components {
      */
     value: string | number;
   }
+  interface P6Select {
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     */
+    checkValidity: () => Promise<boolean>;
+    /**
+     * The select is not available for interaction. The value will not be submitted with the form
+     */
+    disabled: boolean;
+    /**
+     * Marks the select as multiple
+     */
+    multiple: boolean;
+    /**
+     * The name of the select
+     */
+    name: string;
+    /**
+     * The value of the placeholder to display on the search
+     */
+    placeholder: string | undefined;
+    /**
+     * Marks the select as required. It can't be submitted without a value
+     */
+    required: boolean;
+    /**
+     * Enable the search on the select
+     */
+    searchEnabled: boolean;
+    /**
+     * Sort the options by alphabetic order
+     */
+    shouldSort: boolean;
+    /**
+     * The size of the component to display
+     */
+    size: Size;
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
+  }
   interface P6Spinner {}
   interface P6Switch {
     /**
@@ -344,6 +386,13 @@ declare global {
     prototype: HTMLP6RadioElement;
     new (): HTMLP6RadioElement;
   };
+  interface HTMLP6SelectElement
+    extends Components.P6Select,
+      HTMLStencilElement {}
+  var HTMLP6SelectElement: {
+    prototype: HTMLP6SelectElement;
+    new (): HTMLP6SelectElement;
+  };
   interface HTMLP6SpinnerElement
     extends Components.P6Spinner,
       HTMLStencilElement {}
@@ -391,6 +440,7 @@ declare global {
     "p6-label": HTMLP6LabelElement;
     "p6-link": HTMLP6LinkElement;
     "p6-radio": HTMLP6RadioElement;
+    "p6-select": HTMLP6SelectElement;
     "p6-spinner": HTMLP6SpinnerElement;
     "p6-switch": HTMLP6SwitchElement;
     "p6-tabs": HTMLP6TabsElement;
@@ -581,6 +631,40 @@ declare namespace LocalJSX {
      */
     value: string | number;
   }
+  interface P6Select {
+    /**
+     * The select is not available for interaction. The value will not be submitted with the form
+     */
+    disabled?: boolean;
+    /**
+     * Marks the select as multiple
+     */
+    multiple?: boolean;
+    /**
+     * The name of the select
+     */
+    name: string;
+    /**
+     * The value of the placeholder to display on the search
+     */
+    placeholder?: string | undefined;
+    /**
+     * Marks the select as required. It can't be submitted without a value
+     */
+    required?: boolean;
+    /**
+     * Enable the search on the select
+     */
+    searchEnabled?: boolean;
+    /**
+     * Sort the options by alphabetic order
+     */
+    shouldSort?: boolean;
+    /**
+     * The size of the component to display
+     */
+    size?: Size;
+  }
   interface P6Spinner {}
   interface P6Switch {
     /**
@@ -655,6 +739,7 @@ declare namespace LocalJSX {
     "p6-label": P6Label;
     "p6-link": P6Link;
     "p6-radio": P6Radio;
+    "p6-select": P6Select;
     "p6-spinner": P6Spinner;
     "p6-switch": P6Switch;
     "p6-tabs": P6Tabs;
@@ -683,6 +768,8 @@ declare module "@stencil/core" {
       "p6-label": LocalJSX.P6Label & JSXBase.HTMLAttributes<HTMLP6LabelElement>;
       "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
       "p6-radio": LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
+      "p6-select": LocalJSX.P6Select &
+        JSXBase.HTMLAttributes<HTMLP6SelectElement>;
       "p6-spinner": LocalJSX.P6Spinner &
         JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
       "p6-switch": LocalJSX.P6Switch &

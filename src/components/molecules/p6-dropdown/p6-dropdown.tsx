@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Listen, State } from "@stencil/core";
+import { toArray } from "~utils/dom";
 import { addDropdownClass } from "./utils";
 
 @Component({
@@ -23,7 +24,7 @@ export class P6Dropdown {
       "is-active": this.isActive,
     };
 
-    const children = Array.from(this.host.children)
+    const children = toArray(this.host.children)
       .filter((c) => c.slot !== "label")
       .map(addDropdownClass)
       .map((c) => c.outerHTML);

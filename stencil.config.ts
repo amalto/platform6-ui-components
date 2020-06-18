@@ -10,6 +10,12 @@ export const config: Config = {
     {
       type: "dist",
       esmLoaderPath: "../loader",
+      copy: [
+        {
+          src: "./components/**/locales/*.i18n*.json",
+          dest: "./locales/",
+        },
+      ],
     },
     {
       type: "docs-readme",
