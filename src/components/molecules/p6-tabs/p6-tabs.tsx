@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Prop } from "@stencil/core";
+import { toArray } from "~utils/dom";
 import { getTabId, isTabValid } from "./utils";
 
 @Component({
@@ -22,7 +23,7 @@ export class P6Tabs {
   };
 
   private getTabs(): HTMLElement[] {
-    return Array.from(this.host.children).filter(isTabValid);
+    return toArray(this.host.children).filter(isTabValid);
   }
 
   private getContent(): JSX.Element {
