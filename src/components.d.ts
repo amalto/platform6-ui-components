@@ -268,6 +268,16 @@ export namespace Components {
      */
     selected: string | undefined;
   }
+  interface P6Tag {
+    /**
+     * Mode
+     */
+    mode: Mode;
+    /**
+     * Size
+     */
+    size: Size;
+  }
   interface P6Textarea {
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -416,6 +426,11 @@ declare global {
     prototype: HTMLP6TabsElement;
     new (): HTMLP6TabsElement;
   };
+  interface HTMLP6TagElement extends Components.P6Tag, HTMLStencilElement {}
+  var HTMLP6TagElement: {
+    prototype: HTMLP6TagElement;
+    new (): HTMLP6TagElement;
+  };
   interface HTMLP6TextareaElement
     extends Components.P6Textarea,
       HTMLStencilElement {}
@@ -448,6 +463,7 @@ declare global {
     "p6-spinner": HTMLP6SpinnerElement;
     "p6-switch": HTMLP6SwitchElement;
     "p6-tabs": HTMLP6TabsElement;
+    "p6-tag": HTMLP6TagElement;
     "p6-textarea": HTMLP6TextareaElement;
     "p6-waiting": HTMLP6WaitingElement;
   }
@@ -694,6 +710,16 @@ declare namespace LocalJSX {
      */
     selected?: string | undefined;
   }
+  interface P6Tag {
+    /**
+     * Mode
+     */
+    mode?: Mode;
+    /**
+     * Size
+     */
+    size?: Size;
+  }
   interface P6Textarea {
     /**
      * the input is not available for interaction. The value will not be submitted with the form
@@ -751,6 +777,7 @@ declare namespace LocalJSX {
     "p6-spinner": P6Spinner;
     "p6-switch": P6Switch;
     "p6-tabs": P6Tabs;
+    "p6-tag": P6Tag;
     "p6-textarea": P6Textarea;
     "p6-waiting": P6Waiting;
   }
@@ -783,6 +810,7 @@ declare module "@stencil/core" {
       "p6-switch": LocalJSX.P6Switch &
         JSXBase.HTMLAttributes<HTMLP6SwitchElement>;
       "p6-tabs": LocalJSX.P6Tabs & JSXBase.HTMLAttributes<HTMLP6TabsElement>;
+      "p6-tag": LocalJSX.P6Tag & JSXBase.HTMLAttributes<HTMLP6TagElement>;
       "p6-textarea": LocalJSX.P6Textarea &
         JSXBase.HTMLAttributes<HTMLP6TextareaElement>;
       "p6-waiting": LocalJSX.P6Waiting &

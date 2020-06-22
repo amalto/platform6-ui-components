@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-tag mode 1`] = `
+<p6-tag mode="warning">
+  <mock:shadow-root>
+    <span class="is-small is-warning tag">
+      <slot></slot>
+    </span>
+  </mock:shadow-root>
+  Warning
+</p6-tag>
+`;
+
+exports[`p6-tag renders 1`] = `
+<p6-tag>
+  <mock:shadow-root>
+    <span class="is-small tag">
+      <slot></slot>
+    </span>
+  </mock:shadow-root>
+  Tag
+</p6-tag>
+`;
+
+exports[`p6-tag size 1`] = `
+<p6-tag size="large">
+  <mock:shadow-root>
+    <span class="is-large tag">
+      <slot></slot>
+    </span>
+  </mock:shadow-root>
+  Large
+</p6-tag>
+`;
