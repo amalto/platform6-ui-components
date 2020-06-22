@@ -24,6 +24,11 @@ export enum Position {
   bottom = 2,
   left = 3,
 }
+export type Direction = "left" | "right";
+
+export type Operation = "minus" | "plus";
+
+export type Order = "asc" | "desc";
 
 export const modes = enumToArray(Mode);
 export const sizes = enumToArray(Size);

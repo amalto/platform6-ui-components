@@ -8,14 +8,6 @@
   padding: 0 0.5em;
   position: relative;
 
-  &:not(:last-child) {
-    width: 100px;
-  }
-
-  &:last-child {
-    flex-grow: 1;
-  }
-
   .grid-cell-context-menu {
     color: $info;
     display: none;
@@ -29,6 +21,14 @@
       }
     }
   }
+}
+
+:host(:not(:last-child)) {
+  width: 100px;
+}
+
+:host(:last-child) {
+  flex-grow: 1;
 }
 
 p6-grid-header {
@@ -50,19 +50,20 @@ p6-grid-header {
       top: -9px;
       z-index: -1;
     }
-    .grid-cell-context-menu:hover {
-      opacity: 1;
-      z-index: 100;
+
+    &:not(:last-child) {
+      border-right: 1px solid $grey-lighter;
+      justify-content: center;
     }
-  }
 
-  :host:not(:last-child) {
-    border-right: 1px solid $grey-lighter;
-    justify-content: center;
-  }
+    &:hover {
+      .grid-cell-context-menu {
+        opacity: 1;
+        z-index: 100;
+      }
+    }
 
-  :host(:hover) {
-    .grid-cell-context-menu {
+    .grid-cell-context-menu:hover {
       opacity: 1;
       z-index: 100;
     }

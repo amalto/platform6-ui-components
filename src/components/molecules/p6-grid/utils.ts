@@ -1,3 +1,4 @@
+import { Order } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 
 const HEADER_DATA_TYPE = "header-cell";
@@ -42,4 +43,8 @@ export function isHeaderCell(element: Element): element is Row {
 
 export function isRowCell(element: Element): element is Row {
   return isValidCell(element, ROW_DATA_TYPE);
+}
+
+export function toggleSort(sort: Order): Order {
+  return sort === "asc" ? "desc" : "asc";
 }
