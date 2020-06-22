@@ -7,8 +7,14 @@ import {
   Prop,
   State,
 } from "@stencil/core";
-import { Align, Direction, Operation, Order } from "~shared/types";
-import { toggleSort } from "./utils";
+import { Align, Direction, Operation } from "~shared/types";
+import {
+  getCellLabelByHeaderId,
+  getRowCellByHeaderId,
+  HeaderCell,
+  RowCell,
+  toggleSort,
+} from "./utils";
 
 export declare type EventCallBack = (event: MouseEvent) => void;
 
@@ -16,24 +22,6 @@ const MIN_WIDTH = 75;
 const DEFAULT_WIDTH = MIN_WIDTH;
 const INC_WIDTH = 10;
 const DEFAULT_COL = "col-1";
-
-export interface Cell {
-  align?: Align;
-  color?: string;
-  label: string;
-  width?: number;
-}
-
-export interface HeaderCell extends Cell {
-  id: string;
-  hidden?: boolean;
-  movable?: string;
-  sort?: Order;
-}
-
-export interface RowCell extends Cell {
-  headerId: string;
-}
 
 @Component({
   tag: "p6-grid",
@@ -158,24 +146,32 @@ export class P6Tables {
       const { stateHeaders } = this;
       const updatedHeaders: HeaderCell[] = [];
       const idx: number = stateHeaders.findIndex((header) => header.id === id);
+      const isLeft: boolean = direction === "left";
+      const isLast: boolean = idx === stateHeaders.length - 1;
+      const isFirst: boolean = idx === 0;
+      const hasEnoughtItems: boolean = stateHeaders.length > 1;
+      const canMoveLeft: boolean = !isFirst || !isLeft;
+      const canMoveRight: boolean = !isLast || isLeft;
 
-      if (
-        (idx === 0 && direction === "left") ||
-        (idx === stateHeaders.length && direction === "right")
-      ) {
-        this.updateGridCallback(stateHeaders, this.rows);
-      } else {
+      if (hasEnoughtItems && canMoveLeft && canMoveRight) {
         for (let i = 0; i < stateHeaders.length; i += 1) {
-          if (i !== idx) {
-            const shouldAddIdx: boolean =
-              direction === "left" ? i === idx - 1 : idx === i - 1;
-
-            if (shouldAddIdx) {
+          if (isLeft) {
+            if (i === idx) {
+              updatedHeaders.push(stateHeaders[idx - 1]);
+            } else if (i !== idx - 1) {
+              updatedHeaders.push(stateHeaders[i]);
+            } else {
               updatedHeaders.push(stateHeaders[idx]);
             }
+          } else if (i === idx) {
+            updatedHeaders.push(stateHeaders[idx + 1]);
+          } else if (idx !== i - 1) {
             updatedHeaders.push(stateHeaders[i]);
+          } else {
+            updatedHeaders.push(stateHeaders[idx]);
           }
         }
+        this.stateHeaders = updatedHeaders;
       }
     }
   }
@@ -245,9 +241,11 @@ export class P6Tables {
   }
 
   private renderHeader(): HTMLP6GridHeaderElement {
+    const { stateHeaders } = this;
+    const lastIndex: number = stateHeaders.length;
     return (
       <p6-grid-header>
-        {this.stateHeaders.map((header) => (
+        {stateHeaders.map((header, idx) => (
           <p6-grid-cell
             // eslint-disable-next-line react/jsx-no-bind
             onAlignLeft={this.alignLeft.bind(this)}
@@ -260,13 +258,15 @@ export class P6Tables {
             // eslint-disable-next-line react/jsx-no-bind
             onHide={this.hide.bind(this)}
             // eslint-disable-next-line react/jsx-no-bind
-            onMinus={this.minus.bind(this)}
+            onMinus={lastIndex === idx ? undefined : this.minus.bind(this)}
             // eslint-disable-next-line react/jsx-no-bind
-            onMoveLeft={this.moveLeft.bind(this)}
+            onMoveLeft={idx === 0 ? undefined : this.moveLeft.bind(this)}
             // eslint-disable-next-line react/jsx-no-bind
-            onMoveRight={this.moveRight.bind(this)}
+            onMoveRight={
+              lastIndex === idx ? undefined : this.moveRight.bind(this)
+            }
             // eslint-disable-next-line react/jsx-no-bind
-            onPlus={this.plus.bind(this)}
+            onPlus={lastIndex === idx ? undefined : this.plus.bind(this)}
             // eslint-disable-next-line react/jsx-no-bind
             onSort={this.sort.bind(this)}
             // eslint-disable-next-line react/jsx-no-bind
@@ -297,53 +297,51 @@ export class P6Tables {
   private renderRow = (
     cells: RowCell[],
     orderedHeaders: string[]
-  ): HTMLP6GridCellElement[] => {
+  ): HTMLP6GridRowElement => {
     const orderedCells: RowCell[] = [];
 
     orderedHeaders.forEach((id) => {
       orderedCells.push(cells.find((cell) => cell.headerId === id) as RowCell);
     });
 
-    return <p6-grid-row>{cells.map(this.renderRowCell)}</p6-grid-row>;
+    return <p6-grid-row>{orderedCells.map(this.renderRowCell)}</p6-grid-row>;
   };
 
-  private renderRows = (): HTMLP6GridRowElement[][] | null => {
-    const { stateHeaders } = this;
+  private renderRows = (): HTMLP6GridBodyElement | null => {
+    const { rows, stateHeaders } = this;
 
-    if (this.rows.length === 0) {
+    if (rows.length === 0) {
       return null;
     }
 
     const orderedHeaders: string[] = stateHeaders.map((header) => header.id);
     const sortedCellds: RowCell[][] = this.sortRows();
 
-    console.info("sortedCellds => ", sortedCellds);
+    // console.info("sortedCellds => ", sortedCellds);
+    const rowsElements: HTMLP6GridRowElement[] = sortedCellds.map((row) => {
+      return this.renderRow(row, orderedHeaders);
+    });
 
-    return (
-      <p6-grid-body>
-        {sortedCellds.map((row) => {
-          return this.renderRow(row, orderedHeaders);
-        })}
-      </p6-grid-body>
-    );
+    return <p6-grid-body>{rowsElements}</p6-grid-body>;
   };
 
   private sortRows(): RowCell[][] {
-    const { sortedBy } = this;
+    const { sortedBy, stateRows } = this;
     const header: HeaderCell = this.getHeaderById(sortedBy) as HeaderCell;
 
-    return this.stateRows.sort((a, b) => {
-      const cellA: RowCell = a.find(
-        (cell) => cell.headerId === header.id
-      ) as RowCell;
-      const cellB: RowCell = b.find(
-        (cell) => cell.headerId === header.id
-      ) as RowCell;
-      const vA: string = cellA.headerId === sortedBy ? cellA.label : "";
-      const vB: string = cellB.headerId === sortedBy ? cellB.label : "";
-
-      console.info("a => ", a);
-      console.info("b => ", b);
+    return stateRows.sort((a, b) => {
+      const cellA: RowCell = getRowCellByHeaderId(sortedBy, a) as RowCell;
+      const cellB: RowCell = getRowCellByHeaderId(sortedBy, b) as RowCell;
+      const vA: string = getCellLabelByHeaderId(
+        cellA.headerId,
+        sortedBy,
+        cellA.label
+      );
+      const vB: string = getCellLabelByHeaderId(
+        cellB.headerId,
+        sortedBy,
+        cellB.label
+      );
 
       return header.sort === "desc"
         ? vB.localeCompare(vA)

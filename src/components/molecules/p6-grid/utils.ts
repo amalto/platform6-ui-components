@@ -1,4 +1,4 @@
-import { Order } from "~shared/types";
+import { Align, Order } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 
 const HEADER_DATA_TYPE = "header-cell";
@@ -7,9 +7,29 @@ const ROW_DATA_TYPE = "row-cell";
 const DATA_ID = "data-id";
 const DATA_TYPE = "data-type";
 
+const EMPTY_LABEL = "-";
+
 export interface Row extends HTMLElement {
   "data-id": string;
   "data-type": string;
+}
+
+export interface Cell {
+  align?: Align;
+  color?: string;
+  label: string;
+  width?: number;
+}
+
+export interface HeaderCell extends Cell {
+  id: string;
+  hidden?: boolean;
+  movable?: string;
+  sort?: Order;
+}
+
+export interface RowCell extends Cell {
+  headerId: string;
 }
 
 export function isAttrInElement(element: Element, attrName: string): boolean {
@@ -43,6 +63,22 @@ export function isHeaderCell(element: Element): element is Row {
 
 export function isRowCell(element: Element): element is Row {
   return isValidCell(element, ROW_DATA_TYPE);
+}
+
+export function getRowCellByHeaderId(
+  headerId: string,
+  cells: RowCell[]
+): RowCell | undefined {
+  return cells.find((cell) => cell.headerId === headerId);
+}
+
+export function getCellLabelByHeaderId(
+  cellId: string,
+  headerId: string,
+  label: string
+): string {
+  const calculatedLabel: string = isEmpty(label) ? EMPTY_LABEL : label;
+  return cellId === headerId ? calculatedLabel : EMPTY_LABEL;
 }
 
 export function toggleSort(sort: Order): Order {
