@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-select disabled 1`] = `
+<p6-select aria-disabled="true" class="is-small" disabled="">
+  <!---->
+  <select disabled="" style="display: none;">
+    <option>
+      value
+    </option>
+  </select>
+  <select class="is-danger" disabled=""></select>
+</p6-select>
+`;
+
+exports[`p6-select multiple 1`] = `
+<p6-select class="is-small" multiple="">
+  <!---->
+  <select disabled="" multiple="" style="display: none;">
+    <option>
+      value
+    </option>
+  </select>
+  <select class="is-danger" multiple=""></select>
+</p6-select>
+`;
+
+exports[`p6-select renders 1`] = `
+<p6-select class="is-small">
+  <!---->
+  <select disabled="" style="display: none;">
+    <option>
+      value
+    </option>
+  </select>
+  <select class="is-danger"></select>
+</p6-select>
+`;
