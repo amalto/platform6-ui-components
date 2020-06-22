@@ -12,7 +12,15 @@ import {
   faTrashAlt,
   IconName,
 } from "@fortawesome/free-solid-svg-icons";
-import { Component, Element, h, Host, Prop } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+} from "@stencil/core";
 import { Align } from "~shared/types";
 import { isNumber } from "~utils/attribute";
 
@@ -29,7 +37,7 @@ library.add(
   faPalette
 );
 
-export declare type EventCallBack = (event: MouseEvent) => void;
+export declare type CellHeaderAction = (id: string) => void;
 
 @Component({
   tag: "p6-grid-cell",
@@ -47,22 +55,22 @@ export class P6GridCell {
   /**
    * Text align to the left
    */
-  @Prop() alignLeft: EventCallBack = () => {};
+  @Event() alignLeft: EventEmitter<string> | undefined;
 
   /**
    * Text align to the center
    */
-  @Prop() alignCenter: EventCallBack = () => {};
+  @Event() alignCenter: EventEmitter<string> | undefined;
 
   /**
    * Text align to the right
    */
-  @Prop() alignRight: EventCallBack = () => {};
+  @Event() alignRight: EventEmitter<string> | undefined;
 
   /**
    * Click callback
    */
-  @Prop() clickCallback: EventCallBack | undefined;
+  @Prop() clickCallback: CellHeaderAction | undefined;
 
   /**
    * Cell text color
@@ -72,42 +80,47 @@ export class P6GridCell {
   /**
    * Double click callback
    */
-  @Prop() dbleClickCallback: EventCallBack | undefined;
+  @Prop() dbleClickCallback: CellHeaderAction | undefined;
+
+  /**
+   * Header id
+   */
+  @Prop() headerId!: string;
 
   /**
    * Hide column
    */
-  @Prop() hide: EventCallBack = () => {};
+  @Event() hide: EventEmitter<string> | undefined;
 
   /**
    * Reduce column width
    */
-  @Prop() minus: EventCallBack = () => {};
+  @Event() minus: EventEmitter<string> | undefined;
 
   /**
    * Move the column to the left
    */
-  @Prop() moveLeft: EventCallBack = () => {};
+  @Event() moveLeft: EventEmitter<string> | undefined;
 
   /**
    * Move the column to the right
    */
-  @Prop() moveRight: EventCallBack = () => {};
+  @Event() moveRight: EventEmitter<string> | undefined;
 
   /**
    * Raise column width
    */
-  @Prop() plus: EventCallBack = () => {};
+  @Event() plus: EventEmitter<string> | undefined;
 
   /**
-   * Toggle colorpicker
+   * Set color
    */
-  @Prop() toggleColor: EventCallBack = () => {};
+  @Event() setColor: EventEmitter<string> | undefined;
 
   /**
    * Sort
    */
-  @Prop() sort: EventCallBack = () => {};
+  @Event() sort: EventEmitter<string> | undefined;
 
   /**
    * Cell width
@@ -121,14 +134,76 @@ export class P6GridCell {
   }
 
   private getAlignClass(align: Align): string {
-    return this.isCurrentAlign(align) ? "has-text-info" : "has-text-dark";
+    return this.isCurrentAlign(align) ? "has-text-dark" : "has-text-info";
+  }
+
+  private alignLeftHandler(): void {
+    if (this.alignLeft) {
+      this.alignLeft.emit(this.headerId);
+    }
+  }
+
+  private alignCenterHandler(): void {
+    if (this.alignCenter) {
+      this.alignCenter.emit(this.headerId);
+    }
+  }
+
+  private alignRightHandler(): void {
+    if (this.alignRight) {
+      this.alignRight.emit(this.headerId);
+    }
+  }
+
+  private hideHandler(): void {
+    if (this.hide) {
+      this.hide.emit(this.headerId);
+    }
+  }
+
+  private minusHandler(): void {
+    if (this.minus) {
+      this.minus.emit(this.headerId);
+    }
+  }
+
+  private moveLeftHandler(): void {
+    if (this.moveLeft) {
+      this.moveLeft.emit(this.headerId);
+    }
+  }
+
+  private moveRightHandler(): void {
+    if (this.moveRight) {
+      this.moveRight.emit(this.headerId);
+    }
+  }
+
+  private plusHandler(): void {
+    if (this.plus) {
+      this.plus.emit(this.headerId);
+    }
+  }
+
+  private sortHandler(): void {
+    if (this.sort) {
+      this.sort.emit(this.headerId);
+    }
+  }
+
+  private setColorHandler(): void {
+    if (this.setColor) {
+      this.setColor.emit(this.headerId);
+    }
   }
 
   private renderAlignIcon(
     align: Align,
     iconName: IconName,
-    onClick: EventCallBack
+    onClick: () => void
   ): JSX.Element {
+    // FIXME: The result of the getAlignClass is correct but it doesn't dislay the right class
+    // need to investigate further
     return (
       <div class={this.getAlignClass(align)}>
         <p6-icon name={iconName} onClick={onClick} />
@@ -136,39 +211,56 @@ export class P6GridCell {
     );
   }
 
-  private renderContextMenu(): JSX.Element {
+  private renderIcon = (
+    iconName: IconName,
+    onClick: () => void
+  ): JSX.Element => {
+    return <p6-icon name={iconName} onClick={onClick} />;
+  };
+
+  private renderContextMenu = (): JSX.Element => {
     return (
       <div class="grid-cell-context-menu">
         <div>
-          <p6-icon name="chevron-left" onClick={this.moveLeft} />
-          <p6-icon name="sort" onClick={this.sort} />
-          <p6-icon name="chevron-right" onClick={this.moveRight} />
+          {this.renderIcon("chevron-left", this.moveLeftHandler.bind(this))}
+          {this.renderIcon("sort", this.sortHandler.bind(this))}
+          {this.renderIcon("chevron-right", this.moveRightHandler.bind(this))}
         </div>
         <div>
-          <p6-icon name="trash-alt" onClick={this.hide} />
-          <p6-icon name="minus" onClick={this.minus} />
-          <p6-icon name="plus" onClick={this.plus} />
+          {this.renderIcon("trash-alt", this.hideHandler.bind(this))}
+          {this.renderIcon("minus", this.minusHandler.bind(this))}
+          {this.renderIcon("plus", this.plusHandler.bind(this))}
         </div>
         <div>
-          {this.renderAlignIcon("start", "align-left", this.alignLeft)}
-          {this.renderAlignIcon("center", "align-center", this.alignCenter)}
-          {this.renderAlignIcon("end", "align-right", this.alignRight)}
+          {this.renderAlignIcon(
+            "start",
+            "align-left",
+            this.alignLeftHandler.bind(this)
+          )}
+          {this.renderAlignIcon(
+            "center",
+            "align-center",
+            this.alignCenterHandler.bind(this)
+          )}
+          {this.renderAlignIcon(
+            "end",
+            "align-right",
+            this.alignRightHandler.bind(this)
+          )}
         </div>
-        <div>
-          <p6-icon name="palette" onClick={this.toggleColor} />
-        </div>
+        <div>{this.renderIcon("palette", this.setColorHandler.bind(this))}</div>
       </div>
     );
-  }
+  };
 
   componentWillLoad(): void {
     const { clickCallback, dbleClickCallback, host } = this;
 
     if (clickCallback) {
-      host.addEventListener("click", (event) => {
+      host.addEventListener("click", () => {
         if (!this.clickTimeout) {
           this.clickTimeout = setTimeout(() => {
-            clickCallback(event);
+            clickCallback(this.headerId);
             clearTimeout(this.clickTimeout as NodeJS.Timeout);
           }, 500);
         }
@@ -176,8 +268,8 @@ export class P6GridCell {
     }
 
     if (dbleClickCallback) {
-      host.addEventListener("dblclick", (event) => {
-        dbleClickCallback(event);
+      host.addEventListener("dblclick", () => {
+        dbleClickCallback(this.headerId);
       });
     }
   }
@@ -187,7 +279,7 @@ export class P6GridCell {
     const styles = {
       color,
       justifyContent: align,
-      width: `${isNumber(width) ? width : `${width}px`}`,
+      width: `${!isNumber(width) ? width : `${width}px`}`,
     };
 
     return (

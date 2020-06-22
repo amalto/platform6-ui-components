@@ -1,29 +1,34 @@
 # p6-grid-cell
 
-
-
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property            | Attribute | Description                  | Type                                         | Default     |
-| ------------------- | --------- | ---------------------------- | -------------------------------------------- | ----------- |
-| `align`             | `align`   | Cell alignment               | `"center" \| "end" \| "start" \| undefined`  | `undefined` |
-| `alignCenter`       | --        | Text align to the center     | `(event: MouseEvent) => void`                | `() => {}`  |
-| `alignLeft`         | --        | Text align to the left       | `(event: MouseEvent) => void`                | `() => {}`  |
-| `alignRight`        | --        | Text align to the right      | `(event: MouseEvent) => void`                | `() => {}`  |
-| `clickCallback`     | --        | Click callback               | `((event: MouseEvent) => void) \| undefined` | `undefined` |
-| `color`             | `color`   | Cell text color              | `string \| undefined`                        | `undefined` |
-| `dbleClickCallback` | --        | Double click callback        | `((event: MouseEvent) => void) \| undefined` | `undefined` |
-| `hide`              | --        | Hide column                  | `(event: MouseEvent) => void`                | `() => {}`  |
-| `minus`             | --        | Reduce column width          | `(event: MouseEvent) => void`                | `() => {}`  |
-| `moveLeft`          | --        | Move the column to the left  | `(event: MouseEvent) => void`                | `() => {}`  |
-| `moveRight`         | --        | Move the column to the right | `(event: MouseEvent) => void`                | `() => {}`  |
-| `plus`              | --        | Raise column width           | `(event: MouseEvent) => void`                | `() => {}`  |
-| `sort`              | --        | Sort                         | `(event: MouseEvent) => void`                | `() => {}`  |
-| `toggleColor`       | --        | Toggle colorpicker           | `(event: MouseEvent) => void`                | `() => {}`  |
-| `width`             | `width`   | Cell width                   | `number \| string`                           | `100`       |
+| Property                | Attribute   | Description           | Type                                        | Default     |
+| ----------------------- | ----------- | --------------------- | ------------------------------------------- | ----------- |
+| `align`                 | `align`     | Cell alignment        | `"center" \| "end" \| "start" \| undefined` | `undefined` |
+| `clickCallback`         | --          | Click callback        | `((id: string) => void) \| undefined`       | `undefined` |
+| `color`                 | `color`     | Cell text color       | `string \| undefined`                       | `undefined` |
+| `dbleClickCallback`     | --          | Double click callback | `((id: string) => void) \| undefined`       | `undefined` |
+| `headerId` _(required)_ | `header-id` | Header id             | `string`                                    | `undefined` |
+| `width`                 | `width`     | Cell width            | `number \| string`                          | `100`       |
+
+
+## Events
+
+| Event         | Description                  | Type               |
+| ------------- | ---------------------------- | ------------------ |
+| `alignCenter` | Text align to the center     | `CustomEvent<any>` |
+| `alignLeft`   | Text align to the left       | `CustomEvent<any>` |
+| `alignRight`  | Text align to the right      | `CustomEvent<any>` |
+| `hide`        | Hide column                  | `CustomEvent<any>` |
+| `minus`       | Reduce column width          | `CustomEvent<any>` |
+| `moveLeft`    | Move the column to the left  | `CustomEvent<any>` |
+| `moveRight`   | Move the column to the right | `CustomEvent<any>` |
+| `plus`        | Raise column width           | `CustomEvent<any>` |
+| `setColor`    | Set color                    | `CustomEvent<any>` |
+| `sort`        | Sort                         | `CustomEvent<any>` |
 
 
 ## Dependencies

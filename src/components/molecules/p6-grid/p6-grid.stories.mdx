@@ -15,30 +15,48 @@ import readme from "./readme.md";
 <Preview>
   <Story name="Default" height="300px">
     {() => {
-      const headers = [
-        {color: "blue", id: "col-1", label: "First", width: 150},
-        {id: "col-2", label: "Second", width: 100},
-        {id: "col-3", label: "Third", width: 100},
-        {id: "col-4", label: "Fourth", width: 100},
+      let headers = [
+        { color: "blue", id: "col-1", label: "First", width: 150 },
+        { id: "col-2", label: "Second", width: 100 },
+        { id: "col-3", label: "Third", width: 100 },
+        { id: "col-4", label: "Fourth", width: 100 },
       ];
-      const rows = [
+      let rows = [
         [
-          {headerId: "col-2", label: "second cell"},
-          {align: "center", color: "blue", headerId: "col-1", label: "first cell", width: 150},
-          {headerId: "col-3", label: "third cell"},
-          {headerId: "col-4", label: "fourth cell"},
+          { headerId: "col-2", label: "1 second cell" },
+          {
+            align: "center",
+            color: "blue",
+            headerId: "col-1",
+            label: "1 first cell",
+            width: 150,
+          },
+          { headerId: "col-3", label: "1 third cell" },
+          { headerId: "col-4", label: "1 fourth cell" },
         ],
         [
-          {headerId: "col-2", label: "second cell"},
-          {headerId: "col-3", label: "third cell"},
-          {align: "center", color: "blue", headerId: "col-1", label: "first cell", width: 150},
-          {headerId: "col-4", label: "fourth cell"},
+          { headerId: "col-2", label: "2 second cell" },
+          { headerId: "col-3", label: "2 third cell" },
+          {
+            align: "center",
+            color: "blue",
+            headerId: "col-1",
+            label: "2 first cell",
+            width: 150,
+          },
+          { headerId: "col-4", label: "2 fourth cell" },
         ],
         [
-          {headerId: "col-2", label: "second cell"},
-          {headerId: "col-3", label: "third cell"},
-          {headerId: "col-4", label: "fourth cell"},
-          {align: "center", color: "blue", headerId: "col-1", label: "first cell", width: 150},
+          { headerId: "col-2", label: "3 second cell" },
+          { headerId: "col-3", label: "3 third cell" },
+          { headerId: "col-4", label: "3 fourth cell" },
+          {
+            align: "center",
+            color: "blue",
+            headerId: "col-1",
+            label: "3 first cell",
+            width: 150,
+          },
         ],
       ];
       const grid = document.createElement("p6-grid");
@@ -46,6 +64,10 @@ import readme from "./readme.md";
       grid.id = "default-grid";
       grid.headers = headers;
       grid.rows = rows;
+      grid.updateGridCallback = (updatedHeaders, updatedRows) => {
+        headers = updatedHeaders;
+        rows = updatedRows;
+      }
       return grid;
     }}
   </Story>
