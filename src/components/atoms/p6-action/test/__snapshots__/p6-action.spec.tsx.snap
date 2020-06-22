@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-action disabled has a "disabled" attribute on the button when disabled is true 1`] = `
+<p6-action aria-disabled="true" disabled="true">
+  <mock:shadow-root>
+    <button class="is-small" disabled="" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action disabled has no "disabled" attribute on the button when disabled is false 1`] = `
+<p6-action disabled="false">
+  <mock:shadow-root>
+    <button class="is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode does not add class when mode is default 1`] = `
+<p6-action mode="default">
+  <mock:shadow-root>
+    <button class="is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode does not add class when mode is undefined 1`] = `
+<p6-action mode="undefined">
+  <mock:shadow-root>
+    <button class="is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-danger" when mode is "%s" 1`] = `
+<p6-action mode="danger">
+  <mock:shadow-root>
+    <button class="is-danger is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-info" when mode is "%s" 1`] = `
+<p6-action mode="info">
+  <mock:shadow-root>
+    <button class="is-info is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-primary" when mode is "%s" 1`] = `
+<p6-action mode="primary">
+  <mock:shadow-root>
+    <button class="is-primary is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-success" when mode is "%s" 1`] = `
+<p6-action mode="success">
+  <mock:shadow-root>
+    <button class="is-small is-success" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-warning" when mode is "%s" 1`] = `
+<p6-action mode="warning">
+  <mock:shadow-root>
+    <button class="is-small is-warning" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size does not add class when size is default 1`] = `
+<p6-action size="default">
+  <mock:shadow-root>
+    <button type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size has the class "is-large" when size is "%s" 1`] = `
+<p6-action size="large">
+  <mock:shadow-root>
+    <button class="is-large" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size has the class "is-medium" when size is "%s" 1`] = `
+<p6-action size="medium">
+  <mock:shadow-root>
+    <button class="is-medium" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size has the class "is-normal" when size is "%s" 1`] = `
+<p6-action size="normal">
+  <mock:shadow-root>
+    <button class="is-normal" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size has the class "is-small" when size is "%s" 1`] = `
+<p6-action size="small">
+  <mock:shadow-root>
+    <button class="is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action waiting has a "is-loading" class when waiting is true 1`] = `
+<p6-action waiting="true">
+  <mock:shadow-root>
+    <button class="is-loading is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action waiting has no "is-loading" class when waiting is false 1`] = `
+<p6-action waiting="false">
+  <mock:shadow-root>
+    <button class="is-small" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;

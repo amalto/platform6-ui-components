@@ -10,15 +10,7 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action mode=${mode}></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action mode=${mode}>
-          <mock:shadow-root>
-            <button class="button is-text is-inverted is-${mode}" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
 
     it("does not add class when mode is default", async () => {
@@ -26,15 +18,7 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action mode="default"></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action mode="default">
-          <mock:shadow-root>
-            <button class="button is-text is-inverted" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
 
     it("does not add class when mode is undefined", async () => {
@@ -42,15 +26,7 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action mode=${undefined}></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action mode=${undefined}>
-          <mock:shadow-root>
-            <button class="button is-text is-inverted" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -60,30 +36,14 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action waiting="true"></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action waiting="true">
-          <mock:shadow-root>
-            <button class="button is-text is-inverted is-loading" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
     it('has no "is-loading" class when waiting is false', async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action waiting="false"></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action waiting="false">
-          <mock:shadow-root>
-            <button class="button is-text is-inverted" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -93,30 +53,14 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action disabled="true"></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action disabled="true">
-          <mock:shadow-root>
-            <button class="button is-text is-inverted" disabled type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
     it('has no "disabled" attribute on the button when disabled is false', async () => {
       const page = await newSpecPage({
         components: [P6Action],
         html: `<p6-action disabled="false"></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action disabled="false">
-          <mock:shadow-root>
-            <button class="button is-text is-inverted" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 
@@ -128,15 +72,7 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action size=${size}></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action size=${size}>
-          <mock:shadow-root>
-            <button class="button is-text is-inverted is-${size}" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
 
     it("does not add class when size is default", async () => {
@@ -144,15 +80,7 @@ describe("p6-action", () => {
         components: [P6Action],
         html: `<p6-action size="default"></p6-action>`,
       });
-      expect(page.root).toEqualHtml(`
-        <p6-action size="default">
-          <mock:shadow-root>
-            <button class="button is-text is-inverted" type="button">
-              <slot></slot>
-            </button>
-          </mock:shadow-root>
-        </p6-action>
-      `);
+      expect(page.root).toMatchSnapshot();
     });
   });
 });

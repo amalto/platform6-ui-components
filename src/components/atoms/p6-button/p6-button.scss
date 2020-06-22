@@ -5,5 +5,44 @@
 
   button {
     width: 100%;
+
+    ::slotted(.icon),
+    ::slotted(.icon.is-small),
+    ::slotted(.icon.is-medium),
+    ::slotted(.icon.is-large),
+    ::slotted(p6-icon),
+    ::slotted(p6-icon.is-small),
+    ::slotted(p6-icon.is-medium),
+    ::slotted(p6-icon.is-large) {
+      height: 1.5em;
+      width: 1.5em;
+    }
+
+    ::slotted(.icon:first-child:not(:last-child)),
+    ::slotted(p6-icon:first-child:not(:last-child)) {
+      @include ltr-property(
+        "margin",
+        calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}),
+        false
+      );
+      @include ltr-property("margin", $button-padding-horizontal / 4);
+    }
+    ::slotted(.icon:last-child:not(:first-child)),
+    ::slotted(p6-icon:last-child:not(:first-child)) {
+      @include ltr-property("margin", $button-padding-horizontal / 4, false);
+      @include ltr-property(
+        "margin",
+        calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      );
+    }
+    ::slotted(.icon:first-child:last-child),
+    ::slotted(p6-icon:first-child:last-child) {
+      margin-left: calc(
+        #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
+      );
+      margin-right: calc(
+        #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
+      );
+    }
   }
 }
