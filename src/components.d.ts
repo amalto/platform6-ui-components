@@ -223,6 +223,10 @@ export namespace Components {
      */
     placeholder: string | undefined;
     /**
+     * Marks the select as read only.
+     */
+    readOnly: boolean;
+    /**
      * Marks the select as required. It can't be submitted without a value
      */
     required: boolean;
@@ -648,6 +652,10 @@ declare namespace LocalJSX {
      * The value of the placeholder to display on the search
      */
     placeholder?: string | undefined;
+    /**
+     * Marks the select as read only.
+     */
+    readOnly?: boolean;
     /**
      * Marks the select as required. It can't be submitted without a value
      */

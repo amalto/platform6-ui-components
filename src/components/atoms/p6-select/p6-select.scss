@@ -7,13 +7,14 @@ $choices-bg-color-dropdown: $input-background-color;
 $choices-text-color: $input-color;
 $choices-keyline-color: $input-border-color;
 $choices-primary-color: $grey-lightest;
-@import "~choices.js/src/styles/choices.scss";
 
-$choices-border-color: #e8ebed !default;
-$choices-border-width: 2px !default;
-$choices-multiple-item-bg-color: #e8ebed !default;
-$choices-multiple-item-text-color: #555 !default;
-$choices-dropdown-item-highlighted-bg-color: #dce7fe !default;
+$p6-select-border-color: #e8ebed !default;
+$p6-select-border-width: 2px !default;
+$p6-select-multiple-item-bg-color: #e8ebed !default;
+$p6-select-multiple-item-text-color: #555 !default;
+$p6-select-dropdown-item-highlighted-bg-color: #dce7fe !default;
+
+@import "~choices.js/src/styles/choices";
 
 @mixin cross($color) {
   text-indent: -9999px;
@@ -107,9 +108,18 @@ p6-select {
 
   &[required]:not([required="false"]),
   &[disabled]:not([disabled="false"]) {
-    .#{$choices-selector}[data-type*="select-one"]
+    .#{$choices-selector}[data-type*="select-one"] {
       .p6__#{$choices-selector}__button {
-      display: none;
+        display: none;
+      }
+    }
+  }
+
+  &[disabled]:not([disabled="false"]) {
+    .#{$choices-selector}[data-type="select-multiple"] {
+      .p6__#{$choices-selector}__button {
+        display: none;
+      }
     }
   }
 
@@ -168,8 +178,8 @@ p6-select {
 
       .#{$choices-selector}__item {
         padding: 3px 5px;
-        background-color: $choices-multiple-item-bg-color;
-        color: $choices-multiple-item-text-color;
+        background-color: $p6-select-multiple-item-bg-color;
+        color: $p6-select-multiple-item-text-color;
         border: none;
 
         .p6__#{$choices-selector}__button {
@@ -187,7 +197,7 @@ p6-select {
   .#{$choices-selector}__inner {
     min-height: initial;
     height: 2.5em;
-    border: $choices-border-width solid $choices-border-color;
+    border: $p6-select-border-width solid $p6-select-border-color;
     border-radius: 2px;
   }
 
@@ -201,7 +211,7 @@ p6-select {
 
       &--selectable {
         &.is-highlighted {
-          background-color: $choices-dropdown-item-highlighted-bg-color;
+          background-color: $p6-select-dropdown-item-highlighted-bg-color;
         }
       }
     }
@@ -211,7 +221,7 @@ p6-select {
     margin: 0.25em;
 
     &.is-highlighted {
-      background-color: $choices-dropdown-item-highlighted-bg-color;
+      background-color: $p6-select-dropdown-item-highlighted-bg-color;
       border: none;
     }
   }

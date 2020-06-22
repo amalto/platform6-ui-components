@@ -47,6 +47,11 @@ export class P6Select implements ComponentInterface {
   @Prop() public required = false;
 
   /**
+   * Marks the select as read only.
+   */
+  @Prop({ attribute: "readOnly" }) public readOnly = false;
+
+  /**
    * The value of the placeholder to display on the search
    */
   @Prop() public placeholder: string | undefined;
@@ -138,11 +143,19 @@ export class P6Select implements ComponentInterface {
   }
 
   render(): JSX.Element {
-    const attributes = {
-      name: this.name,
-      disabled: this.disabled,
+    const visibleSelectAttributes = {
+      name: this.readOnly ? "" : this.name,
+      disabled: this.disabled || this.readOnly,
       multiple: this.multiple,
       required: this.required,
+      class: { "is-danger": true },
+    };
+
+    const hiddenSelectAttributes = {
+      name: this.readOnly ? this.name : "",
+      disabled: !this.readOnly,
+      multiple: this.multiple,
+      style: { display: "none" },
     };
 
     return (
@@ -154,15 +167,14 @@ export class P6Select implements ComponentInterface {
         }}
         required={this.required}
       >
-        <select disabled style={{ display: "none" }}>
+        <select {...hiddenSelectAttributes}>
           <slot />
         </select>
         <select
-          class={{ "is-danger": true }}
           ref={(input): void => {
             this.nativeSelect = input;
           }}
-          {...attributes}
+          {...visibleSelectAttributes}
         />
       </Host>
     );
