@@ -27,10 +27,6 @@
   width: 100px;
 }
 
-:host(:last-child) {
-  flex-grow: 1;
-}
-
 p6-grid-header {
   :host {
     font-weight: $weight-bold !important;
