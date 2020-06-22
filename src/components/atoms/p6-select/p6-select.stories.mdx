@@ -50,6 +50,7 @@ import readme from "./readme.md";
     const kRequired = boolean("Required", true);
     const kShouldSort = boolean("Should sort", false);
     const kDisabled = boolean("Disabled", false);
+    const kReadOnly = boolean("Read only", false);
     const kPlaceholder = text("Placeholder", "This is a placeholder");
     const formContent = `
       <p6-select
@@ -60,6 +61,7 @@ import readme from "./readme.md";
         searchEnabled="${kSearchEnabled}"
         shouldSort="${kShouldSort}"
         required="${kRequired}"
+        readOnly="${kReadOnly}"
         placeholder="${kPlaceholder}"
         class="is-${kColors}"
         size="${kSizes}"
