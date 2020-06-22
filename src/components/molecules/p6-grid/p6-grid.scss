@@ -1,6 +1,28 @@
 @import "bulma/sass/elements/button";
+@import "bulma/sass/elements/tag";
 
 :host {
   display: flex;
   flex-direction: column;
+
+  .btn-bar{
+    padding-bottom: $gap-size * 1px;
+    width: 100%;
+
+    p6-button {
+      margin-right: $gap-size * 1px;
+    }
+  }
+
+  .hidden-column-panel {
+    border: 1px solid $grey-lighter;
+    padding: $gap-size * 1px;
+    margin-bottom: $gap-size * 1px;
+
+    .tag {
+      border-radius: 0;
+      cursor: pointer;
+      margin-right: $gap-size * 1px;
+    }
+  }
 }

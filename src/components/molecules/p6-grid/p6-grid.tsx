@@ -1,3 +1,5 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEraser, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import {
   Component,
   Element,
@@ -8,6 +10,7 @@ import {
   State,
 } from "@stencil/core";
 import { Align, Direction, Operation } from "~shared/types";
+import { getL10n, L10n } from "~utils/translations";
 import {
   getCellLabelByHeaderId,
   getRowCellByHeaderId,
@@ -18,6 +21,8 @@ import {
 
 export declare type EventCallBack = (event: MouseEvent) => void;
 
+library.add(faEraser, faEyeSlash);
+
 const MIN_WIDTH = 75;
 const DEFAULT_WIDTH = MIN_WIDTH;
 const INC_WIDTH = 10;
@@ -26,6 +31,7 @@ const DEFAULT_COL = "col-1";
 @Component({
   tag: "p6-grid",
   styleUrl: "p6-grid.scss",
+  assetsDir: "locales",
   shadow: true,
 })
 export class P6Tables {
@@ -49,6 +55,8 @@ export class P6Tables {
     rows: RowCell[][]
   ) => void;
 
+  @State() displayTags = false;
+
   @State() sortedBy = DEFAULT_COL;
 
   @State() stateHeaders: HeaderCell[] = [];
@@ -56,6 +64,8 @@ export class P6Tables {
   @State() stateRows: RowCell[][] = [];
 
   private clearTimeout: NodeJS.Timeout | undefined;
+
+  private l10n: L10n | undefined;
 
   private align = (id: string, align: Align): void => {
     this.updateGridCallback(
@@ -103,7 +113,7 @@ export class P6Tables {
         operation === "minus" ? minWidth : width + INC_WIDTH;
       this.updateGridCallback(
         this.updateHeaderAttr(id, "width", newWidth),
-        this.rows
+        this.stateRows
       );
     }
   }
@@ -121,13 +131,7 @@ export class P6Tables {
     this.triggerOnce(() => {
       const id: string = event.detail;
       if (!this.isHeaderUndefined(id)) {
-        const header: HeaderCell = this.getHeaderById(id) as HeaderCell;
-        const updatedHeader: HeaderCell[] = this.getHeaderExcept(id);
-
-        header.hidden = !header.hidden;
-        updatedHeader.push(header);
-        this.stateHeaders = updatedHeader;
-        this.updateGridCallback(updatedHeader, this.rows);
+        this.toggleHide(id);
       }
     });
   }
@@ -213,7 +217,7 @@ export class P6Tables {
         );
         this.stateHeaders = updatedHeaders;
         this.sortedBy = id;
-        this.updateGridCallback(updatedHeaders, this.rows);
+        this.updateGridCallback(updatedHeaders, this.stateRows);
       }
     });
   }
@@ -224,7 +228,7 @@ export class P6Tables {
       const id: string = event.detail;
       // eslint-disable-next-line no-console
       console.info("id => ", id);
-      this.updateGridCallback(this.stateHeaders, this.rows);
+      this.updateGridCallback(this.stateHeaders, this.stateRows);
     });
   }
 
@@ -336,6 +340,50 @@ export class P6Tables {
     return <p6-grid-body>{rowsElements}</p6-grid-body>;
   };
 
+  private toogleDisplayColumn(event: MouseEvent): void {
+    const id: string = (event.target as HTMLSpanElement).getAttribute(
+      "data-header-id"
+    ) as string;
+    this.toggleHide(id);
+  }
+
+  private renderHiddenColumnsPanel(): JSX.Element | undefined {
+    if (!this.displayTags) {
+      return undefined;
+    }
+    const hiddenColumns: HeaderCell[] = this.stateHeaders.filter(
+      (header) => header.hidden
+    );
+    return (
+      <div class="hidden-column-panel">
+        <div>{this.l10n?.hideColumn}</div>
+        {hiddenColumns.map((header, idx) => (
+          <span
+            class="tag"
+            data-header-id={header.id}
+            // eslint-disable-next-line react/jsx-no-bind
+            onMouseUp={this.toogleDisplayColumn.bind(this)}
+            role="button"
+            tabIndex={idx}
+          >
+            {header.label}
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  private resetGrid(): void {
+    const { headers } = this;
+
+    this.stateHeaders = headers.map((header) => ({
+      ...header,
+      hidden: false,
+    }));
+    this.displayTags = false;
+    this.updateGridCallback(this.stateHeaders, this.stateRows);
+  }
+
   private sortRows(): RowCell[][] {
     const { sortedBy, stateRows } = this;
     const header: HeaderCell = this.getHeaderById(sortedBy) as HeaderCell;
@@ -360,19 +408,56 @@ export class P6Tables {
     });
   }
 
-  componentWillLoad(): void {
+  private toggleDisplayTags(): void {
+    this.displayTags = !this.displayTags;
+  }
+
+  private toggleHide(id: string): void {
+    const header: HeaderCell = this.getHeaderById(id) as HeaderCell;
+    const updatedHeader: HeaderCell[] = this.getHeaderExcept(id);
+    const noneHidden = !this.headers.find((uH) => uH.hidden);
+
+    header.hidden = !header.hidden;
+    updatedHeader.push(header);
+    this.displayTags = noneHidden
+      ? !!updatedHeader.find((uH) => uH.hidden)
+      : this.displayTags;
+    this.stateHeaders = updatedHeader;
+    this.updateGridCallback(updatedHeader, this.stateRows);
+  }
+
+  async componentWillLoad(): Promise<void> {
     this.stateHeaders = this.headers;
     this.stateRows = this.rows;
+    this.l10n = await getL10n(this.host);
   }
 
   render(): JSX.Element {
     return (
       <Host>
-        <div>
-          <p6-button mode="danger" size="small" type="button">
+        <div class="btn-bar">
+          <p6-button
+            mode="info"
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={this.toggleDisplayTags.bind(this)}
+            outlined
+            size="small"
+            type="button"
+          >
+            <p6-icon name="eye-slash" />
+          </p6-button>
+          <p6-button
+            mode="danger"
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={this.resetGrid.bind(this)}
+            outlined
+            size="small"
+            type="button"
+          >
             <p6-icon name="eraser" />
           </p6-button>
         </div>
+        {this.renderHiddenColumnsPanel()}
         {this.renderHeader()}
         {this.renderRows()}
         <slot />
