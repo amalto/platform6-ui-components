@@ -49,7 +49,7 @@ import readme from "./readme.md";
   <Story name="Size" height="63px">
     {`
       <p6-action size="small"><p6-icon name="home" /></p6-action>
-      <p6-action><p6-icon name="home" /></p6-action>
+      <p6-action ><p6-icon name="home" /></p6-action>
       <p6-action size="normal"><p6-icon name="home" /></p6-action>
       <p6-action size="medium"><p6-icon name="home" /></p6-action>
       <p6-action size="large"><p6-icon name="home" /></p6-action>
@@ -58,9 +58,14 @@ import readme from "./readme.md";
 </Preview>
 
 <Preview>
-  <Story name="Disabled" height="42px">
+  <Story name="Mode" height="42px">
     {`
-      <p6-action disabled><p6-icon name="home" /></p6-action>
+      <P6-action mode="danger"><p6-icon name="home" /></P6-action>
+      <P6-action mode="warning"><p6-icon name="home" /></P6-action>
+      <P6-action mode="default"><p6-icon name="home" /></P6-action>
+      <P6-action mode="info"><p6-icon name="home" /></P6-action>
+      <P6-action mode="success"><p6-icon name="home" /></P6-action>
+      <P6-action mode="primary"><p6-icon name="home" /></P6-action>
     `}
   </Story>
 </Preview>
@@ -68,7 +73,25 @@ import readme from "./readme.md";
 <Preview>
   <Story name="Waiting" height="42px">
     {`
-      <p6-action waiting><p6-icon name="home" /></p6-action>
+      <P6-action waiting mode="danger"><p6-icon name="home" /></P6-action>
+      <P6-action waiting mode="warning"><p6-icon name="home" /></P6-action>
+      <P6-action waiting mode="default"><p6-icon name="home" /></P6-action>
+      <P6-action waiting mode="info"><p6-icon name="home" /></P6-action>
+      <P6-action waiting mode="success"><p6-icon name="home" /></P6-action>
+      <P6-action waiting mode="primary"><p6-icon name="home" /></P6-action>
+    `}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Disabled" height="42px">
+    {`
+      <P6-action disabled mode="danger"><p6-icon name="home" /></P6-action>
+      <P6-action disabled mode="warning"><p6-icon name="home" /></P6-action>
+      <P6-action disabled mode="default"><p6-icon name="home" /></P6-action>
+      <P6-action disabled mode="info"><p6-icon name="home" /></P6-action>
+      <P6-action disabled mode="success"><p6-icon name="home" /></P6-action>
+      <P6-action disabled mode="primary"><p6-icon name="home" /></P6-action>
     `}
   </Story>
 </Preview>

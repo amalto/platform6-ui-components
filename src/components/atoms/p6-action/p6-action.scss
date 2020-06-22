@@ -1,13 +1,158 @@
-@import "bulma/sass/elements/button";
+$button-color: $text-strong !default;
+$button-background-color: $scheme-main !default;
+$button-family: false !default;
+$button-border-width: $control-border-width !default;
+$action-padding-vertical: calc(0.1em - #{$button-border-width}) !default;
+$action-padding-horizontal: 0.2em !default;
+$button-hover-color: $link-hover !default;
+$button-focus-color: $link-focus !default;
+$button-active-color: $link-active !default;
+$button-disabled-background-color: $scheme-main !default;
+$button-disabled-opacity: 0.5 !default;
 
-@each $name, $pair in $colors {
-  $color: nth($pair, 1);
-  $color-invert: nth($pair, 2);
-  .is-#{$name} {
-    &.is-inverted {
-      &.is-loading::after {
-        border-color: transparent transparent $color $color !important;
+:host {
+  button {
+    @extend %control;
+    @extend %unselectable;
+
+    display: inline-flex;
+    background-color: $button-background-color;
+    border-width: $button-border-width;
+    color: $button-color;
+    cursor: pointer;
+
+    @if $button-family {
+      font-family: $button-family;
+    }
+
+    justify-content: center;
+    padding: $action-padding-vertical;
+    padding-left: $action-padding-horizontal;
+    padding-right: $action-padding-horizontal;
+    padding-top: $action-padding-vertical;
+    text-align: center;
+    white-space: nowrap;
+    width: auto;
+    height: auto;
+
+    ::slotted(.icon),
+    ::slotted(.icon.is-small),
+    ::slotted(.icon.is-medium),
+    ::slotted(.icon.is-large),
+    ::slotted(p6-icon),
+    ::slotted(p6-icon.is-small),
+    ::slotted(p6-icon.is-medium),
+    ::slotted(p6-icon.is-large) {
+      height: 1.5em;
+      width: 1.5em;
+    }
+
+    ::slotted(.icon:first-child:last-child),
+    ::slotted(p6-icon:first-child:last-child) {
+      margin-left: calc(
+        #{-1 / 2 * $action-padding-horizontal} - #{$button-border-width}
+      );
+      margin-right: calc(
+        #{-1 / 2 * $action-padding-horizontal} - #{$button-border-width}
+      );
+    }
+
+    ::slotted(p6-icon:active),
+    ::slotted(.icon:active) {
+      background-attachment: grey;
+      outline-color: transparent;
+    }
+
+    // States
+    &:hover {
+      color: $button-hover-color;
+    }
+    &:focus {
+      color: $button-focus-color;
+    }
+    &:active {
+      color: $button-active-color;
+    }
+
+    // Colors
+    @each $name, $pair in $colors {
+      $color: nth($pair, 1);
+      $color-invert: nth($pair, 2);
+
+      &.is-#{$name} {
+        background-color: transparent;
+        border-color: transparent; // $color;
+        color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          border-color: transparent;
+          color: bulmaDarken($color, 2.5%);
+        }
+
+        &:active {
+          background-color: transparent;
+          border-color: transparent;
+          color: bulmaDarken($color, 5%);
+        }
+
+        &[disabled],
+        fieldset[disabled] :host(.is-#{$name}) {
+          background-color: transparent;
+          border-color: transparent;
+          box-shadow: none;
+          color: $color;
+        }
+
+        &.is-loading {
+          &::after {
+            border-color: transparent transparent $color $color !important;
+          }
+
+          &:hover::after,
+          &:focus::after {
+            border-color: transparent
+              transparent
+              bulmaDarken($color, 2.5%)
+              bulmaDarken($color, 2.5%) !important;
+          }
+        }
       }
+    }
+
+    // Size
+    &.is-small {
+      border-radius: $radius-small;
+      font-size: $size-small;
+    }
+    &.is-normal {
+      font-size: $size-normal;
+    }
+    &.is-medium {
+      font-size: $size-medium;
+    }
+    &.is-large {
+      font-size: $size-large;
+    }
+
+    &.is-loading {
+      color: transparent !important;
+      pointer-events: none;
+      &::after {
+        @extend %loader;
+        @include center(1em);
+
+        position: absolute !important;
+      }
+    }
+
+    // Modifiers
+    &[disabled],
+    fieldset[disabled] :host {
+      background-color: $button-disabled-background-color;
+      border-color: transparent;
+      opacity: $button-disabled-opacity;
     }
   }
 }

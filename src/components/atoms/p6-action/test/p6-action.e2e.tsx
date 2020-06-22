@@ -3,7 +3,7 @@ import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
 describe("p6-action", () => {
   let page: E2EPage;
   let component: E2EElement;
-  let innerButton: E2EElement;
+  let actionButton: E2EElement;
 
   it("renders", async () => {
     page = await newE2EPage({ html: "<p6-action></p6-action>" });
@@ -15,14 +15,14 @@ describe("p6-action", () => {
     beforeEach(async () => {
       page = await newE2EPage({ html: "<p6-action></p6-action>" });
       component = await page.find("p6-action");
-      innerButton = await page.find("p6-action >>> button");
+      actionButton = await page.find("p6-action");
     });
 
     it("fires a click event", async () => {
       const clickHandler = await page.spyOnEvent("click", "document");
 
       expect(clickHandler.events.length).toEqual(0);
-      await innerButton.click();
+      await actionButton.click();
       expect(clickHandler.events.length).toEqual(1);
     });
 
@@ -38,24 +38,24 @@ describe("p6-action", () => {
       await page.waitForChanges();
 
       expect(clickHandler).not.toHaveBeenCalled();
-      await innerButton.click();
+      await actionButton.click();
       expect(clickHandler).toHaveBeenCalledTimes(1);
     });
 
     it("should not fires a click event when disabled", async () => {
       page = await newE2EPage({ html: "<p6-action disabled></p6-action>" });
-      innerButton = await page.find("p6-action >>> button");
+      actionButton = await page.find("p6-action");
       const clickHandler = await page.spyOnEvent("click", "document");
 
       expect(clickHandler.events.length).toEqual(0);
-      await innerButton.click();
+      await actionButton.click();
       expect(clickHandler.events.length).toEqual(0);
     });
 
     it("should not call its onClick callback when disabled", async () => {
       const clickHandler = jest.fn();
       page = await newE2EPage({ html: "<p6-action disabled></p6-action>" });
-      innerButton = await page.find("p6-action >>> button");
+      actionButton = await page.find("p6-action");
       await page.exposeFunction("clickHandler", clickHandler);
 
       await page.$eval("p6-action", (elm: Element) => {
@@ -66,7 +66,7 @@ describe("p6-action", () => {
       await page.waitForChanges();
 
       expect(clickHandler).not.toHaveBeenCalled();
-      await innerButton.click();
+      await actionButton.click();
       expect(clickHandler).not.toHaveBeenCalledTimes(1);
     });
   });

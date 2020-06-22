@@ -1,4 +1,11 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import {
+  Component,
+  ComponentInterface,
+  Element,
+  h,
+  Host,
+  Prop,
+} from "@stencil/core";
 import { Mode, Size } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 
@@ -7,7 +14,9 @@ import { isEmpty } from "~utils/attribute";
   styleUrl: "p6-action.scss",
   shadow: true,
 })
-export class P6Action {
+export class P6Action implements ComponentInterface {
+  @Element() host!: HTMLP6ActionElement;
+
   /**
    * set the mode of the action
    */
@@ -26,21 +35,18 @@ export class P6Action {
   /**
    * set the size of the action
    */
-  @Prop() size: Size = "default";
+  @Prop() size: Size = "small";
 
   render(): JSX.Element {
     const classes = {
-      button: true,
-      "is-text": true,
-      "is-inverted": true,
       "is-loading": !!this.waiting,
       [`is-${this.mode}`]: !(isEmpty(this.mode) || this.mode === "default"),
       [`is-${this.size}`]: !isEmpty(this.size) && this.size !== "default",
     };
 
     return (
-      <Host>
-        <button class={classes} type="button" disabled={this.disabled}>
+      <Host aria-disabled={this.disabled ? "true" : null}>
+        <button type="button" disabled={this.disabled} class={classes}>
           <slot />
         </button>
       </Host>
