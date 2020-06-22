@@ -112,16 +112,22 @@ export class P6Tables {
     return this.stateHeaders.find((header) => header.id === id);
   }
 
+  private getHeaderExcept(id: string): HeaderCell[] {
+    return this.stateHeaders.filter((header) => header.id !== id);
+  }
+
   @Listen("hide")
   private hide(event: CustomEvent<string>): void {
     this.triggerOnce(() => {
       const id: string = event.detail;
       if (!this.isHeaderUndefined(id)) {
         const header: HeaderCell = this.getHeaderById(id) as HeaderCell;
-        this.updateGridCallback(
-          this.updateHeaderAttr(id, "header", !header.hidden),
-          this.rows
-        );
+        const updatedHeader: HeaderCell[] = this.getHeaderExcept(id);
+
+        header.hidden = !header.hidden;
+        updatedHeader.push(header);
+        this.stateHeaders = updatedHeader;
+        this.updateGridCallback(updatedHeader, this.rows);
       }
     });
   }
@@ -243,9 +249,12 @@ export class P6Tables {
   private renderHeader(): HTMLP6GridHeaderElement {
     const { stateHeaders } = this;
     const lastIndex: number = stateHeaders.length;
+    const displayableHeader: HeaderCell[] = stateHeaders.filter(
+      (cell) => !cell.hidden
+    );
     return (
       <p6-grid-header>
-        {stateHeaders.map((header, idx) => (
+        {displayableHeader.map((header, idx) => (
           <p6-grid-cell
             // eslint-disable-next-line react/jsx-no-bind
             onAlignLeft={this.alignLeft.bind(this)}
@@ -314,7 +323,9 @@ export class P6Tables {
       return null;
     }
 
-    const orderedHeaders: string[] = stateHeaders.map((header) => header.id);
+    const orderedHeaders: string[] = stateHeaders
+      .filter((header) => !header.hidden)
+      .map((header) => header.id);
     const sortedCellds: RowCell[][] = this.sortRows();
 
     // console.info("sortedCellds => ", sortedCellds);
@@ -357,6 +368,11 @@ export class P6Tables {
   render(): JSX.Element {
     return (
       <Host>
+        <div>
+          <p6-button mode="danger" size="small" type="button">
+            <p6-icon name="eraser" />
+          </p6-button>
+        </div>
         {this.renderHeader()}
         {this.renderRows()}
         <slot />

@@ -20,11 +20,13 @@
 ### Used by
 
  - [p6-dropdown](../../molecules/p6-dropdown)
+ - [p6-grid](../../molecules/p6-grid)
 
 ### Graph
 ```mermaid
 graph TD;
   p6-dropdown --> p6-button
+  p6-grid --> p6-button
   style p6-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
