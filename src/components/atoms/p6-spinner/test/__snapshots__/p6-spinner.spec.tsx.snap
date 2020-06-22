@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-spinner renders 1`] = `
+<p6-spinner>
+  <svg aria-busy="true" aria-hidden="false" aria-label="loading" height="100" preserveAspectRatio="xMidYMid" viewBox="0 0 100 100" width="100">
+    <rect fill="#fb9248" height="32" width="32" x="0" y="0">
+      <animate attributeName="opacity" begin="0" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="34" y="0">
+      <animate attributeName="opacity" begin="0.105" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="68" y="0">
+      <animate attributeName="opacity" begin="0.21" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="68" y="34">
+      <animate attributeName="opacity" begin="0.315" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="68" y="68">
+      <animate attributeName="opacity" begin="0.42" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="34" y="68">
+      <animate attributeName="opacity" begin="0.525" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="0" y="68">
+      <animate attributeName="opacity" begin="0.63" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+    <rect fill="#fb9248" height="32" width="32" x="0" y="34">
+      <animate attributeName="opacity" begin="0.735" dur="0.84" from="1" repeatCount="indefinite" to="0"></animate>
+    </rect>
+  </svg>
+</p6-spinner>
+`;
