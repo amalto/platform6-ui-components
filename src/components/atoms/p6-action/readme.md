@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                          | Type                                                                                       | Default        |
@@ -30,6 +29,4 @@ graph TD;
 
 ---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
