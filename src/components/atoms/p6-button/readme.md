@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                                     | Type                                                                                       | Default        |
@@ -14,15 +13,15 @@
 | `type`     | `type`     | type of the button.                                             | `"button" \| "reset" \| "submit"`                                                          | `"submit"`     |
 | `waiting`  | `waiting`  | If set, shows a waiting/busy indicator                          | `boolean`                                                                                  | `false`        |
 
-
 ## Dependencies
 
 ### Used by
 
- - [p6-dropdown](../../molecules/p6-dropdown)
- - [p6-grid](../../molecules/p6-grid)
+- [p6-dropdown](../../molecules/p6-dropdown)
+- [p6-grid](../../molecules/p6-grid)
 
 ### Graph
+
 ```mermaid
 graph TD;
   p6-dropdown --> p6-button
@@ -30,6 +29,6 @@ graph TD;
   style p6-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

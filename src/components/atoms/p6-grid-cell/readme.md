@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                | Attribute   | Description           | Type                                        | Default     |
@@ -13,7 +12,6 @@
 | `dbleClickCallback`     | --          | Double click callback | `((id: string) => void) \| undefined`       | `undefined` |
 | `headerId` _(required)_ | `header-id` | Header id             | `string`                                    | `undefined` |
 | `width`                 | `width`     | Cell width            | `number \| string`                          | `100`       |
-
 
 ## Events
 
@@ -30,18 +28,18 @@
 | `setColor`    | Set color                    | `CustomEvent<any>` |
 | `sort`        | Sort                         | `CustomEvent<any>` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [p6-grid](../../molecules/p6-grid)
+- [p6-grid](../../molecules/p6-grid)
 
 ### Depends on
 
 - [p6-icon](../p6-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   p6-grid-cell --> p6-icon
@@ -49,6 +47,6 @@ graph TD;
   style p6-grid-cell fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
