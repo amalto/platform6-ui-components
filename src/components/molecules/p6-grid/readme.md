@@ -4,11 +4,11 @@
 
 ## Properties
 
-| Property                          | Attribute | Description                                   | Type                                                | Default     |
-| --------------------------------- | --------- | --------------------------------------------- | --------------------------------------------------- | ----------- |
-| `headers` _(required)_            | --        | Grid headers                                  | `HeaderCell[]`                                      | `undefined` |
-| `rows` _(required)_               | --        | Grid rows                                     | `RowCell[][]`                                       | `undefined` |
-| `updateGridCallback` _(required)_ | --        | Update callback after each action on the grid | `(header: HeaderCell[], rows: RowCell[][]) => void` | `undefined` |
+| Property                          | Attribute | Description                                   | Type                                          | Default     |
+| --------------------------------- | --------- | --------------------------------------------- | --------------------------------------------- | ----------- |
+| `headers` _(required)_            | --        | Grid headers                                  | `HeaderCell[]`                                | `undefined` |
+| `rows` _(required)_               | --        | Grid rows                                     | `Row[]`                                       | `undefined` |
+| `updateGridCallback` _(required)_ | --        | Update callback after each action on the grid | `(header: HeaderCell[], rows: Row[]) => void` | `undefined` |
 
 ## Dependencies
 
