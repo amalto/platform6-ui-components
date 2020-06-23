@@ -2,6 +2,12 @@
 
 <!-- Auto Generated Below -->
 
+## Properties
+
+| Property   | Attribute  | Description            | Type      | Default |
+| ---------- | ---------- | ---------------------- | --------- | ------- |
+| `selected` | `selected` | Is row selected or not | `boolean` | `false` |
+
 ## Dependencies
 
 ### Used by

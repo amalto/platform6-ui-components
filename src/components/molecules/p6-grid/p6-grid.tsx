@@ -10,11 +10,15 @@ import {
   State,
 } from "@stencil/core";
 import { Align, Direction, Operation } from "~shared/types";
+import { isEmpty } from "~utils/attribute";
 import { getL10n, L10n } from "~utils/translations";
 import {
+  clearSelection,
   getCellLabelByHeaderId,
   getRowCellByHeaderId,
   HeaderCell,
+  isRowSelected,
+  Row,
   RowCell,
   toggleSort,
 } from "./utils";
@@ -45,15 +49,12 @@ export class P6Tables {
   /**
    * Grid rows
    */
-  @Prop() rows!: RowCell[][];
+  @Prop() rows!: Row[];
 
   /**
    * Update callback after each action on the grid
    */
-  @Prop() updateGridCallback!: (
-    header: HeaderCell[],
-    rows: RowCell[][]
-  ) => void;
+  @Prop() updateGridCallback!: (header: HeaderCell[], rows: Row[]) => void;
 
   @State() displayTags = false;
 
@@ -61,7 +62,7 @@ export class P6Tables {
 
   @State() stateHeaders: HeaderCell[] = [];
 
-  @State() stateRows: RowCell[][] = [];
+  @State() stateRows: Row[] = [];
 
   private clearTimeout: NodeJS.Timeout | undefined;
 
@@ -232,24 +233,6 @@ export class P6Tables {
     });
   }
 
-  private updateHeaderAttr(
-    id: string,
-    attrName: string,
-    attr: unknown
-  ): HeaderCell[] {
-    const { stateHeaders } = this;
-    this.stateHeaders = stateHeaders.map((header) => {
-      if (header.id === id) {
-        return {
-          ...header,
-          [attrName]: attr,
-        };
-      }
-      return header;
-    });
-    return this.stateHeaders;
-  }
-
   private renderHeader(): HTMLP6GridHeaderElement {
     const { stateHeaders } = this;
     const lastIndex: number = stateHeaders.length;
@@ -308,16 +291,29 @@ export class P6Tables {
   };
 
   private renderRow = (
-    cells: RowCell[],
+    rowId: number,
+    row: Row,
     orderedHeaders: string[]
   ): HTMLP6GridRowElement => {
     const orderedCells: RowCell[] = [];
 
     orderedHeaders.forEach((id) => {
-      orderedCells.push(cells.find((cell) => cell.headerId === id) as RowCell);
+      orderedCells.push(
+        row.cells.find((cell) => cell.headerId === id) as RowCell
+      );
     });
 
-    return <p6-grid-row>{orderedCells.map(this.renderRowCell)}</p6-grid-row>;
+    return (
+      <p6-grid-row
+        data-row-idx={rowId.toString()}
+        key={`${this.host.id}-row-${rowId}`}
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={this.selectRow.bind(this)}
+        selected={isRowSelected(row)}
+      >
+        {orderedCells.map(this.renderRowCell)}
+      </p6-grid-row>
+    );
   };
 
   private renderRows = (): HTMLP6GridBodyElement | null => {
@@ -330,21 +326,41 @@ export class P6Tables {
     const orderedHeaders: string[] = stateHeaders
       .filter((header) => !header.hidden)
       .map((header) => header.id);
-    const sortedCellds: RowCell[][] = this.sortRows();
-
-    // console.info("sortedCellds => ", sortedCellds);
-    const rowsElements: HTMLP6GridRowElement[] = sortedCellds.map((row) => {
-      return this.renderRow(row, orderedHeaders);
-    });
+    const sortedCellds: Row[] = this.sortRows();
+    const rowsElements: HTMLP6GridRowElement[] = sortedCellds.map(
+      (row, idx) => {
+        return this.renderRow(idx, row, orderedHeaders);
+      }
+    );
 
     return <p6-grid-body>{rowsElements}</p6-grid-body>;
   };
 
-  private toogleDisplayColumn(event: MouseEvent): void {
-    const id: string = (event.target as HTMLSpanElement).getAttribute(
-      "data-header-id"
-    ) as string;
-    this.toggleHide(id);
+  private renderConfigHeader(): JSX.Element {
+    return (
+      <div class="btn-bar">
+        <p6-button
+          mode="info"
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={this.toggleDisplayTags.bind(this)}
+          outlined
+          size="small"
+          type="button"
+        >
+          <p6-icon name="eye-slash" />
+        </p6-button>
+        <p6-button
+          mode="danger"
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={this.resetGrid.bind(this)}
+          outlined
+          size="small"
+          type="button"
+        >
+          <p6-icon name="eraser" />
+        </p6-button>
+      </div>
+    );
   }
 
   private renderHiddenColumnsPanel(): JSX.Element | undefined {
@@ -384,13 +400,77 @@ export class P6Tables {
     this.updateGridCallback(this.stateHeaders, this.stateRows);
   }
 
-  private sortRows(): RowCell[][] {
+  private selectSingleRow(rowIdx: number): Row[] {
+    return this.stateRows.map((row, idx) => ({
+      ...row,
+      selected: rowIdx === idx ? !row.selected : false,
+    }));
+  }
+
+  private appendSelectedRow(rowIdx: number): Row[] {
+    return this.stateRows.map((row, idx) => ({
+      ...row,
+      selected: rowIdx === idx ? !row.selected : row.selected,
+    }));
+  }
+
+  private multipleSelectedRow(rowIdx: number): Row[] {
+    const { stateRows } = this;
+    const firstSelected: number = stateRows.findIndex((row) => !!row.selected);
+    const lastSelected: number = stateRows.reduce((prev, cur, idx) => {
+      return cur.selected ? idx : prev;
+    }, -1);
+
+    if (firstSelected === -1) {
+      return this.selectSingleRow(rowIdx);
+    }
+    const beforeFirstSelected: boolean = rowIdx <= firstSelected;
+    const afterLastSelected: boolean = rowIdx > lastSelected;
+
+    return stateRows.map((row, idx) => {
+      const afterLastCondition: boolean = afterLastSelected
+        ? idx <= rowIdx
+        : !!row.selected;
+      const selected: boolean = beforeFirstSelected
+        ? idx >= rowIdx && idx <= firstSelected
+        : afterLastCondition;
+
+      return {
+        ...row,
+        selected,
+      };
+    });
+  }
+
+  private selectRow(event: MouseEvent): void {
+    const dataRowIdx:
+      | string
+      | null = (event.currentTarget as HTMLP6GridRowElement).getAttribute(
+      "data-row-idx"
+    );
+
+    if (!isEmpty(dataRowIdx)) {
+      const rowIdx: number = parseInt(dataRowIdx as string, 10);
+
+      if (event.metaKey || event.ctrlKey) {
+        this.stateRows = this.appendSelectedRow(rowIdx);
+      } else if (event.shiftKey) {
+        this.stateRows = this.multipleSelectedRow(rowIdx);
+        clearSelection();
+      } else {
+        this.stateRows = this.selectSingleRow(rowIdx);
+      }
+      this.updateGridCallback(this.stateHeaders, this.stateRows);
+    }
+  }
+
+  private sortRows(): Row[] {
     const { sortedBy, stateRows } = this;
     const header: HeaderCell = this.getHeaderById(sortedBy) as HeaderCell;
 
     return stateRows.sort((a, b) => {
-      const cellA: RowCell = getRowCellByHeaderId(sortedBy, a) as RowCell;
-      const cellB: RowCell = getRowCellByHeaderId(sortedBy, b) as RowCell;
+      const cellA: RowCell = getRowCellByHeaderId(sortedBy, a.cells) as RowCell;
+      const cellB: RowCell = getRowCellByHeaderId(sortedBy, b.cells) as RowCell;
       const vA: string = getCellLabelByHeaderId(
         cellA.headerId,
         sortedBy,
@@ -406,6 +486,13 @@ export class P6Tables {
         ? vB.localeCompare(vA)
         : vA.localeCompare(vB);
     });
+  }
+
+  private toogleDisplayColumn(event: MouseEvent): void {
+    const id: string = (event.target as HTMLSpanElement).getAttribute(
+      "data-header-id"
+    ) as string;
+    this.toggleHide(id);
   }
 
   private toggleDisplayTags(): void {
@@ -426,6 +513,24 @@ export class P6Tables {
     this.updateGridCallback(updatedHeader, this.stateRows);
   }
 
+  private updateHeaderAttr(
+    id: string,
+    attrName: string,
+    attr: unknown
+  ): HeaderCell[] {
+    const { stateHeaders } = this;
+    this.stateHeaders = stateHeaders.map((header) => {
+      if (header.id === id) {
+        return {
+          ...header,
+          [attrName]: attr,
+        };
+      }
+      return header;
+    });
+    return this.stateHeaders;
+  }
+
   async componentWillLoad(): Promise<void> {
     this.stateHeaders = this.headers;
     this.stateRows = this.rows;
@@ -435,28 +540,7 @@ export class P6Tables {
   render(): JSX.Element {
     return (
       <Host>
-        <div class="btn-bar">
-          <p6-button
-            mode="info"
-            // eslint-disable-next-line react/jsx-no-bind
-            onClick={this.toggleDisplayTags.bind(this)}
-            outlined
-            size="small"
-            type="button"
-          >
-            <p6-icon name="eye-slash" />
-          </p6-button>
-          <p6-button
-            mode="danger"
-            // eslint-disable-next-line react/jsx-no-bind
-            onClick={this.resetGrid.bind(this)}
-            outlined
-            size="small"
-            type="button"
-          >
-            <p6-icon name="eraser" />
-          </p6-button>
-        </div>
+        {this.renderConfigHeader()}
         {this.renderHiddenColumnsPanel()}
         {this.renderHeader()}
         {this.renderRows()}

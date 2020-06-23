@@ -1,5 +1,5 @@
 @import "bulma/sass/utilities/initial-variables";
-@import "bulma/sass/base/helpers";
+@import "bulma/sass/helpers/_all";
 
 :host {
   display: flex;
@@ -30,7 +30,7 @@
 p6-grid-header {
   :host {
     font-weight: $weight-bold !important;
-    justify-content: start;
+    justify-content: center;
 
     .grid-cell-context-menu {
       background-color: $white;
@@ -49,7 +49,6 @@ p6-grid-header {
 
     &:not(:last-child) {
       border-right: 1px solid $grey-lighter;
-      justify-content: center;
     }
 
     &:hover {

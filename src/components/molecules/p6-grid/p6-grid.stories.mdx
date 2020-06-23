@@ -22,46 +22,53 @@ import readme from "./readme.md";
         { id: "col-4", label: "Fourth", width: 100 },
       ];
       let rows = [
-        [
-          { headerId: "col-2", label: "1 second cell row 1" },
-          {
-            align: "center",
-            color: "blue",
-            headerId: "col-1",
-            label: "1 first cell row 1",
-            width: 150,
-          },
-          { headerId: "col-3", label: "1 third cell row 1" },
-          { headerId: "col-4", label: "1 fourth cell row 1" },
-        ],
-        [
-          { headerId: "col-2", label: "2 second cell row 2" },
-          { headerId: "col-3", label: "2 third cell row 2" },
-          {
-            align: "center",
-            color: "blue",
-            headerId: "col-1",
-            label: "2 first cell row 2",
-            width: 150,
-          },
-          { headerId: "col-4", label: "2 fourth cell row 2" },
-        ],
-        [
-          { headerId: "col-2", label: "3 second cell row 3" },
-          { headerId: "col-3", label: "3 third cell row 3" },
-          { headerId: "col-4", label: "3 fourth cell row 3" },
-          {
-            align: "center",
-            color: "blue",
-            headerId: "col-1",
-            label: "3 first cell row 3",
-            width: 150,
-          },
-        ],
+        {
+          cells: [
+            { headerId: "col-2", label: "1 second cell row 1" },
+            {
+              align: "center",
+              color: "blue",
+              headerId: "col-1",
+              label: "1 first cell row 1",
+              width: 150,
+            },
+            { headerId: "col-3", label: "1 third cell row 1" },
+            { headerId: "col-4", label: "1 fourth cell row 1" },
+          ],
+        },
+        {
+          cells: [
+            { headerId: "col-2", label: "2 second cell row 2" },
+            { headerId: "col-3", label: "2 third cell row 2" },
+            {
+              align: "center",
+              color: "blue",
+              headerId: "col-1",
+              label: "2 first cell row 2",
+              width: 150,
+            },
+            { headerId: "col-4", label: "2 fourth cell row 2" },
+          ],
+        },
+        {
+          cells: [
+            { headerId: "col-2", label: "3 second cell row 3" },
+            { headerId: "col-3", label: "3 third cell row 3" },
+            { headerId: "col-4", label: "3 fourth cell row 3" },
+            {
+              align: "center",
+              color: "blue",
+              headerId: "col-1",
+              label: "3 first cell row 3",
+              width: 150,
+            },
+          ],
+        },
       ];
       const grid = document.createElement("p6-grid");
       const body = document.createElement("p6-grid-body");
       grid.id = "default-grid";
+      grid.lang = "fr";
       grid.headers = headers;
       grid.rows = rows;
       grid.updateGridCallback = (updatedHeaders, updatedRows) => {
