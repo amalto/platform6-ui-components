@@ -1,0 +1,66 @@
+@import "~bulma/bulma";
+@import "~bulma-calendar/src/sass/index";
+
+:host {
+  display: block;
+}
+
+p6-calendar {
+  .datetimepicker-dummy {
+    &::before {
+      content: none;
+    }
+
+    .datetimepicker-dummy-wrapper {
+      border-radius: $input-radius;
+
+      .datetimepicker-dummy-input:first-child {
+        text-indent: .5rem;
+      }
+    }
+  }
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    .datetimepicker.is-#{$name} {
+      .datetimepicker-footer-today {
+        color: $color !important;
+      }
+
+      .datepicker-body {
+        .datepicker-months .datepicker-month,
+        .datepicker-years .datepicker-year {
+          &.is-active {
+            border-color: $color;
+            background: $color;
+          }
+
+          &:hover {
+            border-color: $color;
+            background: #FFFFFF;
+          }
+        }
+      }
+    }
+  }
+
+  &[disabled]:not([disabled="false"]),
+  &[readonly]:not([readonly="false"]) {
+    .datetimepicker-dummy .datetimepicker-clear-button {
+      display: none;
+    }
+  }
+
+  &[disabled]:not([disabled="false"]) {
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper {
+      background-color: $input-disabled-background-color;
+      border-color: $input-disabled-border-color;
+      color: $input-disabled-color;
+
+      &, .datetimepicker-dummy-input {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
