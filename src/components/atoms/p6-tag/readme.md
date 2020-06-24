@@ -9,6 +9,20 @@
 | `mode`   | `mode`    | Mode        | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `undefined`   |
 | `size`   | `size`    | Size        | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal` |
 
+## Dependencies
+
+### Used by
+
+- [p6-grid](../../molecules/p6-grid)
+
+### Graph
+
+```mermaid
+graph TD;
+  p6-grid --> p6-tag
+  style p6-tag fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

@@ -51,6 +51,11 @@ export class P6Tables {
   @Prop() headers!: HeaderCell[];
 
   /**
+   * Display spinner
+   */
+  @Prop() loading = false;
+
+  /**
    * Grid rows
    */
   @Prop() rows!: Row[];
@@ -391,18 +396,23 @@ export class P6Tables {
   };
 
   private renderConfigHeader(): JSX.Element {
+    const hasHeaderHidden: boolean = this.stateHeaders.some(
+      (header) => header.hidden
+    );
     return (
       <div class="btn-bar">
-        <p6-button
-          mode="info"
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={this.toggleDisplayTags.bind(this)}
-          outlined
-          size="small"
-          type="button"
-        >
-          <p6-icon name="eye-slash" />
-        </p6-button>
+        {hasHeaderHidden ? (
+          <p6-button
+            mode="info"
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={this.toggleDisplayTags.bind(this)}
+            outlined
+            size="small"
+            type="button"
+          >
+            <p6-icon name="eye-slash" />
+          </p6-button>
+        ) : undefined}
         <p6-button
           mode="danger"
           // eslint-disable-next-line react/jsx-no-bind
@@ -438,29 +448,40 @@ export class P6Tables {
     );
   }
 
+  private renderEmpty(renderEmpty: boolean): JSX.Element | undefined {
+    return renderEmpty ? (
+      <p6-empty lang={this.host.lang}>{this.l10n?.emptyGrid}</p6-empty>
+    ) : undefined;
+  }
+
   private renderHiddenColumnsPanel(): JSX.Element | undefined {
     if (!this.displayTags) {
       return undefined;
     }
+
     const hiddenColumns: HeaderCell[] = this.stateHeaders.filter(
       (header) => header.hidden
     );
+
     return (
       <div class="hidden-column-panel">
         <div>{this.l10n?.hideColumn}</div>
-        {hiddenColumns.map((header, idx) => (
-          <span
-            class="tag"
-            data-header-id={header.id}
-            // eslint-disable-next-line react/jsx-no-bind
-            onMouseUp={this.toogleDisplayColumn.bind(this)}
-            role="button"
-            tabIndex={idx}
-          >
-            {header.label}
-          </span>
-        ))}
+        {hiddenColumns.map(this.renderHiddenTag.bind(this))}
       </div>
+    );
+  }
+
+  private renderHiddenTag(header: HeaderCell, idx: number): JSX.Element {
+    return (
+      <p6-tag
+        data-header-id={header.id}
+        // eslint-disable-next-line react/jsx-no-bind
+        onMouseUp={this.toogleDisplayColumn.bind(this)}
+        role="button"
+        tabIndex={idx}
+      >
+        {header.label}
+      </p6-tag>
     );
   }
 
@@ -473,6 +494,10 @@ export class P6Tables {
     }));
     this.displayTags = false;
     this.updateGridCallback(this.stateHeaders, this.stateRows);
+  }
+
+  private renderLoadingContent(): JSX.Element | undefined {
+    return this.loading ? <p6-spinner /> : undefined;
   }
 
   private setRowContextMenu(row: Row): void {
@@ -546,13 +571,10 @@ export class P6Tables {
   private toggleHide(id: string): void {
     const header: HeaderCell = this.getHeaderById(id) as HeaderCell;
     const updatedHeader: HeaderCell[] = this.getHeaderExcept(id);
-    const noneHidden = !this.headers.find((uH) => uH.hidden);
 
     header.hidden = !header.hidden;
     updatedHeader.push(header);
-    this.displayTags = noneHidden
-      ? !!updatedHeader.find((uH) => uH.hidden)
-      : this.displayTags;
+    this.displayTags = !!updatedHeader.find((uH) => uH.hidden);
     this.stateHeaders = updatedHeader;
     this.updateGridCallback(updatedHeader, this.stateRows);
   }
@@ -596,13 +618,21 @@ export class P6Tables {
   }
 
   render(): JSX.Element {
+    const { loading } = this;
+    const noRows: boolean = this.stateRows.length === 0;
+    const headerHidden = !this.stateHeaders.some(
+      (header) => !header.hidden || false
+    );
+
     return (
       <Host>
         {this.renderContextMenu()}
         {this.renderConfigHeader()}
         {this.renderHiddenColumnsPanel()}
-        {this.renderHeader()}
-        {this.renderRows()}
+        {!headerHidden ? this.renderHeader() : undefined}
+        {!loading && !noRows && !headerHidden ? this.renderRows() : undefined}
+        {this.renderLoadingContent()}
+        {!loading && this.renderEmpty(noRows || headerHidden)}
         <slot />
       </Host>
     );
