@@ -1,31 +1,8 @@
-import { Align, Order } from "~shared/types";
+import { Row, RowCell } from "~shared/interfaces";
+import { Order } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 
 const EMPTY_LABEL = "-";
-
-export interface Cell {
-  align?: Align;
-  color?: string;
-  label: string;
-  width?: number;
-}
-
-export interface HeaderCell extends Cell {
-  id: string;
-  hidden?: boolean;
-  movable?: string;
-  selected?: boolean;
-  sort?: Order;
-}
-
-export interface Row {
-  cells: RowCell[];
-  selected?: boolean;
-}
-
-export interface RowCell extends Cell {
-  headerId: string;
-}
 
 export function clearSelection(): void {
   window?.getSelection()?.removeAllRanges();

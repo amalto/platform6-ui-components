@@ -6,6 +6,7 @@
 
 | Property                          | Attribute | Description                                   | Type                                          | Default     |
 | --------------------------------- | --------- | --------------------------------------------- | --------------------------------------------- | ----------- |
+| `customContextMenu`               | --        | Display a context menu based on row data      | `((row: RowCell[]) => Element) \| undefined`  | `undefined` |
 | `headers` _(required)_            | --        | Grid headers                                  | `HeaderCell[]`                                | `undefined` |
 | `rows` _(required)_               | --        | Grid rows                                     | `Row[]`                                       | `undefined` |
 | `updateGridCallback` _(required)_ | --        | Update callback after each action on the grid | `(header: HeaderCell[], rows: Row[]) => void` | `undefined` |

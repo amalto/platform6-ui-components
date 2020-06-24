@@ -9,6 +9,7 @@ import {
   Prop,
   State,
 } from "@stencil/core";
+import { HeaderCell, Row, RowCell } from "~shared/interfaces";
 import { Align, Direction, Operation } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 import { getL10n, L10n } from "~utils/translations";
@@ -16,14 +17,12 @@ import {
   clearSelection,
   getCellLabelByHeaderId,
   getRowCellByHeaderId,
-  HeaderCell,
   isRowSelected,
-  Row,
-  RowCell,
   toggleSort,
 } from "./utils";
 
 export declare type EventCallBack = (event: MouseEvent) => void;
+export declare type ContextMenuFunction = (row: RowCell[]) => Element;
 
 library.add(faEraser, faEyeSlash);
 
@@ -42,6 +41,11 @@ export class P6Tables {
   @Element() host!: HTMLP6GridElement;
 
   /**
+   * Display a context menu based on row data
+   */
+  @Prop() customContextMenu: ContextMenuFunction | undefined = undefined;
+
+  /**
    * Grid headers
    */
   @Prop() headers!: HeaderCell[];
@@ -58,6 +62,10 @@ export class P6Tables {
 
   @State() displayTags = false;
 
+  @State() isContextMenuOpen = false;
+
+  @State() rowContext: RowCell[] = [];
+
   @State() sortedBy = DEFAULT_COL;
 
   @State() stateHeaders: HeaderCell[] = [];
@@ -68,6 +76,8 @@ export class P6Tables {
 
   private l10n: L10n | undefined;
 
+  private contextMenu: HTMLDivElement | null = null;
+
   private align = (id: string, align: Align): void => {
     this.updateGridCallback(
       this.updateHeaderAttr(id, "align", align),
@@ -75,18 +85,11 @@ export class P6Tables {
     );
   };
 
-  /**
-   * Workaround until we find out why the listner is triggered 2 times.
-   * @param method
-   */
-  private triggerOnce(method: () => void): void {
-    if (!this.clearTimeout) {
-      this.clearTimeout = setTimeout(() => {
-        method();
-        clearTimeout(this.clearTimeout as NodeJS.Timeout);
-        this.clearTimeout = undefined;
-      }, 100);
-    }
+  private appendSelectedRow(rowIdx: number): Row[] {
+    return this.stateRows.map((row, idx) => ({
+      ...row,
+      selected: rowIdx === idx ? !row.selected : row.selected,
+    }));
   }
 
   @Listen("alignLeft")
@@ -187,6 +190,19 @@ export class P6Tables {
     }
   }
 
+  private moveContextMenu(posX: number, posY: number): void {
+    if (!this.isContextMenuOpen) {
+      document.addEventListener("click", this.onCloseContextMenu.bind(this), {
+        once: true,
+      });
+      this.isContextMenuOpen = true;
+    }
+    if (this.contextMenu) {
+      this.contextMenu.style.left = `${posX}px`;
+      this.contextMenu.style.top = `${posY}px`;
+    }
+  }
+
   @Listen("moveLeft")
   private moveLeft(event: CustomEvent<string>): void {
     this.triggerOnce(() => this.move(event.detail, "left"));
@@ -195,6 +211,38 @@ export class P6Tables {
   @Listen("moveRight")
   private moveRight(event: CustomEvent<string>): void {
     this.triggerOnce(() => this.move(event.detail, "right"));
+  }
+
+  private multipleSelectedRow(rowIdx: number): Row[] {
+    const { stateRows } = this;
+    const firstSelected: number = stateRows.findIndex((row) => !!row.selected);
+    const lastSelected: number = stateRows.reduce((prev, cur, idx) => {
+      return cur.selected ? idx : prev;
+    }, -1);
+
+    if (firstSelected === -1) {
+      return this.selectSingleRow(rowIdx);
+    }
+    const beforeFirstSelected: boolean = rowIdx <= firstSelected;
+    const afterLastSelected: boolean = rowIdx > lastSelected;
+
+    return stateRows.map((row, idx) => {
+      const afterLastCondition: boolean = afterLastSelected
+        ? idx <= rowIdx
+        : !!row.selected;
+      const selected: boolean = beforeFirstSelected
+        ? idx >= rowIdx && idx <= firstSelected
+        : afterLastCondition;
+
+      return {
+        ...row,
+        selected,
+      };
+    });
+  }
+
+  private onCloseContextMenu(): void {
+    this.isContextMenuOpen = false;
   }
 
   @Listen("plus")
@@ -305,10 +353,16 @@ export class P6Tables {
 
     return (
       <p6-grid-row
+        // eslint-disable-next-line react/jsx-no-bind
+        contextMenuCallback={() => {
+          this.setRowContextMenu(row);
+        }}
         data-row-idx={rowId.toString()}
         key={`${this.host.id}-row-${rowId}`}
         // eslint-disable-next-line react/jsx-no-bind
         onClick={this.selectRow.bind(this)}
+        // eslint-disable-next-line react/jsx-no-bind
+        moveContextMenu={this.moveContextMenu.bind(this)}
         selected={isRowSelected(row)}
       >
         {orderedCells.map(this.renderRowCell)}
@@ -363,6 +417,27 @@ export class P6Tables {
     );
   }
 
+  private renderContextMenu(): JSX.Element {
+    const contextMenu: Element | undefined =
+      this.rowContext &&
+      this.customContextMenu &&
+      this.customContextMenu(this.rowContext);
+    return (
+      <div
+        class={`row-context-menu ${
+          this.isContextMenuOpen ? "is-open" : undefined
+        }`}
+        ref={(dom) => {
+          if (dom) {
+            this.contextMenu = dom;
+          }
+        }}
+      >
+        {contextMenu}
+      </div>
+    );
+  }
+
   private renderHiddenColumnsPanel(): JSX.Element | undefined {
     if (!this.displayTags) {
       return undefined;
@@ -400,46 +475,15 @@ export class P6Tables {
     this.updateGridCallback(this.stateHeaders, this.stateRows);
   }
 
+  private setRowContextMenu(row: Row): void {
+    this.rowContext = row.cells;
+  }
+
   private selectSingleRow(rowIdx: number): Row[] {
     return this.stateRows.map((row, idx) => ({
       ...row,
       selected: rowIdx === idx ? !row.selected : false,
     }));
-  }
-
-  private appendSelectedRow(rowIdx: number): Row[] {
-    return this.stateRows.map((row, idx) => ({
-      ...row,
-      selected: rowIdx === idx ? !row.selected : row.selected,
-    }));
-  }
-
-  private multipleSelectedRow(rowIdx: number): Row[] {
-    const { stateRows } = this;
-    const firstSelected: number = stateRows.findIndex((row) => !!row.selected);
-    const lastSelected: number = stateRows.reduce((prev, cur, idx) => {
-      return cur.selected ? idx : prev;
-    }, -1);
-
-    if (firstSelected === -1) {
-      return this.selectSingleRow(rowIdx);
-    }
-    const beforeFirstSelected: boolean = rowIdx <= firstSelected;
-    const afterLastSelected: boolean = rowIdx > lastSelected;
-
-    return stateRows.map((row, idx) => {
-      const afterLastCondition: boolean = afterLastSelected
-        ? idx <= rowIdx
-        : !!row.selected;
-      const selected: boolean = beforeFirstSelected
-        ? idx >= rowIdx && idx <= firstSelected
-        : afterLastCondition;
-
-      return {
-        ...row,
-        selected,
-      };
-    });
   }
 
   private selectRow(event: MouseEvent): void {
@@ -513,6 +557,20 @@ export class P6Tables {
     this.updateGridCallback(updatedHeader, this.stateRows);
   }
 
+  /**
+   * Workaround until we find out why the listner is triggered 2 times.
+   * @param method
+   */
+  private triggerOnce(method: () => void): void {
+    if (!this.clearTimeout) {
+      this.clearTimeout = setTimeout(() => {
+        method();
+        clearTimeout(this.clearTimeout as NodeJS.Timeout);
+        this.clearTimeout = undefined;
+      }, 100);
+    }
+  }
+
   private updateHeaderAttr(
     id: string,
     attrName: string,
@@ -540,6 +598,7 @@ export class P6Tables {
   render(): JSX.Element {
     return (
       <Host>
+        {this.renderContextMenu()}
         {this.renderConfigHeader()}
         {this.renderHiddenColumnsPanel()}
         {this.renderHeader()}

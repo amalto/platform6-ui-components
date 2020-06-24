@@ -4,6 +4,7 @@ $table-head-background-color: $light;
 
 :host {
   display: flex;
+  position: relative;
 }
 
 :host(:hover) {
