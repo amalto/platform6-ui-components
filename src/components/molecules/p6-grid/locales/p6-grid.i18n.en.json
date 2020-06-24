@@ -1,3 +1,4 @@
 {
-  "hideColumn": "Hidden columns (click to re-display)"
+  "hideColumn": "Hidden columns (click to re-display)",
+  "emptyGrid": "Result not found"
 }
