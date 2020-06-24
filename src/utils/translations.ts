@@ -14,7 +14,9 @@ export interface L10n {
  * Falls back to english if no language is found.
  * @param element The element to find a lang attribute for.
  */
-function getClosestLanguage(element: HTMLElement = document.body): string {
+export function getClosestLanguage(
+  element: HTMLElement = document.body
+): string {
   const closestElement = element.closest("[lang]") as HTMLElement;
   return closestElement === null ? defaultLocale : closestElement.lang;
 }

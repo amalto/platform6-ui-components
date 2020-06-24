@@ -8,6 +8,13 @@ export function isEmpty(value: unknown): boolean {
   );
 }
 
+export function convertAsDate(value: string | undefined): Date | undefined {
+  if (value === undefined || value === "") {
+    return undefined;
+  }
+  return new Date(value);
+}
+
 export function cleanupValue<T>(value: T | undefined | null): T | undefined {
   return isEmpty(value) ? undefined : (value as T);
 }
