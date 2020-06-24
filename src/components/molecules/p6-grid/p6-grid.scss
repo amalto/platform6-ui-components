@@ -25,4 +25,17 @@
       margin-right: $gap-size * 1px;
     }
   }
+
+  .row-context-menu {
+    display: none;
+    position: absolute;
+    z-index: 100;
+
+    &.is-open {
+      background-color: $white;
+      border: 1px solid $white-ter;
+      display: flex;
+      padding: $gap-size * 1px;
+    }
+  }
 }

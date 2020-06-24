@@ -15,9 +15,12 @@ import readme from "./readme.md";
 <Preview>
   <Story name="Default" height="300px">
     {() => {
+      const customContextMenu = (cells) => {
+        return "Context menu exemple";
+      };
       let headers = [
         { color: "blue", id: "col-1", label: "First", width: 150 },
-        { id: "col-2", label: "Second", width: 100 },
+        { id: "col-2", label: "Second", width: 150 },
         { id: "col-3", label: "Third", width: 100 },
         { id: "col-4", label: "Fourth", width: 100 },
       ];
@@ -71,6 +74,7 @@ import readme from "./readme.md";
       grid.lang = "fr";
       grid.headers = headers;
       grid.rows = rows;
+      grid.customContextMenu = customContextMenu;
       grid.updateGridCallback = (updatedHeaders, updatedRows) => {
         {
           /* headers = updatedHeaders;

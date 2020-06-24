@@ -4,9 +4,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description            | Type      | Default |
-| ---------- | ---------- | ---------------------- | --------- | ------- |
-| `selected` | `selected` | Is row selected or not | `boolean` | `false` |
+| Property              | Attribute  | Description                         | Type                                   | Default    |
+| --------------------- | ---------- | ----------------------------------- | -------------------------------------- | ---------- |
+| `contextMenuCallback` | --         | Set the context menu data           | `() => void`                           | `() => {}` |
+| `moveContextMenu`     | --         | Change thte context menu coordinate | `(posX: number, posY: number) => void` | `() => {}` |
+| `selected`            | `selected` | Is row selected or not              | `boolean`                              | `false`    |
 
 ## Dependencies
 
