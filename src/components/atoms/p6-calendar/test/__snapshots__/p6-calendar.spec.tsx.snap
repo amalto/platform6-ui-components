@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-calendar renders 1`] = `
+<p6-calendar>
+  <input>
+</p6-calendar>
+`;
+
+exports[`p6-calendar translation Should translate en 1`] = `
+<div lang="en">
+  <p6-calendar></p6-calendar>
+</div>
+`;
+
+exports[`p6-calendar translation Should translate fr 1`] = `
+<div lang="fr">
+  <p6-calendar></p6-calendar>
+</div>
+`;

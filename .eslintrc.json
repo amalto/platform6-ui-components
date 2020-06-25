@@ -26,27 +26,6 @@
         "plugin:prettier/recommended"
     ],
     "rules": {
-        // @see https://github.com/iamturns/eslint-config-airbnb-typescript/issues/95
-        "@typescript-eslint/camelcase": "off",
-        "@typescript-eslint/naming-convention": [
-            "error",
-            {
-              "selector": "default",
-              "format": ["camelCase"]
-            },
-            {
-              "selector": "variable",
-              "format": ["camelCase", "UPPER_CASE"]
-            },
-            {
-              "selector": "parameter",
-              "format": ["camelCase"]
-            },
-            {
-              "selector": "typeLike",
-              "format": ["PascalCase"]
-            }
-        ],
         "jsx-a11y/label-has-associated-control": [2, {
             "assert": "either"
         }],

@@ -3,9 +3,7 @@
 
 :host {
   display: block;
-}
 
-p6-calendar {
   .datetimepicker-dummy {
     &::before {
       content: none;
@@ -15,7 +13,7 @@ p6-calendar {
       border-radius: $input-radius;
 
       .datetimepicker-dummy-input:first-child {
-        text-indent: .5rem;
+        text-indent: 0.5rem;
       }
     }
   }
@@ -37,30 +35,30 @@ p6-calendar {
 
           &:hover {
             border-color: $color;
-            background: #FFFFFF;
+            background: #fff;
           }
         }
       }
     }
   }
+}
 
-  &[disabled]:not([disabled="false"]),
-  &[readonly]:not([readonly="false"]) {
-    .datetimepicker-dummy .datetimepicker-clear-button {
-      display: none;
-    }
-  }
-
-  &[disabled]:not([disabled="false"]) {
-    .datetimepicker-dummy .datetimepicker-dummy-wrapper {
-      background-color: $input-disabled-background-color;
-      border-color: $input-disabled-border-color;
-      color: $input-disabled-color;
-
-      &, .datetimepicker-dummy-input {
-        cursor: not-allowed;
-      }
-    }
+:host([disabled]:not([disabled="false"])),
+:host([readonly]:not([readonly="false"])) {
+  .datetimepicker-dummy .datetimepicker-clear-button {
+    display: none;
   }
 }
 
+:host([disabled]:not([disabled="false"])) {
+  .datetimepicker-dummy .datetimepicker-dummy-wrapper {
+    background-color: $input-disabled-background-color;
+    border-color: $input-disabled-border-color;
+    color: $input-disabled-color;
+
+    &,
+    .datetimepicker-dummy-input {
+      cursor: not-allowed;
+    }
+  }
+}
