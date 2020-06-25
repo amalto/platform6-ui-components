@@ -83,6 +83,11 @@ export class P6GridCell {
   @Prop() dbleClickCallback: CellHeaderAction | undefined;
 
   /**
+   * Disabled templating
+   */
+  @Prop() disabled = false;
+
+  /**
    * Header id
    */
   @Prop() headerId!: string;
@@ -275,7 +280,7 @@ export class P6GridCell {
   }
 
   render(): JSX.Element {
-    const { align, color, width } = this;
+    const { align, color, disabled, width } = this;
     const styles = {
       color,
       justifyContent: align,
@@ -284,7 +289,7 @@ export class P6GridCell {
 
     return (
       <Host style={styles}>
-        {this.renderContextMenu()}
+        {!disabled && this.renderContextMenu()}
         <slot />
       </Host>
     );

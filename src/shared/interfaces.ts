@@ -10,7 +10,7 @@ export interface Cell {
 export interface HeaderCell extends Cell {
   id: string;
   hidden?: boolean;
-  movable?: string;
+  disabled?: boolean;
   selected?: boolean;
   sort?: Order;
 }

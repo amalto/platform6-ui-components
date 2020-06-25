@@ -10,6 +10,7 @@
 | `clickCallback`         | --          | Click callback        | `((id: string) => void) \| undefined`       | `undefined` |
 | `color`                 | `color`     | Cell text color       | `string \| undefined`                       | `undefined` |
 | `dbleClickCallback`     | --          | Double click callback | `((id: string) => void) \| undefined`       | `undefined` |
+| `disabled`              | `disabled`  | Disabled templating   | `boolean`                                   | `false`     |
 | `headerId` _(required)_ | `header-id` | Header id             | `string`                                    | `undefined` |
 | `width`                 | `width`     | Cell width            | `number \| string`                          | `100`       |
 
