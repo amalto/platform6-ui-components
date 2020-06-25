@@ -1,5 +1,9 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEraser, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEraser,
+  faEyeSlash,
+  faFolderOpen,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   Component,
   Element,
@@ -14,17 +18,25 @@ import { Align, Direction, Operation } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 import { getL10n, L10n } from "~utils/translations";
 import {
+  canMoveLeft,
+  canMoveRight,
   clearSelection,
   getCellLabelByHeaderId,
+  getHeaderById,
+  getHeaderExcept,
+  getHeaderIdxById,
   getRowCellByHeaderId,
+  isArrayEmpty,
+  isLeft,
   isRowSelected,
   toggleSort,
+  updateHeaderAttr,
 } from "./utils";
 
 export declare type EventCallBack = (event: MouseEvent) => void;
 export declare type ContextMenuFunction = (row: RowCell[]) => Element;
 
-library.add(faEraser, faEyeSlash);
+library.add(faEraser, faEyeSlash, faFolderOpen);
 
 const MIN_WIDTH = 75;
 const DEFAULT_WIDTH = MIN_WIDTH;
@@ -83,6 +95,8 @@ export class P6Tables {
 
   private contextMenu: HTMLDivElement | null = null;
 
+  private spinner: (HTMLP6SpinnerElement & Node) | null = null;
+
   private align = (id: string, align: Align): void => {
     this.updateGridCallback(
       this.updateHeaderAttr(id, "align", align),
@@ -128,11 +142,11 @@ export class P6Tables {
   }
 
   private getHeaderById(id: string): HeaderCell | undefined {
-    return this.stateHeaders.find((header) => header.id === id);
+    return getHeaderById(id, this.stateHeaders);
   }
 
   private getHeaderExcept(id: string): HeaderCell[] {
-    return this.stateHeaders.filter((header) => header.id !== id);
+    return getHeaderExcept(id, this.stateHeaders);
   }
 
   @Listen("hide")
@@ -164,17 +178,15 @@ export class P6Tables {
     if (!this.isHeaderUndefined(id)) {
       const { stateHeaders } = this;
       const updatedHeaders: HeaderCell[] = [];
-      const idx: number = stateHeaders.findIndex((header) => header.id === id);
-      const isLeft: boolean = direction === "left";
-      const isLast: boolean = idx === stateHeaders.length - 1;
-      const isFirst: boolean = idx === 0;
-      const hasEnoughtItems: boolean = stateHeaders.length > 1;
-      const canMoveLeft: boolean = !isFirst || !isLeft;
-      const canMoveRight: boolean = !isLast || isLeft;
+      const idx: number = getHeaderIdxById(id, stateHeaders);
 
-      if (hasEnoughtItems && canMoveLeft && canMoveRight) {
+      if (
+        !isArrayEmpty(stateHeaders) &&
+        (canMoveLeft(idx, direction, stateHeaders) ||
+          canMoveRight(idx, direction, stateHeaders))
+      ) {
         for (let i = 0; i < stateHeaders.length; i += 1) {
-          if (isLeft) {
+          if (isLeft(direction)) {
             if (i === idx) {
               updatedHeaders.push(stateHeaders[idx - 1]);
             } else if (i !== idx - 1) {
@@ -296,6 +308,7 @@ export class P6Tables {
       <p6-grid-header>
         {displayableHeader.map((header, idx) => (
           <p6-grid-cell
+            disabled={header.disabled}
             // eslint-disable-next-line react/jsx-no-bind
             onAlignLeft={this.alignLeft.bind(this)}
             // eslint-disable-next-line react/jsx-no-bind
@@ -450,7 +463,10 @@ export class P6Tables {
 
   private renderEmpty(renderEmpty: boolean): JSX.Element | undefined {
     return renderEmpty ? (
-      <p6-empty lang={this.host.lang}>{this.l10n?.emptyGrid}</p6-empty>
+      <p6-empty>
+        <p6-icon name="folder-open" iconPrefix="far" slot="image" />
+        {this.l10n?.emptyGrid}
+      </p6-empty>
     ) : undefined;
   }
 
@@ -496,8 +512,14 @@ export class P6Tables {
     this.updateGridCallback(this.stateHeaders, this.stateRows);
   }
 
-  private renderLoadingContent(): JSX.Element | undefined {
-    return this.loading ? <p6-spinner /> : undefined;
+  private renderLoadingContent(): void {
+    if (this.spinner) {
+      if (this.loading) {
+        this.host.appendChild(this.spinner);
+      } else if (this.spinner.parentNode === (this.host as Node)) {
+        this.host.removeChild(this.spinner);
+      }
+    }
   }
 
   private setRowContextMenu(row: Row): void {
@@ -598,16 +620,7 @@ export class P6Tables {
     attrName: string,
     attr: unknown
   ): HeaderCell[] {
-    const { stateHeaders } = this;
-    this.stateHeaders = stateHeaders.map((header) => {
-      if (header.id === id) {
-        return {
-          ...header,
-          [attrName]: attr,
-        };
-      }
-      return header;
-    });
+    this.stateHeaders = updateHeaderAttr(id, attrName, attr, this.stateHeaders);
     return this.stateHeaders;
   }
 
@@ -615,6 +628,10 @@ export class P6Tables {
     this.stateHeaders = this.headers;
     this.stateRows = this.rows;
     this.l10n = await getL10n(this.host);
+    this.spinner = document.createElement("p6-spinner");
+    this.spinner.style.height = "2em";
+    this.spinner.style.width = "2em";
+    this.spinner.style.margin = "auto";
   }
 
   render(): JSX.Element {
@@ -624,6 +641,8 @@ export class P6Tables {
       (header) => !header.hidden || false
     );
 
+    this.renderLoadingContent();
+
     return (
       <Host>
         {this.renderContextMenu()}
@@ -631,7 +650,6 @@ export class P6Tables {
         {this.renderHiddenColumnsPanel()}
         {!headerHidden ? this.renderHeader() : undefined}
         {!loading && !noRows && !headerHidden ? this.renderRows() : undefined}
-        {this.renderLoadingContent()}
         {!loading && this.renderEmpty(noRows || headerHidden)}
         <slot />
       </Host>
