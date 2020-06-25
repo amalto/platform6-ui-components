@@ -9,7 +9,11 @@ import {
 import { action, decorate } from "@storybook/addon-actions";
 import readme from "./readme.md";
 
-<Meta title="Atoms/Calendar" component="p6-calendar" parameters={{ notes: readme }} />
+<Meta
+  title="Atoms/Calendar"
+  component="p6-calendar"
+  parameters={{ notes: readme }}
+/>
 
 # Calendar
 
@@ -21,11 +25,15 @@ import readme from "./readme.md";
   {() => {
     const kRequired = boolean("Required", false);
     const kReadOnly = boolean("Read only", false);
-    const kDisabled = boolean("Disabled", false);
-    const kColor = select("Color", ["default", "primary", "info", "success", "warning", "danger"], "info");
-    const kType = select("Type", ["date","datetime","time"], "date");
-    const kLang = select("Language", ["en","fr","ru"], "en");
-    const kIsRange = boolean("Is range", false);
+    const kDisabled = boolean("Disabled", true);
+    const kColor = select(
+      "Color",
+      ["default", "primary", "info", "success", "warning", "danger"],
+      "danger"
+    );
+    const kType = select("Type", ["date", "datetime", "time"], "date");
+    const kLang = select("Language", ["en", "fr", "ru"], "en");
+    const kIsRange = boolean("Is range", true);
     const kStartDate = kText("Start date", "");
     const kEndDate = kText("End date", "");
     const kMinDate = kText("Min date", "");

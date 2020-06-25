@@ -1,9 +1,6 @@
 # p6-calendar
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -24,7 +21,6 @@
 | `startDate`         | `startdate`   | Pre-selected start date                                        | `string \| undefined`                                                    | `undefined` |
 | `type`              | `type`        | Type of field (date, time, datetime)                           | `"date" \| "datetime" \| "time"`                                         | `"date"`    |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

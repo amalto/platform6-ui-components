@@ -16,7 +16,7 @@ export type P6CalendarType = "date" | "datetime" | "time";
 @Component({
   tag: "p6-calendar",
   styleUrls: ["p6-calendar.scss"],
-  //  shadow: true,
+  shadow: true,
 })
 export class P6Calendar implements ComponentInterface {
   /**
@@ -89,11 +89,12 @@ export class P6Calendar implements ComponentInterface {
    */
   @Prop({ attribute: "labelTo" }) labelTo = "";
 
-  @Element() private readonly host!: HTMLP6SelectElement;
+  @Element() private readonly host!: HTMLP6CalendarElement;
 
   private nativeInput: HTMLInputElement | undefined;
-  // @ts-ignore
+
   private calendar: bulmaCalendar | undefined;
+
   private l10n: L10n | undefined;
 
   async componentWillLoad(): Promise<void> {
@@ -112,7 +113,7 @@ export class P6Calendar implements ComponentInterface {
         readonly={this.readOnly}
       >
         <input
-          ref={(input): void => {
+          ref={(input: HTMLInputElement | undefined): void => {
             this.nativeInput = input;
           }}
           {...attributes}
@@ -125,6 +126,8 @@ export class P6Calendar implements ComponentInterface {
     if (this.nativeInput === undefined) {
       return;
     }
+
+    // eslint-disable-next-line new-cap
     this.calendar = new bulmaCalendar(this.nativeInput, {
       isRange: this.isRange,
       type: this.type,
@@ -146,10 +149,10 @@ export class P6Calendar implements ComponentInterface {
       nowLabel: this.l10n?.nowLabel,
       validateLabel: this.l10n?.validateLabel,
     });
-    console.log(this.calendar);
   }
 
   disconnectedCallback(): void {
+    this.calendar?.hide();
     this.calendar = undefined;
   }
 }
