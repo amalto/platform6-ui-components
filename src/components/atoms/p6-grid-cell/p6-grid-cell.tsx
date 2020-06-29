@@ -20,8 +20,9 @@ import {
   h,
   Host,
   Prop,
+  State,
 } from "@stencil/core";
-import { Align } from "~shared/types";
+import { Align, Mode } from "~shared/types";
 import { isNumber } from "~utils/attribute";
 
 library.add(
@@ -38,6 +39,11 @@ library.add(
 );
 
 export declare type CellHeaderAction = (id: string) => void;
+export declare type RenderCellEditComponent = (
+  id: string,
+  rowIdx: number,
+  cellIdx: number
+) => HTMLDivElement;
 
 @Component({
   tag: "p6-grid-cell",
@@ -53,19 +59,9 @@ export class P6GridCell {
   @Prop() align: Align | undefined;
 
   /**
-   * Text align to the left
+   * Index of the cell
    */
-  @Event() alignLeft: EventEmitter<string> | undefined;
-
-  /**
-   * Text align to the center
-   */
-  @Event() alignCenter: EventEmitter<string> | undefined;
-
-  /**
-   * Text align to the right
-   */
-  @Event() alignRight: EventEmitter<string> | undefined;
+  @Prop() cellIdx!: number;
 
   /**
    * Click callback
@@ -78,11 +74,6 @@ export class P6GridCell {
   @Prop() color: string | undefined;
 
   /**
-   * Double click callback
-   */
-  @Prop() dbleClickCallback: CellHeaderAction | undefined;
-
-  /**
    * Disabled templating
    */
   @Prop() disabled = false;
@@ -93,114 +84,153 @@ export class P6GridCell {
   @Prop() headerId!: string;
 
   /**
-   * Hide column
+   * Cell label
    */
-  @Event() hide: EventEmitter<string> | undefined;
+  @Prop() label = "-";
 
   /**
-   * Reduce column width
+   *
    */
-  @Event() minus: EventEmitter<string> | undefined;
+  @Prop() renderCellEditComponent:
+    | RenderCellEditComponent
+    | undefined = undefined;
 
   /**
-   * Move the column to the left
+   * Index of the row
    */
-  @Event() moveLeft: EventEmitter<string> | undefined;
-
-  /**
-   * Move the column to the right
-   */
-  @Event() moveRight: EventEmitter<string> | undefined;
-
-  /**
-   * Raise column width
-   */
-  @Event() plus: EventEmitter<string> | undefined;
-
-  /**
-   * Set color
-   */
-  @Event() setColor: EventEmitter<string> | undefined;
-
-  /**
-   * Sort
-   */
-  @Event() sort: EventEmitter<string> | undefined;
+  @Prop() rowIdx: number | undefined = undefined;
 
   /**
    * Cell width
    */
   @Prop() width: number | string = 100;
 
+  /**
+   * Editing mode
+   */
+  @Prop() editing = false;
+
+  /**
+   * Text align to the left
+   */
+  @Event({ eventName: "p6AlignLeft" }) alignLeft:
+    | EventEmitter<string>
+    | undefined;
+
+  /**
+   * Text align to the center
+   */
+  @Event({ eventName: "p6AlignCenter" }) alignCenter:
+    | EventEmitter<string>
+    | undefined;
+
+  /**
+   * Text align to the right
+   */
+  @Event({ eventName: "p6AlignRight" }) alignRight:
+    | EventEmitter<string>
+    | undefined;
+
+  /**
+   * Double click callback
+   */
+  @Event({ eventName: "p6Edit" }) edit:
+    | EventEmitter<{ headerId: string; cellIdx: number; rowIdx: number }>
+    | undefined;
+
+  /**
+   * Hide column
+   */
+  @Event({ eventName: "p6Hide" }) hide: EventEmitter<string> | undefined;
+
+  /**
+   * Reduce column width
+   */
+  @Event({ eventName: "p6Minus" }) minus: EventEmitter<string> | undefined;
+
+  /**
+   * Move the column to the left
+   */
+  @Event({ eventName: "p6MoveLeft" }) moveLeft:
+    | EventEmitter<string>
+    | undefined;
+
+  /**
+   * Move the column to the right
+   */
+  @Event({ eventName: "p6MoveRight" }) moveRight:
+    | EventEmitter<string>
+    | undefined;
+
+  /**
+   * Raise column width
+   */
+  @Event({ eventName: "p6Plus" }) plus: EventEmitter<string> | undefined;
+
+  // /**
+  //  * Set color
+  //  */
+  // @Event() setColor: EventEmitter<string> | undefined;
+
+  /**
+   * Sort
+   */
+  @Event({ eventName: "p6Sort" }) sort: EventEmitter<string> | undefined;
+
+  @State() currentAlign: Align = this.align || "start";
+
   private clickTimeout: NodeJS.Timeout | undefined = undefined;
 
-  private isCurrentAlign(align: Align): boolean {
-    return align === this.align;
-  }
-
-  private getAlignClass(align: Align): string {
-    return this.isCurrentAlign(align) ? "has-text-dark" : "has-text-info";
+  private getAlignMode(align: Align): Mode {
+    return align === this.currentAlign ? Mode.default : Mode.info;
   }
 
   private alignLeftHandler(): void {
-    if (this.alignLeft) {
-      this.alignLeft.emit(this.headerId);
-    }
+    this.alignLeft?.emit(this.headerId);
+    this.currentAlign = "start";
   }
 
   private alignCenterHandler(): void {
-    if (this.alignCenter) {
-      this.alignCenter.emit(this.headerId);
-    }
+    this.alignCenter?.emit(this.headerId);
+    this.currentAlign = "center";
   }
 
   private alignRightHandler(): void {
-    if (this.alignRight) {
-      this.alignRight.emit(this.headerId);
-    }
+    this.alignRight?.emit(this.headerId);
+    this.currentAlign = "end";
+  }
+
+  private getEditComponentId(): string {
+    return `${this.headerId}-${this.rowIdx}-${this.cellIdx}`;
   }
 
   private hideHandler(): void {
-    if (this.hide) {
-      this.hide.emit(this.headerId);
-    }
+    this.hide?.emit(this.headerId);
   }
 
   private minusHandler(): void {
-    if (this.minus) {
-      this.minus.emit(this.headerId);
-    }
+    this.minus?.emit(this.headerId);
   }
 
   private moveLeftHandler(): void {
-    if (this.moveLeft) {
-      this.moveLeft.emit(this.headerId);
-    }
+    this.moveLeft?.emit(this.headerId);
   }
 
   private moveRightHandler(): void {
-    if (this.moveRight) {
-      this.moveRight.emit(this.headerId);
-    }
+    this.moveRight?.emit(this.headerId);
   }
 
   private plusHandler(): void {
-    if (this.plus) {
-      this.plus.emit(this.headerId);
-    }
+    this.plus?.emit(this.headerId);
   }
 
   private sortHandler(): void {
-    if (this.sort) {
-      this.sort.emit(this.headerId);
-    }
+    this.sort?.emit(this.headerId);
   }
 
-  private setColorHandler(): void {
-    if (this.setColor) {
-      this.setColor.emit(this.headerId);
-    }
-  }
+  // private setColorHandler(): void {
+  //   this.setColor?.emit(this.headerId);
+  // }
 
   private renderAlignIcon(
     align: Align,
@@ -210,9 +240,9 @@ export class P6GridCell {
     // FIXME: The result of the getAlignClass is correct but it doesn't dislay the right class
     // need to investigate further
     return (
-      <div class={this.getAlignClass(align)}>
-        <p6-icon name={iconName} onClick={onClick} />
-      </div>
+      <p6-action mode={this.getAlignMode(align)} onClick={onClick}>
+        <p6-icon name={iconName} />
+      </p6-action>
     );
   }
 
@@ -220,7 +250,11 @@ export class P6GridCell {
     iconName: IconName,
     onClick: () => void
   ): JSX.Element => {
-    return <p6-icon name={iconName} onClick={onClick} />;
+    return (
+      <p6-action mode={Mode.info} onClick={onClick}>
+        <p6-icon name={iconName} />
+      </p6-action>
+    );
   };
 
   private renderContextMenu = (): JSX.Element => {
@@ -253,13 +287,13 @@ export class P6GridCell {
             this.alignRightHandler.bind(this)
           )}
         </div>
-        <div>{this.renderIcon("palette", this.setColorHandler.bind(this))}</div>
+        {/* <div>{this.renderIcon("palette", this.setColorHandler.bind(this))}</div> */}
       </div>
     );
   };
 
   componentWillLoad(): void {
-    const { clickCallback, dbleClickCallback, host } = this;
+    const { clickCallback, host } = this;
 
     if (clickCallback) {
       host.addEventListener("click", () => {
@@ -272,24 +306,34 @@ export class P6GridCell {
       });
     }
 
-    if (dbleClickCallback) {
-      host.addEventListener("dblclick", () => {
-        dbleClickCallback(this.headerId);
-      });
-    }
+    host.addEventListener("dblclick", () => {
+      if (typeof this.rowIdx === "number") {
+        this.edit?.emit({
+          headerId: this.headerId,
+          cellIdx: this.cellIdx,
+          rowIdx: this.rowIdx,
+        });
+      }
+    });
   }
 
   render(): JSX.Element {
-    const { align, color, disabled, width } = this;
+    const { align, cellIdx, color, disabled, editing, rowIdx, width } = this;
     const styles = {
       color,
       justifyContent: align,
       width: `${!isNumber(width) ? width : `${width}px`}`,
     };
+    const id = this.getEditComponentId();
 
     return (
       <Host style={styles}>
         {!disabled && this.renderContextMenu()}
+        {editing &&
+        typeof rowIdx === "number" &&
+        this.renderCellEditComponent !== undefined
+          ? this.renderCellEditComponent(id, rowIdx, cellIdx)
+          : undefined}
         <slot />
       </Host>
     );

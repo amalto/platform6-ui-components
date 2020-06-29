@@ -15,6 +15,12 @@
 
 ### Used by
 
+<<<<<<< HEAD
+=======
+- [p6-dropdown](../../molecules/p6-dropdown)
+- [p6-grid](../../molecules/p6-grid)
+- [p6-grid-cell](../p6-grid-cell)
+>>>>>>> 706777e7... p6-grid Handle autofocus on textarea
 - [p6-translation](../../molecules/p6-translation)
 - [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
 
@@ -22,6 +28,12 @@
 
 ```mermaid
 graph TD;
+<<<<<<< HEAD
+=======
+  p6-dropdown --> p6-icon
+  p6-grid --> p6-icon
+  p6-grid-cell --> p6-icon
+>>>>>>> 706777e7... p6-grid Handle autofocus on textarea
   p6-translation --> p6-icon
   p6-translation-line --> p6-icon
   style p6-icon fill:#f9f,stroke:#333,stroke-width:4px

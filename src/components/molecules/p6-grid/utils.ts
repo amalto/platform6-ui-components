@@ -9,13 +9,6 @@ export function clearSelection(): void {
   document?.getSelection()?.empty();
 }
 
-export function getRowCellByHeaderId(
-  headerId: string,
-  cells: RowCell[]
-): RowCell | undefined {
-  return cells.find((cell) => cell.headerId === headerId);
-}
-
 export function getCellLabelByHeaderId(
   cellId: string,
   headerId: string,
@@ -32,11 +25,34 @@ export function getHeaderExcept(
   return headers.filter((header) => header.id !== id);
 }
 
-export function getHeaderById(
+export function getHeaderCellById(
   id: string,
-  headers: HeaderCell[]
-): HeaderCell | undefined {
-  return headers.find((header) => header.id === id);
+  cells: Array<HeaderCell>
+): HeaderCell {
+  const foundCell = cells.find((cell) => cell.id === id);
+
+  if (typeof foundCell === "undefined") {
+    throw new Error(
+      `getHeaderCellById: the header with id ${id} desn't exist!`
+    );
+  } else {
+    return foundCell;
+  }
+}
+
+export function getRowCellById(
+  headerId: string,
+  cells: Array<RowCell>
+): RowCell {
+  const foundCell = cells.find((cell) => cell.headerId === headerId);
+
+  if (typeof foundCell === "undefined") {
+    throw new Error(
+      `getRowCellById: the cell with header id ${headerId} doesn't exist!`
+    );
+  } else {
+    return foundCell;
+  }
 }
 
 export function getHeaderIdxById(id: string, headers: HeaderCell[]): number {

@@ -11,6 +11,10 @@
 
     p6-button {
       margin-right: $gap-size * 1px;
+
+      button {
+        padding: 0;
+      }
     }
   }
 

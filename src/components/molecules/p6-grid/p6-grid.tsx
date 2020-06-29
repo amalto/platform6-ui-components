@@ -7,14 +7,17 @@ import {
 import {
   Component,
   Element,
+  Event,
+  EventEmitter,
   h,
   Host,
   Listen,
   Prop,
   State,
+  Watch,
 } from "@stencil/core";
 import { HeaderCell, Row, RowCell } from "~shared/interfaces";
-import { Align, Direction, Operation } from "~shared/types";
+import { Align, Direction, Operation, Mode } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 import { getL10n, L10n } from "~utils/translations";
 import {
@@ -22,10 +25,10 @@ import {
   canMoveRight,
   clearSelection,
   getCellLabelByHeaderId,
-  getHeaderById,
+  getHeaderCellById,
   getHeaderExcept,
   getHeaderIdxById,
-  getRowCellByHeaderId,
+  getRowCellById,
   isArrayEmpty,
   isLeft,
   isRowSelected,
@@ -72,14 +75,13 @@ export class P6Tables {
    */
   @Prop() rows!: Row[];
 
-  /**
-   * Update callback after each action on the grid
-   */
-  @Prop() updateGridCallback!: (header: HeaderCell[], rows: Row[]) => void;
-
   @State() displayTags = false;
 
   @State() isContextMenuOpen = false;
+
+  @State() isInvalid: { [id: string]: boolean } = {};
+
+  @State() lastEditingCell: string | undefined = undefined;
 
   @State() rowContext: RowCell[] = [];
 
@@ -89,7 +91,163 @@ export class P6Tables {
 
   @State() stateRows: Row[] = [];
 
-  private clearTimeout: NodeJS.Timeout | undefined;
+  @State() textareaInputs: { [id: string]: HTMLTextAreaElement } = {};
+
+  /**
+   * Listen to change event to get updated p6-grid data
+   */
+  @Event({ eventName: "p6Change" }) change:
+    | EventEmitter<{ header: HeaderCell[]; rows: Row[] }>
+    | undefined;
+
+  @Listen("p6AlignLeft")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private alignLeft(event: CustomEvent<string>): void {
+    this.align(event.detail, "start");
+  }
+
+  @Listen("p6AlignCenter")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private alignCenter(event: CustomEvent<string>): void {
+    this.align(event.detail, "center");
+  }
+
+  @Listen("p6AlignRight")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private alignRight(event: CustomEvent<string>): void {
+    this.align(event.detail, "end");
+  }
+
+  @Listen("p6Edit")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private editCell(
+    event: CustomEvent<{ headerId: string; cellIdx: number; rowIdx: number }>
+  ): void {
+    const { cellIdx, headerId, rowIdx } = event.detail;
+    this.toggleEditCell(rowIdx, cellIdx, true);
+    this.lastEditingCell = `${headerId}-${rowIdx}-${cellIdx}`;
+  }
+
+  // @Listen("editEnded")
+  // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // // @ts-ignore
+  // private editEnded(
+  //   event: CustomEvent<{
+  //     keyboardEvent: KeyboardEvent;
+  //     rowIdx: number;
+  //     cellIdx: number;
+  //   }>
+  // ): void {
+  //   const { keyboardEvent, rowIdx, cellIdx } = event.detail;
+  //   this.onEditEnded(keyboardEvent, rowIdx, cellIdx);
+  // }
+
+  @Listen("p6Hide")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private hide(event: CustomEvent<string>): void {
+    const id: string = event.detail;
+
+    this.toggleHide(id);
+  }
+
+  @Listen("p6Minus")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private minus(event: CustomEvent<string>): void {
+    this.calcOrder(event.detail, "minus");
+  }
+
+  private move(id: string, direction: Direction): void {
+    const { stateHeaders } = this;
+    const updatedHeaders: HeaderCell[] = [];
+    const idx: number = getHeaderIdxById(id, stateHeaders);
+
+    if (
+      !isArrayEmpty(stateHeaders) &&
+      (canMoveLeft(idx, direction, stateHeaders) ||
+        canMoveRight(idx, direction, stateHeaders))
+    ) {
+      for (let i = 0; i < stateHeaders.length; i += 1) {
+        if (isLeft(direction)) {
+          if (i === idx) {
+            updatedHeaders.push(stateHeaders[idx - 1]);
+          } else if (i !== idx - 1) {
+            updatedHeaders.push(stateHeaders[i]);
+          } else {
+            updatedHeaders.push(stateHeaders[idx]);
+          }
+        } else if (i === idx) {
+          updatedHeaders.push(stateHeaders[idx + 1]);
+        } else if (idx !== i - 1) {
+          updatedHeaders.push(stateHeaders[i]);
+        } else {
+          updatedHeaders.push(stateHeaders[idx]);
+        }
+      }
+      this.stateHeaders = updatedHeaders;
+      this.stateRows = this.initRows(this.stateRows);
+    }
+  }
+
+  @Listen("p6MoveLeft")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private moveLeft(event: CustomEvent<string>): void {
+    this.move(event.detail, "left");
+  }
+
+  @Listen("p6MoveRight")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private moveRight(event: CustomEvent<string>): void {
+    this.move(event.detail, "right");
+  }
+
+  @Listen("p6Plus")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private plus(event: CustomEvent<string>): void {
+    this.calcOrder(event.detail, "plus");
+  }
+
+  @Listen("p6Sort")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private sort(event: CustomEvent<string>): void {
+    const { stateHeaders } = this;
+    const id: string = event.detail;
+    const idx: number = stateHeaders.findIndex((header) => header.id === id);
+    const updatedHeaders: HeaderCell[] = [...stateHeaders];
+
+    updatedHeaders[idx].sort = toggleSort(updatedHeaders[idx].sort || "asc");
+    this.stateHeaders = updatedHeaders;
+    this.sortedBy = id;
+    this.change?.emit({ header: updatedHeaders, rows: this.stateRows });
+  }
+
+  // @Listen("setColor")
+  // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // // @ts-ignore
+  // private setColor(event: CustomEvent<string>): void {
+  //   const id: string = event.detail;
+  //   // eslint-disable-next-line no-console
+  //   this.change?.emit({ header: this.stateHeaders, rows: this.stateRows });
+  // }
+  @Watch("lastEditingCell")
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  private textareaWatcher(newValue: string): void {
+    setTimeout(() => {
+      if (this.textareaInputs[newValue] !== undefined) {
+        this.textareaInputs[newValue].focus();
+      }
+    }, 100);
+  }
 
   private l10n: L10n | undefined;
 
@@ -98,10 +256,10 @@ export class P6Tables {
   private spinner: (HTMLP6SpinnerElement & Node) | null = null;
 
   private align = (id: string, align: Align): void => {
-    this.updateGridCallback(
-      this.updateHeaderAttr(id, "align", align),
-      this.rows
-    );
+    this.change?.emit({
+      header: this.updateHeaderAttr(id, "align", align),
+      rows: this.stateRows,
+    });
   };
 
   private appendSelectedRow(rowIdx: number): Row[] {
@@ -111,100 +269,41 @@ export class P6Tables {
     }));
   }
 
-  @Listen("alignLeft")
-  private alignLeft(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.align(event.detail, "start"));
-  }
-
-  @Listen("alignCenter")
-  private alignCenter(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.align(event.detail, "center"));
-  }
-
-  @Listen("alignRight")
-  private alignRight(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.align(event.detail, "end"));
-  }
-
   private calcOrder(id: string, operation: Operation): void {
-    if (!this.isHeaderUndefined(id)) {
-      const header: HeaderCell = this.getHeaderById(id) as HeaderCell;
-      const width: number = header.width || DEFAULT_WIDTH;
-      const minWidth: number =
-        width - INC_WIDTH < MIN_WIDTH ? MIN_WIDTH : width - INC_WIDTH;
-      const newWidth: number =
-        operation === "minus" ? minWidth : width + INC_WIDTH;
-      this.updateGridCallback(
-        this.updateHeaderAttr(id, "width", newWidth),
-        this.stateRows
-      );
-    }
+    const header: HeaderCell = this.getHeaderCellById(id);
+    const width: number = header.width || DEFAULT_WIDTH;
+    const minWidth: number =
+      width - INC_WIDTH < MIN_WIDTH ? MIN_WIDTH : width - INC_WIDTH;
+    const newWidth: number =
+      operation === "minus" ? minWidth : width + INC_WIDTH;
+    this.change?.emit({
+      header: this.updateHeaderAttr(id, "width", newWidth),
+      rows: this.stateRows,
+    });
   }
 
-  private getHeaderById(id: string): HeaderCell | undefined {
-    return getHeaderById(id, this.stateHeaders);
+  private initRows(rows: Row[]): Row[] {
+    const updatedRows: Row[] = [...rows];
+
+    updatedRows.forEach((row, idx) => {
+      updatedRows[idx].cells = this.orderCells(row.cells);
+    });
+    return updatedRows;
+  }
+
+  private initSpinner(): void {
+    this.spinner = document.createElement("p6-spinner");
+    this.spinner.style.height = "2em";
+    this.spinner.style.width = "2em";
+    this.spinner.style.margin = "auto";
+  }
+
+  private getHeaderCellById(id: string): HeaderCell {
+    return getHeaderCellById(id, this.stateHeaders);
   }
 
   private getHeaderExcept(id: string): HeaderCell[] {
     return getHeaderExcept(id, this.stateHeaders);
-  }
-
-  @Listen("hide")
-  private hide(event: CustomEvent<string>): void {
-    this.triggerOnce(() => {
-      const id: string = event.detail;
-      if (!this.isHeaderUndefined(id)) {
-        this.toggleHide(id);
-      }
-    });
-  }
-
-  private isHeaderUndefined(id: string): boolean {
-    const isUndefined = !this.getHeaderById(id);
-
-    if (isUndefined) {
-      // eslint-disable-next-line no-console
-      console.warn(`Header with id ${id} doesn't exist!`);
-    }
-    return isUndefined;
-  }
-
-  @Listen("minus")
-  private minus(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.calcOrder(event.detail, "minus"));
-  }
-
-  private move(id: string, direction: Direction): void {
-    if (!this.isHeaderUndefined(id)) {
-      const { stateHeaders } = this;
-      const updatedHeaders: HeaderCell[] = [];
-      const idx: number = getHeaderIdxById(id, stateHeaders);
-
-      if (
-        !isArrayEmpty(stateHeaders) &&
-        (canMoveLeft(idx, direction, stateHeaders) ||
-          canMoveRight(idx, direction, stateHeaders))
-      ) {
-        for (let i = 0; i < stateHeaders.length; i += 1) {
-          if (isLeft(direction)) {
-            if (i === idx) {
-              updatedHeaders.push(stateHeaders[idx - 1]);
-            } else if (i !== idx - 1) {
-              updatedHeaders.push(stateHeaders[i]);
-            } else {
-              updatedHeaders.push(stateHeaders[idx]);
-            }
-          } else if (i === idx) {
-            updatedHeaders.push(stateHeaders[idx + 1]);
-          } else if (idx !== i - 1) {
-            updatedHeaders.push(stateHeaders[i]);
-          } else {
-            updatedHeaders.push(stateHeaders[idx]);
-          }
-        }
-        this.stateHeaders = updatedHeaders;
-      }
-    }
   }
 
   private moveContextMenu(posX: number, posY: number): void {
@@ -218,16 +317,6 @@ export class P6Tables {
       this.contextMenu.style.left = `${posX}px`;
       this.contextMenu.style.top = `${posY}px`;
     }
-  }
-
-  @Listen("moveLeft")
-  private moveLeft(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.move(event.detail, "left"));
-  }
-
-  @Listen("moveRight")
-  private moveRight(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.move(event.detail, "right"));
   }
 
   private multipleSelectedRow(rowIdx: number): Row[] {
@@ -262,45 +351,85 @@ export class P6Tables {
     this.isContextMenuOpen = false;
   }
 
-  @Listen("plus")
-  private plus(event: CustomEvent<string>): void {
-    this.triggerOnce(() => this.calcOrder(event.detail, "plus"));
-  }
+  private onEditEnded(
+    event: KeyboardEvent,
+    rowIdx: number,
+    cellIdx: number,
+    textareaId?: string
+  ): void {
+    const target: HTMLTextAreaElement = event.currentTarget as HTMLTextAreaElement;
+    const { valueMissing } = target.validity;
+    const isEnterKey: boolean = event.keyCode === 13;
+    const isEscKey: boolean = event.keyCode === 27;
 
-  @Listen("sort")
-  private sort(event: CustomEvent<string>): void {
-    this.triggerOnce(() => {
-      const id: string = event.detail;
-      if (!this.isHeaderUndefined(id)) {
-        const { stateHeaders } = this;
-        const idx: number = stateHeaders.findIndex(
-          (header) => header.id === id
-        );
-        const updatedHeaders: HeaderCell[] = [...stateHeaders];
+    if (isEnterKey) {
+      event.preventDefault();
+    }
 
-        updatedHeaders[idx].sort = toggleSort(
-          updatedHeaders[idx].sort || "asc"
-        );
-        this.stateHeaders = updatedHeaders;
-        this.sortedBy = id;
-        this.updateGridCallback(updatedHeaders, this.stateRows);
+    if (!isEmpty(textareaId)) {
+      this.isInvalid[textareaId as string] = this.textareaInputs[
+        textareaId as string
+      ].checkValidity();
+    }
+
+    if (isEnterKey || isEscKey) {
+      if (!valueMissing && isEnterKey) {
+        this.updateCellValue(target.value, cellIdx, rowIdx);
       }
-    });
+      if (!(valueMissing && isEnterKey)) {
+        this.toggleEditCell(rowIdx, cellIdx, false);
+        if (!isEmpty(textareaId)) {
+          delete this.textareaInputs[textareaId as string];
+          this.lastEditingCell = undefined;
+        }
+      }
+    }
   }
 
-  @Listen("setColor")
-  private setColor(event: CustomEvent<string>): void {
-    this.triggerOnce(() => {
-      const id: string = event.detail;
-      // eslint-disable-next-line no-console
-      console.info("id => ", id);
-      this.updateGridCallback(this.stateHeaders, this.stateRows);
+  private orderCells(cells: RowCell[]): RowCell[] {
+    const orderedHeaders: string[] = this.stateHeaders
+      .filter((header) => !header.hidden)
+      .map((header) => header.id);
+    const orderedCells: RowCell[] = [];
+
+    orderedHeaders.forEach((id) => {
+      orderedCells.push(getRowCellById(id, cells));
     });
+    return orderedCells;
+  }
+
+  private renderCellEditComponent(
+    id: string,
+    rowIdx: number,
+    cellIdx: number
+  ): HTMLDivElement {
+    const { stateRows } = this;
+    return (
+      <div>
+        <textarea
+          id={id}
+          name={id}
+          // eslint-disable-next-line react/jsx-no-bind
+          onKeyDown={(event: KeyboardEvent) => {
+            this.onEditEnded(event, rowIdx, cellIdx, id);
+          }}
+          ref={(dom) => {
+            this.textareaInputs[id] = dom as HTMLTextAreaElement;
+          }}
+          required
+          rows={1}
+          value={stateRows[rowIdx].cells[cellIdx].label}
+        />
+        <span class="validation-message has-text-danger">
+          {this.textareaInputs[id]?.validationMessage}
+        </span>
+      </div>
+    );
   }
 
   private renderHeader(): HTMLP6GridHeaderElement {
     const { stateHeaders } = this;
-    const lastIndex: number = stateHeaders.length;
+    // const lastIndex: number = stateHeaders.length;
     const displayableHeader: HeaderCell[] = stateHeaders.filter(
       (cell) => !cell.hidden
     );
@@ -309,30 +438,9 @@ export class P6Tables {
         {displayableHeader.map((header, idx) => (
           <p6-grid-cell
             disabled={header.disabled}
-            // eslint-disable-next-line react/jsx-no-bind
-            onAlignLeft={this.alignLeft.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onAlignCenter={this.alignCenter.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onAlignRight={this.alignRight.bind(this)}
+            cellIdx={idx}
             color={header.color}
             headerId={header.id}
-            // eslint-disable-next-line react/jsx-no-bind
-            onHide={this.hide.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onMinus={lastIndex === idx ? undefined : this.minus.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onMoveLeft={idx === 0 ? undefined : this.moveLeft.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onMoveRight={
-              lastIndex === idx ? undefined : this.moveRight.bind(this)
-            }
-            // eslint-disable-next-line react/jsx-no-bind
-            onPlus={lastIndex === idx ? undefined : this.plus.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onSort={this.sort.bind(this)}
-            // eslint-disable-next-line react/jsx-no-bind
-            onSetColor={this.setColor.bind(this)}
             width={header.width}
           >
             {header.label}
@@ -342,16 +450,29 @@ export class P6Tables {
     );
   }
 
-  private renderRowCell = (cell: RowCell): HTMLP6GridCellElement => {
-    const header: HeaderCell = this.getHeaderById(cell.headerId) as HeaderCell;
+  private renderRowCell = (
+    cell: RowCell,
+    rowIdx: number,
+    cellIdx: number
+  ): HTMLP6GridCellElement => {
+    const header: HeaderCell = this.getHeaderCellById(cell.headerId);
+
     return (
       <p6-grid-cell
         align={header.align}
+        cellIdx={cellIdx}
         color={header.color}
+        editing={cell.edit}
         headerId={cell.headerId}
+        label={cell.label}
+        // eslint-disable-next-line react/jsx-no-bind
+        renderCellEditComponent={
+          cell.edit ? this.renderCellEditComponent.bind(this) : undefined
+        }
+        rowIdx={rowIdx}
         width={header.width}
       >
-        {cell.label}
+        {cell.edit ? null : cell.label}
       </p6-grid-cell>
     );
   };
@@ -364,9 +485,7 @@ export class P6Tables {
     const orderedCells: RowCell[] = [];
 
     orderedHeaders.forEach((id) => {
-      orderedCells.push(
-        row.cells.find((cell) => cell.headerId === id) as RowCell
-      );
+      orderedCells.push(getRowCellById(id, row.cells));
     });
 
     return (
@@ -383,7 +502,7 @@ export class P6Tables {
         moveContextMenu={this.moveContextMenu.bind(this)}
         selected={isRowSelected(row)}
       >
-        {orderedCells.map(this.renderRowCell)}
+        {orderedCells.map((cell, idx) => this.renderRowCell(cell, rowId, idx))}
       </p6-grid-row>
     );
   };
@@ -413,29 +532,25 @@ export class P6Tables {
       (header) => header.hidden
     );
     return (
-      <div class="btn-bar">
-        {hasHeaderHidden ? (
-          <p6-button
-            mode="info"
+      <div class="level">
+        <div class="level-left btn-bar">
+          {hasHeaderHidden ? (
+            <p6-action
+              mode={Mode.info}
+              // eslint-disable-next-line react/jsx-no-bind
+              onClick={this.toggleDisplayTags.bind(this)}
+            >
+              <p6-icon name="eye-slash" />
+            </p6-action>
+          ) : undefined}
+          <p6-action
+            mode={Mode.danger}
             // eslint-disable-next-line react/jsx-no-bind
-            onClick={this.toggleDisplayTags.bind(this)}
-            outlined
-            size="small"
-            type="button"
+            onClick={this.resetGrid.bind(this)}
           >
-            <p6-icon name="eye-slash" />
-          </p6-button>
-        ) : undefined}
-        <p6-button
-          mode="danger"
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={this.resetGrid.bind(this)}
-          outlined
-          size="small"
-          type="button"
-        >
-          <p6-icon name="eraser" />
-        </p6-button>
+            <p6-icon name="eraser" />
+          </p6-action>
+        </div>
       </div>
     );
   }
@@ -509,7 +624,10 @@ export class P6Tables {
       hidden: false,
     }));
     this.displayTags = false;
-    this.updateGridCallback(this.stateHeaders, this.stateRows);
+    this.change?.emit({
+      header: this.stateHeaders,
+      rows: this.stateRows,
+    });
   }
 
   private renderLoadingContent(): void {
@@ -551,17 +669,20 @@ export class P6Tables {
       } else {
         this.stateRows = this.selectSingleRow(rowIdx);
       }
-      this.updateGridCallback(this.stateHeaders, this.stateRows);
+      this.change?.emit({
+        header: this.stateHeaders,
+        rows: this.stateRows,
+      });
     }
   }
 
   private sortRows(): Row[] {
     const { sortedBy, stateRows } = this;
-    const header: HeaderCell = this.getHeaderById(sortedBy) as HeaderCell;
+    const header: HeaderCell = this.getHeaderCellById(sortedBy);
 
     return stateRows.sort((a, b) => {
-      const cellA: RowCell = getRowCellByHeaderId(sortedBy, a.cells) as RowCell;
-      const cellB: RowCell = getRowCellByHeaderId(sortedBy, b.cells) as RowCell;
+      const cellA: RowCell = getRowCellById(sortedBy, a.cells);
+      const cellB: RowCell = getRowCellById(sortedBy, b.cells);
       const vA: string = getCellLabelByHeaderId(
         cellA.headerId,
         sortedBy,
@@ -590,29 +711,28 @@ export class P6Tables {
     this.displayTags = !this.displayTags;
   }
 
+  private toggleEditCell(rowIdx: number, cellIdx: number, edit: boolean): void {
+    const { stateRows } = this;
+    const updatedRows: Row[] = [...stateRows];
+    const { cells } = updatedRows[rowIdx];
+
+    cells[cellIdx].edit = edit;
+    updatedRows[rowIdx].cells = cells;
+    this.stateRows = updatedRows;
+  }
+
   private toggleHide(id: string): void {
-    const header: HeaderCell = this.getHeaderById(id) as HeaderCell;
+    const header: HeaderCell = this.getHeaderCellById(id);
     const updatedHeader: HeaderCell[] = this.getHeaderExcept(id);
 
     header.hidden = !header.hidden;
     updatedHeader.push(header);
     this.displayTags = !!updatedHeader.find((uH) => uH.hidden);
     this.stateHeaders = updatedHeader;
-    this.updateGridCallback(updatedHeader, this.stateRows);
-  }
-
-  /**
-   * Workaround until we find out why the listner is triggered 2 times.
-   * @param method
-   */
-  private triggerOnce(method: () => void): void {
-    if (!this.clearTimeout) {
-      this.clearTimeout = setTimeout(() => {
-        method();
-        clearTimeout(this.clearTimeout as NodeJS.Timeout);
-        this.clearTimeout = undefined;
-      }, 100);
-    }
+    this.change?.emit({
+      header: updatedHeader,
+      rows: this.stateRows,
+    });
   }
 
   private updateHeaderAttr(
@@ -624,14 +744,18 @@ export class P6Tables {
     return this.stateHeaders;
   }
 
+  private updateCellValue(value: string, cellIdx: number, rowId: number): void {
+    const updatedRows: Row[] = [...this.stateRows];
+
+    updatedRows[rowId].cells[cellIdx].label = value;
+    this.stateRows = updatedRows;
+  }
+
   async componentWillLoad(): Promise<void> {
     this.stateHeaders = this.headers;
-    this.stateRows = this.rows;
+    this.stateRows = this.initRows(this.rows);
     this.l10n = await getL10n(this.host);
-    this.spinner = document.createElement("p6-spinner");
-    this.spinner.style.height = "2em";
-    this.spinner.style.width = "2em";
-    this.spinner.style.margin = "auto";
+    this.initSpinner();
   }
 
   render(): JSX.Element {
