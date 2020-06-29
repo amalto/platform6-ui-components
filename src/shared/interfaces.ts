@@ -3,14 +3,16 @@ import { Align, Order } from "./types";
 export interface Cell {
   align?: Align;
   color?: string;
+  edit?: boolean;
+  editable?: boolean;
   label: string;
   width?: number;
 }
 
 export interface HeaderCell extends Cell {
   id: string;
-  hidden?: boolean;
   disabled?: boolean;
+  hidden?: boolean;
   selected?: boolean;
   sort?: Order;
 }

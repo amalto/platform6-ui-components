@@ -17,10 +17,18 @@
     "jsx": "react",
     "jsxFactory": "h",
     "paths": {
-      "~components/*" : ["./src/components/*"],
-      "~global/*" : ["./src/global/*"],
-      "~shared/*" : ["./src/shared/*"],
-      "~utils/*" : ["./src/utils/*"]
+      "~components/*": [
+        "./src/components/*"
+      ],
+      "~global/*": [
+        "./src/global/*"
+      ],
+      "~shared/*": [
+        "./src/shared/*"
+      ],
+      "~utils/*": [
+        "./src/utils/*"
+      ]
     },
     "strict": true,
     "resolveJsonModule": true

@@ -1,6 +1,7 @@
 import { newSpecPage } from "@stencil/core/testing";
 import { P6Tables } from "../p6-grid";
 
+// https://stackoverflow.com/questions/52868727/how-to-mock-window-navigator-language-using-jest
 describe("p6-grid", () => {
   it("renders", async () => {
     const page = await newSpecPage({
