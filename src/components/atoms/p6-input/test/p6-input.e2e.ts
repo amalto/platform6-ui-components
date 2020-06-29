@@ -15,8 +15,8 @@ describe("p6-input", () => {
         '<p6-input name="code" pattern="00[6|7|8|9|11]" value="0042"></p6-input>',
     });
 
-    const input = await page.find("p6-input input.is-danger");
-    expect(input).not.toBeNull();
+    const input = await page.find("p6-input >>> input");
+    expect(input).toHaveClass("is-danger");
   });
 
   it("should check the validity of the value when it loses focus", async () => {
@@ -27,13 +27,15 @@ describe("p6-input", () => {
       `,
     });
 
-    await page.focus("p6-input input");
-    await page.keyboard.type("0042");
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
+    await page.focus("p6-input");
+    const input = await page.find("p6-input >>> input");
+    input.press("0");
+    input.press("0");
+    input.press("4");
+    input.press("2");
+    await page.focus("button");
     await page.waitForChanges();
 
-    const input = await page.find("p6-input input.is-danger");
-    expect(input).not.toBeNull();
+    expect(input).toHaveClass("is-danger");
   });
 });

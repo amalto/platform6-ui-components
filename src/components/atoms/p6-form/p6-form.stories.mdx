@@ -1,0 +1,19 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import {
+  boolean,
+  select,
+  number,
+  text as kText,
+  withKnobs,
+} from "@storybook/addon-knobs";
+import { action, decorate } from "@storybook/addon-actions";
+import readme from "./readme.md";
+import { Default } from "./p6-form.stories.js";
+
+<Meta title="Atoms/Form" component="p6-form" parameters={{ notes: readme }} />
+
+# Form
+
+<Story name="Default" parameters={{ docs: { disable: true } }}>
+  {Default}
+</Story>

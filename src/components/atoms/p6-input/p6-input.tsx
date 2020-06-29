@@ -1,12 +1,17 @@
 import {
   Component,
+  ComponentInterface,
   Element,
+  Event,
+  EventEmitter,
   h,
   Host,
   Method,
   Prop,
   State,
 } from "@stencil/core";
+import { P6Control } from "~shared/form/control";
+import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
 import { cleanupValue, isEmpty } from "~utils/attribute";
 
 export type P6InputType =
@@ -18,12 +23,14 @@ export type P6InputType =
   | "text"
   | "url";
 
+export type P6InputValue = string | number | undefined;
+
 @Component({
   tag: "p6-input",
   styleUrl: "p6-input.scss",
-  scoped: true,
+  shadow: true,
 })
-export class P6Input {
+export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   @Element() host!: HTMLP6InputElement;
 
   /**
@@ -74,7 +81,7 @@ export class P6Input {
   /**
    * the value of the input.
    */
-  @Prop() value: string | undefined;
+  @Prop() value: string | number | undefined;
 
   /**
    * shows a waiting indicator
@@ -83,23 +90,35 @@ export class P6Input {
 
   @State() hasError = false;
 
+  /**
+   * Registering the field in a p6-form
+   */
+  @Event() p6FormRegister!: EventEmitter<P6Control<P6InputValue>>;
+
+  /**
+   * Unregistering the field in a p6-form
+   */
+  @Event() p6FormUnregister!: EventEmitter<P6Control<P6InputValue>>;
+
+  /**
+   * Fires when the field has been checked for validity and satisfy its constraints
+   */
+  @Event() p6Valid!: EventEmitter<ValidEventDetail<P6InputValue>>;
+
+  /**
+   * Fires when the field has been checked for validity and doesn't satisfy its constraints
+   */
+  @Event() p6Invalid!: EventEmitter<InvalidEventDetail>;
+
   private nativeInput: HTMLInputElement | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener(
-      "focusout",
-      this.internalCheckValidity.bind(this)
-    );
-  }
-
-  componentDidLoad(): void {
-    if (!isEmpty(this.value)) {
-      this.internalCheckValidity();
-    }
+    this.host.addEventListener("focusout", this.checkValidity.bind(this));
   }
 
   render(): JSX.Element {
     const containerClass = {
+      control: true,
       "is-loading": !!this.waiting,
     };
 
@@ -110,24 +129,38 @@ export class P6Input {
     };
 
     return (
-      <Host class={containerClass}>
-        <input
-          class={classes}
-          ref={(input): void => {
-            this.nativeInput = input;
-          }}
-          disabled={this.disabled}
-          name={this.name}
-          pattern={cleanupValue(this.pattern)}
-          placeholder={cleanupValue(this.placeholder)}
-          readOnly={this.readOnly}
-          required={this.required}
-          type={this.type}
-          value={this.value}
-          {...this.minMaxAttrs}
-        />
+      <Host>
+        <div class={containerClass}>
+          <input
+            class={classes}
+            ref={(input): void => {
+              this.nativeInput = input;
+            }}
+            disabled={this.disabled}
+            name={this.name}
+            pattern={cleanupValue(this.pattern)}
+            placeholder={cleanupValue(this.placeholder)}
+            readOnly={this.readOnly}
+            required={this.required}
+            type={this.type}
+            value={this.value}
+            {...this.minMaxAttrs}
+          />
+        </div>
       </Host>
     );
+  }
+
+  componentDidLoad(): void {
+    if (!isEmpty(this.value)) {
+      this.checkValidity();
+    }
+
+    this.p6FormRegister.emit(this);
+  }
+
+  disconnectedCallback?(): void {
+    this.p6FormUnregister.emit(this);
   }
 
   /**
@@ -136,7 +169,8 @@ export class P6Input {
    */
   @Method()
   async validationMessage(): Promise<string> {
-    return Promise.resolve(this.nativeInput?.validationMessage || "");
+    const message = this.nativeInput?.validationMessage || "";
+    return Promise.resolve(message);
   }
 
   /**
@@ -144,7 +178,26 @@ export class P6Input {
    */
   @Method()
   async checkValidity(): Promise<boolean> {
-    return Promise.resolve(this.nativeInput?.checkValidity() || true);
+    const isValid = !!this.nativeInput?.checkValidity();
+
+    const message = await this.validationMessage();
+    this.hasError = message !== "";
+
+    if (isValid) {
+      const validInit = {
+        name: this.name,
+        value: this.inputValue,
+      };
+      this.p6Valid.emit(validInit);
+    } else {
+      const invalidInit = {
+        name: this.name,
+        message,
+      };
+      this.p6Invalid.emit(invalidInit);
+    }
+
+    return Promise.resolve(isValid);
   }
 
   private get minMaxAttrs():
@@ -161,9 +214,15 @@ export class P6Input {
         };
   }
 
-  private async internalCheckValidity(): Promise<void> {
-    await this.checkValidity();
-    const msg = await this.validationMessage();
-    this.hasError = msg !== "";
+  private get inputValue(): string | number | undefined {
+    if (this.nativeInput === undefined) {
+      return undefined;
+    }
+
+    if (this.nativeInput.type === "number") {
+      return this.nativeInput.valueAsNumber;
+    }
+
+    return this.nativeInput.value;
   }
 }

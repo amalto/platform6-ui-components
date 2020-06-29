@@ -6,32 +6,51 @@ import {
   Host,
   State,
 } from "@stencil/core";
+import {
+  isP6Control,
+  isP6NativeControl,
+  P6Control,
+  P6NativeControl,
+} from "~shared/form/control";
+import { isInvalidEvent, isValidEvent } from "~shared/form/event";
 import { isEmpty } from "~utils/attribute";
 import { isInDefaultSlot } from "~utils/component";
-import { InputChild } from "./interface";
-import { isInputChild } from "./utils";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+function isControl(elmt: any): elmt is P6Control<unknown> | P6NativeControl {
+  return isP6Control(elmt) || isP6NativeControl(elmt);
+}
+
+function getControl(
+  children: HTMLCollection
+): P6Control<unknown> | P6NativeControl | undefined {
+  return Array.from(children).filter(isInDefaultSlot).find(isControl) as
+    | P6Control<unknown>
+    | P6NativeControl
+    | undefined;
+}
 
 @Component({
   tag: "p6-field",
   styleUrl: "p6-field.scss",
-  scoped: true,
+  shadow: true,
 })
 export class P6Field implements ComponentInterface {
   @Element() host!: HTMLP6FieldElement;
 
   @State() errorMessage = "";
 
-  private input: InputChild | undefined;
+  private input: P6Control<unknown> | P6NativeControl | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.checkValidity.bind(this));
+    this.input = getControl(this.host.children);
 
-    this.input = Array.from(this.host.children)
-      .filter(isInDefaultSlot)
-      .find(isInputChild);
-
-    if (!isEmpty(this.input?.value)) {
-      this.checkValidity();
+    if (this.input !== undefined && isP6NativeControl(this.input)) {
+      this.host.addEventListener("focusout", this.updateValidity);
+      this.input.addEventListener("invalid", this.invalidNativeHandler);
+      if (!isEmpty(this.input?.value)) {
+        this.updateValidity();
+      }
     }
   }
 
@@ -55,7 +74,11 @@ export class P6Field implements ComponentInterface {
 
   render(): JSX.Element {
     return (
-      <Host aria-disabled={this.isDisabled ? "true" : null}>
+      <Host
+        aria-disabled={this.isDisabled ? "true" : null}
+        onP6Valid={this.validHandler}
+        onP6Invalid={this.invalidHandler}
+      >
         <label class="label" htmlFor={this.input?.name}>
           <slot name="label" />
           <slot />
@@ -65,28 +88,14 @@ export class P6Field implements ComponentInterface {
     );
   }
 
-  private async checkValidity(): Promise<boolean> {
-    const result = this.input?.checkValidity() || true;
-
-    if (typeof result === "boolean") {
-      this.errorMessage = await this.validationMessage();
-      return Promise.resolve(result);
+  disconnectedCallback(): void {
+    if (this.input === undefined) {
+      return;
     }
 
-    const checked = await result;
-    this.errorMessage = await this.validationMessage();
-
-    return Promise.resolve(checked);
-  }
-
-  private async validationMessage(): Promise<string> {
-    const message = this.input?.validationMessage;
-
-    if (typeof message === "string" || message === undefined) {
-      return Promise.resolve(message || "");
+    if (isP6NativeControl(this.input)) {
+      this.host.removeEventListener("focusout", this.updateValidity);
     }
-
-    return message.call(this.input);
   }
 
   private get isReadOnly(): boolean {
@@ -96,4 +105,29 @@ export class P6Field implements ComponentInterface {
   private get isDisabled(): boolean {
     return this.input?.disabled || false;
   }
+
+  private updateValidity = (): void => {
+    if (isP6NativeControl(this.input) && this.input?.checkValidity()) {
+      this.errorMessage = "";
+    }
+  };
+
+  private validHandler = (event: Event): void => {
+    if (isValidEvent(event)) {
+      this.errorMessage = "";
+    }
+  };
+
+  private invalidHandler = (event: Event): void => {
+    if (isInvalidEvent(event)) {
+      this.errorMessage = event.detail.message;
+    }
+  };
+
+  private invalidNativeHandler = (event: Event): void => {
+    if (event.target !== null && "validationMessage" in event.target) {
+      const { validationMessage } = event.target;
+      this.errorMessage = validationMessage;
+    }
+  };
 }
