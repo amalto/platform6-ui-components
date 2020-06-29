@@ -8,7 +8,7 @@ import {
 } from "@stencil/core";
 import bulmaCalendar from "bulma-calendar";
 import { Mode } from "~shared/types";
-import { convertAsDate } from "~utils/attribute";
+import { toDate } from "~utils/attribute";
 import { getClosestLanguage, getL10n, L10n } from "~utils/translations";
 
 export type P6CalendarType = "date" | "datetime" | "time";
@@ -131,10 +131,10 @@ export class P6Calendar implements ComponentInterface {
     this.calendar = new bulmaCalendar(this.nativeInput, {
       isRange: this.isRange,
       type: this.type,
-      startDate: convertAsDate(this.startDate),
-      endDate: convertAsDate(this.endDate),
-      minDate: convertAsDate(this.minDate),
-      maxDate: convertAsDate(this.maxDate),
+      startDate: toDate(this.startDate),
+      endDate: toDate(this.endDate),
+      minDate: toDate(this.minDate),
+      maxDate: toDate(this.maxDate),
       minuteSteps: this.minuteSteps,
       labelFrom: this.labelFrom,
       labelTo: this.labelTo,

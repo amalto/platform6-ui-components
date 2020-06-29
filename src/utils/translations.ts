@@ -1,12 +1,21 @@
 import { getAssetPath } from "@stencil/core";
 import { getAppVersion, getItem, setItem } from "~utils/cache";
 
-const defaultLocale = "en";
+export type Locale = string;
+export const defaultLocale: Locale = "en";
+export const locales: Locale[] = ["en", "fr"];
 
 const appVersion = getAppVersion();
 
 export interface L10n {
   [key: string]: string;
+}
+
+function getKnownLanguage(locale: Locale): Locale {
+  if (locales.indexOf(locale) === -1) {
+    return defaultLocale;
+  }
+  return locale;
 }
 
 /**
@@ -16,20 +25,25 @@ export interface L10n {
  */
 export function getClosestLanguage(
   element: HTMLElement = document.body
-): string {
+): Locale {
   const closestElement = element.closest("[lang]") as HTMLElement;
-  return closestElement === null ? defaultLocale : closestElement.lang;
+  if (closestElement !== null) {
+    return getKnownLanguage(closestElement.lang);
+  }
+  return (
+    getKnownLanguage(window.navigator.language.substring(0, 2)) || defaultLocale
+  );
 }
 
-function getCacheKey(componentName: string, locale: string): string {
+function getCacheKey(componentName: string, locale: Locale): string {
   return `i18n.${componentName}.${appVersion}.${locale}`;
 }
 
-function writeToCache(componentName: string, locale: string, data: L10n): void {
+function writeToCache(componentName: string, locale: Locale, data: L10n): void {
   setItem(getCacheKey(componentName, locale), JSON.stringify(data));
 }
 
-function readFromCache(componentName: string, locale: string): L10n | null {
+function readFromCache(componentName: string, locale: Locale): L10n | null {
   const storageItem = getItem(getCacheKey(componentName, locale));
   if (storageItem !== null) {
     try {
