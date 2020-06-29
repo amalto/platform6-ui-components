@@ -8,7 +8,7 @@ export function isEmpty(value: unknown): boolean {
   );
 }
 
-export function convertAsDate(value: string | undefined): Date | undefined {
+export function toDate(value: string | undefined): Date | undefined {
   if (value === undefined || value === "") {
     return undefined;
   }
