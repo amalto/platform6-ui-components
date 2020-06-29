@@ -12,11 +12,7 @@ describe("p6-input", () => {
       components: [P6Input],
       html: `<p6-input></p6-input>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-input>
-        <input class="input" type="text" />
-      </p6-input>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 
   it("add the waiting class on the input container, not on the input", async () => {
@@ -24,11 +20,7 @@ describe("p6-input", () => {
       components: [P6Input],
       html: `<p6-input waiting></p6-input>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-input waiting class="is-loading">
-        <input class="input" type="text" />
-      </p6-input>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 
   it('add the class "is-static" when the readonly props is true', async () => {
@@ -37,10 +29,6 @@ describe("p6-input", () => {
       html: `<p6-input readonly></p6-input>`,
     });
 
-    expect(page.root).toEqualHtml(`
-      <p6-input readonly>
-        <input class="input is-static" type="text" readonly />
-      </p6-input>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });

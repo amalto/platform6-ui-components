@@ -40,6 +40,7 @@ export const config: Config = {
     moduleNameMapper: {
       "~components/(.*)": "<rootDir>/src/components/$1",
       "~global/(.*)": "<rootDir>/src/global/$1",
+      "~shared/(.*)": "<rootDir>/src/shared/$1",
       "~utils/(.*)": "<rootDir>/src/utils/$1",
     },
   },

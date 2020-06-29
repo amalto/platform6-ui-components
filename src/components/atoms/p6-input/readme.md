@@ -15,8 +15,17 @@
 | `readOnly`          | `readonly`    | marks an element that can't be edited.                                                    | `boolean`                                                                   | `false`     |
 | `required`          | `required`    | marks an element that can't be submitted without a value.                                 | `boolean`                                                                   | `false`     |
 | `type`              | `type`        | the content type of the input.                                                            | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"` | `"text"`    |
-| `value`             | `value`       | the value of the input.                                                                   | `string \| undefined`                                                       | `undefined` |
+| `value`             | `value`       | the value of the input.                                                                   | `number \| string \| undefined`                                             | `undefined` |
 | `waiting`           | `waiting`     | shows a waiting indicator                                                                 | `boolean`                                                                   | `false`     |
+
+## Events
+
+| Event              | Description                                                                            | Type                                                           |
+| ------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `p6FormRegister`   | Registering the field in a p6-form                                                     | `CustomEvent<P6Control<string \| number \| undefined>>`        |
+| `p6FormUnregister` | Unregistering the field in a p6-form                                                   | `CustomEvent<P6Control<string \| number \| undefined>>`        |
+| `p6Invalid`        | Fires when the field has been checked for validity and doesn't satisfy its constraints | `CustomEvent<InvalidEventDetail>`                              |
+| `p6Valid`          | Fires when the field has been checked for validity and satisfy its constraints         | `CustomEvent<ValidEventDetail<string \| number \| undefined>>` |
 
 ## Methods
 

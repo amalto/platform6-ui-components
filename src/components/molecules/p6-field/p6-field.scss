@@ -1,8 +1,6 @@
 @import "bulma/sass/form/tools";
 
 :host {
-  display: block;
-
   @extend .field;
 
   ::slotted([slot="hint"]) {

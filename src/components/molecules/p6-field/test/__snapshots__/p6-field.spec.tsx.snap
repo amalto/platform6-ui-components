@@ -2,8 +2,12 @@
 
 exports[`p6-field renders 1`] = `
 <p6-field>
-  <!---->
-  <label class="label">
-  </label>
+  <mock:shadow-root>
+    <label class="label">
+      <slot name="label"></slot>
+      <slot></slot>
+    </label>
+    <slot name="hint"></slot>
+  </mock:shadow-root>
 </p6-field>
 `;

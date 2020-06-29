@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-form renders 1`] = `
+<p6-form>
+  <!---->
+  <form novalidate=""></form>
+</p6-form>
+`;

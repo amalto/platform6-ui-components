@@ -31,7 +31,8 @@ export function getClosestLanguage(
     return getKnownLanguage(closestElement.lang);
   }
   return (
-    getKnownLanguage(window.navigator.language.substring(0, 2)) || defaultLocale
+    getKnownLanguage(window?.navigator?.language?.substring(0, 2)) ||
+    defaultLocale
   );
 }
 
