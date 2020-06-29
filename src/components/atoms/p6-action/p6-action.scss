@@ -49,12 +49,12 @@ $button-disabled-opacity: 0.5 !default;
 
     ::slotted(.icon:first-child:last-child),
     ::slotted(p6-icon:first-child:last-child) {
-      margin-left: calc(
+      $margin: calc(
         #{-1 / 2 * $action-padding-horizontal} - #{$button-border-width}
       );
-      margin-right: calc(
-        #{-1 / 2 * $action-padding-horizontal} - #{$button-border-width}
-      );
+
+      margin-left: $margin;
+      margin-right: $margin;
     }
 
     ::slotted(p6-icon:active),
