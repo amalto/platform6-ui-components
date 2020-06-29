@@ -16,6 +16,12 @@
 | `shouldSort`        | `shouldsort`    | Sort the options by alphabetic order                                                       | `boolean`                                                 | `false`     |
 | `size`              | `size`          | The size of the component to display                                                       | `"default" \| "large" \| "medium" \| "normal" \| "small"` | `"small"`   |
 
+## Events
+
+| Event         | Description                                         | Type               |
+| ------------- | --------------------------------------------------- | ------------------ |
+| `valueChange` | Event thrown when a value is selected of unselected | `CustomEvent<any>` |
+
 ## Methods
 
 ### `checkValidity() => Promise<boolean>`
@@ -34,6 +40,20 @@ It also triggers the standard error message, such as "this is a required field".
 #### Returns
 
 Type: `Promise<string>`
+
+## Dependencies
+
+### Used by
+
+- [p6-language-select](../../molecules/p6-language-select)
+
+### Graph
+
+```mermaid
+graph TD;
+  p6-language-select --> p6-select
+  style p6-select fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 

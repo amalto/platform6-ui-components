@@ -17,6 +17,7 @@
     "jsx": "react",
     "jsxFactory": "h",
     "paths": {
+      "~atoms/*" : ["./src/components/atoms/*"],
       "~components/*" : ["./src/components/*"],
       "~global/*" : ["./src/global/*"],
       "~shared/*" : ["./src/shared/*"],

@@ -2,6 +2,8 @@ import {
   Component,
   ComponentInterface,
   Element,
+  Event,
+  EventEmitter,
   h,
   Host,
   Method,
@@ -15,6 +17,8 @@ import { getL10n, L10n } from "~utils/translations";
 
 type ChoiceEventDetail = { value: string };
 
+export type P6SelectChangeEventEmitter = string[];
+
 @Component({
   tag: "p6-select",
   styleUrl: "p6-select.scss",
@@ -24,47 +28,54 @@ export class P6Select implements ComponentInterface {
   /**
    * The name of the select
    */
-  @Prop() public name!: string;
+  @Prop() name!: string;
 
   /**
    * The size of the component to display
    */
-  @Prop() public size: Size = "small";
+  @Prop() size: Size = "small";
 
   /**
    * Marks the select as multiple
    */
-  @Prop() public multiple = false;
+  @Prop() multiple = false;
 
   /**
    * The select is not available for interaction. The value will not be submitted with the form
    */
-  @Prop() public disabled = false;
+  @Prop() disabled = false;
 
   /**
    * Marks the select as required. It can't be submitted without a value
    */
-  @Prop() public required = false;
+  @Prop() required = false;
 
   /**
    * Marks the select as read only.
    */
-  @Prop({ attribute: "readOnly" }) public readOnly = false;
+  @Prop({ attribute: "readOnly" }) readOnly = false;
 
   /**
    * The value of the placeholder to display on the search
    */
-  @Prop() public placeholder: string | undefined;
+  @Prop() placeholder: string | undefined;
 
   /**
    * Sort the options by alphabetic order
    */
-  @Prop({ attribute: "shouldSort" }) public shouldSort = false;
+  @Prop({ attribute: "shouldSort" }) shouldSort = false;
 
   /**
    * Enable the search on the select
    */
-  @Prop({ attribute: "searchEnabled" }) public searchEnabled = true;
+  @Prop({ attribute: "searchEnabled" }) searchEnabled = true;
+
+  /**
+   * Event thrown when a value is selected of unselected
+   */
+  @Event({ eventName: "valueChange" }) changeEventEmitter:
+    | EventEmitter<P6SelectChangeEventEmitter>
+    | undefined;
 
   @Element() private readonly host!: HTMLP6SelectElement;
 
@@ -106,6 +117,10 @@ export class P6Select implements ComponentInterface {
       this.internalCheckValidity.bind(this)
     );
 
+    this.host.addEventListener("showDropdown", (event) => {
+      console.log("showDropdown", event);
+    });
+
     this.host.addEventListener("addItem", (event) => {
       const customEvent = event as CustomEvent<ChoiceEventDetail>;
       const { value } = customEvent.detail;
@@ -113,6 +128,7 @@ export class P6Select implements ComponentInterface {
         return;
       }
       this.selectedValues.push(value);
+      this.changeEventEmitter?.emit(this.selectedValues);
       this.internalCheckValidity();
     });
 
@@ -121,6 +137,7 @@ export class P6Select implements ComponentInterface {
       const idx = this.getSelectedValueIndex(customEvent.detail.value);
       if (idx !== -1) {
         this.selectedValues.splice(idx, 1);
+        this.changeEventEmitter?.emit(this.selectedValues);
       }
       this.internalCheckValidity();
     });
@@ -148,7 +165,6 @@ export class P6Select implements ComponentInterface {
       disabled: this.disabled || this.readOnly,
       multiple: this.multiple,
       required: this.required,
-      class: { "is-danger": true },
     };
 
     const hiddenSelectAttributes = {

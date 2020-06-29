@@ -1,0 +1,49 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import {
+  boolean,
+  select,
+  number,
+  text,
+  array,
+  withKnobs,
+} from "@storybook/addon-knobs";
+import { action, decorate } from "@storybook/addon-actions";
+import readme from "./readme.md";
+
+<Meta
+  title="Molecules/Language Select"
+  component="p6-select"
+  parameters={{ notes: readme }}
+/>
+
+# Language Select
+
+`p6-language-select` provides a select
+
+<Story
+  name="Default"
+  parameters={{ docs: { disable: true } }}
+  decorators={[withKnobs]}
+>
+  {() => {
+    const kLocales = select("Language", ["en", "fr", "ru"], "en");
+    const kDisabled = boolean("Disabled", false);
+    const kValue = text("Value", "en");
+    const kExcludes = text("Exclude", "fr");
+    const kModes = select(
+      "Mode",
+      ["default", "primary", "info", "success", "warning", "danger"],
+      "default"
+    );
+    return `
+      <p6-language-select
+        name="test"
+        lang="${kLocales}"
+        disabled="${kDisabled}"
+        value="${kValue}"
+        excludes="${kExcludes}"
+        mode="${kModes}"
+        />
+    `;
+  }}
+</Story>
