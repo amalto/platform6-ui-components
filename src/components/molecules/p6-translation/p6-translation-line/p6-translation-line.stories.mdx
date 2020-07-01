@@ -1,0 +1,68 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import {
+  boolean,
+  select,
+  number,
+  text,
+  withKnobs,
+} from "@storybook/addon-knobs";
+import { action, decorate } from "@storybook/addon-actions";
+import readme from "./readme.md";
+
+<Meta title="Molecules/Translation Line" component="p6-translation-line" />
+
+# Translation line field
+
+<Story
+  name="Default"
+  parameters={{ docs: { disable: true } }}
+  decorators={[withKnobs]}
+>
+  {() => {
+    const values = decorate([
+      (args) => {
+        var values = [];
+        new FormData(args[0].target).forEach(function (value, name) {
+          values.push({ name, value });
+        });
+        return values;
+      },
+    ]);
+    const kSizes = select(
+      "Size",
+      ["default", "small", "normal", "medium", "large"],
+      "small"
+    );
+    const kLocales = select("Language", ["en", "fr", "ru"], "en");
+    const kReadOnly = boolean("Read only", false);
+    const kDisabled = boolean("Disabled", false);
+    const kKey = text("Key", "en");
+    const kValue = text("Value", "English");
+    const formContent = `
+      <p6-translation-line
+        name="test"
+        lang="${kLocales}"
+        language="${kKey}"
+        translation="${kValue}"
+        readOnly="${kReadOnly}"
+        disabled="${kDisabled}"
+        size="${kSizes}"
+        ></p6-translation-line>
+      <div class="field">
+        <div class="control">
+          <p6-button class="button is-link">Submit</p6-button>
+          <p6-button class="button is-link" type="reset">Reset</p6-button>
+        </div>
+      </div>
+    `;
+    const form = document.createElement("form");
+    //form.noValidate = true;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      values.action("values")(e);
+      action("event")(e);
+    });
+    form.innerHTML = formContent;
+    return form;
+  }}
+</Story>

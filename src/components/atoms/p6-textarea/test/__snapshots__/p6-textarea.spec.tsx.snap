@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-textarea add the class "is-static" when the readonly props is true 1`] = `
+<p6-textarea readonly="">
+  <div class="control">
+    <textarea class="is-small is-static textarea" readonly=""></textarea>
+  </div>
+</p6-textarea>
+`;
+
+exports[`p6-textarea add the waiting class on the input container, not on the input 1`] = `
+<p6-textarea class="is-loading" waiting="">
+  <div class="control">
+    <textarea class="is-small textarea"></textarea>
+  </div>
+</p6-textarea>
+`;
+
+exports[`p6-textarea renders 1`] = `
+<p6-textarea>
+  <div class="control">
+    <textarea class="is-small textarea"></textarea>
+  </div>
+</p6-textarea>
+`;
