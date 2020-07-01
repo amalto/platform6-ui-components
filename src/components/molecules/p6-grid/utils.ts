@@ -9,6 +9,21 @@ export function clearSelection(): void {
   document?.getSelection()?.empty();
 }
 
+export function filterBySearchInput(searchValue: string, rows: Row[]): Row[] {
+  const updatedRows: Row[] = [];
+
+  rows.forEach((row) => {
+    const containSearchValue: boolean = row.cells.some((cell) => {
+      return cell.label.indexOf(searchValue) !== -1;
+    });
+
+    if (containSearchValue) {
+      updatedRows.push(row);
+    }
+  });
+  return updatedRows;
+}
+
 export function getCellLabelByHeaderId(
   cellId: string,
   headerId: string,

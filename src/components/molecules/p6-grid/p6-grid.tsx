@@ -3,6 +3,7 @@ import {
   faEraser,
   faEyeSlash,
   faFolderOpen,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   Component,
@@ -17,13 +18,14 @@ import {
   Watch,
 } from "@stencil/core";
 import { HeaderCell, Row, RowCell } from "~shared/interfaces";
-import { Align, Direction, Operation, Mode } from "~shared/types";
+import { Align, Direction, Mode, Operation, Size } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 import { getL10n, L10n } from "~utils/translations";
 import {
   canMoveLeft,
   canMoveRight,
   clearSelection,
+  filterBySearchInput,
   getCellLabelByHeaderId,
   getHeaderCellById,
   getHeaderExcept,
@@ -39,12 +41,11 @@ import {
 export declare type EventCallBack = (event: MouseEvent) => void;
 export declare type ContextMenuFunction = (row: RowCell[]) => Element;
 
-library.add(faEraser, faEyeSlash, faFolderOpen);
+library.add(faEraser, faEyeSlash, faFolderOpen, faSearch);
 
 const MIN_WIDTH = 75;
 const DEFAULT_WIDTH = MIN_WIDTH;
 const INC_WIDTH = 10;
-const DEFAULT_COL = "col-1";
 
 @Component({
   tag: "p6-grid",
@@ -81,11 +82,15 @@ export class P6Tables {
 
   @State() isInvalid: { [id: string]: boolean } = {};
 
+  @State() emptyRows = false;
+
   @State() lastEditingCell: string | undefined = undefined;
 
   @State() rowContext: RowCell[] = [];
 
-  @State() sortedBy = DEFAULT_COL;
+  @State() searchValue = "";
+
+  @State() sortedBy = "";
 
   @State() stateHeaders: HeaderCell[] = [];
 
@@ -131,20 +136,6 @@ export class P6Tables {
     this.toggleEditCell(rowIdx, cellIdx, true);
     this.lastEditingCell = `${headerId}-${rowIdx}-${cellIdx}`;
   }
-
-  // @Listen("editEnded")
-  // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // // @ts-ignore
-  // private editEnded(
-  //   event: CustomEvent<{
-  //     keyboardEvent: KeyboardEvent;
-  //     rowIdx: number;
-  //     cellIdx: number;
-  //   }>
-  // ): void {
-  //   const { keyboardEvent, rowIdx, cellIdx } = event.detail;
-  //   this.onEditEnded(keyboardEvent, rowIdx, cellIdx);
-  // }
 
   @Listen("p6Hide")
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -282,6 +273,10 @@ export class P6Tables {
     });
   }
 
+  private onSearchInputKeyUp(event: KeyboardEvent): void {
+    this.searchValue = (event.currentTarget as HTMLInputElement).value;
+  }
+
   private initRows(rows: Row[]): Row[] {
     const updatedRows: Row[] = [...rows];
 
@@ -308,7 +303,7 @@ export class P6Tables {
 
   private moveContextMenu(posX: number, posY: number): void {
     if (!this.isContextMenuOpen) {
-      document.addEventListener("click", this.onCloseContextMenu.bind(this), {
+      document.addEventListener("click", this.onCloseContextMenu, {
         once: true,
       });
       this.isContextMenuOpen = true;
@@ -467,7 +462,7 @@ export class P6Tables {
         label={cell.label}
         // eslint-disable-next-line react/jsx-no-bind
         renderCellEditComponent={
-          cell.edit ? this.renderCellEditComponent.bind(this) : undefined
+          cell.edit ? this.renderCellEditComponent : undefined
         }
         rowIdx={rowIdx}
         width={header.width}
@@ -496,10 +491,8 @@ export class P6Tables {
         }}
         data-row-idx={rowId.toString()}
         key={`${this.host.id}-row-${rowId}`}
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={this.selectRow.bind(this)}
-        // eslint-disable-next-line react/jsx-no-bind
-        moveContextMenu={this.moveContextMenu.bind(this)}
+        onClick={this.selectRow}
+        moveContextMenu={this.moveContextMenu}
         selected={isRowSelected(row)}
       >
         {orderedCells.map((cell, idx) => this.renderRowCell(cell, rowId, idx))}
@@ -507,7 +500,7 @@ export class P6Tables {
     );
   };
 
-  private renderRows = (): HTMLP6GridBodyElement | null => {
+  private renderRows = (filteredRows: Row[]): HTMLP6GridBodyElement | null => {
     const { rows, stateHeaders } = this;
 
     if (rows.length === 0) {
@@ -517,8 +510,7 @@ export class P6Tables {
     const orderedHeaders: string[] = stateHeaders
       .filter((header) => !header.hidden)
       .map((header) => header.id);
-    const sortedCellds: Row[] = this.sortRows();
-    const rowsElements: HTMLP6GridRowElement[] = sortedCellds.map(
+    const rowsElements: HTMLP6GridRowElement[] = filteredRows.map(
       (row, idx) => {
         return this.renderRow(idx, row, orderedHeaders);
       }
@@ -533,24 +525,32 @@ export class P6Tables {
     );
     return (
       <div class="level">
-        <div class="level-left btn-bar">
+        <div class="level-left">
           {hasHeaderHidden ? (
-            <p6-action
-              mode={Mode.info}
-              // eslint-disable-next-line react/jsx-no-bind
-              onClick={this.toggleDisplayTags.bind(this)}
-            >
+            <p6-action mode={Mode.info} onClick={this.toggleDisplayTags}>
               <p6-icon name="eye-slash" />
             </p6-action>
           ) : undefined}
-          <p6-action
-            mode={Mode.danger}
-            // eslint-disable-next-line react/jsx-no-bind
-            onClick={this.resetGrid.bind(this)}
-          >
+          <p6-action mode={Mode.danger} onClick={this.resetGrid}>
             <p6-icon name="eraser" />
           </p6-action>
         </div>
+        <div class="level-right">{this.renderSearchInput()}</div>
+      </div>
+    );
+  }
+
+  private renderSearchInput(): JSX.Element {
+    return (
+      <div class="control has-icons-left">
+        <p6-icon class="has-text-grey-lighter" name="search" />
+        <input
+          class="input is-small"
+          onKeyUp={this.onSearchInputKeyUp}
+          placeholder={this.l10n?.search}
+          type="text"
+          value={this.searchValue}
+        />
       </div>
     );
   }
@@ -597,7 +597,7 @@ export class P6Tables {
     return (
       <div class="hidden-column-panel">
         <div>{this.l10n?.hideColumn}</div>
-        {hiddenColumns.map(this.renderHiddenTag.bind(this))}
+        {hiddenColumns.map(this.renderHiddenTag)}
       </div>
     );
   }
@@ -606,9 +606,9 @@ export class P6Tables {
     return (
       <p6-tag
         data-header-id={header.id}
-        // eslint-disable-next-line react/jsx-no-bind
-        onMouseUp={this.toogleDisplayColumn.bind(this)}
+        onMouseUp={this.toogleDisplayColumn}
         role="button"
+        size={Size.small}
         tabIndex={idx}
       >
         {header.label}
@@ -754,8 +754,19 @@ export class P6Tables {
   async componentWillLoad(): Promise<void> {
     this.stateHeaders = this.headers;
     this.stateRows = this.initRows(this.rows);
+    this.sortedBy = this.stateHeaders[0].id;
     this.l10n = await getL10n(this.host);
     this.initSpinner();
+
+    this.moveContextMenu = this.moveContextMenu.bind(this);
+    this.onCloseContextMenu = this.onCloseContextMenu.bind(this);
+    this.onSearchInputKeyUp = this.onSearchInputKeyUp.bind(this);
+    this.resetGrid = this.resetGrid.bind(this);
+    this.toogleDisplayColumn = this.toogleDisplayColumn.bind(this);
+    this.renderCellEditComponent = this.renderCellEditComponent.bind(this);
+    this.renderHiddenTag = this.renderHiddenTag.bind(this);
+    this.selectRow = this.selectRow.bind(this);
+    this.toggleDisplayTags = this.toggleDisplayTags.bind(this);
   }
 
   render(): JSX.Element {
@@ -764,7 +775,11 @@ export class P6Tables {
     const headerHidden = !this.stateHeaders.some(
       (header) => !header.hidden || false
     );
-
+    const filteredRows: Row[] = filterBySearchInput(
+      this.searchValue,
+      this.sortRows()
+    );
+    const emptyRows: boolean = filteredRows.length === 0;
     this.renderLoadingContent();
 
     return (
@@ -773,8 +788,12 @@ export class P6Tables {
         {this.renderConfigHeader()}
         {this.renderHiddenColumnsPanel()}
         {!headerHidden ? this.renderHeader() : undefined}
-        {!loading && !noRows && !headerHidden ? this.renderRows() : undefined}
-        {!loading && this.renderEmpty(noRows || headerHidden)}
+        {!loading && !noRows && !headerHidden && !emptyRows
+          ? this.renderRows(filteredRows)
+          : undefined}
+        {!loading || emptyRows
+          ? this.renderEmpty(emptyRows || noRows || headerHidden)
+          : undefined}
         <slot />
       </Host>
     );

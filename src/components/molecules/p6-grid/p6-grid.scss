@@ -1,32 +1,46 @@
+@import "bulma/sass/components/level";
 @import "bulma/sass/elements/button";
 @import "bulma/sass/elements/tag";
+@import "bulma/sass/helpers/color";
 
 :host {
   display: flex;
   flex-direction: column;
 
-  .btn-bar {
-    padding-bottom: $gap-size * 1px;
-    width: 100%;
-
-    p6-button {
-      margin-right: $gap-size * 1px;
-
-      button {
-        padding: 0;
-      }
-    }
-  }
-
   .hidden-column-panel {
     border: 1px solid $grey-lighter;
-    padding: $gap-size * 1px;
+    font-size: $size-7;
     margin-bottom: $gap-size * 1px;
+    padding: $gap-size * 1px;
 
     p6-tag {
       border-radius: 0;
       cursor: pointer;
       margin-right: $gap-size * 1px;
+    }
+  }
+
+  .level {
+    margin-bottom: 0;
+    padding-bottom: $gap-size * 1px;
+
+    p6-icon {
+      font-size: $size-7;
+    }
+
+    .level-right {
+      .control {
+        display: flex;
+        position: relative;
+      }
+
+      p6-icon {
+        position: absolute;
+      }
+
+      input {
+        padding-left: 20px;
+      }
     }
   }
 
