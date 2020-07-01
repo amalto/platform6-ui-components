@@ -1,0 +1,4 @@
+{
+  "missingDefaultTranslation": "Missing translation for the default language \"#{name} (#{code})\"",
+  "missingTranslation": "Missing translation for language \"#{languages}\""
+}

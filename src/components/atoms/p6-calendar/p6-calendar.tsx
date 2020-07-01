@@ -9,7 +9,8 @@ import {
 import bulmaCalendar from "bulma-calendar";
 import { Mode } from "~shared/types";
 import { toDate } from "~utils/attribute";
-import { getClosestLanguage, getL10n, L10n } from "~utils/translations";
+import { getClosestLanguage } from "~utils/language";
+import { getL10n, L10n } from "~utils/translations";
 
 export type P6CalendarType = "date" | "datetime" | "time";
 

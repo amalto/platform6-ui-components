@@ -1,0 +1,10 @@
+// for field has-addons
+@import "bulma/sass/form/tools";
+// for columns
+@import "bulma/sass/grid/columns";
+//Tooltip
+@import "@creativebulma/bulma-tooltip/src/sass/index";
+
+:host {
+  display: block;
+}

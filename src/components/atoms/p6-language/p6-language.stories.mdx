@@ -1,0 +1,104 @@
+import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
+import {
+  boolean,
+  select,
+  number,
+  text,
+  withKnobs,
+} from "@storybook/addon-knobs";
+import { action, decorate } from "@storybook/addon-actions";
+import readme from "./readme.md";
+
+<Meta
+  title="Atoms/Language"
+  component="p6-language"
+  parameters={{ notes: readme }}
+/>
+
+# Select
+
+`p6-language` provides a select
+
+<Story
+  name="Default"
+  parameters={{ docs: { disable: true } }}
+  decorators={[withKnobs]}
+>
+  {() => {
+    const values = decorate([
+      (args) => {
+        var values = [];
+        new FormData(args[0].target).forEach(function (value, name) {
+          values.push({ name, value });
+        });
+        return values;
+      },
+    ]);
+    const kSizes = select(
+      "Size",
+      ["default", "small", "normal", "medium", "large"],
+      "default"
+    );
+    const kRequired = boolean("Required", true);
+    const kDisabled = boolean("Disabled", false);
+    const kReadOnly = boolean("Read only", true);
+    const kValue = text("Value", "fr");
+    const formContent = `
+      <p6-language
+        name="test"
+        disabled="${kDisabled}"
+        required="${kRequired}"
+        readOnly="${kReadOnly}"
+        size="${kSizes}"
+        value="${kValue}"
+        />
+      <div class="field">
+        <div class="control">
+          <p6-button class="button is-link">Submit</p6-button>
+          <p6-button class="button is-link" type="reset">Reset</p6-button>
+        </div>
+      </div>
+    `;
+    const form = document.createElement("form");
+    //form.noValidate = true;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      values.action("values")(e);
+      action("event")(e);
+    });
+    form.innerHTML = formContent;
+    return form;
+  }}
+</Story>
+
+<Story name="Selected value" parameters={{ docs: { disable: true } }}>
+  {`
+      <p6-language name="test" value="fr"/>
+    `}
+</Story>
+
+<Story name="Disabled" parameters={{ docs: { disable: true } }}>
+  {`
+      <p6-language name="test" disabled/>
+    `}
+</Story>
+
+<Story name="Sizes" parameters={{ docs: { disable: true } }}>
+  {`
+      <p6-language name="test2" size="small"></p6-language>
+      <p6-language name="test3" size="normal"></p6-language>
+      <p6-language name="test4" size="medium"></p6-language>
+      <p6-language name="test5" size="large"></p6-language>
+    `}
+</Story>
+
+<Story name="Colors" parameters={{ docs: { disable: true } }}>
+  {`
+      <p6-language name="test1"></p6-language>
+      <p6-language name="test2" mode="primary"></p6-language>
+      <p6-language name="test3" mode="info"></p6-language>
+      <p6-language name="test4" mode="success"></p6-language>
+      <p6-language name="test5" mode="warning"></p6-language>
+      <p6-language name="test6" mode="danger"></p6-language>
+    `}
+</Story>

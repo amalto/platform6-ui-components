@@ -15,12 +15,16 @@
 ### Used by
 
 - [p6-dropdown](../../molecules/p6-dropdown)
+- [p6-translation](../../molecules/p6-translation)
+- [p6-translation-line](../../molecules/p6-translation/p6-translation-line)
 
 ### Graph
 
 ```mermaid
 graph TD;
   p6-dropdown --> p6-icon
+  p6-translation --> p6-icon
+  p6-translation-line --> p6-icon
   style p6-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

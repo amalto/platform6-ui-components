@@ -2,10 +2,16 @@
 @import "bulma/sass/form/input-textarea";
 
 :host {
-  @extend .control;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  .control {
+    display: flex;
+  }
 
   .textarea {
     display: inline-block;
+    min-width: initial;
   }
 
   .textarea.is-static {

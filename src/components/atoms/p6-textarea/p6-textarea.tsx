@@ -8,6 +8,7 @@ import {
   Prop,
   State,
 } from "@stencil/core";
+import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
 
 @Component({
@@ -34,9 +35,24 @@ export class P6Textarea implements ComponentInterface {
   @Prop() min: number | undefined;
 
   /**
+   * The number of rows
+   */
+  @Prop() rows: number | undefined;
+
+  /**
+   * The number of columns
+   */
+  @Prop() cols: number | undefined;
+
+  /**
    * The name of the input.
    */
   @Prop() name!: string;
+
+  /**
+   * The size of the component to display
+   */
+  @Prop() public size: Size = "small";
 
   /**
    * content to be appear in the form control when the form control is empty
@@ -87,26 +103,31 @@ export class P6Textarea implements ComponentInterface {
 
     const classes = {
       textarea: true,
+      [`is-${this.size}`]: true,
       "is-danger": this.hasError,
       "is-static": !!this.readOnly,
     };
 
     return (
       <Host class={containerClass}>
-        <textarea
-          class={classes}
-          ref={(input): void => {
-            this.nativeInput = input;
-          }}
-          disabled={this.disabled}
-          name={this.name}
-          placeholder={cleanupValue(this.placeholder)}
-          readOnly={this.readOnly}
-          required={this.required}
-          minLength={this.min}
-          maxLength={this.max}
-          value={this.value}
-        />
+        <div class="control">
+          <textarea
+            class={classes}
+            ref={(input): void => {
+              this.nativeInput = input;
+            }}
+            disabled={this.disabled}
+            name={this.name}
+            placeholder={cleanupValue(this.placeholder)}
+            readOnly={this.readOnly}
+            required={this.required}
+            minLength={this.min}
+            maxLength={this.max}
+            value={this.value}
+            rows={this.rows}
+            cols={this.cols}
+          />
+        </div>
       </Host>
     );
   }

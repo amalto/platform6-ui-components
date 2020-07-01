@@ -11,6 +11,10 @@ $button-disabled-background-color: $scheme-main !default;
 $button-disabled-opacity: 0.5 !default;
 
 :host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   button {
     @extend %control;
     @extend %unselectable;
