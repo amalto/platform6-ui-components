@@ -47,4 +47,13 @@ describe("p6-grid", () => {
     });
     expect(page.root).toMatchSnapshot();
   });
+  it("should display a spinner", async () => {
+    const page = await newSpecPage({
+      components: [P6Grid],
+      template: () => {
+        return <p6-grid id={id} headers={headers} loading rows={rows} />;
+      },
+    });
+    expect(page.body.childNodes[0]).toMatchSnapshot();
+  });
 });

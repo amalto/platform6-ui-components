@@ -101,7 +101,7 @@ export class P6Grid {
   /**
    * Listen to change event to get updated p6-grid data
    */
-  @Event({ eventName: "p6Change" }) change:
+  @Event() p6Change:
     | EventEmitter<{ header: HeaderCell[]; rows: Row[] }>
     | undefined;
 
@@ -218,7 +218,7 @@ export class P6Grid {
     updatedHeaders[idx].sort = toggleSort(updatedHeaders[idx].sort || "asc");
     this.stateHeaders = updatedHeaders;
     this.sortedBy = id;
-    this.change?.emit({ header: updatedHeaders, rows: this.stateRows });
+    this.p6Change?.emit({ header: updatedHeaders, rows: this.stateRows });
   }
 
   // @Listen("setColor")
@@ -247,7 +247,7 @@ export class P6Grid {
   private spinner: (HTMLP6SpinnerElement & Node) | null = null;
 
   private align = (id: string, align: Align): void => {
-    this.change?.emit({
+    this.p6Change?.emit({
       header: this.updateHeaderAttr(id, "align", align),
       rows: this.stateRows,
     });
@@ -267,7 +267,7 @@ export class P6Grid {
       width - INC_WIDTH < MIN_WIDTH ? MIN_WIDTH : width - INC_WIDTH;
     const newWidth: number =
       operation === "minus" ? minWidth : width + INC_WIDTH;
-    this.change?.emit({
+    this.p6Change?.emit({
       header: this.updateHeaderAttr(id, "width", newWidth),
       rows: this.stateRows,
     });
@@ -624,7 +624,7 @@ export class P6Grid {
       hidden: false,
     }));
     this.displayTags = false;
-    this.change?.emit({
+    this.p6Change?.emit({
       header: this.stateHeaders,
       rows: this.stateRows,
     });
@@ -669,7 +669,7 @@ export class P6Grid {
       } else {
         this.stateRows = this.selectSingleRow(rowIdx);
       }
-      this.change?.emit({
+      this.p6Change?.emit({
         header: this.stateHeaders,
         rows: this.stateRows,
       });
@@ -729,7 +729,7 @@ export class P6Grid {
     updatedHeader.push(header);
     this.displayTags = !!updatedHeader.find((uH) => uH.hidden);
     this.stateHeaders = updatedHeader;
-    this.change?.emit({
+    this.p6Change?.emit({
       header: updatedHeader,
       rows: this.stateRows,
     });
