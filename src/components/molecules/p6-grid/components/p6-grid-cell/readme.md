@@ -37,12 +37,12 @@
 
 ### Used by
 
-- [p6-grid](../../molecules/p6-grid)
+- [p6-grid](../..)
 
 ### Depends on
 
-- [p6-action](../p6-action)
-- [p6-icon](../p6-icon)
+- [p6-action](../../../../atoms/p6-action)
+- [p6-icon](../../../../atoms/p6-icon)
 
 ### Graph
 

@@ -16,7 +16,7 @@
 ### Used by
 
 - [p6-grid](../../molecules/p6-grid)
-- [p6-grid-cell](../p6-grid-cell)
+- [p6-grid-cell](../../molecules/p6-grid/components/p6-grid-cell)
 - [p6-translation](../../molecules/p6-translation)
 - [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
 

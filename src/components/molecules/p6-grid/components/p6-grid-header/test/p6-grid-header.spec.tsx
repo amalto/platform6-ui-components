@@ -7,12 +7,6 @@ describe("p6-grid-header", () => {
       components: [P6GridHeader],
       html: `<p6-grid-header></p6-grid-header>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-grid-header>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </p6-grid-header>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });

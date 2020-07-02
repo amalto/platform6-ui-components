@@ -17,7 +17,7 @@ import {
   State,
   Watch,
 } from "@stencil/core";
-import { HeaderCell, Row, RowCell } from "~shared/interfaces";
+import { HeaderCell, Row, RowCell } from "~shared/grid";
 import { Align, Direction, Mode, Operation, Size } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 import { getL10n, L10n } from "~utils/translations";
@@ -53,7 +53,7 @@ const INC_WIDTH = 10;
   assetsDir: "locales",
   shadow: true,
 })
-export class P6Tables {
+export class P6Grid {
   @Element() host!: HTMLP6GridElement;
 
   /**

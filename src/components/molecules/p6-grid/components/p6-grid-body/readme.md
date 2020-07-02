@@ -6,7 +6,7 @@
 
 ### Used by
 
-- [p6-grid](../../molecules/p6-grid)
+- [p6-grid](../..)
 
 ### Graph
 

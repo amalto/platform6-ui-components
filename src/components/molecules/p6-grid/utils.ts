@@ -1,4 +1,4 @@
-import { HeaderCell, Row, RowCell } from "~shared/interfaces";
+import { HeaderCell, Row, RowCell } from "~shared/grid";
 import { Direction, Order } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-grid should render an empty grid 1`] = `
+<p6-grid>
+  <mock:shadow-root></mock:shadow-root>
+</p6-grid>
+`;
+
+exports[`p6-grid should render a grid with on row 1`] = `
+<p6-grid id="p6-grid-test">
+  <mock:shadow-root></mock:shadow-root>
+</p6-grid>
+`;
