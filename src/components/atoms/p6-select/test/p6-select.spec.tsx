@@ -9,7 +9,6 @@ describe("p6-select", () => {
     });
     expect(page.root).toMatchSnapshot();
   });
-
   it("multiple", async () => {
     const page = await newSpecPage({
       components: [P6Select],
@@ -17,7 +16,6 @@ describe("p6-select", () => {
     });
     expect(page.root).toMatchSnapshot();
   });
-
   it("disabled", async () => {
     const page = await newSpecPage({
       components: [P6Select],

@@ -21,11 +21,11 @@
 
 ### Depends on
 
-- [p6-grid-cell](../../atoms/p6-grid-cell)
-- [p6-grid-row](../../atoms/p6-grid-row)
-- [p6-grid-body](../../atoms/p6-grid-body)
+- [p6-grid-cell](./components/p6-grid-cell)
+- [p6-grid-row](./components/p6-grid-row)
+- [p6-grid-body](./components/p6-grid-body)
 - [p6-spinner](../../atoms/p6-spinner)
-- [p6-grid-header](../../atoms/p6-grid-header)
+- [p6-grid-header](./components/p6-grid-header)
 - [p6-action](../../atoms/p6-action)
 - [p6-icon](../../atoms/p6-icon)
 - [p6-empty](../../templates/p6-empty)

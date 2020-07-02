@@ -43,7 +43,6 @@ describe("p6-empty", () => {
     });
     expect(page.root).toMatchSnapshot();
   });
-
   describe("translation", () => {
     const locales = ["fr", "en"];
     it.each(locales)(`Should translate %s`, async (locale: string) => {
@@ -54,7 +53,6 @@ describe("p6-empty", () => {
       expect(page.root).toMatchSnapshot();
     });
   });
-
   it("with message", async () => {
     const page = await newSpecPage({
       components: [P6Empty],
@@ -62,7 +60,6 @@ describe("p6-empty", () => {
     });
     expect(page.root).toMatchSnapshot();
   });
-
   it("with image", async () => {
     const page = await newSpecPage({
       components: [P6Empty],
@@ -70,7 +67,6 @@ describe("p6-empty", () => {
     });
     expect(page.root).toMatchSnapshot();
   });
-
   it("with image and message", async () => {
     const page = await newSpecPage({
       components: [P6Empty],
