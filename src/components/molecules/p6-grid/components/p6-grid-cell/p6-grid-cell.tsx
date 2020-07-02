@@ -113,59 +113,49 @@ export class P6GridCell {
   /**
    * Text align to the left
    */
-  @Event({ eventName: "p6AlignLeft" }) alignLeft:
-    | EventEmitter<string>
-    | undefined;
+  @Event() p6AlignLeft: EventEmitter<string> | undefined;
 
   /**
    * Text align to the center
    */
-  @Event({ eventName: "p6AlignCenter" }) alignCenter:
-    | EventEmitter<string>
-    | undefined;
+  @Event() p6AlignCenter: EventEmitter<string> | undefined;
 
   /**
    * Text align to the right
    */
-  @Event({ eventName: "p6AlignRight" }) alignRight:
-    | EventEmitter<string>
-    | undefined;
+  @Event() p6AlignRight: EventEmitter<string> | undefined;
 
   /**
    * Double click callback
    */
-  @Event({ eventName: "p6Edit" }) edit:
+  @Event() p6Edit:
     | EventEmitter<{ headerId: string; cellIdx: number; rowIdx: number }>
     | undefined;
 
   /**
    * Hide column
    */
-  @Event({ eventName: "p6Hide" }) hide: EventEmitter<string> | undefined;
+  @Event() p6Hide: EventEmitter<string> | undefined;
 
   /**
    * Reduce column width
    */
-  @Event({ eventName: "p6Minus" }) minus: EventEmitter<string> | undefined;
+  @Event() p6Minus: EventEmitter<string> | undefined;
 
   /**
    * Move the column to the left
    */
-  @Event({ eventName: "p6MoveLeft" }) moveLeft:
-    | EventEmitter<string>
-    | undefined;
+  @Event() p6MoveLeft: EventEmitter<string> | undefined;
 
   /**
    * Move the column to the right
    */
-  @Event({ eventName: "p6MoveRight" }) moveRight:
-    | EventEmitter<string>
-    | undefined;
+  @Event() p6MoveRight: EventEmitter<string> | undefined;
 
   /**
    * Raise column width
    */
-  @Event({ eventName: "p6Plus" }) plus: EventEmitter<string> | undefined;
+  @Event() p6Plus: EventEmitter<string> | undefined;
 
   // /**
   //  * Set color
@@ -175,7 +165,7 @@ export class P6GridCell {
   /**
    * Sort
    */
-  @Event({ eventName: "p6Sort" }) sort: EventEmitter<string> | undefined;
+  @Event() p6Sort: EventEmitter<string> | undefined;
 
   @State() currentAlign: Align = this.align || "start";
 
@@ -186,17 +176,17 @@ export class P6GridCell {
   }
 
   private alignLeftHandler(): void {
-    this.alignLeft?.emit(this.headerId);
+    this.p6AlignLeft?.emit(this.headerId);
     this.currentAlign = "start";
   }
 
   private alignCenterHandler(): void {
-    this.alignCenter?.emit(this.headerId);
+    this.p6AlignCenter?.emit(this.headerId);
     this.currentAlign = "center";
   }
 
   private alignRightHandler(): void {
-    this.alignRight?.emit(this.headerId);
+    this.p6AlignRight?.emit(this.headerId);
     this.currentAlign = "end";
   }
 
@@ -205,27 +195,27 @@ export class P6GridCell {
   }
 
   private hideHandler(): void {
-    this.hide?.emit(this.headerId);
+    this.p6Hide?.emit(this.headerId);
   }
 
   private minusHandler(): void {
-    this.minus?.emit(this.headerId);
+    this.p6Minus?.emit(this.headerId);
   }
 
   private moveLeftHandler(): void {
-    this.moveLeft?.emit(this.headerId);
+    this.p6MoveLeft?.emit(this.headerId);
   }
 
   private moveRightHandler(): void {
-    this.moveRight?.emit(this.headerId);
+    this.p6MoveRight?.emit(this.headerId);
   }
 
   private plusHandler(): void {
-    this.plus?.emit(this.headerId);
+    this.p6Plus?.emit(this.headerId);
   }
 
   private sortHandler(): void {
-    this.sort?.emit(this.headerId);
+    this.p6Sort?.emit(this.headerId);
   }
 
   // private setColorHandler(): void {
@@ -308,7 +298,7 @@ export class P6GridCell {
 
     host.addEventListener("dblclick", () => {
       if (typeof this.rowIdx === "number") {
-        this.edit?.emit({
+        this.p6Edit?.emit({
           headerId: this.headerId,
           cellIdx: this.cellIdx,
           rowIdx: this.rowIdx,
