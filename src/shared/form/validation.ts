@@ -1,3 +1,5 @@
+import { isFunction } from "~utils/is-utils";
+
 export interface P6ControlValidation {
   validationMessage: () => Promise<string>;
   checkValidity(): Promise<boolean>;
@@ -8,8 +10,8 @@ export function hasValidation(elmt: any): elmt is P6ControlValidation {
   return (
     "validationMessage" in elmt &&
     "checkValidity" in elmt &&
-    typeof elmt.checkValidity === "function" &&
-    typeof elmt.validationMessage === "function"
+    isFunction(elmt.checkValidity) &&
+    isFunction(elmt.validationMessage)
   );
 }
 
@@ -18,7 +20,7 @@ export function hasNativeValidation(elmt: any): elmt is P6ControlValidation {
   return (
     "validationMessage" in elmt &&
     "checkValidity" in elmt &&
-    typeof elmt.checkValidity === "function" &&
+    isFunction(elmt.checkValidity) &&
     typeof elmt.validationMessage === "string"
   );
 }
