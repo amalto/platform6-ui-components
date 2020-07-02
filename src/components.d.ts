@@ -6,12 +6,16 @@
  */
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
 import { Mode, Position, Size } from "~shared/types";
 import { LanguageCode } from "~utils/language";
 import { P6ButtonType } from "./components/atoms/p6-button/p6-button";
 import { P6CalendarType } from "./components/atoms/p6-calendar/p6-calendar";
-import { P6InputType } from "./components/atoms/p6-input/p6-input";
+import {
+  P6InputType,
+  P6InputValue,
+} from "./components/atoms/p6-input/p6-input";
 import { P6LanguageValue } from "./components/atoms/p6-language/p6-language";
 import { Target } from "./components/atoms/p6-link/p6-link";
 import {
@@ -142,6 +146,12 @@ export namespace Components {
   interface P6Dropdown {}
   interface P6Empty {}
   interface P6Field {}
+  interface P6Form {
+    /**
+     * Sets or retrieves the name of the object.
+     */
+    name?: string;
+  }
   interface P6Help {
     /**
      * Tooltip mode
@@ -224,7 +234,7 @@ export namespace Components {
     /**
      * the value of the input.
      */
-    value: string | undefined;
+    value: string | number | undefined;
     /**
      * shows a waiting indicator
      */
@@ -586,6 +596,11 @@ declare global {
     prototype: HTMLP6FieldElement;
     new (): HTMLP6FieldElement;
   };
+  interface HTMLP6FormElement extends Components.P6Form, HTMLStencilElement {}
+  var HTMLP6FormElement: {
+    prototype: HTMLP6FormElement;
+    new (): HTMLP6FormElement;
+  };
   interface HTMLP6HelpElement extends Components.P6Help, HTMLStencilElement {}
   var HTMLP6HelpElement: {
     prototype: HTMLP6HelpElement;
@@ -702,6 +717,7 @@ declare global {
     "p6-dropdown": HTMLP6DropdownElement;
     "p6-empty": HTMLP6EmptyElement;
     "p6-field": HTMLP6FieldElement;
+    "p6-form": HTMLP6FormElement;
     "p6-help": HTMLP6HelpElement;
     "p6-hint": HTMLP6HintElement;
     "p6-icon": HTMLP6IconElement;
@@ -842,6 +858,16 @@ declare namespace LocalJSX {
   interface P6Dropdown {}
   interface P6Empty {}
   interface P6Field {}
+  interface P6Form {
+    /**
+     * Sets or retrieves the name of the object.
+     */
+    name?: string;
+    /**
+     * Fires when a FORM submitted is valid.
+     */
+    onP6Submit?: (event: CustomEvent<Map<string, unknown>>) => void;
+  }
   interface P6Help {
     /**
      * Tooltip mode
@@ -894,6 +920,22 @@ declare namespace LocalJSX {
      */
     name: string;
     /**
+     * Registering the field in a p6-form
+     */
+    onP6FormRegister?: (event: CustomEvent<P6Control<P6InputValue>>) => void;
+    /**
+     * Unregistering the field in a p6-form
+     */
+    onP6FormUnregister?: (event: CustomEvent<P6Control<P6InputValue>>) => void;
+    /**
+     * Fires when the field has been checked for validity and doesn't satisfy its constraints
+     */
+    onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * Fires when the field has been checked for validity and satisfy its constraints
+     */
+    onP6Valid?: (event: CustomEvent<ValidEventDetail<P6InputValue>>) => void;
+    /**
      * Pattern the value must match to be valid.
      */
     pattern?: string | undefined;
@@ -916,7 +958,7 @@ declare namespace LocalJSX {
     /**
      * the value of the input.
      */
-    value?: string | undefined;
+    value?: string | number | undefined;
     /**
      * shows a waiting indicator
      */
@@ -940,6 +982,9 @@ declare namespace LocalJSX {
      * The name
      */
     name: string;
+    /**
+     * When the value change
+     */
     onP6Change?: (
       event: CustomEvent<ValidEventDetail<P6LanguageValue>>
     ) => void;
@@ -1055,10 +1100,25 @@ declare namespace LocalJSX {
      * The name
      */
     name: string;
+    /**
+     * When the value change
+     */
     onP6Change?: (event: CustomEvent<ValidEventDetail<P6SelectValue>>) => void;
+    /**
+     * When the select ask to register
+     */
     onP6FormRegister?: (event: CustomEvent<P6SelectControl>) => void;
+    /**
+     * When the select ask to unregister
+     */
     onP6FormUnregister?: (event: CustomEvent<P6SelectControl>) => void;
+    /**
+     * When the select is invalid
+     */
     onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * When the select is valid
+     */
     onP6Valid?: (event: CustomEvent<ValidEventDetail<P6SelectValue>>) => void;
     /**
      * Marks as read only.
@@ -1163,9 +1223,21 @@ declare namespace LocalJSX {
      * The name
      */
     name: string;
+    /**
+     * When the select ask to register
+     */
     onP6FormRegister?: (event: CustomEvent<P6TranslationControl>) => void;
+    /**
+     * When the select ask to unregister
+     */
     onP6FormUnregister?: (event: CustomEvent<P6TranslationControl>) => void;
+    /**
+     * When the field is invalid
+     */
     onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * When the field is valid
+     */
     onP6Valid?: (
       event: CustomEvent<ValidEventDetail<P6TranslationValue>>
     ) => void;
@@ -1226,6 +1298,7 @@ declare namespace LocalJSX {
     "p6-dropdown": P6Dropdown;
     "p6-empty": P6Empty;
     "p6-field": P6Field;
+    "p6-form": P6Form;
     "p6-help": P6Help;
     "p6-hint": P6Hint;
     "p6-icon": P6Icon;
@@ -1262,6 +1335,7 @@ declare module "@stencil/core" {
         JSXBase.HTMLAttributes<HTMLP6DropdownElement>;
       "p6-empty": LocalJSX.P6Empty & JSXBase.HTMLAttributes<HTMLP6EmptyElement>;
       "p6-field": LocalJSX.P6Field & JSXBase.HTMLAttributes<HTMLP6FieldElement>;
+      "p6-form": LocalJSX.P6Form & JSXBase.HTMLAttributes<HTMLP6FormElement>;
       "p6-help": LocalJSX.P6Help & JSXBase.HTMLAttributes<HTMLP6HelpElement>;
       "p6-hint": LocalJSX.P6Hint & JSXBase.HTMLAttributes<HTMLP6HintElement>;
       "p6-icon": LocalJSX.P6Icon & JSXBase.HTMLAttributes<HTMLP6IconElement>;

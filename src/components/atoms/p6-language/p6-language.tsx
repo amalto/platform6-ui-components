@@ -64,7 +64,7 @@ export class P6Language implements ComponentInterface {
   @Prop({ attribute: "readOnly" }) public readOnly = false;
 
   /**
-   *
+   * When the value change
    */
   @Event() p6Change!: EventEmitter<ValidEventDetail<P6LanguageValue>>;
 

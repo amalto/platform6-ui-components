@@ -16,13 +16,13 @@
 
 ## Events
 
-| Event              | Description | Type                                           |
-| ------------------ | ----------- | ---------------------------------------------- |
-| `p6Change`         |             | `CustomEvent<ValidEventDetail<P6SelectValue>>` |
-| `p6FormRegister`   |             | `CustomEvent<P6Control<P6SelectValue>>`        |
-| `p6FormUnregister` |             | `CustomEvent<P6Control<P6SelectValue>>`        |
-| `p6Invalid`        |             | `CustomEvent<InvalidEventDetail>`              |
-| `p6Valid`          |             | `CustomEvent<ValidEventDetail<P6SelectValue>>` |
+| Event              | Description                       | Type                                           |
+| ------------------ | --------------------------------- | ---------------------------------------------- |
+| `p6Change`         | When the value change             | `CustomEvent<ValidEventDetail<P6SelectValue>>` |
+| `p6FormRegister`   | When the select ask to register   | `CustomEvent<P6Control<P6SelectValue>>`        |
+| `p6FormUnregister` | When the select ask to unregister | `CustomEvent<P6Control<P6SelectValue>>`        |
+| `p6Invalid`        | When the select is invalid        | `CustomEvent<InvalidEventDetail>`              |
+| `p6Valid`          | When the select is valid          | `CustomEvent<ValidEventDetail<P6SelectValue>>` |
 
 ## Methods
 

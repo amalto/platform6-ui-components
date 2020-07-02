@@ -59,27 +59,27 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   @Prop({ attribute: "readOnly" }) readOnly = false;
 
   /**
-   *
+   * When the select is valid
    */
   @Event() p6Valid!: EventEmitter<ValidEventDetail<P6SelectValue>>;
 
   /**
-   *
+   * When the select is invalid
    */
   @Event() p6Invalid!: EventEmitter<InvalidEventDetail>;
 
   /**
-   *
+   * When the select ask to register
    */
   @Event() p6FormRegister!: EventEmitter<P6SelectControl>;
 
   /**
-   *
+   * When the select ask to unregister
    */
   @Event() p6FormUnregister!: EventEmitter<P6SelectControl>;
 
   /**
-   *
+   * When the value change
    */
   @Event() p6Change!: EventEmitter<ValidEventDetail<P6SelectValue>>;
 
