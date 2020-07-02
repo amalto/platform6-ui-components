@@ -7,28 +7,13 @@ import {
   State,
 } from "@stencil/core";
 import {
-  isP6Control,
   isP6NativeControl,
   P6Control,
   P6NativeControl,
 } from "~shared/form/control";
 import { isInvalidEvent, isValidEvent } from "~shared/form/event";
 import { isEmpty } from "~utils/attribute";
-import { isInDefaultSlot } from "~utils/component";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-function isControl(elmt: any): elmt is P6Control<unknown> | P6NativeControl {
-  return isP6Control(elmt) || isP6NativeControl(elmt);
-}
-
-function getControl(
-  children: HTMLCollection
-): P6Control<unknown> | P6NativeControl | undefined {
-  return Array.from(children).filter(isInDefaultSlot).find(isControl) as
-    | P6Control<unknown>
-    | P6NativeControl
-    | undefined;
-}
+import { getControl } from "./utils";
 
 @Component({
   tag: "p6-field",
