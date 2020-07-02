@@ -14,12 +14,12 @@
 
 ## Events
 
-| Event              | Description | Type                                                |
-| ------------------ | ----------- | --------------------------------------------------- |
-| `p6FormRegister`   |             | `CustomEvent<P6Control<P6TranslationValue>>`        |
-| `p6FormUnregister` |             | `CustomEvent<P6Control<P6TranslationValue>>`        |
-| `p6Invalid`        |             | `CustomEvent<InvalidEventDetail>`                   |
-| `p6Valid`          |             | `CustomEvent<ValidEventDetail<P6TranslationValue>>` |
+| Event              | Description                       | Type                                                |
+| ------------------ | --------------------------------- | --------------------------------------------------- |
+| `p6FormRegister`   | When the select ask to register   | `CustomEvent<P6Control<P6TranslationValue>>`        |
+| `p6FormUnregister` | When the select ask to unregister | `CustomEvent<P6Control<P6TranslationValue>>`        |
+| `p6Invalid`        | When the field is invalid         | `CustomEvent<InvalidEventDetail>`                   |
+| `p6Valid`          | When the field is valid           | `CustomEvent<ValidEventDetail<P6TranslationValue>>` |
 
 ## Methods
 

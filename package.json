@@ -39,11 +39,9 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@stencil/core": "1.15.0",
     "@types/bulma-calendar": "^6.0.1",
-    "@types/uuid": "^8.0.0",
     "bulma": "^0.9.0",
     "bulma-calendar": "^6.0.7",
-    "choices.js": "9.0.1",
-    "uuid": "^8.2.0"
+    "choices.js": "9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event      | Description | Type                                    |
-| ---------- | ----------- | --------------------------------------- |
-| `p6Change` |             | `CustomEvent<ValidEventDetail<string>>` |
+| Event      | Description           | Type                                    |
+| ---------- | --------------------- | --------------------------------------- |
+| `p6Change` | When the value change | `CustomEvent<ValidEventDetail<string>>` |
 
 ## Dependencies
 

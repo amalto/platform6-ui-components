@@ -62,22 +62,22 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
   @Prop() disabled = false;
 
   /**
-   *
+   * When the field is valid
    */
   @Event() p6Valid!: EventEmitter<ValidEventDetail<P6TranslationValue>>;
 
   /**
-   *
+   * When the field is invalid
    */
   @Event() p6Invalid!: EventEmitter<InvalidEventDetail>;
 
   /**
-   *
+   * When the select ask to register
    */
   @Event() p6FormRegister!: EventEmitter<P6TranslationControl>;
 
   /**
-   *
+   * When the select ask to unregister
    */
   @Event() p6FormUnregister!: EventEmitter<P6TranslationControl>;
 
@@ -151,7 +151,7 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
       <Host>
         <p6-field>
           <p6-label slot="label">
-            Description
+            <slot />
             {!this.readOnly && !this.disabled && (
               <p6-action
                 mode="success"
