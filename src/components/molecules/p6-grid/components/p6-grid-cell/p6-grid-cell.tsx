@@ -157,11 +157,6 @@ export class P6GridCell {
    */
   @Event() p6Plus: EventEmitter<string> | undefined;
 
-  // /**
-  //  * Set color
-  //  */
-  // @Event() setColor: EventEmitter<string> | undefined;
-
   /**
    * Sort
    */
@@ -218,17 +213,11 @@ export class P6GridCell {
     this.p6Sort?.emit(this.headerId);
   }
 
-  // private setColorHandler(): void {
-  //   this.setColor?.emit(this.headerId);
-  // }
-
   private renderAlignIcon(
     align: Align,
     iconName: IconName,
     onClick: () => void
   ): JSX.Element {
-    // FIXME: The result of the getAlignClass is correct but it doesn't dislay the right class
-    // need to investigate further
     return (
       <p6-action mode={this.getAlignMode(align)} onClick={onClick}>
         <p6-icon name={iconName} />
@@ -277,7 +266,6 @@ export class P6GridCell {
             this.alignRightHandler.bind(this)
           )}
         </div>
-        {/* <div>{this.renderIcon("palette", this.setColorHandler.bind(this))}</div> */}
       </div>
     );
   };

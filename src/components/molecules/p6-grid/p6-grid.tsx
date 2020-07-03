@@ -221,14 +221,6 @@ export class P6Grid {
     this.p6Change?.emit({ header: updatedHeaders, rows: this.stateRows });
   }
 
-  // @Listen("setColor")
-  // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // // @ts-ignore
-  // private setColor(event: CustomEvent<string>): void {
-  //   const id: string = event.detail;
-  //   // eslint-disable-next-line no-console
-  //   this.change?.emit({ header: this.stateHeaders, rows: this.stateRows });
-  // }
   @Watch("lastEditingCell")
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
