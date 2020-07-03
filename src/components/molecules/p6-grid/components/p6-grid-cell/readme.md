@@ -4,19 +4,19 @@
 
 ## Properties
 
-| Property                  | Attribute   | Description         | Type                                                                             | Default     |
-| ------------------------- | ----------- | ------------------- | -------------------------------------------------------------------------------- | ----------- |
-| `align`                   | `align`     | Cell alignment      | `"center" \| "end" \| "start" \| undefined`                                      | `undefined` |
-| `cellIdx` _(required)_    | `cell-idx`  | Index of the cell   | `number`                                                                         | `undefined` |
-| `clickCallback`           | --          | Click callback      | `((id: string) => void) \| undefined`                                            | `undefined` |
-| `color`                   | `color`     | Cell text color     | `string \| undefined`                                                            | `undefined` |
-| `disabled`                | `disabled`  | Disabled templating | `boolean`                                                                        | `false`     |
-| `editing`                 | `editing`   | Editing mode        | `boolean`                                                                        | `false`     |
-| `headerId` _(required)_   | `header-id` | Header id           | `string`                                                                         | `undefined` |
-| `label`                   | `label`     | Cell label          | `string`                                                                         | `"-"`       |
-| `renderCellEditComponent` | --          |                     | `((id: string, rowIdx: number, cellIdx: number) => HTMLDivElement) \| undefined` | `undefined` |
-| `rowIdx`                  | `row-idx`   | Index of the row    | `number \| undefined`                                                            | `undefined` |
-| `width`                   | `width`     | Cell width          | `number \| string`                                                               | `100`       |
+| Property                  | Attribute   | Description         | Type                                                                             | Default       |
+| ------------------------- | ----------- | ------------------- | -------------------------------------------------------------------------------- | ------------- |
+| `align`                   | `align`     | Cell alignment      | `"center" \| "end" \| "start" \| undefined`                                      | `undefined`   |
+| `cellIdx` _(required)_    | `cell-idx`  | Index of the cell   | `number`                                                                         | `undefined`   |
+| `clickCallback`           | --          | Click callback      | `((id: string) => void) \| undefined`                                            | `undefined`   |
+| `color`                   | `color`     | Cell text color     | `string \| undefined`                                                            | `undefined`   |
+| `disabled`                | `disabled`  | Disabled templating | `boolean`                                                                        | `false`       |
+| `editing`                 | `editing`   | Editing mode        | `boolean`                                                                        | `false`       |
+| `headerId` _(required)_   | `header-id` | Header id           | `string`                                                                         | `undefined`   |
+| `label`                   | `label`     | Cell label          | `string`                                                                         | `EMPTY_LABEL` |
+| `renderCellEditComponent` | --          |                     | `((id: string, rowIdx: number, cellIdx: number) => HTMLDivElement) \| undefined` | `undefined`   |
+| `rowIdx`                  | `row-idx`   | Index of the row    | `number \| undefined`                                                            | `undefined`   |
+| `width`                   | `width`     | Cell width          | `number \| string`                                                               | `100`         |
 
 ## Events
 

@@ -265,9 +265,9 @@ export class P6Grid {
     });
   }
 
-  private onSearchInputKeyUp(event: KeyboardEvent): void {
+  private onSearchInputKeyUp = (event: KeyboardEvent): void => {
     this.searchValue = (event.currentTarget as HTMLInputElement).value;
-  }
+  };
 
   private initRows(rows: Row[]): Row[] {
     const updatedRows: Row[] = [...rows];
@@ -293,7 +293,7 @@ export class P6Grid {
     return getHeaderExcept(id, this.stateHeaders);
   }
 
-  private moveContextMenu(posX: number, posY: number): void {
+  private moveContextMenu = (posX: number, posY: number): void => {
     if (!this.isContextMenuOpen) {
       document.addEventListener("click", this.onCloseContextMenu, {
         once: true,
@@ -304,7 +304,7 @@ export class P6Grid {
       this.contextMenu.style.left = `${posX}px`;
       this.contextMenu.style.top = `${posY}px`;
     }
-  }
+  };
 
   private multipleSelectedRow(rowIdx: number): Row[] {
     const { stateRows } = this;
@@ -334,9 +334,9 @@ export class P6Grid {
     });
   }
 
-  private onCloseContextMenu(): void {
+  private onCloseContextMenu = (): void => {
     this.isContextMenuOpen = false;
-  }
+  };
 
   private onEditEnded(
     event: KeyboardEvent,
@@ -385,11 +385,11 @@ export class P6Grid {
     return orderedCells;
   }
 
-  private renderCellEditComponent(
+  private renderCellEditComponent = (
     id: string,
     rowIdx: number,
     cellIdx: number
-  ): HTMLDivElement {
+  ): HTMLDivElement => {
     const { stateRows } = this;
     return (
       <div>
@@ -412,7 +412,7 @@ export class P6Grid {
         </span>
       </div>
     );
-  }
+  };
 
   private renderHeader(): HTMLP6GridHeaderElement {
     const { stateHeaders } = this;
@@ -594,7 +594,7 @@ export class P6Grid {
     );
   }
 
-  private renderHiddenTag(header: HeaderCell, idx: number): JSX.Element {
+  private renderHiddenTag = (header: HeaderCell, idx: number): JSX.Element => {
     return (
       <p6-tag
         data-header-id={header.id}
@@ -606,9 +606,9 @@ export class P6Grid {
         {header.label}
       </p6-tag>
     );
-  }
+  };
 
-  private resetGrid(): void {
+  private resetGrid = (): void => {
     const { headers } = this;
 
     this.stateHeaders = headers.map((header) => ({
@@ -620,7 +620,7 @@ export class P6Grid {
       header: this.stateHeaders,
       rows: this.stateRows,
     });
-  }
+  };
 
   private renderLoadingContent(): void {
     if (this.spinner) {
@@ -643,7 +643,7 @@ export class P6Grid {
     }));
   }
 
-  private selectRow(event: MouseEvent): void {
+  private selectRow = (event: MouseEvent): void => {
     const dataRowIdx:
       | string
       | null = (event.currentTarget as HTMLP6GridRowElement).getAttribute(
@@ -666,7 +666,7 @@ export class P6Grid {
         rows: this.stateRows,
       });
     }
-  }
+  };
 
   private sortRows(): Row[] {
     const { sortedBy, stateRows } = this;
@@ -692,16 +692,16 @@ export class P6Grid {
     });
   }
 
-  private toogleDisplayColumn(event: MouseEvent): void {
+  private toogleDisplayColumn = (event: MouseEvent): void => {
     const id: string = (event.target as HTMLSpanElement).getAttribute(
       "data-header-id"
     ) as string;
     this.toggleHide(id);
-  }
+  };
 
-  private toggleDisplayTags(): void {
+  private toggleDisplayTags = (): void => {
     this.displayTags = !this.displayTags;
-  }
+  };
 
   private toggleEditCell(rowIdx: number, cellIdx: number, edit: boolean): void {
     const { stateRows } = this;
@@ -749,16 +749,6 @@ export class P6Grid {
     this.sortedBy = this.stateHeaders[0]?.id || "";
     this.l10n = await getL10n(this.host);
     this.initSpinner();
-
-    this.moveContextMenu = this.moveContextMenu.bind(this);
-    this.onCloseContextMenu = this.onCloseContextMenu.bind(this);
-    this.onSearchInputKeyUp = this.onSearchInputKeyUp.bind(this);
-    this.resetGrid = this.resetGrid.bind(this);
-    this.toogleDisplayColumn = this.toogleDisplayColumn.bind(this);
-    this.renderCellEditComponent = this.renderCellEditComponent.bind(this);
-    this.renderHiddenTag = this.renderHiddenTag.bind(this);
-    this.selectRow = this.selectRow.bind(this);
-    this.toggleDisplayTags = this.toggleDisplayTags.bind(this);
   }
 
   render(): JSX.Element {
