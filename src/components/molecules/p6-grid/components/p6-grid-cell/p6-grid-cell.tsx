@@ -24,6 +24,7 @@ import {
 } from "@stencil/core";
 import { Align, Mode } from "~shared/types";
 import { isNumber } from "~utils/attribute";
+import { EMPTY_LABEL } from "../../utils";
 
 library.add(
   faChevronLeft,
@@ -86,7 +87,7 @@ export class P6GridCell {
   /**
    * Cell label
    */
-  @Prop() label = "-";
+  @Prop() label = EMPTY_LABEL;
 
   /**
    *
@@ -170,60 +171,60 @@ export class P6GridCell {
     return align === this.currentAlign ? Mode.default : Mode.info;
   }
 
-  private alignLeftHandler(): void {
+  private alignLeftHandler = (): void => {
     this.p6AlignLeft?.emit(this.headerId);
     this.currentAlign = "start";
-  }
+  };
 
-  private alignCenterHandler(): void {
+  private alignCenterHandler = (): void => {
     this.p6AlignCenter?.emit(this.headerId);
     this.currentAlign = "center";
-  }
+  };
 
-  private alignRightHandler(): void {
+  private alignRightHandler = (): void => {
     this.p6AlignRight?.emit(this.headerId);
     this.currentAlign = "end";
-  }
+  };
 
   private getEditComponentId(): string {
     return `${this.headerId}-${this.rowIdx}-${this.cellIdx}`;
   }
 
-  private hideHandler(): void {
+  private hideHandler = (): void => {
     this.p6Hide?.emit(this.headerId);
-  }
+  };
 
-  private minusHandler(): void {
+  private minusHandler = (): void => {
     this.p6Minus?.emit(this.headerId);
-  }
+  };
 
-  private moveLeftHandler(): void {
+  private moveLeftHandler = (): void => {
     this.p6MoveLeft?.emit(this.headerId);
-  }
+  };
 
-  private moveRightHandler(): void {
+  private moveRightHandler = (): void => {
     this.p6MoveRight?.emit(this.headerId);
-  }
+  };
 
-  private plusHandler(): void {
+  private plusHandler = (): void => {
     this.p6Plus?.emit(this.headerId);
-  }
+  };
 
-  private sortHandler(): void {
+  private sortHandler = (): void => {
     this.p6Sort?.emit(this.headerId);
-  }
+  };
 
-  private renderAlignIcon(
+  private renderAlignIcon = (
     align: Align,
     iconName: IconName,
     onClick: () => void
-  ): JSX.Element {
+  ): JSX.Element => {
     return (
       <p6-action mode={this.getAlignMode(align)} onClick={onClick}>
         <p6-icon name={iconName} />
       </p6-action>
     );
-  }
+  };
 
   private renderIcon = (
     iconName: IconName,
@@ -240,31 +241,23 @@ export class P6GridCell {
     return (
       <div class="grid-cell-context-menu">
         <div>
-          {this.renderIcon("chevron-left", this.moveLeftHandler.bind(this))}
-          {this.renderIcon("sort", this.sortHandler.bind(this))}
-          {this.renderIcon("chevron-right", this.moveRightHandler.bind(this))}
+          {this.renderIcon("chevron-left", this.moveLeftHandler)}
+          {this.renderIcon("sort", this.sortHandler)}
+          {this.renderIcon("chevron-right", this.moveRightHandler)}
         </div>
         <div>
-          {this.renderIcon("trash-alt", this.hideHandler.bind(this))}
-          {this.renderIcon("minus", this.minusHandler.bind(this))}
-          {this.renderIcon("plus", this.plusHandler.bind(this))}
+          {this.renderIcon("trash-alt", this.hideHandler)}
+          {this.renderIcon("minus", this.minusHandler)}
+          {this.renderIcon("plus", this.plusHandler)}
         </div>
         <div>
-          {this.renderAlignIcon(
-            "start",
-            "align-left",
-            this.alignLeftHandler.bind(this)
-          )}
+          {this.renderAlignIcon("start", "align-left", this.alignLeftHandler)}
           {this.renderAlignIcon(
             "center",
             "align-center",
-            this.alignCenterHandler.bind(this)
+            this.alignCenterHandler
           )}
-          {this.renderAlignIcon(
-            "end",
-            "align-right",
-            this.alignRightHandler.bind(this)
-          )}
+          {this.renderAlignIcon("end", "align-right", this.alignRightHandler)}
         </div>
       </div>
     );

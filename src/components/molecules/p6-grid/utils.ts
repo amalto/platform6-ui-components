@@ -2,26 +2,22 @@ import { HeaderCell, Row, RowCell } from "~shared/grid";
 import { Direction, Order } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 
-const EMPTY_LABEL = "-";
+export const EMPTY_LABEL = "-";
 
+/**
+ * Remove all text highlight
+ */
 export function clearSelection(): void {
   window?.getSelection()?.removeAllRanges();
   document?.getSelection()?.empty();
 }
 
 export function filterBySearchInput(searchValue: string, rows: Row[]): Row[] {
-  const updatedRows: Row[] = [];
-
-  rows.forEach((row) => {
-    const containSearchValue: boolean = row.cells.some((cell) => {
+  return rows.filter((row) =>
+    row.cells.some((cell) => {
       return cell.label.indexOf(searchValue) !== -1;
-    });
-
-    if (containSearchValue) {
-      updatedRows.push(row);
-    }
-  });
-  return updatedRows;
+    })
+  );
 }
 
 export function getCellLabelByHeaderId(
@@ -50,9 +46,8 @@ export function getHeaderCellById(
     throw new Error(
       `getHeaderCellById: the header with id ${id} desn't exist!`
     );
-  } else {
-    return foundCell;
   }
+  return foundCell;
 }
 
 export function getRowCellById(
@@ -65,9 +60,8 @@ export function getRowCellById(
     throw new Error(
       `getRowCellById: the cell with header id ${headerId} doesn't exist!`
     );
-  } else {
-    return foundCell;
   }
+  return foundCell;
 }
 
 export function getHeaderIdxById(id: string, headers: HeaderCell[]): number {
