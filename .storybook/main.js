@@ -1,13 +1,8 @@
 module.exports = {
-  addons: [
-    "@storybook/addon-actions",
-    "@storybook/addon-a11y",
-    "@storybook/addon-knobs",
-    "@storybook/addon-notes/register-panel",
-  ],
-  presets: ["@storybook/addon-docs/preset"],
+  addons: ["@storybook/addon-actions", "@storybook/addon-a11y"],
+  presets: ["@storybook/addon-docs/preset", "@storybook/addon-knobs/preset"],
   stories: [
-    "../stories/**/*.stories.(js|ts|mdx)",
-    "../src/**/*.stories.(js|ts|mdx)",
+    "../stories/**/*.stories.@(ts|mdx)",
+    "../src/**/*.stories.@(ts|mdx)",
   ],
 };
