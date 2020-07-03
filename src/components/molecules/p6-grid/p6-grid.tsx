@@ -744,9 +744,9 @@ export class P6Grid {
   }
 
   async componentWillLoad(): Promise<void> {
-    this.stateHeaders = this.headers;
-    this.stateRows = this.initRows(this.rows);
-    this.sortedBy = this.stateHeaders[0].id;
+    this.stateHeaders = this.headers || [];
+    this.stateRows = this.initRows(this.rows || []);
+    this.sortedBy = this.stateHeaders[0]?.id || "";
     this.l10n = await getL10n(this.host);
     this.initSpinner();
 
