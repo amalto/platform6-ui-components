@@ -30,7 +30,6 @@ import readme from "./readme.md";
       };
       let headers = [
         {
-          color: "blue",
           disabled: kFirstDisabled,
           id: "col-1",
           label: "First",
@@ -46,7 +45,6 @@ import readme from "./readme.md";
             { editable: true, headerId: "col-2", label: "1 second cell row 1" },
             {
               align: "center",
-              color: "blue",
               editable: true,
               headerId: "col-1",
               label: "1 first cell row 1",
@@ -62,7 +60,6 @@ import readme from "./readme.md";
             { editable: true, headerId: "col-3", label: "2 third cell row 2" },
             {
               align: "center",
-              color: "blue",
               editable: true,
               headerId: "col-1",
               label: "2 first cell row 2",
@@ -78,7 +75,6 @@ import readme from "./readme.md";
             { editable: true, headerId: "col-4", label: "3 fourth cell row 3" },
             {
               align: "center",
-              color: "blue",
               editable: true,
               headerId: "col-1",
               label: "3 first cell row 3",
@@ -99,99 +95,99 @@ import readme from "./readme.md";
   </Story>
 </Preview>
 
-<Story
-  name="Loading"
-  height="200px"
-  decorators={[withKnobs]}
-  parameters={{ docs: { disable: true } }}
->
-  {() => {
-    const groupdId = "p6-grid";
-    const kLoading = boolean("Loading", false, groupdId);
-    const customContextMenu = (cells) => {
-      return "Context menu exemple";
-    };
-    let headers = [
-      {
-        color: "blue",
-        disabled: true,
-        id: "col-1",
-        label: "First",
-        width: 150,
-      },
-      { disabled: true, id: "col-2", label: "Second", width: 150 },
-      { disabled: true, id: "col-3", label: "Third", width: 100 },
-      { disabled: true, id: "col-4", label: "Fourth", width: 100 },
-    ];
-    let rows = [
-      {
-        cells: [
-          { headerId: "col-2", label: "1 second cell row 1" },
-          {
-            align: "center",
-            color: "blue",
-            headerId: "col-1",
-            label: "1 first cell row 1",
-            width: 150,
-          },
-          { headerId: "col-3", label: "1 third cell row 1" },
-          { headerId: "col-4", label: "1 fourth cell row 1" },
-        ],
-      },
-    ];
-    const grid = document.createElement("p6-grid");
-    const body = document.createElement("p6-grid-body");
-    grid.id = "default-grid";
-    grid.loading = kLoading;
-    grid.headers = headers;
-    grid.rows = rows;
-    grid.customContextMenu = customContextMenu;
-    grid.updateGridCallback = (updatedHeaders, updatedRows) => {};
-    return grid;
-  }}
-</Story>
+<Preview>
+  <Story
+    name="Loading"
+    height="200px"
+  >
+    {() => {
+      let headers = [
+        {id: "col-1", label: "First", width: 150},
+        {id: "col-2", label: "Second", width: 150},
+        {id: "col-3", label: "Third", width: 100},
+        {id: "col-4", label: "Fourth", width: 100},
+      ];
+      let rows = [
+        {
+          cells: [
+            { headerId: "col-2", label: "1 second cell row 1" },
+            {
+              align: "center",
+              headerId: "col-1",
+              label: "1 first cell row 1",
+              width: 150,
+            },
+            { headerId: "col-3", label: "1 third cell row 1" },
+            { headerId: "col-4", label: "1 fourth cell row 1" },
+          ],
+        },
+      ];
+      const grid = document.createElement("p6-grid");
+      const body = document.createElement("p6-grid-body");
+      grid.id = "default-grid";
+      grid.loading = true;
+      grid.headers = headers;
+      grid.rows = rows;
+      return grid;
+    }}
+  </Story>
+</Preview>
 
-<Story
-  name="Empty"
-  height="200px"
-  decorators={[withKnobs]}
-  parameters={{ docs: { disable: true } }}
->
-  {() => {
-    const groupdId = "p6-grid";
-    const kEmpty = boolean("Empty", false, groupdId);
-    const customContextMenu = (cells) => {
-      return "Context menu exemple";
-    };
-    let headers = [
-      { color: "blue", id: "col-1", label: "First", width: 150 },
-      { id: "col-2", label: "Second", width: 150 },
-      { id: "col-3", label: "Third", width: 100 },
-      { id: "col-4", label: "Fourth", width: 100 },
-    ];
-    let rows = [
-      {
-        cells: [
-          { headerId: "col-2", label: "1 second cell row 1" },
-          {
-            align: "center",
-            color: "blue",
-            headerId: "col-1",
-            label: "1 first cell row 1",
-            width: 150,
-          },
-          { headerId: "col-3", label: "1 third cell row 1" },
-          { headerId: "col-4", label: "1 fourth cell row 1" },
-        ],
-      },
-    ];
-    const grid = document.createElement("p6-grid");
-    const body = document.createElement("p6-grid-body");
-    grid.id = "default-grid";
-    grid.rows = !kEmpty ? rows : [];
-    grid.headers = headers;
-    grid.customContextMenu = customContextMenu;
-    grid.updateGridCallback = (updatedHeaders, updatedRows) => {};
-    return grid;
-  }}
-</Story>
+<Preview>
+  <Story
+    name="Empty"
+    height="200px"
+  >
+    {() => {
+      let headers = [
+        { id: "col-1", label: "First", width: 150 },
+        { id: "col-2", label: "Second", width: 150 },
+        { id: "col-3", label: "Third", width: 100 },
+        { id: "col-4", label: "Fourth", width: 100 },
+      ];
+      const grid = document.createElement("p6-grid");
+      const body = document.createElement("p6-grid-body");
+      grid.id = "default-grid";
+      grid.rows = [];
+      grid.headers = headers;
+      return grid;
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story
+    name="Simple table"
+    height="200px"
+  >
+    {() => {
+      let headers = [
+        { disabled: true, id: "col-1", label: "First", width: 150 },
+        { disabled: true, id: "col-2", label: "Second", width: 150 },
+        { disabled: true, id: "col-3", label: "Third", width: 100 },
+        { disabled: true, id: "col-4", label: "Fourth", width: 100 },
+      ];
+      let rows = [
+        {
+          cells: [
+            { headerId: "col-2", label: "1 second cell row 1" },
+            {
+              align: "center",
+              headerId: "col-1",
+              label: "1 first cell row 1",
+              width: 150,
+            },
+            { headerId: "col-3", label: "1 third cell row 1" },
+            { headerId: "col-4", label: "1 fourth cell row 1" },
+          ],
+        },
+      ];
+      const grid = document.createElement("p6-grid");
+      const body = document.createElement("p6-grid-body");
+      grid.id = "default-grid";
+      grid.rows = rows;
+      grid.headers = headers;
+      return grid;
+    }}
+  </Story>
+</Preview>
