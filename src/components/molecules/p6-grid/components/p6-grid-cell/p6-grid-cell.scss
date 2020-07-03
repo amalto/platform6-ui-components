@@ -2,10 +2,6 @@
 @import "bulma/sass/helpers/_all";
 @import "bulma/sass/form/input-textarea";
 
-@function divide($size, $diviser) {
-  @return $size / $diviser;
-}
-
 :host {
   display: flex;
   font-size: $size-7;
@@ -37,7 +33,7 @@
     height: 26px;
     line-height: 1;
     max-width: 100%;
-    padding: divide($size-7, 2);
+    padding: $size-7 / 2rem;
     width: 100%;
     z-index: 10;
   }

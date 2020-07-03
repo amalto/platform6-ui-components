@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`p6-grid should render an empty grid 1`] = `
+<p6-grid>
+  <mock:shadow-root></mock:shadow-root>
+</p6-grid>
+`;
+
 exports[`p6-grid should display a spinner 1`] = `
 <p6-grid id="p6-grid-test">
   <mock:shadow-root>
@@ -89,8 +95,41 @@ exports[`p6-grid should render a grid with on row 1`] = `
 </p6-grid>
 `;
 
-exports[`p6-grid should render an empty grid 1`] = `
-<p6-grid>
-  <mock:shadow-root></mock:shadow-root>
+exports[`p6-grid should display an empty message 1`] = `
+<p6-grid id="p6-grid-test">
+  <mock:shadow-root>
+    <div class="row-context-menu undefined"></div>
+    <div class="level">
+      <div class="level-left">
+        <p6-action mode="danger">
+          <p6-icon name="eraser"></p6-icon>
+        </p6-action>
+      </div>
+      <div class="level-right">
+        <div class="control has-icons-left">
+          <p6-icon class="has-text-grey-lighter" name="search"></p6-icon>
+          <input class="input is-small" type="text" value="">
+        </div>
+      </div>
+    </div>
+    <p6-grid-header>
+      <p6-grid-cell cellidx="0" headerid="col-1" width="150">
+        First
+      </p6-grid-cell>
+      <p6-grid-cell cellidx="1" headerid="col-2" width="150">
+        Second
+      </p6-grid-cell>
+      <p6-grid-cell cellidx="2" headerid="col-3" width="100">
+        Third
+      </p6-grid-cell>
+      <p6-grid-cell cellidx="3" headerid="col-4" width="100">
+        Fourth
+      </p6-grid-cell>
+    </p6-grid-header>
+    <p6-empty>
+      <p6-icon iconprefix="far" name="folder-open" slot="image"></p6-icon>
+    </p6-empty>
+    <slot></slot>
+  </mock:shadow-root>
 </p6-grid>
 `;
