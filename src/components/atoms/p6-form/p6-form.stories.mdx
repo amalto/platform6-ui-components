@@ -1,26 +1,31 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import {
-  boolean,
-  select,
-  number,
-  text as kText,
-  withKnobs,
-} from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import readme from "./readme.md";
-import { Default } from "./p6-form.stories.js";
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-<Meta title="Atoms/Form" component="p6-form" parameters={{ notes: readme }} />
+import { Sample } from "./p6-form.stories.ts";
+
+import Readme from "./readme.md";
+
+<Meta
+  title="Atoms/Form"
+  component="p6-form"
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
+/>
 
 # Form
 
 <Preview>
-  <Story
-    name="Sample2"
-    height="256px"
-    parameters={{ docs: { source: { code: "ok boomer" } } }}
-  >
-    {Default}
-    // erere
+  <Story name="Sample" height="256px">
+    {Sample}
   </Story>
 </Preview>
+
+<Description markdown={Readme} />
