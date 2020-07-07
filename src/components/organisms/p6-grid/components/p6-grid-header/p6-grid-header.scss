@@ -1,0 +1,11 @@
+$table-cell-border: 1px solid $border !default;
+$table-head-background-color: $light !default;
+$table-head-cell-border-width: 1px 1px 2px !default;
+
+:host {
+  display: flex;
+  background-color: $table-head-background-color;
+  border: $table-cell-border;
+  border-width: $table-head-cell-border-width;
+  margin-top: 1rem * 1.35;
+}

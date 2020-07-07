@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-input should check the validity of the value when it loses focus 1`] = `<input class="input is-danger" name="code" pattern="00[6|7|8|9|11]" type="text">`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-grid-header renders 1`] = `
+<p6-grid-header>
+  <mock:shadow-root>
+    <slot></slot>
+  </mock:shadow-root>
+</p6-grid-header>
+`;

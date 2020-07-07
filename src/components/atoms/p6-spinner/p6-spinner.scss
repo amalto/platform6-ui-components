@@ -2,4 +2,25 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  rect[class^="fix-moz-svg-anime-"] {
+    animation-name: fadein;
+    animation-iteration-count: infinite;
+    animation-duration: 0.84s;
+  }
+
+  @for $i from 1 through 7 {
+    .fix-moz-svg-anime-#{$i} {
+      animation-delay: 0.105s * $i;
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }

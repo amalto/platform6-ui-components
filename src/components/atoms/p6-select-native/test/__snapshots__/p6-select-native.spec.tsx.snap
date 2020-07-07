@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`p6-language renders 1`] = `
+exports[`p6-select-native renders 1`] = `
 <p6-select-native>
   <mock:shadow-root>
     <div class="select">

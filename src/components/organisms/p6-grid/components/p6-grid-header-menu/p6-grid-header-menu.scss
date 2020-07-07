@@ -1,0 +1,9 @@
+:host {
+  cursor: context-menu;
+  display: flex;
+  flex-direction: column;
+  background-color: $scheme-main;
+  width: 100px;
+  padding: $gap-size * 1px;
+  font-size: $size-small;
+}

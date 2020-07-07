@@ -1,4 +1,11 @@
-import { Component, Element, h, Host, State } from "@stencil/core";
+import {
+  Component,
+  ComponentInterface,
+  Element,
+  h,
+  Host,
+  State,
+} from "@stencil/core";
 import { toArray } from "~utils/dom";
 import { addDropdownClass } from "./utils";
 
@@ -7,7 +14,7 @@ import { addDropdownClass } from "./utils";
   styleUrl: "p6-dropdown.scss",
   shadow: true,
 })
-export class P6Dropdown {
+export class P6Dropdown implements ComponentInterface {
   @Element() host!: HTMLP6DropdownElement;
 
   @State() isActive = false;

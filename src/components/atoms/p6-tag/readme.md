@@ -13,13 +13,13 @@
 
 ### Used by
 
-- [p6-grid](../../molecules/p6-grid)
+- [p6-grid-options](../../organisms/p6-grid/components/p6-grid-options)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  p6-grid --> p6-tag
+  p6-grid-options --> p6-tag
   style p6-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -36,6 +36,6 @@ describe("p6-input", () => {
     await page.focus("button");
     await page.waitForChanges();
 
-    expect(input).toHaveClass("is-danger");
+    expect(input).toMatchSnapshot();
   });
 });
