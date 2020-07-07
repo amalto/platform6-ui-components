@@ -142,7 +142,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
 
     return (
       <Host>
-        <div class={containerClass}>
+        <form noValidate class={containerClass}>
           <input
             class={classes}
             ref={(input): void => {
@@ -158,7 +158,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
             value={this.value}
             {...this.minMaxAttrs}
           />
-        </div>
+        </form>
       </Host>
     );
   }

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-grid-header-cell should render a cell 1`] = `
+<p6-grid-header-cell style="width: 150px;">
+  <mock:shadow-root>
+    <div class="wrapper">
+      <div class="label">
+        <slot></slot>
+      </div>
+      <p6-grid-header-menu align="1" class="grid-cell-context-menu" sortorder="2"></p6-grid-header-menu>
+    </div>
+  </mock:shadow-root>
+</p6-grid-header-cell>
+`;

@@ -1,0 +1,29 @@
+$table-row-hover-background-color: $scheme-main-bis !default;
+
+$table-row-active-background-color: $primary !default;
+$table-row-active-color: $primary-invert !default;
+
+$table-striped-row-even-background-color: $scheme-main-bis !default;
+$table-striped-row-even-hover-background-color: $scheme-main-ter !default;
+
+:host {
+  display: flex;
+}
+
+:host(:nth-child(even)) {
+  background-color: $table-striped-row-even-background-color;
+}
+
+:host(.is-selected) {
+  background-color: $table-row-active-background-color;
+  color: $table-row-active-color;
+  user-select: none;
+}
+
+:host(:not(.is-selected):hover) {
+  background-color: $table-row-hover-background-color;
+}
+
+:host(:nth-child(even):not(.is-selected):hover) {
+  background-color: $table-striped-row-even-hover-background-color;
+}

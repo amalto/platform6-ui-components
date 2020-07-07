@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-grid-header-menu should render an empty cell 1`] = `
+<p6-grid-header-menu>
+  <mock:shadow-root>
+    <host>
+      <div>
+        <p6-action mode="3">
+          <p6-icon name="chevron-left"></p6-icon>
+        </p6-action>
+        <p6-action mode="3">
+          <p6-icon name="sort"></p6-icon>
+        </p6-action>
+        <p6-action mode="3">
+          <p6-icon name="chevron-right"></p6-icon>
+        </p6-action>
+      </div>
+      <div>
+        <p6-action mode="3">
+          <p6-icon name="trash-alt"></p6-icon>
+        </p6-action>
+        <p6-action mode="3">
+          <p6-icon name="minus"></p6-icon>
+        </p6-action>
+        <p6-action mode="3">
+          <p6-icon name="plus"></p6-icon>
+        </p6-action>
+      </div>
+      <div>
+        <p6-action mode="3">
+          <p6-icon name="align-left"></p6-icon>
+        </p6-action>
+        <p6-action mode="3">
+          <p6-icon name="align-center"></p6-icon>
+        </p6-action>
+        <p6-action mode="3">
+          <p6-icon name="align-right"></p6-icon>
+        </p6-action>
+      </div>
+    </host>
+  </mock:shadow-root>
+</p6-grid-header-menu>
+`;

@@ -8,7 +8,7 @@ interface Coord {
 @Component({
   tag: "p6-spinner",
   styleUrl: "p6-spinner.scss",
-  scoped: true,
+  shadow: true,
 })
 export class P6Spinner {
   private readonly color = "#fb9248";
@@ -35,11 +35,6 @@ export class P6Spinner {
     { x: 0, y: this.blockSize + this.gap },
   ];
 
-  /*
-    0    105  210
-    745       315
-    630  525  420
-*/
   render(): JSX.Element {
     return (
       <Host>
@@ -59,8 +54,13 @@ export class P6Spinner {
   }
 
   private blockElement(coord: Coord, index: number): JSX.Element {
+    const classes = {
+      [`fix-moz-svg-anime-${index}`]: navigator.userAgent.includes("Firefox"),
+    };
+
     return (
       <rect
+        class={classes}
         x={coord.x}
         y={coord.y}
         width={this.blockSize}

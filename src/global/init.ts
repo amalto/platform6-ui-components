@@ -1,12 +1,28 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
 import {
+  faAlignCenter,
+  faAlignLeft,
+  faAlignRight,
   faAngleDown,
+  faChevronLeft,
+  faChevronRight,
+  faEraser,
+  faEye,
+  faEyeSlash,
   faHamburger,
   faHome,
+  faLongArrowAltDown,
+  faLongArrowAltUp,
+  faMinus,
+  faPalette,
+  faPlus,
   faPlusCircle,
   faQuestionCircle,
+  faSearch,
+  faSort,
   faTrash,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { setAppVersion } from "~utils/cache";
 import { version } from "../../package.json";
@@ -19,7 +35,27 @@ function initializeIcons(): void {
     faQuestionCircle,
     faFolderOpen,
     faTrash,
-    faPlusCircle
+    faPlusCircle,
+
+    faChevronLeft,
+    faChevronRight,
+    faSort,
+    faTrashAlt,
+    faMinus,
+    faPlus,
+    faAlignLeft,
+    faAlignRight,
+    faAlignCenter,
+    faPalette,
+
+    faLongArrowAltUp,
+    faLongArrowAltDown,
+
+    faEraser,
+    faEye,
+    faEyeSlash,
+    faFolderOpen,
+    faSearch
   );
 }
 

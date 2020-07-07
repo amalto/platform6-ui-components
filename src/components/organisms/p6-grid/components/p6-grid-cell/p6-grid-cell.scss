@@ -1,0 +1,15 @@
+$table-cell-padding: 0.5em 0.75em !default;
+
+:host {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  padding: $table-cell-padding;
+  vertical-align: middle;
+  font-size: $size-7;
+  font-family: $family-primary;
+}
+
+:host(:not(:last-child)) {
+  width: 100px;
+}

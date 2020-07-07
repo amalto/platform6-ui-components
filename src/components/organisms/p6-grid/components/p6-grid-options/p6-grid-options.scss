@@ -1,0 +1,12 @@
+:host {
+  border: 1px solid $grey-lighter;
+  font-size: $size-7;
+  margin-bottom: $gap-size * 1px;
+  padding: $gap-size * 1px;
+
+  p6-tag {
+    border-radius: 0;
+    cursor: pointer;
+    margin-right: $gap-size * 1px;
+  }
+}

@@ -140,7 +140,7 @@ export class P6Textarea
 
     return (
       <Host>
-        <div class={containerClass}>
+        <form noValidate class={containerClass}>
           <textarea
             class={classes}
             ref={(input): void => {
@@ -157,7 +157,7 @@ export class P6Textarea
             rows={this.rows}
             cols={this.cols}
           />
-        </div>
+        </form>
       </Host>
     );
   }
