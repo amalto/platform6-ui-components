@@ -41,12 +41,17 @@ export class P6Language implements ComponentInterface {
   /**
    * The size of the component to display
    */
-  @Prop() public size: Size = "small";
+  @Prop() public size: Size = Size.normal;
 
   /**
    * The Mode of the component to display
    */
-  @Prop() public mode: Mode = "default";
+  @Prop() public mode: Mode = Mode.default;
+
+  /**
+   * The select should take the full width
+   */
+  @Prop({ attribute: "fullWidth" }) fullWidth = false;
 
   /**
    * The select is not available for interaction. The value will not be submitted with the form
@@ -96,6 +101,7 @@ export class P6Language implements ComponentInterface {
           readOnly={this.readOnly}
           size={this.size}
           mode={this.mode}
+          fullWidth={this.fullWidth}
           onP6Change={this.onChange}
         >
           {this.getLanguageOptions()}

@@ -1,6 +1,8 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { newSpecPage } from "@stencil/core/testing";
+import { enumArrayEntryToArray } from "~shared/test/utils";
+import { modes, positions } from "~shared/types";
 import { P6Help } from "../p6-help";
 
 library.add(faQuestionCircle);
@@ -16,30 +18,24 @@ describe("p6-help", () => {
   });
 
   describe("with position", () => {
-    it.each(["right", "left", "top", "bottom"])(
-      "%s",
-      async (position: string) => {
-        const page = await newSpecPage({
-          components: [P6Help],
-          html: `<p6-help text="Position ${position}" position="${position}"></p6-help>`,
-        });
+    it.each(enumArrayEntryToArray(positions))("%s", async (key, position) => {
+      const page = await newSpecPage({
+        components: [P6Help],
+        html: `<p6-help text="Position ${key}" position="${position}"></p6-help>`,
+      });
 
-        expect(page.root).toMatchSnapshot();
-      }
-    );
+      expect(page.root).toMatchSnapshot();
+    });
   });
 
   describe("with mode", () => {
-    it.each(["danger", "warning", "default", "info", "success", "primary"])(
-      "%s",
-      async (mode) => {
-        const page = await newSpecPage({
-          components: [P6Help],
-          html: `<p6-help text="Mode ${mode}" mode="${mode}"></p6-help>`,
-        });
+    it.each(enumArrayEntryToArray(modes))("%s", async (key, mode) => {
+      const page = await newSpecPage({
+        components: [P6Help],
+        html: `<p6-help text="Mode ${key}" mode="${mode}"></p6-help>`,
+      });
 
-        expect(page.root).toMatchSnapshot();
-      }
-    );
+      expect(page.root).toMatchSnapshot();
+    });
   });
 });

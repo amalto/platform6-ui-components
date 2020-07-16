@@ -1,35 +1,26 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
-import { select, withKnobs, text } from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-import readme from "./readme.md";
+import { DefaultStory } from "./p6-help.stories.ts";
 
-<Meta title="Atoms/Help" component="p6-help" parameters={{ notes: readme }} />
+import Readme from "./readme.md";
+
+<Meta title="Atoms/Help" component="p6-help" />
 
 # Help
 
 `p6-help` provides an help icon from [Font Awesome](https://fontawesome.com/) with a tooltip
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const kPosition = select(
-      "Position",
-      ["top", "right", "bottom", "left"],
-      "right"
-    );
-    const kMode = select(
-      "Mode",
-      ["default", "info", "warning", "primary", "success", "danger"],
-      "default"
-    );
-    const kTooltip = text("Tooltip", "This is a tooltip!");
-    return `<div style="margin:0px 50%; padding-top:50px"><p6-help position="${kPosition}" mode="${kMode}" text="${kTooltip}"></p6-help></div>`;
-  }}
-</Story>
+<Preview>
+  <Story name="Sample" height="256px">
+    {DefaultStory}
+  </Story>
+</Preview>
 
 <Preview>
   <Story name="Display on the right" height="42px">
@@ -38,3 +29,5 @@ import readme from "./readme.md";
     }}
   </Story>
 </Preview>
+
+<Description markdown={Readme} />

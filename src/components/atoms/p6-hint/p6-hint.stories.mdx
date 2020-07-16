@@ -1,34 +1,29 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { action } from "@storybook/addon-actions";
-import { Meta, Preview, Story } from "@storybook/addon-docs/blocks";
-import { select, text, boolean, withKnobs } from "@storybook/addon-knobs";
-import readme from "./readme.md";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-<Meta title="Atoms/Hint" component="p6-hint" parameters={{ notes: readme }} />
+import { DefaultStory, ModeStory } from "./p6-hint.stories.ts";
+
+import Readme from "./readme.md";
+
+<Meta title="Atoms/Hint" component="p6-hint" />
 
 # Hint
 
 <Preview>
-  <Story name="Default" height="42px">
-    {`
-      <P6-hint>default</P6-hint>
-    `}
+  <Story name="Default" height="256px" parameters={DefaultStory.parameters}>
+    {DefaultStory}
   </Story>
 </Preview>
-
-## Mode
 
 <Preview>
-  <Story name="Mode" height="168px">
-    {`
-      <P6-hint mode="danger">a hint message with the mode \`danger\`</P6-hint>
-      <P6-hint mode="warning">a hint message with the mode \`warning\`</P6-hint>
-      <P6-hint mode="default">a hint message without mode or set to \`default\`</P6-hint>
-      <P6-hint mode="info">a hint message with the mode \`info\`</P6-hint>
-      <P6-hint mode="success">a hint message with the mode \`success\`</P6-hint>
-      <P6-hint mode="primary">a hint message with the mode \`primary\`</P6-hint>
-    `}
+  <Story name="Mode" height="256px" parameters={ModeStory.parameters}>
+    {ModeStory}
   </Story>
 </Preview>
+
+<Description markdown={Readme} />

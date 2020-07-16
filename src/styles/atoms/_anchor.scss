@@ -1,5 +1,7 @@
+@import "control";
+
 @mixin anchor {
-  @extend %control;
+  @include control;
 
   color: $primary;
   font-family: $family-primary;

@@ -1,62 +1,169 @@
-:host {
-  display: block;
+//@import "src/global/_colors";
+//@import "src/global/_variable";
 
-  input,
-  label {
-    cursor: pointer;
-  }
+$switch-background: $grey-light !default;
+$switch-border: 0.1rem solid $switch-background !default;
+$switch-background-active: $primary !default;
+$switch-radius: $radius !default;
+$switch-paddle-background: $white !default;
+$switch-paddle-background-active: $primary !default;
+$switch-paddle-offset: 0.25rem !default;
+$switch-paddle-transition: all 0.25s ease-out !default;
+$switch-focus: none !default;
 
-  input {
-    position: absolute;
-    opacity: 0;
-  }
+@mixin switch-size($size) {
+  $switch-height: $size * 1.5;
+  $switch-width: $switch-height * 2;
+  $paddle-height: $switch-height - ($switch-paddle-offset * 2);
+  $paddle-width: $switch-height - ($switch-paddle-offset * 2);
+  $paddle-active-offset: $switch-width - $paddle-width -
+    ($switch-paddle-offset * 1.5);
 
-  label {
-    user-select: none;
-    font-size: $size-small;
-    line-height: 13px;
-    display: inline-block;
-    vertical-align: top;
-    width: auto;
-    position: relative;
+  + label {
+    font-size: $size;
+    padding-left: $switch-width + 0.5;
 
     &::before {
-      background-color: $input-background-color;
-      border: 1px solid $input-border-color;
-      border-radius: 50px;
-      content: "";
-      display: inline-block;
-      height: 20px;
-      margin-right: 5px;
-      vertical-align: middle;
-      width: 35px;
+      width: $switch-width;
+      height: $switch-height;
+      border: $switch-border;
+      background-color: transparent;
+      border-radius: $radius-large * 4;
     }
 
     &::after {
-      content: "";
-      background-color: $input-border-color;
-      border-radius: 50px;
-      height: 15px;
-      left: 2px;
-      position: absolute;
-      transition: 0.4s;
-      top: 2.5px;
-      width: 15px;
+      top: ($switch-height / 2) - ($paddle-height / 2);
+      left: $switch-paddle-offset;
+      width: $paddle-width;
+      height: $paddle-height;
+      transition: $switch-paddle-transition;
+      background: $switch-background;
+      border-radius: 50%;
     }
   }
 
-  input:checked + label::after {
-    background-color: $success;
-    transform: translateX(15px);
-  }
+  &:checked {
+    + label {
+      &::before {
+        background: transparent;
+        border-color: $switch-background-active;
+      }
 
-  input[disabled]:checked + label {
-    color: $input-disabled-color !important;
-    cursor: not-allowed;
+      &::after {
+        left: $paddle-active-offset;
+        background: $switch-paddle-background-active;
+      }
+    }
   }
+}
 
-  input[disabled]:checked + label::after {
-    background-color: $input-disabled-color;
-    cursor: not-allowed;
+:host {
+  .switch[type="checkbox"] {
+    vertical-align: baseline;
+    font-family: $body-family;
+    outline: 0;
+    user-select: none;
+    display: inline-block;
+    position: absolute;
+    opacity: 0;
+
+    + label {
+      position: relative;
+      display: initial;
+      line-height: initial;
+      padding-top: 0.2rem;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        content: "";
+        outline: none;
+      }
+
+      &::after {
+        display: block;
+        position: absolute;
+        transform: translate3d(0, 0, 0);
+        content: "";
+        outline: none;
+      }
+    }
+
+    &:focus {
+      + label {
+        &::before,
+        &::after {
+          outline: $switch-focus;
+        }
+      }
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+
+      + label {
+        opacity: 0.5;
+
+        &::before {
+          opacity: 0.5;
+        }
+
+        &::after {
+          opacity: 0.5;
+        }
+
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    @include switch-size($size-normal);
+
+    &.is-small {
+      @include switch-size($size-small);
+    }
+
+    &.is-medium {
+      @include switch-size($size-medium);
+    }
+
+    &.is-large {
+      @include switch-size($size-large);
+    }
+
+    @each $name, $pair in $colors {
+      $color: nth($pair, 1);
+      $color-invert: nth($pair, 2);
+      &.is-#{$name} {
+        &:checked {
+          + label {
+            &::before {
+              background-color: transparent;
+              border-color: $color !important;
+            }
+
+            &::after {
+              background: $color;
+            }
+          }
+        }
+      }
+      &.is-unchecked-#{$name} {
+        + label {
+          &::before {
+            background-color: transparent;
+            border-color: $color !important;
+          }
+
+          &::after {
+            background: $color;
+          }
+        }
+      }
+    }
   }
 }

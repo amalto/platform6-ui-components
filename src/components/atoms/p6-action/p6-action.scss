@@ -10,30 +10,30 @@ $button-active-color: $link-active !default;
 $button-disabled-background-color: $scheme-main !default;
 $button-disabled-opacity: 0.5 !default;
 
+@import "src/styles/atoms/control";
+
 :host {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   button {
-    @extend %control;
-    @extend %unselectable;
+    @include control;
+    @include unselectable;
 
     display: inline-flex;
     background-color: $button-background-color;
     border-width: $button-border-width;
     color: $button-color;
     cursor: pointer;
+    font-family: $body-family;
 
     @if $button-family {
       font-family: $button-family;
     }
 
     justify-content: center;
-    padding: $action-padding-vertical;
-    padding-left: $action-padding-horizontal;
-    padding-right: $action-padding-horizontal;
-    padding-top: $action-padding-vertical;
+    padding: $action-padding-vertical $action-padding-horizontal;
     text-align: center;
     white-space: nowrap;
     width: auto;
@@ -144,7 +144,7 @@ $button-disabled-opacity: 0.5 !default;
       color: transparent !important;
       pointer-events: none;
       &::after {
-        @extend %loader;
+        @include loader;
         @include center(1em);
 
         position: absolute !important;

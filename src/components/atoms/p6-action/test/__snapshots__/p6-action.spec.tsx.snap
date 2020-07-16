@@ -3,7 +3,7 @@
 exports[`p6-action disabled has a "disabled" attribute on the button when disabled is true 1`] = `
 <p6-action aria-disabled="true" disabled="true">
   <mock:shadow-root>
-    <button class="is-small" disabled="" type="button">
+    <button disabled="" type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
@@ -13,7 +13,7 @@ exports[`p6-action disabled has a "disabled" attribute on the button when disabl
 exports[`p6-action disabled has no "disabled" attribute on the button when disabled is false 1`] = `
 <p6-action disabled="false">
   <mock:shadow-root>
-    <button class="is-small" type="button">
+    <button type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
@@ -21,9 +21,9 @@ exports[`p6-action disabled has no "disabled" attribute on the button when disab
 `;
 
 exports[`p6-action mode does not add class when mode is default 1`] = `
-<p6-action mode="default">
+<p6-action mode="2">
   <mock:shadow-root>
-    <button class="is-small" type="button">
+    <button type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
@@ -33,65 +33,25 @@ exports[`p6-action mode does not add class when mode is default 1`] = `
 exports[`p6-action mode does not add class when mode is undefined 1`] = `
 <p6-action mode="undefined">
   <mock:shadow-root>
-    <button class="is-small" type="button">
+    <button type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
 </p6-action>
 `;
 
-exports[`p6-action mode has the class "is-danger" when mode is "%s" 1`] = `
-<p6-action mode="danger">
+exports[`p6-action mode has the class "is-danger" when mode is "0" 1`] = `
+<p6-action mode="0">
   <mock:shadow-root>
-    <button class="is-danger is-small" type="button">
+    <button class="is-danger" type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
 </p6-action>
 `;
 
-exports[`p6-action mode has the class "is-info" when mode is "%s" 1`] = `
-<p6-action mode="info">
-  <mock:shadow-root>
-    <button class="is-info is-small" type="button">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-action>
-`;
-
-exports[`p6-action mode has the class "is-primary" when mode is "%s" 1`] = `
-<p6-action mode="primary">
-  <mock:shadow-root>
-    <button class="is-primary is-small" type="button">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-action>
-`;
-
-exports[`p6-action mode has the class "is-success" when mode is "%s" 1`] = `
-<p6-action mode="success">
-  <mock:shadow-root>
-    <button class="is-small is-success" type="button">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-action>
-`;
-
-exports[`p6-action mode has the class "is-warning" when mode is "%s" 1`] = `
-<p6-action mode="warning">
-  <mock:shadow-root>
-    <button class="is-small is-warning" type="button">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-action>
-`;
-
-exports[`p6-action size does not add class when size is default 1`] = `
-<p6-action size="default">
+exports[`p6-action mode has the class "is-default" when mode is "2" 1`] = `
+<p6-action mode="2">
   <mock:shadow-root>
     <button type="button">
       <slot></slot>
@@ -100,8 +60,58 @@ exports[`p6-action size does not add class when size is default 1`] = `
 </p6-action>
 `;
 
-exports[`p6-action size has the class "is-large" when size is "%s" 1`] = `
-<p6-action size="large">
+exports[`p6-action mode has the class "is-info" when mode is "3" 1`] = `
+<p6-action mode="3">
+  <mock:shadow-root>
+    <button class="is-info" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-primary" when mode is "5" 1`] = `
+<p6-action mode="5">
+  <mock:shadow-root>
+    <button class="is-primary" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-success" when mode is "4" 1`] = `
+<p6-action mode="4">
+  <mock:shadow-root>
+    <button class="is-success" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action mode has the class "is-warning" when mode is "1" 1`] = `
+<p6-action mode="1">
+  <mock:shadow-root>
+    <button class="is-warning" type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size does not add class when size is normal 1`] = `
+<p6-action size="1">
+  <mock:shadow-root>
+    <button type="button">
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+</p6-action>
+`;
+
+exports[`p6-action size has the class "is-large" when size is "3" 1`] = `
+<p6-action size="3">
   <mock:shadow-root>
     <button class="is-large" type="button">
       <slot></slot>
@@ -110,8 +120,8 @@ exports[`p6-action size has the class "is-large" when size is "%s" 1`] = `
 </p6-action>
 `;
 
-exports[`p6-action size has the class "is-medium" when size is "%s" 1`] = `
-<p6-action size="medium">
+exports[`p6-action size has the class "is-medium" when size is "2" 1`] = `
+<p6-action size="2">
   <mock:shadow-root>
     <button class="is-medium" type="button">
       <slot></slot>
@@ -120,18 +130,18 @@ exports[`p6-action size has the class "is-medium" when size is "%s" 1`] = `
 </p6-action>
 `;
 
-exports[`p6-action size has the class "is-normal" when size is "%s" 1`] = `
-<p6-action size="normal">
+exports[`p6-action size has the class "is-normal" when size is "1" 1`] = `
+<p6-action size="1">
   <mock:shadow-root>
-    <button class="is-normal" type="button">
+    <button type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
 </p6-action>
 `;
 
-exports[`p6-action size has the class "is-small" when size is "%s" 1`] = `
-<p6-action size="small">
+exports[`p6-action size has the class "is-small" when size is "0" 1`] = `
+<p6-action size="0">
   <mock:shadow-root>
     <button class="is-small" type="button">
       <slot></slot>
@@ -143,7 +153,7 @@ exports[`p6-action size has the class "is-small" when size is "%s" 1`] = `
 exports[`p6-action waiting has a "is-loading" class when waiting is true 1`] = `
 <p6-action waiting="true">
   <mock:shadow-root>
-    <button class="is-loading is-small" type="button">
+    <button class="is-loading" type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>
@@ -153,7 +163,7 @@ exports[`p6-action waiting has a "is-loading" class when waiting is true 1`] = `
 exports[`p6-action waiting has no "is-loading" class when waiting is false 1`] = `
 <p6-action waiting="false">
   <mock:shadow-root>
-    <button class="is-small" type="button">
+    <button type="button">
       <slot></slot>
     </button>
   </mock:shadow-root>

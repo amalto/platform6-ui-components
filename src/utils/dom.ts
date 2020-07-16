@@ -9,3 +9,9 @@ export function isHTMLOptionElement(
 ): element is HTMLOptionElement {
   return element.tagName.toLowerCase() === "option";
 }
+
+export function isHTMLOptGroupElement(
+  element: Element
+): element is HTMLOptGroupElement {
+  return element.tagName.toLowerCase() === "optgroup";
+}

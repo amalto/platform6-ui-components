@@ -1,6 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Config } from "@stencil/core";
+import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
+import autoprefixer from "autoprefixer";
 /* eslint-enable import/no-extraneous-dependencies */
 
 export const config: Config = {
@@ -28,9 +30,14 @@ export const config: Config = {
       includePaths: ["./node_modules/"],
       injectGlobalPaths: [
         "./src/global/_variable.scss",
+        "./src/global/_functions.scss",
+        "./src/global/_colors.scss",
         "./node_modules/bulma/sass/utilities/_all.sass",
-        "./node_modules/bulma/sass/form/shared.sass",
+        "./src/global/_global.scss",
       ],
+    }),
+    postcss({
+      plugins: [autoprefixer()],
     }),
   ],
   devServer: {

@@ -1,52 +1,35 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { action } from "@storybook/addon-actions";
-import { Meta, Preview, Story } from "@storybook/addon-docs/blocks";
-import { select, text, withKnobs } from "@storybook/addon-knobs";
-import readme from "./readme.md";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-export const aModes = [
-  "danger",
-  "warning",
-  "default",
-  "info",
-  "success",
-  "primary",
-];
-export const aSizes = ["small", "default", "normal", "medium", "large"];
+import Readme from "./readme.md";
 
-<Meta title="Atoms/Tag" component="p6-tag" parameters={{ notes: readme }} />
+import { DefaultStory, SizeStory, ModeStory } from "./p6-tag.stories.ts";
+
+<Meta title="Atoms/Tag" component="p6-tag" />
 
 # Tag
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {(el) => {
-    const kModes = select("Modes", aModes, "default");
-    const kSize = select("Size", aSizes, "default");
-    const kText = text("Text", "My tag");
-    return `<p6-tag
-              size="${kSize}"
-              mode="${kModes}">${kText}</p6-tag>`;
-  }}
-</Story>
+<Preview>
+  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
+    {DefaultStory()}
+  </Story>
+</Preview>
 
-<Story name="Sizes" parameters={{ docs: { disable: true } }}>
-  {(el) => {
-    return aSizes
-      .map((size) => `<p6-tag size="${size}">${size}</p6-tag>`)
-      .join("");
-  }}
-</Story>
+<Preview>
+  <Story name="Sizes" height="58px" parameters={SizeStory.parameters}>
+    {SizeStory()}
+  </Story>
+</Preview>
 
-<Story name="Modes" parameters={{ docs: { disable: true } }}>
-  {(el) => {
-    return aModes
-      .map((mode) => `<p6-tag mode="${mode}">${mode}</p6-tag>`)
-      .join("");
-  }}
-</Story>
+<Preview>
+  <Story name="Modes" height="58px" parameters={ModeStory.parameters}>
+    {ModeStory()}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

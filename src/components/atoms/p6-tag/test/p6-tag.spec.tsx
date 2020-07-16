@@ -1,4 +1,5 @@
 import { newSpecPage } from "@stencil/core/testing";
+import { Mode, Size } from "~shared/types";
 import { P6Tag } from "../p6-tag";
 
 describe("p6-tag", () => {
@@ -13,7 +14,7 @@ describe("p6-tag", () => {
   it("mode", async () => {
     const page = await newSpecPage({
       components: [P6Tag],
-      html: `<p6-tag mode="warning">Warning</p6-tag>`,
+      html: `<p6-tag mode=${Mode.warning}>Warning</p6-tag>`,
     });
     expect(page.root).toMatchSnapshot();
   });
@@ -21,7 +22,7 @@ describe("p6-tag", () => {
   it("size", async () => {
     const page = await newSpecPage({
       components: [P6Tag],
-      html: `<p6-tag size="large">Large</p6-tag>`,
+      html: `<p6-tag size=${Size.large}>Large</p6-tag>`,
     });
     expect(page.root).toMatchSnapshot();
   });

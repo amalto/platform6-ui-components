@@ -1,6 +1,7 @@
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { Component, h, Prop } from "@stencil/core";
 import { Mode, Position } from "~shared/types";
+import { isDefaultMode, isDefaultPosition } from "~utils/attribute";
 
 @Component({
   tag: "p6-help",
@@ -16,12 +17,12 @@ export class P6Help {
   /**
    * Tooltip position (default position is top)
    */
-  @Prop() position: Position = "top";
+  @Prop() position: Position = Position.top;
 
   /**
    * Tooltip mode
    */
-  @Prop() mode: Mode = "default";
+  @Prop() mode: Mode = Mode.default;
 
   render(): JSX.Element | null {
     const img = icon({ prefix: "fas", iconName: "question-circle" });
@@ -30,8 +31,11 @@ export class P6Help {
       <div
         class={{
           "has-tooltip-arrow": true,
-          [`has-tooltip-${this.position}`]: this.position !== "top",
-          [`has-tooltip-${this.mode}`]: this.mode !== "default",
+          [`has-tooltip-${Position[this.position]}`]: !isDefaultPosition(
+            this.position,
+            Position.top
+          ),
+          [`has-tooltip-${Mode[this.mode]}`]: !isDefaultMode(this.mode),
         }}
         innerHTML={img.html[0]}
         data-tooltip={this.text}

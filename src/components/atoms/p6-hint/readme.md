@@ -4,9 +4,9 @@
 
 ## Properties
 
-| Property | Attribute | Description              | Type                                                                     | Default     |
-| -------- | --------- | ------------------------ | ------------------------------------------------------------------------ | ----------- |
-| `mode`   | `mode`    | set the mode of the hint | `"danger" \| "default" \| "info" \| "primary" \| "success" \| "warning"` | `"default"` |
+| Property | Attribute | Description              | Type                                                                                       | Default        |
+| -------- | --------- | ------------------------ | ------------------------------------------------------------------------------------------ | -------------- |
+| `mode`   | `mode`    | set the mode of the hint | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `Mode.default` |
 
 ## Dependencies
 

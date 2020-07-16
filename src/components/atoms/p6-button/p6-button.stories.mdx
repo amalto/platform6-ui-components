@@ -1,146 +1,104 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { action } from "@storybook/addon-actions";
-import { Meta, Preview, Story } from "@storybook/addon-docs/blocks";
-import { select, text, boolean, withKnobs } from "@storybook/addon-knobs";
-import readme from "./readme.md";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
+
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  SizeStory,
+  ModeStory,
+  IconStory,
+} from "./p6-button.stories.ts";
 
 <Meta
   title="Atoms/Button"
   component="p6-button"
-  parameters={{ notes: readme }}
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
 />
 
 # Button
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {(el) => {
-    const modes = [
-      "danger",
-      "warning",
-      "default",
-      "info",
-      "success",
-      "primary",
-    ];
-    const sizes = ["small", "default", "normal", "medium", "large"];
-    const kModes = select("Modes", modes, "default");
-    const kSize = select("Size", sizes, "default");
-    const kOutlined = boolean("Outlined", false);
-    const kWaiting = boolean("Waiting", false);
-    const kDisabled = boolean("Disabled", false);
-    const component = document.createElement("p6-button");
-    component.mode = kModes;
-    component.waiting = kWaiting;
-    component.disabled = kDisabled;
-    component.size = kSize;
-    component.outlined = kOutlined;
-    component.addEventListener("click", action("Click"));
-    component.innerHTML = `Click!`;
-    return component;
-  }}
-</Story>
-
 <Preview>
-  <Story name="Size" height="42px">
-    {`
-      <p6-button size="small">small</p6-button>
-      <p6-button>default</p6-button>
-      <p6-button size="normal">normal</p6-icon></p6-button>
-      <p6-button size="medium">medium</p6-button>
-      <p6-button size="large">large</p6-button>
-    `}
+  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
+    {DefaultStory()}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Mode" height="42px">
-    {`
-      <P6-button mode="danger">danger</P6-button>
-      <P6-button mode="warning">warning</P6-button>
-      <P6-button mode="default">default</P6-button>
-      <P6-button mode="info">info</P6-button>
-      <P6-button mode="success">success</P6-button>
-      <P6-button mode="primary">primary</P6-button>
-    `}
+  <Story name="Sizes" height="58px" parameters={SizeStory.parameters}>
+    {SizeStory()}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Waiting" height="42px">
-    {`
-      <P6-button mode="danger" waiting>danger</P6-button>
-      <P6-button mode="warning" waiting>warning</P6-button>
-      <P6-button mode="default" waiting>default</P6-button>
-      <P6-button mode="info" waiting>info</P6-button>
-      <P6-button mode="success" waiting>success</P6-button>
-      <P6-button mode="primary" waiting>primary</P6-button>
-    `}
+  <Story name="Modes" height="58px" parameters={ModeStory.parameters()}>
+    {ModeStory()}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Disabled" height="42px">
-    {`
-      <P6-button mode="danger" disabled>danger</P6-button>
-      <P6-button mode="warning" disabled>warning</P6-button>
-      <P6-button mode="default" disabled>default</P6-button>
-      <P6-button mode="info" disabled>info</P6-button>
-      <P6-button mode="success" disabled>success</P6-button>
-      <P6-button mode="primary" disabled>primary</P6-button>
-    `}
+  <Story
+    name="Waiting"
+    height="58px"
+    parameters={ModeStory.parameters({ waiting: true })}
+  >
+    {ModeStory({ waiting: true })}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Outlined" height="42px">
-    {`
-      <P6-button mode="danger" outlined>danger</P6-button>
-      <P6-button mode="warning" outlined>warning</P6-button>
-      <P6-button mode="default" outlined>default</P6-button>
-      <P6-button mode="info" outlined>info</P6-button>
-      <P6-button mode="success" outlined>success</P6-button>
-      <P6-button mode="primary" outlined>primary</P6-button>
-    `}
+  <Story
+    name="Disabled"
+    height="58px"
+    parameters={ModeStory.parameters({ disabled: true })}
+  >
+    {ModeStory({ disabled: true })}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Outlined and Waiting" height="42px">
-    {`
-      <P6-button mode="danger" outlined waiting>danger</P6-button>
-      <P6-button mode="warning" outlined waiting>warning</P6-button>
-      <P6-button mode="default" outlined waiting>default</P6-button>
-      <P6-button mode="info" outlined waiting>info</P6-button>
-      <P6-button mode="success" outlined waiting>success</P6-button>
-      <P6-button mode="primary" outlined waiting>primary</P6-button>
-    `}
+  <Story
+    name="Outlined"
+    height="58px"
+    parameters={ModeStory.parameters({ outlined: true })}
+  >
+    {ModeStory({ outlined: true })}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Outlined and Disabled" height="42px">
-    {`
-      <P6-button mode="danger" outlined disabled>danger</P6-button>
-      <P6-button mode="warning" outlined disabled>warning</P6-button>
-      <P6-button mode="default" outlined disabled>default</P6-button>
-      <P6-button mode="info" outlined disabled>info</P6-button>
-      <P6-button mode="success" outlined disabled>success</P6-button>
-      <P6-button mode="primary" outlined disabled>primary</P6-button>
-    `}
+  <Story
+    name="Outlined and Waiting"
+    height="58px"
+    parameters={ModeStory.parameters({ outlined: true, waiting: true })}
+  >
+    {ModeStory({ outlined: true, waiting: true })}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="With Icon" height="42px">
-    {`
-      <p6-button><p6-icon name="home" /></p6-button>
-      <p6-button><p6-icon name="home" /></p6-icon><span>Home</span></p6-button>
-    `}
+  <Story
+    name="Outlined and Disabled"
+    height="58px"
+    parameters={ModeStory.parameters({ outlined: true, disabled: true })}
+  >
+    {ModeStory({ outlined: true, disabled: true })}
   </Story>
 </Preview>
+
+<Preview>
+  <Story name="With Icon" height="58px" parameters={IconStory.parameters}>
+    {IconStory()}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

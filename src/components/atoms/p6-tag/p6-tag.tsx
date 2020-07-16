@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, h, JSX, Prop } from "@stencil/core";
 import { Mode, Size } from "~shared/types";
+import { getModeClass, getSizeClass } from "~utils/classes";
 
 @Component({
   tag: "p6-tag",
@@ -15,15 +16,15 @@ export class P6Tag implements ComponentInterface {
   /**
    * Size
    */
-  @Prop() size: Size = "small";
+  @Prop() size: Size = Size.normal;
 
   render(): JSX.Element {
     return (
       <span
         class={{
           tag: true,
-          [`is-${this.mode}`]: Boolean(this.mode),
-          [`is-${this.size}`]: true,
+          ...getSizeClass(this.size),
+          ...getModeClass(this.mode),
         }}
       >
         <slot />

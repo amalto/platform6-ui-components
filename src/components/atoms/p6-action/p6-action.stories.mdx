@@ -1,97 +1,71 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { action } from "@storybook/addon-actions";
-import { Meta, Preview, Story } from "@storybook/addon-docs/blocks";
-import { select, text, boolean, withKnobs } from "@storybook/addon-knobs";
-import readme from "./readme.md";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
+
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  SizeStory,
+  ModeStory,
+  WaitingStory,
+  DisabledStory,
+} from "./p6-action.stories.ts";
 
 <Meta
   title="Atoms/Action"
   component="p6-action"
-  parameters={{ notes: readme }}
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
 />
 
 # Action
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {(el) => {
-    const modes = [
-      "danger",
-      "warning",
-      "default",
-      "info",
-      "success",
-      "primary",
-    ];
-    const sizes = ["small", "default", "normal", "medium", "large"];
-    const kModes = select("Modes", modes, "default");
-    const kSize = select("Size", sizes, "default");
-    const kWaiting = boolean("Waiting", false);
-    const kDisabled = boolean("Disabled", false);
-    const kTransform = text("Transformation");
-    const component = document.createElement("p6-action");
-    component.mode = kModes;
-    component.waiting = kWaiting;
-    component.disabled = kDisabled;
-    component.size = kSize;
-    component.addEventListener("click", action("Click"));
-    component.innerHTML = `<p6-icon name="home" transform=${kTransform} />`;
-    return component;
-  }}
-</Story>
+Let's define a p6-action component.
 
 <Preview>
-  <Story name="Size" height="63px">
-    {`
-      <p6-action size="small"><p6-icon name="home" /></p6-action>
-      <p6-action ><p6-icon name="home" /></p6-action>
-      <p6-action size="normal"><p6-icon name="home" /></p6-action>
-      <p6-action size="medium"><p6-icon name="home" /></p6-action>
-      <p6-action size="large"><p6-icon name="home" /></p6-action>
-    `}
+  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
+    {DefaultStory()}
   </Story>
 </Preview>
 
+we can change the size
+
 <Preview>
-  <Story name="Mode" height="42px">
-    {`
-      <P6-action mode="danger"><p6-icon name="home" /></P6-action>
-      <P6-action mode="warning"><p6-icon name="home" /></P6-action>
-      <P6-action mode="default"><p6-icon name="home" /></P6-action>
-      <P6-action mode="info"><p6-icon name="home" /></P6-action>
-      <P6-action mode="success"><p6-icon name="home" /></P6-action>
-      <P6-action mode="primary"><p6-icon name="home" /></P6-action>
-    `}
+  <Story name="Sizes" height="58px" parameters={SizeStory.parameters}>
+    {SizeStory()}
   </Story>
 </Preview>
 
+or even the mode
+
 <Preview>
-  <Story name="Waiting" height="42px">
-    {`
-      <P6-action waiting mode="danger"><p6-icon name="home" /></P6-action>
-      <P6-action waiting mode="warning"><p6-icon name="home" /></P6-action>
-      <P6-action waiting mode="default"><p6-icon name="home" /></P6-action>
-      <P6-action waiting mode="info"><p6-icon name="home" /></P6-action>
-      <P6-action waiting mode="success"><p6-icon name="home" /></P6-action>
-      <P6-action waiting mode="primary"><p6-icon name="home" /></P6-action>
-    `}
+  <Story name="Modes" height="58px" parameters={ModeStory.parameters}>
+    {ModeStory()}
   </Story>
 </Preview>
 
+it could have a waiting attribute
+
 <Preview>
-  <Story name="Disabled" height="42px">
-    {`
-      <P6-action disabled mode="danger"><p6-icon name="home" /></P6-action>
-      <P6-action disabled mode="warning"><p6-icon name="home" /></P6-action>
-      <P6-action disabled mode="default"><p6-icon name="home" /></P6-action>
-      <P6-action disabled mode="info"><p6-icon name="home" /></P6-action>
-      <P6-action disabled mode="success"><p6-icon name="home" /></P6-action>
-      <P6-action disabled mode="primary"><p6-icon name="home" /></P6-action>
-    `}
+  <Story name="Waiting" height="58px" parameters={WaitingStory.parameters}>
+    {WaitingStory()}
   </Story>
 </Preview>
+
+or be disabled
+
+<Preview>
+  <Story name="Disabled" height="58px" parameters={DisabledStory.parameters}>
+    {DisabledStory()}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

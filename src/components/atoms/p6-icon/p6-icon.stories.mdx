@@ -1,80 +1,46 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
-import { boolean, select, withKnobs, text } from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import { IconPrefix, library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import {
+  Story,
+  Preview,
+  Meta,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-import readme from "./readme.md";
+import Readme from "./readme.md";
 
-<Meta title="Atoms/Icon" component="p6-icon" parameters={{ notes: readme }} />
+import { DefaultStory, SizeStory, IconStory } from "./p6-icon.stories.ts";
+
+<Meta title="Atoms/Icon" component="p6-icon" />
 
 # Icon
 
 `p6-icon` provides icon from [Font Awesome](https://fontawesome.com/)
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    library.add(
-      fab.faAccessibleIcon,
-      fab.faAutoprefixer,
-      fab.faFontAwesome,
-      fab.faGit,
-      fab.faHtml5,
-      fas.faCat,
-      fas.faInfoCircle,
-      fas.faCheckSquare,
-      fas.faHome,
-      fas.faTimes
-    );
-    const names = [
-      "accessible-icon",
-      "autoprefixer",
-      "font-awesome",
-      "git",
-      "html5",
-      "cat",
-      "info-circle",
-      "check-square",
-      "home",
-      "times",
-    ];
-    const prefix = ["fab", "fas"];
-    const kPrefix = select("Style", ["fab", "fas"], "fab");
-    const kName = select("Name", names, "font-awesome");
-    const kTransform = text("Transformation");
-    return `<p6-icon name=${kName} icon-prefix=${kPrefix} transform="${kTransform}"></p6-icon>`;
-  }}
-</Story>
+<Story name="Default">{DefaultStory("fas")}</Story>
+
+<Story name="Library">{DefaultStory("fab")}</Story>
 
 <Preview>
-  <Story name="icon" height="42px">
-    {() => {
-      /*
-        import { library } from '@fortawesome/fontawesome-svg-core'
-        import { fas } from '@fortawesome/free-solid-svg-icons'
-      */
-      library.add(fas.faHome);
-      return '<p6-icon name="home"></p6-icon>';
-    }}
+  <Story name="Sizes" height="256px">
+    {SizeStory()}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Icon" height="42px">
+    {IconStory("home")}
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Flip and rotate icon" height="42px">
-    {() => {
-      library.add(fas.faChartBar);
-      return `<p6-icon name="chart-bar" transform="flip-v rotate-90"></p6-icon>`;
-    }}
+    {IconStory("home", { transform: "flip-v rotate-90" })}
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Unknown icon" height="42px">
-    {'<p6-icon name="chart-home"></p6-icon>'}
+    {IconStory("chart-home")}
   </Story>
 </Preview>
+
+<Description markdown={Readme} />

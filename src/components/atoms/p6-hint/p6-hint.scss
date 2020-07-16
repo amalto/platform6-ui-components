@@ -1,9 +1,12 @@
-@import "bulma/sass/form/tools";
+$help-size: $size-small !default;
 
 :host {
-  @extend .help;
+  display: block;
+  font-size: $help-size;
+  margin-top: 0.25rem;
 }
 
+// My stay separated
 @each $name, $pair in $colors {
   $color: nth($pair, 1);
   :host(.is-#{$name}) {

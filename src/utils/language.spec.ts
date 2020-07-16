@@ -18,7 +18,7 @@ describe("language", () => {
   });
 
   it(`defaultLanguage`, () => {
-    expect(getDefaultLanguage).toEqual("en");
+    expect(getDefaultLanguage()).toEqual("en");
   });
 
   it(`getLanguageName`, () => {

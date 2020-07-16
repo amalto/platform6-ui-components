@@ -12,16 +12,19 @@ import { Mode, Position, Size } from "~shared/types";
 import { LanguageCode } from "~utils/language";
 import { P6ButtonType } from "./components/atoms/p6-button/p6-button";
 import { P6CalendarType } from "./components/atoms/p6-calendar/p6-calendar";
+import { P6CheckboxValue } from "./components/atoms/p6-checkbox/p6-checkbox";
 import {
   P6InputType,
   P6InputValue,
 } from "./components/atoms/p6-input/p6-input";
-import { P6LanguageValue } from "./components/atoms/p6-language/p6-language";
 import { Target } from "./components/atoms/p6-link/p6-link";
 import {
   P6SelectControl,
   P6SelectValue,
 } from "./components/atoms/p6-select-native/p6-select-native";
+import { P6SwitchValue } from "./components/atoms/p6-switch/p6-switch";
+import { P6TextareaValue } from "./components/atoms/p6-textarea/p6-textarea";
+import { P6LanguageValue } from "./components/molecules/p6-language/p6-language";
 import {
   P6TranslationControl,
   P6TranslationValue,
@@ -131,6 +134,10 @@ export namespace Components {
   }
   interface P6Checkbox {
     /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     */
+    checkValidity: () => Promise<boolean>;
+    /**
      * Initial value
      */
     checked: boolean;
@@ -139,9 +146,21 @@ export namespace Components {
      */
     disabled: boolean;
     /**
+     * set the mode of the action
+     */
+    mode: Mode;
+    /**
      * Checkbox name
      */
     name: string;
+    /**
+     * set the size of the action
+     */
+    size: Size;
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
   }
   interface P6Dropdown {}
   interface P6Empty {}
@@ -181,6 +200,10 @@ export namespace Components {
      * Icon name
      */
     name: IconName;
+    /**
+     * set the size of the button
+     */
+    size: Size;
     /**
      * transformation performed on the icon.
      */
@@ -224,6 +247,10 @@ export namespace Components {
      */
     required: boolean;
     /**
+     * The size of the component to display
+     */
+    size: Size;
+    /**
      * the content type of the input.
      */
     type: P6InputType;
@@ -250,6 +277,10 @@ export namespace Components {
      * Values to exclude from the language list
      */
     excludes: string[];
+    /**
+     * The select should take the full width
+     */
+    fullWidth: boolean;
     /**
      * The Mode of the component to display
      */
@@ -371,6 +402,10 @@ export namespace Components {
      */
     disabled: boolean;
     /**
+     * The select should take the full width
+     */
+    fullWidth: boolean;
+    /**
      * The Mode of the component to display
      */
     mode: Mode;
@@ -402,9 +437,17 @@ export namespace Components {
   interface P6Spinner {}
   interface P6Switch {
     /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     */
+    checkValidity: () => Promise<boolean>;
+    /**
      * Initial value
      */
     checked: boolean;
+    /**
+     * Mode
+     */
+    color: Mode;
     /**
      * Disable
      */
@@ -413,6 +456,14 @@ export namespace Components {
      * Switch name
      */
     name: string;
+    /**
+     * Size
+     */
+    size: Size;
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
   }
   interface P6Tabs {
     /**
@@ -467,6 +518,10 @@ export namespace Components {
      * marks an element that can't be submitted without a value.
      */
     required: boolean;
+    /**
+     * The user can resize the field
+     */
+    resizable: boolean;
     /**
      * The number of rows
      */
@@ -851,9 +906,35 @@ declare namespace LocalJSX {
      */
     disabled?: boolean;
     /**
+     * set the mode of the action
+     */
+    mode?: Mode;
+    /**
      * Checkbox name
      */
     name: string;
+    /**
+     * Registering the field in a p6-form
+     */
+    onP6FormRegister?: (event: CustomEvent<P6Control<P6CheckboxValue>>) => void;
+    /**
+     * Unregistering the field in a p6-form
+     */
+    onP6FormUnregister?: (
+      event: CustomEvent<P6Control<P6CheckboxValue>>
+    ) => void;
+    /**
+     * Fires when the field has been checked for validity and doesn't satisfy its constraints
+     */
+    onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * Fires when the field has been checked for validity and satisfy its constraints
+     */
+    onP6Valid?: (event: CustomEvent<ValidEventDetail<P6CheckboxValue>>) => void;
+    /**
+     * set the size of the action
+     */
+    size?: Size;
   }
   interface P6Dropdown {}
   interface P6Empty {}
@@ -897,6 +978,10 @@ declare namespace LocalJSX {
      * Icon name
      */
     name: IconName;
+    /**
+     * set the size of the button
+     */
+    size?: Size;
     /**
      * transformation performed on the icon.
      */
@@ -952,6 +1037,10 @@ declare namespace LocalJSX {
      */
     required?: boolean;
     /**
+     * The size of the component to display
+     */
+    size?: Size;
+    /**
      * the content type of the input.
      */
     type?: P6InputType;
@@ -974,6 +1063,10 @@ declare namespace LocalJSX {
      * Values to exclude from the language list
      */
     excludes?: string[];
+    /**
+     * The select should take the full width
+     */
+    fullWidth?: boolean;
     /**
      * The Mode of the component to display
      */
@@ -1089,6 +1182,10 @@ declare namespace LocalJSX {
      */
     disabled?: boolean;
     /**
+     * The select should take the full width
+     */
+    fullWidth?: boolean;
+    /**
      * The Mode of the component to display
      */
     mode?: Mode;
@@ -1140,6 +1237,10 @@ declare namespace LocalJSX {
      */
     checked?: boolean;
     /**
+     * Mode
+     */
+    color?: Mode;
+    /**
      * Disable
      */
     disabled?: boolean;
@@ -1147,6 +1248,26 @@ declare namespace LocalJSX {
      * Switch name
      */
     name: string;
+    /**
+     * Registering the field in a p6-form
+     */
+    onP6FormRegister?: (event: CustomEvent<P6Control<P6SwitchValue>>) => void;
+    /**
+     * Unregistering the field in a p6-form
+     */
+    onP6FormUnregister?: (event: CustomEvent<P6Control<P6SwitchValue>>) => void;
+    /**
+     * Fires when the field has been checked for validity and doesn't satisfy its constraints
+     */
+    onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * Fires when the field has been checked for validity and satisfy its constraints
+     */
+    onP6Valid?: (event: CustomEvent<ValidEventDetail<P6SwitchValue>>) => void;
+    /**
+     * Size
+     */
+    size?: Size;
   }
   interface P6Tabs {
     /**
@@ -1186,6 +1307,24 @@ declare namespace LocalJSX {
      */
     name: string;
     /**
+     * Registering the field in a p6-form
+     */
+    onP6FormRegister?: (event: CustomEvent<P6Control<P6TextareaValue>>) => void;
+    /**
+     * Unregistering the field in a p6-form
+     */
+    onP6FormUnregister?: (
+      event: CustomEvent<P6Control<P6TextareaValue>>
+    ) => void;
+    /**
+     * Fires when the field has been checked for validity and doesn't satisfy its constraints
+     */
+    onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * Fires when the field has been checked for validity and satisfy its constraints
+     */
+    onP6Valid?: (event: CustomEvent<ValidEventDetail<P6TextareaValue>>) => void;
+    /**
      * content to be appear in the form control when the form control is empty
      */
     placeholder?: string | undefined;
@@ -1197,6 +1336,10 @@ declare namespace LocalJSX {
      * marks an element that can't be submitted without a value.
      */
     required?: boolean;
+    /**
+     * The user can resize the field
+     */
+    resizable?: boolean;
     /**
      * The number of rows
      */

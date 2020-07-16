@@ -12,7 +12,9 @@ import {
 } from "@stencil/core";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
+import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
+import { getSizeClass } from "~utils/classes";
 
 export type P6InputType =
   | "email"
@@ -79,6 +81,11 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   @Prop() type: P6InputType = "text";
 
   /**
+   * The size of the component to display
+   */
+  @Prop() size: Size = Size.normal;
+
+  /**
    * the value of the input.
    */
   @Prop() value: string | number | undefined;
@@ -126,6 +133,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
       input: true,
       "is-danger": this.hasError,
       "is-static": !!this.readOnly,
+      ...getSizeClass(this.size),
     };
 
     return (
@@ -151,9 +159,9 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
     );
   }
 
-  componentDidLoad(): void {
+  async componentDidLoad(): Promise<void> {
     if (!isEmpty(this.value)) {
-      this.checkValidity();
+      await this.checkValidity();
     }
 
     this.p6FormRegister.emit(this);

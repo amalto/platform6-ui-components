@@ -1,104 +1,92 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import {
-  boolean,
-  select,
-  number,
-  text as kText,
-  withKnobs,
-} from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import readme from "./readme.md";
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-<Meta title="Atoms/Input" component="p6-input" parameters={{ notes: readme }} />
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  TextStory,
+  SizeStory,
+  Previews,
+} from "./p6-input.stories.ts";
+
+<Meta
+  title="Atoms/Input"
+  component="p6-input"
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
+/>
 
 # Input
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const inputTypes = [
-      "email",
-      "number",
-      "password",
-      "search",
-      "tel",
-      "text",
-      "url",
-    ];
-    const values = decorate([
-      (args) =>
-        Array.from(args[0].target.elements)
-          .filter((i) => !!i.name)
-          .map((i) => ({ name: i.name, value: i.value })),
-    ]);
-    const kTypes = select("Types", inputTypes, "text");
-    const kPattern = kText("Pattern");
-    const kPlaceholder = kText("Placeholder");
-    const kMin = number("Min");
-    const kMax = number("Max", 42);
-    const kReadonly = boolean("Readonly", false);
-    const kRequired = boolean("Required", false);
-    const kDisabled = boolean("Disabled", false);
-    const kWaiting = boolean("Waiting", false);
-    const formContent = `
-      <p6-input name="test"
-        disabled=${kDisabled}
-        max=${kMax}
-        min=${kMin}
-        pattern=${kPattern}
-        placeholder=${kPlaceholder}
-        readonly=${kReadonly}
-        required=${kRequired}
-        waiting=${kWaiting}
-        type=${kTypes}></p6-input>
-      <div class="field">
-        <div class="control">
-          <p6-button class="button is-link">Submit</p6-button>
-          <p6-button class="button is-link" type="reset">Reset</p6-button>
-        </div>
-      </div>
-    `;
-    const form = document.createElement("form");
-    form.noValidate = true;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      values.action("values")(e);
-      action("event")(e);
-    });
-    form.innerHTML = formContent;
-    return form;
-  }}
-</Story>
-
 <Preview>
-  <Story name="Text" height="84px">
-    {'<p6-input type="text"/></p6-input>'}
+  <Story name="Default" height="58px" parameters={Previews.Default}>
+    {DefaultStory()}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Read only" height="84px">
-    {'<p6-input type="text" readonly value="Input value"/></p6-input>'}
+  <Story name="Text" height="58px" parameters={Previews.Text()}>
+    {TextStory()}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Disabled" height="84px">
-    {'<p6-input type="text" disabled value="Input value"/></p6-input>'}
+  <Story
+    name="Read only"
+    height="58px"
+    parameters={Previews.Text({ readonly: true })}
+  >
+    {TextStory({ readonly: true })}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Waiting" height="168px">
-    {'<p6-input type="text" waiting></p6-input>'}
+  <Story
+    name="Disabled"
+    height="58px"
+    parameters={Previews.Text({ disabled: true })}
+  >
+    {TextStory({ disabled: true })}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="On error" height="84px">
-    {'<p6-input type="text" pattern="42" value="84"/></p6-input>'}
+  <Story
+    name="Waiting"
+    height="58px"
+    parameters={Previews.Text({ waiting: true })}
+  >
+    {TextStory({ waiting: true })}
   </Story>
 </Preview>
+
+<Preview>
+  <Story
+    name="On error"
+    height="58px"
+    parameters={Previews.Text({ pattern: "42", value: "84" })}
+  >
+    {TextStory({ pattern: "42", value: "84" })}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story
+    name="Size"
+    height="58px"
+    parameters={Previews.Text({ size: "small" })}
+  >
+    {SizeStory({ size: "small" })}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

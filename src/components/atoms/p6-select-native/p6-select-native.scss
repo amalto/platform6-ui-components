@@ -1,5 +1,147 @@
-@import "bulma/sass/form/select";
+@import "src/styles/atoms/control";
 
 :host {
-  display: block;
+  display: inline-block;
+
+  .select {
+    display: inline-block;
+    max-width: 100%;
+    position: relative;
+    vertical-align: top;
+
+    &:not(.is-multiple) {
+      height: $input-height;
+    }
+
+    &:not(.is-multiple):not(.is-loading) {
+      &::after {
+        @include arrow;
+
+        border-color: $input-arrow;
+        right: 1.125em;
+        z-index: 4;
+      }
+    }
+
+    &.is-fullwidth {
+      width: 100%;
+    }
+
+    select {
+      &:not([multiple]) {
+        padding-right: 2.5em;
+      }
+
+      &[disabled]:hover {
+        border-color: $input-disabled-border-color;
+      }
+
+      @include input;
+
+      cursor: pointer;
+      display: block;
+      font-size: 1em;
+      max-width: 100%;
+      outline: none;
+
+      &::-ms-expand {
+        display: none;
+      }
+
+      &[multiple] {
+        height: auto;
+        padding: 0;
+
+        option {
+          padding: 0.5em 1em;
+        }
+      }
+    }
+
+    &.is-fullwidth select {
+      width: 100%;
+    }
+
+    select fieldset[disabled] &:hover {
+      border-color: $input-disabled-border-color;
+    }
+
+    // States
+    &:not(.is-multiple):not(.is-loading):hover {
+      &::after {
+        border-color: $input-hover-color;
+      }
+    }
+
+    // Colors
+    @each $name, $pair in $colors {
+      $color: nth($pair, 1);
+      &.is-#{$name} {
+        &:not(:hover)::after {
+          border-color: $color;
+        }
+
+        select {
+          border-color: $color;
+
+          &:hover,
+          &.is-hovered {
+            border-color: bulmaDarken($color, 5%);
+          }
+
+          &:focus,
+          &.is-focused,
+          &:active,
+          &.is-active {
+            box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25);
+          }
+        }
+      }
+    }
+    // Sizes
+    @include control-normal;
+
+    &.is-small {
+      @include control-small;
+    }
+
+    &.is-medium {
+      @include control-medium;
+    }
+
+    &.is-large {
+      @include control-large;
+    }
+
+    // Modifiers
+    &.is-disabled {
+      &::after {
+        border-color: $input-disabled-color;
+      }
+    }
+
+    &.is-loading {
+      &::after {
+        @include loader;
+
+        margin-top: 0;
+        position: absolute;
+        right: 0.625em;
+        top: 0.625em;
+        transform: none;
+      }
+
+      &.is-small::after {
+        font-size: $size-small;
+      }
+
+      &.is-medium::after {
+        font-size: $size-medium;
+      }
+
+      &.is-large::after {
+        font-size: $size-large;
+      }
+    }
+  }
 }

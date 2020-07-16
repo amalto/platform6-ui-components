@@ -1,0 +1,78 @@
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
+
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  BaseStory,
+  SizeStory,
+  ModeStory,
+} from "./p6-language.stories.ts";
+
+<Meta
+  title="Molecules/Language"
+  component="p6-language"
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
+/>
+
+# Select
+
+`p6-language` provides a select
+
+<Preview>
+  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
+    {DefaultStory()}
+  </Story>
+</Preview>
+
+## Selected value
+
+<Preview>
+  <Story
+    name="Selected value"
+    height="58px"
+    parameters={BaseStory.parameters({ value: "fr" })}
+  >
+    {BaseStory({ value: "fr" })}
+  </Story>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <Story
+    name="Disabled"
+    height="58px"
+    parameters={BaseStory.parameters({ disabled: true })}
+  >
+    {BaseStory({ disabled: true })}
+  </Story>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Story name="Sizes" height="58px" parameters={SizeStory.parameters}>
+    {SizeStory}
+  </Story>
+</Preview>
+
+## Modes
+
+<Preview>
+  <Story name="Modes" height="58px" parameters={ModeStory.parameters}>
+    {ModeStory}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

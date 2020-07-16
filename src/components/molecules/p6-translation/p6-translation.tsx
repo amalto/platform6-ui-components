@@ -16,7 +16,7 @@ import {
   isCustomEvent,
   ValidEventDetail,
 } from "~shared/form/event";
-import { Size } from "~shared/types";
+import { Mode, Size } from "~shared/types";
 import {
   getDefaultLanguage,
   getLanguageCodes,
@@ -49,7 +49,7 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
   /**
    * The size of the component to display
    */
-  @Prop() public size: Size = "small";
+  @Prop() public size: Size = Size.normal;
 
   /**
    * Marks as read only.
@@ -154,7 +154,7 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
             <slot />
             {!this.readOnly && !this.disabled && (
               <p6-action
-                mode="success"
+                mode={Mode.success}
                 size={this.size}
                 onClick={this.onAddLineHandler()}
                 disabled={!this.canAddTranslation()}

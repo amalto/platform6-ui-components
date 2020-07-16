@@ -1,0 +1,155 @@
+@import "src/global/_variable";
+
+@function findColorInvert($color) {
+  @if (colorLuminance($color) > 0.55) {
+    @return rgba(#000, 0.7);
+  } @else {
+    @return #fff;
+  }
+}
+
+@function colorLuminance($color) {
+  @if type-of($color) != "color" {
+    @return 0.55;
+  }
+  $color-rgb: (
+    "red": red($color),
+    "green": green($color),
+    "blue": blue($color),
+  );
+  @each $name, $value in $color-rgb {
+    $adjusted: 0;
+    $value: $value / 255;
+    @if $value < 0.03928 {
+      $value: $value / 12.92;
+    } @else {
+      $value: ($value + 0.055) / 1.055;
+      $value: powerNumber($value, 2);
+    }
+    $color-rgb: map-merge(
+      $color-rgb,
+      (
+        $name: $value,
+      )
+    );
+  }
+  @return (map-get($color-rgb, "red") * 0.2126) +
+    (map-get($color-rgb, "green") * 0.7152) +
+    (map-get($color-rgb, "blue") * 0.0722);
+}
+
+@function powerNumber($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  } @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function findLightColor($color) {
+  @if type-of($color) == "color" {
+    $l: 96%;
+    @if lightness($color) > 96% {
+      $l: lightness($color);
+    }
+    @return change-color($color, $lightness: $l);
+  }
+  @return $background;
+}
+
+@function findDarkColor($color) {
+  @if type-of($color) == "color" {
+    $base-l: 29%;
+    $luminance: colorLuminance($color);
+    $luminance-delta: (0.53 - $luminance);
+    $target-l: round($base-l + ($luminance-delta * 53));
+    @return change-color($color, $lightness: max($base-l, $target-l));
+  }
+  @return $text-strong;
+}
+
+@function bulmaRgba($color, $alpha) {
+  @if type-of($color) != "color" {
+    @return $color;
+  }
+  @return rgba($color, $alpha);
+}
+
+@function bulmaDarken($color, $amount) {
+  @if type-of($color) != "color" {
+    @return $color;
+  }
+  @return darken($color, $amount);
+}
+
+@mixin block($spacing: $block-spacing) {
+  &:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+}
+
+@mixin tablet() {
+  @media screen and (min-width: $tablet), print {
+    @content;
+  }
+}
+
+@mixin arrow($color: transparent) {
+  border: 3px solid $color;
+  border-radius: 2px;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: 0.625em;
+  margin-top: -0.4375em;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: 0.625em;
+}
+
+@mixin unselectable {
+  user-select: none;
+}
+
+@mixin loader {
+  animation: spinAround 500ms infinite linear;
+  border: 2px solid $grey-lighter;
+  border-radius: $radius-rounded;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+}
+
+@mixin center($width, $height: 0) {
+  position: absolute;
+  @if $height != 0 {
+    left: calc(50% - (#{$width} / 2));
+    top: calc(50% - (#{$height} / 2));
+  } @else {
+    left: calc(50% - (#{$width} / 2));
+    top: calc(50% - (#{$width} / 2));
+  }
+}
+
+@mixin placeholder {
+  $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}

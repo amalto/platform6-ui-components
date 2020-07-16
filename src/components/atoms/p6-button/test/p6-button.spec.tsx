@@ -1,22 +1,25 @@
 import { newSpecPage } from "@stencil/core/testing";
+import { enumArrayEntryToArray } from "~shared/test/utils";
+import { Mode, modes, Size, sizes } from "~shared/types";
 import { P6Button } from "../p6-button";
 
 describe("p6-button", () => {
   describe("mode", () => {
-    const modes = ["danger", "warning", "info", "success", "primary"];
-
-    it.each(modes)('has the class "is-%s" when mode is "%s"', async (mode) => {
-      const page = await newSpecPage({
-        components: [P6Button],
-        html: `<p6-button mode=${mode}></p6-button>`,
-      });
-      expect(page.root).toMatchSnapshot();
-    });
+    it.each(enumArrayEntryToArray(modes))(
+      'has the class "is-%s" when mode is "%s"',
+      async (_, mode) => {
+        const page = await newSpecPage({
+          components: [P6Button],
+          html: `<p6-button mode=${mode}></p6-button>`,
+        });
+        expect(page.root).toMatchSnapshot();
+      }
+    );
 
     it("does not add class when mode is default", async () => {
       const page = await newSpecPage({
         components: [P6Button],
-        html: `<p6-button mode="default"></p6-button>`,
+        html: `<p6-button mode=${Mode.default}></p6-button>`,
       });
       expect(page.root).toMatchSnapshot();
     });
@@ -82,20 +85,21 @@ describe("p6-button", () => {
   });
 
   describe("size", () => {
-    const sizes = ["small", "normal", "medium", "large"];
-
-    it.each(sizes)('has the class "is-%s" when size is "%s"', async (size) => {
-      const page = await newSpecPage({
-        components: [P6Button],
-        html: `<p6-button size=${size}></p6-button>`,
-      });
-      expect(page.root).toMatchSnapshot();
-    });
+    it.each(enumArrayEntryToArray(sizes))(
+      'has the class "is-%s" when size is "%s"',
+      async (_, size) => {
+        const page = await newSpecPage({
+          components: [P6Button],
+          html: `<p6-button size=${size}></p6-button>`,
+        });
+        expect(page.root).toMatchSnapshot();
+      }
+    );
 
     it("does not add class when size is default", async () => {
       const page = await newSpecPage({
         components: [P6Button],
-        html: `<p6-button size="default"></p6-button>`,
+        html: `<p6-button size=${Size.normal}></p6-button>`,
       });
       expect(page.root).toMatchSnapshot();
     });

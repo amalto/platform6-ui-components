@@ -1,76 +1,37 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import {
-  boolean,
-  select,
-  number,
-  text as kText,
-  withKnobs,
-} from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import readme from "./readme.md";
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
+
+import Readme from "./readme.md";
+
+import { DefaultStory, FormStory } from "./p6-field.stories.ts";
 
 <Meta
   title="Molecules/Field"
   component="p6-field"
-  parameters={{ notes: readme }}
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
 />
 
 # Field
 
 <Preview>
-  <Story name="Default" height="84px">
-    {`
-      <p6-field>
-        <p6-label slot="label">A label</p6-label>
-        <p6-hint slot="hint">hint message</p6-hint>
-        <p6-input name="s-input" ></p6-input>
-      </p6-field>
-    `}
+  <Story name="Default" height="120px" parameters={DefaultStory.parameters}>
+    {DefaultStory()}
   </Story>
 </Preview>
 
-<Story
-  name="Form"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const values = decorate([
-      (args) =>
-        Array.from(args[0].target.elements)
-          .filter((i) => !!i.name)
-          .map((i) => ({ name: i.name, value: i.value })),
-    ]);
-    const kPattern = kText("Pattern");
-    const kReadonly = boolean("Readonly", false);
-    const kRequired = boolean("Required", true);
-    const kDisabled = boolean("Disabled", false);
-    const kWaiting = boolean("Waiting", false);
-    const formContent = `
-      <p6-field>
-        <p6-label slot="label">A label</p6-label>
-        <p6-input
-        name="test"
-        disabled=${kDisabled}
-        pattern=${kPattern}
-        readonly=${kReadonly}
-        required=${kRequired}
-        waiting=${kWaiting}></p6-input>
-      </p6-field>
-      <div class="field">
-        <div class="control">
-          <p6-button class="button is-link">Submit</p6-button>
-        </div>
-      </div>
-    `;
-    const form = document.createElement("form");
-    form.noValidate = true;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      values.action("values")(e);
-      action("event")(e);
-    });
-    form.innerHTML = formContent;
-    return form;
-  }}
-</Story>
+<Preview>
+  <Story name="Form" height="150px" parameters={FormStory.parameters}>
+    {FormStory()}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

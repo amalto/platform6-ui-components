@@ -12,7 +12,12 @@ import {
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
 import { Mode, Size } from "~shared/types";
-import { isHTMLOptionElement, toArray } from "~utils/dom";
+import { getModeClass, getSizeClass } from "~utils/classes";
+import {
+  isHTMLOptGroupElement,
+  isHTMLOptionElement,
+  toArray,
+} from "~utils/dom";
 
 export type P6SelectValue = string[];
 export type P6SelectControl = P6Control<P6SelectValue>;
@@ -36,12 +41,17 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   /**
    * The size of the component to display
    */
-  @Prop() size: Size = "small";
+  @Prop() size: Size = Size.normal;
 
   /**
    * The Mode of the component to display
    */
-  @Prop() mode: Mode = "default";
+  @Prop() mode: Mode = Mode.default;
+
+  /**
+   * The select should take the full width
+   */
+  @Prop({ attribute: "fullWidth" }) fullWidth = false;
 
   /**
    * The select is not available for interaction. The value will not be submitted with the form
@@ -136,9 +146,9 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
         <div
           class={{
             select: true,
-            "is-fullwidth": true,
-            [`is-${this.size}`]: true,
-            [`is-${this.mode}`]: true,
+            "is-fullwidth": this.fullWidth,
+            ...getSizeClass(this.size),
+            ...getModeClass(this.mode),
           }}
         >
           <select
@@ -170,8 +180,17 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
     this.computeOptions();
   }
 
+  private getOptions(element: Element): HTMLOptionElement[] {
+    const subItems = toArray(element.children);
+    const options = subItems.filter(isHTMLOptionElement);
+    subItems
+      .filter(isHTMLOptGroupElement)
+      .forEach((subItem) => options.push(...this.getOptions(subItem)));
+    return options;
+  }
+
   private computeOptions(): void {
-    const options = toArray(this.host.children).filter(isHTMLOptionElement);
+    const options = this.getOptions(this.host);
 
     if (options.length === 0) {
       return;

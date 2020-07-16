@@ -43,7 +43,7 @@ export class P6Calendar implements ComponentInterface {
   /**
    * The color of the field
    */
-  @Prop() color: Mode = "info";
+  @Prop() color: Mode = Mode.info;
 
   /**
    * Marks the field as read only
@@ -141,7 +141,7 @@ export class P6Calendar implements ComponentInterface {
       labelTo: this.labelTo,
       toggleOnInputClick: !this.readOnly && !this.disabled,
       showClearButton: false,
-      color: this.color,
+      color: Mode[this.color],
       dateFormat: "YYYY-MM-DD",
       lang: getClosestLanguage(this.nativeInput),
       clearLabel: this.l10n?.clearLabel,

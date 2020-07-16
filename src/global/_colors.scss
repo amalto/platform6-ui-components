@@ -1,0 +1,67 @@
+// Link colors
+$link-invert: findColorInvert($link) !default;
+$link-light: findLightColor($link) !default;
+$link-dark: findDarkColor($link) !default;
+
+// Input
+$input-placeholder-color: bulmaRgba($input-color, 0.3) !default;
+$input-focus-box-shadow-color: bulmaRgba($link, 0.25) !default;
+$input-disabled-placeholder-color: bulmaRgba(
+  $input-disabled-color,
+  0.3
+) !default;
+
+// Invert colors
+//#00d1b2
+$primary-invert: findColorInvert($primary) !default; //#fff
+$primary-light: findLightColor($primary) !default; //#ebfffc
+$primary-dark: findDarkColor($primary) !default; //#00947e
+//#3298dc
+$info-invert: findColorInvert($info) !default; //#fff
+$info-light: findLightColor($info) !default; //#eef6fc
+$info-dark: findDarkColor($info) !default; //#1d72aa
+//#48c774
+$success-invert: findColorInvert($success) !default; //#fff
+$success-light: findLightColor($success) !default; //#effaf3
+$success-dark: findDarkColor($success) !default; //#257942
+//#ffdd57
+$warning-invert: findColorInvert($warning) !default; //rgba(0, 0, 0, 0.7)
+$warning-light: findLightColor($warning) !default; //#fffbeb
+$warning-dark: findDarkColor($warning) !default; //#947600
+//#f14668
+$danger-invert: findColorInvert($danger) !default; //#fff
+$danger-light: findLightColor($danger) !default; //#feecf0
+$danger-dark: findDarkColor($danger) !default; //#cc0f35
+
+$colors: (
+  "primary": (
+    $primary,
+    $primary-invert,
+    $primary-light,
+    $primary-dark,
+  ),
+  "info": (
+    $info,
+    $info-invert,
+    $info-light,
+    $info-dark,
+  ),
+  "success": (
+    $success,
+    $success-invert,
+    $success-light,
+    $success-dark,
+  ),
+  "warning": (
+    $warning,
+    $warning-invert,
+    $warning-light,
+    $warning-dark,
+  ),
+  "danger": (
+    $danger,
+    $danger-invert,
+    $danger-light,
+    $danger-dark,
+  ),
+) !default;

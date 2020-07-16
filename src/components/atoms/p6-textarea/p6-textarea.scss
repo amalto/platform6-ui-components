@@ -1,25 +1,34 @@
-@import "bulma/sass/form/tools";
-@import "bulma/sass/form/input-textarea";
+@import "src/styles/atoms/control";
 
 :host {
   box-sizing: border-box;
   display: block;
   position: relative;
+
   .control {
+    @include control-container;
+
     display: flex;
   }
 
   .textarea {
+    @include input-textarea;
+
     display: inline-block;
     min-width: initial;
-  }
+    height: initial;
 
-  .textarea.is-static {
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    padding-left: 0;
-    padding-right: 0;
-    resize: none;
+    &:not(.is-resizable) {
+      resize: none;
+    }
+
+    &.is-static {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      padding-left: 0;
+      padding-right: 0;
+      resize: none;
+    }
   }
 }

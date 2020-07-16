@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-language renders 1`] = `
+<p6-language>
+  <mock:shadow-root>
+    <p6-select-native mode="2" size="1">
+      <option value="en">
+        English
+      </option>
+      <option value="fr">
+        Français
+      </option>
+    </p6-select-native>
+  </mock:shadow-root>
+</p6-language>
+`;
