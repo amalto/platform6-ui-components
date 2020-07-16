@@ -17,13 +17,14 @@ describe("p6-textarea", () => {
       `,
     });
 
-    await page.focus("p6-textarea textarea");
+    const field = await page.find("p6-textarea >>> textarea");
+    await field.focus();
     await page.keyboard.type("qwerty");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.waitForChanges();
 
-    const input = await page.find("p6-textarea textarea.is-danger");
+    const input = await page.find("p6-textarea >>> textarea.is-danger");
     expect(input).not.toBeNull();
   });
 });

@@ -12,6 +12,7 @@ import {
   P6NativeControl,
 } from "~shared/form/control";
 import { isInvalidEvent, isValidEvent } from "~shared/form/event";
+import { Mode } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
 import { getControl } from "./utils";
 
@@ -50,7 +51,7 @@ export class P6Field implements ComponentInterface {
     if (this.errorMessage !== "" && !this.isReadOnly) {
       const hint = document.createElement("p6-hint");
       hint.innerText = this.errorMessage;
-      hint.mode = "danger";
+      hint.mode = Mode.danger;
       hint.slot = "hint";
       hint.classList.add(errorHintClassName);
       this.host.appendChild(hint);

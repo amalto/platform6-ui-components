@@ -5,7 +5,9 @@ import {
   parse,
 } from "@fortawesome/fontawesome-svg-core";
 import { Component, Element, h, Prop } from "@stencil/core";
+import { Size } from "~shared/types";
 import { cleanupAttributes, isEmpty } from "~utils/attribute";
+import { getSizeClass } from "~utils/classes";
 
 export type IconStyle = IconPrefix;
 
@@ -21,6 +23,11 @@ export class P6Icon {
    * Icon name
    */
   @Prop() name!: IconName;
+
+  /**
+   * set the size of the button
+   */
+  @Prop() size: Size = Size.normal;
 
   /**
    * Style prefix
@@ -50,6 +57,11 @@ export class P6Icon {
       return null;
     }
 
-    return <span class="icon" innerHTML={img.html[0]} />;
+    const classes = {
+      icon: true,
+      ...getSizeClass(this.size),
+    };
+
+    return <span class={classes} innerHTML={img.html[0]} />;
   }
 }

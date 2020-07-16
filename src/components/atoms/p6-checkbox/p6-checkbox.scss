@@ -1,3 +1,22 @@
+@mixin checkbox-size($size) {
+  + label {
+    font-size: $size;
+    line-height: $size;
+    &::before {
+      width: calc(#{$size} - 1px);
+      height: calc(#{$size} - 1px);
+    }
+  }
+
+  &:checked + label::after {
+    height: calc(#{$size} / 3);
+    width: calc(#{$size} / 2 + 2px);
+    left: calc(#{$size} / 6);
+    top: calc(#{$size} / 4);
+    border-width: calc(#{$size} / 6 - 1px);
+  }
+}
+
 :host {
   display: block;
   font-family: $family-primary;
@@ -10,12 +29,21 @@
   input {
     position: absolute;
     opacity: 0;
+    @include checkbox-size($size-normal);
+
+    &.is-small {
+      @include checkbox-size($size-small);
+    }
+    &.is-medium {
+      @include checkbox-size($size-medium);
+    }
+    &.is-large {
+      @include checkbox-size($size-large);
+    }
   }
 
   label {
     user-select: none;
-    font-size: $size-small;
-    line-height: 13px;
     display: inline-block;
     vertical-align: top;
     width: auto;
@@ -25,8 +53,6 @@
       content: "";
       display: inline-block;
       vertical-align: top;
-      width: 12px;
-      height: 12px;
       border: 1px solid $input-border-color;
       background-color: $input-background-color;
       border-radius: 2px;
@@ -45,6 +71,17 @@
     transform: rotate(-45deg);
     left: 3px;
     top: 3px;
+  }
+
+  // Colors
+  input:checked {
+    @each $name, $pair in $colors {
+      $color: nth($pair, 1);
+      &.is-#{$name} + label::after {
+        border-left: 1px solid $color;
+        border-bottom: 1px solid $color;
+      }
+    }
   }
 
   input[disabled]:checked + label {

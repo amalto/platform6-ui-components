@@ -6,8 +6,6 @@ const defaultLanguage: LanguageCode = "en";
 const supportedLanguages: Record<LanguageCode, string> = {
   en: "English",
   fr: "Français",
-  it: "Italiano",
-  de: "Deutsch",
 };
 
 export function getDefaultLanguage(): LanguageCode {

@@ -2,21 +2,29 @@ import {
   Component,
   ComponentInterface,
   Element,
+  Event,
+  EventEmitter,
   h,
   Host,
   Method,
   Prop,
   State,
 } from "@stencil/core";
+import { P6Control } from "~shared/form/control";
+import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
 import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
+import { getSizeClass } from "~utils/classes";
+
+export type P6TextareaValue = string | undefined;
 
 @Component({
   tag: "p6-textarea",
   styleUrl: "p6-textarea.scss",
-  scoped: true,
+  shadow: true,
 })
-export class P6Textarea implements ComponentInterface {
+export class P6Textarea
+  implements ComponentInterface, P6Control<P6TextareaValue> {
   @Element() host!: HTMLP6TextareaElement;
 
   /**
@@ -52,7 +60,7 @@ export class P6Textarea implements ComponentInterface {
   /**
    * The size of the component to display
    */
-  @Prop() public size: Size = "small";
+  @Prop() public size: Size = Size.normal;
 
   /**
    * content to be appear in the form control when the form control is empty
@@ -70,6 +78,11 @@ export class P6Textarea implements ComponentInterface {
   @Prop() required = false;
 
   /**
+   * The user can resize the field
+   */
+  @Prop() resizable = false;
+
+  /**
    * the value of the input.
    */
   @Prop() value: string | undefined;
@@ -81,36 +94,49 @@ export class P6Textarea implements ComponentInterface {
 
   @State() hasError = false;
 
+  /**
+   * Registering the field in a p6-form
+   */
+  @Event() p6FormRegister!: EventEmitter<P6Control<P6TextareaValue>>;
+
+  /**
+   * Unregistering the field in a p6-form
+   */
+  @Event() p6FormUnregister!: EventEmitter<P6Control<P6TextareaValue>>;
+
+  /**
+   * Fires when the field has been checked for validity and satisfy its constraints
+   */
+  @Event() p6Valid!: EventEmitter<ValidEventDetail<P6TextareaValue>>;
+
+  /**
+   * Fires when the field has been checked for validity and doesn't satisfy its constraints
+   */
+  @Event() p6Invalid!: EventEmitter<InvalidEventDetail>;
+
   private nativeInput: HTMLTextAreaElement | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener(
-      "focusout",
-      this.internalCheckValidity.bind(this)
-    );
-  }
-
-  componentDidLoad(): void {
-    if (!isEmpty(this.value)) {
-      this.internalCheckValidity();
-    }
+    this.host.addEventListener("focusout", this.checkValidity.bind(this));
   }
 
   render(): JSX.Element {
     const containerClass = {
+      control: true,
       "is-loading": !!this.waiting,
     };
 
     const classes = {
       textarea: true,
-      [`is-${this.size}`]: true,
+      ...getSizeClass(this.size),
       "is-danger": this.hasError,
       "is-static": !!this.readOnly,
+      "is-resizable": this.resizable,
     };
 
     return (
-      <Host class={containerClass}>
-        <div class="control">
+      <Host>
+        <div class={containerClass}>
           <textarea
             class={classes}
             ref={(input): void => {
@@ -132,6 +158,18 @@ export class P6Textarea implements ComponentInterface {
     );
   }
 
+  async componentDidLoad(): Promise<void> {
+    if (!isEmpty(this.value)) {
+      await this.checkValidity();
+    }
+
+    this.p6FormRegister.emit(this);
+  }
+
+  disconnectedCallback?(): void {
+    this.p6FormUnregister.emit(this);
+  }
+
   /**
    * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
    * It also triggers the standard error message, such as "this is a required field".
@@ -146,12 +184,25 @@ export class P6Textarea implements ComponentInterface {
    */
   @Method()
   async checkValidity(): Promise<boolean> {
-    return Promise.resolve(this.nativeInput?.checkValidity() || true);
-  }
+    const isValid = !!this.nativeInput?.checkValidity();
 
-  private async internalCheckValidity(): Promise<void> {
-    await this.checkValidity();
-    const msg = await this.validationMessage();
-    this.hasError = msg !== "";
+    const message = await this.validationMessage();
+    this.hasError = message !== "";
+
+    if (isValid) {
+      const validInit = {
+        name: this.name,
+        value: this.nativeInput?.value,
+      };
+      this.p6Valid.emit(validInit);
+    } else {
+      const invalidInit = {
+        name: this.name,
+        message,
+      };
+      this.p6Invalid.emit(invalidInit);
+    }
+
+    return Promise.resolve(isValid);
   }
 }

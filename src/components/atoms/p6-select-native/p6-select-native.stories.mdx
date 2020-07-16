@@ -1,118 +1,84 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import {
-  boolean,
-  select,
-  number,
-  text,
-  withKnobs,
-} from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import readme from "./readme.md";
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
+
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  SelectedStory,
+  DisabledStory,
+  SizeStory,
+  ModeStory,
+  Previews,
+} from "./p6-select-native.stories.ts";
 
 <Meta
   title="Atoms/Select native"
   component="p6-select-native"
-  parameters={{ notes: readme }}
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
 />
 
 # Select
 
 `p6-select-native` provides a select
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const values = decorate([
-      (args) => {
-        var values = [];
-        new FormData(args[0].target).forEach(function (value, name) {
-          values.push({ name, value });
-        });
-        return values;
-      },
-    ]);
-    const kSizes = select(
-      "Size",
-      ["default", "small", "normal", "medium", "large"],
-      "default"
-    );
-    const kRequired = boolean("Required", true);
-    const kDisabled = boolean("Disabled", false);
-    const kReadOnly = boolean("Read only", false);
-    const kMultiple = boolean("Multiple", false);
-    const formContent = `
-      <p6-select-native
-        name="test"
-        disabled="${kDisabled}"
-        required="${kRequired}"
-        readOnly="${kReadOnly}"
-        multiple="${kMultiple}"
-        size="${kSizes}"
-        >
-        <option value="">Select language</option>
-        <optgroup label="Europe">
-          <option value="fr">Français</option>
-          <option value="en">English</option>
-        </optgroup>
-      </p6-select-native>
-      <div class="field">
-        <div class="control">
-          <p6-button class="button is-link">Submit</p6-button>
-          <p6-button class="button is-link" type="reset">Reset</p6-button>
-        </div>
-      </div>
-    `;
-    const form = document.createElement("form");
-    //form.noValidate = true;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      values.action("values")(e);
-      action("event")(e);
-    });
-    form.innerHTML = formContent;
-    return form;
-  }}
-</Story>
+<Preview>
+  <Story name="Default" height="58px" parameters={Previews.Default()}>
+    {DefaultStory()}
+  </Story>
+</Preview>
 
-<Story name="Selected value" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select-native name="test">
-        <option value="">Select language</option>
-        <option value="en">English</option>
-        <option value="fr" selected>Français</option>
-      </p6-select-native>
-    `}
-</Story>
+## Selected value
 
-<Story name="Disabled" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select-native name="test" disabled>
-        <option value="">Select language</option>
-        <option value="en">English</option>
-        <option value="fr">Français</option>
-        </p6-select-native>
-    `}
-</Story>
+<Preview>
+  <Story name="Selected value" height="58px" parameters={Previews.Selected}>
+    {SelectedStory()}
+  </Story>
+</Preview>
 
-<Story name="Sizes" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select-native name="test1" size="small"><option value="small">Small</option></p6-select-native>
-      <p6-select-native name="test2" size="normal"><option value="normal">Normal</option></p6-select-native>
-      <p6-select-native name="test3" size="medium"><option value="medium">Medium</option></p6-select-native>
-      <p6-select-native name="test4" size="large"><option value="large">Large</option></p6-select-native>
-    `}
-</Story>
+## Disabled
 
-<Story name="Colors" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select-native name="test1"><option value="danger">Default</option></p6-select-native>
-      <p6-select-native name="test2" mode="primary"><option value="primary">Primary</option></p6-select-native>
-      <p6-select-native name="test3" mode="info"><option value="info">Info</option></p6-select-native>
-      <p6-select-native name="test4" mode="success"><option value="success">Success</option></p6-select-native>
-      <p6-select-native name="test5" mode="warning"><option value="warning">Warning</option></p6-select-native>
-      <p6-select-native name="test6" mode="danger"><option value="danger">Danger</option></p6-select-native>
-    `}
-</Story>
+<Preview>
+  <Story
+    name="Disabled"
+    height="58px"
+    parameters={Previews.Default({ disabled: true })}
+  >
+    {DisabledStory()}
+  </Story>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Story
+    name="Sizes"
+    height="58px"
+    parameters={Previews.Default({ size: "small" })}
+  >
+    {SizeStory()}
+  </Story>
+</Preview>
+
+## Modes
+
+<Preview>
+  <Story
+    name="Modes"
+    height="58px"
+    parameters={Previews.Default({ mode: "success" })}
+  >
+    {ModeStory()}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

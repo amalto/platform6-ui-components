@@ -4,13 +4,13 @@
 
 ## Properties
 
-| Property            | Attribute  | Description                                                                               | Type                                                      | Default     |
-| ------------------- | ---------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
-| `disabled`          | `disabled` | the input is not available for interaction. The value will not be submitted with the form | `boolean`                                                 | `false`     |
-| `name` _(required)_ | `name`     | The name                                                                                  | `string`                                                  | `undefined` |
-| `readOnly`          | `readonly` | Marks as read only.                                                                       | `boolean`                                                 | `false`     |
-| `size`              | `size`     | The size of the component to display                                                      | `"default" \| "large" \| "medium" \| "normal" \| "small"` | `"small"`   |
-| `value`             | --         | The value                                                                                 | `{ [key: string]: string; }`                              | `{}`        |
+| Property            | Attribute  | Description                                                                               | Type                                                     | Default       |
+| ------------------- | ---------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------- | ------------- |
+| `disabled`          | `disabled` | the input is not available for interaction. The value will not be submitted with the form | `boolean`                                                | `false`       |
+| `name` _(required)_ | `name`     | The name                                                                                  | `string`                                                 | `undefined`   |
+| `readOnly`          | `readonly` | Marks as read only.                                                                       | `boolean`                                                | `false`       |
+| `size`              | `size`     | The size of the component to display                                                      | `Size.large \| Size.medium \| Size.normal \| Size.small` | `Size.normal` |
+| `value`             | --         | The value                                                                                 | `{ [key: string]: string; }`                             | `{}`          |
 
 ## Events
 
@@ -48,7 +48,7 @@ Type: `Promise<string>`
 - [p6-label](../../atoms/p6-label)
 - [p6-action](../../atoms/p6-action)
 - [p6-icon](../../atoms/p6-icon)
-- [p6-translation-line](p6-translation-line)
+- [p6-translation-line](./components/p6-translation-line)
 
 ### Graph
 

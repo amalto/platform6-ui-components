@@ -9,12 +9,7 @@ describe("p6-checkbox", () => {
       components: [P6Checkbox],
       html: `<p6-checkbox name="${id}">Hello world!</p6-checkbox>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-checkbox name="${id}">
-        <input id="${id}-input" name="${id}" type="checkbox" />
-        <label htmlFor="${id}-input">Hello world!</label>
-      </p6-checkbox>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 
   it("disabled checkbox", async () => {
@@ -24,11 +19,6 @@ describe("p6-checkbox", () => {
       <p6-checkbox disabled="true" name="${id}">Disabled checkbox</p6-checkbox>
       `,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-checkbox disabled="true" name="${id}">
-        <input id="${id}-input" disabled="" name="${id}" type="checkbox" />
-        <label htmlFor="${id}-input">Disabled checkbox</label>
-      </p6-checkbox>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });

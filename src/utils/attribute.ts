@@ -1,3 +1,5 @@
+import { Mode, Position, Size } from "~shared/types";
+
 export function isEmpty(value: unknown): boolean {
   return (
     value === undefined ||
@@ -26,3 +28,19 @@ export function cleanupAttributes(attributes: {
     .filter((attr) => !isEmpty(attr[1]))
     .reduce((acc, cur) => ({ ...acc, [cur[0]]: cur[1] }), {});
 }
+
+export const isDefaultSize = (
+  size: Size,
+  defaultSize: Size = Size.normal
+): boolean => isEmpty(size) || Size[size] === Size[defaultSize];
+
+export const isDefaultMode = (
+  mode: Mode,
+  defaultMode: Mode = Mode.default
+): boolean => isEmpty(mode) || Mode[mode] === Mode[defaultMode];
+
+export const isDefaultPosition = (
+  position: Position,
+  defaultPosition: Position = Position.top
+): boolean =>
+  isEmpty(position) || Position[position] === Position[defaultPosition];

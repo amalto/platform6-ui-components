@@ -1,5 +1,4 @@
-@import "bulma/sass/form/tools";
-@import "bulma/sass/form/input-textarea";
+@import "src/styles/atoms/control";
 
 :host {
   box-sizing: border-box;
@@ -7,10 +6,19 @@
   position: relative;
 
   .control {
+    @include control-container;
+
     display: flex;
   }
 
-  input {
-    height: $input-height;
+  .input {
+    @include input-textarea;
+    &.is-static {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-switch disabled switch 1`] = `
+<p6-switch disabled="true" name="0123456789">
+  <mock:shadow-root>
+    <input class="is-success switch" disabled="" id="0123456789-input" name="0123456789" type="checkbox">
+    <label htmlfor="0123456789-input">
+      <slot></slot>
+    </label>
+  </mock:shadow-root>
+  Disabled switch
+</p6-switch>
+`;
+
+exports[`p6-switch with label only 1`] = `
+<p6-switch name="0123456789">
+  <mock:shadow-root>
+    <input class="is-success switch" id="0123456789-input" name="0123456789" type="checkbox">
+    <label htmlfor="0123456789-input">
+      <slot></slot>
+    </label>
+  </mock:shadow-root>
+  Hello world!
+</p6-switch>
+`;

@@ -9,7 +9,7 @@ import {
   Prop,
 } from "@stencil/core";
 import { isCustomEvent, ValidEventDetail } from "~shared/form/event";
-import { Size } from "~shared/types";
+import { Mode, Size } from "~shared/types";
 import { isDefaultLanguage, LanguageCode } from "~utils/language";
 import { getL10n, L10n } from "~utils/translations";
 
@@ -89,7 +89,7 @@ export class P6TranslationLine implements ComponentInterface {
               {isDefault || this.readOnly || this.disabled ? null : (
                 <p6-action
                   onClick={this.deleteHandler}
-                  mode="danger"
+                  mode={Mode.danger}
                   size={this.size}
                   class={{
                     "has-tooltip-arrow": true,

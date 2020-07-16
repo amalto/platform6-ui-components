@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-checkbox disabled checkbox 1`] = `
+<p6-checkbox aria-disabled="true" disabled="true" name="0123456789">
+  <mock:shadow-root>
+    <input class="checkbox" disabled="" id="0123456789-input" name="0123456789" type="checkbox">
+    <label htmlfor="0123456789-input">
+      <slot></slot>
+    </label>
+  </mock:shadow-root>
+  Disabled checkbox
+</p6-checkbox>
+`;
+
+exports[`p6-checkbox with label only 1`] = `
+<p6-checkbox name="0123456789">
+  <mock:shadow-root>
+    <input class="checkbox" id="0123456789-input" name="0123456789" type="checkbox">
+    <label htmlfor="0123456789-input">
+      <slot></slot>
+    </label>
+  </mock:shadow-root>
+  Hello world!
+</p6-checkbox>
+`;

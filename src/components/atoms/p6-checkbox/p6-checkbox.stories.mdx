@@ -1,43 +1,54 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
-import { action, decorate } from "@storybook/addon-actions";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-import readme from "./readme.md";
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  SizeStory,
+  ModeStory,
+  SingleStory,
+} from "./p6-checkbox.stories.ts";
 
 <Meta
   title="Atoms/Checkbox"
   component="p6-checkbox"
-  parameters={{ notes: readme }}
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
 />
 
 # Checkbox
 
-<Story name="Default" parameters={{ docs: { disable: true } }}>
-  {() => {
-    const decorateForm = decorate([
-      (args) => [{ checked: args[0].target.elements[0].checked }],
-    ]);
-    const id = "0123456789";
-    const formContent = `
-      <div class="control">
-        <p6-checkbox checked="true" name=${id}>Checked by default</p6-checkbox>
-      </div>
-      <p6-button>send</p6-button>
-    `;
-    const form = document.createElement("form");
-    form.noValidate = true;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      decorateForm.action("submit")(e);
-    });
-    form.innerHTML = formContent;
-    return form;
-  }}
-</Story>
-
 <Preview>
-  <Story name="Disabled" height="42px">
-    {`
-      <p6-checkbox checked="true" disabled="true" name="disabled-example">Disabled checkbox</p6-checkbox>
-    `}
+  <Story name="Default" height="256px">
+    {DefaultStory()}
   </Story>
 </Preview>
+
+<Preview>
+  <Story name="Sizes" height="256px">
+    {SizeStory({ checked: true })}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Modes" height="44px">
+    {ModeStory({ checked: true })}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Disabled" height="44px">
+    {SingleStory("You can't click me", { checked: true, disabled: true })}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />

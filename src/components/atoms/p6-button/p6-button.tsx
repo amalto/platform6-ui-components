@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from "@stencil/core";
 import { Mode, Size } from "~shared/types";
-import { isEmpty } from "~utils/attribute";
+import { getModeClass, getSizeClass } from "~utils/classes";
 
 export type P6ButtonType = "submit" | "reset" | "button";
 
@@ -15,7 +15,7 @@ export class P6Button {
   /**
    * set the mode of the button
    */
-  @Prop() mode: Mode = "default";
+  @Prop() mode: Mode = Mode.default;
 
   /**
    * Outlined
@@ -30,7 +30,7 @@ export class P6Button {
   /**
    * set the size of the button
    */
-  @Prop() size: Size = "default";
+  @Prop() size: Size = Size.normal;
 
   /**
    * type of the button.
@@ -59,10 +59,10 @@ export class P6Button {
   render(): JSX.Element {
     const classes = {
       button: true,
-      [`is-${this.mode}`]: !isEmpty(this.mode) && this.mode !== "default",
-      [`is-${this.size}`]: !isEmpty(this.size) && this.size !== "default",
-      "is-outlined": !!this.outlined,
-      "is-loading": !!this.waiting,
+      ...getModeClass(this.mode),
+      ...getSizeClass(this.size),
+      "is-outlined": this.outlined,
+      "is-loading": this.waiting,
     };
 
     return (

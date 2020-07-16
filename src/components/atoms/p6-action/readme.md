@@ -1,22 +1,22 @@
-# p6-button
+# p6-action
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property   | Attribute  | Description                                          | Type                                                                     | Default     |
-| ---------- | ---------- | ---------------------------------------------------- | ------------------------------------------------------------------------ | ----------- |
-| `disabled` | `disabled` | If `true`, the user cannot interact with the Action. | `boolean`                                                                | `false`     |
-| `mode`     | `mode`     | set the mode of the action                           | `"danger" \| "default" \| "info" \| "primary" \| "success" \| "warning"` | `"default"` |
-| `size`     | `size`     | set the size of the action                           | `"default" \| "large" \| "medium" \| "normal" \| "small"`                | `"small"`   |
-| `waiting`  | `waiting`  | If set, shows a waiting/busy indicator               | `boolean`                                                                | `false`     |
+| Property   | Attribute  | Description                                          | Type                                                                                       | Default        |
+| ---------- | ---------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------- |
+| `disabled` | `disabled` | If `true`, the user cannot interact with the Action. | `boolean`                                                                                  | `false`        |
+| `mode`     | `mode`     | set the mode of the action                           | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `Mode.default` |
+| `size`     | `size`     | set the size of the action                           | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
+| `waiting`  | `waiting`  | If set, shows a waiting/busy indicator               | `boolean`                                                                                  | `false`        |
 
 ## Dependencies
 
 ### Used by
 
 - [p6-translation](../../molecules/p6-translation)
-- [p6-translation-line](../../molecules/p6-translation/p6-translation-line)
+- [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
 
 ### Graph
 

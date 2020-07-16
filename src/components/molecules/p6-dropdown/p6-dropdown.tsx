@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, State } from "@stencil/core";
+import { Component, Element, h, Host, State } from "@stencil/core";
 import { toArray } from "~utils/dom";
 import { addDropdownClass } from "./utils";
 
@@ -12,10 +12,8 @@ export class P6Dropdown {
 
   @State() isActive = false;
 
-  // eslint-disable-next-line @stencil/prefer-vdom-listener
-  @Listen("focusout")
-  public lostFocusHandler(): void {
-    this.isActive = false;
+  componentWillLoad(): void {
+    this.host.addEventListener("focusout", this.onFocusOut);
   }
 
   render(): JSX.Element {
@@ -40,11 +38,6 @@ export class P6Dropdown {
               onClick={this.toggleMenuHandler}
             >
               <slot name="label" />
-              <p6-icon
-                name="angle-down"
-                class="icon is-small"
-                aria-hidden="true"
-              />
             </p6-button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
@@ -57,5 +50,9 @@ export class P6Dropdown {
 
   private toggleMenuHandler = (): void => {
     this.isActive = !this.isActive;
+  };
+
+  private onFocusOut = (): void => {
+    this.isActive = false;
   };
 }

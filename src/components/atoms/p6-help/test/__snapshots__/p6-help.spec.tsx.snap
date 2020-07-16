@@ -13,7 +13,7 @@ exports[`p6-help default output 1`] = `
 `;
 
 exports[`p6-help with mode danger 1`] = `
-<p6-help mode="danger" text="Mode danger">
+<p6-help mode="0" text="Mode danger">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-danger" data-tooltip="Mode danger">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@ exports[`p6-help with mode danger 1`] = `
 `;
 
 exports[`p6-help with mode default 1`] = `
-<p6-help mode="default" text="Mode default">
+<p6-help mode="2" text="Mode default">
   <mock:shadow-root>
     <div class="has-tooltip-arrow" data-tooltip="Mode default">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@ exports[`p6-help with mode default 1`] = `
 `;
 
 exports[`p6-help with mode info 1`] = `
-<p6-help mode="info" text="Mode info">
+<p6-help mode="3" text="Mode info">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-info" data-tooltip="Mode info">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@ exports[`p6-help with mode info 1`] = `
 `;
 
 exports[`p6-help with mode primary 1`] = `
-<p6-help mode="primary" text="Mode primary">
+<p6-help mode="5" text="Mode primary">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-primary" data-tooltip="Mode primary">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@ exports[`p6-help with mode primary 1`] = `
 `;
 
 exports[`p6-help with mode success 1`] = `
-<p6-help mode="success" text="Mode success">
+<p6-help mode="4" text="Mode success">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-success" data-tooltip="Mode success">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@ exports[`p6-help with mode success 1`] = `
 `;
 
 exports[`p6-help with mode warning 1`] = `
-<p6-help mode="warning" text="Mode warning">
+<p6-help mode="1" text="Mode warning">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-warning" data-tooltip="Mode warning">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@ exports[`p6-help with mode warning 1`] = `
 `;
 
 exports[`p6-help with position bottom 1`] = `
-<p6-help position="bottom" text="Position bottom">
+<p6-help position="2" text="Position bottom">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Position bottom">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +97,7 @@ exports[`p6-help with position bottom 1`] = `
 `;
 
 exports[`p6-help with position left 1`] = `
-<p6-help position="left" text="Position left">
+<p6-help position="3" text="Position left">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-left" data-tooltip="Position left">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +109,7 @@ exports[`p6-help with position left 1`] = `
 `;
 
 exports[`p6-help with position right 1`] = `
-<p6-help position="right" text="Position right">
+<p6-help position="1" text="Position right">
   <mock:shadow-root>
     <div class="has-tooltip-arrow has-tooltip-right" data-tooltip="Position right">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +121,7 @@ exports[`p6-help with position right 1`] = `
 `;
 
 exports[`p6-help with position top 1`] = `
-<p6-help position="top" text="Position top">
+<p6-help position="0" text="Position top">
   <mock:shadow-root>
     <div class="has-tooltip-arrow" data-tooltip="Position top">
       <svg aria-hidden="true" class="fa-question-circle fa-w-16 svg-inline--fa" data-icon="question-circle" data-prefix="fas" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">

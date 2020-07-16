@@ -5,23 +5,12 @@ exports[`p6-translation renders 1`] = `
   <mock:shadow-root>
     <p6-field>
       <p6-label slot="label">
-        Description
-        <p6-action class="has-tooltip-arrow has-tooltip-right" mode="success" size="small">
+        <slot></slot>
+        <p6-action class="has-tooltip-arrow has-tooltip-right" mode="4" size="1">
           <p6-icon name="plus-circle"></p6-icon>
         </p6-action>
       </p6-label>
-      <div class="columns is-1 is-variable">
-        <div class="column">
-          <div class="field has-addons">
-            <div class="control is-expanded">
-              <p6-language disabled="" name="088f4df7-dc39-4ca4-93f2-d7dc8ca7993d-lang" required="" size="small" value="en"></p6-language>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <p6-textarea name="088f4df7-dc39-4ca4-93f2-d7dc8ca7993d-value" required="" rows="2" size="small" value=""></p6-textarea>
-        </div>
-      </div>
+      <p6-translation-line language="en" size="1" translation=""></p6-translation-line>
     </p6-field>
   </mock:shadow-root>
 </p6-translation>

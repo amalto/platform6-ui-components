@@ -9,12 +9,7 @@ describe("p6-switch", () => {
       components: [P6Switch],
       html: `<p6-switch name="${id}">Hello world!</p6-switch>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-switch name="${id}">
-        <input id="${id}-input" name="${id}" type="checkbox" />
-        <label htmlFor="${id}-input">Hello world!</label>
-      </p6-switch>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 
   it("disabled switch", async () => {
@@ -24,11 +19,6 @@ describe("p6-switch", () => {
       <p6-switch disabled="true" name="${id}">Disabled switch</p6-switch>
       `,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-switch disabled="true" name="${id}">
-        <input id="${id}-input" disabled="" name="${id}" type="checkbox" />
-        <label htmlFor="${id}-input">Disabled switch</label>
-      </p6-switch>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });
