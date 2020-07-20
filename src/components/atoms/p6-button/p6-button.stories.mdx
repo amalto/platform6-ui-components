@@ -13,6 +13,9 @@ import {
   SizeStory,
   ModeStory,
   IconStory,
+  WaitingStory,
+  DisabledStory,
+  OutlinedStory,
 } from "./p6-button.stories.ts";
 
 <Meta
@@ -28,20 +31,38 @@ import {
 # Button
 
 <Preview>
-  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="58px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Sizes" height="58px" parameters={SizeStory.parameters}>
-    {SizeStory()}
+  <Story
+    name="Size"
+    height="58px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
+    {SizeStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Modes" height="58px" parameters={ModeStory.parameters()}>
-    {ModeStory()}
+  <Story
+    name="Mode"
+    height="58px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
+  >
+    {ModeStory}
   </Story>
 </Preview>
 
@@ -49,9 +70,11 @@ import {
   <Story
     name="Waiting"
     height="58px"
-    parameters={ModeStory.parameters({ waiting: true })}
+    parameters={WaitingStory.parameters}
+    args={WaitingStory.args}
+    argTypes={WaitingStory.argTypes}
   >
-    {ModeStory({ waiting: true })}
+    {WaitingStory}
   </Story>
 </Preview>
 
@@ -59,9 +82,11 @@ import {
   <Story
     name="Disabled"
     height="58px"
-    parameters={ModeStory.parameters({ disabled: true })}
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
   >
-    {ModeStory({ disabled: true })}
+    {DisabledStory}
   </Story>
 </Preview>
 
@@ -69,35 +94,23 @@ import {
   <Story
     name="Outlined"
     height="58px"
-    parameters={ModeStory.parameters({ outlined: true })}
+    parameters={OutlinedStory.parameters}
+    args={OutlinedStory.args}
+    argTypes={OutlinedStory.argTypes}
   >
-    {ModeStory({ outlined: true })}
+    {OutlinedStory}
   </Story>
 </Preview>
 
 <Preview>
   <Story
-    name="Outlined and Waiting"
+    name="With icon"
     height="58px"
-    parameters={ModeStory.parameters({ outlined: true, waiting: true })}
+    parameters={IconStory.parameters}
+    args={IconStory.args}
+    argTypes={IconStory.argTypes}
   >
-    {ModeStory({ outlined: true, waiting: true })}
-  </Story>
-</Preview>
-
-<Preview>
-  <Story
-    name="Outlined and Disabled"
-    height="58px"
-    parameters={ModeStory.parameters({ outlined: true, disabled: true })}
-  >
-    {ModeStory({ outlined: true, disabled: true })}
-  </Story>
-</Preview>
-
-<Preview>
-  <Story name="With Icon" height="58px" parameters={IconStory.parameters}>
-    {IconStory()}
+    {IconStory}
   </Story>
 </Preview>
 

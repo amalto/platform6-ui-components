@@ -52,7 +52,10 @@ export async function defaultCheckValidity<T>({
   errorHandler?: (hasError: boolean) => void;
   nativeInput?: NativeInput;
 }): Promise<boolean> {
-  const isValid = !!nativeInput?.checkValidity();
+  if (nativeInput === undefined) {
+    return Promise.resolve(true);
+  }
+  const isValid = nativeInput.checkValidity();
 
   const message = await validationMessage();
   const hasError = message !== "";

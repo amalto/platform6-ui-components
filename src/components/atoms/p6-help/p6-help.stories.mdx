@@ -6,7 +6,7 @@ import {
   Description,
 } from "@storybook/addon-docs/blocks";
 
-import { DefaultStory } from "./p6-help.stories.ts";
+import { DefaultStory, ModeStory, PositionStory } from "./p6-help.stories.ts";
 
 import Readme from "./readme.md";
 
@@ -17,16 +17,38 @@ import Readme from "./readme.md";
 `p6-help` provides an help icon from [Font Awesome](https://fontawesome.com/) with a tooltip
 
 <Preview>
-  <Story name="Sample" height="256px">
+  <Story
+    name="Sample"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
     {DefaultStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Display on the right" height="42px">
-    {() => {
-      return '<p6-help text="Tooltip" position="right"></p6-help>';
-    }}
+  <Story
+    name="Mode"
+    height="84px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
+  >
+    {ModeStory}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story
+    name="Position"
+    height="84px"
+    parameters={PositionStory.parameters}
+    args={PositionStory.args}
+    argTypes={PositionStory.argTypes}
+  >
+    {PositionStory}
   </Story>
 </Preview>
 

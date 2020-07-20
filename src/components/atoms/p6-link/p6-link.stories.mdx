@@ -1,30 +1,43 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
-import { action } from "@storybook/addon-actions";
-import readme from "./readme.md";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-<Meta title="Atoms/Links" component="p6-link" parameters={{ notes: readme }} />
+import Readme from "./readme.md";
+
+import { DefaultStory, WithHrefStory } from "./p6-link.stories.ts";
+
+<Meta title="Atoms/Link" component="p6-link" />
 
 # Link
 
 `p6-link` provides a link. if the href property is set, an anchor tag will be rendered
 
-<Story name="Default" height="42px">
-  {() => {
-    const anchor = document.createElement("p6-link");
-    anchor.innerHTML = "link";
-    anchor.addEventListener("click", action("Click"));
-    return anchor;
-  }}
-</Story>
-
 <Preview>
-  <Story name="Link with href" height="42px">
-    {'a <p6-link href="#azerty">link</p6-link> with a href'}
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Link without href" height="42px">
-    {"a <p6-link>link</p6-link> without a href"}
+  <Story
+    name="Link with href"
+    height="84px"
+    parameters={WithHrefStory.parameters}
+    args={WithHrefStory.args}
+    argTypes={WithHrefStory.argTypes}
+  >
+    {WithHrefStory}
   </Story>
 </Preview>
+
+<Description markdown={Readme} />

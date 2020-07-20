@@ -12,7 +12,7 @@ import {
   DefaultStory,
   SizeStory,
   ModeStory,
-  SingleStory,
+  DisabledStory,
 } from "./p6-checkbox.stories.ts";
 
 <Meta
@@ -28,26 +28,50 @@ import {
 # Checkbox
 
 <Preview>
-  <Story name="Default" height="256px">
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="44px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Sizes" height="256px">
-    {SizeStory({ checked: true })}
+  <Story
+    name="Size"
+    height="44px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
+    {SizeStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Modes" height="44px">
-    {ModeStory({ checked: true })}
+  <Story
+    name="Mode"
+    height="44px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
+  >
+    {ModeStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Disabled" height="44px">
-    {SingleStory("You can't click me", { checked: true, disabled: true })}
+  <Story
+    name="Disabled"
+    height="44px"
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
+  >
+    {DisabledStory}
   </Story>
 </Preview>
 

@@ -1,55 +1,87 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { getSelectKnob } from "../../../shared/storybook/knobs";
+import {
+  getSelectArgType,
+  makeStory,
+} from "../../../shared/storybook/makeStory";
 /* eslint-enable import/no-extraneous-dependencies */
 import {
   capitalize,
-  getBooleanProp,
   getComponent,
-  getDisabledProp,
-  getForm,
-  getNumberProp,
-  getPreview,
-  getReadOnlyProp,
-  getRequiredProp,
-  getTextProp,
-  Preview,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
+import { Size } from "../../../shared/types";
 
 const getInput = (props?: Prop): string => {
   return getComponent("p6-input", "", props);
 };
 
-export const DefaultStory = (): string =>
-  getForm(
-    getInput({
-      ...getDisabledProp(),
-      ...getReadOnlyProp(),
-      ...getRequiredProp(),
-      ...getBooleanProp("waiting", "Waiting"),
-      ...getNumberProp("min", "Min"),
-      ...getNumberProp("max", "Max", 42),
-      ...getTextProp("pattern", "Pattern"),
-      ...getTextProp("placeholder", "Placeholder", "Placeholder"),
-      type: getSelectKnob(
-        "Type",
-        ["email", "number", "password", "search", "tel", "text", "url"],
-        "text"
-      ),
-    })
-  );
+export const DefaultStory = makeStory<{
+  disabled: boolean;
+  readOnly: boolean;
+  required: boolean;
+  waiting: boolean;
+  min: number;
+  max: number;
+  pattern: string;
+  placeholder: string;
+  type: string;
+  size: Size;
+  value: string;
+}>({
+  args: {
+    disabled: false,
+    readOnly: false,
+    required: false,
+    waiting: false,
+    min: 0,
+    max: 42,
+    pattern: "",
+    placeholder: "Placeholder",
+    type: "",
+    size: Size.normal,
+    value: "",
+  },
+  argTypes: {
+    ...getSelectArgType(
+      "type",
+      [
+        "email",
+        "number",
+        "password",
+        "search",
+        "tel",
+        "text",
+        "url",
+      ].map((type) => ({ key: type, value: type }))
+    ),
+  },
+  builder: (args): string => getInput(args),
+});
 
-export const TextStory = (props: Prop | undefined): string =>
-  getInput({ type: "text", ...props });
+export const TextStory = makeStory({
+  builder: (): string => getInput({ type: "text" }),
+});
 
-export const SizeStory = (): string =>
-  SizeStoryMaker(({ value, key }) =>
-    getInput({ size: value, placeholder: `${capitalize(key)} input` })
-  );
+export const SizeStory = makeStory({
+  builder: (): string =>
+    SizeStoryMaker(({ key, value }) =>
+      getInput({ size: value, placeholder: `${capitalize(key)} input` })
+    ),
+});
 
-export const Previews = {
-  Default: getPreview(getInput()),
-  Text: (props: Prop | undefined): Preview =>
-    getPreview(getInput({ type: "text", value: "Input value", ...props })),
-};
+export const ReadonlyStory = makeStory({
+  builder: (): string => getInput({ readOnly: true, placeholder: "Read only" }),
+});
+
+export const DisabledStory = makeStory({
+  builder: (): string => getInput({ disabled: true, placeholder: "Disabled" }),
+});
+
+export const WaitingStory = makeStory({
+  builder: (): string => getInput({ waiting: true, placeholder: "Waiting" }),
+});
+
+export const OnErrorStory = makeStory({
+  builder: (): string => getInput({ pattern: "42", value: "84" }),
+});

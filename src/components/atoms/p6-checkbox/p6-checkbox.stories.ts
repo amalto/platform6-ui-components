@@ -1,40 +1,57 @@
-import { getTextKnob } from "../../../shared/storybook/knobs";
+import { makeStory } from "../../../shared/storybook/makeStory";
 import {
-  getBooleanProp,
   getComponent,
-  getDisabledProp,
-  getForm,
-  getModeProp,
-  getSizeProp,
   ModeStoryMaker,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
+import { Mode, Size } from "../../../shared/types";
 
 const getCheckbox = (text: string, props?: Prop): string => {
   return getComponent("p6-checkbox", text, props);
 };
 
-export const DefaultStory = (): string =>
-  getForm(
-    getCheckbox(getTextKnob("Text", "Click me"), {
-      name: "field",
-      ...getBooleanProp("checked", "Checked", true),
-      ...getDisabledProp(),
-      ...getModeProp(),
-      ...getSizeProp(),
-    })
-  );
+// Default
+export const DefaultStory = makeStory<{
+  text: string;
+  mode: Mode;
+  size: Size;
+  checked: boolean;
+  disabled: boolean;
+}>({
+  args: {
+    text: "Click me",
+    mode: Mode.default,
+    size: Size.normal,
+    checked: false,
+    disabled: false,
+  },
+  builder: ({ text, ...props }): string => getCheckbox(text, { ...props }),
+});
 
-export const SizeStory = (props: Prop | undefined): string =>
-  SizeStoryMaker(({ key, value }) =>
-    getCheckbox(key, { size: value, ...props })
-  );
+export const SizeStory = makeStory({
+  builder: (): string =>
+    SizeStoryMaker(({ key, value }) =>
+      getCheckbox(key, {
+        size: value,
+        checked: true,
+      })
+    ),
+});
 
-export const ModeStory = (props: Prop | undefined): string =>
-  ModeStoryMaker(({ key, value }) =>
-    getCheckbox(key, { mode: value, ...props })
-  );
+export const ModeStory = makeStory({
+  builder: (): string =>
+    ModeStoryMaker(({ key, value }) =>
+      getCheckbox(key, {
+        mode: value,
+        checked: true,
+      })
+    ),
+});
 
-export const SingleStory = (text: string, props: Prop | undefined): string =>
-  getCheckbox(text, { ...props });
+export const DisabledStory = makeStory({
+  builder: (): string =>
+    getCheckbox("Disabled", {
+      disabled: true,
+    }),
+});

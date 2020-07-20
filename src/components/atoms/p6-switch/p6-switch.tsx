@@ -78,10 +78,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
 
   private nativeInput: HTMLInputElement | undefined;
 
-  // private defaultValue: boolean = this.checked;
-
   componentWillLoad(): void {
-    // this.defaultValue = this.checked;
     this.host.addEventListener("focusout", this.checkValidity.bind(this));
   }
 
@@ -121,13 +118,6 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
   disconnectedCallback?(): void {
     this.p6FormUnregister.emit(this);
   }
-
-  /*
-  @Watch("checked")
-  onCheckedUpdated(newValue: boolean) {
-    this.defaultValue = newValue;
-  }
-*/
 
   /**
    * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.

@@ -14,7 +14,7 @@ import {
   DisabledStory,
   SizeStory,
   ModeStory,
-  Previews,
+  FormStory,
 } from "./p6-select-native.stories.ts";
 
 <Meta
@@ -32,16 +32,28 @@ import {
 `p6-select-native` provides a select
 
 <Preview>
-  <Story name="Default" height="58px" parameters={Previews.Default()}>
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
 ## Selected value
 
 <Preview>
-  <Story name="Selected value" height="58px" parameters={Previews.Selected}>
-    {SelectedStory()}
+  <Story
+    name="Selected value"
+    height="84px"
+    parameters={SelectedStory.parameters}
+    args={SelectedStory.args}
+    argTypes={SelectedStory.argTypes}
+  >
+    {SelectedStory}
   </Story>
 </Preview>
 
@@ -50,34 +62,54 @@ import {
 <Preview>
   <Story
     name="Disabled"
-    height="58px"
-    parameters={Previews.Default({ disabled: true })}
+    height="84px"
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
   >
-    {DisabledStory()}
+    {DisabledStory}
   </Story>
 </Preview>
 
-## Sizes
+## Mode
 
 <Preview>
   <Story
-    name="Sizes"
-    height="58px"
-    parameters={Previews.Default({ size: "small" })}
+    name="Mode"
+    height="84px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
   >
-    {SizeStory()}
+    {ModeStory}
   </Story>
 </Preview>
 
-## Modes
+## Size
 
 <Preview>
   <Story
-    name="Modes"
-    height="58px"
-    parameters={Previews.Default({ mode: "success" })}
+    name="Size"
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
   >
-    {ModeStory()}
+    {SizeStory}
+  </Story>
+</Preview>
+
+## Form
+
+<Preview>
+  <Story
+    name="Form"
+    height="84px"
+    parameters={FormStory.parameters}
+    args={FormStory.args}
+    argTypes={FormStory.argTypes}
+  >
+    {FormStory}
   </Story>
 </Preview>
 
