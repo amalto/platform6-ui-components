@@ -7,7 +7,14 @@ import {
 
 import Readme from "./readme.md";
 
-import { DefaultStory, SizeStory, IconStory } from "./p6-icon.stories.ts";
+import {
+  LibraryFasStory,
+  LibraryFabStory,
+  SizeStory,
+  HomeIconStory,
+  FlipAndRotateStory,
+  UnknownIconStory,
+} from "./p6-icon.stories.ts";
 
 <Meta title="Atoms/Icon" component="p6-icon" />
 
@@ -15,31 +22,75 @@ import { DefaultStory, SizeStory, IconStory } from "./p6-icon.stories.ts";
 
 `p6-icon` provides icon from [Font Awesome](https://fontawesome.com/)
 
-<Story name="Default">{DefaultStory("fas")}</Story>
-
-<Story name="Library">{DefaultStory("fab")}</Story>
-
 <Preview>
-  <Story name="Sizes" height="256px">
-    {SizeStory()}
+  <Story
+    name="Default"
+    height="84px"
+    parameters={LibraryFasStory.parameters}
+    args={LibraryFasStory.args}
+    argTypes={LibraryFasStory.argTypes}
+  >
+    {LibraryFasStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Icon" height="42px">
-    {IconStory("home")}
+  <Story
+    name="Library"
+    height="84px"
+    parameters={LibraryFabStory.parameters}
+    args={LibraryFabStory.args}
+    argTypes={LibraryFabStory.argTypes}
+  >
+    {LibraryFabStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Flip and rotate icon" height="42px">
-    {IconStory("home", { transform: "flip-v rotate-90" })}
+  <Story
+    name="Sizes"
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
+    {SizeStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Unknown icon" height="42px">
-    {IconStory("chart-home")}
+  <Story
+    name="Home icon"
+    height="84px"
+    parameters={HomeIconStory.parameters}
+    args={HomeIconStory.args}
+    argTypes={HomeIconStory.argTypes}
+  >
+    {HomeIconStory}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story
+    name="Flip and rotate"
+    height="84px"
+    parameters={FlipAndRotateStory.parameters}
+    args={FlipAndRotateStory.args}
+    argTypes={FlipAndRotateStory.argTypes}
+  >
+    {FlipAndRotateStory}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story
+    name="Unknown icon"
+    height="84px"
+    parameters={UnknownIconStory.parameters}
+    args={UnknownIconStory.args}
+    argTypes={UnknownIconStory.argTypes}
+  >
+    {UnknownIconStory}
   </Story>
 </Preview>
 

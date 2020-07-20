@@ -32,7 +32,7 @@ export class P6Icon {
   /**
    * Style prefix
    */
-  @Prop() iconPrefix: IconPrefix = "fas";
+  @Prop({ attribute: "iconPrefix" }) iconPrefix: IconPrefix = "fas";
 
   /**
    * transformation performed on the icon.

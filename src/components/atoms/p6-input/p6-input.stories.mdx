@@ -12,7 +12,10 @@ import {
   DefaultStory,
   TextStory,
   SizeStory,
-  Previews,
+  ReadonlyStory,
+  DisabledStory,
+  WaitingStory,
+  OnErrorStory,
 } from "./p6-input.stories.ts";
 
 <Meta
@@ -28,64 +31,86 @@ import {
 # Input
 
 <Preview>
-  <Story name="Default" height="58px" parameters={Previews.Default}>
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Text" height="58px" parameters={Previews.Text()}>
-    {TextStory()}
+  <Story
+    name="Text"
+    height="84px"
+    parameters={TextStory.parameters}
+    args={TextStory.args}
+    argTypes={TextStory.argTypes}
+  >
+    {TextStory}
   </Story>
 </Preview>
 
 <Preview>
   <Story
     name="Read only"
-    height="58px"
-    parameters={Previews.Text({ readonly: true })}
+    height="84px"
+    parameters={ReadonlyStory.parameters}
+    args={ReadonlyStory.args}
+    argTypes={ReadonlyStory.argTypes}
   >
-    {TextStory({ readonly: true })}
+    {ReadonlyStory}
   </Story>
 </Preview>
 
 <Preview>
   <Story
     name="Disabled"
-    height="58px"
-    parameters={Previews.Text({ disabled: true })}
+    height="84px"
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
   >
-    {TextStory({ disabled: true })}
+    {DisabledStory}
   </Story>
 </Preview>
 
 <Preview>
   <Story
     name="Waiting"
-    height="58px"
-    parameters={Previews.Text({ waiting: true })}
+    height="84px"
+    parameters={WaitingStory.parameters}
+    args={WaitingStory.args}
+    argTypes={WaitingStory.argTypes}
   >
-    {TextStory({ waiting: true })}
+    {WaitingStory}
   </Story>
 </Preview>
 
 <Preview>
   <Story
     name="On error"
-    height="58px"
-    parameters={Previews.Text({ pattern: "42", value: "84" })}
+    height="84px"
+    parameters={OnErrorStory.parameters}
+    args={OnErrorStory.args}
+    argTypes={OnErrorStory.argTypes}
   >
-    {TextStory({ pattern: "42", value: "84" })}
+    {OnErrorStory}
   </Story>
 </Preview>
 
 <Preview>
   <Story
     name="Size"
-    height="58px"
-    parameters={Previews.Text({ size: "small" })}
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
   >
-    {SizeStory({ size: "small" })}
+    {SizeStory}
   </Story>
 </Preview>
 

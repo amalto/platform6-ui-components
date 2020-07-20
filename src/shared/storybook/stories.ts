@@ -113,10 +113,9 @@ export const getComponent = (
   child: string | string[],
   props?: Prop
 ): string => {
-  return `
-<${component}${getAttrsAndProps(props)}>
-    ${Array.from(child).join("")}
-</${component}>`;
+  return `<${component}${getAttrsAndProps(props)}>${Array.from(child).join(
+    ""
+  )}</${component}>`;
 };
 
 export const getPreview = (code: string): Preview => {
@@ -129,12 +128,14 @@ export type StoryMakerFn = (value: EnumArrayEntry) => string;
 const EnumStoryMaker = (
   entries: EnumArrayEntry[],
   maker: StoryMakerFn
-): string => entries.map((entry) => maker(entry)).join("");
+): string => entries.map((entry) => maker(entry)).join("\n");
 
 export const SizeStoryMaker = (maker: StoryMakerFn): string =>
   EnumStoryMaker(sizes, maker);
 export const ModeStoryMaker = (maker: StoryMakerFn): string =>
   EnumStoryMaker(modes, maker);
+export const PositionStoryMaker = (maker: StoryMakerFn): string =>
+  EnumStoryMaker(positions, maker);
 
 export const capitalize = (value: string): string =>
   value.charAt(0).toUpperCase() + value.slice(1);
@@ -149,7 +150,7 @@ export type StoryConf = {
   preview?: string | MakerFn;
 };
 
-export const makeStory = ({
+export const makeOldStory = ({
   items,
   prop = {},
   previewProp = {},
