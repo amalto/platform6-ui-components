@@ -149,7 +149,7 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
   render(): JSX.Element {
     return (
       <Host>
-        <p6-field>
+        <p6-field size={this.size}>
           <p6-label slot="label">
             <slot />
             {!this.readOnly && !this.disabled && (
@@ -164,7 +164,7 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
                 }}
                 data-tooltip={this.l10n?.addTooltip}
               >
-                <p6-icon name="plus-circle" />
+                <p6-icon name="plus-circle" size={this.size} />
               </p6-action>
             )}
           </p6-label>

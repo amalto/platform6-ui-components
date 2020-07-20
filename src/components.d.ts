@@ -164,7 +164,12 @@ export namespace Components {
   }
   interface P6Dropdown {}
   interface P6Empty {}
-  interface P6Field {}
+  interface P6Field {
+    /**
+     * Size
+     */
+    size: Size;
+  }
   interface P6Form {
     /**
      * Sets or retrieves the name of the object.
@@ -938,7 +943,12 @@ declare namespace LocalJSX {
   }
   interface P6Dropdown {}
   interface P6Empty {}
-  interface P6Field {}
+  interface P6Field {
+    /**
+     * Size
+     */
+    size?: Size;
+  }
   interface P6Form {
     /**
      * Sets or retrieves the name of the object.

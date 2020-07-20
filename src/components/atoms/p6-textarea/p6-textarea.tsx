@@ -12,6 +12,10 @@ import {
 } from "@stencil/core";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
+import {
+  defaultCheckValidity,
+  defaultValidationMessage,
+} from "~shared/form/validation";
 import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
 import { getSizeClass } from "~utils/classes";
@@ -176,7 +180,7 @@ export class P6Textarea
    */
   @Method()
   async validationMessage(): Promise<string> {
-    return Promise.resolve(this.nativeInput?.validationMessage || "");
+    return defaultValidationMessage(this.nativeInput);
   }
 
   /**
@@ -184,25 +188,16 @@ export class P6Textarea
    */
   @Method()
   async checkValidity(): Promise<boolean> {
-    const isValid = !!this.nativeInput?.checkValidity();
-
-    const message = await this.validationMessage();
-    this.hasError = message !== "";
-
-    if (isValid) {
-      const validInit = {
-        name: this.name,
-        value: this.nativeInput?.value,
-      };
-      this.p6Valid.emit(validInit);
-    } else {
-      const invalidInit = {
-        name: this.name,
-        message,
-      };
-      this.p6Invalid.emit(invalidInit);
-    }
-
-    return Promise.resolve(isValid);
+    return defaultCheckValidity<P6TextareaValue>({
+      name: this.name,
+      nativeInput: this.nativeInput,
+      p6Valid: this.p6Valid,
+      p6Invalid: this.p6Invalid,
+      validationMessage: this.validationMessage.bind(this),
+      errorHandler: (hasError) => {
+        this.hasError = hasError;
+      },
+      getValue: () => this.nativeInput?.value,
+    });
   }
 }

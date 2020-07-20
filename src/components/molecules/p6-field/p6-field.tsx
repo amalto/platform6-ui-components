@@ -4,6 +4,7 @@ import {
   Element,
   h,
   Host,
+  Prop,
   State,
 } from "@stencil/core";
 import {
@@ -12,8 +13,9 @@ import {
   P6NativeControl,
 } from "~shared/form/control";
 import { isInvalidEvent, isValidEvent } from "~shared/form/event";
-import { Mode } from "~shared/types";
+import { Mode, Size } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
+import { getSizeClass } from "~utils/classes";
 import { getControl } from "./utils";
 
 @Component({
@@ -23,6 +25,11 @@ import { getControl } from "./utils";
 })
 export class P6Field implements ComponentInterface {
   @Element() host!: HTMLP6FieldElement;
+
+  /**
+   * Size
+   */
+  @Prop() size: Size = Size.normal;
 
   @State() errorMessage = "";
 
@@ -65,7 +72,13 @@ export class P6Field implements ComponentInterface {
         onP6Valid={this.validHandler}
         onP6Invalid={this.invalidHandler}
       >
-        <label class="label" htmlFor={this.input?.name}>
+        <label
+          class={{
+            label: true,
+            ...getSizeClass(this.size),
+          }}
+          htmlFor={this.input?.name}
+        >
           <slot name="label" />
           <slot />
         </label>

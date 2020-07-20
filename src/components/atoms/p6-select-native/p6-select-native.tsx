@@ -11,6 +11,10 @@ import {
 } from "@stencil/core";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
+import {
+  defaultCheckValidity,
+  defaultValidationMessage,
+} from "~shared/form/validation";
 import { Mode, Size } from "~shared/types";
 import { getModeClass, getSizeClass } from "~utils/classes";
 import {
@@ -103,7 +107,7 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
    */
   @Method()
   async validationMessage(): Promise<string> {
-    return Promise.resolve(this.nativeInput?.validationMessage || "");
+    return defaultValidationMessage(this.nativeInput);
   }
 
   /**
@@ -111,30 +115,24 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
    */
   @Method()
   async checkValidity(): Promise<boolean> {
-    const message = await this.validationMessage();
+    await defaultCheckValidity<P6SelectValue>({
+      name: this.name,
+      nativeInput: this.nativeInput,
+      p6Valid: this.p6Valid,
+      p6Invalid: this.p6Invalid,
+      validationMessage: this.validationMessage.bind(this),
+      getValue: () => {
+        const selectedOptions =
+          undefined === this.nativeInput
+            ? []
+            : toArray<HTMLOptionElement, HTMLCollectionOf<HTMLOptionElement>>(
+                this.nativeInput.selectedOptions
+              );
+        return selectedOptions.map((option) => option.value);
+      },
+    });
 
-    if (message !== "") {
-      const invalidInit = {
-        name: this.name,
-        message,
-      };
-      this.p6Invalid.emit(invalidInit);
-    } else {
-      const selectedOptions =
-        undefined === this.nativeInput
-          ? []
-          : toArray<HTMLOptionElement, HTMLCollectionOf<HTMLOptionElement>>(
-              this.nativeInput.selectedOptions
-            );
-
-      const validInit = {
-        name: this.name,
-        value: selectedOptions.map((option) => option.value),
-      };
-      this.p6Valid.emit(validInit);
-    }
-
-    return Promise.resolve(this.nativeInput?.checkValidity() || true);
+    return Promise.resolve(true);
   }
 
   render(): JSX.Element {
