@@ -178,6 +178,7 @@ export namespace Components {
      */
     validationMessage: () => Promise<string>;
   }
+  interface P6Container {}
   interface P6Dropdown {}
   interface P6Empty {}
   interface P6Field {
@@ -773,6 +774,13 @@ declare global {
     prototype: HTMLP6CheckboxElement;
     new (): HTMLP6CheckboxElement;
   };
+  interface HTMLP6ContainerElement
+    extends Components.P6Container,
+      HTMLStencilElement {}
+  var HTMLP6ContainerElement: {
+    prototype: HTMLP6ContainerElement;
+    new (): HTMLP6ContainerElement;
+  };
   interface HTMLP6DropdownElement
     extends Components.P6Dropdown,
       HTMLStencilElement {}
@@ -976,6 +984,7 @@ declare global {
     "p6-button": HTMLP6ButtonElement;
     "p6-calendar": HTMLP6CalendarElement;
     "p6-checkbox": HTMLP6CheckboxElement;
+    "p6-container": HTMLP6ContainerElement;
     "p6-dropdown": HTMLP6DropdownElement;
     "p6-empty": HTMLP6EmptyElement;
     "p6-field": HTMLP6FieldElement;
@@ -1153,6 +1162,7 @@ declare namespace LocalJSX {
      */
     size?: Size;
   }
+  interface P6Container {}
   interface P6Dropdown {}
   interface P6Empty {}
   interface P6Field {
@@ -1842,6 +1852,7 @@ declare namespace LocalJSX {
     "p6-button": P6Button;
     "p6-calendar": P6Calendar;
     "p6-checkbox": P6Checkbox;
+    "p6-container": P6Container;
     "p6-dropdown": P6Dropdown;
     "p6-empty": P6Empty;
     "p6-field": P6Field;
@@ -1888,6 +1899,8 @@ declare module "@stencil/core" {
         JSXBase.HTMLAttributes<HTMLP6CalendarElement>;
       "p6-checkbox": LocalJSX.P6Checkbox &
         JSXBase.HTMLAttributes<HTMLP6CheckboxElement>;
+      "p6-container": LocalJSX.P6Container &
+        JSXBase.HTMLAttributes<HTMLP6ContainerElement>;
       "p6-dropdown": LocalJSX.P6Dropdown &
         JSXBase.HTMLAttributes<HTMLP6DropdownElement>;
       "p6-empty": LocalJSX.P6Empty & JSXBase.HTMLAttributes<HTMLP6EmptyElement>;
