@@ -12,10 +12,21 @@ const getHint = (text: string, props?: Prop): string => {
   return getComponent("p6-hint", text, props);
 };
 
+/*
+type DefaultStoryArgs = {
+  label: string;
+  mode: Mode;
+};
+export const DefaultStory = ({ label, ...props }: DefaultStoryArgs): string =>
+  getHint(label, { ...props });
+DefaultStory.argTypes = {
+  mode: { control: { type: "select", options: enumArrayToObject(modes) } },
+};
+DefaultStory.args = { label: "hint", mode: Mode.success } as DefaultStoryArgs;
+DefaultStory.parameters = getPreview(DefaultStory(DefaultStory.args));
+*/
 export const DefaultStory = (): string =>
-  getHint(getTextKnob("Text", "hint"), {
-    ...getModeProp(),
-  });
+  getHint(getTextKnob("Hint text", "Hint message"), { ...getModeProp() });
 DefaultStory.parameters = getPreview(DefaultStory());
 
 export const ModeStory = (): string =>

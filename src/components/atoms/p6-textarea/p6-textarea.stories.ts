@@ -2,6 +2,7 @@ import {
   getBooleanProp,
   getComponent,
   getDisabledProp,
+  getForm,
   getNumberProp,
   getPreview,
   getReadOnlyProp,
@@ -15,18 +16,20 @@ const getTextarea = (props?: Prop): string => {
 };
 
 export const DefaultStory = (): string => {
-  return getTextarea({
-    ...getTextProp("placeholder", "Placeholder", ""),
-    ...getNumberProp("min", "Min"),
-    ...getNumberProp("max", "Max", 42),
-    ...getNumberProp("rows", "Rows", 4),
-    ...getNumberProp("cols", "Cols", 8),
-    ...getDisabledProp(),
-    ...getReadOnlyProp(),
-    ...getRequiredProp(),
-    ...getBooleanProp("waiting", "Waiting", false),
-    ...getBooleanProp("resizable", "Resizable", false),
-  });
+  return getForm(
+    getTextarea({
+      ...getTextProp("placeholder", "Placeholder", ""),
+      ...getNumberProp("min", "Min"),
+      ...getNumberProp("max", "Max", 42),
+      ...getNumberProp("rows", "Rows", 4),
+      ...getNumberProp("cols", "Cols", 8),
+      ...getDisabledProp(),
+      ...getReadOnlyProp(),
+      ...getRequiredProp(),
+      ...getBooleanProp("waiting", "Waiting", false),
+      ...getBooleanProp("resizable", "Resizable", false),
+    })
+  );
 };
 DefaultStory.parameters = getPreview(DefaultStory());
 

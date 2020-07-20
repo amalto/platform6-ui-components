@@ -69,8 +69,8 @@ const getFormActions = (show: boolean): string => {
     return `
       <div class="field">
         <div class="control">
-          <p6-button class="button is-link" size="${Size.small}">Submit</p6-button>
-          <p6-button class="button is-link" size="${Size.small}" type="reset">Reset</p6-button>
+          <p6-button class="button is-link">Submit</p6-button>
+          <p6-button class="button is-link" type="reset">Reset</p6-button>
         </div>
       </div>
     `;

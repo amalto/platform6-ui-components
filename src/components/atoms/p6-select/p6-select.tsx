@@ -9,6 +9,7 @@ import {
   State,
 } from "@stencil/core";
 import Choices from "choices.js";
+import { defaultValidationMessage } from "~shared/form/validation";
 import { Size } from "~shared/types";
 import { getSizeClass } from "~utils/classes";
 import { isHTMLOptionElement, toArray } from "~utils/dom";
@@ -85,7 +86,7 @@ export class P6Select implements ComponentInterface {
    */
   @Method()
   async validationMessage(): Promise<string> {
-    return Promise.resolve(this.nativeSelect?.validationMessage || "");
+    return defaultValidationMessage(this.nativeSelect);
   }
 
   /**

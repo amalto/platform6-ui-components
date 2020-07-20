@@ -12,6 +12,10 @@ import {
 } from "@stencil/core";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
+import {
+  defaultCheckValidity,
+  defaultValidationMessage,
+} from "~shared/form/validation";
 import { Mode, Size } from "~shared/types";
 import { getModeClass, getSizeClass } from "~utils/classes";
 
@@ -122,8 +126,7 @@ export class P6Checkbox
    */
   @Method()
   async validationMessage(): Promise<string> {
-    const message = this.nativeInput?.validationMessage || "";
-    return Promise.resolve(message);
+    return defaultValidationMessage(this.nativeInput);
   }
 
   /**
@@ -131,25 +134,16 @@ export class P6Checkbox
    */
   @Method()
   async checkValidity(): Promise<boolean> {
-    const isValid = !!this.nativeInput?.checkValidity();
-
-    const message = await this.validationMessage();
-    this.hasError = message !== "";
-
-    if (isValid) {
-      const validInit = {
-        name: this.name,
-        value: this.checked,
-      };
-      this.p6Valid.emit(validInit);
-    } else {
-      const invalidInit = {
-        name: this.name,
-        message,
-      };
-      this.p6Invalid.emit(invalidInit);
-    }
-
-    return Promise.resolve(isValid);
+    return defaultCheckValidity<P6CheckboxValue>({
+      name: this.name,
+      nativeInput: this.nativeInput,
+      p6Valid: this.p6Valid,
+      p6Invalid: this.p6Invalid,
+      validationMessage: this.validationMessage.bind(this),
+      errorHandler: (hasError) => {
+        this.hasError = hasError;
+      },
+      getValue: () => this.nativeInput?.checked,
+    });
   }
 }

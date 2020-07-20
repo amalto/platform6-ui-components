@@ -1,67 +1,23 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import {
-  boolean,
-  select,
-  number,
-  text,
-  withKnobs,
-} from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import readme from "./readme.md";
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
+
+import Readme from "./readme.md";
+
+import { DefaultStory } from "./p6-translation.stories.ts";
 
 <Meta title="Molecules/Translation" component="p6-translation" />
 
-# Translation field
+# Translation
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const values = decorate([
-      (args) => {
-        var values = [];
-        new FormData(args[0].target).forEach(function (value, name) {
-          values.push({ name, value });
-        });
-        return values;
-      },
-    ]);
-    const kSizes = select(
-      "Size",
-      ["default", "small", "normal", "medium", "large"],
-      "small"
-    );
-    const kLocales = select("Language", ["en", "fr", "ru"], "en");
-    const kReadOnly = boolean("Read only", false);
-    const kDisabled = boolean("Disabled", false);
-    const formContent = `
-      <p6-translation
-        name="test"
-        lang="${kLocales}"
-        readOnly="${kReadOnly}"
-        disabled="${kDisabled}"
-        size="${kSizes}"
-        >
-        <p6-icon name="home"></p6-icon>
-        <span>Description</span>
-      </p6-translation>
-      <div class="field">
-        <div class="control">
-          <p6-button class="button is-link">Submit</p6-button>
-          <p6-button class="button is-link" type="reset">Reset</p6-button>
-        </div>
-      </div>
-    `;
-    const form = document.createElement("form");
-    //form.noValidate = true;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      values.action("values")(e);
-      action("event")(e);
-    });
-    form.innerHTML = formContent;
-    return form;
-  }}
-</Story>
+<Preview>
+  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
+    {DefaultStory()}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />
