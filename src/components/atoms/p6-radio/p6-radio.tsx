@@ -38,9 +38,13 @@ export class P6Radio {
    */
   @State() isChecked = false;
 
-  private clickHandler(): void {
+  private clickHandler = (event: Event): void => {
+    if (this.readonly) {
+      event.preventDefault();
+      return;
+    }
     this.isChecked = !this.isChecked;
-  }
+  };
 
   componentWillLoad(): void {
     this.isChecked = this.checked;

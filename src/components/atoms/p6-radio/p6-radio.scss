@@ -48,8 +48,8 @@
     cursor: not-allowed;
   }
 
-  input[readonly]:checked + label,
-  input[disabled]:checked + label {
+  input[readonly] + label,
+  input[disabled] + label {
     color: $input-disabled-color;
     cursor: not-allowed;
   }

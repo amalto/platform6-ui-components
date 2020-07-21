@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property            | Attribute   | Description                                                                                | Type                                                                                       | Default        |
@@ -16,7 +15,6 @@
 | `required`          | `required`  | Marks the select as required. It can't be submitted without a value                        | `boolean`                                                                                  | `false`        |
 | `size`              | `size`      | The size of the component to display                                                       | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
 
-
 ## Events
 
 | Event              | Description                       | Type                                           |
@@ -26,7 +24,6 @@
 | `p6FormUnregister` | When the select ask to unregister | `CustomEvent<P6Control<P6SelectValue>>`        |
 | `p6Invalid`        | When the select is invalid        | `CustomEvent<InvalidEventDetail>`              |
 | `p6Valid`          | When the select is valid          | `CustomEvent<ValidEventDetail<P6SelectValue>>` |
-
 
 ## Methods
 
@@ -38,8 +35,6 @@ Returns whether a form will validate when it is submitted, without having to sub
 
 Type: `Promise<boolean>`
 
-
-
 ### `validationMessage() => Promise<string>`
 
 Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
@@ -49,22 +44,20 @@ It also triggers the standard error message, such as "this is a required field".
 
 Type: `Promise<string>`
 
-
-
-
 ## Dependencies
 
 ### Used by
 
- - [p6-language](../../molecules/p6-language)
+- [p6-language](../../molecules/p6-language)
 
 ### Graph
+
 ```mermaid
 graph TD;
   p6-language --> p6-select-native
   style p6-select-native fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
