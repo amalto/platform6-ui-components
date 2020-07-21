@@ -88,7 +88,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
     const inputId = `${name}-input`;
 
     return (
-      <Host onClick={this.onClick}>
+      <Host>
         <input
           class={{
             switch: true,
@@ -102,6 +102,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
           disabled={disabled}
           id={inputId}
           name={name}
+          onClick={this.onClick}
           type="checkbox"
         />
         <label htmlFor={inputId}>

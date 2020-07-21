@@ -2,25 +2,24 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property | Attribute | Description | Type                                                     | Default       |
 | -------- | --------- | ----------- | -------------------------------------------------------- | ------------- |
 | `size`   | `size`    | Size        | `Size.large \| Size.medium \| Size.normal \| Size.small` | `Size.normal` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [p6-translation](../p6-translation)
+- [p6-translation](../p6-translation)
 
 ### Depends on
 
 - [p6-hint](../../atoms/p6-hint)
 
 ### Graph
+
 ```mermaid
 graph TD;
   p6-field --> p6-hint
@@ -28,6 +27,6 @@ graph TD;
   style p6-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

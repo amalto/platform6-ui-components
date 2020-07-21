@@ -11,20 +11,25 @@ const getStoryField = (text: string, props?: Prop): string =>
 export const DefaultStory = makeStory<{
   disabled: boolean;
   readOnly: boolean;
-  checked: boolean;
   name: string;
-  label: string;
   value: string;
 }>({
   args: {
     disabled: false,
     readOnly: false,
-    checked: false,
     name: "field",
-    label: "Label",
-    value: "value",
+    value: "first",
   },
-  builder: ({ label, ...args }): string => getStoryField(label, { ...args }),
+  builder: ({ value, ...args }): string =>
+    ["first", "second"]
+      .map((key) =>
+        getStoryField(key, {
+          checked: value === key,
+          value: key,
+          ...args,
+        })
+      )
+      .join("\n"),
 });
 
 export const ReadonlyStory = makeStory({
@@ -48,7 +53,7 @@ export const DisabledStory = makeStory({
 export const FormStory = makeStory({
   builder: (): string =>
     getForm(
-      ["first", "second", "third"]
+      ["first", "second"]
         .map((key) => getStoryField(key, { value: key, name: "field" }))
         .join("\n")
     ),

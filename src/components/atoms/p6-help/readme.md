@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property            | Attribute  | Description                                | Type                                                                                       | Default        |
@@ -11,7 +10,6 @@
 | `position`          | `position` | Tooltip position (default position is top) | `Position.bottom \| Position.left \| Position.right \| Position.top`                       | `Position.top` |
 | `text` _(required)_ | `text`     | Tooltip text                               | `string`                                                                                   | `undefined`    |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

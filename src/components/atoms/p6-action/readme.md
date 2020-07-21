@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                          | Type                                                                                       | Default        |
@@ -12,15 +11,15 @@
 | `size`     | `size`     | set the size of the action                           | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
 | `waiting`  | `waiting`  | If set, shows a waiting/busy indicator               | `boolean`                                                                                  | `false`        |
 
-
 ## Dependencies
 
 ### Used by
 
- - [p6-translation](../../molecules/p6-translation)
- - [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
+- [p6-translation](../../molecules/p6-translation)
+- [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
 
 ### Graph
+
 ```mermaid
 graph TD;
   p6-translation --> p6-action
@@ -28,6 +27,6 @@ graph TD;
   style p6-action fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
