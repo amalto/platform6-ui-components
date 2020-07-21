@@ -1,4 +1,6 @@
+$container-pading: $size-7;
+
 :host {
   display: block;
-  padding: $size-7;
+  padding: $container-pading;
 }

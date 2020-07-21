@@ -7,7 +7,7 @@ export const DefaultStory = makeStory<{
   text: string;
 }>({
   args: {
-    text: "Container exemple",
+    text: "Container example",
   },
   builder: ({ text }) => getStoryField(text),
 });
