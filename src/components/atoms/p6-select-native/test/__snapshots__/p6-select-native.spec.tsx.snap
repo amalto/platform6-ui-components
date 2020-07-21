@@ -3,7 +3,7 @@
 exports[`p6-select-native renders 1`] = `
 <p6-select-native>
   <mock:shadow-root>
-    <div class="select">
+    <div class="is-default is-fullwidth is-small select">
       <select></select>
     </div>
   </mock:shadow-root>
