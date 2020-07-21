@@ -3,17 +3,7 @@ import { SortOrder } from "~shared/types";
 import { toWidth } from "~utils/css";
 import { DEFAULT_WIDTH } from "../../core/column";
 import { Column, DataItem } from "../../core/entities";
-
-function SortMarker(props: { order?: SortOrder }): JSX.Element | undefined {
-  if (props.order === SortOrder.Asc) {
-    return <p6-icon name="long-arrow-alt-up" />;
-  }
-  if (props.order === SortOrder.Desc) {
-    return <p6-icon name="long-arrow-alt-down" />;
-  }
-
-  return undefined;
-}
+import { P6GridSortMarker } from "../p6-grid-sort-marker";
 
 @Component({
   tag: "p6-grid-header-cell",
@@ -39,7 +29,7 @@ export class P6GridHeaderCell implements ComponentInterface {
   /**
    * Displays the sort order of this column
    */
-  @Prop() sortOrder: SortOrder = SortOrder.None;
+  @Prop() sortOrder: SortOrder = SortOrder.none;
 
   render(): JSX.Element {
     const { disabled, width } = this;
@@ -51,7 +41,7 @@ export class P6GridHeaderCell implements ComponentInterface {
       <Host style={styles}>
         <div class="wrapper">
           <div class="label">
-            <SortMarker order={this.sortOrder} />
+            <P6GridSortMarker order={this.sortOrder} />
             <slot />
           </div>
           {!disabled ? (

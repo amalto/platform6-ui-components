@@ -14,11 +14,11 @@ export function fromData<T extends DataItem>(data: T): Row<T> {
 export function compareRow<T extends DataItem>(
   column: Column<T> | undefined
 ): (a: Row<T>, b: Row<T>) => number {
-  const sortOrder = column?.sortOrder || SortOrder.None;
-  const factor = sortOrder === SortOrder.Desc ? -1 : 1;
+  const sortOrder = column?.sortOrder || SortOrder.none;
+  const factor = sortOrder === SortOrder.desc ? -1 : 1;
 
   return (a: Row<T>, b: Row<T>): number => {
-    if (column === undefined || sortOrder === SortOrder.None) {
+    if (column === undefined || sortOrder === SortOrder.none) {
       return 0;
     }
 

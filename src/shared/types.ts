@@ -24,20 +24,20 @@ export enum Position {
 }
 
 export enum Direction {
-  Left,
-  Right,
+  left = 0,
+  right = 1,
 }
 
 export enum Alignment {
-  Start,
-  Center,
-  End,
+  start = 0,
+  center = 1,
+  end = 2,
 }
 
 export enum SortOrder {
-  Asc,
-  Desc,
-  None,
+  asc = 0,
+  desc = 1,
+  none = 2,
 }
 
 export const modes = enumToArray(Mode);

@@ -6,9 +6,9 @@
 
 | Property                 | Attribute    | Description                   | Type                                                   | Default     |
 | ------------------------ | ------------ | ----------------------------- | ------------------------------------------------------ | ----------- |
-| `align` _(required)_     | `align`      | Cell alignment                | `Alignment.Center \| Alignment.End \| Alignment.Start` | `undefined` |
+| `align` _(required)_     | `align`      | Cell alignment                | `Alignment.center \| Alignment.end \| Alignment.start` | `undefined` |
 | `column` _(required)_    | --           | the column                    | `Column<Record<string, unknown>>`                      | `undefined` |
-| `sortOrder` _(required)_ | `sort-order` | the sort order of this column | `SortOrder.Asc \| SortOrder.Desc \| SortOrder.None`    | `undefined` |
+| `sortOrder` _(required)_ | `sort-order` | the sort order of this column | `SortOrder.asc \| SortOrder.desc \| SortOrder.none`    | `undefined` |
 
 ## Events
 

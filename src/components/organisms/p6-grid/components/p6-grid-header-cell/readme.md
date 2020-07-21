@@ -8,7 +8,7 @@
 | --------------------- | ------------ | -------------------------------------- | --------------------------------------------------- | ---------------- |
 | `column` _(required)_ | --           | the column                             | `Column<Record<string, unknown>>`                   | `undefined`      |
 | `disabled`            | `disabled`   | Disabled templating                    | `boolean`                                           | `false`          |
-| `sortOrder`           | `sort-order` | Displays the sort order of this column | `SortOrder.Asc \| SortOrder.Desc \| SortOrder.None` | `SortOrder.None` |
+| `sortOrder`           | `sort-order` | Displays the sort order of this column | `SortOrder.asc \| SortOrder.desc \| SortOrder.none` | `SortOrder.none` |
 | `width`               | `width`      | Cell width                             | `number \| string`                                  | `DEFAULT_WIDTH`  |
 
 ## Dependencies

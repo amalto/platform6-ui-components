@@ -13,7 +13,7 @@ import {
 import { SortOrder } from "~shared/types";
 import { partitionWith } from "~utils/array";
 import { getL10n, L10n } from "~utils/translations";
-import { P6GridHeaderColumns } from "./components/p6-grid-header-column";
+import { P6GridHeaderColumns } from "./components/p6-grid-header-columns";
 import { P6GridRowCells } from "./components/p6-grid-row-cells";
 import { fromDefinition, isHidden, move, replaceColumn } from "./core/column";
 import {
@@ -40,10 +40,6 @@ import {
   replaceRow,
 } from "./core/row";
 
-/**
- * TODO :
- * - add spinner / loading
- */
 @Component({
   tag: "p6-grid",
   styleUrl: "p6-grid.scss",
@@ -132,7 +128,7 @@ export class P6Grid {
     this.columns = this.columns.map((col) =>
       col.id === event.detail.column.id
         ? event.detail.column
-        : { ...col, sortOrder: SortOrder.None }
+        : { ...col, sortOrder: SortOrder.none }
     );
     this.p6GridConfigurationChange.emit({ columns: this.columns });
   }
