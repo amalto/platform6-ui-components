@@ -9,7 +9,13 @@ import { DefaultStory } from "./p6-container.stories.ts";
 # Container
 
 <Preview>
-  <Story name="Default" height="336px">
+  <Story
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+    height="336px"
+    name="Default"
+    parameters={DefaultStory.parameters}
+  >
     {DefaultStory}
   </Story>
 </Preview>

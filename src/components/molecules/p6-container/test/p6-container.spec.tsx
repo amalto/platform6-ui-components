@@ -7,12 +7,6 @@ describe("p6-container", () => {
       components: [P6Container],
       html: `<p6-container></p6-container>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-container>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </p6-container>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });
