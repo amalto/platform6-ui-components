@@ -1,239 +1,183 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 import {
-  boolean,
-  select,
-  number,
-  text,
-  withKnobs,
-} from "@storybook/addon-knobs";
-import { action, decorate } from "@storybook/addon-actions";
-import readme from "./readme.md";
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-<Meta
-  title="Atoms/Select"
-  component="p6-select"
-  parameters={{ notes: readme }}
-/>
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  SelectedStory,
+  MultipleSelectedStory,
+  DisabledStory,
+  PlaceholderStory,
+  CustomPlaceholderStory,
+  WithoutSearchStory,
+  LanguageStory,
+  SizeStory,
+  ModeStory,
+  FormStory,
+} from "./p6-select.stories.ts";
+
+<Meta title="Atoms/Select" component="p6-select" />
 
 # Select
 
 `p6-select` provides a select
 
-<Story
-  name="Default"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const values = decorate([
-      (args) => {
-        var values = [];
-        new FormData(args[0].target).forEach(function (value, name) {
-          values.push({ name, value });
-        });
-        return values;
-      },
-    ]);
-    const kSizes = select(
-      "Size",
-      ["default", "small", "normal", "medium", "large"],
-      "default"
-    );
-    const kColors = select(
-      "Color",
-      ["default", "primary", "info", "success", "warning", "danger"],
-      "default"
-    );
-    const kLocales = select("Language", ["en", "fr", "ru"], "en");
-    const kMultiple = boolean("Multiple", true);
-    const kSearchEnabled = boolean("Search enabled", true);
-    const kRequired = boolean("Required", true);
-    const kShouldSort = boolean("Should sort", false);
-    const kDisabled = boolean("Disabled", false);
-    const kReadOnly = boolean("Read only", false);
-    const kPlaceholder = text("Placeholder", "This is a placeholder");
-    const formContent = `
-      <p6-select
-        name="test"
-        lang="${kLocales}"
-        disabled="${kDisabled}"
-        multiple="${kMultiple}"
-        searchEnabled="${kSearchEnabled}"
-        shouldSort="${kShouldSort}"
-        required="${kRequired}"
-        readOnly="${kReadOnly}"
-        placeholder="${kPlaceholder}"
-        class="is-${kColors}"
-        size="${kSizes}"
-        >
-        <option>Select dropdown</option>
-        <option selected>With options</option>
-        <option disabled>and disabled options</option>
-      </p6-select>
-      <div class="field">
-        <div class="control">
-          <p6-button class="button is-link">Submit</p6-button>
-          <p6-button class="button is-link" type="reset">Reset</p6-button>
-        </div>
-      </div>
-    `;
-    const form = document.createElement("form");
-    //form.noValidate = true;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      values.action("values")(e);
-      action("event")(e);
-    });
-    form.innerHTML = formContent;
-    return form;
-  }}
-</Story>
+<Preview>
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
+  </Story>
+</Preview>
 
-<Story name="Selected value" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test">
-        <option>One</option>
-        <option selected>Selected</option>
-        <option>Three</option>
-      </p6-select>
-    `}
-</Story>
+## Selected value
 
-<Story name="Multiple selected value" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test" multiple>
-        <option>One</option>
-        <option selected>Two</option>
-        <option selected>Three</option>
-      </p6-select>
-    `}
-</Story>
+<Preview>
+  <Story
+    name="Selected value"
+    height="84px"
+    parameters={SelectedStory.parameters}
+    args={SelectedStory.args}
+    argTypes={SelectedStory.argTypes}
+  >
+    {SelectedStory}
+  </Story>
+</Preview>
 
-<Story name="Disabled" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test" disabled>
-        <option>One</option>
-        <option>Two</option>
-        <option>Three</option>
-      </p6-select>
-    `}
-</Story>
+## Multiple selected value
 
-<Story
-  name="Custom search placeholder"
-  parameters={{ docs: { disable: true } }}
->
-  {`
-      <p6-select name="test" placeholder="Custom placeholder">
-        <option>One</option>
-        <option>Two</option>
-        <option>Three</option>
-      </p6-select>
-    `}
-</Story>
+<Preview>
+  <Story
+    name="Multiple selected value"
+    height="84px"
+    parameters={MultipleSelectedStory.parameters}
+    args={MultipleSelectedStory.args}
+    argTypes={MultipleSelectedStory.argTypes}
+  >
+    {MultipleSelectedStory}
+  </Story>
+</Preview>
 
-<Story name="Without search" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test" searchEnabled="false">
-        <option>One</option>
-        <option>Two</option>
-        <option>Three</option>
-      </p6-select>
-    `}
-</Story>
+## Disabled
 
-<Story
-  name="Language"
-  parameters={{ docs: { disable: true } }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const kLocales = select("Language", ["en", "fr", "ru"], "en");
-    return `
-      <p6-select name="test" multiple lang="${kLocales}">
-        <option>One</option>
-        <option>Two</option>
-        <option>Three</option>
-      </p6-select>
-    `;
-  }}
-</Story>
+<Preview>
+  <Story
+    name="Disabled"
+    height="84px"
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
+  >
+    {DisabledStory}
+  </Story>
+</Preview>
 
-<Story name="Placeholder" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test">
-        <option value="">This is the placeholder</option>
-        <option>One</option>
-        <option>Two</option>
-        <option>Three</option>
-      </p6-select>
-    `}
-</Story>
+## Custom search placeholder
 
-<Story name="Sizes" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test" size="default">
-        <option>Default = Small</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" size="small">
-        <option>Small</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" size="normal">
-        <option>Normal</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" size="medium">
-        <option>Medium</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" size="large">
-        <option>Large</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" multiple size="default">
-        <option selected>Default = Small</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" multiple size="small">
-        <option selected>Small</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" multiple size="normal">
-        <option selected>Normal</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" multiple size="medium">
-        <option selected>Medium</option>
-        <option>Other</option>
-      </p6-select>
-      <p6-select name="test" multiple size="large">
-        <option selected>Large</option>
-        <option>Other</option>
-      </p6-select>
-    `}
-</Story>
+<Preview>
+  <Story
+    name="Custom search placeholder"
+    height="84px"
+    parameters={CustomPlaceholderStory.parameters}
+    args={CustomPlaceholderStory.args}
+    argTypes={CustomPlaceholderStory.argTypes}
+  >
+    {CustomPlaceholderStory}
+  </Story>
+</Preview>
 
-<Story name="Colors" parameters={{ docs: { disable: true } }}>
-  {`
-      <p6-select name="test">
-        <option>Default</option>
-      </p6-select>
-      <p6-select name="test" class="is-primary">
-        <option>Primary</option>
-      </p6-select>
-      <p6-select name="test" class="is-info">
-        <option>Info</option>
-      </p6-select>
-      <p6-select name="test" class="is-success">
-        <option>Success</option>
-      </p6-select>
-      <p6-select name="test" class="is-warning">
-        <option>Warning</option>
-      </p6-select>
-      <p6-select name="test" class="is-danger">
-        <option>Danger</option>
-      </p6-select>
-    `}
-</Story>
+## Without search
+
+<Preview>
+  <Story
+    name="Without search"
+    height="84px"
+    parameters={WithoutSearchStory.parameters}
+    args={WithoutSearchStory.args}
+    argTypes={WithoutSearchStory.argTypes}
+  >
+    {WithoutSearchStory}
+  </Story>
+</Preview>
+
+## Language
+
+<Preview>
+  <Story
+    name="Language"
+    height="84px"
+    parameters={LanguageStory.parameters}
+    args={LanguageStory.args}
+    argTypes={LanguageStory.argTypes}
+  >
+    {LanguageStory}
+  </Story>
+</Preview>
+
+## Placeholder
+
+<Preview>
+  <Story
+    name="Placeholder"
+    height="84px"
+    parameters={PlaceholderStory.parameters}
+    args={PlaceholderStory.args}
+    argTypes={PlaceholderStory.argTypes}
+  >
+    {PlaceholderStory}
+  </Story>
+</Preview>
+
+## Size
+
+<Preview>
+  <Story
+    name="Size"
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
+    {SizeStory}
+  </Story>
+</Preview>
+
+## Mode
+
+<Preview>
+  <Story
+    name="Mode"
+    height="84px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
+  >
+    {ModeStory}
+  </Story>
+</Preview>
+
+## Form
+
+<Preview>
+  <Story
+    name="Form"
+    height="84px"
+    parameters={FormStory.parameters}
+    args={FormStory.args}
+    argTypes={FormStory.argTypes}
+  >
+    {FormStory}
+  </Story>
+</Preview>
+
+<Description markdown={Readme} />
