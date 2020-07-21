@@ -1,62 +1,62 @@
-import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
-import { action, decorate } from "@storybook/addon-actions";
-import { select, boolean, text, withKnobs } from "@storybook/addon-knobs";
-import readme from "./readme.md";
+import {
+  Story,
+  Preview,
+  Meta,
+  Markdown,
+  Description,
+} from "@storybook/addon-docs/blocks";
 
-<Meta title="Atoms/Switch" parameters={{ notes: readme }} />
+import Readme from "./readme.md";
+
+import {
+  DefaultStory,
+  SelectedStory,
+  EnabledStory,
+  DisabledStory,
+  SizeStory,
+  ModeStory,
+  FormStory,
+} from "./p6-switch.stories.ts";
+
+<Meta
+  title="Atoms/Switch"
+  component="p6-switch"
+  parameters={{
+    actions: {
+      handles: ["p6Submit p6-form"],
+    },
+  }}
+/>
 
 # Switch
 
 `p6-switch` provide a switch component which allow you to _enable_ or _disable_ a field.
 
-<Story
-  name="Default"
-  parameters={{
-    docs: { disable: true },
-    actions: {
-      handles: ["p6Submit p6-form"],
-    },
-  }}
-  decorators={[withKnobs]}
->
-  {() => {
-    const kDisabled = boolean("Disabled", false);
-    const kColors = select(
-      "Mode",
-      ["danger", "warning", "default", "info", "success", "primary"],
-      "success"
-    );
-    const kSizes = select(
-      "Size",
-      ["small", "normal", "medium", "large"],
-      "normal"
-    );
-    const kText = text("Text", "Switch on by default");
-    return `
-      <p6-form>
-        <p6-switch name="test"
-          disabled=${kDisabled}
-          mode=${kColors}
-          size=${kSizes}
-          >${kText}</p6-switch>
-          <p6-button class="button is-link">Submit</p6-button>
-          <p6-button class="button is-link" type="reset">Reset</p6-button>
-      </p6-form>
-    `;
-  }}
-</Story>
+<Preview>
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
+  </Story>
+</Preview>
 
 ### Enabled
 
 Basic implementation enabled by default.
 
 <Preview>
-  <Story name="Enabled" height="44px">
-    {`
-    <p6-switch checked name="switch-enabled">
-      Default switch
-    </p6-switch>
-  `}
+  <Story
+    name="Enabled"
+    height="84px"
+    parameters={EnabledStory.parameters}
+    args={EnabledStory.args}
+    argTypes={EnabledStory.argTypes}
+  >
+    {EnabledStory}
   </Story>
 </Preview>
 
@@ -65,34 +65,41 @@ Basic implementation enabled by default.
 The `disabled` _prop_ will keep you from editing it. In the case you are using it inside a form, it won't populate the submit object.
 
 <Preview>
-  <Story name="Disabled" height="44px">
-    {`
-    <p6-switch checked disabled name="switch-disabled">
-      Disabled switch
-    </p6-switch>
-  `}
+  <Story
+    name="Disabled"
+    height="84px"
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
+  >
+    {DisabledStory}
   </Story>
 </Preview>
 
-### Colors
+### Mode
 
 <Preview>
-  <Story name="Colors" height="44px">
-    {["danger", "warning", "default", "info", "success", "primary"]
-      .map(
-        (color) =>
-          `<p><p6-switch checked color="${color}">${color}</p6-switch></p>`
-      )
-      .join("")}
+  <Story
+    name="Mode"
+    height="84px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
+  >
+    {ModeStory}
   </Story>
 </Preview>
 
-### Sizes
+### Size
 
 <Preview>
-  <Story name="Sizes" height="44px">
-    {["small", "normal", "medium", "large"]
-      .map((size) => `<p><p6-switch size="${size}">${size}</p6-switch></p>`)
-      .join("")}
+  <Story
+    name="Size"
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
+    {SizeStory}
   </Story>
 </Preview>

@@ -1,21 +1,19 @@
-import { getTextKnob } from "../../../shared/storybook/knobs";
 import {
-  getBooleanProp,
   getComponent,
-  getDisabledProp,
   getForm,
-  getPreview,
-  getReadOnlyProp,
-  getRequiredProp,
-  getTextProp,
+  makeStory,
   Prop,
 } from "../../../shared/storybook/stories";
 
-const getFieldContent = (prop?: Prop): string[] => [
-  getComponent("p6-label", getTextKnob("Label", "Field label"), {
+const getFieldContent = (
+  label: string,
+  hint: string,
+  prop?: Prop
+): string[] => [
+  getComponent("p6-label", label, {
     slot: "label",
   }),
-  getComponent("p6-hint", getTextKnob("Hint", "hint message"), {
+  getComponent("p6-hint", hint, {
     slot: "hint",
   }),
   getComponent("p6-input", "", {
@@ -24,23 +22,34 @@ const getFieldContent = (prop?: Prop): string[] => [
   }),
 ];
 
-export const DefaultStory = (): string => {
-  return getComponent("p6-field", getFieldContent());
-};
-DefaultStory.parameters = getPreview(DefaultStory());
+export const DefaultStory = makeStory<{
+  label: string;
+  hint: string;
+}>({
+  args: {
+    label: "Label",
+    hint: "hint message",
+  },
+  builder: ({ label, hint, ...args }): string =>
+    getComponent("p6-field", getFieldContent(label, hint, { ...args })),
+});
 
-export const FormStory = (): string => {
-  return getForm(
-    getComponent(
-      "p6-field",
-      getFieldContent({
-        ...getRequiredProp(),
-        ...getReadOnlyProp(),
-        ...getDisabledProp(),
-        ...getTextProp("pattern", "Pattern"),
-        ...getBooleanProp("waiting", "Waiting"),
-      })
-    )
-  );
-};
-FormStory.parameters = getPreview(FormStory());
+export const FormStory = makeStory<{
+  required: boolean;
+  readonly: boolean;
+  disabled: boolean;
+  waiting: boolean;
+  pattern: string;
+}>({
+  args: {
+    required: false,
+    readonly: false,
+    disabled: false,
+    waiting: false,
+    pattern: "42",
+  },
+  builder: (args): string =>
+    getForm(
+      getComponent("p6-field", getFieldContent("Label", "hint message", args))
+    ),
+});

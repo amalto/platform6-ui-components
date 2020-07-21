@@ -1,17 +1,12 @@
-import { getSelectKnob, getTextKnob } from "../../../shared/storybook/knobs";
 import {
   getComponent,
-  getDisabledProp,
-  getForm,
-  getModeProp,
-  getPreview,
-  getReadOnlyProp,
-  getSizeProp,
+  makeStory,
   Prop,
+  SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Size } from "../../../shared/types";
 
-const getField = (description: string, props?: Prop): string => {
+const getStoryField = (description: string, props?: Prop): string => {
   const size = props?.size !== undefined ? props.size : Size.normal;
   return getComponent(
     "p6-translation",
@@ -20,15 +15,28 @@ const getField = (description: string, props?: Prop): string => {
   );
 };
 
-export const DefaultStory = (): string => {
-  return getForm(
-    getField(getTextKnob("Field", "Description"), {
-      lang: getSelectKnob("Language", ["en", "fr", "ru"], "en"),
-      ...getSizeProp(),
-      ...getModeProp(),
-      ...getReadOnlyProp(),
-      ...getDisabledProp(),
-    })
-  );
-};
-DefaultStory.parameters = getPreview(getField("Description"));
+export const DefaultStory = makeStory<{
+  disabled: boolean;
+  readOnly: boolean;
+  size: Size;
+  label: string;
+  lang: string;
+}>({
+  args: {
+    disabled: false,
+    readOnly: false,
+    size: Size.normal,
+    label: "Description",
+    lang: "en",
+  },
+  builder: ({ label, ...args }): string => getStoryField(label, { ...args }),
+});
+
+export const SizeStory = makeStory({
+  builder: (): string =>
+    SizeStoryMaker(({ key, value }) =>
+      getStoryField(key, {
+        size: value,
+      })
+    ),
+});

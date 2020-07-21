@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property   | Attribute  | Description                                                                                                                                                                                                                                                                                                                        | Type                                                      | Default     |
@@ -11,6 +12,7 @@
 | `rel`      | `rel`      | Sets or retrieves the relationship between the object and the destination of the link. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types). Only applies when an `href` is provided.                                                                                 | `string \| undefined`                                     | `undefined` |
 | `target`   | `target`   | Sets or retrieves the window or frame at which to target content. Only applies when an `href` is provided.                                                                                                                                                                                                                         | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined` | `undefined` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

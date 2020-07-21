@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                   | Attribute     | Description             | Type                                                     | Default     |
@@ -14,6 +15,7 @@
 | `size` _(required)_        | `size`        | The size                | `Size.large \| Size.medium \| Size.normal \| Size.small` | `undefined` |
 | `translation` _(required)_ | `translation` | The translation         | `string`                                                 | `undefined` |
 
+
 ## Events
 
 | Event           | Description | Type                                    |
@@ -22,11 +24,12 @@
 | `p6KeyChange`   |             | `CustomEvent<ValidEventDetail<string>>` |
 | `p6ValueChange` |             | `CustomEvent<ValidEventDetail<string>>` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [p6-translation](../..)
+ - [p6-translation](../..)
 
 ### Depends on
 
@@ -36,7 +39,6 @@
 - [p6-textarea](../../../../atoms/p6-textarea)
 
 ### Graph
-
 ```mermaid
 graph TD;
   p6-translation-line --> p6-action
@@ -48,6 +50,6 @@ graph TD;
   style p6-translation-line fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute  | Description                                                                               | Type                                                     | Default       |
@@ -12,6 +13,7 @@
 | `size`              | `size`     | The size of the component to display                                                      | `Size.large \| Size.medium \| Size.normal \| Size.small` | `Size.normal` |
 | `value`             | --         | The value                                                                                 | `{ [key: string]: string; }`                             | `{}`          |
 
+
 ## Events
 
 | Event              | Description                       | Type                                                |
@@ -20,6 +22,7 @@
 | `p6FormUnregister` | When the select ask to unregister | `CustomEvent<P6Control<P6TranslationValue>>`        |
 | `p6Invalid`        | When the field is invalid         | `CustomEvent<InvalidEventDetail>`                   |
 | `p6Valid`          | When the field is valid           | `CustomEvent<ValidEventDetail<P6TranslationValue>>` |
+
 
 ## Methods
 
@@ -31,6 +34,8 @@ Returns whether a form will validate when it is submitted, without having to sub
 
 Type: `Promise<boolean>`
 
+
+
 ### `validationMessage() => Promise<string>`
 
 Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
@@ -39,6 +44,9 @@ It also triggers the standard error message, such as "this is a required field".
 #### Returns
 
 Type: `Promise<string>`
+
+
+
 
 ## Dependencies
 
@@ -51,7 +59,6 @@ Type: `Promise<string>`
 - [p6-translation-line](./components/p6-translation-line)
 
 ### Graph
-
 ```mermaid
 graph TD;
   p6-translation --> p6-field
@@ -68,6 +75,6 @@ graph TD;
   style p6-translation fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

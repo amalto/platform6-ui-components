@@ -1,13 +1,13 @@
-import { makeStory } from "../../../shared/storybook/makeStory";
 import {
   getComponent,
+  makeStory,
   ModeStoryMaker,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getAction = (props?: Prop): string => {
+const getStoryField = (props?: Prop): string => {
   const size = props?.size !== undefined ? props.size : Size.normal;
   return getComponent(
     "p6-action",
@@ -31,13 +31,13 @@ export const DefaultStory = makeStory<{
     disabled: false,
     waiting: false,
   },
-  builder: (args) => getAction(args),
+  builder: (args) => getStoryField(args),
 });
 
 export const ModeStory = makeStory({
   builder: (): string =>
     ModeStoryMaker(({ value }) =>
-      getAction({
+      getStoryField({
         mode: value,
       })
     ),
@@ -45,14 +45,14 @@ export const ModeStory = makeStory({
 
 export const DisabledStory = makeStory({
   builder: (): string =>
-    getAction({
+    getStoryField({
       disabled: true,
     }),
 });
 
 export const WaitingStory = makeStory({
   builder: (): string =>
-    getAction({
+    getStoryField({
       waiting: true,
     }),
 });
@@ -60,7 +60,7 @@ export const WaitingStory = makeStory({
 export const SizeStory = makeStory({
   builder: (): string =>
     SizeStoryMaker(({ value }) =>
-      getAction({
+      getStoryField({
         size: value,
       })
     ),

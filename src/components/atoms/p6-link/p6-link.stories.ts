@@ -1,9 +1,11 @@
-import { makeStory } from "../../../shared/storybook/makeStory";
-import { getComponent, Prop } from "../../../shared/storybook/stories";
+import {
+  getComponent,
+  makeStory,
+  Prop,
+} from "../../../shared/storybook/stories";
 
-const getLink = (text: string, props?: Prop): string => {
-  return getComponent("p6-link", text, props);
-};
+const getStoryField = (text: string, props?: Prop): string =>
+  getComponent("p6-link", text, props);
 
 export const DefaultStory = makeStory<{
   text: string;
@@ -11,7 +13,7 @@ export const DefaultStory = makeStory<{
   args: {
     text: "link",
   },
-  builder: ({ text }): string => getLink(text),
+  builder: ({ text }): string => getStoryField(text),
 });
 
 export const WithHrefStory = makeStory<{
@@ -23,5 +25,5 @@ export const WithHrefStory = makeStory<{
     href: "#azerty",
   },
   builder: ({ text, ...props }): string =>
-    `a ${getLink(text, { ...props })} with a href`,
+    `a ${getStoryField(text, { ...props })} with a href`,
 });

@@ -3,11 +3,11 @@
 exports[`p6-translation renders 1`] = `
 <p6-translation>
   <mock:shadow-root>
-    <p6-field>
+    <p6-field size="1">
       <p6-label slot="label">
         <slot></slot>
         <p6-action class="has-tooltip-arrow has-tooltip-right" mode="4" size="1">
-          <p6-icon name="plus-circle"></p6-icon>
+          <p6-icon name="plus-circle" size="1"></p6-icon>
         </p6-action>
       </p6-label>
       <p6-translation-line language="en" size="1" translation=""></p6-translation-line>

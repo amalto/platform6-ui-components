@@ -10,9 +10,10 @@ import Readme from "./readme.md";
 
 import {
   DefaultStory,
-  BaseStory,
   SizeStory,
   ModeStory,
+  DisabledStory,
+  SelectedValueStory,
 } from "./p6-language.stories.ts";
 
 <Meta
@@ -30,8 +31,14 @@ import {
 `p6-language` provides a select
 
 <Preview>
-  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
@@ -40,10 +47,12 @@ import {
 <Preview>
   <Story
     name="Selected value"
-    height="58px"
-    parameters={BaseStory.parameters({ value: "fr" })}
+    height="84px"
+    parameters={SelectedValueStory.parameters}
+    args={SelectedValueStory.args}
+    argTypes={SelectedValueStory.argTypes}
   >
-    {BaseStory({ value: "fr" })}
+    {SelectedValueStory}
   </Story>
 </Preview>
 
@@ -52,17 +61,25 @@ import {
 <Preview>
   <Story
     name="Disabled"
-    height="58px"
-    parameters={BaseStory.parameters({ disabled: true })}
+    height="84px"
+    parameters={DisabledStory.parameters}
+    args={DisabledStory.args}
+    argTypes={DisabledStory.argTypes}
   >
-    {BaseStory({ disabled: true })}
+    {DisabledStory}
   </Story>
 </Preview>
 
 ## Sizes
 
 <Preview>
-  <Story name="Sizes" height="58px" parameters={SizeStory.parameters}>
+  <Story
+    name="Size"
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
     {SizeStory}
   </Story>
 </Preview>
@@ -70,7 +87,13 @@ import {
 ## Modes
 
 <Preview>
-  <Story name="Modes" height="58px" parameters={ModeStory.parameters}>
+  <Story
+    name="Mode"
+    height="84px"
+    parameters={ModeStory.parameters}
+    args={ModeStory.args}
+    argTypes={ModeStory.argTypes}
+  >
     {ModeStory}
   </Story>
 </Preview>

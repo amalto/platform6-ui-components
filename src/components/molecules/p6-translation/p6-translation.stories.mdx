@@ -8,15 +8,35 @@ import {
 
 import Readme from "./readme.md";
 
-import { DefaultStory } from "./p6-translation.stories.ts";
+import { DefaultStory, SizeStory } from "./p6-translation.stories.ts";
 
 <Meta title="Molecules/Translation" component="p6-translation" />
 
 # Translation
 
 <Preview>
-  <Story name="Default" height="58px" parameters={DefaultStory.parameters}>
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="84px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
+  </Story>
+</Preview>
+
+## Size
+
+<Preview>
+  <Story
+    name="Size"
+    height="84px"
+    parameters={SizeStory.parameters}
+    args={SizeStory.args}
+    argTypes={SizeStory.argTypes}
+  >
+    {SizeStory}
   </Story>
 </Preview>
 

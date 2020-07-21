@@ -1,47 +1,68 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-enable import/no-extraneous-dependencies */
 import {
-  getBooleanProp,
   getComponent,
-  getDisabledProp,
-  getForm,
-  getPreview,
-  getReadOnlyProp,
-  getRequiredProp,
-  getSizeProp,
-  getTextProp,
+  makeStory,
   ModeStoryMaker,
-  Preview,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getInput = (props?: Prop): string => {
-  return getComponent("p6-language", "", { name: "language", ...props });
-};
+const getStoryField = (props?: Prop): string =>
+  getComponent("p6-language", "", { name: "language", ...props });
 
-export const DefaultStory = (): string =>
-  getForm(
-    getInput({
-      ...getDisabledProp(),
-      ...getReadOnlyProp(),
-      ...getRequiredProp(),
-      ...getSizeProp(),
-      ...getBooleanProp("fullWidth", "Full width"),
-      ...getTextProp("value", "Value", "fr"),
-    })
-  );
-DefaultStory.parameters = getPreview(getInput());
+export const DefaultStory = makeStory<{
+  disabled: boolean;
+  readOnly: boolean;
+  required: boolean;
+  size: Size;
+  mode: Mode;
+  fullWidth: boolean;
+  value: string;
+}>({
+  args: {
+    disabled: false,
+    readOnly: false,
+    required: false,
+    size: Size.normal,
+    mode: Mode.default,
+    fullWidth: false,
+    value: "fr",
+  },
+  builder: (args): string => getStoryField(args),
+});
 
-export const BaseStory = (props: Prop | undefined): string => getInput(props);
-BaseStory.parameters = (props: Prop | undefined): Preview =>
-  getPreview(getInput(props));
+export const SelectedValueStory = makeStory<{
+  value: string;
+}>({
+  args: {
+    value: "fr",
+  },
+  builder: (args): string => getStoryField(args),
+});
 
-export const SizeStory = (): string =>
-  SizeStoryMaker(({ value }) => getInput({ size: value }));
-SizeStory.parameters = getPreview(getInput({ size: Size.small }));
+export const DisabledStory = makeStory<{
+  disabled: boolean;
+}>({
+  args: {
+    disabled: false,
+  },
+  builder: (args): string => getStoryField(args),
+});
 
-export const ModeStory = (): string =>
-  ModeStoryMaker(({ value }) => getInput({ mode: value }));
-ModeStory.parameters = getPreview(getInput({ mode: Mode.success }));
+export const SizeStory = makeStory({
+  builder: (): string =>
+    SizeStoryMaker(({ value }) =>
+      getStoryField({
+        size: value,
+      })
+    ),
+});
+
+export const ModeStory = makeStory({
+  builder: (): string =>
+    ModeStoryMaker(({ value }) =>
+      getStoryField({
+        mode: value,
+      })
+    ),
+});

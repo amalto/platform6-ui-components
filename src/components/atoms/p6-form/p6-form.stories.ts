@@ -1,9 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-enable import/no-extraneous-dependencies */
-
 import { getForm } from "../../../shared/storybook/stories";
 
-export const Sample = (): string =>
+export const DefaultStory = (): string =>
   getForm(`
   <p6-field>
     <p6-label slot="label">custom inputs</p6-label>

@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute     | Description                                                                               | Type                                                     | Default       |
@@ -20,6 +21,7 @@
 | `value`             | `value`       | the value of the input.                                                                   | `string \| undefined`                                    | `undefined`   |
 | `waiting`           | `waiting`     | shows a waiting indicator                                                                 | `boolean`                                                | `false`       |
 
+
 ## Events
 
 | Event              | Description                                                                            | Type                                                 |
@@ -28,6 +30,7 @@
 | `p6FormUnregister` | Unregistering the field in a p6-form                                                   | `CustomEvent<P6Control<string \| undefined>>`        |
 | `p6Invalid`        | Fires when the field has been checked for validity and doesn't satisfy its constraints | `CustomEvent<InvalidEventDetail>`                    |
 | `p6Valid`          | Fires when the field has been checked for validity and satisfy its constraints         | `CustomEvent<ValidEventDetail<string \| undefined>>` |
+
 
 ## Methods
 
@@ -39,6 +42,8 @@ Returns whether a form will validate when it is submitted, without having to sub
 
 Type: `Promise<boolean>`
 
+
+
 ### `validationMessage() => Promise<string>`
 
 Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
@@ -48,20 +53,22 @@ It also triggers the standard error message, such as "this is a required field".
 
 Type: `Promise<string>`
 
+
+
+
 ## Dependencies
 
 ### Used by
 
-- [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
+ - [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
 
 ### Graph
-
 ```mermaid
 graph TD;
   p6-translation-line --> p6-textarea
   style p6-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

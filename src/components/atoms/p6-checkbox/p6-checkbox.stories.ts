@@ -1,13 +1,13 @@
-import { makeStory } from "../../../shared/storybook/makeStory";
 import {
   getComponent,
+  makeStory,
   ModeStoryMaker,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getCheckbox = (text: string, props?: Prop): string => {
+const getStoryField = (text: string, props?: Prop): string => {
   return getComponent("p6-checkbox", text, props);
 };
 
@@ -26,13 +26,13 @@ export const DefaultStory = makeStory<{
     checked: false,
     disabled: false,
   },
-  builder: ({ text, ...props }): string => getCheckbox(text, { ...props }),
+  builder: ({ text, ...props }): string => getStoryField(text, { ...props }),
 });
 
 export const SizeStory = makeStory({
   builder: (): string =>
     SizeStoryMaker(({ key, value }) =>
-      getCheckbox(key, {
+      getStoryField(key, {
         size: value,
         checked: true,
       })
@@ -42,7 +42,7 @@ export const SizeStory = makeStory({
 export const ModeStory = makeStory({
   builder: (): string =>
     ModeStoryMaker(({ key, value }) =>
-      getCheckbox(key, {
+      getStoryField(key, {
         mode: value,
         checked: true,
       })
@@ -51,7 +51,7 @@ export const ModeStory = makeStory({
 
 export const DisabledStory = makeStory({
   builder: (): string =>
-    getCheckbox("Disabled", {
+    getStoryField("Disabled", {
       disabled: true,
     }),
 });

@@ -1,20 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import {
-  getSelectArgType,
-  makeStory,
-} from "../../../shared/storybook/makeStory";
-/* eslint-enable import/no-extraneous-dependencies */
 import {
   capitalize,
   getComponent,
+  getSelectArgType,
+  makeStory,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Size } from "../../../shared/types";
 
-const getInput = (props?: Prop): string => {
-  return getComponent("p6-input", "", props);
-};
+const getStoryField = (props?: Prop): string =>
+  getComponent("p6-input", "", props);
 
 export const DefaultStory = makeStory<{
   disabled: boolean;
@@ -56,32 +51,35 @@ export const DefaultStory = makeStory<{
       ].map((type) => ({ key: type, value: type }))
     ),
   },
-  builder: (args): string => getInput(args),
+  builder: (args): string => getStoryField(args),
 });
 
 export const TextStory = makeStory({
-  builder: (): string => getInput({ type: "text" }),
+  builder: (): string => getStoryField({ type: "text" }),
 });
 
 export const SizeStory = makeStory({
   builder: (): string =>
     SizeStoryMaker(({ key, value }) =>
-      getInput({ size: value, placeholder: `${capitalize(key)} input` })
+      getStoryField({ size: value, placeholder: `${capitalize(key)} input` })
     ),
 });
 
 export const ReadonlyStory = makeStory({
-  builder: (): string => getInput({ readOnly: true, placeholder: "Read only" }),
+  builder: (): string =>
+    getStoryField({ readOnly: true, placeholder: "Read only" }),
 });
 
 export const DisabledStory = makeStory({
-  builder: (): string => getInput({ disabled: true, placeholder: "Disabled" }),
+  builder: (): string =>
+    getStoryField({ disabled: true, placeholder: "Disabled" }),
 });
 
 export const WaitingStory = makeStory({
-  builder: (): string => getInput({ waiting: true, placeholder: "Waiting" }),
+  builder: (): string =>
+    getStoryField({ waiting: true, placeholder: "Waiting" }),
 });
 
 export const OnErrorStory = makeStory({
-  builder: (): string => getInput({ pattern: "42", value: "84" }),
+  builder: (): string => getStoryField({ pattern: "42", value: "84" }),
 });

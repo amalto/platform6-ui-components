@@ -1,11 +1,12 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { makeStory } from "../../../shared/storybook/makeStory";
-/* eslint-enable import/no-extraneous-dependencies */
-import { getComponent, getForm, Prop } from "../../../shared/storybook/stories";
+import {
+  getComponent,
+  getForm,
+  makeStory,
+  Prop,
+} from "../../../shared/storybook/stories";
 
-const getInput = (text: string, props?: Prop): string => {
-  return getComponent("p6-radio", text, props);
-};
+const getStoryField = (text: string, props?: Prop): string =>
+  getComponent("p6-radio", text, props);
 
 export const DefaultStory = makeStory<{
   disabled: boolean;
@@ -23,12 +24,12 @@ export const DefaultStory = makeStory<{
     label: "Label",
     value: "value",
   },
-  builder: ({ label, ...args }): string => getInput(label, { ...args }),
+  builder: ({ label, ...args }): string => getStoryField(label, { ...args }),
 });
 
 export const ReadonlyStory = makeStory({
   builder: (): string =>
-    getInput("Read only", {
+    getStoryField("Read only", {
       name: "readonly-example",
       checked: true,
       readOnly: true,
@@ -37,7 +38,7 @@ export const ReadonlyStory = makeStory({
 
 export const DisabledStory = makeStory({
   builder: (): string =>
-    getInput("Disabled", {
+    getStoryField("Disabled", {
       name: "disabled-example",
       checked: true,
       disabled: true,
@@ -48,7 +49,7 @@ export const FormStory = makeStory({
   builder: (): string =>
     getForm(
       ["first", "second", "third"]
-        .map((key) => getInput(key, { value: key, name: "field" }))
+        .map((key) => getStoryField(key, { value: key, name: "field" }))
         .join("\n")
     ),
 });

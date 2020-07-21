@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute       | Description                                                                                | Type                                                     | Default       |
@@ -16,6 +17,7 @@
 | `shouldSort`        | `shouldsort`    | Sort the options by alphabetic order                                                       | `boolean`                                                | `false`       |
 | `size`              | `size`          | The size of the component to display                                                       | `Size.large \| Size.medium \| Size.normal \| Size.small` | `Size.normal` |
 
+
 ## Methods
 
 ### `checkValidity() => Promise<boolean>`
@@ -26,6 +28,8 @@ Returns whether a form will validate when it is submitted, without having to sub
 
 Type: `Promise<boolean>`
 
+
+
 ### `validationMessage() => Promise<string>`
 
 Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
@@ -35,6 +39,9 @@ It also triggers the standard error message, such as "this is a required field".
 
 Type: `Promise<string>`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
