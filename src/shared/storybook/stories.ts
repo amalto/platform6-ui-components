@@ -35,10 +35,11 @@ export const getSizeArgType = (): ArgSelectType =>
 export const getPositionArgType = (): ArgSelectType =>
   getSelectArgType("position", positions);
 export const getLanguageArgType = (): ArgSelectType =>
-  getSelectArgType(
-    "lang",
-    ["fn", "en", "not supported"].map((type) => ({ key: type, value: type }))
-  );
+  getSelectArgType("lang", [
+    { key: "Français", value: "fr" },
+    { key: "English", value: "en" },
+    { key: "not supported", value: "unknown" },
+  ]);
 const getComputedArgType = <T>(args: T): ArgType => {
   return Object.entries(args || {})
     .map(([name, value]): ArgSelectType | null => {
