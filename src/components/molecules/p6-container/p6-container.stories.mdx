@@ -2,16 +2,14 @@ import { Story, Preview, Meta } from "@storybook/addon-docs/blocks";
 
 import readme from "./readme.md";
 
+import { DefaultStory } from "./p6-container.stories.ts";
+
 <Meta title="Templates/Container" component="p6-container" />
 
 # Container
 
 <Preview>
   <Story name="Default" height="336px">
-    {`
-      <p6-container>
-        This is an exemple of a container
-      </p6-container>
-    `}
+    {DefaultStory}
   </Story>
 </Preview>
