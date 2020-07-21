@@ -47,7 +47,7 @@ export class P6GridOptions {
     return (
       <p6-tag
         data-id={column.id}
-        onMouseUp={this.unhideColumn(column)}
+        onMouseUp={this.showColumn(column)}
         role="button"
         size={Size.small}
         tabIndex={index}
@@ -57,7 +57,7 @@ export class P6GridOptions {
     );
   };
 
-  private unhideColumn(column: Column<DataItem>): (event: MouseEvent) => void {
+  private showColumn(column: Column<DataItem>): (event: MouseEvent) => void {
     return (event: MouseEvent) => {
       event.preventDefault();
       event.stopImmediatePropagation();

@@ -53,8 +53,8 @@ export function fromDefinition<T extends DataItem>(
     editable: column.editable || false,
     hidden: column.hidden || false,
     width: column.width || 100,
-    align: column.align || Alignment.Center,
-    sortOrder: column.sortOrder || SortOrder.None,
+    align: column.align || Alignment.center,
+    sortOrder: column.sortOrder || SortOrder.none,
     disableHeaderMenu: column.disableHeaderMenu || false,
     getValue: column.getValue || defaultGetValue,
     setValue: column.setValue || defaultSetValue,
@@ -80,7 +80,7 @@ export function move<T extends DataItem>(
   columns: Column<T>[]
 ): Column<T>[] {
   const from = columns.findIndex((col) => col.id === id);
-  const to = from + (direction === Direction.Left ? -1 : 1);
+  const to = from + (direction === Direction.left ? -1 : 1);
 
   if (from < 0 || to < 0 || to >= columns.length) {
     return columns;

@@ -23,7 +23,7 @@ const definitions: ColumnDefinition<DataItem>[] = [
     label: "Second Col",
     field: "second",
     editable: true,
-    align: Alignment.End,
+    align: Alignment.end,
   },
   {
     id: "third",

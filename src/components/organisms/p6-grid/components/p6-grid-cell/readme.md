@@ -6,7 +6,7 @@
 
 | Property              | Attribute  | Description                                           | Type                                                   | Default           |
 | --------------------- | ---------- | ----------------------------------------------------- | ------------------------------------------------------ | ----------------- |
-| `align`               | `align`    | Cell alignment                                        | `Alignment.Center \| Alignment.End \| Alignment.Start` | `Alignment.Start` |
+| `align`               | `align`    | Cell alignment                                        | `Alignment.center \| Alignment.end \| Alignment.start` | `Alignment.start` |
 | `color`               | `color`    | Cell text color                                       | `string \| undefined`                                  | `undefined`       |
 | `column` _(required)_ | --         | Cell column                                           | `Column<Record<string, unknown>>`                      | `undefined`       |
 | `editable`            | `editable` | Set to true if this cell is editable, otherwise false | `boolean`                                              | `false`           |

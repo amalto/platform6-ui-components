@@ -2,15 +2,19 @@
 
 exports[`p6-waiting renders 1`] = `
 <p6-waiting>
-  <!---->
-  <p6-spinner></p6-spinner>
+  <mock:shadow-root>
+    <p6-spinner></p6-spinner>
+    <slot></slot>
+  </mock:shadow-root>
 </p6-waiting>
 `;
 
 exports[`p6-waiting with message 1`] = `
 <p6-waiting>
-  <!---->
-  <p6-spinner></p6-spinner>
+  <mock:shadow-root>
+    <p6-spinner></p6-spinner>
+    <slot></slot>
+  </mock:shadow-root>
   Loading in progress
 </p6-waiting>
 `;

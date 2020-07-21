@@ -40,7 +40,7 @@ export class P6GridCell implements ComponentInterface {
   /**
    * Cell alignment
    */
-  @Prop() align: Alignment = Alignment.Start;
+  @Prop() align: Alignment = Alignment.start;
 
   /**
    * Cell text color

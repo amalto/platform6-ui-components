@@ -71,7 +71,7 @@ export class P6GridHeaderMenu implements ComponentInterface {
         <div>
           <P6GridActionItem
             icon="chevron-left"
-            clickHandler={this.moveColumnHandler(Direction.Left)}
+            clickHandler={this.moveColumnHandler(Direction.left)}
           />
           <P6GridActionItem
             icon="sort"
@@ -79,7 +79,7 @@ export class P6GridHeaderMenu implements ComponentInterface {
           />
           <P6GridActionItem
             icon="chevron-right"
-            clickHandler={this.moveColumnHandler(Direction.Right)}
+            clickHandler={this.moveColumnHandler(Direction.right)}
           />
         </div>
         <div>
@@ -99,18 +99,18 @@ export class P6GridHeaderMenu implements ComponentInterface {
         <div>
           <P6GridActionItem
             icon="align-left"
-            clickHandler={this.alignColumnHandler(Alignment.Start)}
-            disabled={this.isAlignmentDisabled(Alignment.Start)}
+            clickHandler={this.alignColumnHandler(Alignment.start)}
+            disabled={this.isDefaultAlignment(Alignment.start)}
           />
           <P6GridActionItem
             icon="align-center"
-            clickHandler={this.alignColumnHandler(Alignment.Center)}
-            disabled={this.isAlignmentDisabled(Alignment.Center)}
+            clickHandler={this.alignColumnHandler(Alignment.center)}
+            disabled={this.isDefaultAlignment(Alignment.center)}
           />
           <P6GridActionItem
             icon="align-right"
-            clickHandler={this.alignColumnHandler(Alignment.End)}
-            disabled={this.isAlignmentDisabled(Alignment.End)}
+            clickHandler={this.alignColumnHandler(Alignment.end)}
+            disabled={this.isDefaultAlignment(Alignment.end)}
           />
         </div>
       </host>
@@ -118,15 +118,15 @@ export class P6GridHeaderMenu implements ComponentInterface {
   }
 
   private get nextSortOrder(): SortOrder {
-    if (this.sortOrder === SortOrder.None) {
-      return SortOrder.Asc;
+    if (this.sortOrder === SortOrder.none) {
+      return SortOrder.asc;
     }
 
-    if (this.sortOrder === SortOrder.Asc) {
-      return SortOrder.Desc;
+    if (this.sortOrder === SortOrder.asc) {
+      return SortOrder.desc;
     }
 
-    return SortOrder.None;
+    return SortOrder.none;
   }
 
   private alignColumnHandler(alignment: Alignment): (event: Event) => void {
@@ -163,7 +163,7 @@ export class P6GridHeaderMenu implements ComponentInterface {
     };
   }
 
-  private isAlignmentDisabled(align: Alignment): boolean {
+  private isDefaultAlignment(align: Alignment): boolean {
     return align === this.align;
   }
 }
