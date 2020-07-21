@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property            | Attribute   | Description                                                                                | Type                                                                                       | Default        |
@@ -16,24 +17,25 @@
 | `size`              | `size`      | The size of the component to display                                                       | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
 | `value`             | `value`     | The selected value                                                                         | `string`                                                                                   | `""`           |
 
+
 ## Events
 
 | Event      | Description           | Type                                    |
 | ---------- | --------------------- | --------------------------------------- |
 | `p6Change` | When the value change | `CustomEvent<ValidEventDetail<string>>` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [p6-translation-line](../p6-translation/components/p6-translation-line)
+ - [p6-translation-line](../p6-translation/components/p6-translation-line)
 
 ### Depends on
 
 - [p6-select-native](../../atoms/p6-select-native)
 
 ### Graph
-
 ```mermaid
 graph TD;
   p6-language --> p6-select-native
@@ -41,6 +43,6 @@ graph TD;
   style p6-language fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

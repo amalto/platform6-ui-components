@@ -1,15 +1,14 @@
-import { makeStory } from "../../../shared/storybook/makeStory";
 import {
   getComponent,
+  makeStory,
   ModeStoryMaker,
   PositionStoryMaker,
   Prop,
 } from "../../../shared/storybook/stories";
 import { Mode, Position } from "../../../shared/types";
 
-const getHelp = (props?: Prop): string => {
-  return getComponent("p6-help", "", props);
-};
+const getStoryField = (props?: Prop): string =>
+  getComponent("p6-help", "", props);
 
 export const DefaultStory = makeStory<{
   text: string;
@@ -21,14 +20,14 @@ export const DefaultStory = makeStory<{
     mode: Mode.default,
     position: Position.top,
   },
-  builder: (args): string => getHelp(args),
+  builder: (args): string => getStoryField(args),
 });
 
 // --- Mode
 export const ModeStory = makeStory({
   builder: (): string =>
     ModeStoryMaker(({ key, value }) =>
-      getHelp({
+      getStoryField({
         text: key,
         mode: value,
       })
@@ -39,7 +38,7 @@ export const ModeStory = makeStory({
 export const PositionStory = makeStory({
   builder: (): string =>
     PositionStoryMaker(({ key, value }) =>
-      getHelp({
+      getStoryField({
         text: key,
         position: value,
       })

@@ -14,11 +14,9 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import {
+  getComponent,
   getSelectArgType,
   makeStory,
-} from "../../../shared/storybook/makeStory";
-import {
-  getComponent,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
@@ -44,9 +42,8 @@ library.add(
   faCat
 );
 
-const getIcon = (name: string, props?: Prop): string => {
-  return getComponent("p6-icon", name, { name, ...props });
-};
+const getStoryField = (name: string, props?: Prop): string =>
+  getComponent("p6-icon", name, { name, ...props });
 
 const makeLibStory = (iconPrefix: string, defaultIcon: string) => {
   return makeStory<{
@@ -69,7 +66,7 @@ const makeLibStory = (iconPrefix: string, defaultIcon: string) => {
       ),
     },
     builder: ({ icon, ...args }): string =>
-      getIcon(icon, { iconPrefix, ...args }),
+      getStoryField(icon, { iconPrefix, ...args }),
   });
 };
 
@@ -79,20 +76,21 @@ export const LibraryFabStory = makeLibStory("fab", "cat");
 export const SizeStory = makeStory({
   builder: (): string =>
     SizeStoryMaker(({ value }) =>
-      getIcon("home", {
+      getStoryField("home", {
         size: value,
       })
     ),
 });
 
 export const HomeIconStory = makeStory({
-  builder: (): string => getIcon("home"),
+  builder: (): string => getStoryField("home"),
 });
 
 export const FlipAndRotateStory = makeStory({
-  builder: (): string => getIcon("home", { transform: "flip-v rotate-90" }),
+  builder: (): string =>
+    getStoryField("home", { transform: "flip-v rotate-90" }),
 });
 
 export const UnknownIconStory = makeStory({
-  builder: (): string => getIcon("chart-home"),
+  builder: (): string => getStoryField("chart-home"),
 });

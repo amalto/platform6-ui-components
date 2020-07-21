@@ -1,69 +1,104 @@
-import {
-  EnumArrayEntry,
-  enumArrayToObject,
-  EnumObject,
-} from "../../utils/enum";
-import { Mode, modes, Position, positions, Size, sizes } from "../types";
-import {
-  getBooleanKnob,
-  getNumberKnob,
-  getSelectKnob,
-  getTextKnob,
-} from "./knobs";
+import { EnumArrayEntry, enumArrayToObject } from "../../utils/enum";
+import { modes, positions, sizes } from "../types";
 
+// --- Types
 export type Prop = { [key: string]: string | boolean | number };
+export type ArgType = { [key: string]: unknown };
 export type Preview = { docs: { source: { code: string } } };
+export type Config<T> = {
+  args?: T;
+  argTypes?: ArgType;
+  builder: (args: T) => string;
+  preview?: (args: T) => string;
+};
+export type ArgSelectType = {
+  [key: string]: {
+    control: {
+      type: string;
+      [option: string]: unknown;
+    };
+  };
+};
+export type StoryMakerFn = (value: EnumArrayEntry) => string;
 
-const sizesForSelect: EnumObject = enumArrayToObject(sizes);
-const modesForSelect = enumArrayToObject(modes);
-const positionsForSelect = enumArrayToObject(positions);
-
-export const getTextProp = (key: string, label: string, value = ""): Prop => ({
-  [key]: getTextKnob(label, value),
+// --- Arg type helpers
+export const getSelectArgType = (
+  name: string,
+  entries: EnumArrayEntry[]
+): ArgSelectType => ({
+  [name]: { control: { type: "select", options: enumArrayToObject(entries) } },
 });
+export const getModeArgType = (): ArgSelectType =>
+  getSelectArgType("mode", modes);
+export const getSizeArgType = (): ArgSelectType =>
+  getSelectArgType("size", sizes);
+export const getPositionArgType = (): ArgSelectType =>
+  getSelectArgType("position", positions);
+export const getLanguageArgType = (): ArgSelectType =>
+  getSelectArgType(
+    "lang",
+    ["fn", "en", "not supported"].map((type) => ({ key: type, value: type }))
+  );
+const getComputedArgType = <T>(args: T): ArgType => {
+  return Object.entries(args || {})
+    .map(([name, value]): ArgSelectType | null => {
+      if (name === "mode" && typeof value === "number") {
+        return getModeArgType();
+      }
+      if (name === "size" && typeof value === "number") {
+        return getSizeArgType();
+      }
+      if (name === "position" && typeof value === "number") {
+        return getPositionArgType();
+      }
+      if (name === "lang" && typeof value === "string") {
+        return getLanguageArgType();
+      }
+      return null;
+    })
+    .filter((value) => value !== null)
+    .reduce<ArgType>((acc, value) => ({ ...acc, ...value }), {});
+};
 
-export const getBooleanProp = (
-  key: string,
-  label: string,
-  value?: boolean
-): Prop => ({
-  [key]: getBooleanKnob(label, value),
-});
+// --- Preview
+const getPreview = (code: string): Preview => {
+  return {
+    docs: { source: { code } },
+  };
+};
 
-export const getNumberProp = (
-  key: string,
-  label: string,
-  value?: number
-): Prop => ({
-  [key]: getNumberKnob(label, value),
-});
+// --- Story maker
+export const makeStory = <T>(config: Config<T>): ((args: T) => string) => {
+  const fn = (args: T) => config.builder(args);
+  fn.args = { ...config.args } as T;
+  fn.argTypes = {
+    ...getComputedArgType<T>(fn.args),
+    ...config.argTypes,
+  };
+  fn.parameters = {
+    controls: { hideNoControlsWarning: true },
+    ...getPreview(
+      config.preview === undefined ? fn(fn.args) : config.preview(fn.args)
+    ),
+  };
 
-export const getSelectProp = (
-  key: string,
-  label: string,
-  options: string[],
-  value = ""
-): Prop => ({
-  [key]: getSelectKnob(label, options, value),
-});
+  return fn;
+};
 
-export const getModeProp = (value: Mode = Mode.default): Prop => ({
-  mode: getSelectKnob("Mode", modesForSelect, value),
-});
-export const getSizeProp = (value: Size = Size.normal): Prop => ({
-  size: getSelectKnob("Size", sizesForSelect, value),
-});
-export const getPositionProp = (value: Position = Position.top): Prop => ({
-  position: getSelectKnob("Position", positionsForSelect, value),
-});
+// --- Story generator
+const EnumStoryMaker = (
+  entries: EnumArrayEntry[],
+  maker: StoryMakerFn
+): string => entries.map((entry) => maker(entry)).join("\n");
 
-export const getDisabledProp = (value = false): Prop =>
-  getBooleanProp("disabled", "Disabled", value);
-export const getRequiredProp = (value = false): Prop =>
-  getBooleanProp("required", "Required", value);
-export const getReadOnlyProp = (value = false): Prop =>
-  getBooleanProp("readOnly", "Read only", value);
+export const SizeStoryMaker = (maker: StoryMakerFn): string =>
+  EnumStoryMaker(sizes, maker);
+export const ModeStoryMaker = (maker: StoryMakerFn): string =>
+  EnumStoryMaker(modes, maker);
+export const PositionStoryMaker = (maker: StoryMakerFn): string =>
+  EnumStoryMaker(positions, maker);
 
+// --- Form helper
 const getFormActions = (show: boolean): string => {
   if (show) {
     return `
@@ -87,6 +122,7 @@ export const getForm = (fields: string, withActions = true): string => {
     `;
 };
 
+// --- Component helper
 const getAttrsAndProps = (props: Prop = {}): string => {
   const allPropertiesAndAttributes = Object.entries(props || {})
     .map(([name, value]) => {
@@ -118,51 +154,6 @@ export const getComponent = (
   )}</${component}>`;
 };
 
-export const getPreview = (code: string): Preview => {
-  return {
-    docs: { source: { code } },
-  };
-};
-
-export type StoryMakerFn = (value: EnumArrayEntry) => string;
-const EnumStoryMaker = (
-  entries: EnumArrayEntry[],
-  maker: StoryMakerFn
-): string => entries.map((entry) => maker(entry)).join("\n");
-
-export const SizeStoryMaker = (maker: StoryMakerFn): string =>
-  EnumStoryMaker(sizes, maker);
-export const ModeStoryMaker = (maker: StoryMakerFn): string =>
-  EnumStoryMaker(modes, maker);
-export const PositionStoryMaker = (maker: StoryMakerFn): string =>
-  EnumStoryMaker(positions, maker);
-
+// String utils
 export const capitalize = (value: string): string =>
   value.charAt(0).toUpperCase() + value.slice(1);
-
-export type MakerFn = (props: Prop) => string;
-
-export type StoryConf = {
-  componentName: string;
-  items: string | MakerFn;
-  prop?: Prop;
-  previewProp?: Prop;
-  preview?: string | MakerFn;
-};
-
-export const makeOldStory = ({
-  items,
-  prop = {},
-  previewProp = {},
-  preview,
-}: StoryConf): (() => string) => {
-  const story = (): string => (typeof items === "string" ? items : items(prop));
-  if (preview !== undefined) {
-    story.parameters = getPreview(
-      typeof preview === "string"
-        ? preview
-        : preview({ ...prop, ...previewProp })
-    );
-  }
-  return story;
-};

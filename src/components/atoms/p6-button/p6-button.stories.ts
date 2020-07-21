@@ -1,17 +1,15 @@
 import {
-  getSelectArgType,
-  makeStory,
-} from "../../../shared/storybook/makeStory";
-import {
   getComponent,
   getForm,
+  getSelectArgType,
+  makeStory,
   ModeStoryMaker,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getButton = (text: string, props?: Prop): string => {
+const getStoryField = (text: string, props?: Prop): string => {
   return getComponent("p6-button", text, props);
 };
 
@@ -39,13 +37,14 @@ export const DefaultStory = makeStory<{
       ["submit", "reset", "button"].map((type) => ({ key: type, value: type }))
     ),
   },
-  builder: ({ text, ...args }) => getForm(getButton(text, { ...args }), false),
+  builder: ({ text, ...args }) =>
+    getForm(getStoryField(text, { ...args }), false),
 });
 
 export const SizeStory = makeStory({
   builder: (): string =>
     SizeStoryMaker(({ key, value }) =>
-      getButton(key, {
+      getStoryField(key, {
         size: value,
       })
     ),
@@ -54,7 +53,7 @@ export const SizeStory = makeStory({
 export const ModeStory = makeStory({
   builder: (): string =>
     ModeStoryMaker(({ key, value }) =>
-      getButton(key, {
+      getStoryField(key, {
         mode: value,
       })
     ),
@@ -64,7 +63,7 @@ export const IconStory = makeStory({
   builder: (): string =>
     ["", "Home"]
       .map((text) =>
-        getButton(
+        getStoryField(
           `${getComponent("p6-icon", "", { name: "home" })}<span>${text}</span>`
         )
       )
@@ -73,21 +72,21 @@ export const IconStory = makeStory({
 
 export const WaitingStory = makeStory({
   builder: (): string =>
-    getButton("Waiting", {
+    getStoryField("Waiting", {
       waiting: true,
     }),
 });
 
 export const DisabledStory = makeStory({
   builder: (): string =>
-    getButton("Disabled", {
+    getStoryField("Disabled", {
       disabled: true,
     }),
 });
 
 export const OutlinedStory = makeStory({
   builder: (): string =>
-    getButton("Outlined", {
+    getStoryField("Outlined", {
       outlined: true,
     }),
 });

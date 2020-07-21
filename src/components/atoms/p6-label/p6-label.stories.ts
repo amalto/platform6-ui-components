@@ -1,5 +1,4 @@
-import { makeStory } from "../../../shared/storybook/makeStory";
-import { getComponent } from "../../../shared/storybook/stories";
+import { getComponent, makeStory } from "../../../shared/storybook/stories";
 
 export const DefaultStory = makeStory<{
   text: string;

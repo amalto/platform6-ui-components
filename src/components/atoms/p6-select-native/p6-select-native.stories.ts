@@ -1,21 +1,18 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-enable import/no-extraneous-dependencies */
-import { makeStory } from "../../../shared/storybook/makeStory";
 import {
   getComponent,
   getForm,
+  makeStory,
   ModeStoryMaker,
   Prop,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getInput = (options: string, props?: Prop): string => {
-  return getComponent("p6-select-native", options, {
+const getStoryField = (options: string, props?: Prop): string =>
+  getComponent("p6-select-native", options, {
     name: "language",
     ...props,
   });
-};
 
 const getOption = (
   value: string,
@@ -46,7 +43,7 @@ export const DefaultStory = makeStory<{
     mode: Mode.default,
   },
   builder: (args): string =>
-    getInput(
+    getStoryField(
       `
         ${getOption("", "Select language")}
         <optgroup label="Europe">
@@ -59,7 +56,7 @@ export const DefaultStory = makeStory<{
 
 export const SelectedStory = makeStory({
   builder: (): string =>
-    getInput(
+    getStoryField(
       `${getOption("", "Placeholder")}${getOption(
         "value",
         "Selected value",
@@ -70,7 +67,7 @@ export const SelectedStory = makeStory({
 
 export const DisabledStory = makeStory({
   builder: (): string =>
-    getInput(
+    getStoryField(
       `${getOption("", "Placeholder")}${getOption("value", "Display")}`,
       { disabled: true }
     ),
@@ -79,18 +76,24 @@ export const DisabledStory = makeStory({
 export const SizeStory = makeStory({
   builder: (): string =>
     SizeStoryMaker(({ key, value }) =>
-      getInput(`${getOption("", "Placeholder")}${getOption("value", key)}`, {
-        size: value,
-      })
+      getStoryField(
+        `${getOption("", "Placeholder")}${getOption("value", key)}`,
+        {
+          size: value,
+        }
+      )
     ),
 });
 
 export const ModeStory = makeStory({
   builder: (): string =>
     ModeStoryMaker(({ key, value }) =>
-      getInput(`${getOption("", "Placeholder")}${getOption("value", key)}`, {
-        mode: value,
-      })
+      getStoryField(
+        `${getOption("", "Placeholder")}${getOption("value", key)}`,
+        {
+          mode: value,
+        }
+      )
     ),
 });
 
@@ -102,7 +105,7 @@ export const FormStory = makeStory<{
   },
   builder: (): string =>
     getForm(
-      getInput(
+      getStoryField(
         `
         ${getOption("", "Select language")}
         <optgroup label="Europe">

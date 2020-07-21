@@ -23,14 +23,26 @@ import { DefaultStory, FormStory } from "./p6-field.stories.ts";
 # Field
 
 <Preview>
-  <Story name="Default" height="120px" parameters={DefaultStory.parameters}>
-    {DefaultStory()}
+  <Story
+    name="Default"
+    height="150px"
+    parameters={DefaultStory.parameters}
+    args={DefaultStory.args}
+    argTypes={DefaultStory.argTypes}
+  >
+    {DefaultStory}
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Form" height="150px" parameters={FormStory.parameters}>
-    {FormStory()}
+  <Story
+    name="Form"
+    height="150px"
+    parameters={FormStory.parameters}
+    args={FormStory.args}
+    argTypes={FormStory.argTypes}
+  >
+    {FormStory}
   </Story>
 </Preview>
 
