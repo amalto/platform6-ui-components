@@ -8,8 +8,6 @@ addParameters({
     manual: true,
   },
 });
-/*
 export const parameters = {
   controls: { expanded: true },
 };
- */
