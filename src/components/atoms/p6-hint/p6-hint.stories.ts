@@ -1,8 +1,8 @@
 import { Components } from "../../../components";
 import {
   getElement,
+  makeModeStory,
   makeStory,
-  ModeStoryMaker,
   Props,
 } from "../../../shared/storybook/stories";
 import { Mode } from "../../../shared/types";
@@ -27,11 +27,8 @@ export const Default = makeStory<{ label: string; mode: Mode }>({
 });
 
 // --- Mode
-export const Modes = makeStory({
-  builder: (): HTMLElement =>
-    ModeStoryMaker(({ key, value }) =>
-      getStoryField(key, {
-        mode: value,
-      })
-    ),
-});
+export const Modes = makeModeStory(({ key, value }) =>
+  getStoryField(key, {
+    mode: value,
+  })
+);

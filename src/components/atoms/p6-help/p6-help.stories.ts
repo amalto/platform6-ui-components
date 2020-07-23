@@ -1,9 +1,9 @@
 import { Components } from "../../../components";
 import {
   getElement,
+  makeModeStory,
+  makePositionStory,
   makeStory,
-  ModeStoryMaker,
-  PositionStoryMaker,
   Props,
 } from "../../../shared/storybook/stories";
 import { Mode, Position } from "../../../shared/types";
@@ -32,23 +32,17 @@ export const Default = makeStory<{
 });
 
 // --- Mode
-export const Modes = makeStory({
-  builder: (): HTMLElement =>
-    ModeStoryMaker(({ key, value }) =>
-      getStoryField({
-        text: key,
-        mode: value,
-      })
-    ),
-});
+export const Modes = makeModeStory(({ key, value }) =>
+  getStoryField({
+    text: key,
+    mode: value,
+  })
+);
 
 // --- Position
-export const Positions = makeStory({
-  builder: (): HTMLElement =>
-    PositionStoryMaker(({ key, value }) =>
-      getStoryField({
-        text: key,
-        position: value,
-      })
-    ),
-});
+export const Positions = makePositionStory(({ key, value }) =>
+  getStoryField({
+    text: key,
+    position: value,
+  })
+);

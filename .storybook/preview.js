@@ -18,11 +18,6 @@ addParameters({
   docs: {
     inlineStories: false,
     extractComponentDescription: (a, b) => {
-      console.debug(
-        "-----------------------------------------------------",
-        a,
-        b
-      );
       if (b.notes !== undefined) {
         return typeof b.notes === "string"
           ? b.notes

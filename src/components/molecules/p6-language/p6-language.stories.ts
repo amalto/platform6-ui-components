@@ -1,10 +1,10 @@
 import { Components } from "../../../components";
 import {
   getElement,
+  makeModeStory,
+  makeSizeStory,
   makeStory,
-  ModeStoryMaker,
   Props,
-  SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
@@ -57,20 +57,14 @@ export const Disabled = makeStory<{
   builder: (args): HTMLElement => getStoryField(args),
 });
 
-export const Sizes = makeStory({
-  builder: (): HTMLElement =>
-    SizeStoryMaker(({ value }) =>
-      getStoryField({
-        size: value,
-      })
-    ),
-});
+export const Sizes = makeSizeStory(({ value }) =>
+  getStoryField({
+    size: value,
+  })
+);
 
-export const Modes = makeStory({
-  builder: (): HTMLElement =>
-    ModeStoryMaker(({ value }) =>
-      getStoryField({
-        mode: value,
-      })
-    ),
-});
+export const Modes = makeModeStory(({ value }) =>
+  getStoryField({
+    mode: value,
+  })
+);
