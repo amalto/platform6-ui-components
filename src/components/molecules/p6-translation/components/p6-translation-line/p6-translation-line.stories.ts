@@ -17,7 +17,7 @@ export default {
 const getStoryField = (
   props?: Props<Components.P6TranslationLine>
 ): HTMLElement => {
-  return getElement(component, [], props);
+  return getElement(component, [], { name: "field", ...props });
 };
 
 export const Default = makeStory<{
