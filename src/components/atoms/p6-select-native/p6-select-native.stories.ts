@@ -2,10 +2,10 @@ import { Components } from "../../../components";
 import {
   getElement,
   getForm,
+  makeModeStory,
+  makeSizeStory,
   makeStory,
-  ModeStoryMaker,
   Props,
-  SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
@@ -84,23 +84,17 @@ export const Disabled = makeStory({
     ),
 });
 
-export const Sizes = makeStory({
-  builder: (): HTMLElement =>
-    SizeStoryMaker(({ key, value }) =>
-      getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
-        size: value,
-      })
-    ),
-});
+export const Sizes = makeSizeStory(({ key, value }) =>
+  getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
+    size: value,
+  })
+);
 
-export const Modes = makeStory({
-  builder: (): HTMLElement =>
-    ModeStoryMaker(({ key, value }) =>
-      getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
-        mode: value,
-      })
-    ),
-});
+export const Modes = makeModeStory(({ key, value }) =>
+  getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
+    mode: value,
+  })
+);
 
 export const Form = makeStory<{
   required: boolean;

@@ -8,10 +8,11 @@ import { Mode, modes, Position, positions, Size, sizes } from "../types";
 export type Props<T> = Partial<T & HTMLElement>;
 export type ArgType = { [key: string]: unknown };
 export type Preview = { docs: { source: { code: string } } };
+export type BuilderOutput = string | HTMLElement | TemplateResult;
 export type Config<T> = {
   args?: T;
   argTypes?: ArgType;
-  builder: (args: T) => string | HTMLElement | TemplateResult;
+  builder: (args: T) => BuilderOutput;
   preview?: (args: T) => string | HTMLElement | HTMLElement[];
 };
 export type ArgSelectType = {
@@ -118,9 +119,7 @@ const getPreview = (code: string): Preview => {
 };
 
 // --- Story maker
-export function makeStory<T>(
-  config: Config<T>
-): (args: T) => string | HTMLElement | TemplateResult {
+export function makeStory<T>(config: Config<T>): (args: T) => BuilderOutput {
   const fn = (args: T) => config.builder(args);
   fn.args = { ...config.args } as T;
 
@@ -152,22 +151,27 @@ export function makeStory<T>(
 }
 
 // --- Story generator
-const EnumStoryMaker = <T>(
+const makeEnumStory = <T>(
   entries: EnumArrayEntry<T>[],
   maker: StoryMakerFn<T>
-): HTMLElement =>
-  getElement(
-    "div",
-    entries.map((entry) => maker(entry))
-  );
-
-export const SizeStoryMaker = (maker: StoryMakerFn<typeof Size>): HTMLElement =>
-  EnumStoryMaker(sizes, maker);
-export const ModeStoryMaker = (maker: StoryMakerFn<typeof Mode>): HTMLElement =>
-  EnumStoryMaker(modes, maker);
-export const PositionStoryMaker = (
+): ((args: T) => BuilderOutput) =>
+  makeStory<T>({
+    builder: (): HTMLElement =>
+      getElement(
+        "div",
+        entries.map((entry) => maker(entry))
+      ),
+  });
+export const makeSizeStory = (
+  maker: StoryMakerFn<typeof Size>
+): ((args: typeof Size) => BuilderOutput) => makeEnumStory(sizes, maker);
+export const makeModeStory = (
+  maker: StoryMakerFn<typeof Mode>
+): ((args: typeof Mode) => BuilderOutput) => makeEnumStory(modes, maker);
+export const makePositionStory = (
   maker: StoryMakerFn<typeof Position>
-): HTMLElement => EnumStoryMaker(positions, maker);
+): ((args: typeof Position) => BuilderOutput) =>
+  makeEnumStory(positions, maker);
 
 // --- Form helper
 

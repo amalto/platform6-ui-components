@@ -3,9 +3,9 @@ import {
   capitalize,
   getElement,
   getSelectArgType,
+  makeSizeStory,
   makeStory,
   Props,
-  SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Size } from "../../../shared/types";
 import { enumToArray } from "../../../utils/enum";
@@ -57,12 +57,9 @@ export const TextStory = makeStory({
   builder: (): HTMLElement => getStoryField({ type: P6InputType.text }),
 });
 
-export const SizeStory = makeStory({
-  builder: (): HTMLElement =>
-    SizeStoryMaker(({ key, value }) =>
-      getStoryField({ size: value, placeholder: `${capitalize(key)} input` })
-    ),
-});
+export const SizeStory = makeSizeStory(({ key, value }) =>
+  getStoryField({ size: value, placeholder: `${capitalize(key)} input` })
+);
 
 export const ReadonlyStory = makeStory({
   builder: (): HTMLElement =>

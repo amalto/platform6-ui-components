@@ -21,9 +21,9 @@ import { Components } from "../../../components";
 import {
   getElement,
   getSelectArgType,
+  makeSizeStory,
   makeStory,
   Props,
-  SizeStoryMaker,
   StringSelectArgType,
 } from "../../../shared/storybook/stories";
 import { Size } from "../../../shared/types";
@@ -88,14 +88,11 @@ const makeLibStory = (iconPrefix: IconPrefix, defaultIcon: IconName) => {
 export const LibraryFas = makeLibStory("fas", "home");
 export const LibraryFab = makeLibStory("fab", "cat");
 
-export const Sizes = makeStory({
-  builder: (): HTMLElement =>
-    SizeStoryMaker(({ value }) =>
-      getStoryField("home", {
-        size: value,
-      })
-    ),
-});
+export const Sizes = makeSizeStory(({ value }) =>
+  getStoryField("home", {
+    size: value,
+  })
+);
 
 export const HomeIcon = makeStory({
   builder: (): HTMLElement => getStoryField("home"),
