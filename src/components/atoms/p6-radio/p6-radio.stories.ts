@@ -1,14 +1,24 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getForm,
   makeStory,
-  Prop,
+  Props,
 } from "../../../shared/storybook/stories";
 
-const getStoryField = (text: string, props?: Prop): string =>
-  getComponent("p6-radio", text, props);
+const component = "p6-radio";
 
-export const DefaultStory = makeStory<{
+export default {
+  title: "Atoms/Radio",
+  component,
+};
+
+const getStoryField = (
+  text: string,
+  props?: Props<Components.P6Radio>
+): HTMLElement => getElement(component, text, props);
+
+export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
   name: string;
@@ -20,20 +30,21 @@ export const DefaultStory = makeStory<{
     name: "field",
     value: "first",
   },
-  builder: ({ value, ...args }): string =>
-    ["first", "second"]
-      .map((key) =>
+  builder: ({ value, ...args }): HTMLElement =>
+    getElement(
+      "div",
+      ["first", "second"].map((key) =>
         getStoryField(key, {
           checked: value === key,
           value: key,
           ...args,
         })
       )
-      .join("\n"),
+    ),
 });
 
-export const ReadonlyStory = makeStory({
-  builder: (): string =>
+export const Readonly = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("Read only", {
       name: "readonly-example",
       checked: true,
@@ -41,8 +52,8 @@ export const ReadonlyStory = makeStory({
     }),
 });
 
-export const DisabledStory = makeStory({
-  builder: (): string =>
+export const Disabled = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("Disabled", {
       name: "disabled-example",
       checked: true,
@@ -50,11 +61,11 @@ export const DisabledStory = makeStory({
     }),
 });
 
-export const FormStory = makeStory({
-  builder: (): string =>
+export const Form = makeStory({
+  builder: (): HTMLElement =>
     getForm(
-      ["first", "second"]
-        .map((key) => getStoryField(key, { value: key, name: "field" }))
-        .join("\n")
+      ["first", "second"].map((key) =>
+        getStoryField(key, { value: key, name: "field" })
+      )
     ),
 });

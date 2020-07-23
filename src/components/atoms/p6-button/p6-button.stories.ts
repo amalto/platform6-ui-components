@@ -1,26 +1,39 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getForm,
   getSelectArgType,
   makeStory,
   ModeStoryMaker,
-  Prop,
+  Props,
   SizeStoryMaker,
+  StringSelectArgType,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
+import { P6ButtonType } from "./p6-button";
 
-const getStoryField = (text: string, props?: Prop): string => {
-  return getComponent("p6-button", text, props);
+const component = "p6-button";
+
+export default {
+  title: "Atoms/Button",
+  component,
 };
 
-export const DefaultStory = makeStory<{
+const getStoryField = (
+  text: string | HTMLElement[],
+  props?: Props<Components.P6Button>
+): HTMLElement => {
+  return getElement(component, text, props);
+};
+
+export const Default = makeStory<{
   text: string;
   size: Size;
   mode: Mode;
   disabled: boolean;
   outlined: boolean;
   waiting: boolean;
-  type: string;
+  type: P6ButtonType;
 }>({
   args: {
     text: "My button",
@@ -32,7 +45,7 @@ export const DefaultStory = makeStory<{
     waiting: false,
   },
   argTypes: {
-    ...getSelectArgType(
+    ...getSelectArgType<StringSelectArgType>(
       "type",
       ["submit", "reset", "button"].map((type) => ({ key: type, value: type }))
     ),
@@ -41,8 +54,8 @@ export const DefaultStory = makeStory<{
     getForm(getStoryField(text, { ...args }), false),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         size: value,
@@ -50,8 +63,8 @@ export const SizeStory = makeStory({
     ),
 });
 
-export const ModeStory = makeStory({
-  builder: (): string =>
+export const Modes = makeStory({
+  builder: (): HTMLElement =>
     ModeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         mode: value,
@@ -59,33 +72,35 @@ export const ModeStory = makeStory({
     ),
 });
 
-export const IconStory = makeStory({
-  builder: (): string =>
-    ["", "Home"]
-      .map((text) =>
-        getStoryField(
-          `${getComponent("p6-icon", "", { name: "home" })}<span>${text}</span>`
-        )
+export const Icon = makeStory({
+  builder: (): HTMLElement =>
+    getElement(
+      "div",
+      ["", "Home"].map((text) =>
+        getStoryField([
+          getElement("p6-icon", [], { name: "home" }),
+          getElement("span", text),
+        ])
       )
-      .join(""),
+    ),
 });
 
-export const WaitingStory = makeStory({
-  builder: (): string =>
+export const Waiting = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("Waiting", {
       waiting: true,
     }),
 });
 
-export const DisabledStory = makeStory({
-  builder: (): string =>
+export const Disabled = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("Disabled", {
       disabled: true,
     }),
 });
 
-export const OutlinedStory = makeStory({
-  builder: (): string =>
+export const Outlined = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("Outlined", {
       outlined: true,
     }),

@@ -1,4 +1,8 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  IconName,
+  IconPrefix,
+  library,
+} from "@fortawesome/fontawesome-svg-core";
 import {
   faAccessibleIcon,
   faAutoprefixer,
@@ -13,14 +17,23 @@ import {
   faInfoCircle,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getSelectArgType,
   makeStory,
-  Prop,
+  Props,
   SizeStoryMaker,
+  StringSelectArgType,
 } from "../../../shared/storybook/stories";
 import { Size } from "../../../shared/types";
+
+const component = "p6-icon";
+
+export default {
+  title: "Atoms/Icon",
+  component,
+};
 
 const iconsMap = new Map([
   ["fab", ["accessible-icon", "autoprefixer", "font-awesome", "git", "html5"]],
@@ -42,12 +55,14 @@ library.add(
   faCat
 );
 
-const getStoryField = (name: string, props?: Prop): string =>
-  getComponent("p6-icon", name, { name, ...props });
+const getStoryField = (
+  name: IconName,
+  props?: Props<Components.P6Icon>
+): HTMLElement => getElement(component, name, { name, ...props });
 
-const makeLibStory = (iconPrefix: string, defaultIcon: string) => {
+const makeLibStory = (iconPrefix: IconPrefix, defaultIcon: IconName) => {
   return makeStory<{
-    icon: string;
+    icon: IconName;
     size: Size;
     transform: string;
   }>({
@@ -57,7 +72,7 @@ const makeLibStory = (iconPrefix: string, defaultIcon: string) => {
       transform: "",
     },
     argTypes: {
-      ...getSelectArgType(
+      ...getSelectArgType<StringSelectArgType>(
         "icon",
         (iconsMap.get(iconPrefix) || []).map((type) => ({
           key: type,
@@ -65,16 +80,16 @@ const makeLibStory = (iconPrefix: string, defaultIcon: string) => {
         }))
       ),
     },
-    builder: ({ icon, ...args }): string =>
+    builder: ({ icon, ...args }): HTMLElement =>
       getStoryField(icon, { iconPrefix, ...args }),
   });
 };
 
-export const LibraryFasStory = makeLibStory("fas", "home");
-export const LibraryFabStory = makeLibStory("fab", "cat");
+export const LibraryFas = makeLibStory("fas", "home");
+export const LibraryFab = makeLibStory("fab", "cat");
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ value }) =>
       getStoryField("home", {
         size: value,
@@ -82,15 +97,11 @@ export const SizeStory = makeStory({
     ),
 });
 
-export const HomeIconStory = makeStory({
-  builder: (): string => getStoryField("home"),
+export const HomeIcon = makeStory({
+  builder: (): HTMLElement => getStoryField("home"),
 });
 
-export const FlipAndRotateStory = makeStory({
-  builder: (): string =>
+export const FlipAndRotate = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("home", { transform: "flip-v rotate-90" }),
-});
-
-export const UnknownIconStory = makeStory({
-  builder: (): string => getStoryField("chart-home"),
 });

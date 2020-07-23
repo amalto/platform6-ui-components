@@ -15,10 +15,11 @@ export function P6GridActionItem(props: {
   const classes = {
     "has-tooltip-arrow": tooltip !== undefined,
   };
+
   return (
     <p6-action
       class={classes}
-      mode={mode || Mode.info}
+      mode={mode === undefined ? Mode.info : mode}
       onClick={clickHandler}
       disabled={disabled || false}
       data-tooltip={tooltip}

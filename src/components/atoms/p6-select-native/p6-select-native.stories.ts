@@ -1,15 +1,26 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getForm,
   makeStory,
   ModeStoryMaker,
-  Prop,
+  Props,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getStoryField = (options: string, props?: Prop): string =>
-  getComponent("p6-select-native", options, {
+const component = "p6-select-native";
+
+export default {
+  title: "Atoms/Select native",
+  component,
+};
+
+const getStoryField = (
+  options: HTMLElement[],
+  props?: Props<Components.P6SelectNative>
+): HTMLElement =>
+  getElement(component, options, {
     name: "language",
     ...props,
   });
@@ -17,14 +28,15 @@ const getStoryField = (options: string, props?: Prop): string =>
 const getOption = (
   value: string,
   display: string,
-  selected = false
-): string => {
-  return `<option value="${value}" ${
-    selected ? "selected" : ""
-  }>${display}</option>`;
+  props?: Props<HTMLOptionElement>
+): HTMLElement => {
+  return getElement("option", display, {
+    value,
+    ...props,
+  });
 };
 
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
   required: boolean;
@@ -42,76 +54,69 @@ export const DefaultStory = makeStory<{
     size: Size.normal,
     mode: Mode.default,
   },
-  builder: (args): string =>
+  builder: (args): HTMLElement =>
     getStoryField(
-      `
-        ${getOption("", "Select language")}
-        <optgroup label="Europe">
-          ${getOption("fr", "Français")}
-          ${getOption("en", "English")}
-        </optgroup>`,
+      [
+        getOption("", "Select language"),
+        getElement(
+          "optgroup",
+          [getOption("fr", "Français"), getOption("en", "English")],
+          { label: "Europe" }
+        ),
+      ],
       args
     ),
 });
 
-export const SelectedStory = makeStory({
-  builder: (): string =>
-    getStoryField(
-      `${getOption("", "Placeholder")}${getOption(
-        "value",
-        "Selected value",
-        true
-      )}`
-    ),
+export const Selected = makeStory({
+  builder: (): HTMLElement =>
+    getStoryField([
+      getOption("", "Placeholder"),
+      getOption("value", "Selected value", { selected: true }),
+    ]),
 });
 
-export const DisabledStory = makeStory({
-  builder: (): string =>
+export const Disabled = makeStory({
+  builder: (): HTMLElement =>
     getStoryField(
-      `${getOption("", "Placeholder")}${getOption("value", "Display")}`,
+      [getOption("", "Placeholder"), getOption("value", "Display")],
       { disabled: true }
     ),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ key, value }) =>
-      getStoryField(
-        `${getOption("", "Placeholder")}${getOption("value", key)}`,
-        {
-          size: value,
-        }
-      )
+      getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
+        size: value,
+      })
     ),
 });
 
-export const ModeStory = makeStory({
-  builder: (): string =>
+export const Modes = makeStory({
+  builder: (): HTMLElement =>
     ModeStoryMaker(({ key, value }) =>
-      getStoryField(
-        `${getOption("", "Placeholder")}${getOption("value", key)}`,
-        {
-          mode: value,
-        }
-      )
+      getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
+        mode: value,
+      })
     ),
 });
 
-export const FormStory = makeStory<{
+export const Form = makeStory<{
   required: boolean;
 }>({
   args: {
     required: false,
   },
-  builder: (): string =>
+  builder: (): HTMLElement =>
     getForm(
-      getStoryField(
-        `
-        ${getOption("", "Select language")}
-        <optgroup label="Europe">
-          ${getOption("fr", "Français")}
-          ${getOption("en", "English")}
-        </optgroup>`
-      )
+      getStoryField([
+        getOption("", "Select language"),
+        getElement(
+          "optgroup",
+          [getOption("fr", "Français"), getOption("en", "English")],
+          { label: "Europe" }
+        ),
+      ])
     ),
 });

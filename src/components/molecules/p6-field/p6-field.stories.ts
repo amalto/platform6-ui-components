@@ -1,28 +1,40 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getForm,
   makeStory,
-  Prop,
+  Props,
 } from "../../../shared/storybook/stories";
+
+const component = "p6-field";
+export default {
+  title: "Molecules/Field",
+  component,
+};
+
+const getStoryField = (
+  children: HTMLElement[],
+  props?: Props<Components.P6Field>
+): HTMLElement => getElement(component, children, props);
 
 const getFieldContent = (
   label: string,
   hint: string,
-  prop?: Prop
-): string[] => [
-  getComponent("p6-label", label, {
+  prop?: Props<Components.P6Input>
+): HTMLElement[] => [
+  getElement("p6-label", label, {
     slot: "label",
   }),
-  getComponent("p6-hint", hint, {
+  getElement("p6-hint", hint, {
     slot: "hint",
   }),
-  getComponent("p6-input", "", {
+  getElement("p6-input", "", {
     name: "test",
     ...prop,
   }),
 ];
 
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   label: string;
   hint: string;
 }>({
@@ -30,11 +42,11 @@ export const DefaultStory = makeStory<{
     label: "Label",
     hint: "hint message",
   },
-  builder: ({ label, hint, ...args }): string =>
-    getComponent("p6-field", getFieldContent(label, hint, { ...args })),
+  builder: ({ label, hint, ...args }): HTMLElement =>
+    getStoryField(getFieldContent(label, hint, { ...args })),
 });
 
-export const FormStory = makeStory<{
+export const Form = makeStory<{
   required: boolean;
   readonly: boolean;
   disabled: boolean;
@@ -48,8 +60,6 @@ export const FormStory = makeStory<{
     waiting: false,
     pattern: "42",
   },
-  builder: (args): string =>
-    getForm(
-      getComponent("p6-field", getFieldContent("Label", "hint message", args))
-    ),
+  builder: (args): HTMLElement =>
+    getForm(getStoryField(getFieldContent("Label", "hint message", args))),
 });

@@ -1,10 +1,27 @@
-import { getComponent, makeStory } from "../../../shared/storybook/stories";
+import { Components } from "../../../components";
+import {
+  getElement,
+  makeStory,
+  Props,
+} from "../../../shared/storybook/stories";
 
-export const DefaultStory = makeStory<{
+const component = "p6-label";
+
+export default {
+  title: "Atoms/Label",
+  component,
+};
+
+const getStoryField = (
+  text: string,
+  props?: Props<Components.P6Label>
+): HTMLElement => getElement(component, text, props);
+
+export const Default = makeStory<{
   text: string;
 }>({
   args: {
     text: "Label",
   },
-  builder: ({ text }): string => getComponent("p6-label", text),
+  builder: ({ text }): HTMLElement => getStoryField(text),
 });

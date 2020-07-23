@@ -7,8 +7,8 @@
 | Property            | Attribute  | Description   | Type                                                                                       | Default        |
 | ------------------- | ---------- | ------------- | ------------------------------------------------------------------------------------------ | -------------- |
 | `checked`           | `checked`  | Initial value | `boolean`                                                                                  | `false`        |
-| `color`             | `color`    | Mode          | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `Mode.success` |
 | `disabled`          | `disabled` | Disable       | `boolean`                                                                                  | `false`        |
+| `mode`              | `mode`     | Mode          | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `Mode.success` |
 | `name` _(required)_ | `name`     | Switch name   | `string`                                                                                   | `undefined`    |
 | `size`              | `size`     | Size          | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
 

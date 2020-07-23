@@ -1,29 +1,36 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { html, TemplateResult } from "lit-html";
+import { Components } from "../../../components";
+/* eslint-enable import/no-extraneous-dependencies */
 import {
-  getComponent,
+  getElement,
   makeStory,
-  Prop,
+  Props,
 } from "../../../shared/storybook/stories";
 
-const getStoryField = (text: string, props?: Prop): string =>
-  getComponent("p6-link", text, props);
+const component = "p6-link";
 
-export const DefaultStory = makeStory<{
-  text: string;
-}>({
+export default {
+  title: "Atoms/Link",
+  component,
+};
+
+const getStoryField = (
+  text: string,
+  props?: Props<Components.P6Link>
+): HTMLElement => getElement(component, text, props);
+
+type P6LinkProps = { text: string; href: string };
+
+export const Default = makeStory<P6LinkProps>({
   args: {
     text: "link",
+    href: "",
   },
-  builder: ({ text }): string => getStoryField(text),
+  builder: ({ text, ...args }): HTMLElement => {
+    return getStoryField(text, args);
+  },
 });
 
-export const WithHrefStory = makeStory<{
-  text: string;
-  href: string;
-}>({
-  args: {
-    text: "link",
-    href: "#azerty",
-  },
-  builder: ({ text, ...props }): string =>
-    `a ${getStoryField(text, { ...props })} with a href`,
-});
+export const WithHref = ({ text, ...args }: P6LinkProps): TemplateResult =>
+  html`a ${getStoryField(text, args)} with a href`;

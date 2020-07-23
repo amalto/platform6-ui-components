@@ -1,16 +1,24 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   makeStory,
   ModeStoryMaker,
   PositionStoryMaker,
-  Prop,
+  Props,
 } from "../../../shared/storybook/stories";
 import { Mode, Position } from "../../../shared/types";
 
-const getStoryField = (props?: Prop): string =>
-  getComponent("p6-help", "", props);
+const component = "p6-help";
 
-export const DefaultStory = makeStory<{
+export default {
+  title: "Atoms/Help",
+  component,
+};
+
+const getStoryField = (props?: Props<Components.P6Help>): HTMLElement =>
+  getElement(component, [], props);
+
+export const Default = makeStory<{
   text: string;
   mode: Mode;
   position: Position;
@@ -20,12 +28,12 @@ export const DefaultStory = makeStory<{
     mode: Mode.default,
     position: Position.top,
   },
-  builder: (args): string => getStoryField(args),
+  builder: (args): HTMLElement => getStoryField(args),
 });
 
 // --- Mode
-export const ModeStory = makeStory({
-  builder: (): string =>
+export const Modes = makeStory({
+  builder: (): HTMLElement =>
     ModeStoryMaker(({ key, value }) =>
       getStoryField({
         text: key,
@@ -35,8 +43,8 @@ export const ModeStory = makeStory({
 });
 
 // --- Position
-export const PositionStory = makeStory({
-  builder: (): string =>
+export const Positions = makeStory({
+  builder: (): HTMLElement =>
     PositionStoryMaker(({ key, value }) =>
       getStoryField({
         text: key,
