@@ -2,6 +2,7 @@
 import { TemplateResult } from "lit-html";
 /* eslint-enable import/no-extraneous-dependencies */
 import { EnumArrayEntry, enumArrayToObject } from "../../utils/enum";
+import { isCustomEvent } from "../form/event";
 import { Mode, modes, Position, positions, Size, sizes } from "../types";
 
 // --- Types
@@ -204,5 +205,21 @@ export const getForm = (
       )
     );
   }
-  return getElement("p6-form", children);
+  const form = getElement("p6-form", children);
+  form.addEventListener("p6Submit", (e: Event): void => {
+    if (!isCustomEvent(e)) {
+      return;
+    }
+    // eslint-disable-next-line no-console
+    console.log(
+      `%c Platform 6 %c ${String.fromCodePoint(
+        0x1f4e1
+      )} %c CustomEvent :: detail `,
+      "background:#61a653; color:white",
+      "background:transparent; color:black",
+      "background:black; color:cyan",
+      e.detail
+    );
+  });
+  return form;
 };
