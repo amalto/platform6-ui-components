@@ -11,8 +11,6 @@ module.exports = {
     // https://github.com/storybookjs/storybook/tree/next/addons/viewport
     "@storybook/addon-viewport/register",
   ],
-  stories: [
-    "../stories/**/*.stories.@(ts|mdx)",
-    "../src/**/*.stories.@(ts|mdx)",
-  ],
+  logLevel: "debug",
+  stories: ["../src/**/*.stories.@(ts|mdx)"],
 };

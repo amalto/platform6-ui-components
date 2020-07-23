@@ -10,6 +10,7 @@ import {
   Prop,
   State,
 } from "@stencil/core";
+import { P6InputType } from "~components/atoms/p6-input/types";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
 import {
@@ -19,15 +20,6 @@ import {
 import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
 import { getSizeClass } from "~utils/classes";
-
-export type P6InputType =
-  | "email"
-  | "number"
-  | "password"
-  | "search"
-  | "tel"
-  | "text"
-  | "url";
 
 export type P6InputValue = string | number | undefined;
 
@@ -82,7 +74,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   /**
    * the content type of the input.
    */
-  @Prop() type: P6InputType = "text";
+  @Prop() type: P6InputType = P6InputType.text;
 
   /**
    * The size of the component to display
@@ -154,7 +146,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
             placeholder={cleanupValue(this.placeholder)}
             readOnly={this.readOnly}
             required={this.required}
-            type={this.type}
+            type={P6InputType[this.type]}
             value={this.value}
             {...this.minMaxAttrs}
           />
@@ -205,7 +197,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   private get minMaxAttrs():
     | { min?: number; max?: number }
     | { minLength?: number; maxLength?: number } {
-    return this.type === "number"
+    return this.type === P6InputType.number
       ? {
           min: this.min,
           max: this.max,
@@ -221,7 +213,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
       return undefined;
     }
 
-    if (this.nativeInput.type === "number") {
+    if (this.nativeInput.type === P6InputType[P6InputType.number]) {
       return this.nativeInput.valueAsNumber;
     }
 

@@ -1,21 +1,35 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   makeStory,
-  Prop,
+  Props,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Size } from "../../../shared/types";
 
-const getStoryField = (description: string, props?: Prop): string => {
+const component = "p6-translation";
+
+export default {
+  title: "Molecules/Translation",
+  component,
+};
+
+const getStoryField = (
+  description: string,
+  props?: Props<Components.P6Translation>
+): HTMLElement => {
   const size = props?.size !== undefined ? props.size : Size.normal;
-  return getComponent(
-    "p6-translation",
-    [getComponent("p6-icon", "", { size }), description],
+  return getElement(
+    component,
+    [
+      getElement("p6-icon", [], { size, name: "home" }),
+      getElement("span", description),
+    ],
     { ...props }
   );
 };
 
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
   size: Size;
@@ -29,11 +43,12 @@ export const DefaultStory = makeStory<{
     label: "Description",
     lang: "en",
   },
-  builder: ({ label, ...args }): string => getStoryField(label, { ...args }),
+  builder: ({ label, ...args }): HTMLElement =>
+    getStoryField(label, { ...args }),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         size: value,

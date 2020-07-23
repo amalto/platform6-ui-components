@@ -42,7 +42,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
   /**
    * Mode
    */
-  @Prop() color: Mode = Mode.success;
+  @Prop() mode: Mode = Mode.success;
 
   /**
    * Size
@@ -93,7 +93,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
           class={{
             switch: true,
             ...getSizeClass(this.size),
-            ...getModeClass(this.color),
+            ...getModeClass(this.mode),
           }}
           ref={(input): void => {
             this.nativeInput = input;

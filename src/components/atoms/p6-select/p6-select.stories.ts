@@ -1,24 +1,38 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getForm,
   makeStory,
-  ModeStoryMaker,
-  Prop,
+  Props,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getStoryField = (options: string[], props?: Prop): string =>
-  getComponent("p6-select", options, {
+const component = "p6-select";
+
+export default {
+  title: "Atoms/Select",
+  component,
+};
+
+const getStoryField = (
+  options: HTMLElement[],
+  props?: Props<Components.P6Select>
+): HTMLElement =>
+  getElement(component, options, {
     name: "language",
     ...props,
   });
 
-const getOption = (value: string, display: string, props?: Prop): string => {
-  return getComponent("option", display, { value, ...props });
+const getOption = (
+  value: string,
+  display: string,
+  props?: Props<HTMLOptionElement>
+): HTMLElement => {
+  return getElement("option", display, { value, ...props });
 };
 
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   lang: string;
   disabled: boolean;
   multiple: boolean;
@@ -42,7 +56,7 @@ export const DefaultStory = makeStory<{
     size: Size.normal,
     mode: Mode.default,
   },
-  builder: (args): string =>
+  builder: (args): HTMLElement =>
     getStoryField(
       [
         getOption("no", "Not selected"),
@@ -53,16 +67,16 @@ export const DefaultStory = makeStory<{
     ),
 });
 
-export const SelectedStory = makeStory({
-  builder: (): string =>
+export const Selected = makeStory({
+  builder: (): HTMLElement =>
     getStoryField([
       getOption("no", "Unselected value"),
       getOption("yes", "Selected value", { selected: true }),
     ]),
 });
 
-export const MultipleSelectedStory = makeStory({
-  builder: (): string =>
+export const MultipleSelected = makeStory({
+  builder: (): HTMLElement =>
     getStoryField(
       [
         getOption("one", "One", { selected: true }),
@@ -73,21 +87,21 @@ export const MultipleSelectedStory = makeStory({
     ),
 });
 
-export const DisabledStory = makeStory({
-  builder: (): string =>
+export const Disabled = makeStory({
+  builder: (): HTMLElement =>
     getStoryField([getOption("value", "Display")], { disabled: true }),
 });
 
-export const CustomPlaceholderStory = makeStory<{ placeholder: string }>({
+export const CustomPlaceholder = makeStory<{ placeholder: string }>({
   args: {
     placeholder: "Custom placeholder",
   },
-  builder: ({ placeholder }): string =>
+  builder: ({ placeholder }): HTMLElement =>
     getStoryField([getOption("value", "Display")], { placeholder }),
 });
 
-export const PlaceholderStory = makeStory({
-  builder: (): string =>
+export const Placeholder = makeStory({
+  builder: (): HTMLElement =>
     getStoryField([
       getOption("", "This is the placeholder"),
       getOption("one", "One"),
@@ -96,11 +110,11 @@ export const PlaceholderStory = makeStory({
     ]),
 });
 
-export const WithoutSearchStory = makeStory<{ searchEnabled: boolean }>({
+export const WithoutSearch = makeStory<{ searchEnabled: boolean }>({
   args: {
     searchEnabled: false,
   },
-  builder: (args): string =>
+  builder: (args): HTMLElement =>
     getStoryField(
       [
         getOption("one", "One"),
@@ -111,11 +125,11 @@ export const WithoutSearchStory = makeStory<{ searchEnabled: boolean }>({
     ),
 });
 
-export const LanguageStory = makeStory<{ lang: string }>({
+export const Language = makeStory<{ lang: string }>({
   args: {
     lang: "en",
   },
-  builder: (args): string =>
+  builder: (args): HTMLElement =>
     getStoryField(
       [
         getOption("one", "One"),
@@ -126,8 +140,8 @@ export const LanguageStory = makeStory<{ lang: string }>({
     ),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ key, value }) =>
       getStoryField([getOption(`${value}`, key)], {
         size: value,
@@ -135,26 +149,17 @@ export const SizeStory = makeStory({
     ),
 });
 
-export const ModeStory = makeStory({
-  builder: (): string =>
-    ModeStoryMaker(({ key, value }) =>
-      getStoryField([getOption(`${value}`, key)], {
-        mode: value,
-      })
-    ),
-});
-
-export const FormStory = makeStory<{
+export const Form = makeStory<{
   required: boolean;
 }>({
   args: {
     required: false,
   },
-  builder: (): string =>
+  builder: (): HTMLElement =>
     getForm(
       getStoryField([
         getOption("", "Select language"),
-        getComponent(
+        getElement(
           "optgroup",
           [getOption("fr", "Français"), getOption("en", "English")],
           { label: "Europe" }

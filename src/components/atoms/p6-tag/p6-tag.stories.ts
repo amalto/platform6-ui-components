@@ -1,16 +1,26 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   makeStory,
   ModeStoryMaker,
-  Prop,
+  Props,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getStoryField = (name: string, props?: Prop): string =>
-  getComponent("p6-tag", name, { name, ...props });
+const component = "p6-tag";
 
-export const DefaultStory = makeStory<{
+export default {
+  title: "Atoms/Tag",
+  component,
+};
+
+const getStoryField = (
+  name: string,
+  props?: Props<Components.P6Tag>
+): HTMLElement => getElement(component, name, props);
+
+export const Default = makeStory<{
   size: Size;
   mode: Mode;
   label: string;
@@ -20,11 +30,12 @@ export const DefaultStory = makeStory<{
     mode: Mode.default,
     label: "Tag",
   },
-  builder: ({ label, ...args }): string => getStoryField(label, { ...args }),
+  builder: ({ label, ...args }): HTMLElement =>
+    getStoryField(label, { ...args }),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         size: value,
@@ -32,8 +43,8 @@ export const SizeStory = makeStory({
     ),
 });
 
-export const ModeStory = makeStory({
-  builder: (): string =>
+export const Modes = makeStory({
+  builder: (): HTMLElement =>
     ModeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         mode: value,

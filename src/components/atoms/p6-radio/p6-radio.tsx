@@ -26,7 +26,7 @@ export class P6Radio {
   /**
    * Readonly
    */
-  @Prop() readonly = false;
+  @Prop({ attribute: "readOnly" }) readOnly = false;
 
   /**
    * Value
@@ -39,7 +39,7 @@ export class P6Radio {
   @State() isChecked = false;
 
   private clickHandler = (event: Event): void => {
-    if (this.readonly) {
+    if (this.readOnly) {
       event.preventDefault();
       return;
     }
@@ -51,7 +51,7 @@ export class P6Radio {
   }
 
   render(): JSX.Element {
-    const { host, name, isChecked, disabled, readonly, value } = this;
+    const { host, name, isChecked, disabled, readOnly, value } = this;
 
     const inputId = `${name}-${value}-input`;
 
@@ -63,7 +63,7 @@ export class P6Radio {
           disabled={disabled}
           name={name}
           onClick={this.clickHandler}
-          readOnly={readonly}
+          readOnly={readOnly}
           type="radio"
           value={value}
         />

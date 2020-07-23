@@ -1,9 +1,17 @@
+import { Components } from "../../../components";
+import {
+  getElement,
+  makeStory,
+  Props,
+} from "../../../shared/storybook/stories";
 import { Alignment } from "../../../shared/types";
 import { ColumnDefinition, DataItem, Row } from "./core/entities";
 
+const component = "p6-grid";
+
 export default {
   title: "Organisms/Grid",
-  component: "p6-grid",
+  component,
 };
 
 interface StoryItem {
@@ -26,7 +34,7 @@ const definitions: ColumnDefinition<DataItem>[] = [
     field: "second",
     editable: true,
     width: 150,
-    align: Alignment.End,
+    align: Alignment.end,
   },
   {
     id: "third",
@@ -94,31 +102,32 @@ const customContextMenu = (row: Row<DataItem>): JSX.Element => {
   return (`Context menu exemple, ${row.id} : ${data}` as unknown) as JSX.Element;
 };
 
-export const Sample = (): HTMLP6GridElement => {
-  const kLoading = boolean("Loading", false);
-  const kEmpty = boolean("Empty", false);
+function getStoryField(
+  data: StoryItem[],
+  props?: Props<Components.P6Grid>
+): HTMLElement {
+  const innerProps = {
+    definitions,
+    customContextMenu,
+    data,
+    loading: props?.loading === true,
+  };
 
-  const grid = document.createElement("p6-grid");
-  grid.loading = kLoading;
-  grid.definitions = definitions;
-  grid.data = kEmpty ? [] : storyItems;
-  grid.loading = kLoading;
-  grid.customContextMenu = customContextMenu;
+  return getElement(component, [], innerProps);
+}
 
-  return grid;
-};
+export const Default = makeStory({
+  args: {
+    loading: false,
+    empty: false,
+  },
+  builder: (args) => getStoryField(storyItems, args),
+});
 
-export const Loading = (): HTMLP6GridElement => {
-  const grid = document.createElement("p6-grid");
-  grid.loading = true;
-  grid.definitions = definitions;
-  grid.data = storyItems;
-  return grid;
-};
+export const Loading = makeStory({
+  builder: () => getStoryField(storyItems, { loading: true }),
+});
 
-export const Empty = (): HTMLP6GridElement => {
-  const grid = document.createElement("p6-grid");
-  grid.definitions = definitions;
-  grid.data = [];
-  return grid;
-};
+export const Empty = makeStory({
+  builder: () => getStoryField([], {}),
+});

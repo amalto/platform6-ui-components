@@ -1,16 +1,24 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   makeStory,
   ModeStoryMaker,
-  Prop,
+  Props,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getStoryField = (props?: Prop): string =>
-  getComponent("p6-language", "", { name: "language", ...props });
+const component = "p6-language";
 
-export const DefaultStory = makeStory<{
+export default {
+  title: "Molecules/Language",
+  component,
+};
+
+const getStoryField = (props?: Props<Components.P6Language>): HTMLElement =>
+  getElement(component, [], { name: "language", ...props });
+
+export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
   required: boolean;
@@ -28,29 +36,29 @@ export const DefaultStory = makeStory<{
     fullWidth: false,
     value: "fr",
   },
-  builder: (args): string => getStoryField(args),
+  builder: (args): HTMLElement => getStoryField(args),
 });
 
-export const SelectedValueStory = makeStory<{
+export const SelectedValue = makeStory<{
   value: string;
 }>({
   args: {
     value: "fr",
   },
-  builder: (args): string => getStoryField(args),
+  builder: (args): HTMLElement => getStoryField(args),
 });
 
-export const DisabledStory = makeStory<{
+export const Disabled = makeStory<{
   disabled: boolean;
 }>({
   args: {
     disabled: false,
   },
-  builder: (args): string => getStoryField(args),
+  builder: (args): HTMLElement => getStoryField(args),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ value }) =>
       getStoryField({
         size: value,
@@ -58,8 +66,8 @@ export const SizeStory = makeStory({
     ),
 });
 
-export const ModeStory = makeStory({
-  builder: (): string =>
+export const Modes = makeStory({
+  builder: (): HTMLElement =>
     ModeStoryMaker(({ value }) =>
       getStoryField({
         mode: value,

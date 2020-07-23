@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from "@stencil/core";
+import { isEmpty } from "~utils/attribute";
 
 export type Href = string | undefined;
 export type Target = "_blank" | "_self" | "_parent" | "_top";
@@ -39,7 +40,7 @@ export class P6Link {
 
   render(): JSX.Element {
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const TagType = this.href !== undefined ? "a" : "button";
+    const TagType = isEmpty(this.href) ? "button" : "a";
     const attrs =
       TagType === "button"
         ? {}

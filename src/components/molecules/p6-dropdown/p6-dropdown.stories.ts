@@ -1,32 +1,48 @@
-import { getComponent, makeStory } from "../../../shared/storybook/stories";
+import { getElement, makeStory } from "../../../shared/storybook/stories";
 
-const getStoryField = (label: string, children: string): string =>
-  getComponent("p6-dropdown", `<span slot="label">${label}</span>${children}`);
+const component = "p6-dropdown";
 
-export const DefaultStory = makeStory<{
+export default {
+  title: "Molecules/Dropdown",
+  component,
+};
+
+const getStoryField = (label: string, children: HTMLElement[]): HTMLElement =>
+  getElement(component, [
+    getElement("span", label, { slot: "label" }),
+    ...children,
+  ]);
+
+export const Default = makeStory<{
   label: string;
 }>({
   args: {
     label: "Dropdown label",
   },
-  builder: ({ label }): string =>
-    getStoryField(
-      label,
-      `
-        <p6-link href="#" class="dropdown-item">link 1 (with p6-link)</p6-link>
-        <a href="#" class="dropdown-item">link 2 (with HTML anchor)</a>
-        <div><p>You can insert <strong>any type of content</strong> within the dropdown menu.</p></div>
-        <hr />
-        <a href="#" class="dropdown-item">Link after a divider</a>
-`
-    ),
-  preview: ({ label }) =>
-    getStoryField(
-      label,
-      `
-        <a href="#" class="dropdown-item">link 1</a>
-        <hr />
-        <a href="#" class="dropdown-item">Link 2</a>
-`
-    ),
+  builder: ({ label }): HTMLElement =>
+    getStoryField(label, [
+      getElement("p6-link", "link 1 (with p6-link)", {
+        href: "#",
+        className: "dropdown-item",
+      }),
+      getElement("a", "link 2 (with HTML anchor)", {
+        href: "#",
+        className: "dropdown-item",
+      }),
+      getElement(
+        "div",
+        "<p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>"
+      ),
+      getElement("hr", []),
+      getElement("a", "Link after a divider", {
+        href: "#",
+        className: "dropdown-item",
+      }),
+    ]),
+  preview: ({ label }): HTMLElement =>
+    getStoryField(label, [
+      getElement("a", "link 1", { href: "#", className: "dropdown-item" }),
+      getElement("hr", []),
+      getElement("a", "Link 2", { href: "#", className: "dropdown-item" }),
+    ]),
 });

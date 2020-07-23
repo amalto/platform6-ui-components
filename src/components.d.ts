@@ -6,6 +6,7 @@
  */
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { P6InputType } from "~components/atoms/p6-input/types";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
 import { Alignment, Mode, Position, Size, SortOrder } from "~shared/types";
@@ -13,10 +14,7 @@ import { LanguageCode } from "~utils/language";
 import { P6ButtonType } from "./components/atoms/p6-button/p6-button";
 import { P6CalendarType } from "./components/atoms/p6-calendar/p6-calendar";
 import { P6CheckboxValue } from "./components/atoms/p6-checkbox/p6-checkbox";
-import {
-  P6InputType,
-  P6InputValue,
-} from "./components/atoms/p6-input/p6-input";
+import { P6InputValue } from "./components/atoms/p6-input/p6-input";
 import { Target } from "./components/atoms/p6-link/p6-link";
 import {
   P6SelectControl,
@@ -480,7 +478,7 @@ export namespace Components {
     /**
      * Readonly
      */
-    readonly: boolean;
+    readOnly: boolean;
     /**
      * Value
      */
@@ -585,13 +583,13 @@ export namespace Components {
      */
     checked: boolean;
     /**
-     * Mode
-     */
-    color: Mode;
-    /**
      * Disable
      */
     disabled: boolean;
+    /**
+     * Mode
+     */
+    mode: Mode;
     /**
      * Switch name
      */
@@ -1546,7 +1544,7 @@ declare namespace LocalJSX {
     /**
      * Readonly
      */
-    readonly?: boolean;
+    readOnly?: boolean;
     /**
      * Value
      */
@@ -1651,13 +1649,13 @@ declare namespace LocalJSX {
      */
     checked?: boolean;
     /**
-     * Mode
-     */
-    color?: Mode;
-    /**
      * Disable
      */
     disabled?: boolean;
+    /**
+     * Mode
+     */
+    mode?: Mode;
     /**
      * Switch name
      */

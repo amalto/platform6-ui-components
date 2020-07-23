@@ -1,22 +1,32 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   getSelectArgType,
   makeStory,
-  Prop,
+  Props,
+  StringSelectArgType,
 } from "../../../shared/storybook/stories";
 import { Mode } from "../../../shared/types";
+import { P6CalendarType } from "./p6-calendar";
 
-const getStoryField = (props?: Prop): string => {
-  return getComponent("p6-calendar", "", props);
+const component = "p6-calendar";
+
+export default {
+  title: "Atoms/Button",
+  component,
+};
+
+const getStoryField = (props?: Props<Components.P6Calendar>): HTMLElement => {
+  return getElement(component, "", props);
 };
 
 // Default
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   required: boolean;
   readOnly: boolean;
   disabled: boolean;
   mode: Mode;
-  type: string;
+  type: P6CalendarType;
   lang: string;
   isRange: boolean;
   startDate: string;
@@ -44,7 +54,7 @@ export const DefaultStory = makeStory<{
     labelTo: "",
   },
   argTypes: {
-    ...getSelectArgType(
+    ...getSelectArgType<StringSelectArgType>(
       "type",
       ["date", "datetime", "time"].map((type) => ({
         key: type,
@@ -52,5 +62,5 @@ export const DefaultStory = makeStory<{
       }))
     ),
   },
-  builder: (props): string => getStoryField(props),
+  builder: (props): HTMLElement => getStoryField(props),
 });

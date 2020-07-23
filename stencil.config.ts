@@ -4,6 +4,7 @@ import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 /* eslint-enable import/no-extraneous-dependencies */
+import { generateJsonDocs } from "./src/customElementDocGenerator";
 
 export const config: Config = {
   namespace: "platform6-components",
@@ -21,6 +22,11 @@ export const config: Config = {
     },
     {
       type: "docs-readme",
+    },
+    {
+      type: "custom",
+      generator: generateJsonDocs,
+      name: "custom-element-docs",
     },
   ],
   globalScript: "src/global/init.ts",

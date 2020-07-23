@@ -1,0 +1,7816 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "p6-action",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "If `true`, the user cannot interact with the Action."
+        },
+        {
+          "name": "mode",
+          "description": "set the mode of the action"
+        },
+        {
+          "name": "size",
+          "description": "set the size of the action"
+        },
+        {
+          "name": "waiting",
+          "description": "If set, shows a waiting/busy indicator"
+        }
+      ]
+    },
+    {
+      "name": "p6-button",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Disabled - If `true`, the user cannot interact with the button."
+        },
+        {
+          "name": "mode",
+          "description": "set the mode of the button"
+        },
+        {
+          "name": "outlined",
+          "description": "Outlined"
+        },
+        {
+          "name": "size",
+          "description": "set the size of the button"
+        },
+        {
+          "name": "type",
+          "description": "type of the button.",
+          "values": [
+            {
+              "name": "button"
+            },
+            {
+              "name": "reset"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "waiting",
+          "description": "If set, shows a waiting/busy indicator"
+        }
+      ]
+    },
+    {
+      "name": "p6-calendar",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "color",
+          "description": "The color of the field"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled - If `true`, the user cannot interact with the field."
+        },
+        {
+          "name": "enddate",
+          "description": "Pre-selected end date"
+        },
+        {
+          "name": "isrange",
+          "description": "Range capability (start and end date/time selection)"
+        },
+        {
+          "name": "labelfrom",
+          "description": "From label"
+        },
+        {
+          "name": "labelto",
+          "description": "To label"
+        },
+        {
+          "name": "maxdate",
+          "description": "Maximum date allowed"
+        },
+        {
+          "name": "mindate",
+          "description": "Minimum date allowed"
+        },
+        {
+          "name": "minutesteps",
+          "description": "Steps for minutes selector"
+        },
+        {
+          "name": "name",
+          "description": "The name"
+        },
+        {
+          "name": "readonly",
+          "description": "Marks the field as read only"
+        },
+        {
+          "name": "required",
+          "description": "Required - If `true`, the user must set a value to be valid"
+        },
+        {
+          "name": "startdate",
+          "description": "Pre-selected start date"
+        },
+        {
+          "name": "type",
+          "description": "Type of field (date, time, datetime)",
+          "values": [
+            {
+              "name": "date"
+            },
+            {
+              "name": "datetime"
+            },
+            {
+              "name": "time"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "p6-checkbox",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Initial value"
+        },
+        {
+          "name": "disabled",
+          "description": "Disable"
+        },
+        {
+          "name": "mode",
+          "description": "set the mode of the action"
+        },
+        {
+          "name": "name",
+          "description": "Checkbox name"
+        },
+        {
+          "name": "size",
+          "description": "set the size of the action"
+        }
+      ]
+    },
+    {
+      "name": "p6-dropdown",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-empty",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-field",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Size"
+        }
+      ]
+    },
+    {
+      "name": "p6-form",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "name",
+          "description": "Sets or retrieves the name of the object."
+        }
+      ]
+    },
+    {
+      "name": "p6-grid",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "Display spinner"
+        }
+      ]
+    },
+    {
+      "name": "p6-grid-actions",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "options-displayed",
+          "description": "Status of the grid options display"
+        },
+        {
+          "name": "search-value",
+          "description": "Value used to filter the data"
+        }
+      ]
+    },
+    {
+      "name": "p6-grid-body",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-grid-cell",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "align",
+          "description": "Cell alignment"
+        },
+        {
+          "name": "color",
+          "description": "Cell text color"
+        },
+        {
+          "name": "editable",
+          "description": "Set to true if this cell is editable, otherwise false"
+        },
+        {
+          "name": "width",
+          "description": "Cell width"
+        }
+      ]
+    },
+    {
+      "name": "p6-grid-header",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-grid-header-cell",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Disabled templating"
+        },
+        {
+          "name": "sort-order",
+          "description": "Displays the sort order of this column"
+        },
+        {
+          "name": "width",
+          "description": "Cell width"
+        }
+      ]
+    },
+    {
+      "name": "p6-grid-header-menu",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "align",
+          "description": "Cell alignment"
+        },
+        {
+          "name": "sort-order",
+          "description": "the sort order of this column"
+        }
+      ]
+    },
+    {
+      "name": "p6-grid-options",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-grid-row",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "selected",
+          "description": "Is row selected or not"
+        }
+      ]
+    },
+    {
+      "name": "p6-grid-textarea-cell-editor",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Current cell value"
+        }
+      ]
+    },
+    {
+      "name": "p6-help",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "mode",
+          "description": "Tooltip mode"
+        },
+        {
+          "name": "position",
+          "description": "Tooltip position (default position is top)"
+        },
+        {
+          "name": "text",
+          "description": "Tooltip text"
+        }
+      ]
+    },
+    {
+      "name": "p6-hint",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "mode",
+          "description": "set the mode of the hint"
+        }
+      ]
+    },
+    {
+      "name": "p6-icon",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "iconprefix",
+          "description": "Style prefix",
+          "values": [
+            {
+              "name": "fab"
+            },
+            {
+              "name": "fad"
+            },
+            {
+              "name": "fal"
+            },
+            {
+              "name": "far"
+            },
+            {
+              "name": "fas"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "Icon name",
+          "values": [
+            {
+              "name": "function"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "500px"
+            },
+            {
+              "name": "accessible-icon"
+            },
+            {
+              "name": "accusoft"
+            },
+            {
+              "name": "acquisitions-incorporated"
+            },
+            {
+              "name": "adn"
+            },
+            {
+              "name": "adobe"
+            },
+            {
+              "name": "adversal"
+            },
+            {
+              "name": "affiliatetheme"
+            },
+            {
+              "name": "airbnb"
+            },
+            {
+              "name": "algolia"
+            },
+            {
+              "name": "alipay"
+            },
+            {
+              "name": "amazon"
+            },
+            {
+              "name": "amazon-pay"
+            },
+            {
+              "name": "amilia"
+            },
+            {
+              "name": "android"
+            },
+            {
+              "name": "angellist"
+            },
+            {
+              "name": "angrycreative"
+            },
+            {
+              "name": "angular"
+            },
+            {
+              "name": "app-store"
+            },
+            {
+              "name": "app-store-ios"
+            },
+            {
+              "name": "apper"
+            },
+            {
+              "name": "apple"
+            },
+            {
+              "name": "apple-pay"
+            },
+            {
+              "name": "artstation"
+            },
+            {
+              "name": "asymmetrik"
+            },
+            {
+              "name": "atlassian"
+            },
+            {
+              "name": "audible"
+            },
+            {
+              "name": "autoprefixer"
+            },
+            {
+              "name": "avianex"
+            },
+            {
+              "name": "aviato"
+            },
+            {
+              "name": "aws"
+            },
+            {
+              "name": "bandcamp"
+            },
+            {
+              "name": "battle-net"
+            },
+            {
+              "name": "behance"
+            },
+            {
+              "name": "behance-square"
+            },
+            {
+              "name": "bimobject"
+            },
+            {
+              "name": "bitbucket"
+            },
+            {
+              "name": "bitcoin"
+            },
+            {
+              "name": "bity"
+            },
+            {
+              "name": "black-tie"
+            },
+            {
+              "name": "blackberry"
+            },
+            {
+              "name": "blogger"
+            },
+            {
+              "name": "blogger-b"
+            },
+            {
+              "name": "bluetooth"
+            },
+            {
+              "name": "bluetooth-b"
+            },
+            {
+              "name": "bootstrap"
+            },
+            {
+              "name": "btc"
+            },
+            {
+              "name": "buffer"
+            },
+            {
+              "name": "buromobelexperte"
+            },
+            {
+              "name": "buy-n-large"
+            },
+            {
+              "name": "buysellads"
+            },
+            {
+              "name": "canadian-maple-leaf"
+            },
+            {
+              "name": "cc-amazon-pay"
+            },
+            {
+              "name": "cc-amex"
+            },
+            {
+              "name": "cc-apple-pay"
+            },
+            {
+              "name": "cc-diners-club"
+            },
+            {
+              "name": "cc-discover"
+            },
+            {
+              "name": "cc-jcb"
+            },
+            {
+              "name": "cc-mastercard"
+            },
+            {
+              "name": "cc-paypal"
+            },
+            {
+              "name": "cc-stripe"
+            },
+            {
+              "name": "cc-visa"
+            },
+            {
+              "name": "centercode"
+            },
+            {
+              "name": "centos"
+            },
+            {
+              "name": "chrome"
+            },
+            {
+              "name": "chromecast"
+            },
+            {
+              "name": "cloudscale"
+            },
+            {
+              "name": "cloudsmith"
+            },
+            {
+              "name": "cloudversify"
+            },
+            {
+              "name": "codepen"
+            },
+            {
+              "name": "codiepie"
+            },
+            {
+              "name": "confluence"
+            },
+            {
+              "name": "connectdevelop"
+            },
+            {
+              "name": "contao"
+            },
+            {
+              "name": "cotton-bureau"
+            },
+            {
+              "name": "cpanel"
+            },
+            {
+              "name": "creative-commons"
+            },
+            {
+              "name": "creative-commons-by"
+            },
+            {
+              "name": "creative-commons-nc"
+            },
+            {
+              "name": "creative-commons-nc-eu"
+            },
+            {
+              "name": "creative-commons-nc-jp"
+            },
+            {
+              "name": "creative-commons-nd"
+            },
+            {
+              "name": "creative-commons-pd"
+            },
+            {
+              "name": "creative-commons-pd-alt"
+            },
+            {
+              "name": "creative-commons-remix"
+            },
+            {
+              "name": "creative-commons-sa"
+            },
+            {
+              "name": "creative-commons-sampling"
+            },
+            {
+              "name": "creative-commons-sampling-plus"
+            },
+            {
+              "name": "creative-commons-share"
+            },
+            {
+              "name": "creative-commons-zero"
+            },
+            {
+              "name": "critical-role"
+            },
+            {
+              "name": "css3"
+            },
+            {
+              "name": "css3-alt"
+            },
+            {
+              "name": "cuttlefish"
+            },
+            {
+              "name": "d-and-d"
+            },
+            {
+              "name": "d-and-d-beyond"
+            },
+            {
+              "name": "dailymotion"
+            },
+            {
+              "name": "dashcube"
+            },
+            {
+              "name": "deezer"
+            },
+            {
+              "name": "delicious"
+            },
+            {
+              "name": "deploydog"
+            },
+            {
+              "name": "deskpro"
+            },
+            {
+              "name": "dev"
+            },
+            {
+              "name": "deviantart"
+            },
+            {
+              "name": "dhl"
+            },
+            {
+              "name": "diaspora"
+            },
+            {
+              "name": "digg"
+            },
+            {
+              "name": "digital-ocean"
+            },
+            {
+              "name": "discord"
+            },
+            {
+              "name": "discourse"
+            },
+            {
+              "name": "dochub"
+            },
+            {
+              "name": "docker"
+            },
+            {
+              "name": "draft2digital"
+            },
+            {
+              "name": "dribbble"
+            },
+            {
+              "name": "dribbble-square"
+            },
+            {
+              "name": "dropbox"
+            },
+            {
+              "name": "drupal"
+            },
+            {
+              "name": "dyalog"
+            },
+            {
+              "name": "earlybirds"
+            },
+            {
+              "name": "ebay"
+            },
+            {
+              "name": "edge"
+            },
+            {
+              "name": "edge-legacy"
+            },
+            {
+              "name": "elementor"
+            },
+            {
+              "name": "ello"
+            },
+            {
+              "name": "ember"
+            },
+            {
+              "name": "empire"
+            },
+            {
+              "name": "envira"
+            },
+            {
+              "name": "erlang"
+            },
+            {
+              "name": "ethereum"
+            },
+            {
+              "name": "etsy"
+            },
+            {
+              "name": "evernote"
+            },
+            {
+              "name": "expeditedssl"
+            },
+            {
+              "name": "facebook"
+            },
+            {
+              "name": "facebook-f"
+            },
+            {
+              "name": "facebook-messenger"
+            },
+            {
+              "name": "facebook-square"
+            },
+            {
+              "name": "fantasy-flight-games"
+            },
+            {
+              "name": "fedex"
+            },
+            {
+              "name": "fedora"
+            },
+            {
+              "name": "figma"
+            },
+            {
+              "name": "firefox"
+            },
+            {
+              "name": "firefox-browser"
+            },
+            {
+              "name": "first-order"
+            },
+            {
+              "name": "first-order-alt"
+            },
+            {
+              "name": "firstdraft"
+            },
+            {
+              "name": "flickr"
+            },
+            {
+              "name": "flipboard"
+            },
+            {
+              "name": "fly"
+            },
+            {
+              "name": "font-awesome"
+            },
+            {
+              "name": "font-awesome-alt"
+            },
+            {
+              "name": "font-awesome-flag"
+            },
+            {
+              "name": "font-awesome-logo-full"
+            },
+            {
+              "name": "fonticons"
+            },
+            {
+              "name": "fonticons-fi"
+            },
+            {
+              "name": "fort-awesome"
+            },
+            {
+              "name": "fort-awesome-alt"
+            },
+            {
+              "name": "forumbee"
+            },
+            {
+              "name": "foursquare"
+            },
+            {
+              "name": "free-code-camp"
+            },
+            {
+              "name": "freebsd"
+            },
+            {
+              "name": "fulcrum"
+            },
+            {
+              "name": "galactic-republic"
+            },
+            {
+              "name": "galactic-senate"
+            },
+            {
+              "name": "get-pocket"
+            },
+            {
+              "name": "gg"
+            },
+            {
+              "name": "gg-circle"
+            },
+            {
+              "name": "git"
+            },
+            {
+              "name": "git-alt"
+            },
+            {
+              "name": "git-square"
+            },
+            {
+              "name": "github"
+            },
+            {
+              "name": "github-alt"
+            },
+            {
+              "name": "github-square"
+            },
+            {
+              "name": "gitkraken"
+            },
+            {
+              "name": "gitlab"
+            },
+            {
+              "name": "gitter"
+            },
+            {
+              "name": "glide"
+            },
+            {
+              "name": "glide-g"
+            },
+            {
+              "name": "gofore"
+            },
+            {
+              "name": "goodreads"
+            },
+            {
+              "name": "goodreads-g"
+            },
+            {
+              "name": "google"
+            },
+            {
+              "name": "google-drive"
+            },
+            {
+              "name": "google-pay"
+            },
+            {
+              "name": "google-play"
+            },
+            {
+              "name": "google-plus"
+            },
+            {
+              "name": "google-plus-g"
+            },
+            {
+              "name": "google-plus-square"
+            },
+            {
+              "name": "google-wallet"
+            },
+            {
+              "name": "gratipay"
+            },
+            {
+              "name": "grav"
+            },
+            {
+              "name": "gripfire"
+            },
+            {
+              "name": "grunt"
+            },
+            {
+              "name": "gulp"
+            },
+            {
+              "name": "hacker-news"
+            },
+            {
+              "name": "hacker-news-square"
+            },
+            {
+              "name": "hackerrank"
+            },
+            {
+              "name": "hips"
+            },
+            {
+              "name": "hire-a-helper"
+            },
+            {
+              "name": "hooli"
+            },
+            {
+              "name": "hornbill"
+            },
+            {
+              "name": "hotjar"
+            },
+            {
+              "name": "houzz"
+            },
+            {
+              "name": "html5"
+            },
+            {
+              "name": "hubspot"
+            },
+            {
+              "name": "ideal"
+            },
+            {
+              "name": "imdb"
+            },
+            {
+              "name": "instagram"
+            },
+            {
+              "name": "instagram-square"
+            },
+            {
+              "name": "intercom"
+            },
+            {
+              "name": "internet-explorer"
+            },
+            {
+              "name": "invision"
+            },
+            {
+              "name": "ioxhost"
+            },
+            {
+              "name": "itch-io"
+            },
+            {
+              "name": "itunes"
+            },
+            {
+              "name": "itunes-note"
+            },
+            {
+              "name": "java"
+            },
+            {
+              "name": "jedi-order"
+            },
+            {
+              "name": "jenkins"
+            },
+            {
+              "name": "jira"
+            },
+            {
+              "name": "joget"
+            },
+            {
+              "name": "joomla"
+            },
+            {
+              "name": "js"
+            },
+            {
+              "name": "js-square"
+            },
+            {
+              "name": "jsfiddle"
+            },
+            {
+              "name": "kaggle"
+            },
+            {
+              "name": "keybase"
+            },
+            {
+              "name": "keycdn"
+            },
+            {
+              "name": "kickstarter"
+            },
+            {
+              "name": "kickstarter-k"
+            },
+            {
+              "name": "korvue"
+            },
+            {
+              "name": "laravel"
+            },
+            {
+              "name": "lastfm"
+            },
+            {
+              "name": "lastfm-square"
+            },
+            {
+              "name": "leanpub"
+            },
+            {
+              "name": "less"
+            },
+            {
+              "name": "line"
+            },
+            {
+              "name": "linkedin"
+            },
+            {
+              "name": "linkedin-in"
+            },
+            {
+              "name": "linode"
+            },
+            {
+              "name": "linux"
+            },
+            {
+              "name": "lyft"
+            },
+            {
+              "name": "magento"
+            },
+            {
+              "name": "mailchimp"
+            },
+            {
+              "name": "mandalorian"
+            },
+            {
+              "name": "markdown"
+            },
+            {
+              "name": "mastodon"
+            },
+            {
+              "name": "maxcdn"
+            },
+            {
+              "name": "mdb"
+            },
+            {
+              "name": "medapps"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "medium-m"
+            },
+            {
+              "name": "medrt"
+            },
+            {
+              "name": "meetup"
+            },
+            {
+              "name": "megaport"
+            },
+            {
+              "name": "mendeley"
+            },
+            {
+              "name": "microblog"
+            },
+            {
+              "name": "microsoft"
+            },
+            {
+              "name": "mix"
+            },
+            {
+              "name": "mixcloud"
+            },
+            {
+              "name": "mixer"
+            },
+            {
+              "name": "mizuni"
+            },
+            {
+              "name": "modx"
+            },
+            {
+              "name": "monero"
+            },
+            {
+              "name": "napster"
+            },
+            {
+              "name": "neos"
+            },
+            {
+              "name": "nimblr"
+            },
+            {
+              "name": "node"
+            },
+            {
+              "name": "node-js"
+            },
+            {
+              "name": "npm"
+            },
+            {
+              "name": "ns8"
+            },
+            {
+              "name": "nutritionix"
+            },
+            {
+              "name": "odnoklassniki"
+            },
+            {
+              "name": "odnoklassniki-square"
+            },
+            {
+              "name": "old-republic"
+            },
+            {
+              "name": "opencart"
+            },
+            {
+              "name": "openid"
+            },
+            {
+              "name": "opera"
+            },
+            {
+              "name": "optin-monster"
+            },
+            {
+              "name": "orcid"
+            },
+            {
+              "name": "osi"
+            },
+            {
+              "name": "page4"
+            },
+            {
+              "name": "pagelines"
+            },
+            {
+              "name": "palfed"
+            },
+            {
+              "name": "patreon"
+            },
+            {
+              "name": "paypal"
+            },
+            {
+              "name": "penny-arcade"
+            },
+            {
+              "name": "periscope"
+            },
+            {
+              "name": "phabricator"
+            },
+            {
+              "name": "phoenix-framework"
+            },
+            {
+              "name": "phoenix-squadron"
+            },
+            {
+              "name": "php"
+            },
+            {
+              "name": "pied-piper"
+            },
+            {
+              "name": "pied-piper-alt"
+            },
+            {
+              "name": "pied-piper-hat"
+            },
+            {
+              "name": "pied-piper-pp"
+            },
+            {
+              "name": "pied-piper-square"
+            },
+            {
+              "name": "pinterest"
+            },
+            {
+              "name": "pinterest-p"
+            },
+            {
+              "name": "pinterest-square"
+            },
+            {
+              "name": "playstation"
+            },
+            {
+              "name": "product-hunt"
+            },
+            {
+              "name": "pushed"
+            },
+            {
+              "name": "python"
+            },
+            {
+              "name": "qq"
+            },
+            {
+              "name": "quinscape"
+            },
+            {
+              "name": "quora"
+            },
+            {
+              "name": "r-project"
+            },
+            {
+              "name": "raspberry-pi"
+            },
+            {
+              "name": "ravelry"
+            },
+            {
+              "name": "react"
+            },
+            {
+              "name": "reacteurope"
+            },
+            {
+              "name": "readme"
+            },
+            {
+              "name": "rebel"
+            },
+            {
+              "name": "red-river"
+            },
+            {
+              "name": "reddit"
+            },
+            {
+              "name": "reddit-alien"
+            },
+            {
+              "name": "reddit-square"
+            },
+            {
+              "name": "redhat"
+            },
+            {
+              "name": "renren"
+            },
+            {
+              "name": "replyd"
+            },
+            {
+              "name": "researchgate"
+            },
+            {
+              "name": "resolving"
+            },
+            {
+              "name": "rev"
+            },
+            {
+              "name": "rocketchat"
+            },
+            {
+              "name": "rockrms"
+            },
+            {
+              "name": "rust"
+            },
+            {
+              "name": "safari"
+            },
+            {
+              "name": "salesforce"
+            },
+            {
+              "name": "sass"
+            },
+            {
+              "name": "schlix"
+            },
+            {
+              "name": "scribd"
+            },
+            {
+              "name": "searchengin"
+            },
+            {
+              "name": "sellcast"
+            },
+            {
+              "name": "sellsy"
+            },
+            {
+              "name": "servicestack"
+            },
+            {
+              "name": "shirtsinbulk"
+            },
+            {
+              "name": "shopify"
+            },
+            {
+              "name": "shopware"
+            },
+            {
+              "name": "simplybuilt"
+            },
+            {
+              "name": "sistrix"
+            },
+            {
+              "name": "sith"
+            },
+            {
+              "name": "sketch"
+            },
+            {
+              "name": "skyatlas"
+            },
+            {
+              "name": "skype"
+            },
+            {
+              "name": "slack"
+            },
+            {
+              "name": "slack-hash"
+            },
+            {
+              "name": "slideshare"
+            },
+            {
+              "name": "snapchat"
+            },
+            {
+              "name": "snapchat-ghost"
+            },
+            {
+              "name": "snapchat-square"
+            },
+            {
+              "name": "soundcloud"
+            },
+            {
+              "name": "sourcetree"
+            },
+            {
+              "name": "speakap"
+            },
+            {
+              "name": "speaker-deck"
+            },
+            {
+              "name": "spotify"
+            },
+            {
+              "name": "squarespace"
+            },
+            {
+              "name": "stack-exchange"
+            },
+            {
+              "name": "stack-overflow"
+            },
+            {
+              "name": "stackpath"
+            },
+            {
+              "name": "staylinked"
+            },
+            {
+              "name": "steam"
+            },
+            {
+              "name": "steam-square"
+            },
+            {
+              "name": "steam-symbol"
+            },
+            {
+              "name": "sticker-mule"
+            },
+            {
+              "name": "strava"
+            },
+            {
+              "name": "stripe"
+            },
+            {
+              "name": "stripe-s"
+            },
+            {
+              "name": "studiovinari"
+            },
+            {
+              "name": "stumbleupon"
+            },
+            {
+              "name": "stumbleupon-circle"
+            },
+            {
+              "name": "superpowers"
+            },
+            {
+              "name": "supple"
+            },
+            {
+              "name": "suse"
+            },
+            {
+              "name": "swift"
+            },
+            {
+              "name": "symfony"
+            },
+            {
+              "name": "teamspeak"
+            },
+            {
+              "name": "telegram"
+            },
+            {
+              "name": "telegram-plane"
+            },
+            {
+              "name": "tencent-weibo"
+            },
+            {
+              "name": "the-red-yeti"
+            },
+            {
+              "name": "themeco"
+            },
+            {
+              "name": "themeisle"
+            },
+            {
+              "name": "think-peaks"
+            },
+            {
+              "name": "tiktok"
+            },
+            {
+              "name": "trade-federation"
+            },
+            {
+              "name": "trello"
+            },
+            {
+              "name": "tripadvisor"
+            },
+            {
+              "name": "tumblr"
+            },
+            {
+              "name": "tumblr-square"
+            },
+            {
+              "name": "twitch"
+            },
+            {
+              "name": "twitter"
+            },
+            {
+              "name": "twitter-square"
+            },
+            {
+              "name": "typo3"
+            },
+            {
+              "name": "uber"
+            },
+            {
+              "name": "ubuntu"
+            },
+            {
+              "name": "uikit"
+            },
+            {
+              "name": "umbraco"
+            },
+            {
+              "name": "uniregistry"
+            },
+            {
+              "name": "unity"
+            },
+            {
+              "name": "unsplash"
+            },
+            {
+              "name": "untappd"
+            },
+            {
+              "name": "ups"
+            },
+            {
+              "name": "usb"
+            },
+            {
+              "name": "usps"
+            },
+            {
+              "name": "ussunnah"
+            },
+            {
+              "name": "vaadin"
+            },
+            {
+              "name": "viacoin"
+            },
+            {
+              "name": "viadeo"
+            },
+            {
+              "name": "viadeo-square"
+            },
+            {
+              "name": "viber"
+            },
+            {
+              "name": "vimeo"
+            },
+            {
+              "name": "vimeo-square"
+            },
+            {
+              "name": "vimeo-v"
+            },
+            {
+              "name": "vine"
+            },
+            {
+              "name": "vk"
+            },
+            {
+              "name": "vnv"
+            },
+            {
+              "name": "vuejs"
+            },
+            {
+              "name": "waze"
+            },
+            {
+              "name": "weebly"
+            },
+            {
+              "name": "weibo"
+            },
+            {
+              "name": "weixin"
+            },
+            {
+              "name": "whatsapp"
+            },
+            {
+              "name": "whatsapp-square"
+            },
+            {
+              "name": "whmcs"
+            },
+            {
+              "name": "wikipedia-w"
+            },
+            {
+              "name": "windows"
+            },
+            {
+              "name": "wix"
+            },
+            {
+              "name": "wizards-of-the-coast"
+            },
+            {
+              "name": "wolf-pack-battalion"
+            },
+            {
+              "name": "wordpress"
+            },
+            {
+              "name": "wordpress-simple"
+            },
+            {
+              "name": "wpbeginner"
+            },
+            {
+              "name": "wpexplorer"
+            },
+            {
+              "name": "wpforms"
+            },
+            {
+              "name": "wpressr"
+            },
+            {
+              "name": "xbox"
+            },
+            {
+              "name": "xing"
+            },
+            {
+              "name": "xing-square"
+            },
+            {
+              "name": "y-combinator"
+            },
+            {
+              "name": "yahoo"
+            },
+            {
+              "name": "yammer"
+            },
+            {
+              "name": "yandex"
+            },
+            {
+              "name": "yandex-international"
+            },
+            {
+              "name": "yarn"
+            },
+            {
+              "name": "yelp"
+            },
+            {
+              "name": "yoast"
+            },
+            {
+              "name": "youtube"
+            },
+            {
+              "name": "youtube-square"
+            },
+            {
+              "name": "zhihu"
+            },
+            {
+              "name": "abacus"
+            },
+            {
+              "name": "acorn"
+            },
+            {
+              "name": "ad"
+            },
+            {
+              "name": "address-book"
+            },
+            {
+              "name": "address-card"
+            },
+            {
+              "name": "adjust"
+            },
+            {
+              "name": "air-conditioner"
+            },
+            {
+              "name": "air-freshener"
+            },
+            {
+              "name": "alarm-clock"
+            },
+            {
+              "name": "alarm-exclamation"
+            },
+            {
+              "name": "alarm-plus"
+            },
+            {
+              "name": "alarm-snooze"
+            },
+            {
+              "name": "album"
+            },
+            {
+              "name": "album-collection"
+            },
+            {
+              "name": "alicorn"
+            },
+            {
+              "name": "alien"
+            },
+            {
+              "name": "alien-monster"
+            },
+            {
+              "name": "align-center"
+            },
+            {
+              "name": "align-justify"
+            },
+            {
+              "name": "align-left"
+            },
+            {
+              "name": "align-right"
+            },
+            {
+              "name": "align-slash"
+            },
+            {
+              "name": "allergies"
+            },
+            {
+              "name": "ambulance"
+            },
+            {
+              "name": "american-sign-language-interpreting"
+            },
+            {
+              "name": "amp-guitar"
+            },
+            {
+              "name": "analytics"
+            },
+            {
+              "name": "anchor"
+            },
+            {
+              "name": "angel"
+            },
+            {
+              "name": "angle-double-down"
+            },
+            {
+              "name": "angle-double-left"
+            },
+            {
+              "name": "angle-double-right"
+            },
+            {
+              "name": "angle-double-up"
+            },
+            {
+              "name": "angle-down"
+            },
+            {
+              "name": "angle-left"
+            },
+            {
+              "name": "angle-right"
+            },
+            {
+              "name": "angle-up"
+            },
+            {
+              "name": "angry"
+            },
+            {
+              "name": "ankh"
+            },
+            {
+              "name": "apple-alt"
+            },
+            {
+              "name": "apple-crate"
+            },
+            {
+              "name": "archive"
+            },
+            {
+              "name": "archway"
+            },
+            {
+              "name": "arrow-alt-circle-down"
+            },
+            {
+              "name": "arrow-alt-circle-left"
+            },
+            {
+              "name": "arrow-alt-circle-right"
+            },
+            {
+              "name": "arrow-alt-circle-up"
+            },
+            {
+              "name": "arrow-alt-down"
+            },
+            {
+              "name": "arrow-alt-from-bottom"
+            },
+            {
+              "name": "arrow-alt-from-left"
+            },
+            {
+              "name": "arrow-alt-from-right"
+            },
+            {
+              "name": "arrow-alt-from-top"
+            },
+            {
+              "name": "arrow-alt-left"
+            },
+            {
+              "name": "arrow-alt-right"
+            },
+            {
+              "name": "arrow-alt-square-down"
+            },
+            {
+              "name": "arrow-alt-square-left"
+            },
+            {
+              "name": "arrow-alt-square-right"
+            },
+            {
+              "name": "arrow-alt-square-up"
+            },
+            {
+              "name": "arrow-alt-to-bottom"
+            },
+            {
+              "name": "arrow-alt-to-left"
+            },
+            {
+              "name": "arrow-alt-to-right"
+            },
+            {
+              "name": "arrow-alt-to-top"
+            },
+            {
+              "name": "arrow-alt-up"
+            },
+            {
+              "name": "arrow-circle-down"
+            },
+            {
+              "name": "arrow-circle-left"
+            },
+            {
+              "name": "arrow-circle-right"
+            },
+            {
+              "name": "arrow-circle-up"
+            },
+            {
+              "name": "arrow-down"
+            },
+            {
+              "name": "arrow-from-bottom"
+            },
+            {
+              "name": "arrow-from-left"
+            },
+            {
+              "name": "arrow-from-right"
+            },
+            {
+              "name": "arrow-from-top"
+            },
+            {
+              "name": "arrow-left"
+            },
+            {
+              "name": "arrow-right"
+            },
+            {
+              "name": "arrow-square-down"
+            },
+            {
+              "name": "arrow-square-left"
+            },
+            {
+              "name": "arrow-square-right"
+            },
+            {
+              "name": "arrow-square-up"
+            },
+            {
+              "name": "arrow-to-bottom"
+            },
+            {
+              "name": "arrow-to-left"
+            },
+            {
+              "name": "arrow-to-right"
+            },
+            {
+              "name": "arrow-to-top"
+            },
+            {
+              "name": "arrow-up"
+            },
+            {
+              "name": "arrows"
+            },
+            {
+              "name": "arrows-alt"
+            },
+            {
+              "name": "arrows-alt-h"
+            },
+            {
+              "name": "arrows-alt-v"
+            },
+            {
+              "name": "arrows-h"
+            },
+            {
+              "name": "arrows-v"
+            },
+            {
+              "name": "assistive-listening-systems"
+            },
+            {
+              "name": "asterisk"
+            },
+            {
+              "name": "at"
+            },
+            {
+              "name": "atlas"
+            },
+            {
+              "name": "atom"
+            },
+            {
+              "name": "atom-alt"
+            },
+            {
+              "name": "audio-description"
+            },
+            {
+              "name": "award"
+            },
+            {
+              "name": "axe"
+            },
+            {
+              "name": "axe-battle"
+            },
+            {
+              "name": "baby"
+            },
+            {
+              "name": "baby-carriage"
+            },
+            {
+              "name": "backpack"
+            },
+            {
+              "name": "backspace"
+            },
+            {
+              "name": "backward"
+            },
+            {
+              "name": "bacon"
+            },
+            {
+              "name": "bacteria"
+            },
+            {
+              "name": "bacterium"
+            },
+            {
+              "name": "badge"
+            },
+            {
+              "name": "badge-check"
+            },
+            {
+              "name": "badge-dollar"
+            },
+            {
+              "name": "badge-percent"
+            },
+            {
+              "name": "badge-sheriff"
+            },
+            {
+              "name": "badger-honey"
+            },
+            {
+              "name": "bags-shopping"
+            },
+            {
+              "name": "bahai"
+            },
+            {
+              "name": "balance-scale"
+            },
+            {
+              "name": "balance-scale-left"
+            },
+            {
+              "name": "balance-scale-right"
+            },
+            {
+              "name": "ball-pile"
+            },
+            {
+              "name": "ballot"
+            },
+            {
+              "name": "ballot-check"
+            },
+            {
+              "name": "ban"
+            },
+            {
+              "name": "band-aid"
+            },
+            {
+              "name": "banjo"
+            },
+            {
+              "name": "barcode"
+            },
+            {
+              "name": "barcode-alt"
+            },
+            {
+              "name": "barcode-read"
+            },
+            {
+              "name": "barcode-scan"
+            },
+            {
+              "name": "bars"
+            },
+            {
+              "name": "baseball"
+            },
+            {
+              "name": "baseball-ball"
+            },
+            {
+              "name": "basketball-ball"
+            },
+            {
+              "name": "basketball-hoop"
+            },
+            {
+              "name": "bat"
+            },
+            {
+              "name": "bath"
+            },
+            {
+              "name": "battery-bolt"
+            },
+            {
+              "name": "battery-empty"
+            },
+            {
+              "name": "battery-full"
+            },
+            {
+              "name": "battery-half"
+            },
+            {
+              "name": "battery-quarter"
+            },
+            {
+              "name": "battery-slash"
+            },
+            {
+              "name": "battery-three-quarters"
+            },
+            {
+              "name": "bed"
+            },
+            {
+              "name": "bed-alt"
+            },
+            {
+              "name": "bed-bunk"
+            },
+            {
+              "name": "bed-empty"
+            },
+            {
+              "name": "beer"
+            },
+            {
+              "name": "bell"
+            },
+            {
+              "name": "bell-exclamation"
+            },
+            {
+              "name": "bell-on"
+            },
+            {
+              "name": "bell-plus"
+            },
+            {
+              "name": "bell-school"
+            },
+            {
+              "name": "bell-school-slash"
+            },
+            {
+              "name": "bell-slash"
+            },
+            {
+              "name": "bells"
+            },
+            {
+              "name": "betamax"
+            },
+            {
+              "name": "bezier-curve"
+            },
+            {
+              "name": "bible"
+            },
+            {
+              "name": "bicycle"
+            },
+            {
+              "name": "biking"
+            },
+            {
+              "name": "biking-mountain"
+            },
+            {
+              "name": "binoculars"
+            },
+            {
+              "name": "biohazard"
+            },
+            {
+              "name": "birthday-cake"
+            },
+            {
+              "name": "blanket"
+            },
+            {
+              "name": "blender"
+            },
+            {
+              "name": "blender-phone"
+            },
+            {
+              "name": "blind"
+            },
+            {
+              "name": "blinds"
+            },
+            {
+              "name": "blinds-open"
+            },
+            {
+              "name": "blinds-raised"
+            },
+            {
+              "name": "blog"
+            },
+            {
+              "name": "bold"
+            },
+            {
+              "name": "bolt"
+            },
+            {
+              "name": "bomb"
+            },
+            {
+              "name": "bone"
+            },
+            {
+              "name": "bone-break"
+            },
+            {
+              "name": "bong"
+            },
+            {
+              "name": "book"
+            },
+            {
+              "name": "book-alt"
+            },
+            {
+              "name": "book-dead"
+            },
+            {
+              "name": "book-heart"
+            },
+            {
+              "name": "book-medical"
+            },
+            {
+              "name": "book-open"
+            },
+            {
+              "name": "book-reader"
+            },
+            {
+              "name": "book-spells"
+            },
+            {
+              "name": "book-user"
+            },
+            {
+              "name": "bookmark"
+            },
+            {
+              "name": "books"
+            },
+            {
+              "name": "books-medical"
+            },
+            {
+              "name": "boombox"
+            },
+            {
+              "name": "boot"
+            },
+            {
+              "name": "booth-curtain"
+            },
+            {
+              "name": "border-all"
+            },
+            {
+              "name": "border-bottom"
+            },
+            {
+              "name": "border-center-h"
+            },
+            {
+              "name": "border-center-v"
+            },
+            {
+              "name": "border-inner"
+            },
+            {
+              "name": "border-left"
+            },
+            {
+              "name": "border-none"
+            },
+            {
+              "name": "border-outer"
+            },
+            {
+              "name": "border-right"
+            },
+            {
+              "name": "border-style"
+            },
+            {
+              "name": "border-style-alt"
+            },
+            {
+              "name": "border-top"
+            },
+            {
+              "name": "bow-arrow"
+            },
+            {
+              "name": "bowling-ball"
+            },
+            {
+              "name": "bowling-pins"
+            },
+            {
+              "name": "box"
+            },
+            {
+              "name": "box-alt"
+            },
+            {
+              "name": "box-ballot"
+            },
+            {
+              "name": "box-check"
+            },
+            {
+              "name": "box-fragile"
+            },
+            {
+              "name": "box-full"
+            },
+            {
+              "name": "box-heart"
+            },
+            {
+              "name": "box-open"
+            },
+            {
+              "name": "box-tissue"
+            },
+            {
+              "name": "box-up"
+            },
+            {
+              "name": "box-usd"
+            },
+            {
+              "name": "boxes"
+            },
+            {
+              "name": "boxes-alt"
+            },
+            {
+              "name": "boxing-glove"
+            },
+            {
+              "name": "brackets"
+            },
+            {
+              "name": "brackets-curly"
+            },
+            {
+              "name": "braille"
+            },
+            {
+              "name": "brain"
+            },
+            {
+              "name": "bread-loaf"
+            },
+            {
+              "name": "bread-slice"
+            },
+            {
+              "name": "briefcase"
+            },
+            {
+              "name": "briefcase-medical"
+            },
+            {
+              "name": "bring-forward"
+            },
+            {
+              "name": "bring-front"
+            },
+            {
+              "name": "broadcast-tower"
+            },
+            {
+              "name": "broom"
+            },
+            {
+              "name": "browser"
+            },
+            {
+              "name": "brush"
+            },
+            {
+              "name": "bug"
+            },
+            {
+              "name": "building"
+            },
+            {
+              "name": "bullhorn"
+            },
+            {
+              "name": "bullseye"
+            },
+            {
+              "name": "bullseye-arrow"
+            },
+            {
+              "name": "bullseye-pointer"
+            },
+            {
+              "name": "burger-soda"
+            },
+            {
+              "name": "burn"
+            },
+            {
+              "name": "burrito"
+            },
+            {
+              "name": "bus"
+            },
+            {
+              "name": "bus-alt"
+            },
+            {
+              "name": "bus-school"
+            },
+            {
+              "name": "business-time"
+            },
+            {
+              "name": "cabinet-filing"
+            },
+            {
+              "name": "cactus"
+            },
+            {
+              "name": "calculator"
+            },
+            {
+              "name": "calculator-alt"
+            },
+            {
+              "name": "calendar"
+            },
+            {
+              "name": "calendar-alt"
+            },
+            {
+              "name": "calendar-check"
+            },
+            {
+              "name": "calendar-day"
+            },
+            {
+              "name": "calendar-edit"
+            },
+            {
+              "name": "calendar-exclamation"
+            },
+            {
+              "name": "calendar-minus"
+            },
+            {
+              "name": "calendar-plus"
+            },
+            {
+              "name": "calendar-star"
+            },
+            {
+              "name": "calendar-times"
+            },
+            {
+              "name": "calendar-week"
+            },
+            {
+              "name": "camcorder"
+            },
+            {
+              "name": "camera"
+            },
+            {
+              "name": "camera-alt"
+            },
+            {
+              "name": "camera-home"
+            },
+            {
+              "name": "camera-movie"
+            },
+            {
+              "name": "camera-polaroid"
+            },
+            {
+              "name": "camera-retro"
+            },
+            {
+              "name": "campfire"
+            },
+            {
+              "name": "campground"
+            },
+            {
+              "name": "candle-holder"
+            },
+            {
+              "name": "candy-cane"
+            },
+            {
+              "name": "candy-corn"
+            },
+            {
+              "name": "cannabis"
+            },
+            {
+              "name": "capsules"
+            },
+            {
+              "name": "car"
+            },
+            {
+              "name": "car-alt"
+            },
+            {
+              "name": "car-battery"
+            },
+            {
+              "name": "car-building"
+            },
+            {
+              "name": "car-bump"
+            },
+            {
+              "name": "car-bus"
+            },
+            {
+              "name": "car-crash"
+            },
+            {
+              "name": "car-garage"
+            },
+            {
+              "name": "car-mechanic"
+            },
+            {
+              "name": "car-side"
+            },
+            {
+              "name": "car-tilt"
+            },
+            {
+              "name": "car-wash"
+            },
+            {
+              "name": "caravan"
+            },
+            {
+              "name": "caravan-alt"
+            },
+            {
+              "name": "caret-circle-down"
+            },
+            {
+              "name": "caret-circle-left"
+            },
+            {
+              "name": "caret-circle-right"
+            },
+            {
+              "name": "caret-circle-up"
+            },
+            {
+              "name": "caret-down"
+            },
+            {
+              "name": "caret-left"
+            },
+            {
+              "name": "caret-right"
+            },
+            {
+              "name": "caret-square-down"
+            },
+            {
+              "name": "caret-square-left"
+            },
+            {
+              "name": "caret-square-right"
+            },
+            {
+              "name": "caret-square-up"
+            },
+            {
+              "name": "caret-up"
+            },
+            {
+              "name": "carrot"
+            },
+            {
+              "name": "cars"
+            },
+            {
+              "name": "cart-arrow-down"
+            },
+            {
+              "name": "cart-plus"
+            },
+            {
+              "name": "cash-register"
+            },
+            {
+              "name": "cassette-tape"
+            },
+            {
+              "name": "cat"
+            },
+            {
+              "name": "cat-space"
+            },
+            {
+              "name": "cauldron"
+            },
+            {
+              "name": "cctv"
+            },
+            {
+              "name": "certificate"
+            },
+            {
+              "name": "chair"
+            },
+            {
+              "name": "chair-office"
+            },
+            {
+              "name": "chalkboard"
+            },
+            {
+              "name": "chalkboard-teacher"
+            },
+            {
+              "name": "charging-station"
+            },
+            {
+              "name": "chart-area"
+            },
+            {
+              "name": "chart-bar"
+            },
+            {
+              "name": "chart-line"
+            },
+            {
+              "name": "chart-line-down"
+            },
+            {
+              "name": "chart-network"
+            },
+            {
+              "name": "chart-pie"
+            },
+            {
+              "name": "chart-pie-alt"
+            },
+            {
+              "name": "chart-scatter"
+            },
+            {
+              "name": "check"
+            },
+            {
+              "name": "check-circle"
+            },
+            {
+              "name": "check-double"
+            },
+            {
+              "name": "check-square"
+            },
+            {
+              "name": "cheese"
+            },
+            {
+              "name": "cheese-swiss"
+            },
+            {
+              "name": "cheeseburger"
+            },
+            {
+              "name": "chess"
+            },
+            {
+              "name": "chess-bishop"
+            },
+            {
+              "name": "chess-bishop-alt"
+            },
+            {
+              "name": "chess-board"
+            },
+            {
+              "name": "chess-clock"
+            },
+            {
+              "name": "chess-clock-alt"
+            },
+            {
+              "name": "chess-king"
+            },
+            {
+              "name": "chess-king-alt"
+            },
+            {
+              "name": "chess-knight"
+            },
+            {
+              "name": "chess-knight-alt"
+            },
+            {
+              "name": "chess-pawn"
+            },
+            {
+              "name": "chess-pawn-alt"
+            },
+            {
+              "name": "chess-queen"
+            },
+            {
+              "name": "chess-queen-alt"
+            },
+            {
+              "name": "chess-rook"
+            },
+            {
+              "name": "chess-rook-alt"
+            },
+            {
+              "name": "chevron-circle-down"
+            },
+            {
+              "name": "chevron-circle-left"
+            },
+            {
+              "name": "chevron-circle-right"
+            },
+            {
+              "name": "chevron-circle-up"
+            },
+            {
+              "name": "chevron-double-down"
+            },
+            {
+              "name": "chevron-double-left"
+            },
+            {
+              "name": "chevron-double-right"
+            },
+            {
+              "name": "chevron-double-up"
+            },
+            {
+              "name": "chevron-down"
+            },
+            {
+              "name": "chevron-left"
+            },
+            {
+              "name": "chevron-right"
+            },
+            {
+              "name": "chevron-square-down"
+            },
+            {
+              "name": "chevron-square-left"
+            },
+            {
+              "name": "chevron-square-right"
+            },
+            {
+              "name": "chevron-square-up"
+            },
+            {
+              "name": "chevron-up"
+            },
+            {
+              "name": "child"
+            },
+            {
+              "name": "chimney"
+            },
+            {
+              "name": "church"
+            },
+            {
+              "name": "circle"
+            },
+            {
+              "name": "circle-notch"
+            },
+            {
+              "name": "city"
+            },
+            {
+              "name": "clarinet"
+            },
+            {
+              "name": "claw-marks"
+            },
+            {
+              "name": "clinic-medical"
+            },
+            {
+              "name": "clipboard"
+            },
+            {
+              "name": "clipboard-check"
+            },
+            {
+              "name": "clipboard-list"
+            },
+            {
+              "name": "clipboard-list-check"
+            },
+            {
+              "name": "clipboard-prescription"
+            },
+            {
+              "name": "clipboard-user"
+            },
+            {
+              "name": "clock"
+            },
+            {
+              "name": "clone"
+            },
+            {
+              "name": "closed-captioning"
+            },
+            {
+              "name": "cloud"
+            },
+            {
+              "name": "cloud-download"
+            },
+            {
+              "name": "cloud-download-alt"
+            },
+            {
+              "name": "cloud-drizzle"
+            },
+            {
+              "name": "cloud-hail"
+            },
+            {
+              "name": "cloud-hail-mixed"
+            },
+            {
+              "name": "cloud-meatball"
+            },
+            {
+              "name": "cloud-moon"
+            },
+            {
+              "name": "cloud-moon-rain"
+            },
+            {
+              "name": "cloud-music"
+            },
+            {
+              "name": "cloud-rain"
+            },
+            {
+              "name": "cloud-rainbow"
+            },
+            {
+              "name": "cloud-showers"
+            },
+            {
+              "name": "cloud-showers-heavy"
+            },
+            {
+              "name": "cloud-sleet"
+            },
+            {
+              "name": "cloud-snow"
+            },
+            {
+              "name": "cloud-sun"
+            },
+            {
+              "name": "cloud-sun-rain"
+            },
+            {
+              "name": "cloud-upload"
+            },
+            {
+              "name": "cloud-upload-alt"
+            },
+            {
+              "name": "clouds"
+            },
+            {
+              "name": "clouds-moon"
+            },
+            {
+              "name": "clouds-sun"
+            },
+            {
+              "name": "club"
+            },
+            {
+              "name": "cocktail"
+            },
+            {
+              "name": "code"
+            },
+            {
+              "name": "code-branch"
+            },
+            {
+              "name": "code-commit"
+            },
+            {
+              "name": "code-merge"
+            },
+            {
+              "name": "coffee"
+            },
+            {
+              "name": "coffee-pot"
+            },
+            {
+              "name": "coffee-togo"
+            },
+            {
+              "name": "coffin"
+            },
+            {
+              "name": "coffin-cross"
+            },
+            {
+              "name": "cog"
+            },
+            {
+              "name": "cogs"
+            },
+            {
+              "name": "coin"
+            },
+            {
+              "name": "coins"
+            },
+            {
+              "name": "columns"
+            },
+            {
+              "name": "comet"
+            },
+            {
+              "name": "comment"
+            },
+            {
+              "name": "comment-alt"
+            },
+            {
+              "name": "comment-alt-check"
+            },
+            {
+              "name": "comment-alt-dollar"
+            },
+            {
+              "name": "comment-alt-dots"
+            },
+            {
+              "name": "comment-alt-edit"
+            },
+            {
+              "name": "comment-alt-exclamation"
+            },
+            {
+              "name": "comment-alt-lines"
+            },
+            {
+              "name": "comment-alt-medical"
+            },
+            {
+              "name": "comment-alt-minus"
+            },
+            {
+              "name": "comment-alt-music"
+            },
+            {
+              "name": "comment-alt-plus"
+            },
+            {
+              "name": "comment-alt-slash"
+            },
+            {
+              "name": "comment-alt-smile"
+            },
+            {
+              "name": "comment-alt-times"
+            },
+            {
+              "name": "comment-check"
+            },
+            {
+              "name": "comment-dollar"
+            },
+            {
+              "name": "comment-dots"
+            },
+            {
+              "name": "comment-edit"
+            },
+            {
+              "name": "comment-exclamation"
+            },
+            {
+              "name": "comment-lines"
+            },
+            {
+              "name": "comment-medical"
+            },
+            {
+              "name": "comment-minus"
+            },
+            {
+              "name": "comment-music"
+            },
+            {
+              "name": "comment-plus"
+            },
+            {
+              "name": "comment-slash"
+            },
+            {
+              "name": "comment-smile"
+            },
+            {
+              "name": "comment-times"
+            },
+            {
+              "name": "comments"
+            },
+            {
+              "name": "comments-alt"
+            },
+            {
+              "name": "comments-alt-dollar"
+            },
+            {
+              "name": "comments-dollar"
+            },
+            {
+              "name": "compact-disc"
+            },
+            {
+              "name": "compass"
+            },
+            {
+              "name": "compass-slash"
+            },
+            {
+              "name": "compress"
+            },
+            {
+              "name": "compress-alt"
+            },
+            {
+              "name": "compress-arrows-alt"
+            },
+            {
+              "name": "compress-wide"
+            },
+            {
+              "name": "computer-classic"
+            },
+            {
+              "name": "computer-speaker"
+            },
+            {
+              "name": "concierge-bell"
+            },
+            {
+              "name": "construction"
+            },
+            {
+              "name": "container-storage"
+            },
+            {
+              "name": "conveyor-belt"
+            },
+            {
+              "name": "conveyor-belt-alt"
+            },
+            {
+              "name": "cookie"
+            },
+            {
+              "name": "cookie-bite"
+            },
+            {
+              "name": "copy"
+            },
+            {
+              "name": "copyright"
+            },
+            {
+              "name": "corn"
+            },
+            {
+              "name": "couch"
+            },
+            {
+              "name": "cow"
+            },
+            {
+              "name": "cowbell"
+            },
+            {
+              "name": "cowbell-more"
+            },
+            {
+              "name": "credit-card"
+            },
+            {
+              "name": "credit-card-blank"
+            },
+            {
+              "name": "credit-card-front"
+            },
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "croissant"
+            },
+            {
+              "name": "crop"
+            },
+            {
+              "name": "crop-alt"
+            },
+            {
+              "name": "cross"
+            },
+            {
+              "name": "crosshairs"
+            },
+            {
+              "name": "crow"
+            },
+            {
+              "name": "crown"
+            },
+            {
+              "name": "crutch"
+            },
+            {
+              "name": "crutches"
+            },
+            {
+              "name": "cube"
+            },
+            {
+              "name": "cubes"
+            },
+            {
+              "name": "curling"
+            },
+            {
+              "name": "cut"
+            },
+            {
+              "name": "dagger"
+            },
+            {
+              "name": "database"
+            },
+            {
+              "name": "deaf"
+            },
+            {
+              "name": "debug"
+            },
+            {
+              "name": "deer"
+            },
+            {
+              "name": "deer-rudolph"
+            },
+            {
+              "name": "democrat"
+            },
+            {
+              "name": "desktop"
+            },
+            {
+              "name": "desktop-alt"
+            },
+            {
+              "name": "dewpoint"
+            },
+            {
+              "name": "dharmachakra"
+            },
+            {
+              "name": "diagnoses"
+            },
+            {
+              "name": "diamond"
+            },
+            {
+              "name": "dice"
+            },
+            {
+              "name": "dice-d10"
+            },
+            {
+              "name": "dice-d12"
+            },
+            {
+              "name": "dice-d20"
+            },
+            {
+              "name": "dice-d4"
+            },
+            {
+              "name": "dice-d6"
+            },
+            {
+              "name": "dice-d8"
+            },
+            {
+              "name": "dice-five"
+            },
+            {
+              "name": "dice-four"
+            },
+            {
+              "name": "dice-one"
+            },
+            {
+              "name": "dice-six"
+            },
+            {
+              "name": "dice-three"
+            },
+            {
+              "name": "dice-two"
+            },
+            {
+              "name": "digging"
+            },
+            {
+              "name": "digital-tachograph"
+            },
+            {
+              "name": "diploma"
+            },
+            {
+              "name": "directions"
+            },
+            {
+              "name": "disc-drive"
+            },
+            {
+              "name": "disease"
+            },
+            {
+              "name": "divide"
+            },
+            {
+              "name": "dizzy"
+            },
+            {
+              "name": "dna"
+            },
+            {
+              "name": "do-not-enter"
+            },
+            {
+              "name": "dog"
+            },
+            {
+              "name": "dog-leashed"
+            },
+            {
+              "name": "dollar-sign"
+            },
+            {
+              "name": "dolly"
+            },
+            {
+              "name": "dolly-empty"
+            },
+            {
+              "name": "dolly-flatbed"
+            },
+            {
+              "name": "dolly-flatbed-alt"
+            },
+            {
+              "name": "dolly-flatbed-empty"
+            },
+            {
+              "name": "donate"
+            },
+            {
+              "name": "door-closed"
+            },
+            {
+              "name": "door-open"
+            },
+            {
+              "name": "dot-circle"
+            },
+            {
+              "name": "dove"
+            },
+            {
+              "name": "download"
+            },
+            {
+              "name": "drafting-compass"
+            },
+            {
+              "name": "dragon"
+            },
+            {
+              "name": "draw-circle"
+            },
+            {
+              "name": "draw-polygon"
+            },
+            {
+              "name": "draw-square"
+            },
+            {
+              "name": "dreidel"
+            },
+            {
+              "name": "drone"
+            },
+            {
+              "name": "drone-alt"
+            },
+            {
+              "name": "drum"
+            },
+            {
+              "name": "drum-steelpan"
+            },
+            {
+              "name": "drumstick"
+            },
+            {
+              "name": "drumstick-bite"
+            },
+            {
+              "name": "dryer"
+            },
+            {
+              "name": "dryer-alt"
+            },
+            {
+              "name": "duck"
+            },
+            {
+              "name": "dumbbell"
+            },
+            {
+              "name": "dumpster"
+            },
+            {
+              "name": "dumpster-fire"
+            },
+            {
+              "name": "dungeon"
+            },
+            {
+              "name": "ear"
+            },
+            {
+              "name": "ear-muffs"
+            },
+            {
+              "name": "eclipse"
+            },
+            {
+              "name": "eclipse-alt"
+            },
+            {
+              "name": "edit"
+            },
+            {
+              "name": "egg"
+            },
+            {
+              "name": "egg-fried"
+            },
+            {
+              "name": "eject"
+            },
+            {
+              "name": "elephant"
+            },
+            {
+              "name": "ellipsis-h"
+            },
+            {
+              "name": "ellipsis-h-alt"
+            },
+            {
+              "name": "ellipsis-v"
+            },
+            {
+              "name": "ellipsis-v-alt"
+            },
+            {
+              "name": "empty-set"
+            },
+            {
+              "name": "engine-warning"
+            },
+            {
+              "name": "envelope"
+            },
+            {
+              "name": "envelope-open"
+            },
+            {
+              "name": "envelope-open-dollar"
+            },
+            {
+              "name": "envelope-open-text"
+            },
+            {
+              "name": "envelope-square"
+            },
+            {
+              "name": "equals"
+            },
+            {
+              "name": "eraser"
+            },
+            {
+              "name": "ethernet"
+            },
+            {
+              "name": "euro-sign"
+            },
+            {
+              "name": "exchange"
+            },
+            {
+              "name": "exchange-alt"
+            },
+            {
+              "name": "exclamation"
+            },
+            {
+              "name": "exclamation-circle"
+            },
+            {
+              "name": "exclamation-square"
+            },
+            {
+              "name": "exclamation-triangle"
+            },
+            {
+              "name": "expand"
+            },
+            {
+              "name": "expand-alt"
+            },
+            {
+              "name": "expand-arrows"
+            },
+            {
+              "name": "expand-arrows-alt"
+            },
+            {
+              "name": "expand-wide"
+            },
+            {
+              "name": "external-link"
+            },
+            {
+              "name": "external-link-alt"
+            },
+            {
+              "name": "external-link-square"
+            },
+            {
+              "name": "external-link-square-alt"
+            },
+            {
+              "name": "eye"
+            },
+            {
+              "name": "eye-dropper"
+            },
+            {
+              "name": "eye-evil"
+            },
+            {
+              "name": "eye-slash"
+            },
+            {
+              "name": "fan"
+            },
+            {
+              "name": "fan-table"
+            },
+            {
+              "name": "farm"
+            },
+            {
+              "name": "fast-backward"
+            },
+            {
+              "name": "fast-forward"
+            },
+            {
+              "name": "faucet"
+            },
+            {
+              "name": "faucet-drip"
+            },
+            {
+              "name": "fax"
+            },
+            {
+              "name": "feather"
+            },
+            {
+              "name": "feather-alt"
+            },
+            {
+              "name": "female"
+            },
+            {
+              "name": "field-hockey"
+            },
+            {
+              "name": "fighter-jet"
+            },
+            {
+              "name": "file"
+            },
+            {
+              "name": "file-alt"
+            },
+            {
+              "name": "file-archive"
+            },
+            {
+              "name": "file-audio"
+            },
+            {
+              "name": "file-certificate"
+            },
+            {
+              "name": "file-chart-line"
+            },
+            {
+              "name": "file-chart-pie"
+            },
+            {
+              "name": "file-check"
+            },
+            {
+              "name": "file-code"
+            },
+            {
+              "name": "file-contract"
+            },
+            {
+              "name": "file-csv"
+            },
+            {
+              "name": "file-download"
+            },
+            {
+              "name": "file-edit"
+            },
+            {
+              "name": "file-excel"
+            },
+            {
+              "name": "file-exclamation"
+            },
+            {
+              "name": "file-export"
+            },
+            {
+              "name": "file-image"
+            },
+            {
+              "name": "file-import"
+            },
+            {
+              "name": "file-invoice"
+            },
+            {
+              "name": "file-invoice-dollar"
+            },
+            {
+              "name": "file-medical"
+            },
+            {
+              "name": "file-medical-alt"
+            },
+            {
+              "name": "file-minus"
+            },
+            {
+              "name": "file-music"
+            },
+            {
+              "name": "file-pdf"
+            },
+            {
+              "name": "file-plus"
+            },
+            {
+              "name": "file-powerpoint"
+            },
+            {
+              "name": "file-prescription"
+            },
+            {
+              "name": "file-search"
+            },
+            {
+              "name": "file-signature"
+            },
+            {
+              "name": "file-spreadsheet"
+            },
+            {
+              "name": "file-times"
+            },
+            {
+              "name": "file-upload"
+            },
+            {
+              "name": "file-user"
+            },
+            {
+              "name": "file-video"
+            },
+            {
+              "name": "file-word"
+            },
+            {
+              "name": "files-medical"
+            },
+            {
+              "name": "fill"
+            },
+            {
+              "name": "fill-drip"
+            },
+            {
+              "name": "film"
+            },
+            {
+              "name": "film-alt"
+            },
+            {
+              "name": "film-canister"
+            },
+            {
+              "name": "filter"
+            },
+            {
+              "name": "fingerprint"
+            },
+            {
+              "name": "fire"
+            },
+            {
+              "name": "fire-alt"
+            },
+            {
+              "name": "fire-extinguisher"
+            },
+            {
+              "name": "fire-smoke"
+            },
+            {
+              "name": "fireplace"
+            },
+            {
+              "name": "first-aid"
+            },
+            {
+              "name": "fish"
+            },
+            {
+              "name": "fish-cooked"
+            },
+            {
+              "name": "fist-raised"
+            },
+            {
+              "name": "flag"
+            },
+            {
+              "name": "flag-alt"
+            },
+            {
+              "name": "flag-checkered"
+            },
+            {
+              "name": "flag-usa"
+            },
+            {
+              "name": "flame"
+            },
+            {
+              "name": "flashlight"
+            },
+            {
+              "name": "flask"
+            },
+            {
+              "name": "flask-poison"
+            },
+            {
+              "name": "flask-potion"
+            },
+            {
+              "name": "flower"
+            },
+            {
+              "name": "flower-daffodil"
+            },
+            {
+              "name": "flower-tulip"
+            },
+            {
+              "name": "flushed"
+            },
+            {
+              "name": "flute"
+            },
+            {
+              "name": "flux-capacitor"
+            },
+            {
+              "name": "fog"
+            },
+            {
+              "name": "folder"
+            },
+            {
+              "name": "folder-download"
+            },
+            {
+              "name": "folder-minus"
+            },
+            {
+              "name": "folder-open"
+            },
+            {
+              "name": "folder-plus"
+            },
+            {
+              "name": "folder-times"
+            },
+            {
+              "name": "folder-tree"
+            },
+            {
+              "name": "folder-upload"
+            },
+            {
+              "name": "folders"
+            },
+            {
+              "name": "font"
+            },
+            {
+              "name": "font-case"
+            },
+            {
+              "name": "football-ball"
+            },
+            {
+              "name": "football-helmet"
+            },
+            {
+              "name": "forklift"
+            },
+            {
+              "name": "forward"
+            },
+            {
+              "name": "fragile"
+            },
+            {
+              "name": "french-fries"
+            },
+            {
+              "name": "frog"
+            },
+            {
+              "name": "frosty-head"
+            },
+            {
+              "name": "frown"
+            },
+            {
+              "name": "frown-open"
+            },
+            {
+              "name": "funnel-dollar"
+            },
+            {
+              "name": "futbol"
+            },
+            {
+              "name": "galaxy"
+            },
+            {
+              "name": "game-board"
+            },
+            {
+              "name": "game-board-alt"
+            },
+            {
+              "name": "game-console-handheld"
+            },
+            {
+              "name": "gamepad"
+            },
+            {
+              "name": "gamepad-alt"
+            },
+            {
+              "name": "garage"
+            },
+            {
+              "name": "garage-car"
+            },
+            {
+              "name": "garage-open"
+            },
+            {
+              "name": "gas-pump"
+            },
+            {
+              "name": "gas-pump-slash"
+            },
+            {
+              "name": "gavel"
+            },
+            {
+              "name": "gem"
+            },
+            {
+              "name": "genderless"
+            },
+            {
+              "name": "ghost"
+            },
+            {
+              "name": "gift"
+            },
+            {
+              "name": "gift-card"
+            },
+            {
+              "name": "gifts"
+            },
+            {
+              "name": "gingerbread-man"
+            },
+            {
+              "name": "glass"
+            },
+            {
+              "name": "glass-champagne"
+            },
+            {
+              "name": "glass-cheers"
+            },
+            {
+              "name": "glass-citrus"
+            },
+            {
+              "name": "glass-martini"
+            },
+            {
+              "name": "glass-martini-alt"
+            },
+            {
+              "name": "glass-whiskey"
+            },
+            {
+              "name": "glass-whiskey-rocks"
+            },
+            {
+              "name": "glasses"
+            },
+            {
+              "name": "glasses-alt"
+            },
+            {
+              "name": "globe"
+            },
+            {
+              "name": "globe-africa"
+            },
+            {
+              "name": "globe-americas"
+            },
+            {
+              "name": "globe-asia"
+            },
+            {
+              "name": "globe-europe"
+            },
+            {
+              "name": "globe-snow"
+            },
+            {
+              "name": "globe-stand"
+            },
+            {
+              "name": "golf-ball"
+            },
+            {
+              "name": "golf-club"
+            },
+            {
+              "name": "gopuram"
+            },
+            {
+              "name": "graduation-cap"
+            },
+            {
+              "name": "gramophone"
+            },
+            {
+              "name": "greater-than"
+            },
+            {
+              "name": "greater-than-equal"
+            },
+            {
+              "name": "grimace"
+            },
+            {
+              "name": "grin"
+            },
+            {
+              "name": "grin-alt"
+            },
+            {
+              "name": "grin-beam"
+            },
+            {
+              "name": "grin-beam-sweat"
+            },
+            {
+              "name": "grin-hearts"
+            },
+            {
+              "name": "grin-squint"
+            },
+            {
+              "name": "grin-squint-tears"
+            },
+            {
+              "name": "grin-stars"
+            },
+            {
+              "name": "grin-tears"
+            },
+            {
+              "name": "grin-tongue"
+            },
+            {
+              "name": "grin-tongue-squint"
+            },
+            {
+              "name": "grin-tongue-wink"
+            },
+            {
+              "name": "grin-wink"
+            },
+            {
+              "name": "grip-horizontal"
+            },
+            {
+              "name": "grip-lines"
+            },
+            {
+              "name": "grip-lines-vertical"
+            },
+            {
+              "name": "grip-vertical"
+            },
+            {
+              "name": "guitar"
+            },
+            {
+              "name": "guitar-electric"
+            },
+            {
+              "name": "guitars"
+            },
+            {
+              "name": "h-square"
+            },
+            {
+              "name": "h1"
+            },
+            {
+              "name": "h2"
+            },
+            {
+              "name": "h3"
+            },
+            {
+              "name": "h4"
+            },
+            {
+              "name": "hamburger"
+            },
+            {
+              "name": "hammer"
+            },
+            {
+              "name": "hammer-war"
+            },
+            {
+              "name": "hamsa"
+            },
+            {
+              "name": "hand-heart"
+            },
+            {
+              "name": "hand-holding"
+            },
+            {
+              "name": "hand-holding-box"
+            },
+            {
+              "name": "hand-holding-heart"
+            },
+            {
+              "name": "hand-holding-magic"
+            },
+            {
+              "name": "hand-holding-medical"
+            },
+            {
+              "name": "hand-holding-seedling"
+            },
+            {
+              "name": "hand-holding-usd"
+            },
+            {
+              "name": "hand-holding-water"
+            },
+            {
+              "name": "hand-lizard"
+            },
+            {
+              "name": "hand-middle-finger"
+            },
+            {
+              "name": "hand-paper"
+            },
+            {
+              "name": "hand-peace"
+            },
+            {
+              "name": "hand-point-down"
+            },
+            {
+              "name": "hand-point-left"
+            },
+            {
+              "name": "hand-point-right"
+            },
+            {
+              "name": "hand-point-up"
+            },
+            {
+              "name": "hand-pointer"
+            },
+            {
+              "name": "hand-receiving"
+            },
+            {
+              "name": "hand-rock"
+            },
+            {
+              "name": "hand-scissors"
+            },
+            {
+              "name": "hand-sparkles"
+            },
+            {
+              "name": "hand-spock"
+            },
+            {
+              "name": "hands"
+            },
+            {
+              "name": "hands-heart"
+            },
+            {
+              "name": "hands-helping"
+            },
+            {
+              "name": "hands-usd"
+            },
+            {
+              "name": "hands-wash"
+            },
+            {
+              "name": "handshake"
+            },
+            {
+              "name": "handshake-alt"
+            },
+            {
+              "name": "handshake-alt-slash"
+            },
+            {
+              "name": "handshake-slash"
+            },
+            {
+              "name": "hanukiah"
+            },
+            {
+              "name": "hard-hat"
+            },
+            {
+              "name": "hashtag"
+            },
+            {
+              "name": "hat-chef"
+            },
+            {
+              "name": "hat-cowboy"
+            },
+            {
+              "name": "hat-cowboy-side"
+            },
+            {
+              "name": "hat-santa"
+            },
+            {
+              "name": "hat-winter"
+            },
+            {
+              "name": "hat-witch"
+            },
+            {
+              "name": "hat-wizard"
+            },
+            {
+              "name": "hdd"
+            },
+            {
+              "name": "head-side"
+            },
+            {
+              "name": "head-side-brain"
+            },
+            {
+              "name": "head-side-cough"
+            },
+            {
+              "name": "head-side-cough-slash"
+            },
+            {
+              "name": "head-side-headphones"
+            },
+            {
+              "name": "head-side-mask"
+            },
+            {
+              "name": "head-side-medical"
+            },
+            {
+              "name": "head-side-virus"
+            },
+            {
+              "name": "head-vr"
+            },
+            {
+              "name": "heading"
+            },
+            {
+              "name": "headphones"
+            },
+            {
+              "name": "headphones-alt"
+            },
+            {
+              "name": "headset"
+            },
+            {
+              "name": "heart"
+            },
+            {
+              "name": "heart-broken"
+            },
+            {
+              "name": "heart-circle"
+            },
+            {
+              "name": "heart-rate"
+            },
+            {
+              "name": "heart-square"
+            },
+            {
+              "name": "heartbeat"
+            },
+            {
+              "name": "heat"
+            },
+            {
+              "name": "helicopter"
+            },
+            {
+              "name": "helmet-battle"
+            },
+            {
+              "name": "hexagon"
+            },
+            {
+              "name": "highlighter"
+            },
+            {
+              "name": "hiking"
+            },
+            {
+              "name": "hippo"
+            },
+            {
+              "name": "history"
+            },
+            {
+              "name": "hockey-mask"
+            },
+            {
+              "name": "hockey-puck"
+            },
+            {
+              "name": "hockey-sticks"
+            },
+            {
+              "name": "holly-berry"
+            },
+            {
+              "name": "home"
+            },
+            {
+              "name": "home-alt"
+            },
+            {
+              "name": "home-heart"
+            },
+            {
+              "name": "home-lg"
+            },
+            {
+              "name": "home-lg-alt"
+            },
+            {
+              "name": "hood-cloak"
+            },
+            {
+              "name": "horizontal-rule"
+            },
+            {
+              "name": "horse"
+            },
+            {
+              "name": "horse-head"
+            },
+            {
+              "name": "horse-saddle"
+            },
+            {
+              "name": "hospital"
+            },
+            {
+              "name": "hospital-alt"
+            },
+            {
+              "name": "hospital-symbol"
+            },
+            {
+              "name": "hospital-user"
+            },
+            {
+              "name": "hospitals"
+            },
+            {
+              "name": "hot-tub"
+            },
+            {
+              "name": "hotdog"
+            },
+            {
+              "name": "hotel"
+            },
+            {
+              "name": "hourglass"
+            },
+            {
+              "name": "hourglass-end"
+            },
+            {
+              "name": "hourglass-half"
+            },
+            {
+              "name": "hourglass-start"
+            },
+            {
+              "name": "house"
+            },
+            {
+              "name": "house-damage"
+            },
+            {
+              "name": "house-day"
+            },
+            {
+              "name": "house-flood"
+            },
+            {
+              "name": "house-leave"
+            },
+            {
+              "name": "house-night"
+            },
+            {
+              "name": "house-return"
+            },
+            {
+              "name": "house-signal"
+            },
+            {
+              "name": "house-user"
+            },
+            {
+              "name": "hryvnia"
+            },
+            {
+              "name": "humidity"
+            },
+            {
+              "name": "hurricane"
+            },
+            {
+              "name": "i-cursor"
+            },
+            {
+              "name": "ice-cream"
+            },
+            {
+              "name": "ice-skate"
+            },
+            {
+              "name": "icicles"
+            },
+            {
+              "name": "icons"
+            },
+            {
+              "name": "icons-alt"
+            },
+            {
+              "name": "id-badge"
+            },
+            {
+              "name": "id-card"
+            },
+            {
+              "name": "id-card-alt"
+            },
+            {
+              "name": "igloo"
+            },
+            {
+              "name": "image"
+            },
+            {
+              "name": "image-polaroid"
+            },
+            {
+              "name": "images"
+            },
+            {
+              "name": "inbox"
+            },
+            {
+              "name": "inbox-in"
+            },
+            {
+              "name": "inbox-out"
+            },
+            {
+              "name": "indent"
+            },
+            {
+              "name": "industry"
+            },
+            {
+              "name": "industry-alt"
+            },
+            {
+              "name": "infinity"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "info-circle"
+            },
+            {
+              "name": "info-square"
+            },
+            {
+              "name": "inhaler"
+            },
+            {
+              "name": "integral"
+            },
+            {
+              "name": "intersection"
+            },
+            {
+              "name": "inventory"
+            },
+            {
+              "name": "island-tropical"
+            },
+            {
+              "name": "italic"
+            },
+            {
+              "name": "jack-o-lantern"
+            },
+            {
+              "name": "jedi"
+            },
+            {
+              "name": "joint"
+            },
+            {
+              "name": "journal-whills"
+            },
+            {
+              "name": "joystick"
+            },
+            {
+              "name": "jug"
+            },
+            {
+              "name": "kaaba"
+            },
+            {
+              "name": "kazoo"
+            },
+            {
+              "name": "kerning"
+            },
+            {
+              "name": "key"
+            },
+            {
+              "name": "key-skeleton"
+            },
+            {
+              "name": "keyboard"
+            },
+            {
+              "name": "keynote"
+            },
+            {
+              "name": "khanda"
+            },
+            {
+              "name": "kidneys"
+            },
+            {
+              "name": "kiss"
+            },
+            {
+              "name": "kiss-beam"
+            },
+            {
+              "name": "kiss-wink-heart"
+            },
+            {
+              "name": "kite"
+            },
+            {
+              "name": "kiwi-bird"
+            },
+            {
+              "name": "knife-kitchen"
+            },
+            {
+              "name": "lambda"
+            },
+            {
+              "name": "lamp"
+            },
+            {
+              "name": "lamp-desk"
+            },
+            {
+              "name": "lamp-floor"
+            },
+            {
+              "name": "landmark"
+            },
+            {
+              "name": "landmark-alt"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "laptop"
+            },
+            {
+              "name": "laptop-code"
+            },
+            {
+              "name": "laptop-house"
+            },
+            {
+              "name": "laptop-medical"
+            },
+            {
+              "name": "lasso"
+            },
+            {
+              "name": "laugh"
+            },
+            {
+              "name": "laugh-beam"
+            },
+            {
+              "name": "laugh-squint"
+            },
+            {
+              "name": "laugh-wink"
+            },
+            {
+              "name": "layer-group"
+            },
+            {
+              "name": "layer-minus"
+            },
+            {
+              "name": "layer-plus"
+            },
+            {
+              "name": "leaf"
+            },
+            {
+              "name": "leaf-heart"
+            },
+            {
+              "name": "leaf-maple"
+            },
+            {
+              "name": "leaf-oak"
+            },
+            {
+              "name": "lemon"
+            },
+            {
+              "name": "less-than"
+            },
+            {
+              "name": "less-than-equal"
+            },
+            {
+              "name": "level-down"
+            },
+            {
+              "name": "level-down-alt"
+            },
+            {
+              "name": "level-up"
+            },
+            {
+              "name": "level-up-alt"
+            },
+            {
+              "name": "life-ring"
+            },
+            {
+              "name": "light-ceiling"
+            },
+            {
+              "name": "light-switch"
+            },
+            {
+              "name": "light-switch-off"
+            },
+            {
+              "name": "light-switch-on"
+            },
+            {
+              "name": "lightbulb"
+            },
+            {
+              "name": "lightbulb-dollar"
+            },
+            {
+              "name": "lightbulb-exclamation"
+            },
+            {
+              "name": "lightbulb-on"
+            },
+            {
+              "name": "lightbulb-slash"
+            },
+            {
+              "name": "lights-holiday"
+            },
+            {
+              "name": "line-columns"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "link"
+            },
+            {
+              "name": "lips"
+            },
+            {
+              "name": "lira-sign"
+            },
+            {
+              "name": "list"
+            },
+            {
+              "name": "list-alt"
+            },
+            {
+              "name": "list-music"
+            },
+            {
+              "name": "list-ol"
+            },
+            {
+              "name": "list-ul"
+            },
+            {
+              "name": "location"
+            },
+            {
+              "name": "location-arrow"
+            },
+            {
+              "name": "location-circle"
+            },
+            {
+              "name": "location-slash"
+            },
+            {
+              "name": "lock"
+            },
+            {
+              "name": "lock-alt"
+            },
+            {
+              "name": "lock-open"
+            },
+            {
+              "name": "lock-open-alt"
+            },
+            {
+              "name": "long-arrow-alt-down"
+            },
+            {
+              "name": "long-arrow-alt-left"
+            },
+            {
+              "name": "long-arrow-alt-right"
+            },
+            {
+              "name": "long-arrow-alt-up"
+            },
+            {
+              "name": "long-arrow-down"
+            },
+            {
+              "name": "long-arrow-left"
+            },
+            {
+              "name": "long-arrow-right"
+            },
+            {
+              "name": "long-arrow-up"
+            },
+            {
+              "name": "loveseat"
+            },
+            {
+              "name": "low-vision"
+            },
+            {
+              "name": "luchador"
+            },
+            {
+              "name": "luggage-cart"
+            },
+            {
+              "name": "lungs"
+            },
+            {
+              "name": "lungs-virus"
+            },
+            {
+              "name": "mace"
+            },
+            {
+              "name": "magic"
+            },
+            {
+              "name": "magnet"
+            },
+            {
+              "name": "mail-bulk"
+            },
+            {
+              "name": "mailbox"
+            },
+            {
+              "name": "male"
+            },
+            {
+              "name": "mandolin"
+            },
+            {
+              "name": "map"
+            },
+            {
+              "name": "map-marked"
+            },
+            {
+              "name": "map-marked-alt"
+            },
+            {
+              "name": "map-marker"
+            },
+            {
+              "name": "map-marker-alt"
+            },
+            {
+              "name": "map-marker-alt-slash"
+            },
+            {
+              "name": "map-marker-check"
+            },
+            {
+              "name": "map-marker-edit"
+            },
+            {
+              "name": "map-marker-exclamation"
+            },
+            {
+              "name": "map-marker-minus"
+            },
+            {
+              "name": "map-marker-plus"
+            },
+            {
+              "name": "map-marker-question"
+            },
+            {
+              "name": "map-marker-slash"
+            },
+            {
+              "name": "map-marker-smile"
+            },
+            {
+              "name": "map-marker-times"
+            },
+            {
+              "name": "map-pin"
+            },
+            {
+              "name": "map-signs"
+            },
+            {
+              "name": "marker"
+            },
+            {
+              "name": "mars"
+            },
+            {
+              "name": "mars-double"
+            },
+            {
+              "name": "mars-stroke"
+            },
+            {
+              "name": "mars-stroke-h"
+            },
+            {
+              "name": "mars-stroke-v"
+            },
+            {
+              "name": "mask"
+            },
+            {
+              "name": "meat"
+            },
+            {
+              "name": "medal"
+            },
+            {
+              "name": "medkit"
+            },
+            {
+              "name": "megaphone"
+            },
+            {
+              "name": "meh"
+            },
+            {
+              "name": "meh-blank"
+            },
+            {
+              "name": "meh-rolling-eyes"
+            },
+            {
+              "name": "memory"
+            },
+            {
+              "name": "menorah"
+            },
+            {
+              "name": "mercury"
+            },
+            {
+              "name": "meteor"
+            },
+            {
+              "name": "microchip"
+            },
+            {
+              "name": "microphone"
+            },
+            {
+              "name": "microphone-alt"
+            },
+            {
+              "name": "microphone-alt-slash"
+            },
+            {
+              "name": "microphone-slash"
+            },
+            {
+              "name": "microphone-stand"
+            },
+            {
+              "name": "microscope"
+            },
+            {
+              "name": "microwave"
+            },
+            {
+              "name": "mind-share"
+            },
+            {
+              "name": "minus"
+            },
+            {
+              "name": "minus-circle"
+            },
+            {
+              "name": "minus-hexagon"
+            },
+            {
+              "name": "minus-octagon"
+            },
+            {
+              "name": "minus-square"
+            },
+            {
+              "name": "mistletoe"
+            },
+            {
+              "name": "mitten"
+            },
+            {
+              "name": "mobile"
+            },
+            {
+              "name": "mobile-alt"
+            },
+            {
+              "name": "mobile-android"
+            },
+            {
+              "name": "mobile-android-alt"
+            },
+            {
+              "name": "money-bill"
+            },
+            {
+              "name": "money-bill-alt"
+            },
+            {
+              "name": "money-bill-wave"
+            },
+            {
+              "name": "money-bill-wave-alt"
+            },
+            {
+              "name": "money-check"
+            },
+            {
+              "name": "money-check-alt"
+            },
+            {
+              "name": "money-check-edit"
+            },
+            {
+              "name": "money-check-edit-alt"
+            },
+            {
+              "name": "monitor-heart-rate"
+            },
+            {
+              "name": "monkey"
+            },
+            {
+              "name": "monument"
+            },
+            {
+              "name": "moon"
+            },
+            {
+              "name": "moon-cloud"
+            },
+            {
+              "name": "moon-stars"
+            },
+            {
+              "name": "mortar-pestle"
+            },
+            {
+              "name": "mosque"
+            },
+            {
+              "name": "motorcycle"
+            },
+            {
+              "name": "mountain"
+            },
+            {
+              "name": "mountains"
+            },
+            {
+              "name": "mouse"
+            },
+            {
+              "name": "mouse-alt"
+            },
+            {
+              "name": "mouse-pointer"
+            },
+            {
+              "name": "mp3-player"
+            },
+            {
+              "name": "mug"
+            },
+            {
+              "name": "mug-hot"
+            },
+            {
+              "name": "mug-marshmallows"
+            },
+            {
+              "name": "mug-tea"
+            },
+            {
+              "name": "music"
+            },
+            {
+              "name": "music-alt"
+            },
+            {
+              "name": "music-alt-slash"
+            },
+            {
+              "name": "music-slash"
+            },
+            {
+              "name": "narwhal"
+            },
+            {
+              "name": "network-wired"
+            },
+            {
+              "name": "neuter"
+            },
+            {
+              "name": "newspaper"
+            },
+            {
+              "name": "not-equal"
+            },
+            {
+              "name": "notes-medical"
+            },
+            {
+              "name": "object-group"
+            },
+            {
+              "name": "object-ungroup"
+            },
+            {
+              "name": "octagon"
+            },
+            {
+              "name": "oil-can"
+            },
+            {
+              "name": "oil-temp"
+            },
+            {
+              "name": "om"
+            },
+            {
+              "name": "omega"
+            },
+            {
+              "name": "ornament"
+            },
+            {
+              "name": "otter"
+            },
+            {
+              "name": "outdent"
+            },
+            {
+              "name": "outlet"
+            },
+            {
+              "name": "oven"
+            },
+            {
+              "name": "overline"
+            },
+            {
+              "name": "page-break"
+            },
+            {
+              "name": "pager"
+            },
+            {
+              "name": "paint-brush"
+            },
+            {
+              "name": "paint-brush-alt"
+            },
+            {
+              "name": "paint-roller"
+            },
+            {
+              "name": "palette"
+            },
+            {
+              "name": "pallet"
+            },
+            {
+              "name": "pallet-alt"
+            },
+            {
+              "name": "paper-plane"
+            },
+            {
+              "name": "paperclip"
+            },
+            {
+              "name": "parachute-box"
+            },
+            {
+              "name": "paragraph"
+            },
+            {
+              "name": "paragraph-rtl"
+            },
+            {
+              "name": "parking"
+            },
+            {
+              "name": "parking-circle"
+            },
+            {
+              "name": "parking-circle-slash"
+            },
+            {
+              "name": "parking-slash"
+            },
+            {
+              "name": "passport"
+            },
+            {
+              "name": "pastafarianism"
+            },
+            {
+              "name": "paste"
+            },
+            {
+              "name": "pause"
+            },
+            {
+              "name": "pause-circle"
+            },
+            {
+              "name": "paw"
+            },
+            {
+              "name": "paw-alt"
+            },
+            {
+              "name": "paw-claws"
+            },
+            {
+              "name": "peace"
+            },
+            {
+              "name": "pegasus"
+            },
+            {
+              "name": "pen"
+            },
+            {
+              "name": "pen-alt"
+            },
+            {
+              "name": "pen-fancy"
+            },
+            {
+              "name": "pen-nib"
+            },
+            {
+              "name": "pen-square"
+            },
+            {
+              "name": "pencil"
+            },
+            {
+              "name": "pencil-alt"
+            },
+            {
+              "name": "pencil-paintbrush"
+            },
+            {
+              "name": "pencil-ruler"
+            },
+            {
+              "name": "pennant"
+            },
+            {
+              "name": "people-arrows"
+            },
+            {
+              "name": "people-carry"
+            },
+            {
+              "name": "pepper-hot"
+            },
+            {
+              "name": "percent"
+            },
+            {
+              "name": "percentage"
+            },
+            {
+              "name": "person-booth"
+            },
+            {
+              "name": "person-carry"
+            },
+            {
+              "name": "person-dolly"
+            },
+            {
+              "name": "person-dolly-empty"
+            },
+            {
+              "name": "person-sign"
+            },
+            {
+              "name": "phone"
+            },
+            {
+              "name": "phone-alt"
+            },
+            {
+              "name": "phone-laptop"
+            },
+            {
+              "name": "phone-office"
+            },
+            {
+              "name": "phone-plus"
+            },
+            {
+              "name": "phone-rotary"
+            },
+            {
+              "name": "phone-slash"
+            },
+            {
+              "name": "phone-square"
+            },
+            {
+              "name": "phone-square-alt"
+            },
+            {
+              "name": "phone-volume"
+            },
+            {
+              "name": "photo-video"
+            },
+            {
+              "name": "pi"
+            },
+            {
+              "name": "piano"
+            },
+            {
+              "name": "piano-keyboard"
+            },
+            {
+              "name": "pie"
+            },
+            {
+              "name": "pig"
+            },
+            {
+              "name": "piggy-bank"
+            },
+            {
+              "name": "pills"
+            },
+            {
+              "name": "pizza"
+            },
+            {
+              "name": "pizza-slice"
+            },
+            {
+              "name": "place-of-worship"
+            },
+            {
+              "name": "plane"
+            },
+            {
+              "name": "plane-alt"
+            },
+            {
+              "name": "plane-arrival"
+            },
+            {
+              "name": "plane-departure"
+            },
+            {
+              "name": "plane-slash"
+            },
+            {
+              "name": "planet-moon"
+            },
+            {
+              "name": "planet-ringed"
+            },
+            {
+              "name": "play"
+            },
+            {
+              "name": "play-circle"
+            },
+            {
+              "name": "plug"
+            },
+            {
+              "name": "plus"
+            },
+            {
+              "name": "plus-circle"
+            },
+            {
+              "name": "plus-hexagon"
+            },
+            {
+              "name": "plus-octagon"
+            },
+            {
+              "name": "plus-square"
+            },
+            {
+              "name": "podcast"
+            },
+            {
+              "name": "podium"
+            },
+            {
+              "name": "podium-star"
+            },
+            {
+              "name": "police-box"
+            },
+            {
+              "name": "poll"
+            },
+            {
+              "name": "poll-h"
+            },
+            {
+              "name": "poll-people"
+            },
+            {
+              "name": "poo"
+            },
+            {
+              "name": "poo-storm"
+            },
+            {
+              "name": "poop"
+            },
+            {
+              "name": "popcorn"
+            },
+            {
+              "name": "portal-enter"
+            },
+            {
+              "name": "portal-exit"
+            },
+            {
+              "name": "portrait"
+            },
+            {
+              "name": "pound-sign"
+            },
+            {
+              "name": "power-off"
+            },
+            {
+              "name": "pray"
+            },
+            {
+              "name": "praying-hands"
+            },
+            {
+              "name": "prescription"
+            },
+            {
+              "name": "prescription-bottle"
+            },
+            {
+              "name": "prescription-bottle-alt"
+            },
+            {
+              "name": "presentation"
+            },
+            {
+              "name": "print"
+            },
+            {
+              "name": "print-search"
+            },
+            {
+              "name": "print-slash"
+            },
+            {
+              "name": "procedures"
+            },
+            {
+              "name": "project-diagram"
+            },
+            {
+              "name": "projector"
+            },
+            {
+              "name": "pump-medical"
+            },
+            {
+              "name": "pump-soap"
+            },
+            {
+              "name": "pumpkin"
+            },
+            {
+              "name": "puzzle-piece"
+            },
+            {
+              "name": "qrcode"
+            },
+            {
+              "name": "question"
+            },
+            {
+              "name": "question-circle"
+            },
+            {
+              "name": "question-square"
+            },
+            {
+              "name": "quidditch"
+            },
+            {
+              "name": "quote-left"
+            },
+            {
+              "name": "quote-right"
+            },
+            {
+              "name": "quran"
+            },
+            {
+              "name": "rabbit"
+            },
+            {
+              "name": "rabbit-fast"
+            },
+            {
+              "name": "racquet"
+            },
+            {
+              "name": "radar"
+            },
+            {
+              "name": "radiation"
+            },
+            {
+              "name": "radiation-alt"
+            },
+            {
+              "name": "radio"
+            },
+            {
+              "name": "radio-alt"
+            },
+            {
+              "name": "rainbow"
+            },
+            {
+              "name": "raindrops"
+            },
+            {
+              "name": "ram"
+            },
+            {
+              "name": "ramp-loading"
+            },
+            {
+              "name": "random"
+            },
+            {
+              "name": "raygun"
+            },
+            {
+              "name": "receipt"
+            },
+            {
+              "name": "record-vinyl"
+            },
+            {
+              "name": "rectangle-landscape"
+            },
+            {
+              "name": "rectangle-portrait"
+            },
+            {
+              "name": "rectangle-wide"
+            },
+            {
+              "name": "recycle"
+            },
+            {
+              "name": "redo"
+            },
+            {
+              "name": "redo-alt"
+            },
+            {
+              "name": "refrigerator"
+            },
+            {
+              "name": "registered"
+            },
+            {
+              "name": "remove-format"
+            },
+            {
+              "name": "repeat"
+            },
+            {
+              "name": "repeat-1"
+            },
+            {
+              "name": "repeat-1-alt"
+            },
+            {
+              "name": "repeat-alt"
+            },
+            {
+              "name": "reply"
+            },
+            {
+              "name": "reply-all"
+            },
+            {
+              "name": "republican"
+            },
+            {
+              "name": "restroom"
+            },
+            {
+              "name": "retweet"
+            },
+            {
+              "name": "retweet-alt"
+            },
+            {
+              "name": "ribbon"
+            },
+            {
+              "name": "ring"
+            },
+            {
+              "name": "rings-wedding"
+            },
+            {
+              "name": "road"
+            },
+            {
+              "name": "robot"
+            },
+            {
+              "name": "rocket"
+            },
+            {
+              "name": "rocket-launch"
+            },
+            {
+              "name": "route"
+            },
+            {
+              "name": "route-highway"
+            },
+            {
+              "name": "route-interstate"
+            },
+            {
+              "name": "router"
+            },
+            {
+              "name": "rss"
+            },
+            {
+              "name": "rss-square"
+            },
+            {
+              "name": "ruble-sign"
+            },
+            {
+              "name": "ruler"
+            },
+            {
+              "name": "ruler-combined"
+            },
+            {
+              "name": "ruler-horizontal"
+            },
+            {
+              "name": "ruler-triangle"
+            },
+            {
+              "name": "ruler-vertical"
+            },
+            {
+              "name": "running"
+            },
+            {
+              "name": "rupee-sign"
+            },
+            {
+              "name": "rv"
+            },
+            {
+              "name": "sack"
+            },
+            {
+              "name": "sack-dollar"
+            },
+            {
+              "name": "sad-cry"
+            },
+            {
+              "name": "sad-tear"
+            },
+            {
+              "name": "salad"
+            },
+            {
+              "name": "sandwich"
+            },
+            {
+              "name": "satellite"
+            },
+            {
+              "name": "satellite-dish"
+            },
+            {
+              "name": "sausage"
+            },
+            {
+              "name": "save"
+            },
+            {
+              "name": "sax-hot"
+            },
+            {
+              "name": "saxophone"
+            },
+            {
+              "name": "scalpel"
+            },
+            {
+              "name": "scalpel-path"
+            },
+            {
+              "name": "scanner"
+            },
+            {
+              "name": "scanner-image"
+            },
+            {
+              "name": "scanner-keyboard"
+            },
+            {
+              "name": "scanner-touchscreen"
+            },
+            {
+              "name": "scarecrow"
+            },
+            {
+              "name": "scarf"
+            },
+            {
+              "name": "school"
+            },
+            {
+              "name": "screwdriver"
+            },
+            {
+              "name": "scroll"
+            },
+            {
+              "name": "scroll-old"
+            },
+            {
+              "name": "scrubber"
+            },
+            {
+              "name": "scythe"
+            },
+            {
+              "name": "sd-card"
+            },
+            {
+              "name": "search-dollar"
+            },
+            {
+              "name": "search-location"
+            },
+            {
+              "name": "search-minus"
+            },
+            {
+              "name": "search-plus"
+            },
+            {
+              "name": "seedling"
+            },
+            {
+              "name": "send-back"
+            },
+            {
+              "name": "send-backward"
+            },
+            {
+              "name": "sensor"
+            },
+            {
+              "name": "sensor-alert"
+            },
+            {
+              "name": "sensor-fire"
+            },
+            {
+              "name": "sensor-on"
+            },
+            {
+              "name": "sensor-smoke"
+            },
+            {
+              "name": "server"
+            },
+            {
+              "name": "shapes"
+            },
+            {
+              "name": "share"
+            },
+            {
+              "name": "share-all"
+            },
+            {
+              "name": "share-alt"
+            },
+            {
+              "name": "share-alt-square"
+            },
+            {
+              "name": "share-square"
+            },
+            {
+              "name": "sheep"
+            },
+            {
+              "name": "shekel-sign"
+            },
+            {
+              "name": "shield"
+            },
+            {
+              "name": "shield-alt"
+            },
+            {
+              "name": "shield-check"
+            },
+            {
+              "name": "shield-cross"
+            },
+            {
+              "name": "shield-virus"
+            },
+            {
+              "name": "ship"
+            },
+            {
+              "name": "shipping-fast"
+            },
+            {
+              "name": "shipping-timed"
+            },
+            {
+              "name": "shish-kebab"
+            },
+            {
+              "name": "shoe-prints"
+            },
+            {
+              "name": "shopping-bag"
+            },
+            {
+              "name": "shopping-basket"
+            },
+            {
+              "name": "shopping-cart"
+            },
+            {
+              "name": "shovel"
+            },
+            {
+              "name": "shovel-snow"
+            },
+            {
+              "name": "shower"
+            },
+            {
+              "name": "shredder"
+            },
+            {
+              "name": "shuttle-van"
+            },
+            {
+              "name": "shuttlecock"
+            },
+            {
+              "name": "sickle"
+            },
+            {
+              "name": "sigma"
+            },
+            {
+              "name": "sign"
+            },
+            {
+              "name": "sign-in"
+            },
+            {
+              "name": "sign-in-alt"
+            },
+            {
+              "name": "sign-language"
+            },
+            {
+              "name": "sign-out"
+            },
+            {
+              "name": "sign-out-alt"
+            },
+            {
+              "name": "signal"
+            },
+            {
+              "name": "signal-1"
+            },
+            {
+              "name": "signal-2"
+            },
+            {
+              "name": "signal-3"
+            },
+            {
+              "name": "signal-4"
+            },
+            {
+              "name": "signal-alt"
+            },
+            {
+              "name": "signal-alt-1"
+            },
+            {
+              "name": "signal-alt-2"
+            },
+            {
+              "name": "signal-alt-3"
+            },
+            {
+              "name": "signal-alt-slash"
+            },
+            {
+              "name": "signal-slash"
+            },
+            {
+              "name": "signal-stream"
+            },
+            {
+              "name": "signature"
+            },
+            {
+              "name": "sim-card"
+            },
+            {
+              "name": "sink"
+            },
+            {
+              "name": "siren"
+            },
+            {
+              "name": "siren-on"
+            },
+            {
+              "name": "sitemap"
+            },
+            {
+              "name": "skating"
+            },
+            {
+              "name": "skeleton"
+            },
+            {
+              "name": "ski-jump"
+            },
+            {
+              "name": "ski-lift"
+            },
+            {
+              "name": "skiing"
+            },
+            {
+              "name": "skiing-nordic"
+            },
+            {
+              "name": "skull"
+            },
+            {
+              "name": "skull-cow"
+            },
+            {
+              "name": "skull-crossbones"
+            },
+            {
+              "name": "slash"
+            },
+            {
+              "name": "sledding"
+            },
+            {
+              "name": "sleigh"
+            },
+            {
+              "name": "sliders-h"
+            },
+            {
+              "name": "sliders-h-square"
+            },
+            {
+              "name": "sliders-v"
+            },
+            {
+              "name": "sliders-v-square"
+            },
+            {
+              "name": "smile"
+            },
+            {
+              "name": "smile-beam"
+            },
+            {
+              "name": "smile-plus"
+            },
+            {
+              "name": "smile-wink"
+            },
+            {
+              "name": "smog"
+            },
+            {
+              "name": "smoke"
+            },
+            {
+              "name": "smoking"
+            },
+            {
+              "name": "smoking-ban"
+            },
+            {
+              "name": "sms"
+            },
+            {
+              "name": "snake"
+            },
+            {
+              "name": "snooze"
+            },
+            {
+              "name": "snow-blowing"
+            },
+            {
+              "name": "snowboarding"
+            },
+            {
+              "name": "snowflake"
+            },
+            {
+              "name": "snowflakes"
+            },
+            {
+              "name": "snowman"
+            },
+            {
+              "name": "snowmobile"
+            },
+            {
+              "name": "snowplow"
+            },
+            {
+              "name": "soap"
+            },
+            {
+              "name": "socks"
+            },
+            {
+              "name": "solar-panel"
+            },
+            {
+              "name": "solar-system"
+            },
+            {
+              "name": "sort"
+            },
+            {
+              "name": "sort-alpha-down"
+            },
+            {
+              "name": "sort-alpha-down-alt"
+            },
+            {
+              "name": "sort-alpha-up"
+            },
+            {
+              "name": "sort-alpha-up-alt"
+            },
+            {
+              "name": "sort-alt"
+            },
+            {
+              "name": "sort-amount-down"
+            },
+            {
+              "name": "sort-amount-down-alt"
+            },
+            {
+              "name": "sort-amount-up"
+            },
+            {
+              "name": "sort-amount-up-alt"
+            },
+            {
+              "name": "sort-circle"
+            },
+            {
+              "name": "sort-circle-down"
+            },
+            {
+              "name": "sort-circle-up"
+            },
+            {
+              "name": "sort-down"
+            },
+            {
+              "name": "sort-numeric-down"
+            },
+            {
+              "name": "sort-numeric-down-alt"
+            },
+            {
+              "name": "sort-numeric-up"
+            },
+            {
+              "name": "sort-numeric-up-alt"
+            },
+            {
+              "name": "sort-shapes-down"
+            },
+            {
+              "name": "sort-shapes-down-alt"
+            },
+            {
+              "name": "sort-shapes-up"
+            },
+            {
+              "name": "sort-shapes-up-alt"
+            },
+            {
+              "name": "sort-size-down"
+            },
+            {
+              "name": "sort-size-down-alt"
+            },
+            {
+              "name": "sort-size-up"
+            },
+            {
+              "name": "sort-size-up-alt"
+            },
+            {
+              "name": "sort-up"
+            },
+            {
+              "name": "soup"
+            },
+            {
+              "name": "spa"
+            },
+            {
+              "name": "space-shuttle"
+            },
+            {
+              "name": "space-station-moon"
+            },
+            {
+              "name": "space-station-moon-alt"
+            },
+            {
+              "name": "spade"
+            },
+            {
+              "name": "sparkles"
+            },
+            {
+              "name": "speaker"
+            },
+            {
+              "name": "speakers"
+            },
+            {
+              "name": "spell-check"
+            },
+            {
+              "name": "spider"
+            },
+            {
+              "name": "spider-black-widow"
+            },
+            {
+              "name": "spider-web"
+            },
+            {
+              "name": "spinner"
+            },
+            {
+              "name": "spinner-third"
+            },
+            {
+              "name": "splotch"
+            },
+            {
+              "name": "spray-can"
+            },
+            {
+              "name": "sprinkler"
+            },
+            {
+              "name": "square"
+            },
+            {
+              "name": "square-full"
+            },
+            {
+              "name": "square-root"
+            },
+            {
+              "name": "square-root-alt"
+            },
+            {
+              "name": "squirrel"
+            },
+            {
+              "name": "staff"
+            },
+            {
+              "name": "stamp"
+            },
+            {
+              "name": "star"
+            },
+            {
+              "name": "star-and-crescent"
+            },
+            {
+              "name": "star-christmas"
+            },
+            {
+              "name": "star-exclamation"
+            },
+            {
+              "name": "star-half"
+            },
+            {
+              "name": "star-half-alt"
+            },
+            {
+              "name": "star-of-david"
+            },
+            {
+              "name": "star-of-life"
+            },
+            {
+              "name": "star-shooting"
+            },
+            {
+              "name": "starfighter"
+            },
+            {
+              "name": "starfighter-alt"
+            },
+            {
+              "name": "stars"
+            },
+            {
+              "name": "starship"
+            },
+            {
+              "name": "starship-freighter"
+            },
+            {
+              "name": "steak"
+            },
+            {
+              "name": "steering-wheel"
+            },
+            {
+              "name": "step-backward"
+            },
+            {
+              "name": "step-forward"
+            },
+            {
+              "name": "stethoscope"
+            },
+            {
+              "name": "sticky-note"
+            },
+            {
+              "name": "stocking"
+            },
+            {
+              "name": "stomach"
+            },
+            {
+              "name": "stop"
+            },
+            {
+              "name": "stop-circle"
+            },
+            {
+              "name": "stopwatch"
+            },
+            {
+              "name": "stopwatch-20"
+            },
+            {
+              "name": "store"
+            },
+            {
+              "name": "store-alt"
+            },
+            {
+              "name": "store-alt-slash"
+            },
+            {
+              "name": "store-slash"
+            },
+            {
+              "name": "stream"
+            },
+            {
+              "name": "street-view"
+            },
+            {
+              "name": "stretcher"
+            },
+            {
+              "name": "strikethrough"
+            },
+            {
+              "name": "stroopwafel"
+            },
+            {
+              "name": "subscript"
+            },
+            {
+              "name": "subway"
+            },
+            {
+              "name": "suitcase"
+            },
+            {
+              "name": "suitcase-rolling"
+            },
+            {
+              "name": "sun"
+            },
+            {
+              "name": "sun-cloud"
+            },
+            {
+              "name": "sun-dust"
+            },
+            {
+              "name": "sun-haze"
+            },
+            {
+              "name": "sunglasses"
+            },
+            {
+              "name": "sunrise"
+            },
+            {
+              "name": "sunset"
+            },
+            {
+              "name": "superscript"
+            },
+            {
+              "name": "surprise"
+            },
+            {
+              "name": "swatchbook"
+            },
+            {
+              "name": "swimmer"
+            },
+            {
+              "name": "swimming-pool"
+            },
+            {
+              "name": "sword"
+            },
+            {
+              "name": "sword-laser"
+            },
+            {
+              "name": "sword-laser-alt"
+            },
+            {
+              "name": "swords"
+            },
+            {
+              "name": "swords-laser"
+            },
+            {
+              "name": "synagogue"
+            },
+            {
+              "name": "sync"
+            },
+            {
+              "name": "sync-alt"
+            },
+            {
+              "name": "syringe"
+            },
+            {
+              "name": "table"
+            },
+            {
+              "name": "table-tennis"
+            },
+            {
+              "name": "tablet"
+            },
+            {
+              "name": "tablet-alt"
+            },
+            {
+              "name": "tablet-android"
+            },
+            {
+              "name": "tablet-android-alt"
+            },
+            {
+              "name": "tablet-rugged"
+            },
+            {
+              "name": "tablets"
+            },
+            {
+              "name": "tachometer"
+            },
+            {
+              "name": "tachometer-alt"
+            },
+            {
+              "name": "tachometer-alt-average"
+            },
+            {
+              "name": "tachometer-alt-fast"
+            },
+            {
+              "name": "tachometer-alt-fastest"
+            },
+            {
+              "name": "tachometer-alt-slow"
+            },
+            {
+              "name": "tachometer-alt-slowest"
+            },
+            {
+              "name": "tachometer-average"
+            },
+            {
+              "name": "tachometer-fast"
+            },
+            {
+              "name": "tachometer-fastest"
+            },
+            {
+              "name": "tachometer-slow"
+            },
+            {
+              "name": "tachometer-slowest"
+            },
+            {
+              "name": "taco"
+            },
+            {
+              "name": "tag"
+            },
+            {
+              "name": "tags"
+            },
+            {
+              "name": "tally"
+            },
+            {
+              "name": "tanakh"
+            },
+            {
+              "name": "tape"
+            },
+            {
+              "name": "tasks"
+            },
+            {
+              "name": "tasks-alt"
+            },
+            {
+              "name": "taxi"
+            },
+            {
+              "name": "teeth"
+            },
+            {
+              "name": "teeth-open"
+            },
+            {
+              "name": "telescope"
+            },
+            {
+              "name": "temperature-down"
+            },
+            {
+              "name": "temperature-frigid"
+            },
+            {
+              "name": "temperature-high"
+            },
+            {
+              "name": "temperature-hot"
+            },
+            {
+              "name": "temperature-low"
+            },
+            {
+              "name": "temperature-up"
+            },
+            {
+              "name": "tenge"
+            },
+            {
+              "name": "tennis-ball"
+            },
+            {
+              "name": "terminal"
+            },
+            {
+              "name": "text-height"
+            },
+            {
+              "name": "text-size"
+            },
+            {
+              "name": "text-width"
+            },
+            {
+              "name": "th"
+            },
+            {
+              "name": "th-large"
+            },
+            {
+              "name": "th-list"
+            },
+            {
+              "name": "theater-masks"
+            },
+            {
+              "name": "thermometer"
+            },
+            {
+              "name": "thermometer-empty"
+            },
+            {
+              "name": "thermometer-full"
+            },
+            {
+              "name": "thermometer-half"
+            },
+            {
+              "name": "thermometer-quarter"
+            },
+            {
+              "name": "thermometer-three-quarters"
+            },
+            {
+              "name": "theta"
+            },
+            {
+              "name": "thumbs-down"
+            },
+            {
+              "name": "thumbs-up"
+            },
+            {
+              "name": "thumbtack"
+            },
+            {
+              "name": "thunderstorm"
+            },
+            {
+              "name": "thunderstorm-moon"
+            },
+            {
+              "name": "thunderstorm-sun"
+            },
+            {
+              "name": "ticket"
+            },
+            {
+              "name": "ticket-alt"
+            },
+            {
+              "name": "tilde"
+            },
+            {
+              "name": "times"
+            },
+            {
+              "name": "times-circle"
+            },
+            {
+              "name": "times-hexagon"
+            },
+            {
+              "name": "times-octagon"
+            },
+            {
+              "name": "times-square"
+            },
+            {
+              "name": "tint"
+            },
+            {
+              "name": "tint-slash"
+            },
+            {
+              "name": "tire"
+            },
+            {
+              "name": "tire-flat"
+            },
+            {
+              "name": "tire-pressure-warning"
+            },
+            {
+              "name": "tire-rugged"
+            },
+            {
+              "name": "tired"
+            },
+            {
+              "name": "toggle-off"
+            },
+            {
+              "name": "toggle-on"
+            },
+            {
+              "name": "toilet"
+            },
+            {
+              "name": "toilet-paper"
+            },
+            {
+              "name": "toilet-paper-alt"
+            },
+            {
+              "name": "toilet-paper-slash"
+            },
+            {
+              "name": "tombstone"
+            },
+            {
+              "name": "tombstone-alt"
+            },
+            {
+              "name": "toolbox"
+            },
+            {
+              "name": "tools"
+            },
+            {
+              "name": "tooth"
+            },
+            {
+              "name": "toothbrush"
+            },
+            {
+              "name": "torah"
+            },
+            {
+              "name": "torii-gate"
+            },
+            {
+              "name": "tornado"
+            },
+            {
+              "name": "tractor"
+            },
+            {
+              "name": "trademark"
+            },
+            {
+              "name": "traffic-cone"
+            },
+            {
+              "name": "traffic-light"
+            },
+            {
+              "name": "traffic-light-go"
+            },
+            {
+              "name": "traffic-light-slow"
+            },
+            {
+              "name": "traffic-light-stop"
+            },
+            {
+              "name": "trailer"
+            },
+            {
+              "name": "train"
+            },
+            {
+              "name": "tram"
+            },
+            {
+              "name": "transgender"
+            },
+            {
+              "name": "transgender-alt"
+            },
+            {
+              "name": "transporter"
+            },
+            {
+              "name": "transporter-1"
+            },
+            {
+              "name": "transporter-2"
+            },
+            {
+              "name": "transporter-3"
+            },
+            {
+              "name": "transporter-empty"
+            },
+            {
+              "name": "trash"
+            },
+            {
+              "name": "trash-alt"
+            },
+            {
+              "name": "trash-restore"
+            },
+            {
+              "name": "trash-restore-alt"
+            },
+            {
+              "name": "trash-undo"
+            },
+            {
+              "name": "trash-undo-alt"
+            },
+            {
+              "name": "treasure-chest"
+            },
+            {
+              "name": "tree"
+            },
+            {
+              "name": "tree-alt"
+            },
+            {
+              "name": "tree-christmas"
+            },
+            {
+              "name": "tree-decorated"
+            },
+            {
+              "name": "tree-large"
+            },
+            {
+              "name": "tree-palm"
+            },
+            {
+              "name": "trees"
+            },
+            {
+              "name": "triangle"
+            },
+            {
+              "name": "triangle-music"
+            },
+            {
+              "name": "trophy"
+            },
+            {
+              "name": "trophy-alt"
+            },
+            {
+              "name": "truck"
+            },
+            {
+              "name": "truck-container"
+            },
+            {
+              "name": "truck-couch"
+            },
+            {
+              "name": "truck-loading"
+            },
+            {
+              "name": "truck-monster"
+            },
+            {
+              "name": "truck-moving"
+            },
+            {
+              "name": "truck-pickup"
+            },
+            {
+              "name": "truck-plow"
+            },
+            {
+              "name": "truck-ramp"
+            },
+            {
+              "name": "trumpet"
+            },
+            {
+              "name": "tshirt"
+            },
+            {
+              "name": "tty"
+            },
+            {
+              "name": "turkey"
+            },
+            {
+              "name": "turntable"
+            },
+            {
+              "name": "turtle"
+            },
+            {
+              "name": "tv"
+            },
+            {
+              "name": "tv-alt"
+            },
+            {
+              "name": "tv-music"
+            },
+            {
+              "name": "tv-retro"
+            },
+            {
+              "name": "typewriter"
+            },
+            {
+              "name": "ufo"
+            },
+            {
+              "name": "ufo-beam"
+            },
+            {
+              "name": "umbrella"
+            },
+            {
+              "name": "umbrella-beach"
+            },
+            {
+              "name": "underline"
+            },
+            {
+              "name": "undo"
+            },
+            {
+              "name": "undo-alt"
+            },
+            {
+              "name": "unicorn"
+            },
+            {
+              "name": "union"
+            },
+            {
+              "name": "universal-access"
+            },
+            {
+              "name": "university"
+            },
+            {
+              "name": "unlink"
+            },
+            {
+              "name": "unlock"
+            },
+            {
+              "name": "unlock-alt"
+            },
+            {
+              "name": "upload"
+            },
+            {
+              "name": "usb-drive"
+            },
+            {
+              "name": "usd-circle"
+            },
+            {
+              "name": "usd-square"
+            },
+            {
+              "name": "user"
+            },
+            {
+              "name": "user-alien"
+            },
+            {
+              "name": "user-alt"
+            },
+            {
+              "name": "user-alt-slash"
+            },
+            {
+              "name": "user-astronaut"
+            },
+            {
+              "name": "user-chart"
+            },
+            {
+              "name": "user-check"
+            },
+            {
+              "name": "user-circle"
+            },
+            {
+              "name": "user-clock"
+            },
+            {
+              "name": "user-cog"
+            },
+            {
+              "name": "user-cowboy"
+            },
+            {
+              "name": "user-crown"
+            },
+            {
+              "name": "user-edit"
+            },
+            {
+              "name": "user-friends"
+            },
+            {
+              "name": "user-graduate"
+            },
+            {
+              "name": "user-hard-hat"
+            },
+            {
+              "name": "user-headset"
+            },
+            {
+              "name": "user-injured"
+            },
+            {
+              "name": "user-lock"
+            },
+            {
+              "name": "user-md"
+            },
+            {
+              "name": "user-md-chat"
+            },
+            {
+              "name": "user-minus"
+            },
+            {
+              "name": "user-music"
+            },
+            {
+              "name": "user-ninja"
+            },
+            {
+              "name": "user-nurse"
+            },
+            {
+              "name": "user-plus"
+            },
+            {
+              "name": "user-robot"
+            },
+            {
+              "name": "user-secret"
+            },
+            {
+              "name": "user-shield"
+            },
+            {
+              "name": "user-slash"
+            },
+            {
+              "name": "user-tag"
+            },
+            {
+              "name": "user-tie"
+            },
+            {
+              "name": "user-times"
+            },
+            {
+              "name": "user-unlock"
+            },
+            {
+              "name": "user-visor"
+            },
+            {
+              "name": "users"
+            },
+            {
+              "name": "users-class"
+            },
+            {
+              "name": "users-cog"
+            },
+            {
+              "name": "users-crown"
+            },
+            {
+              "name": "users-medical"
+            },
+            {
+              "name": "users-slash"
+            },
+            {
+              "name": "utensil-fork"
+            },
+            {
+              "name": "utensil-knife"
+            },
+            {
+              "name": "utensil-spoon"
+            },
+            {
+              "name": "utensils"
+            },
+            {
+              "name": "utensils-alt"
+            },
+            {
+              "name": "vacuum"
+            },
+            {
+              "name": "vacuum-robot"
+            },
+            {
+              "name": "value-absolute"
+            },
+            {
+              "name": "vector-square"
+            },
+            {
+              "name": "venus"
+            },
+            {
+              "name": "venus-double"
+            },
+            {
+              "name": "venus-mars"
+            },
+            {
+              "name": "vhs"
+            },
+            {
+              "name": "vial"
+            },
+            {
+              "name": "vials"
+            },
+            {
+              "name": "video"
+            },
+            {
+              "name": "video-plus"
+            },
+            {
+              "name": "video-slash"
+            },
+            {
+              "name": "vihara"
+            },
+            {
+              "name": "violin"
+            },
+            {
+              "name": "virus"
+            },
+            {
+              "name": "virus-slash"
+            },
+            {
+              "name": "viruses"
+            },
+            {
+              "name": "voicemail"
+            },
+            {
+              "name": "volcano"
+            },
+            {
+              "name": "volleyball-ball"
+            },
+            {
+              "name": "volume"
+            },
+            {
+              "name": "volume-down"
+            },
+            {
+              "name": "volume-mute"
+            },
+            {
+              "name": "volume-off"
+            },
+            {
+              "name": "volume-slash"
+            },
+            {
+              "name": "volume-up"
+            },
+            {
+              "name": "vote-nay"
+            },
+            {
+              "name": "vote-yea"
+            },
+            {
+              "name": "vr-cardboard"
+            },
+            {
+              "name": "wagon-covered"
+            },
+            {
+              "name": "walker"
+            },
+            {
+              "name": "walkie-talkie"
+            },
+            {
+              "name": "walking"
+            },
+            {
+              "name": "wallet"
+            },
+            {
+              "name": "wand"
+            },
+            {
+              "name": "wand-magic"
+            },
+            {
+              "name": "warehouse"
+            },
+            {
+              "name": "warehouse-alt"
+            },
+            {
+              "name": "washer"
+            },
+            {
+              "name": "watch"
+            },
+            {
+              "name": "watch-calculator"
+            },
+            {
+              "name": "watch-fitness"
+            },
+            {
+              "name": "water"
+            },
+            {
+              "name": "water-lower"
+            },
+            {
+              "name": "water-rise"
+            },
+            {
+              "name": "wave-sine"
+            },
+            {
+              "name": "wave-square"
+            },
+            {
+              "name": "wave-triangle"
+            },
+            {
+              "name": "waveform"
+            },
+            {
+              "name": "waveform-path"
+            },
+            {
+              "name": "webcam"
+            },
+            {
+              "name": "webcam-slash"
+            },
+            {
+              "name": "weight"
+            },
+            {
+              "name": "weight-hanging"
+            },
+            {
+              "name": "whale"
+            },
+            {
+              "name": "wheat"
+            },
+            {
+              "name": "wheelchair"
+            },
+            {
+              "name": "whistle"
+            },
+            {
+              "name": "wifi"
+            },
+            {
+              "name": "wifi-1"
+            },
+            {
+              "name": "wifi-2"
+            },
+            {
+              "name": "wifi-slash"
+            },
+            {
+              "name": "wind"
+            },
+            {
+              "name": "wind-turbine"
+            },
+            {
+              "name": "wind-warning"
+            },
+            {
+              "name": "window"
+            },
+            {
+              "name": "window-alt"
+            },
+            {
+              "name": "window-close"
+            },
+            {
+              "name": "window-frame"
+            },
+            {
+              "name": "window-frame-open"
+            },
+            {
+              "name": "window-maximize"
+            },
+            {
+              "name": "window-minimize"
+            },
+            {
+              "name": "window-restore"
+            },
+            {
+              "name": "windsock"
+            },
+            {
+              "name": "wine-bottle"
+            },
+            {
+              "name": "wine-glass"
+            },
+            {
+              "name": "wine-glass-alt"
+            },
+            {
+              "name": "won-sign"
+            },
+            {
+              "name": "wreath"
+            },
+            {
+              "name": "wrench"
+            },
+            {
+              "name": "x-ray"
+            },
+            {
+              "name": "yen-sign"
+            },
+            {
+              "name": "yin-yang"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "set the size of the button"
+        },
+        {
+          "name": "transform",
+          "description": "transformation performed on the icon."
+        }
+      ]
+    },
+    {
+      "name": "p6-input",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "the input is not available for interaction. The value will not be submitted with the form"
+        },
+        {
+          "name": "max",
+          "description": "The maximum length or value"
+        },
+        {
+          "name": "min",
+          "description": "The minimum length or value"
+        },
+        {
+          "name": "name",
+          "description": "The name of the input."
+        },
+        {
+          "name": "pattern",
+          "description": "Pattern the value must match to be valid."
+        },
+        {
+          "name": "placeholder",
+          "description": "content to be appear in the form control when the form control is empty"
+        },
+        {
+          "name": "readonly",
+          "description": "marks an element that can't be edited."
+        },
+        {
+          "name": "required",
+          "description": "marks an element that can't be submitted without a value."
+        },
+        {
+          "name": "size",
+          "description": "The size of the component to display"
+        },
+        {
+          "name": "type",
+          "description": "the content type of the input.",
+          "values": [
+            {
+              "name": "email"
+            },
+            {
+              "name": "number"
+            },
+            {
+              "name": "password"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "tel"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "url"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "the value of the input."
+        },
+        {
+          "name": "waiting",
+          "description": "shows a waiting indicator"
+        }
+      ]
+    },
+    {
+      "name": "p6-label",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-language",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "The select is not available for interaction. The value will not be submitted with the form"
+        },
+        {
+          "name": "fullwidth",
+          "description": "The select should take the full width"
+        },
+        {
+          "name": "mode",
+          "description": "The Mode of the component to display"
+        },
+        {
+          "name": "name",
+          "description": "The name"
+        },
+        {
+          "name": "readonly",
+          "description": "Marks as read only."
+        },
+        {
+          "name": "required",
+          "description": "Marks the select as required. It can't be submitted without a value"
+        },
+        {
+          "name": "size",
+          "description": "The size of the component to display"
+        },
+        {
+          "name": "value",
+          "description": "The selected value"
+        }
+      ]
+    },
+    {
+      "name": "p6-link",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "download",
+          "description": "This attribute instructs browsers to download a URL instead of navigating to\nit, so the user will be prompted to save it as a local file. If the attribute\nhas a value, it is used as the pre-filled file name in the Save prompt\n(the user can still change the file name if they want).\nOnly applies when an `href` is provided."
+        },
+        {
+          "name": "href",
+          "description": "The URL that the hyperlink points to.\nLinks are not restricted to HTTP-based URLs — they can use any URL scheme supported by browsers."
+        },
+        {
+          "name": "rel",
+          "description": "Sets or retrieves the relationship between the object and the destination of the link.\nThe value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).\nOnly applies when an `href` is provided."
+        },
+        {
+          "name": "target",
+          "description": "Sets or retrieves the window or frame at which to target content.\nOnly applies when an `href` is provided.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "p6-radio",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Initial value"
+        },
+        {
+          "name": "disabled",
+          "description": "Disable"
+        },
+        {
+          "name": "name",
+          "description": "Radio name"
+        },
+        {
+          "name": "readonly",
+          "description": "Readonly"
+        },
+        {
+          "name": "value",
+          "description": "Value"
+        }
+      ]
+    },
+    {
+      "name": "p6-select",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "The select is not available for interaction. The value will not be submitted with the form"
+        },
+        {
+          "name": "multiple",
+          "description": "Marks the select as multiple"
+        },
+        {
+          "name": "name",
+          "description": "The name of the select"
+        },
+        {
+          "name": "placeholder",
+          "description": "The value of the placeholder to display on the search"
+        },
+        {
+          "name": "readonly",
+          "description": "Marks the select as read only."
+        },
+        {
+          "name": "required",
+          "description": "Marks the select as required. It can't be submitted without a value"
+        },
+        {
+          "name": "searchenabled",
+          "description": "Enable the search on the select"
+        },
+        {
+          "name": "shouldsort",
+          "description": "Sort the options by alphabetic order"
+        },
+        {
+          "name": "size",
+          "description": "The size of the component to display"
+        }
+      ]
+    },
+    {
+      "name": "p6-select-native",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "The select is not available for interaction. The value will not be submitted with the form"
+        },
+        {
+          "name": "fullwidth",
+          "description": "The select should take the full width"
+        },
+        {
+          "name": "mode",
+          "description": "The Mode of the component to display"
+        },
+        {
+          "name": "multiple",
+          "description": "Is multiple"
+        },
+        {
+          "name": "name",
+          "description": "The name"
+        },
+        {
+          "name": "readonly",
+          "description": "Marks as read only."
+        },
+        {
+          "name": "required",
+          "description": "Marks the select as required. It can't be submitted without a value"
+        },
+        {
+          "name": "size",
+          "description": "The size of the component to display"
+        }
+      ]
+    },
+    {
+      "name": "p6-spinner",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "p6-switch",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Initial value"
+        },
+        {
+          "name": "color",
+          "description": "Mode"
+        },
+        {
+          "name": "disabled",
+          "description": "Disable"
+        },
+        {
+          "name": "name",
+          "description": "Switch name"
+        },
+        {
+          "name": "size",
+          "description": "Size"
+        }
+      ]
+    },
+    {
+      "name": "p6-tabs",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "selected",
+          "description": "Default tab selected."
+        }
+      ]
+    },
+    {
+      "name": "p6-tag",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "mode",
+          "description": "Mode"
+        },
+        {
+          "name": "size",
+          "description": "Size"
+        }
+      ]
+    },
+    {
+      "name": "p6-textarea",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "cols",
+          "description": "The number of columns"
+        },
+        {
+          "name": "disabled",
+          "description": "the input is not available for interaction. The value will not be submitted with the form"
+        },
+        {
+          "name": "max",
+          "description": "The maximum length or value"
+        },
+        {
+          "name": "min",
+          "description": "The minimum length or value"
+        },
+        {
+          "name": "name",
+          "description": "The name of the input."
+        },
+        {
+          "name": "placeholder",
+          "description": "content to be appear in the form control when the form control is empty"
+        },
+        {
+          "name": "readonly",
+          "description": "marks an element that can't be edited."
+        },
+        {
+          "name": "required",
+          "description": "marks an element that can't be submitted without a value."
+        },
+        {
+          "name": "resizable",
+          "description": "The user can resize the field"
+        },
+        {
+          "name": "rows",
+          "description": "The number of rows"
+        },
+        {
+          "name": "size",
+          "description": "The size of the component to display"
+        },
+        {
+          "name": "value",
+          "description": "the value of the input."
+        },
+        {
+          "name": "waiting",
+          "description": "shows a waiting indicator"
+        }
+      ]
+    },
+    {
+      "name": "p6-translation",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "the input is not available for interaction. The value will not be submitted with the form"
+        },
+        {
+          "name": "name",
+          "description": "The name"
+        },
+        {
+          "name": "readonly",
+          "description": "Marks as read only."
+        },
+        {
+          "name": "size",
+          "description": "The size of the component to display"
+        }
+      ]
+    },
+    {
+      "name": "p6-translation-line",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Disabled"
+        },
+        {
+          "name": "language",
+          "description": "The language"
+        },
+        {
+          "name": "name",
+          "description": "The name"
+        },
+        {
+          "name": "readonly",
+          "description": "Read only"
+        },
+        {
+          "name": "size",
+          "description": "The size"
+        },
+        {
+          "name": "translation",
+          "description": "The translation"
+        }
+      ]
+    },
+    {
+      "name": "p6-waiting",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    }
+  ]
+}

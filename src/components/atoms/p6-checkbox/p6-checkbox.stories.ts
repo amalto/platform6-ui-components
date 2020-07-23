@@ -1,18 +1,29 @@
+import { Components } from "../../../components";
 import {
-  getComponent,
+  getElement,
   makeStory,
   ModeStoryMaker,
-  Prop,
+  Props,
   SizeStoryMaker,
 } from "../../../shared/storybook/stories";
 import { Mode, Size } from "../../../shared/types";
 
-const getStoryField = (text: string, props?: Prop): string => {
-  return getComponent("p6-checkbox", text, props);
+const component = "p6-checkbox";
+
+export default {
+  title: "Atoms/Checkbox",
+  component,
+};
+
+const getStoryField = (
+  text: string,
+  props?: Props<Components.P6Checkbox>
+): HTMLElement => {
+  return getElement(component, text, props);
 };
 
 // Default
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   text: string;
   mode: Mode;
   size: Size;
@@ -26,11 +37,12 @@ export const DefaultStory = makeStory<{
     checked: false,
     disabled: false,
   },
-  builder: ({ text, ...props }): string => getStoryField(text, { ...props }),
+  builder: ({ text, ...props }): HTMLElement =>
+    getStoryField(text, { ...props }),
 });
 
-export const SizeStory = makeStory({
-  builder: (): string =>
+export const Sizes = makeStory({
+  builder: (): HTMLElement =>
     SizeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         size: value,
@@ -39,8 +51,8 @@ export const SizeStory = makeStory({
     ),
 });
 
-export const ModeStory = makeStory({
-  builder: (): string =>
+export const Modes = makeStory({
+  builder: (): HTMLElement =>
     ModeStoryMaker(({ key, value }) =>
       getStoryField(key, {
         mode: value,
@@ -49,8 +61,8 @@ export const ModeStory = makeStory({
     ),
 });
 
-export const DisabledStory = makeStory({
-  builder: (): string =>
+export const Disabled = makeStory({
+  builder: (): HTMLElement =>
     getStoryField("Disabled", {
       disabled: true,
     }),
