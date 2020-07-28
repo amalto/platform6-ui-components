@@ -4,11 +4,11 @@
 
 ## Properties
 
-| Property               | Attribute           | Description                        | Type                                | Default     |
-| ---------------------- | ------------------- | ---------------------------------- | ----------------------------------- | ----------- |
-| `columns` _(required)_ | --                  | List of grid columns               | `Column<Record<string, unknown>>[]` | `undefined` |
-| `optionsDisplayed`     | `options-displayed` | Status of the grid options display | `boolean`                           | `true`      |
-| `searchValue`          | `search-value`      | Value used to filter the data      | `string \| undefined`               | `undefined` |
+| Property               | Attribute      | Description                   | Type                                | Default     |
+| ---------------------- | -------------- | ----------------------------- | ----------------------------------- | ----------- |
+| `columns` _(required)_ | --             | List of grid columns          | `Column<Record<string, unknown>>[]` | `undefined` |
+| `hideOptions`          | `hide-options` | Hide grid options             | `boolean`                           | `false`     |
+| `searchValue`          | `search-value` | Value used to filter the data | `string \| undefined`               | `undefined` |
 
 ## Events
 

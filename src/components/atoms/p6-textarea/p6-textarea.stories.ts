@@ -1,10 +1,11 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   getForm,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 
 const component = "p6-textarea";
 
@@ -12,6 +13,22 @@ export default {
   title: "Atoms/Textarea",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "disabled",
+  "max",
+  "min",
+  "rows",
+  "cols",
+  "name",
+  "size",
+  "placeholder",
+  "readOnly",
+  "required",
+  "resizable",
+  "value",
+  "waiting",
+];
 
 const getStoryField = (props?: Props<Components.P6Textarea>): HTMLElement =>
   getElement(component, "", { ...props });
@@ -27,7 +44,9 @@ export const Default = makeStory<{
   required: boolean;
   waiting: boolean;
   resizable: boolean;
+  value: string;
 }>({
+  componentProps,
   args: {
     placeholder: "Placeholder",
     min: 0,
@@ -39,22 +58,42 @@ export const Default = makeStory<{
     required: false,
     waiting: false,
     resizable: false,
+    value: "",
   },
   builder: (args): HTMLElement => getStoryField(args),
 });
 
-export const Form = makeStory({
-  builder: (): HTMLElement => getForm(getStoryField()),
+export const ReadOnly = makeStory<{ readOnly: boolean }>({
+  componentProps,
+  args: { readOnly: true },
+  builder: (props): HTMLElement => getStoryField(props),
 });
 
-export const ReadOnly = makeStory({
-  builder: (): HTMLElement => getStoryField({ readOnly: true }),
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: { disabled: true },
+  builder: (props): HTMLElement => getStoryField(props),
 });
 
-export const Disabled = makeStory({
-  builder: (): HTMLElement => getStoryField({ disabled: true }),
+export const Waiting = makeStory<{ waiting: boolean }>({
+  componentProps,
+  args: { waiting: true },
+  builder: (props): HTMLElement => getStoryField(props),
 });
 
-export const Waiting = makeStory({
-  builder: (): HTMLElement => getStoryField({ waiting: true }),
+export const Form = makeStory<{
+  disabled: boolean;
+  readOnly: boolean;
+  required: boolean;
+  value: string;
+}>({
+  componentProps,
+  args: {
+    disabled: false,
+    readOnly: false,
+    required: false,
+    value: "default value",
+  },
+  builder: (props): HTMLElement =>
+    getForm(getStoryField({ name: "field", ...props })),
 });

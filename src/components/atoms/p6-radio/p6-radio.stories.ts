@@ -1,10 +1,11 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   getForm,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 
 const component = "p6-radio";
 
@@ -12,6 +13,14 @@ export default {
   title: "Atoms/Radio",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "name",
+  "value",
+  "checked",
+  "disabled",
+  "readOnly",
+];
 
 const getStoryField = (
   text: string,
@@ -24,6 +33,7 @@ export const Default = makeStory<{
   name: string;
   value: string;
 }>({
+  componentProps,
   args: {
     disabled: false,
     readOnly: false,
@@ -43,29 +53,43 @@ export const Default = makeStory<{
     ),
 });
 
-export const Readonly = makeStory({
-  builder: (): HTMLElement =>
+export const Readonly = makeStory<{ readOnly: boolean }>({
+  componentProps,
+  args: { readOnly: true },
+  builder: (props): HTMLElement =>
     getStoryField("Read only", {
       name: "readonly-example",
       checked: true,
-      readOnly: true,
+      ...props,
     }),
 });
 
-export const Disabled = makeStory({
-  builder: (): HTMLElement =>
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: { disabled: true },
+  builder: (props): HTMLElement =>
     getStoryField("Disabled", {
       name: "disabled-example",
       checked: true,
-      disabled: true,
+      ...props,
     }),
 });
 
-export const Form = makeStory({
-  builder: (): HTMLElement =>
+export const Form = makeStory<{ disabled: boolean; readOnly: boolean }>({
+  componentProps,
+  args: {
+    disabled: false,
+    readOnly: false,
+  },
+  builder: (props): HTMLElement =>
     getForm(
-      ["first", "second"].map((key) =>
-        getStoryField(key, { value: key, name: "field" })
+      ["first", "second"].map((key, idx) =>
+        getStoryField(key, {
+          value: key,
+          name: "field",
+          checked: idx === 0,
+          ...props,
+        })
       )
     ),
 });

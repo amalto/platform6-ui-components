@@ -14,12 +14,12 @@
 
 ## Events
 
-| Event              | Description                                                                            | Type                                             |
-| ------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `p6FormRegister`   | Registering the field in a p6-form                                                     | `CustomEvent<P6Control<P6CheckboxValue>>`        |
-| `p6FormUnregister` | Unregistering the field in a p6-form                                                   | `CustomEvent<P6Control<P6CheckboxValue>>`        |
-| `p6Invalid`        | Fires when the field has been checked for validity and doesn't satisfy its constraints | `CustomEvent<InvalidEventDetail>`                |
-| `p6Valid`          | Fires when the field has been checked for validity and satisfy its constraints         | `CustomEvent<ValidEventDetail<P6CheckboxValue>>` |
+| Event              | Description                                                                            | Type                                           |
+| ------------------ | -------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `p6FormRegister`   | Registering the field in a p6-form                                                     | `CustomEvent<P6Control<P6SwitchValue>>`        |
+| `p6FormUnregister` | Unregistering the field in a p6-form                                                   | `CustomEvent<P6Control<P6SwitchValue>>`        |
+| `p6Invalid`        | Fires when the field has been checked for validity and doesn't satisfy its constraints | `CustomEvent<InvalidEventDetail>`              |
+| `p6Valid`          | Fires when the field has been checked for validity and satisfy its constraints         | `CustomEvent<ValidEventDetail<P6SwitchValue>>` |
 
 ## Methods
 

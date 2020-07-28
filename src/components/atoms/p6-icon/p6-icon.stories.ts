@@ -19,13 +19,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   getSelectArgType,
   makeSizeStory,
   makeStory,
   Props,
   StringSelectArgType,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Size } from "../../../shared/types";
 
 const component = "p6-icon";
@@ -34,6 +35,13 @@ export default {
   title: "Atoms/Icon",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "name",
+  "size",
+  "iconPrefix",
+  "transform",
+];
 
 const iconsMap = new Map([
   ["fab", ["accessible-icon", "autoprefixer", "font-awesome", "git", "html5"]],
@@ -66,6 +74,7 @@ const makeLibStory = (iconPrefix: IconPrefix, defaultIcon: IconName) => {
     size: Size;
     transform: string;
   }>({
+    componentProps,
     args: {
       icon: defaultIcon,
       size: Size.normal,
@@ -88,17 +97,23 @@ const makeLibStory = (iconPrefix: IconPrefix, defaultIcon: IconName) => {
 export const LibraryFas = makeLibStory("fas", "home");
 export const LibraryFab = makeLibStory("fab", "cat");
 
-export const Sizes = makeSizeStory(({ value }) =>
-  getStoryField("home", {
-    size: value,
-  })
-);
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ value }) =>
+    getStoryField("home", {
+      size: value,
+    }),
+});
 
 export const HomeIcon = makeStory({
+  componentProps,
   builder: (): HTMLElement => getStoryField("home"),
 });
 
-export const FlipAndRotate = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField("home", { transform: "flip-v rotate-90" }),
+export const FlipAndRotate = makeStory<{ transform: string }>({
+  componentProps,
+  args: {
+    transform: "flip-v rotate-90",
+  },
+  builder: (props): HTMLElement => getStoryField("home", props),
 });

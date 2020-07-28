@@ -1,14 +1,14 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
-  getForm,
   getSelectArgType,
   makeModeStory,
   makeSizeStory,
   makeStory,
   Props,
   StringSelectArgType,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Mode, Size } from "../../../shared/types";
 import { P6ButtonType } from "./p6-button";
 
@@ -18,6 +18,15 @@ export default {
   title: "Atoms/Button",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "mode",
+  "outlined",
+  "waiting",
+  "size",
+  "type",
+  "disabled",
+];
 
 const getStoryField = (
   text: string | HTMLElement[],
@@ -35,6 +44,7 @@ export const Default = makeStory<{
   waiting: boolean;
   type: P6ButtonType;
 }>({
+  componentProps,
   args: {
     text: "My button",
     type: "button",
@@ -50,23 +60,27 @@ export const Default = makeStory<{
       ["submit", "reset", "button"].map((type) => ({ key: type, value: type }))
     ),
   },
-  builder: ({ text, ...args }) =>
-    getForm(getStoryField(text, { ...args }), false),
+  builder: ({ text, ...args }) => getStoryField(text, { ...args }),
 });
 
-export const Sizes = makeSizeStory(({ key, value }) =>
-  getStoryField(key, {
-    size: value,
-  })
-);
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      size: value,
+    }),
+});
 
-export const Modes = makeModeStory(({ key, value }) =>
-  getStoryField(key, {
-    mode: value,
-  })
-);
+export const Modes = makeModeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      mode: value,
+    }),
+});
 
 export const Icon = makeStory({
+  componentProps,
   builder: (): HTMLElement =>
     getElement(
       "div",
@@ -79,23 +93,26 @@ export const Icon = makeStory({
     ),
 });
 
-export const Waiting = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField("Waiting", {
-      waiting: true,
-    }),
+export const Waiting = makeStory<{ waiting: boolean }>({
+  componentProps,
+  args: {
+    waiting: true,
+  },
+  builder: (props): HTMLElement => getStoryField("Waiting", props),
 });
 
-export const Disabled = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField("Disabled", {
-      disabled: true,
-    }),
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: {
+    disabled: true,
+  },
+  builder: (props): HTMLElement => getStoryField("Disabled", props),
 });
 
-export const Outlined = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField("Outlined", {
-      outlined: true,
-    }),
+export const Outlined = makeStory<{ outlined: boolean }>({
+  componentProps,
+  args: {
+    outlined: true,
+  },
+  builder: (props): HTMLElement => getStoryField("Outlined", props),
 });

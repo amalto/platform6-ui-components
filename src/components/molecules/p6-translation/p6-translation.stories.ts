@@ -1,10 +1,12 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
+  getForm,
   makeSizeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Size } from "../../../shared/types";
 
 const component = "p6-translation";
@@ -13,6 +15,14 @@ export default {
   title: "Molecules/Translation",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "name",
+  "value",
+  "size",
+  "readOnly",
+  "disabled",
+];
 
 const getStoryField = (
   description: string,
@@ -36,6 +46,7 @@ export const Default = makeStory<{
   label: string;
   lang: string;
 }>({
+  componentProps,
   args: {
     disabled: false,
     readOnly: false,
@@ -47,8 +58,29 @@ export const Default = makeStory<{
     getStoryField(label, { ...args }),
 });
 
-export const Sizes = makeSizeStory(({ key, value }) =>
-  getStoryField(key, {
-    size: value,
-  })
-);
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      size: value,
+    }),
+});
+
+export const Form = makeStory<{
+  disabled: boolean;
+  readOnly: boolean;
+}>({
+  componentProps,
+  args: {
+    disabled: false,
+    readOnly: false,
+  },
+  builder: (props): HTMLElement =>
+    getForm(
+      getStoryField("Label", {
+        name: "field",
+        value: { en: "English", fr: "Français" },
+        ...props,
+      })
+    ),
+});

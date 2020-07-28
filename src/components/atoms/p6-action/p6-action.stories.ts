@@ -1,11 +1,12 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   makeModeStory,
   makeSizeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Mode, Size } from "../../../shared/types";
 
 const component = "p6-action";
@@ -14,6 +15,8 @@ export default {
   title: "Atoms/Action",
   component,
 };
+
+const componentProps: ComponentProps = ["mode", "waiting", "disabled", "size"];
 
 const getStoryField = (props?: Props<Components.P6Action>): HTMLElement => {
   const size = props?.size !== undefined ? props.size : Size.normal;
@@ -33,6 +36,7 @@ export const Default = makeStory<{
   disabled: boolean;
   waiting: boolean;
 }>({
+  componentProps,
   args: {
     size: Size.normal,
     mode: Mode.default,
@@ -42,28 +46,30 @@ export const Default = makeStory<{
   builder: (args) => getStoryField(args),
 });
 
-export const Modes = makeModeStory(({ value }) =>
-  getStoryField({
-    mode: value,
-  })
-);
-
-export const Disabled = makeStory({
-  builder: (): HTMLElement =>
+export const Modes = makeModeStory({
+  componentProps,
+  builder: ({ value }) =>
     getStoryField({
-      disabled: true,
+      mode: value,
     }),
 });
 
-export const Waiting = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField({
-      waiting: true,
-    }),
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: { disabled: true },
+  builder: (props): HTMLElement => getStoryField(props),
 });
 
-export const Sizes = makeSizeStory(({ value }) =>
-  getStoryField({
-    size: value,
-  })
-);
+export const Waiting = makeStory<{ waiting: boolean }>({
+  componentProps,
+  args: { waiting: true },
+  builder: (props): HTMLElement => getStoryField(props),
+});
+
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ value }) =>
+    getStoryField({
+      size: value,
+    }),
+});

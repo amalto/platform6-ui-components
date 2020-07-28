@@ -12,7 +12,7 @@ import {
   makeStory,
   Props,
   StringSelectArgType,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 
 const component = "p6-empty";
 

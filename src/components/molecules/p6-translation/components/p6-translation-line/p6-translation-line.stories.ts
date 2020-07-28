@@ -1,10 +1,10 @@
 import { Components } from "../../../../../components";
 import {
+  ComponentProps,
   getElement,
-  getForm,
   makeStory,
   Props,
-} from "../../../../../shared/storybook/stories";
+} from "../../../../../shared/storybook";
 import { Size } from "../../../../../shared/types";
 
 const component = "p6-translation-line";
@@ -13,6 +13,16 @@ export default {
   title: "Molecules/Translation Line",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "name",
+  "excludes",
+  "language",
+  "translation",
+  "size",
+  "readOnly",
+  "disabled",
+];
 
 const getStoryField = (
   props?: Props<Components.P6TranslationLine>
@@ -28,6 +38,7 @@ export const Default = makeStory<{
   disabled: boolean;
   size: Size;
 }>({
+  componentProps,
   args: {
     lang: "en",
     language: "en",
@@ -37,19 +48,4 @@ export const Default = makeStory<{
     size: Size.normal,
   },
   builder: (args): HTMLElement => getStoryField(args),
-});
-
-export const Form = makeStory<{
-  language: string;
-  translation: string;
-  readOnly: boolean;
-  disabled: boolean;
-}>({
-  args: {
-    language: "en",
-    translation: "English",
-    readOnly: false,
-    disabled: false,
-  },
-  builder: (args): HTMLElement => getForm(getStoryField(args)),
 });

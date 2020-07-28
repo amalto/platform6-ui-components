@@ -23,7 +23,7 @@ import {
   toArray,
 } from "~utils/dom";
 
-export type P6SelectValue = string[];
+export type P6SelectValue = string[] | string | undefined;
 export type P6SelectControl = P6Control<P6SelectValue>;
 
 @Component({
@@ -117,19 +117,12 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   async checkValidity(): Promise<boolean> {
     await defaultCheckValidity<P6SelectValue>({
       name: this.name,
+      disabled: this.disabled,
       nativeInput: this.nativeInput,
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,
       validationMessage: this.validationMessage.bind(this),
-      getValue: () => {
-        const selectedOptions =
-          undefined === this.nativeInput
-            ? []
-            : toArray<HTMLOptionElement, HTMLCollectionOf<HTMLOptionElement>>(
-                this.nativeInput.selectedOptions
-              );
-        return selectedOptions.map((option) => option.value);
-      },
+      getValue: () => this.inputValue,
     });
 
     return Promise.resolve(true);
@@ -163,14 +156,26 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
     );
   }
 
-  private onChangeHandler = (event: Event): void => {
-    const target = event.target as HTMLSelectElement;
+  private get inputValue(): string | string[] | undefined {
+    if (this.nativeInput === undefined) {
+      return undefined;
+    }
 
+    const selectedOptions =
+      undefined === this.nativeInput
+        ? []
+        : toArray<HTMLOptionElement, HTMLCollectionOf<HTMLOptionElement>>(
+            this.nativeInput.selectedOptions
+          );
+    const value = selectedOptions.map((option) => option.value);
+
+    return this.multiple ? value : value.shift();
+  }
+
+  private onChangeHandler = (): void => {
     this.p6Change.emit({
-      name: "select",
-      value: toArray(target.selectedOptions).map(
-        (option) => (option as HTMLOptionElement).value
-      ),
+      name: this.name,
+      value: this.inputValue,
     });
   };
 

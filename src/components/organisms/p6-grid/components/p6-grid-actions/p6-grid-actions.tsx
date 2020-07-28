@@ -41,9 +41,9 @@ export class P6GridActions implements ComponentInterface {
   @Prop() searchValue: string | undefined;
 
   /**
-   * Status of the grid options display
+   * Hide grid options
    */
-  @Prop() optionsDisplayed = true;
+  @Prop() hideOptions = false;
 
   /**
    * Reset the grid configuration
@@ -71,7 +71,7 @@ export class P6GridActions implements ComponentInterface {
     let toggleDisplayOptionsIcon: IconName = "eye";
     let toggleDisplayOptionsLabel = this.l10n?.showsHiddenColumns;
 
-    if (this.optionsDisplayed) {
+    if (!this.hideOptions) {
       toggleDisplayOptionsIcon = "eye-slash";
       toggleDisplayOptionsLabel = this.l10n?.hidesHiddenColumns;
     }
@@ -82,9 +82,7 @@ export class P6GridActions implements ComponentInterface {
           {hasHiddenColumns ? (
             <P6GridActionItem
               icon={toggleDisplayOptionsIcon}
-              clickHandler={this.toggleDisplayOptionsHandler(
-                this.optionsDisplayed
-              )}
+              clickHandler={this.toggleDisplayOptionsHandler(!this.hideOptions)}
               tooltip={toggleDisplayOptionsLabel}
             />
           ) : undefined}

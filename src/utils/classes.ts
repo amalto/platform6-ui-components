@@ -16,10 +16,11 @@ export function getModeClass(
 
 export function getSizeClass(
   size: Size,
-  defaultSize: Size = Size.normal
+  defaultSize: Size = Size.normal,
+  prefix = "is"
 ): { [key: string]: boolean } {
   return {
-    [`is-${Size[size]}`]: !isDefaultSize(size, defaultSize),
+    [`${prefix}-${Size[size]}`]: !isDefaultSize(size, defaultSize),
   };
 }
 

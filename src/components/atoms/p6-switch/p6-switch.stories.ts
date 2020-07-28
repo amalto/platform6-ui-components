@@ -1,11 +1,13 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
+  getForm,
   makeModeStory,
   makeSizeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Mode, Size } from "../../../shared/types";
 
 const component = "p6-switch";
@@ -15,6 +17,14 @@ export default {
   component,
 };
 
+const componentProps: ComponentProps = [
+  "checked",
+  "disabled",
+  "mode",
+  "size",
+  "name",
+];
+
 const getStoryField = (
   label: string,
   props?: Props<Components.P6Switch>
@@ -22,12 +32,15 @@ const getStoryField = (
 
 export const Default = makeStory<{
   disabled: boolean;
+  checked: boolean;
   size: Size;
   mode: Mode;
   label: string;
 }>({
+  componentProps,
   args: {
     disabled: false,
+    checked: false,
     size: Size.normal,
     mode: Mode.default,
     label: "Switch label",
@@ -36,22 +49,37 @@ export const Default = makeStory<{
     getStoryField(label, { ...args }),
 });
 
-export const Disabled = makeStory({
-  builder: (): HTMLElement => getStoryField("Label", { disabled: true }),
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: { disabled: true },
+  builder: (props): HTMLElement => getStoryField("Label", props),
 });
 
-export const Enabled = makeStory({
-  builder: (): HTMLElement => getStoryField("Label", { disabled: false }),
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      size: value,
+    }),
 });
 
-export const Sizes = makeSizeStory(({ key, value }) =>
-  getStoryField(key, {
-    size: value,
-  })
-);
+export const Modes = makeModeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      mode: value,
+    }),
+});
 
-export const Modes = makeModeStory(({ key, value }) =>
-  getStoryField(key, {
-    mode: value,
-  })
-);
+export const Form = makeStory<{
+  disabled: boolean;
+  checked: boolean;
+}>({
+  componentProps,
+  args: {
+    disabled: false,
+    checked: true,
+  },
+  builder: (props): HTMLElement =>
+    getForm(getStoryField("Switch label", { name: "field", ...props })),
+});

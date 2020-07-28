@@ -1,13 +1,4 @@
-import {
-  Component,
-  ComponentInterface,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import { isCustomEvent, ValidEventDetail } from "~shared/form/event";
+import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
 import { Mode, Size } from "~shared/types";
 import {
   getLanguageCodes,
@@ -68,11 +59,6 @@ export class P6Language implements ComponentInterface {
    */
   @Prop({ attribute: "readOnly" }) public readOnly = false;
 
-  /**
-   * When the value change
-   */
-  @Event() p6Change!: EventEmitter<ValidEventDetail<P6LanguageValue>>;
-
   private getLanguageOptions(): HTMLOptionElement[] {
     const languages = this.getAvailableLanguages();
     return languages.map((language) => {
@@ -102,20 +88,12 @@ export class P6Language implements ComponentInterface {
           size={this.size}
           mode={this.mode}
           fullWidth={this.fullWidth}
-          onP6Change={this.onChange}
         >
           {this.getLanguageOptions()}
         </p6-select-native>
       </Host>
     );
   }
-
-  private onChange = (event: Event): void => {
-    if (isCustomEvent(event)) {
-      event.stopPropagation();
-      this.p6Change.emit({ name: "language", value: event.detail.value[0] });
-    }
-  };
 
   private getAvailableLanguages(): LanguageCode[] {
     return getLanguageCodes()

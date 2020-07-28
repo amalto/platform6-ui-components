@@ -1,11 +1,12 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   makeModeStory,
   makeSizeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Mode, Size } from "../../../shared/types";
 
 const component = "p6-tag";
@@ -14,6 +15,8 @@ export default {
   title: "Atoms/Tag",
   component,
 };
+
+const componentProps: ComponentProps = ["mode", "size"];
 
 const getStoryField = (
   name: string,
@@ -25,6 +28,7 @@ export const Default = makeStory<{
   mode: Mode;
   label: string;
 }>({
+  componentProps,
   args: {
     size: Size.normal,
     mode: Mode.default,
@@ -34,14 +38,18 @@ export const Default = makeStory<{
     getStoryField(label, { ...args }),
 });
 
-export const Sizes = makeSizeStory(({ key, value }) =>
-  getStoryField(key, {
-    size: value,
-  })
-);
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      size: value,
+    }),
+});
 
-export const Modes = makeModeStory(({ key, value }) =>
-  getStoryField(key, {
-    mode: value,
-  })
-);
+export const Modes = makeModeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      mode: value,
+    }),
+});

@@ -1,10 +1,11 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   makeModeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Mode } from "../../../shared/types";
 
 const component = "p6-hint";
@@ -14,6 +15,8 @@ export default {
   component,
 };
 
+const componentProps: ComponentProps = ["mode"];
+
 const getStoryField = (
   text: string,
   props?: Props<Components.P6Hint>
@@ -21,14 +24,17 @@ const getStoryField = (
 
 // Default
 export const Default = makeStory<{ label: string; mode: Mode }>({
+  componentProps,
   args: { label: "hint", mode: Mode.success },
   builder: ({ label, ...props }): HTMLElement =>
     getStoryField(label, { ...props }),
 });
 
 // --- Mode
-export const Modes = makeModeStory(({ key, value }) =>
-  getStoryField(key, {
-    mode: value,
-  })
-);
+export const Modes = makeModeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField(key, {
+      mode: value,
+    }),
+});

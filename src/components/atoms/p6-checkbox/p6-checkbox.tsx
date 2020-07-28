@@ -19,7 +19,7 @@ import {
 import { Mode, Size } from "~shared/types";
 import { getModeClass, getSizeClass } from "~utils/classes";
 
-export type P6CheckboxValue = boolean | undefined;
+export type P6CheckboxValue = string | undefined;
 
 @Component({
   tag: "p6-checkbox",
@@ -31,9 +31,14 @@ export class P6Checkbox
   @Element() host!: HTMLP6CheckboxElement;
 
   /**
-   * Initial value
+   * Checked
    */
   @Prop() checked = false;
+
+  /**
+   * Value
+   */
+  @Prop() value = "on";
 
   /**
    * Disable
@@ -84,7 +89,7 @@ export class P6Checkbox
   }
 
   render(): JSX.Element {
-    const { name, checked, disabled } = this;
+    const { name, checked, disabled, value } = this;
     const inputId = `${name}-input`;
     const classes = {
       checkbox: true,
@@ -99,6 +104,7 @@ export class P6Checkbox
           disabled={disabled}
           id={inputId}
           name={name}
+          value={value}
           type="checkbox"
           class={classes}
           ref={(input): void => {
@@ -136,6 +142,7 @@ export class P6Checkbox
   async checkValidity(): Promise<boolean> {
     return defaultCheckValidity<P6CheckboxValue>({
       name: this.name,
+      disabled: this.disabled,
       nativeInput: this.nativeInput,
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,
@@ -143,7 +150,9 @@ export class P6Checkbox
       errorHandler: (hasError) => {
         this.hasError = hasError;
       },
-      getValue: () => this.nativeInput?.checked,
+      getValue: () => {
+        return this.nativeInput?.checked ? this.nativeInput?.value : undefined;
+      },
     });
   }
 }
