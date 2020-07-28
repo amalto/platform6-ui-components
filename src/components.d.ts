@@ -16,6 +16,7 @@ import { P6CalendarType } from "./components/atoms/p6-calendar/p6-calendar";
 import { P6CheckboxValue } from "./components/atoms/p6-checkbox/p6-checkbox";
 import { P6InputValue } from "./components/atoms/p6-input/p6-input";
 import { Target } from "./components/atoms/p6-link/p6-link";
+import { P6RadioValue } from "./components/atoms/p6-radio/p6-radio";
 import {
   P6SelectControl,
   P6SelectValue,
@@ -152,7 +153,7 @@ export namespace Components {
      */
     checkValidity: () => Promise<boolean>;
     /**
-     * Initial value
+     * Checked
      */
     checked: boolean;
     /**
@@ -175,6 +176,10 @@ export namespace Components {
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
+    /**
+     * Value
+     */
+    value: string;
   }
   interface P6Container {}
   interface P6Dropdown {}
@@ -215,9 +220,9 @@ export namespace Components {
      */
     columns: Column<DataItem>[];
     /**
-     * Status of the grid options display
+     * Hide grid options
      */
-    optionsDisplayed: boolean;
+    hideOptions: boolean;
     /**
      * Value used to filter the data
      */
@@ -464,6 +469,10 @@ export namespace Components {
   }
   interface P6Radio {
     /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     */
+    checkValidity: () => Promise<boolean>;
+    /**
      * Initial value
      */
     checked: boolean;
@@ -480,6 +489,10 @@ export namespace Components {
      */
     readOnly: boolean;
     /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
+    /**
      * Value
      */
     value: string | number;
@@ -489,6 +502,10 @@ export namespace Components {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity: () => Promise<boolean>;
+    /**
+     * Disable the search on the select
+     */
+    disableSearch: boolean;
     /**
      * The select is not available for interaction. The value will not be submitted with the form
      */
@@ -513,10 +530,6 @@ export namespace Components {
      * Marks the select as required. It can't be submitted without a value
      */
     required: boolean;
-    /**
-     * Enable the search on the select
-     */
-    searchEnabled: boolean;
     /**
      * Sort the options by alphabetic order
      */
@@ -1122,7 +1135,7 @@ declare namespace LocalJSX {
   }
   interface P6Checkbox {
     /**
-     * Initial value
+     * Checked
      */
     checked?: boolean;
     /**
@@ -1159,6 +1172,10 @@ declare namespace LocalJSX {
      * set the size of the action
      */
     size?: Size;
+    /**
+     * Value
+     */
+    value?: string;
   }
   interface P6Container {}
   interface P6Dropdown {}
@@ -1215,6 +1232,10 @@ declare namespace LocalJSX {
      */
     columns: Column<DataItem>[];
     /**
+     * Hide grid options
+     */
+    hideOptions?: boolean;
+    /**
      * Update the data filter
      */
     onP6FilterRows?: (event: CustomEvent<FilterRowsDetail>) => void;
@@ -1228,10 +1249,6 @@ declare namespace LocalJSX {
      * Show or hide the grid options
      */
     onP6ShowOptions?: (event: CustomEvent<ShowOptionsDetail>) => void;
-    /**
-     * Status of the grid options display
-     */
-    optionsDisplayed?: boolean;
     /**
      * Value used to filter the data
      */
@@ -1488,12 +1505,6 @@ declare namespace LocalJSX {
      */
     name: string;
     /**
-     * When the value change
-     */
-    onP6Change?: (
-      event: CustomEvent<ValidEventDetail<P6LanguageValue>>
-    ) => void;
-    /**
      * Marks as read only.
      */
     readOnly?: boolean;
@@ -1542,6 +1553,22 @@ declare namespace LocalJSX {
      */
     name: string;
     /**
+     * Registering the field in a p6-form
+     */
+    onP6FormRegister?: (event: CustomEvent<P6Control<P6RadioValue>>) => void;
+    /**
+     * Unregistering the field in a p6-form
+     */
+    onP6FormUnregister?: (event: CustomEvent<P6Control<P6RadioValue>>) => void;
+    /**
+     * Fires when the field has been checked for validity and doesn't satisfy its constraints
+     */
+    onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * Fires when the field has been checked for validity and satisfy its constraints
+     */
+    onP6Valid?: (event: CustomEvent<ValidEventDetail<P6RadioValue>>) => void;
+    /**
      * Readonly
      */
     readOnly?: boolean;
@@ -1551,6 +1578,10 @@ declare namespace LocalJSX {
     value: string | number;
   }
   interface P6Select {
+    /**
+     * Disable the search on the select
+     */
+    disableSearch?: boolean;
     /**
      * The select is not available for interaction. The value will not be submitted with the form
      */
@@ -1575,10 +1606,6 @@ declare namespace LocalJSX {
      * Marks the select as required. It can't be submitted without a value
      */
     required?: boolean;
-    /**
-     * Enable the search on the select
-     */
-    searchEnabled?: boolean;
     /**
      * Sort the options by alphabetic order
      */

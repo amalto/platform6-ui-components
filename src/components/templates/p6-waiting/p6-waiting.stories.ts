@@ -1,9 +1,5 @@
 import { Components } from "../../../components";
-import {
-  getElement,
-  makeStory,
-  Props,
-} from "../../../shared/storybook/stories";
+import { getElement, makeStory, Props } from "../../../shared/storybook";
 
 const component = "p6-waiting";
 
@@ -20,12 +16,12 @@ const getStoryField = (
 };
 
 // Default
-export const DefaultStory = makeStory({
+export const Default = makeStory({
   builder: (): HTMLElement => getStoryField([]),
 });
 
 // Centered
-export const CenteredStory = makeStory({
+export const Centered = makeStory({
   builder: (): HTMLElement =>
     getStoryField([], {
       style: { height: "280px" } as CSSStyleDeclaration,
@@ -33,7 +29,7 @@ export const CenteredStory = makeStory({
 });
 
 // Message
-export const MessageStory = makeStory<{
+export const Message = makeStory<{
   text: string;
 }>({
   args: {
@@ -43,7 +39,7 @@ export const MessageStory = makeStory<{
 });
 
 // Message
-export const RichMessageStory = makeStory<{
+export const RichMessage = makeStory<{
   text: string;
   link: string;
 }>({

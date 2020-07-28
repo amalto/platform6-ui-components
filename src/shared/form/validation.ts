@@ -37,6 +37,7 @@ export async function defaultValidationMessage(
 
 export async function defaultCheckValidity<T>({
   name,
+  disabled,
   validationMessage,
   getValue,
   errorHandler,
@@ -45,8 +46,9 @@ export async function defaultCheckValidity<T>({
   p6Invalid,
 }: {
   name: string;
+  disabled: boolean;
   getValue: () => T;
-  p6Valid: EventEmitter<ValidEventDetail<T>>;
+  p6Valid: EventEmitter<ValidEventDetail<T | undefined>>;
   p6Invalid: EventEmitter<InvalidEventDetail>;
   validationMessage: () => Promise<string>;
   errorHandler?: (hasError: boolean) => void;
@@ -70,7 +72,7 @@ export async function defaultCheckValidity<T>({
   } else {
     const validInit = {
       name,
-      value: getValue(),
+      value: disabled ? undefined : getValue(),
     };
     p6Valid.emit(validInit);
   }

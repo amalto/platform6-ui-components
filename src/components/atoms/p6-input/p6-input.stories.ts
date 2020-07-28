@@ -1,12 +1,13 @@
 import { Components } from "../../../components";
 import {
-  capitalize,
+  ComponentProps,
   getElement,
+  getForm,
   getSelectArgType,
   makeSizeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Size } from "../../../shared/types";
 import { enumToArray } from "../../../utils/enum";
 import { P6InputType } from "./types";
@@ -18,10 +19,25 @@ export default {
   component,
 };
 
+const componentProps: ComponentProps = [
+  "disabled",
+  "max",
+  "min",
+  "name",
+  "pattern",
+  "placeholder",
+  "readOnly",
+  "required",
+  "type",
+  "size",
+  "value",
+  "waiting",
+];
+
 const getStoryField = (props?: Props<Components.P6Input>): HTMLElement =>
   getElement(component, [], props);
 
-export const DefaultStory = makeStory<{
+export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
   required: boolean;
@@ -34,6 +50,7 @@ export const DefaultStory = makeStory<{
   size: Size;
   value: string;
 }>({
+  componentProps,
   args: {
     disabled: false,
     readOnly: false,
@@ -53,29 +70,61 @@ export const DefaultStory = makeStory<{
   builder: (args): HTMLElement => getStoryField(args),
 });
 
-export const TextStory = makeStory({
+export const Text = makeStory({
+  componentProps,
   builder: (): HTMLElement => getStoryField({ type: P6InputType.text }),
 });
 
-export const SizeStory = makeSizeStory(({ key, value }) =>
-  getStoryField({ size: value, placeholder: `${capitalize(key)} input` })
-);
-
-export const ReadonlyStory = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField({ readOnly: true, placeholder: "Read only" }),
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField({ size: value, placeholder: `${key} input` }),
 });
 
-export const DisabledStory = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField({ disabled: true, placeholder: "Disabled" }),
+export const Readonly = makeStory<{ readOnly: boolean }>({
+  componentProps,
+  args: { readOnly: true },
+  builder: (props): HTMLElement =>
+    getStoryField({ placeholder: "Read only", ...props }),
 });
 
-export const WaitingStory = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField({ waiting: true, placeholder: "Waiting" }),
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: { disabled: true },
+  builder: (props): HTMLElement =>
+    getStoryField({ placeholder: "Disabled", ...props }),
 });
 
-export const OnErrorStory = makeStory({
+export const Waiting = makeStory<{ waiting: boolean }>({
+  componentProps,
+  args: { waiting: true },
+  builder: (props): HTMLElement =>
+    getStoryField({ placeholder: "Waiting", ...props }),
+});
+
+export const OnError = makeStory({
+  componentProps,
   builder: (): HTMLElement => getStoryField({ pattern: "42", value: "84" }),
+});
+
+export const Form = makeStory<{
+  disabled: boolean;
+  readOnly: boolean;
+  required: boolean;
+  type: P6InputType;
+  value: string;
+}>({
+  componentProps,
+  args: {
+    disabled: false,
+    readOnly: false,
+    required: false,
+    type: P6InputType.text,
+    value: "default value",
+  },
+  argTypes: {
+    ...getSelectArgType("type", enumToArray(P6InputType)),
+  },
+  builder: (props): HTMLElement =>
+    getForm(getStoryField({ name: "field", ...props })),
 });

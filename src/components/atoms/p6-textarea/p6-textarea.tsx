@@ -166,7 +166,6 @@ export class P6Textarea
     if (!isEmpty(this.value)) {
       await this.checkValidity();
     }
-
     this.p6FormRegister.emit(this);
   }
 
@@ -190,6 +189,7 @@ export class P6Textarea
   async checkValidity(): Promise<boolean> {
     return defaultCheckValidity<P6TextareaValue>({
       name: this.name,
+      disabled: this.disabled,
       nativeInput: this.nativeInput,
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,

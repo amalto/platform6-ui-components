@@ -1,9 +1,10 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 
 const component = "p6-tabs";
 
@@ -11,6 +12,8 @@ export default {
   title: "Atoms/Tabs",
   component,
 };
+
+const componentProps: ComponentProps = ["selected"];
 
 const getStoryField = (
   children: HTMLElement[],
@@ -20,6 +23,7 @@ const getStoryField = (
 };
 
 export const Default = makeStory({
+  componentProps,
   builder: (): HTMLElement =>
     getStoryField(
       [

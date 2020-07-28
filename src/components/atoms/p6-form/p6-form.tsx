@@ -132,8 +132,11 @@ export class P6Form implements ComponentInterface {
       this.errorMessages = Object.entries(this.errorMessages)
         .filter(([name]) => name !== event.detail.name)
         .reduce((acc, [name, message]) => ({ ...acc, [name]: message }), {});
-
-      this.data.set(event.detail.name, event.detail.value);
+      if (event.detail.value === undefined) {
+        this.data.delete(event.detail.name);
+      } else {
+        this.data.set(event.detail.name, event.detail.value);
+      }
     }
   };
 

@@ -1,9 +1,5 @@
 import { Components } from "../../../components";
-import {
-  getElement,
-  makeStory,
-  Props,
-} from "../../../shared/storybook/stories";
+import { getElement, makeStory, Props } from "../../../shared/storybook";
 
 const component = "p6-container";
 

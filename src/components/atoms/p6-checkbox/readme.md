@@ -6,20 +6,21 @@
 
 | Property            | Attribute  | Description                | Type                                                                                       | Default        |
 | ------------------- | ---------- | -------------------------- | ------------------------------------------------------------------------------------------ | -------------- |
-| `checked`           | `checked`  | Initial value              | `boolean`                                                                                  | `false`        |
+| `checked`           | `checked`  | Checked                    | `boolean`                                                                                  | `false`        |
 | `disabled`          | `disabled` | Disable                    | `boolean`                                                                                  | `false`        |
 | `mode`              | `mode`     | set the mode of the action | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `Mode.default` |
 | `name` _(required)_ | `name`     | Checkbox name              | `string`                                                                                   | `undefined`    |
 | `size`              | `size`     | set the size of the action | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
+| `value`             | `value`    | Value                      | `string`                                                                                   | `"on"`         |
 
 ## Events
 
-| Event              | Description                                                                            | Type                                             |
-| ------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `p6FormRegister`   | Registering the field in a p6-form                                                     | `CustomEvent<P6Control<P6CheckboxValue>>`        |
-| `p6FormUnregister` | Unregistering the field in a p6-form                                                   | `CustomEvent<P6Control<P6CheckboxValue>>`        |
-| `p6Invalid`        | Fires when the field has been checked for validity and doesn't satisfy its constraints | `CustomEvent<InvalidEventDetail>`                |
-| `p6Valid`          | Fires when the field has been checked for validity and satisfy its constraints         | `CustomEvent<ValidEventDetail<P6CheckboxValue>>` |
+| Event              | Description                                                                            | Type                                                 |
+| ------------------ | -------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `p6FormRegister`   | Registering the field in a p6-form                                                     | `CustomEvent<P6Control<string \| undefined>>`        |
+| `p6FormUnregister` | Unregistering the field in a p6-form                                                   | `CustomEvent<P6Control<string \| undefined>>`        |
+| `p6Invalid`        | Fires when the field has been checked for validity and doesn't satisfy its constraints | `CustomEvent<InvalidEventDetail>`                    |
+| `p6Valid`          | Fires when the field has been checked for validity and satisfy its constraints         | `CustomEvent<ValidEventDetail<string \| undefined>>` |
 
 ## Methods
 

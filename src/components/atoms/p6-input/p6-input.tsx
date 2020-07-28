@@ -183,6 +183,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   async checkValidity(): Promise<boolean> {
     return defaultCheckValidity<P6InputValue>({
       name: this.name,
+      disabled: this.disabled,
       nativeInput: this.nativeInput,
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,

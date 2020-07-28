@@ -216,7 +216,7 @@ export class P6Grid {
 
         <p6-grid-actions
           columns={this.columns}
-          optionsDisplayed={displayGridOptions}
+          hideOptions={!displayGridOptions}
         />
         {displayGridOptions ? (
           <p6-grid-options

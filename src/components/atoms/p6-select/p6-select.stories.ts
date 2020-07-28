@@ -1,11 +1,12 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   getForm,
   makeSizeStory,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Mode, Size } from "../../../shared/types";
 
 const component = "p6-select";
@@ -14,6 +15,18 @@ export default {
   title: "Atoms/Select",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "name",
+  "size",
+  "multiple",
+  "disabled",
+  "required",
+  "readOnly",
+  "placeholder",
+  "shouldSort",
+  "disableSearch",
+];
 
 const getStoryField = (
   options: HTMLElement[],
@@ -36,7 +49,7 @@ export const Default = makeStory<{
   lang: string;
   disabled: boolean;
   multiple: boolean;
-  searchEnabled: boolean;
+  disableSearch: boolean;
   shouldSort: boolean;
   required: boolean;
   readOnly: boolean;
@@ -44,11 +57,12 @@ export const Default = makeStory<{
   size: Size;
   mode: Mode;
 }>({
+  componentProps,
   args: {
     lang: "en",
     disabled: false,
     multiple: false,
-    searchEnabled: true,
+    disableSearch: false,
     shouldSort: true,
     required: false,
     readOnly: false,
@@ -68,6 +82,7 @@ export const Default = makeStory<{
 });
 
 export const Selected = makeStory({
+  componentProps,
   builder: (): HTMLElement =>
     getStoryField([
       getOption("no", "Unselected value"),
@@ -76,6 +91,7 @@ export const Selected = makeStory({
 });
 
 export const MultipleSelected = makeStory({
+  componentProps,
   builder: (): HTMLElement =>
     getStoryField(
       [
@@ -87,12 +103,15 @@ export const MultipleSelected = makeStory({
     ),
 });
 
-export const Disabled = makeStory({
-  builder: (): HTMLElement =>
-    getStoryField([getOption("value", "Display")], { disabled: true }),
+export const Disabled = makeStory<{ disabled: boolean }>({
+  componentProps,
+  args: { disabled: true },
+  builder: (props): HTMLElement =>
+    getStoryField([getOption("value", "Display")], props),
 });
 
 export const CustomPlaceholder = makeStory<{ placeholder: string }>({
+  componentProps,
   args: {
     placeholder: "Custom placeholder",
   },
@@ -101,6 +120,7 @@ export const CustomPlaceholder = makeStory<{ placeholder: string }>({
 });
 
 export const Placeholder = makeStory({
+  componentProps,
   builder: (): HTMLElement =>
     getStoryField([
       getOption("", "This is the placeholder"),
@@ -110,57 +130,74 @@ export const Placeholder = makeStory({
     ]),
 });
 
-export const WithoutSearch = makeStory<{ searchEnabled: boolean }>({
+export const WithoutSearch = makeStory<{ disableSearch: boolean }>({
+  componentProps,
   args: {
-    searchEnabled: false,
+    disableSearch: true,
   },
-  builder: (args): HTMLElement =>
+  builder: (props): HTMLElement =>
     getStoryField(
       [
         getOption("one", "One"),
         getOption("two", "Two"),
         getOption("three", "Three"),
       ],
-      args
+      props
     ),
 });
 
 export const Language = makeStory<{ lang: string }>({
+  componentProps,
   args: {
     lang: "en",
   },
-  builder: (args): HTMLElement =>
+  builder: (props): HTMLElement =>
     getStoryField(
       [
         getOption("one", "One"),
         getOption("two", "Two"),
         getOption("three", "Three"),
       ],
-      args
+      props
     ),
 });
 
-export const Sizes = makeSizeStory(({ key, value }) =>
-  getStoryField([getOption(`${value}`, key)], {
-    size: value,
-  })
-);
+export const Sizes = makeSizeStory({
+  componentProps,
+  builder: ({ key, value }) =>
+    getStoryField([getOption(`${value}`, key)], {
+      size: value,
+    }),
+});
 
 export const Form = makeStory<{
+  disabled: boolean;
+  multiple: boolean;
   required: boolean;
+  readOnly: boolean;
 }>({
+  componentProps,
   args: {
+    disabled: false,
+    multiple: false,
     required: false,
+    readOnly: false,
   },
-  builder: (): HTMLElement =>
+  builder: (props): HTMLElement =>
     getForm(
-      getStoryField([
-        getOption("", "Select language"),
-        getElement(
-          "optgroup",
-          [getOption("fr", "Français"), getOption("en", "English")],
-          { label: "Europe" }
-        ),
-      ])
+      getStoryField(
+        [
+          getOption("", "Select language"),
+          getElement(
+            "optgroup",
+            [
+              getOption("fr", "Français"),
+              getOption("en", "English", { selected: true }),
+            ],
+            { label: "Europe" }
+          ),
+        ],
+        { name: "field", ...props }
+      )
     ),
 });

@@ -1,16 +1,20 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   getForm,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 
 const component = "p6-field";
+
 export default {
   title: "Molecules/Field",
   component,
 };
+
+const componentProps: ComponentProps = ["size"];
 
 const getStoryField = (
   children: HTMLElement[],
@@ -38,6 +42,7 @@ export const Default = makeStory<{
   label: string;
   hint: string;
 }>({
+  componentProps,
   args: {
     label: "Label",
     hint: "hint message",
@@ -53,6 +58,7 @@ export const Form = makeStory<{
   waiting: boolean;
   pattern: string;
 }>({
+  componentProps,
   args: {
     required: false,
     readonly: false,

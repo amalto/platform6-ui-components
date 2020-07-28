@@ -40,6 +40,8 @@ export enum SortOrder {
   none = 2,
 }
 
+export type EnumType = { [s: number]: string };
+
 export const modes = enumToArray(Mode);
 export const sizes = enumToArray(Size);
 export const positions = enumToArray(Position);

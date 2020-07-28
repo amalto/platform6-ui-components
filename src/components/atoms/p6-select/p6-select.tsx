@@ -64,9 +64,9 @@ export class P6Select implements ComponentInterface {
   @Prop({ attribute: "shouldSort" }) public shouldSort = false;
 
   /**
-   * Enable the search on the select
+   * Disable the search on the select
    */
-  @Prop({ attribute: "searchEnabled" }) public searchEnabled = true;
+  @Prop({ attribute: "disableSearch" }) public disableSearch = false;
 
   @Element() private readonly host!: HTMLP6SelectElement;
 
@@ -206,7 +206,7 @@ export class P6Select implements ComponentInterface {
       // Usage: Whether each item should have a remove button.
       removeItemButton: true,
       // Usage: Whether a search area should be shown. Note: Multiple select boxes will always show search areas.
-      searchEnabled: this.searchEnabled,
+      searchEnabled: !this.disableSearch,
       // Usage: Whether choices and groups should be sorted. If false, choices/groups will appear in the order they were given.
       shouldSort: this.shouldSort,
       // Usage: The value of the search inputs placeholder.

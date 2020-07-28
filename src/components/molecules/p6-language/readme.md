@@ -16,12 +16,6 @@
 | `size`              | `size`      | The size of the component to display                                                       | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
 | `value`             | `value`     | The selected value                                                                         | `string`                                                                                   | `""`           |
 
-## Events
-
-| Event      | Description           | Type                                    |
-| ---------- | --------------------- | --------------------------------------- |
-| `p6Change` | When the value change | `CustomEvent<ValidEventDetail<string>>` |
-
 ## Dependencies
 
 ### Used by

@@ -1,9 +1,10 @@
 import { Components } from "../../../components";
 import {
+  ComponentProps,
   getElement,
   makeStory,
   Props,
-} from "../../../shared/storybook/stories";
+} from "../../../shared/storybook";
 import { Alignment } from "../../../shared/types";
 import { ColumnDefinition, DataItem, Row } from "./core/entities";
 
@@ -13,6 +14,13 @@ export default {
   title: "Organisms/Grid",
   component,
 };
+
+const componentProps: ComponentProps = [
+  "customContextMenu",
+  "loading",
+  "definitions",
+  "data",
+];
 
 interface StoryItem {
   first: string;
@@ -117,6 +125,7 @@ function getStoryField(
 }
 
 export const Default = makeStory({
+  componentProps,
   args: {
     loading: false,
     empty: false,
@@ -125,9 +134,11 @@ export const Default = makeStory({
 });
 
 export const Loading = makeStory({
+  componentProps,
   builder: () => getStoryField(storyItems, { loading: true }),
 });
 
 export const Empty = makeStory({
+  componentProps,
   builder: () => getStoryField([], {}),
 });

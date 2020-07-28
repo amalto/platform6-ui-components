@@ -1,17 +1,41 @@
-import { Component, Element, h, Host, Prop, State } from "@stencil/core";
+import {
+  Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Method,
+  Prop,
+  State,
+} from "@stencil/core";
+import { P6Control } from "~shared/form/control";
+import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
+import {
+  defaultCheckValidity,
+  defaultValidationMessage,
+} from "~shared/form/validation";
+
+export type P6RadioValue = string | number | undefined;
 
 @Component({
   tag: "p6-radio",
   styleUrl: "./p6-radio.scss",
   scoped: true,
 })
-export class P6Radio {
-  @Element() host?: HTMLP6RadioElement;
+export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
+  @Element() host!: HTMLP6RadioElement;
 
   /**
    * Radio name
    */
   @Prop() name!: string;
+
+  /**
+   * Value
+   */
+  @Prop() value!: string | number;
 
   /**
    * Initial value
@@ -29,14 +53,31 @@ export class P6Radio {
   @Prop({ attribute: "readOnly" }) readOnly = false;
 
   /**
-   * Value
+   * Registering the field in a p6-form
    */
-  @Prop() value!: string | number;
+  @Event() p6FormRegister!: EventEmitter<P6Control<P6RadioValue>>;
+
+  /**
+   * Unregistering the field in a p6-form
+   */
+  @Event() p6FormUnregister!: EventEmitter<P6Control<P6RadioValue>>;
+
+  /**
+   * Fires when the field has been checked for validity and satisfy its constraints
+   */
+  @Event() p6Valid!: EventEmitter<ValidEventDetail<P6RadioValue>>;
+
+  /**
+   * Fires when the field has been checked for validity and doesn't satisfy its constraints
+   */
+  @Event() p6Invalid!: EventEmitter<InvalidEventDetail>;
 
   /**
    * State of the radio
    */
   @State() isChecked = false;
+
+  private nativeInput: HTMLInputElement | undefined;
 
   private clickHandler = (event: Event): void => {
     if (this.readOnly) {
@@ -47,6 +88,7 @@ export class P6Radio {
   };
 
   componentWillLoad(): void {
+    this.host.addEventListener("focusout", this.checkValidity.bind(this));
     this.isChecked = this.checked;
   }
 
@@ -72,5 +114,40 @@ export class P6Radio {
         </label>
       </Host>
     );
+  }
+
+  componentDidLoad(): void {
+    this.p6FormRegister.emit(this);
+  }
+
+  disconnectedCallback?(): void {
+    this.p6FormUnregister.emit(this);
+  }
+
+  /**
+   * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
+   * It also triggers the standard error message, such as "this is a required field".
+   */
+  @Method()
+  async validationMessage(): Promise<string> {
+    return defaultValidationMessage(this.nativeInput);
+  }
+
+  /**
+   * Returns whether a form will validate when it is submitted, without having to submit it.
+   */
+  @Method()
+  async checkValidity(): Promise<boolean> {
+    return defaultCheckValidity<P6RadioValue>({
+      name: this.name,
+      disabled: this.disabled,
+      nativeInput: this.nativeInput,
+      p6Valid: this.p6Valid,
+      p6Invalid: this.p6Invalid,
+      validationMessage: this.validationMessage.bind(this),
+      getValue: () => {
+        return this.nativeInput?.checked ? this.nativeInput?.value : undefined;
+      },
+    });
   }
 }

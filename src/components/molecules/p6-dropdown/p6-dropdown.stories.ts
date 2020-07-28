@@ -1,4 +1,4 @@
-import { getElement, makeStory } from "../../../shared/storybook/stories";
+import { getElement, makeStory } from "../../../shared/storybook";
 
 const component = "p6-dropdown";
 

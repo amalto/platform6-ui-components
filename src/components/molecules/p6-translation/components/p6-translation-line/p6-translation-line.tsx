@@ -82,7 +82,11 @@ export class P6TranslationLine implements ComponentInterface {
     const isDefault = isDefaultLanguage(this.language);
 
     return (
-      <Host>
+      <Host
+        onP6Valid={this.cancelEvent}
+        onP6Invalid={this.cancelEvent}
+        onP6Change={this.languageChangeHandler}
+      >
         <div class="columns is-variable is-1">
           <div class="column">
             <div class="field has-addons">
@@ -108,7 +112,6 @@ export class P6TranslationLine implements ComponentInterface {
                   disabled={this.disabled || isDefault}
                   excludes={this.excludes}
                   required
-                  onP6Change={this.languageChangeHandler}
                 />
               </div>
             </div>
@@ -129,6 +132,8 @@ export class P6TranslationLine implements ComponentInterface {
       </Host>
     );
   }
+
+  private cancelEvent = (event: Event): void => event.stopPropagation();
 
   private languageChangeHandler = (event: Event): void => {
     if (!isCustomEvent(event)) {
