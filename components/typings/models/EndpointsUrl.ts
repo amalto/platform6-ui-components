@@ -1,8 +1,8 @@
 interface EndpointsUrl {
 
-    APP_KEYS: string,
+    APP_KEYS: string | null,
 
-    SERVICES: string,
+    SERVICES: string | null,
 
     ////////////////////////////////////////////////
     //
