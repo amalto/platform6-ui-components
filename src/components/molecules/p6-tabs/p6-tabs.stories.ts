@@ -33,6 +33,7 @@ export const Default = makeStory({
           {
             id: "first",
             title: "What is Lorem Ipsum?",
+            className: "disabled-close",
           }
         ),
         getElement(

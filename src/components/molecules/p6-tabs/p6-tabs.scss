@@ -1,4 +1,5 @@
-//@import "bulma/sass/layout/section";
+@import "@fortawesome/fontawesome-svg-core/styles";
+@import "@creativebulma/bulma-tooltip/src/sass/index";
 
 $tabs-link-active-border-top-color: $primary;
 $tabs-link-active-color: $success;
@@ -12,6 +13,7 @@ $tabs-link-hover-color: $text-strong !default;
 $tabs-link-active-border-top-color: $link !default;
 $tabs-link-active-color: $link !default;
 $tabs-link-padding: 0.5em 1em !default;
+$tabs-link-max-width: 7rem;
 
 $tabs-boxed-link-radius: $radius !default;
 $tabs-boxed-link-hover-background-color: $background !default;
@@ -42,10 +44,11 @@ $tabs-toggle-link-active-color: $link-invert !default;
     display: flex;
     font-size: $size-normal;
     justify-content: space-between;
-    overflow: hidden;
-    overflow-x: auto;
+    overflow: visible;
     white-space: nowrap;
     margin-bottom: 0;
+    position: relative;
+    z-index: 100;
 
     a {
       align-items: center;
@@ -60,6 +63,22 @@ $tabs-toggle-link-active-color: $link-invert !default;
       vertical-align: top;
       cursor: pointer;
       text-decoration: none !important;
+      position: relative;
+      max-width: $tabs-link-max-width;
+
+      .title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .delete.disabled-close {
+        display: none;
+      }
+
+      .delete:not(.disabled-close) {
+        @include delete;
+      }
 
       &:hover {
         border-bottom-color: $tabs-link-hover-border-bottom-color;
