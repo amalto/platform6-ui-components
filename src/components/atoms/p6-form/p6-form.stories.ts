@@ -36,7 +36,11 @@ export const Default = makeStory<{ name: string }>({
           getElement("p6-input", [], { name: "c-input", required: true }),
         ]),
         getElement("p6-field", [
-          getElement("p6-label", "native input", { slot: "label" }),
+          getElement("p6-label", "native input", {
+            slot: "label",
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            style: "margin-right: 5px;" as any,
+          }),
           getElement("input", [], { name: "n-input", required: true }),
         ]),
         getFormButtons(),

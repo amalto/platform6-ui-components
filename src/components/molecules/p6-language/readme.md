@@ -13,7 +13,7 @@
 | `name` _(required)_ | `name`      | The name                                                                                   | `string`                                                                                   | `undefined`    |
 | `readOnly`          | `readonly`  | Marks as read only.                                                                        | `boolean`                                                                                  | `false`        |
 | `required`          | `required`  | Marks the select as required. It can't be submitted without a value                        | `boolean`                                                                                  | `false`        |
-| `size`              | `size`      | The size of the component to display                                                       | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
+| `size`              | `size`      | The size of the component to display                                                       | `Size.normal \| Size.small`                                                                | `Size.normal`  |
 | `value`             | `value`     | The selected value                                                                         | `string`                                                                                   | `""`           |
 
 ## Dependencies

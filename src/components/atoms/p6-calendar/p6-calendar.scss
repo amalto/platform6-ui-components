@@ -1,6 +1,8 @@
 @import "~bulma/bulma";
 @import "~bulma-calendar/src/sass/index";
 
+$calendar-input-padding-top: 0.275rem;
+
 :host {
   display: block;
 
@@ -10,12 +12,24 @@
     }
 
     .datetimepicker-dummy-wrapper {
+      @include input;
+
       border-radius: $input-radius;
+
+      .datetimepicker-dummy-input {
+        font-size: $size-normal;
+        padding-top: 0.275rem;
+      }
 
       .datetimepicker-dummy-input:first-child {
         text-indent: 0.5rem;
       }
     }
+  }
+
+  .datetimepicker-clear-button {
+    font-size: $size-medium;
+    top: $calendar-input-padding-top * -1;
   }
 
   @each $name, $pair in $colors {

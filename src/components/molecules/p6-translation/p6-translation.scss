@@ -3,4 +3,17 @@
 
 :host {
   display: block;
+
+  p6-label {
+    display: flex;
+    align-items: baseline;
+    margin-left: $column-gap * -1;
+    margin-right: $column-gap * -1;
+  }
+
+  p6-label[slot="label"] {
+    p6-action {
+      margin-left: $margin-gap;
+    }
+  }
 }

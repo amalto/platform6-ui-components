@@ -164,7 +164,7 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
                 }}
                 data-tooltip={this.l10n?.addTooltip}
               >
-                <p6-icon name="plus-circle" size={this.size} />
+                <p6-icon name="plus-circle" size={Size.small} />
               </p6-action>
             )}
           </p6-label>

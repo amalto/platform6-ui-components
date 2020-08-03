@@ -15,9 +15,9 @@
 
     &:not(.is-multiple):not(.is-loading) {
       &::after {
-        @include arrow;
+        @include arrow($input-arrow);
 
-        border-color: $input-arrow;
+        border-width: 2px;
         right: 1.125em;
         z-index: 4;
       }
@@ -37,6 +37,7 @@
       }
 
       @include input;
+      @include select;
 
       cursor: pointer;
       display: block;
@@ -133,14 +134,6 @@
 
       &.is-small::after {
         font-size: $size-small;
-      }
-
-      &.is-medium::after {
-        font-size: $size-medium;
-      }
-
-      &.is-large::after {
-        font-size: $size-large;
       }
     }
   }

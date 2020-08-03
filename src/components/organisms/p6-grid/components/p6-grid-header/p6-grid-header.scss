@@ -7,5 +7,6 @@ $table-head-cell-border-width: 1px 1px 2px !default;
   background-color: $table-head-background-color;
   border: $table-cell-border;
   border-width: $table-head-cell-border-width;
+  font-size: $size-normal;
   margin-top: 1rem * 1.35;
 }

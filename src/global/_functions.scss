@@ -101,7 +101,7 @@
 }
 
 @mixin arrow($color: transparent) {
-  border: 3px solid $color;
+  border: 2px solid $color;
   border-radius: 2px;
   border-right: 0;
   border-top: 0;
@@ -151,5 +151,109 @@
     &:#{$placeholder}-placeholder {
       @content;
     }
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $tablet - 1px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin touch {
+  @media screen and (max-width: $desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @if $widescreen-enabled {
+    @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin until-widescreen {
+  @if $widescreen-enabled {
+    @media screen and (max-width: $widescreen - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin widescreen {
+  @if $widescreen-enabled {
+    @media screen and (min-width: $widescreen) {
+      @content;
+    }
+  }
+}
+
+@mixin widescreen-only {
+  @if $widescreen-enabled and $fullhd-enabled {
+    @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin until-fullhd {
+  @if $fullhd-enabled {
+    @media screen and (max-width: $fullhd - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin fullhd {
+  @if $fullhd-enabled {
+    @media screen and (min-width: $fullhd) {
+      @content;
+    }
+  }
+}
+
+@mixin ltr {
+  @if not $rtl {
+    @content;
+  }
+}
+
+@mixin rtl {
+  @if $rtl {
+    @content;
+  }
+}
+
+@mixin ltr-property($property, $spacing, $right: true) {
+  $normal: if($right, "right", "left");
+  $opposite: if($right, "left", "right");
+  @if $rtl {
+    #{$property}-#{$opposite}: $spacing;
+  } @else {
+    #{$property}-#{$normal}: $spacing;
+  }
+}
+
+@mixin ltr-position($spacing, $right: true) {
+  $normal: if($right, "right", "left");
+  $opposite: if($right, "left", "right");
+  @if $rtl {
+    #{$opposite}: $spacing;
+  } @else {
+    #{$normal}: $spacing;
   }
 }

@@ -1,9 +1,22 @@
+$header-menu-action-icon-gap: $size-6;
+$header-menu-action-line-margin-bottom: $size-7;
+
 :host {
   cursor: context-menu;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   background-color: $scheme-main;
-  width: 100px;
+  min-width: 75px;
   padding: $gap-size * 1px;
   font-size: $size-small;
+
+  div {
+    display: flex;
+    margin: $header-menu-action-line-margin-bottom 0;
+
+    p6-action {
+      display: flex;
+      flex: auto;
+    }
+  }
 }

@@ -9,12 +9,13 @@ $choices-keyline-color: $input-border-color;
 $choices-primary-color: $grey-lightest;
 
 $p6-select-border-color: #e8ebed !default;
-$p6-select-border-width: 2px !default;
+$p6-select-border-width: 1px !default;
 $p6-select-multiple-item-bg-color: #e8ebed !default;
 $p6-select-multiple-item-text-color: #555 !default;
 $p6-select-dropdown-item-highlighted-bg-color: #dce7fe !default;
 
 @import "~choices.js/src/styles/choices";
+@import "../../../styles/atoms/control";
 
 @mixin cross($color) {
   text-indent: -9999px;
@@ -23,7 +24,7 @@ $p6-select-dropdown-item-highlighted-bg-color: #dce7fe !default;
   background: initial;
   position: absolute;
   opacity: 0.3;
-  top: calc(50% - 0.25em);
+  top: calc(50% - 0.125em);
   height: 0.625em;
   width: 0.625em;
   margin: -0.437em 0 0;
@@ -146,7 +147,7 @@ p6-select {
       }
 
       &::after {
-        border: 3px solid #000;
+        border: 2px solid #000;
         border-radius: 2px;
         border-right: 0;
         border-top: 0;
@@ -166,6 +167,7 @@ p6-select {
         margin-top: inherit;
         border-color: inherit;
         transform: rotate(135deg);
+        top: calc(50% - 0.125rem);
       }
     }
 
@@ -174,6 +176,10 @@ p6-select {
         padding: 0;
         display: flex;
         align-items: center;
+      }
+
+      .#{$choices-selector}__input {
+        margin-bottom: 0;
       }
 
       .#{$choices-selector}__item {
@@ -195,10 +201,9 @@ p6-select {
   }
 
   .#{$choices-selector}__inner {
+    @include input;
+
     min-height: initial;
-    height: 2.5em;
-    border: $p6-select-border-width solid $p6-select-border-color;
-    border-radius: 2px;
   }
 
   .#{$choices-selector}__list--single {
@@ -219,6 +224,7 @@ p6-select {
 
   .#{$choices-selector}__list--multiple .#{$choices-selector}__item {
     margin: 0.25em;
+    font-size: $size-small;
 
     &.is-highlighted {
       background-color: $p6-select-dropdown-item-highlighted-bg-color;
@@ -226,7 +232,7 @@ p6-select {
     }
   }
 
-  .choices__item {
+  .#{$choices-selector}__item {
     position: relative;
   }
 }

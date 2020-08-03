@@ -19,7 +19,7 @@ import {
   ResetDefinitionsDetail,
   ShowOptionsDetail,
 } from "../../core/entities";
-import { P6GridActionItem } from "../p6-grid-action-item";
+import { P6GridButtonItem } from "../p6-grid-button-item";
 
 @Component({
   tag: "p6-grid-actions",
@@ -80,14 +80,14 @@ export class P6GridActions implements ComponentInterface {
       <Host>
         <div class="level-left">
           {hasHiddenColumns ? (
-            <P6GridActionItem
+            <P6GridButtonItem
               icon={toggleDisplayOptionsIcon}
               clickHandler={this.toggleDisplayOptionsHandler(!this.hideOptions)}
               tooltip={toggleDisplayOptionsLabel}
             />
           ) : undefined}
 
-          <P6GridActionItem
+          <P6GridButtonItem
             icon="eraser"
             mode={Mode.danger}
             clickHandler={this.resetCustomDefinitionsHandler()}

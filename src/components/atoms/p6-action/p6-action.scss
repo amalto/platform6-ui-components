@@ -39,18 +39,6 @@ $button-disabled-opacity: 0.5 !default;
     width: auto;
     height: auto;
 
-    ::slotted(.icon),
-    ::slotted(.icon.is-small),
-    ::slotted(.icon.is-medium),
-    ::slotted(.icon.is-large),
-    ::slotted(p6-icon),
-    ::slotted(p6-icon.is-small),
-    ::slotted(p6-icon.is-medium),
-    ::slotted(p6-icon.is-large) {
-      height: 1.5em;
-      width: 1.5em;
-    }
-
     ::slotted(.icon:first-child:last-child),
     ::slotted(p6-icon:first-child:last-child) {
       $margin: calc(
@@ -132,12 +120,6 @@ $button-disabled-opacity: 0.5 !default;
     }
     &.is-normal {
       font-size: $size-normal;
-    }
-    &.is-medium {
-      font-size: $size-medium;
-    }
-    &.is-large {
-      font-size: $size-large;
     }
 
     &.is-loading {
