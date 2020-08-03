@@ -1710,6 +1710,14 @@ declare namespace LocalJSX {
   }
   interface P6Tabs {
     /**
+     * Close tab event
+     */
+    onP6CloseTab?: (
+      event: CustomEvent<{
+        tabId: string;
+      }>
+    ) => void;
+    /**
      * Default tab selected.
      */
     selected?: string | undefined;

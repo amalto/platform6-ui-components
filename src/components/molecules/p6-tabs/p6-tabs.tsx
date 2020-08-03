@@ -1,4 +1,12 @@
-import { Component, Element, h, Host, Prop } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+} from "@stencil/core";
 import { toArray } from "~utils/dom";
 import { getTabId, isTabValid } from "./utils";
 
@@ -15,6 +23,13 @@ export class P6Tabs {
    */
   // eslint-disable-next-line @stencil/strict-mutable
   @Prop({ mutable: true }) selected: string | undefined;
+
+  /**
+   * Close tab event
+   */
+  @Event({ eventName: "p6CloseTab" }) closeTab!: EventEmitter<{
+    tabId: string;
+  }>;
 
   private handleTabSelection = (event: MouseEvent): void => {
     event.preventDefault();
@@ -34,6 +49,12 @@ export class P6Tabs {
     return <div class="tab-content">{child?.innerHTML}</div>;
   }
 
+  private closeTabHandler = (event: MouseEvent, tabId: string): void => {
+    event.preventDefault();
+    event.stopPropagation();
+    this.closeTab.emit({ tabId });
+  };
+
   componentWillLoad(): void {
     this.selected = getTabId(this.selected || this.getTabs()[0]?.id);
   }
@@ -51,7 +72,10 @@ export class P6Tabs {
         <div class="tabs">
           <ul>
             {tabs.map((tab) => (
-              <li>
+              <li
+                class="has-tooltip-arrow has-tooltip-bottom"
+                data-tooltip={tab.title}
+              >
                 <a
                   class={
                     selected === getTabId(tab.id) ? "is-active" : undefined
@@ -60,7 +84,13 @@ export class P6Tabs {
                   id={`${getTabId(tab.id)}`}
                   onClick={this.handleTabSelection}
                 >
-                  {tab.title}
+                  <span class="title">{tab.title}</span>
+                  <span
+                    aria-hidden="true"
+                    class={`${tab.className} delete`}
+                    // eslint-disable-next-line react/jsx-no-bind
+                    onClick={(event) => this.closeTabHandler(event, tab.id)}
+                  />
                 </a>
               </li>
             ))}
