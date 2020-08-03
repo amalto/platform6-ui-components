@@ -1,0 +1,123 @@
+@mixin field {
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+  // Modifiers
+  &.has-addons {
+    display: flex;
+    justify-content: flex-start;
+    &:not(:last-child) {
+      @include ltr-property("margin", -1px);
+    }
+    &.has-addons-centered {
+      justify-content: center;
+    }
+    &.has-addons-right {
+      justify-content: flex-end;
+    }
+  }
+
+  &.has-addons .control {
+    &.is-expanded {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+
+  &.is-grouped {
+    display: flex;
+    justify-content: flex-start;
+    & > .control {
+      flex-shrink: 0;
+      &:not(:last-child) {
+        margin-bottom: 0;
+        @include ltr-property("margin", 0.75rem);
+      }
+      &.is-expanded {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+    &.is-grouped-centered {
+      justify-content: center;
+    }
+    &.is-grouped-right {
+      justify-content: flex-end;
+    }
+    &.is-grouped-multiline {
+      flex-wrap: wrap;
+      &:last-child {
+        margin-bottom: -0.75rem;
+      }
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &.has-addons:not(:first-child):not(:last-child) .button,
+  &.has-addons:not(:first-child):not(:last-child) .input,
+  &.has-addons:not(:first-child):not(:last-child) .select select {
+    border-radius: 0;
+  }
+
+  &.has-addons:first-child:not(:only-child) .button,
+  &.has-addons:first-child:not(:only-child) .input,
+  &.has-addons:first-child:not(:only-child) .select select {
+    @include ltr;
+
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    @include rtl;
+
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  &.has-addons:last-child:not(:only-child) .button,
+  &.has-addons:last-child:not(:only-child) .input,
+  &.has-addons:last-child:not(:only-child) .select select {
+    @include ltr;
+
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    @include rtl;
+
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &.has-addons .control .button:not([disabled]),
+  &.has-addons .control .input:not([disabled]),
+  &.has-addons .control .select select:not([disabled]) {
+    &:hover,
+    &.is-hovered {
+      z-index: 2;
+    }
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+      z-index: 3;
+      &:hover {
+        z-index: 4;
+      }
+    }
+  }
+
+  &.has-addons.has-addons-fullwidth .control {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  &.is-grouped.is-grouped-multiline > .control:last-child,
+  &.is-grouped.is-grouped-multiline > .control:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  &.is-horizontal {
+    @include tablet;
+
+    display: flex;
+  }
+}

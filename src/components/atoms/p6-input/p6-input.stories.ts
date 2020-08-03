@@ -4,7 +4,6 @@ import {
   getElement,
   getForm,
   getSelectArgType,
-  makeSizeStory,
   makeStory,
   Props,
 } from "../../../shared/storybook";
@@ -73,12 +72,6 @@ export const Default = makeStory<{
 export const Text = makeStory({
   componentProps,
   builder: (): HTMLElement => getStoryField({ type: P6InputType.text }),
-});
-
-export const Sizes = makeSizeStory({
-  componentProps,
-  builder: ({ key, value }) =>
-    getStoryField({ size: value, placeholder: `${key} input` }),
 });
 
 export const Readonly = makeStory<{ readOnly: boolean }>({

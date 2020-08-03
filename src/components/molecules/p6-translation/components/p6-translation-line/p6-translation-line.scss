@@ -1,10 +1,26 @@
 // for field has-addons
-@import "bulma/sass/form/tools";
+@import "../../../../../styles/atoms/field";
 // for columns
-@import "bulma/sass/grid/columns";
+@import "../../../../../styles/atoms/columns";
 //Tooltip
 @import "@creativebulma/bulma-tooltip/src/sass/index";
 
 :host {
   display: block;
+
+  .field {
+    @include field;
+
+    p6-action {
+      margin-right: $margin-gap;
+    }
+  }
+
+  .column {
+    @include column;
+  }
+
+  .columns {
+    @include columns;
+  }
 }

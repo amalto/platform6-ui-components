@@ -1,5 +1,6 @@
 //@import "src/global/_colors";
 //@import "src/global/_variable";
+@import "../../../styles/atoms/control";
 
 $switch-background: $grey-light !default;
 $switch-border: 0.1rem solid $switch-background !default;
@@ -58,6 +59,8 @@ $switch-focus: none !default;
 }
 
 :host {
+  @include control;
+
   .switch[type="checkbox"] {
     vertical-align: baseline;
     font-family: $body-family;
@@ -71,7 +74,7 @@ $switch-focus: none !default;
       position: relative;
       display: initial;
       line-height: initial;
-      padding-top: 0.2rem;
+      padding-top: 0.25rem;
       cursor: pointer;
 
       &::before {

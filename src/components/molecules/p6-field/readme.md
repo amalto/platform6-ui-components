@@ -4,9 +4,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                                     | Default       |
-| -------- | --------- | ----------- | -------------------------------------------------------- | ------------- |
-| `size`   | `size`    | Size        | `Size.large \| Size.medium \| Size.normal \| Size.small` | `Size.normal` |
+| Property | Attribute | Description | Type                        | Default       |
+| -------- | --------- | ----------- | --------------------------- | ------------- |
+| `size`   | `size`    | Size        | `Size.normal \| Size.small` | `Size.normal` |
 
 ## Dependencies
 

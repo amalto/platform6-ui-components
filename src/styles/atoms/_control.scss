@@ -9,6 +9,9 @@ $control-height: 2.5em !default;
 $control-line-height: 1.5 !default;
 
 $control-padding-vertical: calc(0.5em - #{$control-border-width}) !default;
+$control-select-padding-vertical: calc(
+  0.25em - #{$control-border-width}
+) !default;
 $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default;
 
 @mixin control-container {
@@ -129,6 +132,10 @@ $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default;
 }
 @mixin control-large {
   font-size: $size-large;
+}
+
+@mixin select {
+  padding: $control-select-padding-vertical $control-padding-horizontal;
 }
 
 @mixin input {

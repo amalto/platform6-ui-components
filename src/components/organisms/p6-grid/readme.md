@@ -46,7 +46,7 @@ graph TD;
   p6-grid --> p6-grid-header
   p6-grid --> p6-grid-cell
   p6-grid-actions --> p6-icon
-  p6-grid-actions --> p6-action
+  p6-grid-actions --> p6-button
   p6-grid-options --> p6-tag
   p6-grid-header-cell --> p6-grid-header-menu
   p6-grid-header-cell --> p6-icon

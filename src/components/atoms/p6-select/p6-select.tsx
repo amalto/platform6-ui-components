@@ -11,6 +11,7 @@ import {
 import Choices from "choices.js";
 import { defaultValidationMessage } from "~shared/form/validation";
 import { Size } from "~shared/types";
+import { isEmpty } from "~utils/attribute";
 import { getSizeClass } from "~utils/classes";
 import { isHTMLOptionElement, toArray } from "~utils/dom";
 import { getL10n, L10n } from "~utils/translations";
@@ -210,6 +211,7 @@ export class P6Select implements ComponentInterface {
       // Usage: Whether choices and groups should be sorted. If false, choices/groups will appear in the order they were given.
       shouldSort: this.shouldSort,
       // Usage: The value of the search inputs placeholder.
+      placeholder: !isEmpty(this.placeholder),
       searchPlaceholderValue: this.placeholder,
       // Usage: The text that is shown whilst choices are being populated via AJAX.
       loadingText: this.l10n?.loadingText,

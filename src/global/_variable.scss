@@ -26,6 +26,7 @@ $grey-lightest: hsl(0, 0%, 93%) !default;
 
 $white-ter: hsl(0, 0%, 96%) !default;
 $white: hsl(0, 0%, 100%) !default;
+$white-bis: hsl(0, 0%, 98%) !default;
 
 $yellow: hsl(48, 100%, 67%) !default;
 // $green: hsl(141, 53%, 53%) !default;
@@ -42,9 +43,12 @@ $apple-green: #89bc55 !default;
 $orange: #fb9248 !default;
 $red: #e25d5d !default;
 
+$light: $white-ter !default;
+
 // General colors
 $background: $white-ter !default;
 $scheme-invert: $black !default;
+$scheme-main-bis: $white-bis !default;
 $scheme-main: $white !default;
 $scheme-main-ter: $white-ter !default;
 
@@ -85,10 +89,10 @@ $radius-large: 6px !default;
 $radius-rounded: 290486px !default;
 
 // Typography
-$size-4: 1.5rem !default;
-$size-5: 1.25rem !default;
-$size-6: 1rem !default;
-$size-7: 0.75rem !default;
+$size-4: 1.25rem !default;
+$size-5: 1rem !default;
+$size-6: 0.875rem !default;
+$size-7: 0.65rem !default;
 $size-small: $size-7 !default;
 $size-normal: $size-6 !default;
 $size-medium: $size-5 !default;
@@ -108,13 +112,13 @@ $body-overflow-x: hidden !default;
 $body-overflow-y: scroll !default;
 
 $body-color: $text !default;
-$body-font-size: 1em !default;
+$body-font-size: $size-normal !default;
 $body-weight: $weight-normal !default;
 $body-line-height: 1.5 !default;
 
 // Controls
 $control-border-width: 1px !default;
-$control-height: 2.5em !default;
+$control-height: 1.875rem !default;
 
 // Input
 $input-color: $text-strong !default;
@@ -140,3 +144,28 @@ $input-icon-color: $border !default;
 $input-icon-active-color: $text !default;
 
 $input-radius: $radius !default;
+
+// Spacing
+
+$block-spacing: 1.5rem !default;
+$column-gap: 0.75rem !default;
+$margin-gap: 0.175rem;
+
+// Responsiveness
+
+// The container horizontal gap, which acts as the offset for breakpoints
+$gap: 32px !default;
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$tablet: 769px !default;
+// 960px container + 4rem
+$desktop: 960px + (2 * $gap) !default;
+// 1152px container + 4rem
+$widescreen: 1152px + (2 * $gap) !default;
+$widescreen-enabled: true !default;
+// 1344px container + 4rem
+$fullhd: 1344px + (2 * $gap) !default;
+$fullhd-enabled: true !default;
+
+// Flags
+$variable-columns: true !default;
+$rtl: false !default;

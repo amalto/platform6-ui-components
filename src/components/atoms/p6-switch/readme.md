@@ -10,7 +10,7 @@
 | `disabled`          | `disabled` | Disable       | `boolean`                                                                                  | `false`        |
 | `mode`              | `mode`     | Mode          | `Mode.danger \| Mode.default \| Mode.info \| Mode.primary \| Mode.success \| Mode.warning` | `Mode.success` |
 | `name` _(required)_ | `name`     | Switch name   | `string`                                                                                   | `undefined`    |
-| `size`              | `size`     | Size          | `Size.large \| Size.medium \| Size.normal \| Size.small`                                   | `Size.normal`  |
+| `size`              | `size`     | Size          | `Size.normal \| Size.small`                                                                | `Size.normal`  |
 
 ## Events
 

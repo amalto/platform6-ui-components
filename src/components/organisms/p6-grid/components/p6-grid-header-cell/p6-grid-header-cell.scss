@@ -30,7 +30,7 @@ $table-cell-heading-color: $text-strong !default;
       z-index: 100;
 
       p6-grid-header-menu {
-        display: inherit;
+        display: inline-flex;
       }
     }
 

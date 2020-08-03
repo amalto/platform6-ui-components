@@ -1,6 +1,6 @@
 //@import "bulma/sass/layout/section";
 
-$tabs-link-active-border-bottom-color: $success;
+$tabs-link-active-border-top-color: $primary;
 $tabs-link-active-color: $success;
 
 $tabs-border-bottom-color: $border !default;
@@ -9,7 +9,7 @@ $tabs-border-bottom-width: 1px !default;
 $tabs-link-color: $text !default;
 $tabs-link-hover-border-bottom-color: $text-strong !default;
 $tabs-link-hover-color: $text-strong !default;
-$tabs-link-active-border-bottom-color: $link !default;
+$tabs-link-active-border-top-color: $link !default;
 $tabs-link-active-color: $link !default;
 $tabs-link-padding: 0.5em 1em !default;
 
@@ -35,8 +35,6 @@ $tabs-toggle-link-active-color: $link-invert !default;
   display: block;
 
   .tabs {
-    @include block;
-
     -webkit-overflow-scrolling: touch;
     @include unselectable;
 
@@ -84,9 +82,18 @@ $tabs-toggle-link-active-color: $link-invert !default;
     li {
       display: block;
 
+      a:not(.is-active) {
+        background-color: $grey-lightest;
+        border-left: 1px solid $white;
+        border-right: 1px solid $white;
+      }
+
       a.is-active,
       &.is-active a {
-        border-bottom-color: $tabs-link-active-border-bottom-color;
+        border-top: 2px solid $tabs-link-active-border-top-color;
+        border-left: 1px solid $tabs-boxed-link-hover-border-bottom-color;
+        border-right: 1px solid $tabs-boxed-link-hover-border-bottom-color;
+        border-bottom-color: $white;
         color: $tabs-link-active-color;
       }
     }
@@ -117,6 +124,7 @@ $tabs-toggle-link-active-color: $link-invert !default;
       flex-shrink: 0;
       justify-content: flex-start;
       margin: 0;
+      padding: 0;
 
       &.is-left {
         padding-right: 0.75em;
@@ -239,5 +247,8 @@ $tabs-toggle-link-active-color: $link-invert !default;
 
   .tab-content {
     padding: $gap-size * 2 * 1px;
+    border-left: 1px solid $tabs-border-bottom-color;
+    border-right: 1px solid $tabs-border-bottom-color;
+    border-bottom: 1px solid $tabs-border-bottom-color;
   }
 }

@@ -4,15 +4,15 @@
 
 ## Properties
 
-| Property                   | Attribute     | Description             | Type                                                     | Default     |
-| -------------------------- | ------------- | ----------------------- | -------------------------------------------------------- | ----------- |
-| `disabled` _(required)_    | `disabled`    | Disabled                | `boolean`                                                | `undefined` |
-| `excludes`                 | --            | The current translation | `string[]`                                               | `[]`        |
-| `language` _(required)_    | `language`    | The language            | `string`                                                 | `undefined` |
-| `name` _(required)_        | `name`        | The name                | `string`                                                 | `undefined` |
-| `readOnly` _(required)_    | `readonly`    | Read only               | `boolean`                                                | `undefined` |
-| `size` _(required)_        | `size`        | The size                | `Size.large \| Size.medium \| Size.normal \| Size.small` | `undefined` |
-| `translation` _(required)_ | `translation` | The translation         | `string`                                                 | `undefined` |
+| Property                   | Attribute     | Description             | Type                        | Default     |
+| -------------------------- | ------------- | ----------------------- | --------------------------- | ----------- |
+| `disabled` _(required)_    | `disabled`    | Disabled                | `boolean`                   | `undefined` |
+| `excludes`                 | --            | The current translation | `string[]`                  | `[]`        |
+| `language` _(required)_    | `language`    | The language            | `string`                    | `undefined` |
+| `name` _(required)_        | `name`        | The name                | `string`                    | `undefined` |
+| `readOnly` _(required)_    | `readonly`    | Read only               | `boolean`                   | `undefined` |
+| `size` _(required)_        | `size`        | The size                | `Size.normal \| Size.small` | `undefined` |
+| `translation` _(required)_ | `translation` | The translation         | `string`                    | `undefined` |
 
 ## Events
 

@@ -101,7 +101,7 @@ export class P6TranslationLine implements ComponentInterface {
                   }}
                   data-tooltip={this.l10n?.deleteTooltip}
                 >
-                  <p6-icon name="trash" size={this.size} />
+                  <p6-icon name="trash-alt" size={this.size} />
                 </p6-action>
               )}
               <div class="control is-expanded">

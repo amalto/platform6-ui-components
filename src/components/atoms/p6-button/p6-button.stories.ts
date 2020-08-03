@@ -82,15 +82,21 @@ export const Modes = makeModeStory({
 export const Icon = makeStory({
   componentProps,
   builder: (): HTMLElement =>
-    getElement(
-      "div",
-      ["", "Home"].map((text) =>
-        getStoryField([
-          getElement("p6-icon", [], { name: "home" }),
-          getElement("span", text),
-        ])
-      )
-    ),
+    getElement("div", [
+      getStoryField(
+        [getElement("p6-icon", [], { name: "home" }), getElement("span", "")],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        { size: Size.small, style: "margin-right: 5px;" as any }
+      ),
+      getStoryField([
+        getElement("p6-icon", [], {
+          name: "home",
+          style: "margin-right: 5px;",
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any),
+        getElement("span", "Home"),
+      ]),
+    ]),
 });
 
 export const Waiting = makeStory<{ waiting: boolean }>({

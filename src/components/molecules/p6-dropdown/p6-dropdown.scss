@@ -64,9 +64,8 @@ $dropdown-divider-background-color: $border-light !default;
     padding-right: 1.125em;
 
     &::after {
-      @include arrow;
+      @include arrow($input-arrow);
 
-      border-color: $input-arrow;
       right: 1.125em;
       z-index: 4;
     }

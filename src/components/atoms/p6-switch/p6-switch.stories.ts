@@ -4,7 +4,6 @@ import {
   getElement,
   getForm,
   makeModeStory,
-  makeSizeStory,
   makeStory,
   Props,
 } from "../../../shared/storybook";
@@ -53,14 +52,6 @@ export const Disabled = makeStory<{ disabled: boolean }>({
   componentProps,
   args: { disabled: true },
   builder: (props): HTMLElement => getStoryField("Label", props),
-});
-
-export const Sizes = makeSizeStory({
-  componentProps,
-  builder: ({ key, value }) =>
-    getStoryField(key, {
-      size: value,
-    }),
 });
 
 export const Modes = makeModeStory({

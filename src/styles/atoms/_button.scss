@@ -2,6 +2,9 @@
 @mixin button-small() {
   border-radius: $radius-small;
   font-size: $size-small;
+  height: 1.375rem;
+  width: 1.75rem;
+  padding: calc(0.5em - 1px);
 }
 @mixin button-normal() {
   font-size: $size-normal;

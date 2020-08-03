@@ -42,6 +42,7 @@ $button-static-border-color: $border !default;
 @import "src/styles/atoms/button";
 
 :host {
+  display: inline-flex;
   .button {
     @include control;
     @include unselectable;
@@ -65,14 +66,6 @@ $button-static-border-color: $border !default;
     }
 
     .icon {
-      &,
-      &.is-small,
-      &.is-medium,
-      &.is-large {
-        height: 1.5em;
-        width: 1.5em;
-      }
-
       &:first-child:not(:last-child) {
         margin-left: calc(
           #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
@@ -329,14 +322,6 @@ $button-static-border-color: $border !default;
 
     &.is-normal {
       @include button-normal;
-    }
-
-    &.is-medium {
-      @include button-medium;
-    }
-
-    &.is-large {
-      @include button-large;
     }
 
     // Modifiers

@@ -12,8 +12,6 @@ export enum Mode {
 export enum Size {
   small = 0,
   normal = 1,
-  medium = 2,
-  large = 3,
 }
 
 export enum Position {

@@ -38,7 +38,7 @@ export const config: Config = {
         "./src/global/_variable.scss",
         "./src/global/_functions.scss",
         "./src/global/_colors.scss",
-        "./node_modules/bulma/sass/utilities/_all.sass",
+        // "./node_modules/bulma/sass/utilities/_all.sass",
         "./src/global/_global.scss",
       ],
     }),

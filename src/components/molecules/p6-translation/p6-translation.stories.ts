@@ -3,7 +3,6 @@ import {
   ComponentProps,
   getElement,
   getForm,
-  makeSizeStory,
   makeStory,
   Props,
 } from "../../../shared/storybook";
@@ -28,11 +27,16 @@ const getStoryField = (
   description: string,
   props?: Props<Components.P6Translation>
 ): HTMLElement => {
-  const size = props?.size !== undefined ? props.size : Size.normal;
+  // const size = props?.size !== undefined ? props.size : Size.normal;
   return getElement(
     component,
     [
-      getElement("p6-icon", [], { size, name: "home" }),
+      getElement("p6-icon", [], {
+        size: Size.small,
+        name: "home",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        style: "margin-right: 0.175rem;" as any,
+      }),
       getElement("span", description),
     ],
     { ...props }
@@ -56,14 +60,6 @@ export const Default = makeStory<{
   },
   builder: ({ label, ...args }): HTMLElement =>
     getStoryField(label, { ...args }),
-});
-
-export const Sizes = makeSizeStory({
-  componentProps,
-  builder: ({ key, value }) =>
-    getStoryField(key, {
-      size: value,
-    }),
 });
 
 export const Form = makeStory<{

@@ -27,14 +27,14 @@
 ### Depends on
 
 - [p6-icon](../../../../atoms/p6-icon)
-- [p6-action](../../../../atoms/p6-action)
+- [p6-button](../../../../atoms/p6-button)
 
 ### Graph
 
 ```mermaid
 graph TD;
   p6-grid-actions --> p6-icon
-  p6-grid-actions --> p6-action
+  p6-grid-actions --> p6-button
   p6-grid --> p6-grid-actions
   style p6-grid-actions fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -53,6 +53,10 @@ $level-item-spacing: ($block-spacing / 2) !default;
     @include tablet {
       display: flex;
     }
+
+    p6-button {
+      margin-right: 0.175rem;
+    }
   }
   .level-right {
     align-items: center;
@@ -60,6 +64,20 @@ $level-item-spacing: ($block-spacing / 2) !default;
     // Responsiveness
     @include tablet {
       display: flex;
+    }
+
+    .level-item {
+      position: relative;
+
+      p6-icon {
+        color: $grey-lighter;
+        position: absolute;
+        left: 0.425em;
+      }
+
+      input {
+        padding-left: $size-normal;
+      }
     }
   }
 

@@ -15,35 +15,31 @@ const getStoryField = (props?: Props<Components.P6Spinner>): HTMLElement => {
 export const Default = makeStory({
   builder: (): HTMLElement =>
     getStoryField({
-      style: { width: "4.2rem", height: "4.2rem" } as CSSStyleDeclaration,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      style: "width: 4.2rem; height: 4.2rem;" as any,
     }),
 });
 
 export const SmallContainer = makeStory({
   builder: (): HTMLElement =>
     getStoryField({
-      style: { width: "1rem", height: "1rem" } as CSSStyleDeclaration,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      style: "width: 1rem; height: 1rem;" as any,
     }),
 });
 
 export const VerticalContainer = makeStory({
   builder: (): HTMLElement =>
     getStoryField({
-      style: {
-        width: "10.5rem",
-        height: "21rem",
-        background: "#eee",
-      } as CSSStyleDeclaration,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      style: "width: 10.5rem;height: 21rem; background: #eee;" as any,
     }),
 });
 
 export const HorizontalContainer = makeStory({
   builder: (): HTMLElement =>
     getStoryField({
-      style: {
-        width: "21rem",
-        height: "10.5rem",
-        background: "#eee",
-      } as CSSStyleDeclaration,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      style: "width: 21rem;height: 10.5rem; background: #eee;" as any,
     }),
 });
