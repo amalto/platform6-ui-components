@@ -30,16 +30,6 @@
     position: absolute;
     opacity: 0;
     @include checkbox-size($size-normal);
-
-    &.is-small {
-      @include checkbox-size($size-small);
-    }
-    &.is-medium {
-      @include checkbox-size($size-medium);
-    }
-    &.is-large {
-      @include checkbox-size($size-large);
-    }
   }
 
   label {

@@ -16,8 +16,8 @@ import {
   defaultCheckValidity,
   defaultValidationMessage,
 } from "~shared/form/validation";
-import { Mode, Size } from "~shared/types";
-import { getModeClass, getSizeClass } from "~utils/classes";
+import { Mode } from "~shared/types";
+import { getModeClass } from "~utils/classes";
 
 export type P6CheckboxValue = string | undefined;
 
@@ -49,11 +49,6 @@ export class P6Checkbox
    * set the mode of the action
    */
   @Prop() mode: Mode = Mode.default;
-
-  /**
-   * set the size of the action
-   */
-  @Prop() size: Size = Size.normal;
 
   /**
    * Checkbox name
@@ -94,7 +89,6 @@ export class P6Checkbox
     const classes = {
       checkbox: true,
       ...getModeClass(this.mode),
-      ...getSizeClass(this.size),
     };
 
     return (

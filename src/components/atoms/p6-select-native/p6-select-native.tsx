@@ -15,8 +15,8 @@ import {
   defaultCheckValidity,
   defaultValidationMessage,
 } from "~shared/form/validation";
-import { Mode, Size } from "~shared/types";
-import { getModeClass, getSizeClass } from "~utils/classes";
+import { Mode } from "~shared/types";
+import { getModeClass } from "~utils/classes";
 import {
   isHTMLOptGroupElement,
   isHTMLOptionElement,
@@ -41,11 +41,6 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
    * Is multiple
    */
   @Prop() multiple = false;
-
-  /**
-   * The size of the component to display
-   */
-  @Prop() size: Size = Size.normal;
 
   /**
    * The Mode of the component to display
@@ -138,7 +133,6 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
           class={{
             select: true,
             "is-fullwidth": this.fullWidth,
-            ...getSizeClass(this.size),
             ...getModeClass(this.mode),
           }}
         >

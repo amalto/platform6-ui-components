@@ -21,14 +21,3 @@ exports[`p6-tag renders 1`] = `
   Tag
 </p6-tag>
 `;
-
-exports[`p6-tag size 1`] = `
-<p6-tag size="3">
-  <mock:shadow-root>
-    <span class="is-large tag">
-      <slot></slot>
-    </span>
-  </mock:shadow-root>
-  Large
-</p6-tag>
-`;

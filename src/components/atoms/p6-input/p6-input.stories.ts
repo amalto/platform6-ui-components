@@ -7,7 +7,6 @@ import {
   makeStory,
   Props,
 } from "../../../shared/storybook";
-import { Size } from "../../../shared/types";
 import { enumToArray } from "../../../utils/enum";
 import { P6InputType } from "./types";
 
@@ -28,7 +27,6 @@ const componentProps: ComponentProps = [
   "readOnly",
   "required",
   "type",
-  "size",
   "value",
   "waiting",
 ];
@@ -46,7 +44,6 @@ export const Default = makeStory<{
   pattern: string;
   placeholder: string;
   type: P6InputType;
-  size: Size;
   value: string;
 }>({
   componentProps,
@@ -60,7 +57,6 @@ export const Default = makeStory<{
     pattern: "",
     placeholder: "Placeholder",
     type: P6InputType.text,
-    size: Size.normal,
     value: "",
   },
   argTypes: {

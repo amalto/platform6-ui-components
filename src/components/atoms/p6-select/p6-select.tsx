@@ -10,9 +10,7 @@ import {
 } from "@stencil/core";
 import Choices from "choices.js";
 import { defaultValidationMessage } from "~shared/form/validation";
-import { Size } from "~shared/types";
 import { isEmpty } from "~utils/attribute";
-import { getSizeClass } from "~utils/classes";
 import { isHTMLOptionElement, toArray } from "~utils/dom";
 import { getL10n, L10n } from "~utils/translations";
 
@@ -28,11 +26,6 @@ export class P6Select implements ComponentInterface {
    * The name of the select
    */
   @Prop() public name!: string;
-
-  /**
-   * The size of the component to display
-   */
-  @Prop() public size: Size = Size.normal;
 
   /**
    * Marks the select as multiple
@@ -165,7 +158,6 @@ export class P6Select implements ComponentInterface {
       <Host
         aria-disabled={this.disabled ? "true" : null}
         class={{
-          ...getSizeClass(this.size),
           "is-danger": this.hasError,
         }}
         required={this.required}

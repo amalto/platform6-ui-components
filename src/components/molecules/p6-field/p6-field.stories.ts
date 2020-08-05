@@ -1,6 +1,5 @@
 import { Components } from "../../../components";
 import {
-  ComponentProps,
   getElement,
   getForm,
   makeStory,
@@ -13,8 +12,6 @@ export default {
   title: "Molecules/Field",
   component,
 };
-
-const componentProps: ComponentProps = ["size"];
 
 const getStoryField = (
   children: HTMLElement[],
@@ -42,7 +39,6 @@ export const Default = makeStory<{
   label: string;
   hint: string;
 }>({
-  componentProps,
   args: {
     label: "Label",
     hint: "hint message",
@@ -58,7 +54,6 @@ export const Form = makeStory<{
   waiting: boolean;
   pattern: string;
 }>({
-  componentProps,
   args: {
     required: false,
     readonly: false,

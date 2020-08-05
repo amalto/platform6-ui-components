@@ -47,11 +47,6 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
   @Prop() value: P6TranslationValue = {};
 
   /**
-   * The size of the component to display
-   */
-  @Prop() public size: Size = Size.normal;
-
-  /**
    * Marks as read only.
    */
   @Prop({ attribute: "readOnly" }) public readOnly = false;
@@ -149,13 +144,13 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
   render(): JSX.Element {
     return (
       <Host>
-        <p6-field size={this.size}>
+        <p6-field>
           <p6-label slot="label">
             <slot />
             {!this.readOnly && !this.disabled && (
               <p6-action
                 mode={Mode.success}
-                size={this.size}
+                size={Size.small}
                 onClick={this.onAddLineHandler()}
                 disabled={!this.canAddTranslation()}
                 class={{
@@ -177,7 +172,6 @@ export class P6Translation implements ComponentInterface, P6TranslationControl {
                 language={translation.language}
                 translation={translation.value}
                 excludes={excludes}
-                size={this.size}
                 name={this.name}
                 disabled={this.disabled}
                 readOnly={this.readOnly}
