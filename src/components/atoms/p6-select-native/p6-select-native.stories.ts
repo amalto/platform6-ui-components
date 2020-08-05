@@ -4,11 +4,10 @@ import {
   getElement,
   getForm,
   makeModeStory,
-  makeSizeStory,
   makeStory,
   Props,
 } from "../../../shared/storybook";
-import { Mode, Size } from "../../../shared/types";
+import { Mode } from "../../../shared/types";
 
 const component = "p6-select-native";
 
@@ -20,7 +19,6 @@ export default {
 const componentProps: ComponentProps = [
   "name",
   "multiple",
-  "size",
   "mode",
   "fullWidth",
   "disabled",
@@ -54,7 +52,6 @@ export const Default = makeStory<{
   required: boolean;
   fullWidth: boolean;
   multiple: boolean;
-  size: Size;
   mode: Mode;
 }>({
   componentProps,
@@ -64,7 +61,6 @@ export const Default = makeStory<{
     required: false,
     fullWidth: false,
     multiple: false,
-    size: Size.normal,
     mode: Mode.default,
   },
   builder: (args): HTMLElement =>
@@ -98,14 +94,6 @@ export const Disabled = makeStory<{ disabled: boolean }>({
       [getOption("", "Placeholder"), getOption("value", "Display")],
       props
     ),
-});
-
-export const Sizes = makeSizeStory({
-  componentProps,
-  builder: ({ key, value }) =>
-    getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
-      size: value,
-    }),
 });
 
 export const Modes = makeModeStory({

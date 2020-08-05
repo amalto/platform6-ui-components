@@ -18,7 +18,6 @@ export default {
 const componentProps: ComponentProps = [
   "name",
   "value",
-  "size",
   "readOnly",
   "disabled",
 ];
@@ -27,7 +26,6 @@ const getStoryField = (
   description: string,
   props?: Props<Components.P6Translation>
 ): HTMLElement => {
-  // const size = props?.size !== undefined ? props.size : Size.normal;
   return getElement(
     component,
     [
@@ -46,7 +44,6 @@ const getStoryField = (
 export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
-  size: Size;
   label: string;
   lang: string;
 }>({
@@ -54,7 +51,6 @@ export const Default = makeStory<{
   args: {
     disabled: false,
     readOnly: false,
-    size: Size.normal,
     label: "Description",
     lang: "en",
   },

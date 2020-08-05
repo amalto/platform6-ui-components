@@ -7,7 +7,7 @@ import {
   makeStory,
   Props,
 } from "../../../shared/storybook";
-import { Mode, Size } from "../../../shared/types";
+import { Mode } from "../../../shared/types";
 
 const component = "p6-switch";
 
@@ -16,13 +16,7 @@ export default {
   component,
 };
 
-const componentProps: ComponentProps = [
-  "checked",
-  "disabled",
-  "mode",
-  "size",
-  "name",
-];
+const componentProps: ComponentProps = ["checked", "disabled", "mode", "name"];
 
 const getStoryField = (
   label: string,
@@ -32,7 +26,6 @@ const getStoryField = (
 export const Default = makeStory<{
   disabled: boolean;
   checked: boolean;
-  size: Size;
   mode: Mode;
   label: string;
 }>({
@@ -40,7 +33,6 @@ export const Default = makeStory<{
   args: {
     disabled: false,
     checked: false,
-    size: Size.normal,
     mode: Mode.default,
     label: "Switch label",
   },

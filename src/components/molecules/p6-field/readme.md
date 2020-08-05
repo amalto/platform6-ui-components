@@ -2,12 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-## Properties
-
-| Property | Attribute | Description | Type                        | Default       |
-| -------- | --------- | ----------- | --------------------------- | ------------- |
-| `size`   | `size`    | Size        | `Size.normal \| Size.small` | `Size.normal` |
-
 ## Dependencies
 
 ### Used by

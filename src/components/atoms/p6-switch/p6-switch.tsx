@@ -16,8 +16,8 @@ import {
   defaultCheckValidity,
   defaultValidationMessage,
 } from "~shared/form/validation";
-import { Mode, Size } from "~shared/types";
-import { getModeClass, getSizeClass } from "~utils/classes";
+import { Mode } from "~shared/types";
+import { getModeClass } from "~utils/classes";
 
 export type P6SwitchValue = boolean | undefined;
 
@@ -43,11 +43,6 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
    * Mode
    */
   @Prop() mode: Mode = Mode.success;
-
-  /**
-   * Size
-   */
-  @Prop() size: Size = Size.normal;
 
   /**
    * Switch name
@@ -92,7 +87,6 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
         <input
           class={{
             switch: true,
-            ...getSizeClass(this.size),
             ...getModeClass(this.mode),
           }}
           ref={(input): void => {

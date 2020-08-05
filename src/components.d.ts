@@ -169,10 +169,6 @@ export namespace Components {
      */
     name: string;
     /**
-     * set the size of the action
-     */
-    size: Size;
-    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -184,12 +180,7 @@ export namespace Components {
   interface P6Container {}
   interface P6Dropdown {}
   interface P6Empty {}
-  interface P6Field {
-    /**
-     * Size
-     */
-    size: Size;
-  }
+  interface P6Field {}
   interface P6Form {
     /**
      * Sets or retrieves the name of the object.
@@ -390,10 +381,6 @@ export namespace Components {
      */
     required: boolean;
     /**
-     * The size of the component to display
-     */
-    size: Size;
-    /**
      * the content type of the input.
      */
     type: P6InputType;
@@ -440,10 +427,6 @@ export namespace Components {
      * Marks the select as required. It can't be submitted without a value
      */
     required: boolean;
-    /**
-     * The size of the component to display
-     */
-    size: Size;
     /**
      * The selected value
      */
@@ -535,10 +518,6 @@ export namespace Components {
      */
     shouldSort: boolean;
     /**
-     * The size of the component to display
-     */
-    size: Size;
-    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -577,10 +556,6 @@ export namespace Components {
      */
     required: boolean;
     /**
-     * The size of the component to display
-     */
-    size: Size;
-    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -608,10 +583,6 @@ export namespace Components {
      */
     name: string;
     /**
-     * Size
-     */
-    size: Size;
-    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -627,10 +598,6 @@ export namespace Components {
      * Mode
      */
     mode: Mode;
-    /**
-     * Size
-     */
-    size: Size;
   }
   interface P6Textarea {
     /**
@@ -678,10 +645,6 @@ export namespace Components {
      */
     rows: number | undefined;
     /**
-     * The size of the component to display
-     */
-    size: Size;
-    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -712,10 +675,6 @@ export namespace Components {
      */
     readOnly: boolean;
     /**
-     * The size of the component to display
-     */
-    size: Size;
-    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -745,10 +704,6 @@ export namespace Components {
      * Read only
      */
     readOnly: boolean;
-    /**
-     * The size
-     */
-    size: Size;
     /**
      * The translation
      */
@@ -1169,10 +1124,6 @@ declare namespace LocalJSX {
      */
     onP6Valid?: (event: CustomEvent<ValidEventDetail<P6CheckboxValue>>) => void;
     /**
-     * set the size of the action
-     */
-    size?: Size;
-    /**
      * Value
      */
     value?: string;
@@ -1180,12 +1131,7 @@ declare namespace LocalJSX {
   interface P6Container {}
   interface P6Dropdown {}
   interface P6Empty {}
-  interface P6Field {
-    /**
-     * Size
-     */
-    size?: Size;
-  }
+  interface P6Field {}
   interface P6Form {
     /**
      * Sets or retrieves the name of the object.
@@ -1466,10 +1412,6 @@ declare namespace LocalJSX {
      */
     required?: boolean;
     /**
-     * The size of the component to display
-     */
-    size?: Size;
-    /**
      * the content type of the input.
      */
     type?: P6InputType;
@@ -1512,10 +1454,6 @@ declare namespace LocalJSX {
      * Marks the select as required. It can't be submitted without a value
      */
     required?: boolean;
-    /**
-     * The size of the component to display
-     */
-    size?: Size;
     /**
      * The selected value
      */
@@ -1610,10 +1548,6 @@ declare namespace LocalJSX {
      * Sort the options by alphabetic order
      */
     shouldSort?: boolean;
-    /**
-     * The size of the component to display
-     */
-    size?: Size;
   }
   interface P6SelectNative {
     /**
@@ -1664,10 +1598,6 @@ declare namespace LocalJSX {
      * Marks the select as required. It can't be submitted without a value
      */
     required?: boolean;
-    /**
-     * The size of the component to display
-     */
-    size?: Size;
   }
   interface P6Spinner {}
   interface P6Switch {
@@ -1703,10 +1633,6 @@ declare namespace LocalJSX {
      * Fires when the field has been checked for validity and satisfy its constraints
      */
     onP6Valid?: (event: CustomEvent<ValidEventDetail<P6SwitchValue>>) => void;
-    /**
-     * Size
-     */
-    size?: Size;
   }
   interface P6Tabs {
     /**
@@ -1727,10 +1653,6 @@ declare namespace LocalJSX {
      * Mode
      */
     mode?: Mode;
-    /**
-     * Size
-     */
-    size?: Size;
   }
   interface P6Textarea {
     /**
@@ -1792,10 +1714,6 @@ declare namespace LocalJSX {
      */
     rows?: number | undefined;
     /**
-     * The size of the component to display
-     */
-    size?: Size;
-    /**
      * the value of the input.
      */
     value?: string | undefined;
@@ -1836,10 +1754,6 @@ declare namespace LocalJSX {
      */
     readOnly?: boolean;
     /**
-     * The size of the component to display
-     */
-    size?: Size;
-    /**
      * The value
      */
     value?: P6TranslationValue;
@@ -1870,10 +1784,6 @@ declare namespace LocalJSX {
      * Read only
      */
     readOnly: boolean;
-    /**
-     * The size
-     */
-    size: Size;
     /**
      * The translation
      */

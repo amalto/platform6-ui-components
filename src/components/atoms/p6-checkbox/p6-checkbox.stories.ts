@@ -7,7 +7,7 @@ import {
   makeStory,
   Props,
 } from "../../../shared/storybook";
-import { Mode, Size } from "../../../shared/types";
+import { Mode } from "../../../shared/types";
 
 const component = "p6-checkbox";
 
@@ -21,7 +21,6 @@ const componentProps: ComponentProps = [
   "disabled",
   "mode",
   "name",
-  "size",
   "value",
 ];
 
@@ -36,7 +35,6 @@ const getStoryField = (
 export const Default = makeStory<{
   text: string;
   mode: Mode;
-  size: Size;
   checked: boolean;
   disabled: boolean;
 }>({
@@ -44,7 +42,6 @@ export const Default = makeStory<{
   args: {
     text: "Click me",
     mode: Mode.default,
-    size: Size.normal,
     checked: false,
     disabled: false,
   },

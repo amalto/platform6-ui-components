@@ -17,9 +17,7 @@ import {
   defaultCheckValidity,
   defaultValidationMessage,
 } from "~shared/form/validation";
-import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
-import { getSizeClass } from "~utils/classes";
 
 export type P6InputValue = string | number | undefined;
 
@@ -77,11 +75,6 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   @Prop() type: P6InputType = P6InputType.text;
 
   /**
-   * The size of the component to display
-   */
-  @Prop() size: Size = Size.normal;
-
-  /**
    * the value of the input.
    */
   @Prop() value: string | number | undefined;
@@ -129,7 +122,6 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
       input: true,
       "is-danger": this.hasError,
       "is-static": !!this.readOnly,
-      ...getSizeClass(this.size),
     };
 
     return (

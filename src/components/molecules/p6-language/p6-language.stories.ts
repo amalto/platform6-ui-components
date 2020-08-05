@@ -7,7 +7,7 @@ import {
   makeStory,
   Props,
 } from "../../../shared/storybook";
-import { Mode, Size } from "../../../shared/types";
+import { Mode } from "../../../shared/types";
 
 const component = "p6-language";
 
@@ -34,7 +34,6 @@ export const Default = makeStory<{
   disabled: boolean;
   readOnly: boolean;
   required: boolean;
-  size: Size;
   mode: Mode;
   fullWidth: boolean;
   value: string;
@@ -44,7 +43,6 @@ export const Default = makeStory<{
     disabled: false,
     readOnly: false,
     required: false,
-    size: Size.normal,
     mode: Mode.default,
     fullWidth: false,
     value: "fr",

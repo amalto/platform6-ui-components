@@ -16,9 +16,7 @@ import {
   defaultCheckValidity,
   defaultValidationMessage,
 } from "~shared/form/validation";
-import { Size } from "~shared/types";
 import { cleanupValue, isEmpty } from "~utils/attribute";
-import { getSizeClass } from "~utils/classes";
 
 export type P6TextareaValue = string | undefined;
 
@@ -60,11 +58,6 @@ export class P6Textarea
    * The name of the input.
    */
   @Prop() name!: string;
-
-  /**
-   * The size of the component to display
-   */
-  @Prop() public size: Size = Size.normal;
 
   /**
    * content to be appear in the form control when the form control is empty
@@ -132,7 +125,6 @@ export class P6Textarea
 
     const classes = {
       textarea: true,
-      ...getSizeClass(this.size),
       "is-danger": this.hasError,
       "is-static": !!this.readOnly,
       "is-resizable": this.resizable,

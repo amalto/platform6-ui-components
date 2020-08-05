@@ -5,7 +5,6 @@ import {
   makeStory,
   Props,
 } from "../../../../../shared/storybook";
-import { Size } from "../../../../../shared/types";
 
 const component = "p6-translation-line";
 
@@ -19,7 +18,6 @@ const componentProps: ComponentProps = [
   "excludes",
   "language",
   "translation",
-  "size",
   "readOnly",
   "disabled",
 ];
@@ -36,7 +34,6 @@ export const Default = makeStory<{
   translation: string;
   readOnly: boolean;
   disabled: boolean;
-  size: Size;
 }>({
   componentProps,
   args: {
@@ -45,7 +42,6 @@ export const Default = makeStory<{
     translation: "English",
     readOnly: false,
     disabled: false,
-    size: Size.normal,
   },
   builder: (args): HTMLElement => getStoryField(args),
 });

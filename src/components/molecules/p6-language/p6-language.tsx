@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
-import { Mode, Size } from "~shared/types";
+import { Mode } from "~shared/types";
 import {
   getLanguageCodes,
   getLanguageName,
@@ -28,11 +28,6 @@ export class P6Language implements ComponentInterface {
    * Values to exclude from the language list
    */
   @Prop() excludes: string[] = [];
-
-  /**
-   * The size of the component to display
-   */
-  @Prop() public size: Size = Size.normal;
 
   /**
    * The Mode of the component to display
@@ -85,7 +80,6 @@ export class P6Language implements ComponentInterface {
           disabled={this.disabled}
           required={this.required}
           readOnly={this.readOnly}
-          size={this.size}
           mode={this.mode}
           fullWidth={this.fullWidth}
         >

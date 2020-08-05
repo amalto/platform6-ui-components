@@ -43,22 +43,6 @@ $tag-delete-margin: 1px !default;
         }
       }
     }
-    // Sizes
-    &.is-small {
-      font-size: $size-small;
-    }
-
-    &.is-normal {
-      font-size: $size-normal;
-    }
-
-    &.is-medium {
-      font-size: $size-medium;
-    }
-
-    &.is-large {
-      font-size: $size-large;
-    }
 
     .icon {
       &:first-child:not(:last-child) {

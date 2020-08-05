@@ -41,11 +41,6 @@ export class P6TranslationLine implements ComponentInterface {
   @Prop() public translation!: string;
 
   /**
-   * The size
-   */
-  @Prop() public size!: Size;
-
-  /**
    * Read only
    */
   @Prop({ attribute: "readOnly" }) public readOnly!: boolean;
@@ -94,21 +89,20 @@ export class P6TranslationLine implements ComponentInterface {
                 <p6-action
                   onClick={this.deleteHandler}
                   mode={Mode.danger}
-                  size={this.size}
+                  size={Size.normal}
                   class={{
                     "has-tooltip-arrow": true,
                     [`has-tooltip-right`]: true,
                   }}
                   data-tooltip={this.l10n?.deleteTooltip}
                 >
-                  <p6-icon name="trash-alt" size={this.size} />
+                  <p6-icon name="trash-alt" size={Size.normal} />
                 </p6-action>
               )}
               <div class="control is-expanded">
                 <p6-language
                   name={`${this.name}-${this.language}-lang`}
                   value={this.language}
-                  size={this.size}
                   disabled={this.disabled || isDefault}
                   excludes={this.excludes}
                   required
@@ -121,7 +115,6 @@ export class P6TranslationLine implements ComponentInterface {
               name={`${this.name}-${this.language}-value`}
               value={this.translation}
               rows={2}
-              size={this.size}
               readOnly={this.readOnly}
               disabled={this.disabled}
               required

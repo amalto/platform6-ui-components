@@ -21,7 +21,6 @@ const componentProps: ComponentProps = [
   "rows",
   "cols",
   "name",
-  "size",
   "placeholder",
   "readOnly",
   "required",
