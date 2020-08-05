@@ -108,7 +108,7 @@ interface UserSearch {
     orderColumn?: 'EMAIL' | 'LAST_NAME';
 }
 
-function getUserJson(user: UserModel): UserModel.JsonContent {
+function getUserJson(user: UserModel | null): UserModel.JsonContent {
     let json = {}
 
     if (user && user.jsonContent) {
