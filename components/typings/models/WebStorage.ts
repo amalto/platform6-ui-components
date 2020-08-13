@@ -19,7 +19,7 @@ export interface WebStorage {
     /** always saved in localStorage (used for app bootstrapping) */
     storeLastTriggeredUpdate: ( date: string ) => void;
 
-    lastTriggeredUpdate: string;
+    lastTriggeredUpdate: string | null;
 
     /**
      * Access and refresh token are either saved in webStorage or in session storage
@@ -27,11 +27,11 @@ export interface WebStorage {
      */
     storeAccessToken: ( accessToken: string ) => void;
 
-    accessToken: string;
+    accessToken: string | null;
 
     storeRefreshToken: ( refreshToken: string ) => void;
 
-    refreshToken: string;
+    refreshToken: string | null;
 
     /**
      * All other globals variables are saved in session storage
@@ -41,7 +41,7 @@ export interface WebStorage {
     /** saved in sessionStorage */
     storeUser: ( user: UserModel ) => void;
 
-    user: UserModel;
+    user: UserModel | null;
 
     /** Saved in sessionStorage */
     storeAppInstances: ( appInstances: AppInstanceModel[] ) => void;
@@ -51,17 +51,17 @@ export interface WebStorage {
     /** Saved in sessionStorage */
     storeSelectedAppInstance: ( appInstanceName: string ) => void;
 
-    selectedAppInstance: AppInstanceModel;
+    selectedAppInstance: AppInstanceModel | null;
 
     /** saved in localStorage */
      storeLastUsedAppInstance: ( appInstanceName: string ) => void;
 
-    lastUsedAppInstance: string;
+    lastUsedAppInstance: string | null;
 
     /** saved in sessionStorage */
     storeAppEndpoints: ( appEndpoints: Endpoints ) => void;
 
-    appEndpoints: Endpoints;
+    appEndpoints: Endpoints | null;
 
     /** saved in sessionStorage */
     storeScopesTree: ( scopesTree: ScopesTree ) => void;
