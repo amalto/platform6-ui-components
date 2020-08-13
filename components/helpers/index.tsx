@@ -91,7 +91,7 @@ export function isValidColorCode( color: string ): boolean {
     return COLOR_CODE_REGEX.test( color )
 }
 
-export function isNotEmpty( value: string ): boolean {
+export function isNotEmpty( value?: string ): boolean {
     return !!value && value.trim().length > 0
 }
 
