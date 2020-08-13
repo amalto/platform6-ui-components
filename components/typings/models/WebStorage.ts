@@ -14,7 +14,7 @@ export interface WebStorage {
     /** Always saved in localStorage (used for app bootstrapping) */
     storeInfraAlertCloseDate: ( date: string ) => void;
 
-    infraAlertCloseDate: string;
+    infraAlertCloseDate: string | null;
 
     /** always saved in localStorage (used for app bootstrapping) */
     storeLastTriggeredUpdate: ( date: string ) => void;
