@@ -113,8 +113,14 @@ export class P6Textarea
 
   private nativeInput: HTMLTextAreaElement | undefined;
 
+  private defaultValue: string | undefined;
+
   componentWillLoad(): void {
     this.host.addEventListener("focusout", this.checkValidity.bind(this));
+
+    if (this.defaultValue === undefined) {
+      this.defaultValue = this.value;
+    }
   }
 
   render(): JSX.Element {
@@ -191,5 +197,20 @@ export class P6Textarea
       },
       getValue: () => this.nativeInput?.value,
     });
+  }
+
+  /**
+   * Restores the textarea's default value
+   */
+  @Method()
+  async reset(): Promise<boolean> {
+    let result = false;
+
+    if (this.nativeInput) {
+      this.nativeInput.value = this.defaultValue ?? "";
+      result = true;
+    }
+
+    return Promise.resolve(result);
   }
 }

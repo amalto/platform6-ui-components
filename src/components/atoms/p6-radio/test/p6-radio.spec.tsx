@@ -5,7 +5,6 @@ describe("p6-radio", () => {
   const name = "radio-input";
   const value: string = name;
   const extraClass = "mgr-5";
-  const id = `${name}-${value}-input`;
 
   it("defaut p6-radio", async () => {
     const page = await newSpecPage({
@@ -17,17 +16,6 @@ describe("p6-radio", () => {
       </p6-radio>
       `,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-radio name="${name}" class="${extraClass}" value="${value}">
-        <input id="${id}"
-          name="${name}"
-          type="radio"
-          value="${value}"
-        />
-        <label htmlFor="${id}">
-          first
-        </label>
-      </p6-radio>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });

@@ -1,5 +1,5 @@
-export function toArray<T extends Element, C extends HTMLCollectionBase>(
-  collection: C
+export function toArray<T extends Element>(
+  collection: HTMLCollectionOf<T> | NodeListOf<T> | HTMLFormControlsCollection
 ): T[] {
   return Array.from(collection) as T[];
 }

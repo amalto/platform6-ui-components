@@ -3,7 +3,7 @@
 exports[`p6-checkbox disabled checkbox 1`] = `
 <p6-checkbox aria-disabled="true" disabled="true" name="0123456789">
   <mock:shadow-root>
-    <input class="checkbox" disabled="" id="0123456789-input" name="0123456789" type="checkbox">
+    <input class="checkbox" disabled="" id="0123456789-input" name="0123456789" type="checkbox" value="on">
     <label htmlfor="0123456789-input">
       <slot></slot>
     </label>
@@ -15,7 +15,7 @@ exports[`p6-checkbox disabled checkbox 1`] = `
 exports[`p6-checkbox with label only 1`] = `
 <p6-checkbox name="0123456789">
   <mock:shadow-root>
-    <input class="checkbox" id="0123456789-input" name="0123456789" type="checkbox">
+    <input class="checkbox" id="0123456789-input" name="0123456789" type="checkbox" value="on">
     <label htmlfor="0123456789-input">
       <slot></slot>
     </label>

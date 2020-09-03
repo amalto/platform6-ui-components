@@ -96,6 +96,8 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
 
   private nativeInput: HTMLSelectElement | undefined;
 
+  private defaultValue: string[] | undefined;
+
   /**
    * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
    * It also triggers the standard error message, such as "this is a required field".
@@ -121,6 +123,23 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
     });
 
     return Promise.resolve(true);
+  }
+
+  /**
+   * Restores the input's default value
+   */
+  @Method()
+  async reset(): Promise<boolean> {
+    const result = false;
+
+    if (this.nativeInput !== undefined) {
+      this.getOptions(this.nativeInput).forEach((option) => {
+        // eslint-disable-next-line no-param-reassign
+        option.selected = !!this.defaultValue?.includes(option.value);
+      });
+    }
+
+    return Promise.resolve(result);
   }
 
   render(): JSX.Element {
@@ -151,17 +170,13 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   }
 
   private get inputValue(): string | string[] | undefined {
-    if (this.nativeInput === undefined) {
+    if (this.nativeInput?.selectedOptions === undefined) {
       return undefined;
     }
 
-    const selectedOptions =
-      undefined === this.nativeInput
-        ? []
-        : toArray<HTMLOptionElement, HTMLCollectionOf<HTMLOptionElement>>(
-            this.nativeInput.selectedOptions
-          );
-    const value = selectedOptions.map((option) => option.value);
+    const value = toArray<HTMLOptionElement>(
+      this.nativeInput.selectedOptions
+    ).map((option) => option.value);
 
     return this.multiple ? value : value.shift();
   }
@@ -218,6 +233,16 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   }
 
   componentDidLoad(): void {
+    if (this.defaultValue === undefined) {
+      const selectedValues = this.inputValue;
+      // eslint-disable-next-line no-nested-ternary
+      this.defaultValue = Array.isArray(selectedValues)
+        ? selectedValues
+        : selectedValues === undefined
+        ? []
+        : [selectedValues];
+    }
+
     this.p6FormRegister.emit(this);
   }
 

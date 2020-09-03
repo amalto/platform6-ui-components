@@ -8,7 +8,6 @@ import {
   Host,
   Method,
   Prop,
-  State,
 } from "@stencil/core";
 import { P6Control } from "~shared/form/control";
 import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
@@ -22,7 +21,7 @@ export type P6RadioValue = string | number | undefined;
 @Component({
   tag: "p6-radio",
   styleUrl: "./p6-radio.scss",
-  scoped: true,
+  shadow: true,
 })
 export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
   @Element() host!: HTMLP6RadioElement;
@@ -30,7 +29,7 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
   /**
    * Radio name
    */
-  @Prop() name!: string;
+  @Prop({ reflect: true }) name!: string;
 
   /**
    * Value
@@ -40,7 +39,8 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
   /**
    * Initial value
    */
-  @Prop() checked = false;
+  // eslint-disable-next-line @stencil/strict-mutable
+  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
    * Disable
@@ -72,42 +72,29 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
    */
   @Event() p6Invalid!: EventEmitter<InvalidEventDetail>;
 
-  /**
-   * State of the radio
-   */
-  @State() isChecked = false;
-
   private nativeInput: HTMLInputElement | undefined;
 
-  private clickHandler = (event: Event): void => {
-    if (this.readOnly) {
-      event.preventDefault();
-      return;
-    }
-    this.isChecked = !this.isChecked;
-  };
+  private defaultValue: boolean | undefined;
 
   componentWillLoad(): void {
     this.host.addEventListener("focusout", this.checkValidity.bind(this));
-    this.isChecked = this.checked;
   }
 
   render(): JSX.Element {
-    const { host, name, isChecked, disabled, readOnly, value } = this;
-
+    const { host, name, checked, disabled, readOnly, value } = this;
     const inputId = `${name}-${value}-input`;
 
     return (
       <Host class={host?.className}>
         <input
-          checked={isChecked}
+          checked={checked}
           id={inputId}
           disabled={disabled}
           name={name}
-          onClick={this.clickHandler}
           readOnly={readOnly}
           type="radio"
           value={value}
+          onClick={this.updateState}
         />
         <label htmlFor={inputId}>
           <slot />
@@ -117,6 +104,10 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
   }
 
   componentDidLoad(): void {
+    if (this.defaultValue === undefined) {
+      this.defaultValue = this.nativeInput?.checked ?? this.checked;
+    }
+
     this.p6FormRegister.emit(this);
   }
 
@@ -150,4 +141,17 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
       },
     });
   }
+
+  /**
+   * Restores the radio's default value
+   */
+  @Method()
+  async reset(): Promise<boolean> {
+    this.checked = !!this.defaultValue;
+    return Promise.resolve(true);
+  }
+
+  private updateState = (): void => {
+    this.checked = !this.checked;
+  };
 }

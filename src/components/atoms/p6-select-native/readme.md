@@ -34,6 +34,14 @@ Returns whether a form will validate when it is submitted, without having to sub
 
 Type: `Promise<boolean>`
 
+### `reset() => Promise<boolean>`
+
+Restores the input's default value
+
+#### Returns
+
+Type: `Promise<boolean>`
+
 ### `validationMessage() => Promise<string>`
 
 Returns the error message that would be displayed if the user submits the form, or an empty string if no error message.
