@@ -27,7 +27,7 @@ export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/
 export const HTTPS_URL_REGEX = /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/
 
 export function getWordings( wordings: { [key: string]: any }, locale: string ): CompiledWordings {
-    const combinedWordings: Wordings = deepCopy( MULTILANGUAGE_WORDINGS, wordings )
+    const combinedWordings: Wordings = {... MULTILANGUAGE_WORDINGS, ...wordings }
 
     var res = Object.keys( combinedWordings ).reduce(
         ( dic, key ) => {
@@ -348,7 +348,7 @@ export function getAcceptLanguageHeader( locale: string ): string {
 }
 
 /**
- * 
+ *
  * @param { string } locale local to be used to get the labels.
  * @param { { [language: string]: string; } } labelMap map where to get the labels from.
  * @param { [boolean] } noRegion if true, get the labels by local instead of language.
@@ -565,8 +565,8 @@ export function base64Decode( encodedData: string ): string {
  * @param extensions Object to inject into data
  * @returns { any }
  */
-export function deepCopy( data: any, extensions?: any ): any {
-    return !extensions ? JSON.parse( JSON.stringify( data || {} ) ) : $.extend( {}, data, extensions )
+export function deepCopy(data: any, extensions?: any): any {
+	return { ...data, ...extensions };
 }
 
 /**
@@ -600,13 +600,14 @@ export function handleDuplicateNameFromArray( name: string, container: string[] 
  * @returns { string }
  */
 export function dateByLocalToString( locale: string, date: number, options?: Intl.DateTimeFormatOptions ): string {
-    return new Date( date ).toLocaleString( locale, deepCopy( {
+    return new Date( date ).toLocaleString( locale, {
         month: 'numeric',
         day: 'numeric',
         year: 'numeric',
         hour: 'numeric',
-        minute: 'numeric'
-    }, options ) )
+        minute: 'numeric',
+		...options
+    } )
 }
 
 /**
@@ -693,8 +694,8 @@ export function nestedPathAttributesExist( collection: Object, attributes: strin
 
 /**
  * Check if both items are equals
- * @param { Object } first 
- * @param { Object } second 
+ * @param { Object } first
+ * @param { Object } second
  */
 export function isSameObject( first: Object, second: Object ): boolean {
     return JSON.stringify( first || {} ) === JSON.stringify( second || {} )
