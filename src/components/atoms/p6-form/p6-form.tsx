@@ -64,6 +64,7 @@ export class P6Form implements ComponentInterface {
           noValidate
           name={this.name}
           onSubmit={this.submitHandler}
+          onReset={this.resetHandler}
           ref={(ref): void => {
             this.nativeForm = ref;
           }}
@@ -84,6 +85,21 @@ export class P6Form implements ComponentInterface {
       this.completeDataWithNativeControlData();
       this.p6Submit.emit(this.data);
     }
+  };
+
+  private resetHandler = async (): Promise<boolean> => {
+    this.data.clear();
+
+    const resetedControls = await Promise.all(
+      this.formControls.map((elmt) =>
+        elmt.reset !== undefined ? elmt.reset() : Promise.resolve(true)
+      )
+    );
+
+    return resetedControls.reduce(
+      (acc: boolean, cur: boolean) => acc && cur,
+      true
+    );
   };
 
   private addCustomControl = (event: CustomEvent<P6Control<unknown>>): void => {

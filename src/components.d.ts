@@ -169,6 +169,10 @@ export namespace Components {
      */
     name: string;
     /**
+     * Restores the checkbox's default value
+     */
+    reset: () => Promise<boolean>;
+    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -381,6 +385,10 @@ export namespace Components {
      */
     required: boolean;
     /**
+     * Restores the input's default value
+     */
+    reset: () => Promise<boolean>;
+    /**
      * the content type of the input.
      */
     type: P6InputType;
@@ -472,6 +480,10 @@ export namespace Components {
      */
     readOnly: boolean;
     /**
+     * Restores the checkbox's default value
+     */
+    reset: () => Promise<boolean>;
+    /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
     validationMessage: () => Promise<string>;
@@ -480,6 +492,7 @@ export namespace Components {
      */
     value: string | number;
   }
+  interface P6RadioGroup {}
   interface P6Select {
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -555,6 +568,10 @@ export namespace Components {
      * Marks the select as required. It can't be submitted without a value
      */
     required: boolean;
+    /**
+     * Restores the input's default value
+     */
+    reset: () => Promise<boolean>;
     /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
      */
@@ -636,6 +653,10 @@ export namespace Components {
      * marks an element that can't be submitted without a value.
      */
     required: boolean;
+    /**
+     * Restores the textarea's default value
+     */
+    reset: () => Promise<boolean>;
     /**
      * The user can resize the field
      */
@@ -879,6 +900,13 @@ declare global {
     prototype: HTMLP6RadioElement;
     new (): HTMLP6RadioElement;
   };
+  interface HTMLP6RadioGroupElement
+    extends Components.P6RadioGroup,
+      HTMLStencilElement {}
+  var HTMLP6RadioGroupElement: {
+    prototype: HTMLP6RadioGroupElement;
+    new (): HTMLP6RadioGroupElement;
+  };
   interface HTMLP6SelectElement
     extends Components.P6Select,
       HTMLStencilElement {}
@@ -973,6 +1001,7 @@ declare global {
     "p6-language": HTMLP6LanguageElement;
     "p6-link": HTMLP6LinkElement;
     "p6-radio": HTMLP6RadioElement;
+    "p6-radio-group": HTMLP6RadioGroupElement;
     "p6-select": HTMLP6SelectElement;
     "p6-select-native": HTMLP6SelectNativeElement;
     "p6-spinner": HTMLP6SpinnerElement;
@@ -1515,6 +1544,7 @@ declare namespace LocalJSX {
      */
     value: string | number;
   }
+  interface P6RadioGroup {}
   interface P6Select {
     /**
      * Disable the search on the select
@@ -1818,6 +1848,7 @@ declare namespace LocalJSX {
     "p6-language": P6Language;
     "p6-link": P6Link;
     "p6-radio": P6Radio;
+    "p6-radio-group": P6RadioGroup;
     "p6-select": P6Select;
     "p6-select-native": P6SelectNative;
     "p6-spinner": P6Spinner;
@@ -1877,6 +1908,8 @@ declare module "@stencil/core" {
         JSXBase.HTMLAttributes<HTMLP6LanguageElement>;
       "p6-link": LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
       "p6-radio": LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
+      "p6-radio-group": LocalJSX.P6RadioGroup &
+        JSXBase.HTMLAttributes<HTMLP6RadioGroupElement>;
       "p6-select": LocalJSX.P6Select &
         JSXBase.HTMLAttributes<HTMLP6SelectElement>;
       "p6-select-native": LocalJSX.P6SelectNative &

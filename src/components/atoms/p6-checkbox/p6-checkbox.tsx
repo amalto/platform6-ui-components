@@ -33,7 +33,8 @@ export class P6Checkbox
   /**
    * Checked
    */
-  @Prop() checked = false;
+  // eslint-disable-next-line @stencil/strict-mutable
+  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
    * Value
@@ -79,12 +80,18 @@ export class P6Checkbox
 
   private nativeInput: HTMLInputElement | undefined;
 
+  private defaultValue: boolean | undefined;
+
   componentWillLoad(): void {
     this.host.addEventListener("focusout", this.checkValidity.bind(this));
+
+    if (this.defaultValue === undefined) {
+      this.defaultValue = this.checked;
+    }
   }
 
   render(): JSX.Element {
-    const { name, checked, disabled, value } = this;
+    const { name, disabled, value } = this;
     const inputId = `${name}-input`;
     const classes = {
       checkbox: true,
@@ -94,7 +101,7 @@ export class P6Checkbox
     return (
       <Host aria-disabled={disabled ? "true" : null}>
         <input
-          checked={checked}
+          checked={this.checked}
           disabled={disabled}
           id={inputId}
           name={name}
@@ -104,6 +111,7 @@ export class P6Checkbox
           ref={(input): void => {
             this.nativeInput = input;
           }}
+          onClick={this.updateState}
         />
         <label htmlFor={inputId}>
           <slot />
@@ -149,4 +157,17 @@ export class P6Checkbox
       },
     });
   }
+
+  /**
+   * Restores the checkbox's default value
+   */
+  @Method()
+  async reset(): Promise<boolean> {
+    this.checked = !!this.defaultValue;
+    return Promise.resolve(true);
+  }
+
+  private updateState = (): void => {
+    this.checked = !this.checked;
+  };
 }

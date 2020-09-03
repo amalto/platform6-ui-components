@@ -108,8 +108,14 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
 
   private nativeInput: HTMLInputElement | undefined;
 
+  private defaultValue: string | number | undefined;
+
   componentWillLoad(): void {
     this.host.addEventListener("focusout", this.checkValidity.bind(this));
+
+    if (this.defaultValue === undefined) {
+      this.defaultValue = this.value;
+    }
   }
 
   render(): JSX.Element {
@@ -185,6 +191,22 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
       },
       getValue: () => this.inputValue,
     });
+  }
+
+  /**
+   * Restores the input's default value
+   */
+  @Method()
+  async reset(): Promise<boolean> {
+    let result = false;
+
+    if (this.nativeInput) {
+      this.nativeInput.value =
+        this.defaultValue !== undefined ? this.defaultValue.toString() : "";
+      result = true;
+    }
+
+    return Promise.resolve(result);
   }
 
   private get minMaxAttrs():

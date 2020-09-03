@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-radio defaut p6-radio 1`] = `
+<p6-radio class="mgr-5" name="radio-input" value="radio-input">
+  <mock:shadow-root>
+    <input id="radio-input-radio-input-input" name="radio-input" type="radio" value="radio-input">
+    <label htmlfor="radio-input-radio-input-input">
+      <slot></slot>
+    </label>
+  </mock:shadow-root>
+  first
+</p6-radio>
+`;

@@ -42,7 +42,7 @@ export const Default = makeStory<{
   },
   builder: ({ value, ...args }): HTMLElement =>
     getElement(
-      "div",
+      "p6-radio-group",
       ["first", "second"].map((key) =>
         getStoryField(key, {
           checked: value === key,
@@ -83,13 +83,16 @@ export const Form = makeStory<{ disabled: boolean; readOnly: boolean }>({
   },
   builder: (props): HTMLElement =>
     getForm(
-      ["first", "second"].map((key, idx) =>
-        getStoryField(key, {
-          value: key,
-          name: "field",
-          checked: idx === 0,
-          ...props,
-        })
+      getElement(
+        "p6-radio-group",
+        ["first", "second"].map((key, idx) =>
+          getStoryField(key, {
+            value: key,
+            name: "field",
+            checked: idx === 0,
+            ...props,
+          })
+        )
       )
     ),
 });

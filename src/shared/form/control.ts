@@ -21,6 +21,8 @@ export interface P6Control<T> extends P6ControlValidation {
   p6FormUnregister: EventEmitter<P6Control<T>>;
   p6Valid: EventEmitter<ValidEventDetail<T>>;
   p6Invalid: EventEmitter<InvalidEventDetail>;
+
+  reset?: () => Promise<boolean>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
