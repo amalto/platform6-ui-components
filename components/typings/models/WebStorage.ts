@@ -3,84 +3,122 @@ import { UserModel } from './UserModel'
 import { AppInstanceModel } from './AppInstanceModel'
 import { Endpoints } from './AppEndpointsModel'
 import { ScopesTree } from './Scopes'
+import { SSOConnection } from './SSO';
 
 export interface WebStorage {
 
-    /** logout */
-    clearStoredData: () => void;
-    /** Set option to remember user */
-    storeRememberUser: ( rememberUser: boolean ) => void
+  /** logout */
+  clearStoredData: () => void;
+  /** Set option to remember user */
+  storeRememberUser: (rememberUser: boolean) => void
 
-    /** Always saved in localStorage (used for app bootstrapping) */
-    storeInfraAlertCloseDate: ( date: string ) => void;
+  /** Always saved in localStorage (used for app bootstrapping) */
+  storeInfraAlertCloseDate: (date: string) => void;
 
-    infraAlertCloseDate: string | null;
+  infraAlertCloseDate: string | null;
 
-    /** always saved in localStorage (used for app bootstrapping) */
-    storeLastTriggeredUpdate: ( date: string ) => void;
+  /** always saved in localStorage (used for app bootstrapping) */
+  storeLastTriggeredUpdate: (date: string) => void;
 
-    lastTriggeredUpdate: string | null;
+  lastTriggeredUpdate: string | null;
 
-    /**
-     * Access and refresh token are either saved in webStorage or in session storage
-     * This depends on the choice the user makes at the login page (rememberMe checkbox)
-     */
-    storeAccessToken: ( accessToken: string ) => void;
+  /**
+   * Access and refresh token are either saved in webStorage or in session storage
+   * This depends on the choice the user makes at the login page (rememberMe checkbox)
+   */
+  storeAccessToken: (accessToken: string) => void;
 
-    accessToken: string | null;
+  accessToken: string | null;
 
-    storeRefreshToken: ( refreshToken: string ) => void;
+  storeRefreshToken: (refreshToken: string) => void;
 
-    refreshToken: string | null;
+  refreshToken: string | null;
 
-    /**
-     * All other globals variables are saved in session storage
-     * This is to avoid conflicts between multiple browser tabs/windows (like differents selected instance)
-     */
+  storeSSOToken: (SSOToken: string) => void;
 
-    /** saved in sessionStorage */
-    storeUser: ( user: UserModel ) => void;
+  /**
+   * All other globals variables are saved in session storage
+   * This is to avoid conflicts between multiple browser tabs/windows (like differents selected instance)
+   */
 
-    user: UserModel | null;
+  /** saved in sessionStorage */
+  storeUser: (user: UserModel) => void;
 
-    /** Saved in sessionStorage */
-    storeAppInstances: ( appInstances: AppInstanceModel[] ) => void;
+  user: UserModel | null;
 
-    appInstances: AppInstanceModel[];
+  /** Saved in sessionStorage */
+  storeAppInstances: (appInstances: AppInstanceModel[]) => void;
 
-    /** Saved in sessionStorage */
-    storeSelectedAppInstance: ( appInstanceName: string ) => void;
+  appInstances: AppInstanceModel[];
 
-    selectedAppInstance: AppInstanceModel | null;
+  /** Saved in sessionStorage */
+  storeSelectedAppInstance: (appInstanceName: string) => void;
 
-    /** saved in localStorage */
-     storeLastUsedAppInstance: ( appInstanceName: string ) => void;
+  selectedAppInstance: AppInstanceModel | null;
 
-    lastUsedAppInstance: string | null;
+  /** saved in localStorage */
+  storeLastUsedAppInstance: (appInstanceName: string) => void;
 
-    /** saved in sessionStorage */
-    storeAppEndpoints: ( appEndpoints: Endpoints ) => void;
+  lastUsedAppInstance: string | null;
 
-    appEndpoints: Endpoints | null;
+  /** saved in sessionStorage */
+  storeAppEndpoints: (appEndpoints: Endpoints) => void;
 
-    /** saved in sessionStorage */
-    storeScopesTree: ( scopesTree: ScopesTree ) => void;
+  appEndpoints: Endpoints | null;
 
-    scopesTree: ScopesTree;
+  /** saved in sessionStorage */
+  storeScopesTree: (scopesTree: ScopesTree) => void;
 
-    /** saved in sessionStorage */
-    storeTempLoginData: ( loginData: Object ) => void;
+  scopesTree: ScopesTree;
 
-    clearTempLoginData: () => void;
+  /** saved in sessionStorage */
+  storeTempLoginData: (loginData: Object) => void;
 
-    tempLoginData: any;
+  clearTempLoginData: () => void;
 
-    /** saved in sessionStorage */
-    storeSelectedLocaleHeader: ( locale: string ) => void;
+  tempLoginData: any;
 
-    selectedLocaleHeader: any;
+  //saved in sessionStorage
+  storeSSOConnection: (SSOConnection: SSOConnection) => void;
 
-    storeLocale: ( locale: string ) => void;
+  clearSSOConnection: () => void;
 
-    locale: string;
+  SSOConnection(): SSOConnection | null
+
+  /** saved in sessionStorage */
+  storeSelectedLocaleHeader: (locale: string) => void;
+
+  selectedLocaleHeader: any;
+
+  storeLocale: (locale: string) => void;
+
+  locale: string;
+
+  storeInjectedUIData: (data: any) => void;
+
+  injectedUIData: () => Object;
+
+  setPortalVersion: (version: string) => void;
+
+  portalVersion: () => string | null;
+
+  setPortalMode: (mode: string) => void;
+
+  portalMode: () => any
+
+  storeTokensInCookies: (data: { at: string, rt?: string }) => void;
+
+  clearTokensInCookies: () => void;
+
+  accessTokenFromCookies: () => void;
+
+  refreshTokenFromCookies: () => void;
+
+  storeSignupAccessTokens: (data: { at: string, rt: string, logged_in: boolean }) => void;
+
+  clearSignupAccessTokens: () => void;
+
+  signupAccessTokens: () => Object;
+
+  importStorage: (data: { session: Map<string, string>, local: Map<string, string> }) => void;
 }
