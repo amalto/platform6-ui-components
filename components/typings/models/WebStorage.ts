@@ -83,7 +83,7 @@ export interface WebStorage {
 
   clearSSOConnection: () => void;
 
-  SSOConnection(): SSOConnection | null
+  SSOConnection: SSOConnection | null
 
   /** saved in sessionStorage */
   storeSelectedLocaleHeader: (locale: string) => void;
@@ -96,29 +96,29 @@ export interface WebStorage {
 
   storeInjectedUIData: (data: any) => void;
 
-  injectedUIData: () => Object;
+  injectedUIData: Object;
 
   setPortalVersion: (version: string) => void;
 
-  portalVersion: () => string | null;
+  portalVersion: string | null;
 
   setPortalMode: (mode: string) => void;
 
-  portalMode: () => any
+  portalMode: string;
 
   storeTokensInCookies: (data: { at: string, rt?: string }) => void;
 
   clearTokensInCookies: () => void;
 
-  accessTokenFromCookies: () => void;
+  accessTokenFromCookies: string;
 
-  refreshTokenFromCookies: () => void;
+  refreshTokenFromCookies: string;
 
   storeSignupAccessTokens: (data: { at: string, rt: string, logged_in: boolean }) => void;
 
   clearSignupAccessTokens: () => void;
 
-  signupAccessTokens: () => Object;
+  signupAccessTokens: Object;
 
   importStorage: (data: { session: Map<string, string>, local: Map<string, string> }) => void;
 }
