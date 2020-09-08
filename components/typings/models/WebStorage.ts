@@ -110,9 +110,9 @@ export interface WebStorage {
 
   clearTokensInCookies: () => void;
 
-  accessTokenFromCookies: string;
+  accessTokenFromCookies: string | undefined;
 
-  refreshTokenFromCookies: string;
+  refreshTokenFromCookies: string | undefined;
 
   storeSignupAccessTokens: (data: { at: string, rt: string, logged_in: boolean }) => void;
 
