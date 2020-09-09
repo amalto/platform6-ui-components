@@ -24,7 +24,7 @@ import { P6GridButtonItem } from "../p6-grid-button-item";
 @Component({
   tag: "p6-grid-actions",
   styleUrl: "p6-grid-actions.scss",
-  assetsDir: "locales",
+  assetsDirs: ["locales"],
   shadow: true,
 })
 export class P6GridActions implements ComponentInterface {

@@ -480,7 +480,7 @@ export namespace Components {
      */
     readOnly: boolean;
     /**
-     * Restores the checkbox's default value
+     * Restores the radio's default value
      */
     reset: () => Promise<boolean>;
     /**

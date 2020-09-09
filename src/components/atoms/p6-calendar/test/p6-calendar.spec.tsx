@@ -18,6 +18,11 @@ function getDataFromUrl(url: string): L10n | null {
 }
 
 beforeAll(() => {
+  Object.defineProperty(window.navigator, "language", {
+    value: "en",
+    configurable: true,
+  });
+
   jest.spyOn(global, "fetch").mockImplementation((url) => {
     const l10n = getDataFromUrl(url as string);
     if (l10n === null) {

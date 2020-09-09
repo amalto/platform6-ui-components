@@ -19,7 +19,7 @@ type ChoiceEventDetail = { value: string };
 @Component({
   tag: "p6-select",
   styleUrl: "p6-select.scss",
-  assetsDir: "locales",
+  assetsDirs: ["locales"],
 })
 export class P6Select implements ComponentInterface {
   /**

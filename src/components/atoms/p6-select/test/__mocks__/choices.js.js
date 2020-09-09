@@ -1,1 +1,1 @@
-module.exports = jest.genMockFromModule("choices.js");
+module.exports = jest.createMockFromModule("choices.js");

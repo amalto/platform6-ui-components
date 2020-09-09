@@ -70,9 +70,9 @@ Before creating a component, you have to read more about `atomic design` ( https
 
 It is *important* that your code is *consistant*, we use a _linter_ for that and have a few command lines.
 
-- Run the `npm run format` and `npm run postformat`
+- Run the `npm run format` to format and try to fix as many lint issues as possible. 
 - Run `npm run lint` to check your code
-- Run `npm run lint.fix` to fix minor syntax error
+- Run `npm run lint.fix` to fix as many issues as possible
 
 If the `npm run lint.fix` didn't managed to fix the code, you will have to do it manually.
 
@@ -81,19 +81,18 @@ If the `npm run lint.fix` didn't managed to fix the code, you will have to do it
 It is important to test your code before publishing it. Our test are done with `Jest` and each web component must have test of his own.
 The test files should be in a `/test` directory.
 
-### Editor
-
-You should use `vscode` if you want to use the _linter_ but later on configuration for other editors will be added.
-
 ### Documentation
 
 For our components _stories_ and _preview_ we use `mdx` files which allow us to write them inside _markdown_.
 
 ## Using this component
 
+There are three strategies we recommend for using web components built with Stencil.
+
+The first step for all three of these strategies is to [publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+
 ### Script tag
 
-- [Publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages)
 - Put a script tag similar to this `<script src='https://unpkg.com/my-component@0.0.1/dist/mycomponent.js'></script>` in the head of your index.html
 - Then you can use the element anywhere in your template, JSX, html etc
 
