@@ -10,7 +10,7 @@ $button-active-color: $link-active !default;
 $button-disabled-background-color: $scheme-main !default;
 $button-disabled-opacity: 0.5 !default;
 
-@import "src/styles/atoms/control";
+@import 'src/styles/atoms/control';
 
 :host {
   display: inline-flex;
@@ -41,9 +41,7 @@ $button-disabled-opacity: 0.5 !default;
 
     ::slotted(.icon:first-child:last-child),
     ::slotted(p6-icon:first-child:last-child) {
-      $margin: calc(
-        #{-1 / 2 * $action-padding-horizontal} - #{$button-border-width}
-      );
+      $margin: calc(#{-1 / 2 * $action-padding-horizontal} - #{$button-border-width});
 
       margin-left: $margin;
       margin-right: $margin;
@@ -104,10 +102,7 @@ $button-disabled-opacity: 0.5 !default;
 
           &:hover::after,
           &:focus::after {
-            border-color: transparent
-              transparent
-              bulmaDarken($color, 2.5%)
-              bulmaDarken($color, 2.5%) !important;
+            border-color: transparent transparent bulmaDarken($color, 2.5%) bulmaDarken($color, 2.5%) !important;
           }
         }
       }

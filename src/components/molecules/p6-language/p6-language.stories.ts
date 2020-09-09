@@ -1,34 +1,17 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getForm,
-  makeModeStory,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getForm, makeModeStory, makeStory, Props } from '../../../shared/storybook';
+import { Mode } from '../../../shared/types';
 
-const component = "p6-language";
+const component = 'p6-language';
 
 export default {
-  title: "Molecules/Language",
+  title: 'Molecules/Language',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "name",
-  "value",
-  "excludes",
-  "mode",
-  "fullWidth",
-  "disabled",
-  "required",
-  "readOnly",
-];
+const componentProps: ComponentProps = ['name', 'value', 'excludes', 'mode', 'fullWidth', 'disabled', 'required', 'readOnly'];
 
-const getStoryField = (props?: Props<Components.P6Language>): HTMLElement =>
-  getElement(component, [], { name: "language", ...props });
+const getStoryField = (props?: Props<Components.P6Language>): HTMLElement => getElement(component, [], { name: 'language', ...props });
 
 export const Default = makeStory<{
   disabled: boolean;
@@ -45,7 +28,7 @@ export const Default = makeStory<{
     required: false,
     mode: Mode.default,
     fullWidth: false,
-    value: "fr",
+    value: 'fr',
   },
   builder: (args): HTMLElement => getStoryField(args),
 });
@@ -55,7 +38,7 @@ export const SelectedValue = makeStory<{
 }>({
   componentProps,
   args: {
-    value: "fr",
+    value: 'fr',
   },
   builder: (args): HTMLElement => getStoryField(args),
 });
@@ -89,8 +72,7 @@ export const Form = makeStory<{
     disabled: false,
     readOnly: false,
     required: false,
-    value: "fr",
+    value: 'fr',
   },
-  builder: (props): HTMLElement =>
-    getForm(getStoryField({ name: "field", ...props })),
+  builder: (props): HTMLElement => getForm(getStoryField({ name: 'field', ...props })),
 });

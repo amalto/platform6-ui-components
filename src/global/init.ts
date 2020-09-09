@@ -1,5 +1,5 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFolderOpen } from '@fortawesome/free-regular-svg-icons';
 import {
   faAlignCenter,
   faAlignLeft,
@@ -23,9 +23,9 @@ import {
   faSort,
   faTrash,
   faTrashAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { setAppVersion } from "~utils/cache";
-import { version } from "../../package.json";
+} from '@fortawesome/free-solid-svg-icons';
+import { setAppVersion } from '~utils/cache';
+import { version } from '../../package.json';
 
 function initializeIcons(): void {
   library.add(
@@ -55,7 +55,7 @@ function initializeIcons(): void {
     faEye,
     faEyeSlash,
     faFolderOpen,
-    faSearch
+    faSearch,
   );
 }
 

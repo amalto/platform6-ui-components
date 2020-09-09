@@ -1,33 +1,17 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getForm,
-  makeModeStory,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getForm, makeModeStory, makeStory, Props } from '../../../shared/storybook';
+import { Mode } from '../../../shared/types';
 
-const component = "p6-checkbox";
+const component = 'p6-checkbox';
 
 export default {
-  title: "Atoms/Checkbox",
+  title: 'Atoms/Checkbox',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "checked",
-  "disabled",
-  "mode",
-  "name",
-  "value",
-];
+const componentProps: ComponentProps = ['checked', 'disabled', 'mode', 'name', 'value'];
 
-const getStoryField = (
-  text: string,
-  props?: Props<Components.P6Checkbox>
-): HTMLElement => {
+const getStoryField = (text: string, props?: Props<Components.P6Checkbox>): HTMLElement => {
   return getElement(component, text, props);
 };
 
@@ -40,13 +24,12 @@ export const Default = makeStory<{
 }>({
   componentProps,
   args: {
-    text: "Click me",
+    text: 'Click me',
     mode: Mode.default,
     checked: false,
     disabled: false,
   },
-  builder: ({ text, ...props }): HTMLElement =>
-    getStoryField(text, { ...props }),
+  builder: ({ text, ...props }): HTMLElement => getStoryField(text, { ...props }),
 });
 
 export const Modes = makeModeStory({
@@ -61,13 +44,13 @@ export const Modes = makeModeStory({
 export const Disabled = makeStory<{ disabled: boolean }>({
   componentProps,
   args: { disabled: true },
-  builder: (props): HTMLElement => getStoryField("Disabled", props),
+  builder: (props): HTMLElement => getStoryField('Disabled', props),
 });
 
 export const Enabled = makeStory<{ disabled: boolean }>({
   componentProps,
   args: { disabled: false },
-  builder: (props): HTMLElement => getStoryField("Enabled", props),
+  builder: (props): HTMLElement => getStoryField('Enabled', props),
 });
 
 export const Form = makeStory<{
@@ -81,18 +64,18 @@ export const Form = makeStory<{
   },
   builder: (props): HTMLElement =>
     getForm([
-      getStoryField("Option 1", {
-        name: "field[0]",
-        value: "yes",
+      getStoryField('Option 1', {
+        name: 'field[0]',
+        value: 'yes',
         ...props,
       }),
-      getStoryField("Option 2", {
-        name: "field[1]",
-        value: "no",
+      getStoryField('Option 2', {
+        name: 'field[1]',
+        value: 'no',
         ...props,
       }),
-      getStoryField("Option 3", {
-        name: "field[2]",
+      getStoryField('Option 3', {
+        name: 'field[2]',
         ...props,
       }),
     ]),

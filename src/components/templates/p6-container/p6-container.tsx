@@ -1,8 +1,8 @@
-import { Component, h, Host } from "@stencil/core";
+import { Component, h, Host } from '@stencil/core';
 
 @Component({
-  tag: "p6-container",
-  styleUrl: "p6-container.scss",
+  tag: 'p6-container',
+  styleUrl: 'p6-container.scss',
   shadow: true,
 })
 export class P6Container {

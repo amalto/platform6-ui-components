@@ -1,13 +1,13 @@
-import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
-import { SortOrder } from "~shared/types";
-import { toWidth } from "~utils/css";
-import { DEFAULT_WIDTH } from "../../core/column";
-import { Column, DataItem } from "../../core/entities";
-import { P6GridSortMarker } from "../p6-grid-sort-marker";
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
+import { SortOrder } from '~shared/types';
+import { toWidth } from '~utils/css';
+import { DEFAULT_WIDTH } from '../../core/column';
+import { Column, DataItem } from '../../core/entities';
+import { P6GridSortMarker } from '../p6-grid-sort-marker';
 
 @Component({
-  tag: "p6-grid-header-cell",
-  styleUrl: "p6-grid-header-cell.scss",
+  tag: 'p6-grid-header-cell',
+  styleUrl: 'p6-grid-header-cell.scss',
   shadow: true,
 })
 export class P6GridHeaderCell implements ComponentInterface {
@@ -44,14 +44,7 @@ export class P6GridHeaderCell implements ComponentInterface {
             <P6GridSortMarker order={this.sortOrder} />
             <slot />
           </div>
-          {!disabled ? (
-            <p6-grid-header-menu
-              class="grid-cell-context-menu"
-              align={this.column.align}
-              sortOrder={this.sortOrder}
-              column={this.column}
-            />
-          ) : null}
+          {!disabled ? <p6-grid-header-menu class="grid-cell-context-menu" align={this.column.align} sortOrder={this.sortOrder} column={this.column} /> : null}
         </div>
       </Host>
     );

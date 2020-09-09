@@ -1,4 +1,4 @@
-import { enumToArray } from "../utils/enum";
+import { enumToArray } from '../utils/enum';
 
 export enum Mode {
   danger = 0,

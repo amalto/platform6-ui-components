@@ -1,8 +1,8 @@
-import { Component, h, Host } from "@stencil/core";
+import { Component, h, Host } from '@stencil/core';
 
 @Component({
-  tag: "p6-grid-body",
-  styleUrl: "p6-grid-body.scss",
+  tag: 'p6-grid-body',
+  styleUrl: 'p6-grid-body.scss',
   shadow: true,
 })
 export class P6GridBody {

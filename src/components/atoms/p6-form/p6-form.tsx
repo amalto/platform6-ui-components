@@ -1,26 +1,13 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import {
-  isP6NativeControl,
-  P6Control,
-  P6NativeControl,
-} from "~shared/form/control";
-import { isInvalidEvent, isValidEvent } from "~shared/form/event";
-import { toArray } from "~utils/dom";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { isP6NativeControl, P6Control, P6NativeControl } from '~shared/form/control';
+import { isInvalidEvent, isValidEvent } from '~shared/form/event';
+import { toArray } from '~utils/dom';
 
 export type SubmitEventEmitter = EventEmitter<Map<string, unknown>>;
 
 @Component({
-  tag: "p6-form",
-  styleUrl: "p6-form.scss",
+  tag: 'p6-form',
+  styleUrl: 'p6-form.scss',
   scoped: true,
 })
 export class P6Form implements ComponentInterface {
@@ -46,20 +33,13 @@ export class P6Form implements ComponentInterface {
 
   componentWillLoad(): void {
     if (this.nativeForm !== undefined) {
-      toArray(this.nativeForm.elements).forEach((control) =>
-        control.addEventListener("invalid", this.invalidHandler)
-      );
+      toArray(this.nativeForm.elements).forEach(control => control.addEventListener('invalid', this.invalidHandler));
     }
   }
 
   render(): void {
     return (
-      <Host
-        onP6FormRegister={this.addCustomControl}
-        onP6FormUnregister={this.removeCustomControl}
-        onP6Valid={this.validHandler}
-        onP6Invalid={this.invalidHandler}
-      >
+      <Host onP6FormRegister={this.addCustomControl} onP6FormUnregister={this.removeCustomControl} onP6Valid={this.validHandler} onP6Invalid={this.invalidHandler}>
         <form
           noValidate
           name={this.name}
@@ -90,26 +70,17 @@ export class P6Form implements ComponentInterface {
   private resetHandler = async (): Promise<boolean> => {
     this.data.clear();
 
-    const resetedControls = await Promise.all(
-      this.formControls.map((elmt) =>
-        elmt.reset !== undefined ? elmt.reset() : Promise.resolve(true)
-      )
-    );
+    const resetedControls = await Promise.all(this.formControls.map(elmt => (elmt.reset !== undefined ? elmt.reset() : Promise.resolve(true))));
 
-    return resetedControls.reduce(
-      (acc: boolean, cur: boolean) => acc && cur,
-      true
-    );
+    return resetedControls.reduce((acc: boolean, cur: boolean) => acc && cur, true);
   };
 
   private addCustomControl = (event: CustomEvent<P6Control<unknown>>): void => {
     this.formControls.push(event.detail);
   };
 
-  private removeCustomControl = (
-    event: CustomEvent<P6Control<unknown>>
-  ): void => {
-    this.formControls = this.formControls.filter((fc) => fc === event.detail);
+  private removeCustomControl = (event: CustomEvent<P6Control<unknown>>): void => {
+    this.formControls = this.formControls.filter(fc => fc === event.detail);
   };
 
   private async checkValidity(): Promise<boolean> {
@@ -126,21 +97,16 @@ export class P6Form implements ComponentInterface {
 
     const isValid = toArray(this.nativeForm.elements)
       .filter<P6NativeControl>(isP6NativeControl)
-      .map((elmt) => elmt.checkValidity())
+      .map(elmt => elmt.checkValidity())
       .reduce((acc, cur) => acc && cur);
 
     return Promise.resolve(isValid);
   }
 
   private async checkRegistredElementsValidity(): Promise<boolean> {
-    const checkedValidity = await Promise.all(
-      this.formControls.map((elmt) => elmt.checkValidity())
-    );
+    const checkedValidity = await Promise.all(this.formControls.map(elmt => elmt.checkValidity()));
 
-    return checkedValidity.reduce(
-      (acc: boolean, cur: boolean) => acc && cur,
-      true
-    );
+    return checkedValidity.reduce((acc: boolean, cur: boolean) => acc && cur, true);
   }
 
   private validHandler = (event: Event): void => {

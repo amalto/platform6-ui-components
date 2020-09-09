@@ -1,6 +1,6 @@
-import { E2EPage, newE2EPage } from "@stencil/core/testing";
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 
-describe("p6-dropdown", () => {
+describe('p6-dropdown', () => {
   let page: E2EPage;
 
   beforeEach(async () => {
@@ -15,26 +15,24 @@ describe("p6-dropdown", () => {
     });
   });
 
-  it("renders", async () => {
-    const element = await page.find("p6-dropdown");
-    expect(element).toHaveClass("hydrated");
+  it('renders', async () => {
+    const element = await page.find('p6-dropdown');
+    expect(element).toHaveClass('hydrated');
   });
 
-  it("has children hidden by default", async () => {
-    const menu = await page.find("p6-dropdown >>> #dropdown-menu");
+  it('has children hidden by default', async () => {
+    const menu = await page.find('p6-dropdown >>> #dropdown-menu');
 
     expect(menu).toBeDefined();
 
     const style = await menu.getComputedStyle();
 
-    expect(style.display).toEqual("none");
+    expect(style.display).toEqual('none');
   });
 
-  it("has the menu visible when clicking on the button", async () => {
-    const button = await page.find(
-      "p6-dropdown >>> .dropdown-trigger p6-button"
-    );
-    const menu = await page.find("p6-dropdown >>> #dropdown-menu");
+  it('has the menu visible when clicking on the button', async () => {
+    const button = await page.find('p6-dropdown >>> .dropdown-trigger p6-button');
+    const menu = await page.find('p6-dropdown >>> #dropdown-menu');
 
     expect(menu).toBeDefined();
 
@@ -42,6 +40,6 @@ describe("p6-dropdown", () => {
     await page.waitForChanges();
 
     const style = await menu.getComputedStyle();
-    expect(style.display).toEqual("block");
+    expect(style.display).toEqual('block');
   });
 });

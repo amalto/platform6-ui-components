@@ -1,32 +1,25 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  makeModeStory,
-  makeSizeStory,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode, Size } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, makeModeStory, makeSizeStory, makeStory, Props } from '../../../shared/storybook';
+import { Mode, Size } from '../../../shared/types';
 
-const component = "p6-action";
+const component = 'p6-action';
 
 export default {
-  title: "Atoms/Action",
+  title: 'Atoms/Action',
   component,
 };
 
-const componentProps: ComponentProps = ["mode", "waiting", "disabled", "size"];
+const componentProps: ComponentProps = ['mode', 'waiting', 'disabled', 'size'];
 
 const getStoryField = (props?: Props<Components.P6Action>): HTMLElement => {
   const size = props?.size !== undefined ? props.size : Size.normal;
   return getElement(
     component,
-    getElement("p6-icon", [], {
+    getElement('p6-icon', [], {
       size,
-      name: "home",
+      name: 'home',
     }),
-    props
+    props,
   );
 };
 
@@ -43,7 +36,7 @@ export const Default = makeStory<{
     disabled: false,
     waiting: false,
   },
-  builder: (args) => getStoryField(args),
+  builder: args => getStoryField(args),
 });
 
 export const Modes = makeModeStory({

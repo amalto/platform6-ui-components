@@ -1,30 +1,12 @@
-import {
-  Component,
-  ComponentInterface,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-  State,
-} from "@stencil/core";
-import {
-  CellEditor,
-  CellValueChangedDetail,
-  Column,
-  DataItem,
-  EditingCellDetail,
-  EditingCellStatus,
-  Row,
-} from "../../core/entities";
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { CellEditor, CellValueChangedDetail, Column, DataItem, EditingCellDetail, EditingCellStatus, Row } from '../../core/entities';
 
 @Component({
-  tag: "p6-grid-textarea-cell-editor",
-  styleUrl: "p6-grid-textarea-cell-editor.scss",
+  tag: 'p6-grid-textarea-cell-editor',
+  styleUrl: 'p6-grid-textarea-cell-editor.scss',
   shadow: true,
 })
-export class P6GridTextareaCellEditor
-  implements ComponentInterface, CellEditor<DataItem> {
+export class P6GridTextareaCellEditor implements ComponentInterface, CellEditor<DataItem> {
   /**
    * the cell column
    */
@@ -43,9 +25,7 @@ export class P6GridTextareaCellEditor
   /**
    * the cell value changed
    */
-  @Event() p6GridCellValueChanged!: EventEmitter<
-    CellValueChangedDetail<DataItem>
-  >;
+  @Event() p6GridCellValueChanged!: EventEmitter<CellValueChangedDetail<DataItem>>;
 
   /**
    * the editing status of this cell changed
@@ -63,21 +43,16 @@ export class P6GridTextareaCellEditor
   }
 
   render(): JSX.Element {
-    const hasError =
-      this.errorMessage !== undefined && this.errorMessage?.trim() !== "";
+    const hasError = this.errorMessage !== undefined && this.errorMessage?.trim() !== '';
     const classes = {
-      "has-tooltip-arrow": hasError,
-      "has-tooltip-multiline": hasError,
+      'has-tooltip-arrow': hasError,
+      'has-tooltip-multiline': hasError,
     };
 
     return (
       <Host>
         <form noValidate class={classes} data-tooltip={this.errorMessage}>
-          <textarea
-            required
-            onChange={this.changeHandler}
-            onKeyDown={this.keyUpHandler}
-          >
+          <textarea required onChange={this.changeHandler} onKeyDown={this.keyUpHandler}>
             {this.column.getValue(this.row.data, this.column)}
           </textarea>
         </form>

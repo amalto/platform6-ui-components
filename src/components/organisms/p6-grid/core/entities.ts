@@ -1,5 +1,5 @@
-import { EventEmitter } from "@stencil/core";
-import { Alignment, Direction, SortOrder } from "~shared/types";
+import { EventEmitter } from '@stencil/core';
+import { Alignment, Direction, SortOrder } from '~shared/types';
 
 export type ColumnId = string;
 
@@ -18,10 +18,7 @@ export interface ColumnDefinition<T extends DataItem> {
   disableHeaderMenu?: boolean;
   getValue?: (data: T, context: ColumnDefinition<T>) => string;
   setValue?: (value: string, data: T, context: ColumnDefinition<T>) => T;
-  cellEditor?: (
-    data: T,
-    context: ColumnDefinition<T>
-  ) => JSX.Element & CellEditor<T>;
+  cellEditor?: (data: T, context: ColumnDefinition<T>) => JSX.Element & CellEditor<T>;
 }
 
 export interface Column<T extends DataItem> extends ColumnDefinition<T> {
@@ -56,8 +53,7 @@ interface ColumnEventDetail<T extends DataItem> {
   column: Column<T>;
 }
 
-export interface MoveColumnDetail<T extends DataItem>
-  extends ColumnEventDetail<T> {
+export interface MoveColumnDetail<T extends DataItem> extends ColumnEventDetail<T> {
   direction: Direction;
 }
 export type ResizeColumnDetail<T extends DataItem> = ColumnEventDetail<T>;

@@ -1,12 +1,12 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { Component, Element, h, Host } from "@stencil/core";
-import { getL10n, L10n } from "~utils/translations";
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { Component, Element, h, Host } from '@stencil/core';
+import { getL10n, L10n } from '~utils/translations';
 
 @Component({
-  tag: "p6-empty",
-  styleUrl: "p6-empty.scss",
+  tag: 'p6-empty',
+  styleUrl: 'p6-empty.scss',
   shadow: true,
-  assetsDirs: ["locales"],
+  assetsDirs: ['locales'],
 })
 export class P6Empty {
   @Element() element!: HTMLP6EmptyElement;
@@ -18,10 +18,7 @@ export class P6Empty {
   }
 
   render(): JSX.Element {
-    const img = icon(
-      { prefix: "far", iconName: "folder-open" },
-      { classes: ["fa-3x"] }
-    );
+    const img = icon({ prefix: 'far', iconName: 'folder-open' }, { classes: ['fa-3x'] });
 
     return (
       <Host>

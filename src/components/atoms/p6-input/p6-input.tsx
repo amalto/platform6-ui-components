@@ -1,29 +1,15 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-} from "@stencil/core";
-import { P6InputType } from "~components/atoms/p6-input/types";
-import { P6Control } from "~shared/form/control";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import {
-  defaultCheckValidity,
-  defaultValidationMessage,
-} from "~shared/form/validation";
-import { cleanupValue, isEmpty } from "~utils/attribute";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { P6InputType } from '~components/atoms/p6-input/types';
+import { P6Control } from '~shared/form/control';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { defaultCheckValidity, defaultValidationMessage } from '~shared/form/validation';
+import { cleanupValue, isEmpty } from '~utils/attribute';
 
 export type P6InputValue = string | number | undefined;
 
 @Component({
-  tag: "p6-input",
-  styleUrl: "p6-input.scss",
+  tag: 'p6-input',
+  styleUrl: 'p6-input.scss',
   shadow: true,
 })
 export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
@@ -57,12 +43,12 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   /**
    * content to be appear in the form control when the form control is empty
    */
-  @Prop() placeholder = "";
+  @Prop() placeholder = '';
 
   /**
    * marks an element that can't be edited.
    */
-  @Prop({ attribute: "readOnly" }) readOnly = false;
+  @Prop({ attribute: 'readOnly' }) readOnly = false;
 
   /**
    * marks an element that can't be submitted without a value.
@@ -111,7 +97,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
   private defaultValue: string | number | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.checkValidity.bind(this));
+    this.host.addEventListener('focusout', this.checkValidity.bind(this));
 
     if (this.defaultValue === undefined) {
       this.defaultValue = this.value;
@@ -120,14 +106,14 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
 
   render(): JSX.Element {
     const containerClass = {
-      control: true,
-      "is-loading": !!this.waiting,
+      'control': true,
+      'is-loading': !!this.waiting,
     };
 
     const classes = {
-      input: true,
-      "is-danger": this.hasError,
-      "is-static": !!this.readOnly,
+      'input': true,
+      'is-danger': this.hasError,
+      'is-static': !!this.readOnly,
     };
 
     return (
@@ -186,7 +172,7 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,
       validationMessage: this.validationMessage.bind(this),
-      errorHandler: (hasError) => {
+      errorHandler: hasError => {
         this.hasError = hasError;
       },
       getValue: () => this.inputValue,
@@ -201,17 +187,14 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
     let result = false;
 
     if (this.nativeInput) {
-      this.nativeInput.value =
-        this.defaultValue !== undefined ? this.defaultValue.toString() : "";
+      this.nativeInput.value = this.defaultValue !== undefined ? this.defaultValue.toString() : '';
       result = true;
     }
 
     return Promise.resolve(result);
   }
 
-  private get minMaxAttrs():
-    | { min?: number; max?: number }
-    | { minLength?: number; maxLength?: number } {
+  private get minMaxAttrs(): { min?: number; max?: number } | { minLength?: number; maxLength?: number } {
     return this.type === P6InputType.number
       ? {
           min: this.min,

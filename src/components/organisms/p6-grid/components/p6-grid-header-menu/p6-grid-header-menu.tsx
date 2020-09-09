@@ -1,27 +1,12 @@
-import {
-  Component,
-  ComponentInterface,
-  Event,
-  EventEmitter,
-  h,
-  Prop,
-} from "@stencil/core";
-import { Alignment, Direction, SortOrder } from "~shared/types";
-import { INC_WIDTH } from "../../core/column";
-import {
-  AlignColumnDetail,
-  Column,
-  DataItem,
-  MoveColumnDetail,
-  ResizeColumnDetail,
-  ShowColumnDetail,
-  SortColumnDetail,
-} from "../../core/entities";
-import { P6GridActionItem } from "../p6-grid-action-item";
+import { Component, ComponentInterface, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Alignment, Direction, SortOrder } from '~shared/types';
+import { INC_WIDTH } from '../../core/column';
+import { AlignColumnDetail, Column, DataItem, MoveColumnDetail, ResizeColumnDetail, ShowColumnDetail, SortColumnDetail } from '../../core/entities';
+import { P6GridActionItem } from '../p6-grid-action-item';
 
 @Component({
-  tag: "p6-grid-header-menu",
-  styleUrl: "p6-grid-header-menu.scss",
+  tag: 'p6-grid-header-menu',
+  styleUrl: 'p6-grid-header-menu.scss',
   shadow: true,
 })
 export class P6GridHeaderMenu implements ComponentInterface {
@@ -69,49 +54,19 @@ export class P6GridHeaderMenu implements ComponentInterface {
     return (
       <host>
         <div>
-          <P6GridActionItem
-            icon="chevron-left"
-            clickHandler={this.moveColumnHandler(Direction.left)}
-          />
-          <P6GridActionItem
-            icon="sort"
-            clickHandler={this.sortColumnHandler()}
-          />
-          <P6GridActionItem
-            icon="chevron-right"
-            clickHandler={this.moveColumnHandler(Direction.right)}
-          />
+          <P6GridActionItem icon="chevron-left" clickHandler={this.moveColumnHandler(Direction.left)} />
+          <P6GridActionItem icon="sort" clickHandler={this.sortColumnHandler()} />
+          <P6GridActionItem icon="chevron-right" clickHandler={this.moveColumnHandler(Direction.right)} />
         </div>
         <div>
-          <P6GridActionItem
-            icon="trash-alt"
-            clickHandler={this.showColumnHandler(false)}
-          />
-          <P6GridActionItem
-            icon="minus"
-            clickHandler={this.resizeColumnHandler(INC_WIDTH * -1)}
-          />
-          <P6GridActionItem
-            icon="plus"
-            clickHandler={this.resizeColumnHandler(INC_WIDTH)}
-          />
+          <P6GridActionItem icon="trash-alt" clickHandler={this.showColumnHandler(false)} />
+          <P6GridActionItem icon="minus" clickHandler={this.resizeColumnHandler(INC_WIDTH * -1)} />
+          <P6GridActionItem icon="plus" clickHandler={this.resizeColumnHandler(INC_WIDTH)} />
         </div>
         <div>
-          <P6GridActionItem
-            icon="align-left"
-            clickHandler={this.alignColumnHandler(Alignment.start)}
-            disabled={this.isDefaultAlignment(Alignment.start)}
-          />
-          <P6GridActionItem
-            icon="align-center"
-            clickHandler={this.alignColumnHandler(Alignment.center)}
-            disabled={this.isDefaultAlignment(Alignment.center)}
-          />
-          <P6GridActionItem
-            icon="align-right"
-            clickHandler={this.alignColumnHandler(Alignment.end)}
-            disabled={this.isDefaultAlignment(Alignment.end)}
-          />
+          <P6GridActionItem icon="align-left" clickHandler={this.alignColumnHandler(Alignment.start)} disabled={this.isDefaultAlignment(Alignment.start)} />
+          <P6GridActionItem icon="align-center" clickHandler={this.alignColumnHandler(Alignment.center)} disabled={this.isDefaultAlignment(Alignment.center)} />
+          <P6GridActionItem icon="align-right" clickHandler={this.alignColumnHandler(Alignment.end)} disabled={this.isDefaultAlignment(Alignment.end)} />
         </div>
       </host>
     );

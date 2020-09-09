@@ -1,17 +1,10 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import { Mode, Size } from "~shared/types";
-import { getModeClass, getSizeClass } from "~utils/classes";
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
+import { Mode, Size } from '~shared/types';
+import { getModeClass, getSizeClass } from '~utils/classes';
 
 @Component({
-  tag: "p6-action",
-  styleUrl: "p6-action.scss",
+  tag: 'p6-action',
+  styleUrl: 'p6-action.scss',
   shadow: true,
 })
 export class P6Action implements ComponentInterface {
@@ -39,13 +32,13 @@ export class P6Action implements ComponentInterface {
 
   render(): JSX.Element {
     const classes = {
-      "is-loading": !!this.waiting,
+      'is-loading': !!this.waiting,
       ...getModeClass(this.mode),
       ...getSizeClass(this.size),
     };
 
     return (
-      <Host aria-disabled={this.disabled ? "true" : null}>
+      <Host aria-disabled={this.disabled ? 'true' : null}>
         <button type="button" disabled={this.disabled} class={classes}>
           <slot />
         </button>

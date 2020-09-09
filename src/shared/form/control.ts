@@ -1,10 +1,6 @@
-import { EventEmitter } from "@stencil/core";
-import { InvalidEventDetail, ValidEventDetail } from "./event";
-import {
-  hasNativeValidation,
-  hasValidation,
-  P6ControlValidation,
-} from "./validation";
+import { EventEmitter } from '@stencil/core';
+import { InvalidEventDetail, ValidEventDetail } from './event';
+import { hasNativeValidation, hasValidation, P6ControlValidation } from './validation';
 
 export interface P6NativeControl extends HTMLFormElement {
   name: string;
@@ -27,10 +23,10 @@ export interface P6Control<T> extends P6ControlValidation {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function isP6Control<T>(elmt: any): elmt is P6Control<T> {
-  return "name" in elmt && hasValidation(elmt);
+  return 'name' in elmt && hasValidation(elmt);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function isP6NativeControl(elmt: any): elmt is P6NativeControl {
-  return "name" in elmt && hasNativeValidation(elmt);
+  return 'name' in elmt && hasNativeValidation(elmt);
 }

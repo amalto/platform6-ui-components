@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { TemplateResult } from "lit-html";
+import { TemplateResult } from 'lit-html';
 /* eslint-enable import/no-extraneous-dependencies */
-import { EnumArrayEntry } from "../../utils/enum";
+import { EnumArrayEntry } from '../../utils/enum';
 
 export type Props<T> = Partial<T & HTMLElement>;
 export type ArgType = { [key: string]: unknown };

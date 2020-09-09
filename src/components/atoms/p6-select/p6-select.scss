@@ -14,8 +14,8 @@ $p6-select-multiple-item-bg-color: #e8ebed !default;
 $p6-select-multiple-item-text-color: #555 !default;
 $p6-select-dropdown-item-highlighted-bg-color: #dce7fe !default;
 
-@import "~choices.js/src/styles/choices";
-@import "../../../styles/atoms/control";
+@import '~choices.js/src/styles/choices';
+@import '../../../styles/atoms/control';
 
 @mixin cross($color) {
   text-indent: -9999px;
@@ -36,7 +36,7 @@ $p6-select-dropdown-item-highlighted-bg-color: #dce7fe !default;
   &::after {
     position: absolute;
     left: 0.5em;
-    content: " ";
+    content: ' ';
     height: calc(1em + 1px);
     width: 2px;
     background-color: $color;
@@ -49,13 +49,7 @@ $p6-select-dropdown-item-highlighted-bg-color: #dce7fe !default;
   }
 }
 
-$sizes: (
-  "default" $size-small,
-  small $size-small,
-  normal $size-normal,
-  medium $size-medium,
-  large $size-large
-);
+$sizes: ('default' $size-small, small $size-small, normal $size-normal, medium $size-medium, large $size-large);
 
 p6-select {
   // Sizes
@@ -68,8 +62,7 @@ p6-select {
       .#{$choices-selector}__item,
       .#{$choices-selector}__input,
       .p6__#{$choices-selector}__button,
-      .#{$choices-selector}[data-type*="select-multiple"]
-        .#{$choices-selector}__item {
+      .#{$choices-selector}[data-type*='select-multiple'] .#{$choices-selector}__item {
         font-size: $size;
       }
     }
@@ -107,17 +100,17 @@ p6-select {
     }
   }
 
-  &[required]:not([required="false"]),
-  &[disabled]:not([disabled="false"]) {
-    .#{$choices-selector}[data-type*="select-one"] {
+  &[required]:not([required='false']),
+  &[disabled]:not([disabled='false']) {
+    .#{$choices-selector}[data-type*='select-one'] {
       .p6__#{$choices-selector}__button {
         display: none;
       }
     }
   }
 
-  &[disabled]:not([disabled="false"]) {
-    .#{$choices-selector}[data-type="select-multiple"] {
+  &[disabled]:not([disabled='false']) {
+    .#{$choices-selector}[data-type='select-multiple'] {
       .p6__#{$choices-selector}__button {
         display: none;
       }
@@ -125,15 +118,15 @@ p6-select {
   }
 
   .#{$choices-selector} {
-    &[data-type*="select-one"] .#{$choices-selector}__inner,
-    &[data-type*="select-multiple"] .#{$choices-selector}__inner {
+    &[data-type*='select-one'] .#{$choices-selector}__inner,
+    &[data-type*='select-multiple'] .#{$choices-selector}__inner {
       padding-right: 3.5em;
       padding-bottom: calc(0.5em - 1px);
       padding-left: calc(0.5em - 1px);
       padding-top: calc(0.5em - 1px);
     }
 
-    &[data-type*="select-one"] {
+    &[data-type*='select-one'] {
       .p6__choices__button {
         @include cross(#333);
 
@@ -151,7 +144,7 @@ p6-select {
         border-radius: 2px;
         border-right: 0;
         border-top: 0;
-        content: " ";
+        content: ' ';
         display: block;
         height: 0.625em;
         margin-top: -0.4375em;
@@ -171,7 +164,7 @@ p6-select {
       }
     }
 
-    &[data-type*="select-multiple"] {
+    &[data-type*='select-multiple'] {
       .#{$choices-selector}__inner {
         padding: 0;
         display: flex;

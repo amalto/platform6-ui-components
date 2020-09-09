@@ -1,8 +1,8 @@
-import { Component, Element, h, Host } from "@stencil/core";
+import { Component, Element, h, Host } from '@stencil/core';
 
 @Component({
-  tag: "p6-grid-header",
-  styleUrl: "p6-grid-header.scss",
+  tag: 'p6-grid-header',
+  styleUrl: 'p6-grid-header.scss',
   shadow: true,
 })
 export class P6GridHeader {

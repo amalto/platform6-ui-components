@@ -1,32 +1,17 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-} from "@stencil/core";
-import { P6Control } from "~shared/form/control";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import {
-  defaultCheckValidity,
-  defaultValidationMessage,
-} from "~shared/form/validation";
-import { cleanupValue, isEmpty } from "~utils/attribute";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { P6Control } from '~shared/form/control';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { defaultCheckValidity, defaultValidationMessage } from '~shared/form/validation';
+import { cleanupValue, isEmpty } from '~utils/attribute';
 
 export type P6TextareaValue = string | undefined;
 
 @Component({
-  tag: "p6-textarea",
-  styleUrl: "p6-textarea.scss",
+  tag: 'p6-textarea',
+  styleUrl: 'p6-textarea.scss',
   shadow: true,
 })
-export class P6Textarea
-  implements ComponentInterface, P6Control<P6TextareaValue> {
+export class P6Textarea implements ComponentInterface, P6Control<P6TextareaValue> {
   @Element() host!: HTMLP6TextareaElement;
 
   /**
@@ -67,7 +52,7 @@ export class P6Textarea
   /**
    * marks an element that can't be edited.
    */
-  @Prop({ attribute: "readOnly" }) readOnly = false;
+  @Prop({ attribute: 'readOnly' }) readOnly = false;
 
   /**
    * marks an element that can't be submitted without a value.
@@ -116,7 +101,7 @@ export class P6Textarea
   private defaultValue: string | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.checkValidity.bind(this));
+    this.host.addEventListener('focusout', this.checkValidity.bind(this));
 
     if (this.defaultValue === undefined) {
       this.defaultValue = this.value;
@@ -125,15 +110,15 @@ export class P6Textarea
 
   render(): JSX.Element {
     const containerClass = {
-      control: true,
-      "is-loading": !!this.waiting,
+      'control': true,
+      'is-loading': !!this.waiting,
     };
 
     const classes = {
-      textarea: true,
-      "is-danger": this.hasError,
-      "is-static": !!this.readOnly,
-      "is-resizable": this.resizable,
+      'textarea': true,
+      'is-danger': this.hasError,
+      'is-static': !!this.readOnly,
+      'is-resizable': this.resizable,
     };
 
     return (
@@ -192,7 +177,7 @@ export class P6Textarea
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,
       validationMessage: this.validationMessage.bind(this),
-      errorHandler: (hasError) => {
+      errorHandler: hasError => {
         this.hasError = hasError;
       },
       getValue: () => this.nativeInput?.value,
@@ -207,7 +192,7 @@ export class P6Textarea
     let result = false;
 
     if (this.nativeInput) {
-      this.nativeInput.value = this.defaultValue ?? "";
+      this.nativeInput.value = this.defaultValue ?? '';
       result = true;
     }
 

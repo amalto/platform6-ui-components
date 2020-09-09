@@ -1,29 +1,15 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-} from "@stencil/core";
-import { P6Control } from "~shared/form/control";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import {
-  defaultCheckValidity,
-  defaultValidationMessage,
-} from "~shared/form/validation";
-import { Mode } from "~shared/types";
-import { getModeClass } from "~utils/classes";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { P6Control } from '~shared/form/control';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { defaultCheckValidity, defaultValidationMessage } from '~shared/form/validation';
+import { Mode } from '~shared/types';
+import { getModeClass } from '~utils/classes';
 
 export type P6SwitchValue = boolean | undefined;
 
 @Component({
-  tag: "p6-switch",
-  styleUrl: "./p6-switch.scss",
+  tag: 'p6-switch',
+  styleUrl: './p6-switch.scss',
   shadow: true,
 })
 export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
@@ -74,7 +60,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
   private nativeInput: HTMLInputElement | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.checkValidity.bind(this));
+    this.host.addEventListener('focusout', this.checkValidity.bind(this));
   }
 
   render(): JSX.Element {
@@ -135,7 +121,7 @@ export class P6Switch implements ComponentInterface, P6Control<P6SwitchValue> {
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,
       validationMessage: this.validationMessage.bind(this),
-      errorHandler: (hasError) => {
+      errorHandler: hasError => {
         this.hasError = hasError;
       },
       getValue: () => this.checked,

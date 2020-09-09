@@ -1,37 +1,18 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getSelectArgType,
-  makeModeStory,
-  makeSizeStory,
-  makeStory,
-  Props,
-  StringSelectArgType,
-} from "../../../shared/storybook";
-import { Mode, Size } from "../../../shared/types";
-import { P6ButtonType } from "./p6-button";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getSelectArgType, makeModeStory, makeSizeStory, makeStory, Props, StringSelectArgType } from '../../../shared/storybook';
+import { Mode, Size } from '../../../shared/types';
+import { P6ButtonType } from './p6-button';
 
-const component = "p6-button";
+const component = 'p6-button';
 
 export default {
-  title: "Atoms/Button",
+  title: 'Atoms/Button',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "mode",
-  "outlined",
-  "waiting",
-  "size",
-  "type",
-  "disabled",
-];
+const componentProps: ComponentProps = ['mode', 'outlined', 'waiting', 'size', 'type', 'disabled'];
 
-const getStoryField = (
-  text: string | HTMLElement[],
-  props?: Props<Components.P6Button>
-): HTMLElement => {
+const getStoryField = (text: string | HTMLElement[], props?: Props<Components.P6Button>): HTMLElement => {
   return getElement(component, text, props);
 };
 
@@ -46,8 +27,8 @@ export const Default = makeStory<{
 }>({
   componentProps,
   args: {
-    text: "My button",
-    type: "button",
+    text: 'My button',
+    type: 'button',
     size: Size.normal,
     mode: Mode.default,
     disabled: false,
@@ -56,8 +37,8 @@ export const Default = makeStory<{
   },
   argTypes: {
     ...getSelectArgType<StringSelectArgType>(
-      "type",
-      ["submit", "reset", "button"].map((type) => ({ key: type, value: type }))
+      'type',
+      ['submit', 'reset', 'button'].map(type => ({ key: type, value: type })),
     ),
   },
   builder: ({ text, ...args }) => getStoryField(text, { ...args }),
@@ -82,22 +63,19 @@ export const Modes = makeModeStory({
 export const Icon = makeStory({
   componentProps,
   builder: (): HTMLElement =>
-    getElement("div", [
+    getElement('div', [
       getStoryField(
-        [
-          getElement("p6-icon", [], { name: "home", size: Size.small }),
-          getElement("span", ""),
-        ],
+        [getElement('p6-icon', [], { name: 'home', size: Size.small }), getElement('span', '')],
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        { size: Size.small, style: "margin-right: 5px;" as any }
+        { size: Size.small, style: 'margin-right: 5px;' as any },
       ),
       getStoryField([
-        getElement("p6-icon", [], {
-          name: "home",
-          style: "margin-right: 5px;",
+        getElement('p6-icon', [], {
+          name: 'home',
+          style: 'margin-right: 5px;',
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any),
-        getElement("span", "Home"),
+        getElement('span', 'Home'),
       ]),
     ]),
 });
@@ -107,7 +85,7 @@ export const Waiting = makeStory<{ waiting: boolean }>({
   args: {
     waiting: true,
   },
-  builder: (props): HTMLElement => getStoryField("Waiting", props),
+  builder: (props): HTMLElement => getStoryField('Waiting', props),
 });
 
 export const Disabled = makeStory<{ disabled: boolean }>({
@@ -115,7 +93,7 @@ export const Disabled = makeStory<{ disabled: boolean }>({
   args: {
     disabled: true,
   },
-  builder: (props): HTMLElement => getStoryField("Disabled", props),
+  builder: (props): HTMLElement => getStoryField('Disabled', props),
 });
 
 export const Outlined = makeStory<{ outlined: boolean }>({
@@ -123,5 +101,5 @@ export const Outlined = makeStory<{ outlined: boolean }>({
   args: {
     outlined: true,
   },
-  builder: (props): HTMLElement => getStoryField("Outlined", props),
+  builder: (props): HTMLElement => getStoryField('Outlined', props),
 });

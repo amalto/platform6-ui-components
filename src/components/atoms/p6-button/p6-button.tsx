@@ -1,12 +1,12 @@
-import { Component, Element, h, Prop } from "@stencil/core";
-import { Mode, Size } from "~shared/types";
-import { getModeClass, getSizeClass } from "~utils/classes";
+import { Component, Element, h, Prop } from '@stencil/core';
+import { Mode, Size } from '~shared/types';
+import { getModeClass, getSizeClass } from '~utils/classes';
 
-export type P6ButtonType = "submit" | "reset" | "button";
+export type P6ButtonType = 'submit' | 'reset' | 'button';
 
 @Component({
-  tag: "p6-button",
-  styleUrl: "p6-button.scss",
+  tag: 'p6-button',
+  styleUrl: 'p6-button.scss',
   shadow: true,
 })
 export class P6Button {
@@ -35,7 +35,7 @@ export class P6Button {
   /**
    * type of the button.
    */
-  @Prop() type: P6ButtonType = "submit";
+  @Prop() type: P6ButtonType = 'submit';
 
   /**
    * Disabled - If `true`, the user cannot interact with the button.
@@ -43,12 +43,12 @@ export class P6Button {
   @Prop() disabled = false;
 
   private clickDelegationHandler = (): void => {
-    if (this.type === "submit" || this.type === "reset") {
-      const form = this.host?.closest("form");
+    if (this.type === 'submit' || this.type === 'reset') {
+      const form = this.host?.closest('form');
       if (form !== null && form !== undefined) {
-        const nativeButton = document.createElement("button");
+        const nativeButton = document.createElement('button');
         nativeButton.type = this.type;
-        nativeButton.style.display = "none";
+        nativeButton.style.display = 'none';
         form.appendChild(nativeButton);
         nativeButton.click();
         form.removeChild(nativeButton);
@@ -58,11 +58,11 @@ export class P6Button {
 
   render(): JSX.Element {
     const classes = {
-      button: true,
+      'button': true,
       ...getModeClass(this.mode),
       ...getSizeClass(this.size),
-      "is-outlined": this.outlined,
-      "is-loading": this.waiting,
+      'is-outlined': this.outlined,
+      'is-loading': this.waiting,
     };
 
     return (
@@ -71,7 +71,7 @@ export class P6Button {
         // eslint-disable-next-line react/button-has-type
         type={this.type}
         disabled={this.disabled}
-        aria-disabled={this.disabled ? "true" : null}
+        aria-disabled={this.disabled ? 'true' : null}
         onClick={this.clickDelegationHandler}
       >
         <slot />

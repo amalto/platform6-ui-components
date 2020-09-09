@@ -38,8 +38,8 @@ $button-static-color: $text-light !default;
 $button-static-background-color: $scheme-main-ter !default;
 $button-static-border-color: $border !default;
 
-@import "src/styles/atoms/control";
-@import "src/styles/atoms/button";
+@import 'src/styles/atoms/control';
+@import 'src/styles/atoms/button';
 
 :host {
   display: inline-flex;
@@ -67,26 +67,18 @@ $button-static-border-color: $border !default;
 
     .icon {
       &:first-child:not(:last-child) {
-        margin-left: calc(
-          #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
-        );
+        margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
         margin-right: $button-padding-horizontal / 4;
       }
 
       &:last-child:not(:first-child) {
         margin-left: $button-padding-horizontal / 4;
-        margin-right: calc(
-          #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
-        );
+        margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
       }
 
       &:first-child:last-child {
-        margin-left: calc(
-          #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
-        );
-        margin-right: calc(
-          #{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}
-        );
+        margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
+        margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
       }
     }
 
@@ -209,10 +201,7 @@ $button-static-border-color: $border !default;
 
         &.is-loading {
           &::after {
-            border-color: transparent
-              transparent
-              $color-invert
-              $color-invert !important;
+            border-color: transparent transparent $color-invert $color-invert !important;
           }
         }
 
@@ -240,10 +229,7 @@ $button-static-border-color: $border !default;
             &:focus,
             &.is-focused {
               &::after {
-                border-color: transparent
-                  transparent
-                  $color-invert
-                  $color-invert !important;
+                border-color: transparent transparent $color-invert $color-invert !important;
               }
             }
           }

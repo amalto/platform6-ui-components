@@ -1,6 +1,6 @@
-import { IconName } from "@fortawesome/fontawesome-svg-core";
-import { h } from "@stencil/core";
-import { Mode, Size } from "~shared/types";
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { h } from '@stencil/core';
+import { Mode, Size } from '~shared/types';
 
 export function P6GridButtonItem(props: {
   icon: IconName;
@@ -13,19 +13,11 @@ export function P6GridButtonItem(props: {
 }): JSX.Element {
   const { clickHandler, disabled, icon, mode, tooltip } = props;
   const classes = {
-    "has-tooltip-arrow": tooltip !== undefined,
+    'has-tooltip-arrow': tooltip !== undefined,
   };
 
   return (
-    <p6-button
-      class={classes}
-      mode={mode === undefined ? Mode.info : mode}
-      size={Size.small}
-      onClick={clickHandler}
-      disabled={disabled || false}
-      data-tooltip={tooltip}
-      outlined
-    >
+    <p6-button class={classes} mode={mode === undefined ? Mode.info : mode} size={Size.small} onClick={clickHandler} disabled={disabled || false} data-tooltip={tooltip} outlined>
       <p6-icon name={icon} size={Size.small} />
     </p6-button>
   );

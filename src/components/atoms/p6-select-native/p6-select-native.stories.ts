@@ -1,46 +1,24 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getForm,
-  makeModeStory,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getForm, makeModeStory, makeStory, Props } from '../../../shared/storybook';
+import { Mode } from '../../../shared/types';
 
-const component = "p6-select-native";
+const component = 'p6-select-native';
 
 export default {
-  title: "Atoms/Select native",
+  title: 'Atoms/Select native',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "name",
-  "multiple",
-  "mode",
-  "fullWidth",
-  "disabled",
-  "required",
-  "readOnly",
-];
+const componentProps: ComponentProps = ['name', 'multiple', 'mode', 'fullWidth', 'disabled', 'required', 'readOnly'];
 
-const getStoryField = (
-  options: HTMLElement[],
-  props?: Props<Components.P6SelectNative>
-): HTMLElement =>
+const getStoryField = (options: HTMLElement[], props?: Props<Components.P6SelectNative>): HTMLElement =>
   getElement(component, options, {
-    name: "language",
+    name: 'language',
     ...props,
   });
 
-const getOption = (
-  value: string,
-  display: string,
-  props?: Props<HTMLOptionElement>
-): HTMLElement => {
-  return getElement("option", display, {
+const getOption = (value: string, display: string, props?: Props<HTMLOptionElement>): HTMLElement => {
+  return getElement('option', display, {
     value,
     ...props,
   });
@@ -64,42 +42,24 @@ export const Default = makeStory<{
     mode: Mode.default,
   },
   builder: (args): HTMLElement =>
-    getStoryField(
-      [
-        getOption("", "Select language"),
-        getElement(
-          "optgroup",
-          [getOption("fr", "Français"), getOption("en", "English")],
-          { label: "Europe" }
-        ),
-      ],
-      args
-    ),
+    getStoryField([getOption('', 'Select language'), getElement('optgroup', [getOption('fr', 'Français'), getOption('en', 'English')], { label: 'Europe' })], args),
 });
 
 export const Selected = makeStory({
   componentProps,
-  builder: (): HTMLElement =>
-    getStoryField([
-      getOption("", "Placeholder"),
-      getOption("value", "Selected value", { selected: true }),
-    ]),
+  builder: (): HTMLElement => getStoryField([getOption('', 'Placeholder'), getOption('value', 'Selected value', { selected: true })]),
 });
 
 export const Disabled = makeStory<{ disabled: boolean }>({
   componentProps,
   args: { disabled: true },
-  builder: (props): HTMLElement =>
-    getStoryField(
-      [getOption("", "Placeholder"), getOption("value", "Display")],
-      props
-    ),
+  builder: (props): HTMLElement => getStoryField([getOption('', 'Placeholder'), getOption('value', 'Display')], props),
 });
 
 export const Modes = makeModeStory({
   componentProps,
   builder: ({ key, value }) =>
-    getStoryField([getOption("", "Placeholder"), getOption("value", key)], {
+    getStoryField([getOption('', 'Placeholder'), getOption('value', key)], {
       mode: value,
     }),
 });
@@ -120,18 +80,8 @@ export const Form = makeStory<{
   builder: (props): HTMLElement =>
     getForm(
       getStoryField(
-        [
-          getOption("", "Select language"),
-          getElement(
-            "optgroup",
-            [
-              getOption("fr", "Français"),
-              getOption("en", "English", { selected: true }),
-            ],
-            { label: "Europe" }
-          ),
-        ],
-        { name: "field", ...props }
-      )
+        [getOption('', 'Select language'), getElement('optgroup', [getOption('fr', 'Français'), getOption('en', 'English', { selected: true })], { label: 'Europe' })],
+        { name: 'field', ...props },
+      ),
     ),
 });

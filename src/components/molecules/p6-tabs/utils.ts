@@ -3,5 +3,5 @@ export function getTabId(id: string): string {
 }
 
 export function isTabValid(tab: Element): tab is HTMLElement {
-  return "title" in tab && "id" in tab;
+  return 'title' in tab && 'id' in tab;
 }

@@ -1,5 +1,5 @@
-import { isNumber } from "./is-utils";
+import { isNumber } from './is-utils';
 
-export function toWidth(value: number | string, unit = "px"): string {
+export function toWidth(value: number | string, unit = 'px'): string {
   return isNumber(value) ? `${value}${unit}` : value;
 }

@@ -1,11 +1,6 @@
-import {
-  E2EElement,
-  E2EPage,
-  EventSpy,
-  newE2EPage,
-} from "@stencil/core/testing";
+import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing';
 
-describe("p6-form", () => {
+describe('p6-form', () => {
   let page: E2EPage;
   let innerButton: E2EElement;
   let submitHandler: EventSpy;
@@ -31,14 +26,14 @@ describe("p6-form", () => {
       </p6-form>
     `,
     });
-    submitHandler = await page.spyOnEvent("p6Submit", "document");
-    invalidHandler = await page.spyOnEvent("p6Invalid", "document");
-    innerButton = await page.find("p6-form p6-button >>> button");
+    submitHandler = await page.spyOnEvent('p6Submit', 'document');
+    invalidHandler = await page.spyOnEvent('p6Invalid', 'document');
+    innerButton = await page.find('p6-form p6-button >>> button');
   });
 
-  it("renders", async () => {
-    const element = await page.find("p6-form");
-    expect(element).toHaveClass("hydrated");
+  it('renders', async () => {
+    const element = await page.find('p6-form');
+    expect(element).toHaveClass('hydrated');
   });
 
   describe(`Submit`, () => {
@@ -51,7 +46,7 @@ describe("p6-form", () => {
 
     it('should not fire a "p6Submit" event if native control are invalid', async () => {
       const firstInput = await page.find(firstInputSelector);
-      firstInput.press("1");
+      firstInput.press('1');
 
       await innerButton.click();
 
@@ -61,7 +56,7 @@ describe("p6-form", () => {
 
     it('should not fire a "p6Submit" event if custom control are invalid', async () => {
       const secondInput = await page.find(secondInputSelector);
-      secondInput.press("2");
+      secondInput.press('2');
 
       // await page.waitForChanges();
       await innerButton.click();
@@ -72,10 +67,10 @@ describe("p6-form", () => {
 
     it('should fire a "p6Submit" event when the form is valid', async () => {
       const firstInput = await page.find(firstInputSelector);
-      firstInput.press("1");
+      firstInput.press('1');
 
       const secondInput = await page.find(secondInputSelector);
-      secondInput.press("2");
+      secondInput.press('2');
 
       // await page.waitForChanges();
       await innerButton.click();

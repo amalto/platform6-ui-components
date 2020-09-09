@@ -1,17 +1,14 @@
-import { Components } from "../../../components";
-import { getElement, makeStory, Props } from "../../../shared/storybook";
+import { Components } from '../../../components';
+import { getElement, makeStory, Props } from '../../../shared/storybook';
 
-const component = "p6-waiting";
+const component = 'p6-waiting';
 
 export default {
-  title: "Templates/Waiting",
+  title: 'Templates/Waiting',
   component,
 };
 
-const getStoryField = (
-  child: string | HTMLElement | HTMLElement[],
-  props?: Props<Components.P6Waiting>
-): HTMLElement => {
+const getStoryField = (child: string | HTMLElement | HTMLElement[], props?: Props<Components.P6Waiting>): HTMLElement => {
   return getElement(component, child, props);
 };
 
@@ -24,7 +21,7 @@ export const Default = makeStory({
 export const Centered = makeStory({
   builder: (): HTMLElement =>
     getStoryField([], {
-      style: { height: "280px" } as CSSStyleDeclaration,
+      style: { height: '280px' } as CSSStyleDeclaration,
     }),
 });
 
@@ -33,7 +30,7 @@ export const Message = makeStory<{
   text: string;
 }>({
   args: {
-    text: "Loading data...",
+    text: 'Loading data...',
   },
   builder: ({ text }): HTMLElement => getStoryField(text),
 });
@@ -44,9 +41,8 @@ export const RichMessage = makeStory<{
   link: string;
 }>({
   args: {
-    text: "Loading data...",
-    link: "Cancel",
+    text: 'Loading data...',
+    link: 'Cancel',
   },
-  builder: ({ text, link }): HTMLElement =>
-    getStoryField([getElement("span", text), getElement("p6-link", link)]),
+  builder: ({ text, link }): HTMLElement => getStoryField([getElement('span', text), getElement('p6-link', link)]),
 });

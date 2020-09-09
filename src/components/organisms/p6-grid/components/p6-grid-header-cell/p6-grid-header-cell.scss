@@ -13,7 +13,7 @@ $table-cell-heading-color: $text-strong !default;
   .wrapper {
     width: 100%;
 
-    slot:not([name="menu"]) {
+    slot:not([name='menu']) {
       font-weight: $weight-bold;
     }
 

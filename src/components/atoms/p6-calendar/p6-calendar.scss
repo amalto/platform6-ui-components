@@ -1,5 +1,5 @@
-@import "~bulma/bulma";
-@import "~bulma-calendar/src/sass/index";
+@import '~bulma/bulma';
+@import '~bulma-calendar/src/sass/index';
 
 $calendar-input-padding-top: 0.275rem;
 
@@ -57,14 +57,14 @@ $calendar-input-padding-top: 0.275rem;
   }
 }
 
-:host([disabled]:not([disabled="false"])),
-:host([readonly]:not([readonly="false"])) {
+:host([disabled]:not([disabled='false'])),
+:host([readonly]:not([readonly='false'])) {
   .datetimepicker-dummy .datetimepicker-clear-button {
     display: none;
   }
 }
 
-:host([disabled]:not([disabled="false"])) {
+:host([disabled]:not([disabled='false'])) {
   .datetimepicker-dummy .datetimepicker-dummy-wrapper {
     background-color: $input-disabled-background-color;
     border-color: $input-disabled-border-color;

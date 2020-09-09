@@ -1,6 +1,6 @@
-import { IconName } from "@fortawesome/fontawesome-svg-core";
-import { h } from "@stencil/core";
-import { Mode } from "~shared/types";
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { h } from '@stencil/core';
+import { Mode } from '~shared/types';
 
 export function P6GridActionItem(props: {
   icon: IconName;
@@ -13,17 +13,11 @@ export function P6GridActionItem(props: {
 }): JSX.Element {
   const { clickHandler, disabled, icon, mode, tooltip } = props;
   const classes = {
-    "has-tooltip-arrow": tooltip !== undefined,
+    'has-tooltip-arrow': tooltip !== undefined,
   };
 
   return (
-    <p6-action
-      class={classes}
-      mode={mode === undefined ? Mode.info : mode}
-      onClick={clickHandler}
-      disabled={disabled || false}
-      data-tooltip={tooltip}
-    >
+    <p6-action class={classes} mode={mode === undefined ? Mode.info : mode} onClick={clickHandler} disabled={disabled || false} data-tooltip={tooltip}>
       <p6-icon name={icon} />
     </p6-action>
   );

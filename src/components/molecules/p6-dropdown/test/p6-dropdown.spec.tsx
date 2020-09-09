@@ -1,7 +1,7 @@
-import { newSpecPage, SpecPage } from "@stencil/core/testing";
-import { P6Dropdown } from "../p6-dropdown";
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { P6Dropdown } from '../p6-dropdown';
 
-describe("p6-dropdown", () => {
+describe('p6-dropdown', () => {
   let page: SpecPage;
 
   beforeEach(async () => {
@@ -17,7 +17,7 @@ describe("p6-dropdown", () => {
     });
   });
 
-  it("renders", async () => {
+  it('renders', async () => {
     expect(page.root).toMatchSnapshot();
   });
 });

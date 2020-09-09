@@ -1,8 +1,8 @@
-import { newSpecPage } from "@stencil/core/testing";
-import { P6Tabs } from "../p6-tabs";
+import { newSpecPage } from '@stencil/core/testing';
+import { P6Tabs } from '../p6-tabs';
 
-describe("p6-tabs", () => {
-  it("Should be empty", async () => {
+describe('p6-tabs', () => {
+  it('Should be empty', async () => {
     const page = await newSpecPage({
       components: [P6Tabs],
       html: `<p6-tabs></p6-tabs>`,
@@ -16,7 +16,7 @@ describe("p6-tabs", () => {
     `);
   });
 
-  it("Should display the third tab", async () => {
+  it('Should display the third tab', async () => {
     const page = await newSpecPage({
       components: [P6Tabs],
       html: `

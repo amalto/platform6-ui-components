@@ -1,27 +1,17 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getForm,
-  makeModeStory,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getForm, makeModeStory, makeStory, Props } from '../../../shared/storybook';
+import { Mode } from '../../../shared/types';
 
-const component = "p6-switch";
+const component = 'p6-switch';
 
 export default {
-  title: "Atoms/Switch",
+  title: 'Atoms/Switch',
   component,
 };
 
-const componentProps: ComponentProps = ["checked", "disabled", "mode", "name"];
+const componentProps: ComponentProps = ['checked', 'disabled', 'mode', 'name'];
 
-const getStoryField = (
-  label: string,
-  props?: Props<Components.P6Switch>
-): HTMLElement => getElement(component, label, props);
+const getStoryField = (label: string, props?: Props<Components.P6Switch>): HTMLElement => getElement(component, label, props);
 
 export const Default = makeStory<{
   disabled: boolean;
@@ -34,16 +24,15 @@ export const Default = makeStory<{
     disabled: false,
     checked: false,
     mode: Mode.default,
-    label: "Switch label",
+    label: 'Switch label',
   },
-  builder: ({ label, ...args }): HTMLElement =>
-    getStoryField(label, { ...args }),
+  builder: ({ label, ...args }): HTMLElement => getStoryField(label, { ...args }),
 });
 
 export const Disabled = makeStory<{ disabled: boolean }>({
   componentProps,
   args: { disabled: true },
-  builder: (props): HTMLElement => getStoryField("Label", props),
+  builder: (props): HTMLElement => getStoryField('Label', props),
 });
 
 export const Modes = makeModeStory({
@@ -63,6 +52,5 @@ export const Form = makeStory<{
     disabled: false,
     checked: true,
   },
-  builder: (props): HTMLElement =>
-    getForm(getStoryField("Switch label", { name: "field", ...props })),
+  builder: (props): HTMLElement => getForm(getStoryField('Switch label', { name: 'field', ...props })),
 });
