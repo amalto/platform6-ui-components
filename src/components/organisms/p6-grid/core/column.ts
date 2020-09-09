@@ -10,7 +10,7 @@ function defaultGetValue<T extends DataItem>(
   data: T,
   context: ColumnDefinition<T>
 ): string {
-  if (context.field === undefined || !(context.field in data)) {
+  if (context.field === undefined || data[context.field] === undefined) {
     return throwError(
       `field is undefined or doesn't exist, you should provide a 'getValue' function for ${JSON.stringify(
         context
@@ -26,7 +26,7 @@ function defaultSetValue<T extends DataItem>(
   data: T,
   context: ColumnDefinition<T>
 ): T {
-  if (context.field === undefined || !(context.field in data)) {
+  if (context.field === undefined || data[context.field] === undefined) {
     return throwError(
       `field is undefined or doesn't exist, you should provide a 'setValue' function for ${JSON.stringify(
         context

@@ -43,7 +43,7 @@ import {
 @Component({
   tag: "p6-grid",
   styleUrl: "p6-grid.scss",
-  assetsDir: "locales",
+  assetsDirs: ["locales"],
   shadow: true,
 })
 export class P6Grid {
@@ -185,7 +185,7 @@ export class P6Grid {
 
   private displayedRows: Row<DataItem>[] = [];
 
-  private contextMenu: HTMLDivElement | null = null;
+  private innerContextMenu: HTMLDivElement | null = null;
 
   async componentWillLoad(): Promise<void> {
     this.columns = this.definitions.map(fromDefinition);
@@ -308,7 +308,7 @@ export class P6Grid {
         }`}
         ref={(dom) => {
           if (dom) {
-            this.contextMenu = dom;
+            this.innerContextMenu = dom;
           }
         }}
       >
@@ -328,26 +328,26 @@ export class P6Grid {
   }
 
   private moveContextMenu = (posX: number, posY: number): void => {
-    if (this.contextMenu === null) {
+    if (this.innerContextMenu === null) {
       return;
     }
 
     if (!this.isContextMenuOpen) {
-      this.contextMenu.addEventListener("click", this.onCloseContextMenu, {
+      this.innerContextMenu.addEventListener("click", this.onCloseContextMenu, {
         once: true,
       });
       this.isContextMenuOpen = true;
     }
 
-    this.contextMenu.style.left = `${posX}px`;
-    this.contextMenu.style.top = `${posY}px`;
+    this.innerContextMenu.style.left = `${posX}px`;
+    this.innerContextMenu.style.top = `${posY}px`;
   };
 
   private onCloseContextMenu = (): void => {
-    if (this.contextMenu === null) {
+    if (this.innerContextMenu === null) {
       return;
     }
-    this.contextMenu.removeEventListener("click", this.onCloseContextMenu);
+    this.innerContextMenu.removeEventListener("click", this.onCloseContextMenu);
     this.isContextMenuOpen = false;
   };
 }

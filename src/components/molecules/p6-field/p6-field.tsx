@@ -65,6 +65,7 @@ export class P6Field implements ComponentInterface {
         onP6Valid={this.validHandler}
         onP6Invalid={this.invalidHandler}
       >
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
           class={{
             label: true,

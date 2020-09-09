@@ -10,22 +10,20 @@ export interface InvalidEventDetail {
 export type ValidEvent<T> = CustomEvent<ValidEventDetail<T>>;
 export type InvalidEvent = CustomEvent<InvalidEventDetail>;
 
-export function isCustomEvent(event: Event): event is CustomEvent {
-  return "detail" in event;
+export function isCustomEvent(data: Event): data is CustomEvent {
+  return "detail" in data;
 }
 
 export function isValidEvent<T>(
-  event: Event
-): event is CustomEvent<ValidEventDetail<T>> {
-  return (
-    isCustomEvent(event) && "name" in event.detail && "value" in event.detail
-  );
+  data: Event
+): data is CustomEvent<ValidEventDetail<T>> {
+  return isCustomEvent(data) && "name" in data.detail && "value" in data.detail;
 }
 
 export function isInvalidEvent(
-  event: Event
-): event is CustomEvent<InvalidEventDetail> {
+  data: Event
+): data is CustomEvent<InvalidEventDetail> {
   return (
-    isCustomEvent(event) && "name" in event.detail && "message" in event.detail
+    isCustomEvent(data) && "name" in data.detail && "message" in data.detail
   );
 }

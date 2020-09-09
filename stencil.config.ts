@@ -3,8 +3,8 @@ import { Config } from "@stencil/core";
 import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
+import { generateCustomElementsJson } from "./scripts/customElementsGenerator";
 /* eslint-enable import/no-extraneous-dependencies */
-import { generateJsonDocs } from "./src/customElementDocGenerator";
 
 export const config: Config = {
   namespace: "platform6-components",
@@ -21,12 +21,14 @@ export const config: Config = {
       ],
     },
     {
+      type: "dist-custom-elements-bundle",
+    },
+    {
       type: "docs-readme",
     },
     {
-      type: "custom",
-      generator: generateJsonDocs,
-      name: "custom-element-docs",
+      type: "docs-custom",
+      generator: generateCustomElementsJson,
     },
   ],
   globalScript: "src/global/init.ts",

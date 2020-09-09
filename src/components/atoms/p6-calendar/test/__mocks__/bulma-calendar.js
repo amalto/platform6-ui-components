@@ -1,1 +1,1 @@
-module.exports = jest.genMockFromModule("bulma-calendar");
+module.exports = jest.createMockFromModule("bulma-calendar");
