@@ -130,26 +130,6 @@ exports[`p6-button size does not add class when size is default 1`] = `
 </p6-button>
 `;
 
-exports[`p6-button size has the class "is-large" when size is "3" 1`] = `
-<p6-button size="3">
-  <mock:shadow-root>
-    <button class="button is-large" type="submit">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-button>
-`;
-
-exports[`p6-button size has the class "is-medium" when size is "2" 1`] = `
-<p6-button size="2">
-  <mock:shadow-root>
-    <button class="button is-medium" type="submit">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-button>
-`;
-
 exports[`p6-button size has the class "is-normal" when size is "1" 1`] = `
 <p6-button size="1">
   <mock:shadow-root>

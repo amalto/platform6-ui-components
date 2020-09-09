@@ -3,7 +3,7 @@
 exports[`p6-language renders 1`] = `
 <p6-language>
   <mock:shadow-root>
-    <p6-select-native mode="2" size="1">
+    <p6-select-native mode="2">
       <option value="en">
         English
       </option>

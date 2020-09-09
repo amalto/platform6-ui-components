@@ -110,26 +110,6 @@ exports[`p6-action size does not add class when size is normal 1`] = `
 </p6-action>
 `;
 
-exports[`p6-action size has the class "is-large" when size is "3" 1`] = `
-<p6-action size="3">
-  <mock:shadow-root>
-    <button class="is-large" type="button">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-action>
-`;
-
-exports[`p6-action size has the class "is-medium" when size is "2" 1`] = `
-<p6-action size="2">
-  <mock:shadow-root>
-    <button class="is-medium" type="button">
-      <slot></slot>
-    </button>
-  </mock:shadow-root>
-</p6-action>
-`;
-
 exports[`p6-action size has the class "is-normal" when size is "1" 1`] = `
 <p6-action size="1">
   <mock:shadow-root>
