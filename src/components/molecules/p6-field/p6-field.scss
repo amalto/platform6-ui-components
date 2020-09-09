@@ -107,7 +107,7 @@ $help-size: $size-small !default;
     }
   }
 
-  ::slotted([slot="hint"]) {
+  ::slotted([slot='hint']) {
     .help {
       display: block;
       font-size: $help-size;

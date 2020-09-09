@@ -1,18 +1,10 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import { toArray } from "~utils/dom";
-import { getTabId, isTabValid } from "./utils";
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { toArray } from '~utils/dom';
+import { getTabId, isTabValid } from './utils';
 
 @Component({
-  tag: "p6-tabs",
-  styleUrl: "p6-tabs.scss",
+  tag: 'p6-tabs',
+  styleUrl: 'p6-tabs.scss',
   shadow: true,
 })
 export class P6Tabs {
@@ -27,7 +19,7 @@ export class P6Tabs {
   /**
    * Close tab event
    */
-  @Event({ eventName: "p6CloseTab" }) closeTab!: EventEmitter<{
+  @Event({ eventName: 'p6CloseTab' }) closeTab!: EventEmitter<{
     tabId: string;
   }>;
 
@@ -42,9 +34,7 @@ export class P6Tabs {
   }
 
   private getContent(): JSX.Element {
-    const child = this.getTabs().find(
-      (tab) => this.selected === getTabId(tab.id)
-    );
+    const child = this.getTabs().find(tab => this.selected === getTabId(tab.id));
 
     return <div class="tab-content">{child?.innerHTML}</div>;
   }
@@ -71,25 +61,15 @@ export class P6Tabs {
       <Host>
         <div class="tabs">
           <ul>
-            {tabs.map((tab) => (
-              <li
-                class="has-tooltip-arrow has-tooltip-bottom"
-                data-tooltip={tab.title}
-              >
-                <a
-                  class={
-                    selected === getTabId(tab.id) ? "is-active" : undefined
-                  }
-                  href={`#${tab.id}`}
-                  id={`${getTabId(tab.id)}`}
-                  onClick={this.handleTabSelection}
-                >
+            {tabs.map(tab => (
+              <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip={tab.title}>
+                <a class={selected === getTabId(tab.id) ? 'is-active' : undefined} href={`#${tab.id}`} id={`${getTabId(tab.id)}`} onClick={this.handleTabSelection}>
                   <span class="title">{tab.title}</span>
                   <span
                     aria-hidden="true"
                     class={`${tab.className} delete`}
                     // eslint-disable-next-line react/jsx-no-bind
-                    onClick={(event) => this.closeTabHandler(event, tab.id)}
+                    onClick={event => this.closeTabHandler(event, tab.id)}
                   />
                 </a>
               </li>

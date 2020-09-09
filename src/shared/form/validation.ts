@@ -1,6 +1,6 @@
-import { EventEmitter } from "@stencil/core";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import { isFunction } from "~utils/is-utils";
+import { EventEmitter } from '@stencil/core';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { isFunction } from '~utils/is-utils';
 
 export interface P6ControlValidation {
   validationMessage: () => Promise<string>;
@@ -9,30 +9,18 @@ export interface P6ControlValidation {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function hasValidation(elmt: any): elmt is P6ControlValidation {
-  return (
-    "validationMessage" in elmt &&
-    "checkValidity" in elmt &&
-    isFunction(elmt.checkValidity) &&
-    isFunction(elmt.validationMessage)
-  );
+  return 'validationMessage' in elmt && 'checkValidity' in elmt && isFunction(elmt.checkValidity) && isFunction(elmt.validationMessage);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function hasNativeValidation(elmt: any): elmt is P6ControlValidation {
-  return (
-    "validationMessage" in elmt &&
-    "checkValidity" in elmt &&
-    isFunction(elmt.checkValidity) &&
-    typeof elmt.validationMessage === "string"
-  );
+  return 'validationMessage' in elmt && 'checkValidity' in elmt && isFunction(elmt.checkValidity) && typeof elmt.validationMessage === 'string';
 }
 
 type NativeInput = HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement;
 
-export async function defaultValidationMessage(
-  nativeInput?: NativeInput
-): Promise<string> {
-  return Promise.resolve(nativeInput?.validationMessage || "");
+export async function defaultValidationMessage(nativeInput?: NativeInput): Promise<string> {
+  return Promise.resolve(nativeInput?.validationMessage || '');
 }
 
 export async function defaultCheckValidity<T>({
@@ -60,7 +48,7 @@ export async function defaultCheckValidity<T>({
   const isValid = nativeInput.checkValidity();
 
   const message = await validationMessage();
-  const hasError = message !== "";
+  const hasError = message !== '';
   errorHandler?.(hasError);
 
   if (hasError) {

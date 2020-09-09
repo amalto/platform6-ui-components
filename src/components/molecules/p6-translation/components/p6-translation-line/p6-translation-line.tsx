@@ -1,22 +1,13 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import { isCustomEvent, ValidEventDetail } from "~shared/form/event";
-import { Mode, Size } from "~shared/types";
-import { isDefaultLanguage, LanguageCode } from "~utils/language";
-import { getL10n, L10n } from "~utils/translations";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { isCustomEvent, ValidEventDetail } from '~shared/form/event';
+import { Mode, Size } from '~shared/types';
+import { isDefaultLanguage, LanguageCode } from '~utils/language';
+import { getL10n, L10n } from '~utils/translations';
 
 @Component({
-  tag: "p6-translation-line",
-  styleUrl: "p6-translation-line.scss",
-  assetsDirs: ["locales"],
+  tag: 'p6-translation-line',
+  styleUrl: 'p6-translation-line.scss',
+  assetsDirs: ['locales'],
   shadow: true,
 })
 export class P6TranslationLine implements ComponentInterface {
@@ -43,7 +34,7 @@ export class P6TranslationLine implements ComponentInterface {
   /**
    * Read only
    */
-  @Prop({ attribute: "readOnly" }) public readOnly!: boolean;
+  @Prop({ attribute: 'readOnly' }) public readOnly!: boolean;
 
   /**
    * Disabled
@@ -77,11 +68,7 @@ export class P6TranslationLine implements ComponentInterface {
     const isDefault = isDefaultLanguage(this.language);
 
     return (
-      <Host
-        onP6Valid={this.cancelEvent}
-        onP6Invalid={this.cancelEvent}
-        onP6Change={this.languageChangeHandler}
-      >
+      <Host onP6Valid={this.cancelEvent} onP6Invalid={this.cancelEvent} onP6Change={this.languageChangeHandler}>
         <div class="columns is-variable is-1">
           <div class="column">
             <div class="field has-addons">
@@ -91,7 +78,7 @@ export class P6TranslationLine implements ComponentInterface {
                   mode={Mode.danger}
                   size={Size.normal}
                   class={{
-                    "has-tooltip-arrow": true,
+                    'has-tooltip-arrow': true,
                     [`has-tooltip-right`]: true,
                   }}
                   data-tooltip={this.l10n?.deleteTooltip}
@@ -100,13 +87,7 @@ export class P6TranslationLine implements ComponentInterface {
                 </p6-action>
               )}
               <div class="control is-expanded">
-                <p6-language
-                  name={`${this.name}-${this.language}-lang`}
-                  value={this.language}
-                  disabled={this.disabled || isDefault}
-                  excludes={this.excludes}
-                  required
-                />
+                <p6-language name={`${this.name}-${this.language}-lang`} value={this.language} disabled={this.disabled || isDefault} excludes={this.excludes} required />
               </div>
             </div>
           </div>
@@ -135,7 +116,7 @@ export class P6TranslationLine implements ComponentInterface {
 
     event.stopPropagation();
     this.p6KeyChange.emit({
-      name: "key",
+      name: 'key',
       value: event.detail.value,
     });
   };
@@ -143,7 +124,7 @@ export class P6TranslationLine implements ComponentInterface {
   private translationChangeHandler = (event: Event): void => {
     event.stopPropagation();
     this.p6ValueChange.emit({
-      name: "value",
+      name: 'value',
       value: (event.target as HTMLTextAreaElement).value,
     });
   };

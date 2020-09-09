@@ -6,10 +6,7 @@ $link-dark: findDarkColor($link) !default;
 // Input
 $input-placeholder-color: bulmaRgba($input-color, 0.3) !default;
 $input-focus-box-shadow-color: bulmaRgba($link, 0.25) !default;
-$input-disabled-placeholder-color: bulmaRgba(
-  $input-disabled-color,
-  0.3
-) !default;
+$input-disabled-placeholder-color: bulmaRgba($input-disabled-color, 0.3) !default;
 
 // Invert colors
 //#00d1b2
@@ -34,31 +31,31 @@ $danger-light: findLightColor($danger) !default; //#feecf0
 $danger-dark: findDarkColor($danger) !default; //#cc0f35
 
 $colors: (
-  "primary": (
+  'primary': (
     $primary,
     $primary-invert,
     $primary-light,
     $primary-dark,
   ),
-  "info": (
+  'info': (
     $info,
     $info-invert,
     $info-light,
     $info-dark,
   ),
-  "success": (
+  'success': (
     $success,
     $success-invert,
     $success-light,
     $success-dark,
   ),
-  "warning": (
+  'warning': (
     $warning,
     $warning-invert,
     $warning-light,
     $warning-dark,
   ),
-  "danger": (
+  'danger': (
     $danger,
     $danger-invert,
     $danger-light,

@@ -1,36 +1,16 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getForm,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getForm, makeStory, Props } from '../../../shared/storybook';
 
-const component = "p6-textarea";
+const component = 'p6-textarea';
 
 export default {
-  title: "Atoms/Textarea",
+  title: 'Atoms/Textarea',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "disabled",
-  "max",
-  "min",
-  "rows",
-  "cols",
-  "name",
-  "placeholder",
-  "readOnly",
-  "required",
-  "resizable",
-  "value",
-  "waiting",
-];
+const componentProps: ComponentProps = ['disabled', 'max', 'min', 'rows', 'cols', 'name', 'placeholder', 'readOnly', 'required', 'resizable', 'value', 'waiting'];
 
-const getStoryField = (props?: Props<Components.P6Textarea>): HTMLElement =>
-  getElement(component, "", { ...props });
+const getStoryField = (props?: Props<Components.P6Textarea>): HTMLElement => getElement(component, '', { ...props });
 
 export const Default = makeStory<{
   placeholder: string;
@@ -47,7 +27,7 @@ export const Default = makeStory<{
 }>({
   componentProps,
   args: {
-    placeholder: "Placeholder",
+    placeholder: 'Placeholder',
     min: 0,
     max: 42,
     rows: 4,
@@ -57,7 +37,7 @@ export const Default = makeStory<{
     required: false,
     waiting: false,
     resizable: false,
-    value: "",
+    value: '',
   },
   builder: (args): HTMLElement => getStoryField(args),
 });
@@ -91,8 +71,7 @@ export const Form = makeStory<{
     disabled: false,
     readOnly: false,
     required: false,
-    value: "default value",
+    value: 'default value',
   },
-  builder: (props): HTMLElement =>
-    getForm(getStoryField({ name: "field", ...props })),
+  builder: (props): HTMLElement => getForm(getStoryField({ name: 'field', ...props })),
 });

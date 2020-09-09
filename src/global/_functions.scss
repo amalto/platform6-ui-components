@@ -1,4 +1,4 @@
-@import "src/global/_variable";
+@import 'src/global/_variable';
 
 @function findColorInvert($color) {
   @if (colorLuminance($color) > 0.55) {
@@ -9,13 +9,13 @@
 }
 
 @function colorLuminance($color) {
-  @if type-of($color) != "color" {
+  @if type-of($color) != 'color' {
     @return 0.55;
   }
   $color-rgb: (
-    "red": red($color),
-    "green": green($color),
-    "blue": blue($color),
+    'red': red($color),
+    'green': green($color),
+    'blue': blue($color),
   );
   @each $name, $value in $color-rgb {
     $adjusted: 0;
@@ -33,9 +33,7 @@
       )
     );
   }
-  @return (map-get($color-rgb, "red") * 0.2126) +
-    (map-get($color-rgb, "green") * 0.7152) +
-    (map-get($color-rgb, "blue") * 0.0722);
+  @return (map-get($color-rgb, 'red') * 0.2126) + (map-get($color-rgb, 'green') * 0.7152) + (map-get($color-rgb, 'blue') * 0.0722);
 }
 
 @function powerNumber($number, $exp) {
@@ -53,7 +51,7 @@
 }
 
 @function findLightColor($color) {
-  @if type-of($color) == "color" {
+  @if type-of($color) == 'color' {
     $l: 96%;
     @if lightness($color) > 96% {
       $l: lightness($color);
@@ -64,7 +62,7 @@
 }
 
 @function findDarkColor($color) {
-  @if type-of($color) == "color" {
+  @if type-of($color) == 'color' {
     $base-l: 29%;
     $luminance: colorLuminance($color);
     $luminance-delta: (0.53 - $luminance);
@@ -75,14 +73,14 @@
 }
 
 @function bulmaRgba($color, $alpha) {
-  @if type-of($color) != "color" {
+  @if type-of($color) != 'color' {
     @return $color;
   }
   @return rgba($color, $alpha);
 }
 
 @function bulmaDarken($color, $amount) {
-  @if type-of($color) != "color" {
+  @if type-of($color) != 'color' {
     @return $color;
   }
   @return darken($color, $amount);
@@ -105,7 +103,7 @@
   border-radius: 2px;
   border-right: 0;
   border-top: 0;
-  content: " ";
+  content: ' ';
   display: block;
   height: 0.625em;
   margin-top: -0.4375em;
@@ -146,7 +144,7 @@ $cross-position: -0.125rem;
   &::before,
   &::after {
     background-color: $grey;
-    content: "";
+    content: '';
     display: block;
     left: 50%;
     position: absolute;
@@ -203,7 +201,7 @@ $cross-position: -0.125rem;
   border-radius: $radius-rounded;
   border-right-color: transparent;
   border-top-color: transparent;
-  content: "";
+  content: '';
   display: block;
   height: 1em;
   position: relative;
@@ -222,7 +220,7 @@ $cross-position: -0.125rem;
 }
 
 @mixin placeholder {
-  $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input';
   @each $placeholder in $placeholders {
     &:#{$placeholder}-placeholder {
       @content;
@@ -315,8 +313,8 @@ $cross-position: -0.125rem;
 }
 
 @mixin ltr-property($property, $spacing, $right: true) {
-  $normal: if($right, "right", "left");
-  $opposite: if($right, "left", "right");
+  $normal: if($right, 'right', 'left');
+  $opposite: if($right, 'left', 'right');
   @if $rtl {
     #{$property}-#{$opposite}: $spacing;
   } @else {
@@ -325,8 +323,8 @@ $cross-position: -0.125rem;
 }
 
 @mixin ltr-position($spacing, $right: true) {
-  $normal: if($right, "right", "left");
-  $opposite: if($right, "left", "right");
+  $normal: if($right, 'right', 'left');
+  $opposite: if($right, 'left', 'right');
   @if $rtl {
     #{$opposite}: $spacing;
   } @else {

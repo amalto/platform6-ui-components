@@ -1,46 +1,24 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  getForm,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, getForm, makeStory, Props } from '../../../shared/storybook';
+import { Mode } from '../../../shared/types';
 
-const component = "p6-select";
+const component = 'p6-select';
 
 export default {
-  title: "Atoms/Select",
+  title: 'Atoms/Select',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "name",
-  "multiple",
-  "disabled",
-  "required",
-  "readOnly",
-  "placeholder",
-  "shouldSort",
-  "disableSearch",
-];
+const componentProps: ComponentProps = ['name', 'multiple', 'disabled', 'required', 'readOnly', 'placeholder', 'shouldSort', 'disableSearch'];
 
-const getStoryField = (
-  options: HTMLElement[],
-  props?: Props<Components.P6Select>
-): HTMLElement =>
+const getStoryField = (options: HTMLElement[], props?: Props<Components.P6Select>): HTMLElement =>
   getElement(component, options, {
-    name: "language",
+    name: 'language',
     ...props,
   });
 
-const getOption = (
-  value: string,
-  display: string,
-  props?: Props<HTMLOptionElement>
-): HTMLElement => {
-  return getElement("option", display, { value, ...props });
+const getOption = (value: string, display: string, props?: Props<HTMLOptionElement>): HTMLElement => {
+  return getElement('option', display, { value, ...props });
 };
 
 export const Default = makeStory<{
@@ -56,74 +34,48 @@ export const Default = makeStory<{
 }>({
   componentProps,
   args: {
-    lang: "en",
+    lang: 'en',
     disabled: false,
     multiple: false,
     disableSearch: false,
     shouldSort: true,
     required: false,
     readOnly: false,
-    placeholder: "This is a placeholder",
+    placeholder: 'This is a placeholder',
     mode: Mode.default,
   },
   builder: (args): HTMLElement =>
-    getStoryField(
-      [
-        getOption("no", "Not selected"),
-        getOption("yes", "Selected", { selected: true }),
-        getOption("never", "Disabled", { disabled: true }),
-      ],
-      args
-    ),
+    getStoryField([getOption('no', 'Not selected'), getOption('yes', 'Selected', { selected: true }), getOption('never', 'Disabled', { disabled: true })], args),
 });
 
 export const Selected = makeStory({
   componentProps,
-  builder: (): HTMLElement =>
-    getStoryField([
-      getOption("no", "Unselected value"),
-      getOption("yes", "Selected value", { selected: true }),
-    ]),
+  builder: (): HTMLElement => getStoryField([getOption('no', 'Unselected value'), getOption('yes', 'Selected value', { selected: true })]),
 });
 
 export const MultipleSelected = makeStory({
   componentProps,
   builder: (): HTMLElement =>
-    getStoryField(
-      [
-        getOption("one", "One", { selected: true }),
-        getOption("two", "Two", { selected: true }),
-        getOption("three", "Three"),
-      ],
-      { multiple: true }
-    ),
+    getStoryField([getOption('one', 'One', { selected: true }), getOption('two', 'Two', { selected: true }), getOption('three', 'Three')], { multiple: true }),
 });
 
 export const Disabled = makeStory<{ disabled: boolean }>({
   componentProps,
   args: { disabled: true },
-  builder: (props): HTMLElement =>
-    getStoryField([getOption("value", "Display")], props),
+  builder: (props): HTMLElement => getStoryField([getOption('value', 'Display')], props),
 });
 
 export const CustomPlaceholder = makeStory<{ placeholder: string }>({
   componentProps,
   args: {
-    placeholder: "Custom placeholder",
+    placeholder: 'Custom placeholder',
   },
-  builder: ({ placeholder }): HTMLElement =>
-    getStoryField([getOption("value", "Display")], { placeholder }),
+  builder: ({ placeholder }): HTMLElement => getStoryField([getOption('value', 'Display')], { placeholder }),
 });
 
 export const Placeholder = makeStory({
   componentProps,
-  builder: (): HTMLElement =>
-    getStoryField([
-      getOption("", "This is the placeholder"),
-      getOption("one", "One"),
-      getOption("two", "Two"),
-      getOption("three", "Three"),
-    ]),
+  builder: (): HTMLElement => getStoryField([getOption('', 'This is the placeholder'), getOption('one', 'One'), getOption('two', 'Two'), getOption('three', 'Three')]),
 });
 
 export const WithoutSearch = makeStory<{ disableSearch: boolean }>({
@@ -131,31 +83,15 @@ export const WithoutSearch = makeStory<{ disableSearch: boolean }>({
   args: {
     disableSearch: true,
   },
-  builder: (props): HTMLElement =>
-    getStoryField(
-      [
-        getOption("one", "One"),
-        getOption("two", "Two"),
-        getOption("three", "Three"),
-      ],
-      props
-    ),
+  builder: (props): HTMLElement => getStoryField([getOption('one', 'One'), getOption('two', 'Two'), getOption('three', 'Three')], props),
 });
 
 export const Language = makeStory<{ lang: string }>({
   componentProps,
   args: {
-    lang: "en",
+    lang: 'en',
   },
-  builder: (props): HTMLElement =>
-    getStoryField(
-      [
-        getOption("one", "One"),
-        getOption("two", "Two"),
-        getOption("three", "Three"),
-      ],
-      props
-    ),
+  builder: (props): HTMLElement => getStoryField([getOption('one', 'One'), getOption('two', 'Two'), getOption('three', 'Three')], props),
 });
 
 export const Form = makeStory<{
@@ -174,18 +110,8 @@ export const Form = makeStory<{
   builder: (props): HTMLElement =>
     getForm(
       getStoryField(
-        [
-          getOption("", "Select language"),
-          getElement(
-            "optgroup",
-            [
-              getOption("fr", "Français"),
-              getOption("en", "English", { selected: true }),
-            ],
-            { label: "Europe" }
-          ),
-        ],
-        { name: "field", ...props }
-      )
+        [getOption('', 'Select language'), getElement('optgroup', [getOption('fr', 'Français'), getOption('en', 'English', { selected: true })], { label: 'Europe' })],
+        { name: 'field', ...props },
+      ),
     ),
 });

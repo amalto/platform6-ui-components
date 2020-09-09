@@ -1,5 +1,5 @@
 //Tooltip
-@import "@creativebulma/bulma-tooltip/src/sass/index";
+@import '@creativebulma/bulma-tooltip/src/sass/index';
 
 :host {
   display: block;
@@ -11,7 +11,7 @@
     margin-right: $column-gap * -1;
   }
 
-  p6-label[slot="label"] {
+  p6-label[slot='label'] {
     p6-action {
       margin-left: $margin-gap;
     }

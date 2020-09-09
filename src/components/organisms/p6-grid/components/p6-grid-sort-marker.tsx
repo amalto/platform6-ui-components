@@ -1,9 +1,7 @@
-import { h } from "@stencil/core";
-import { SortOrder } from "~shared/types";
+import { h } from '@stencil/core';
+import { SortOrder } from '~shared/types';
 
-export function P6GridSortMarker(props: {
-  order?: SortOrder;
-}): JSX.Element | undefined {
+export function P6GridSortMarker(props: { order?: SortOrder }): JSX.Element | undefined {
   if (props.order === SortOrder.asc) {
     return <p6-icon name="long-arrow-alt-up" />;
   }

@@ -7,7 +7,7 @@
     display: flex;
     justify-content: flex-start;
     &:not(:last-child) {
-      @include ltr-property("margin", -1px);
+      @include ltr-property('margin', -1px);
     }
     &.has-addons-centered {
       justify-content: center;
@@ -31,7 +31,7 @@
       flex-shrink: 0;
       &:not(:last-child) {
         margin-bottom: 0;
-        @include ltr-property("margin", 0.75rem);
+        @include ltr-property('margin', 0.75rem);
       }
       &.is-expanded {
         flex-grow: 1;

@@ -1,33 +1,18 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-} from "@stencil/core";
-import { P6Control } from "~shared/form/control";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import {
-  defaultCheckValidity,
-  defaultValidationMessage,
-} from "~shared/form/validation";
-import { Mode } from "~shared/types";
-import { getModeClass } from "~utils/classes";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { P6Control } from '~shared/form/control';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { defaultCheckValidity, defaultValidationMessage } from '~shared/form/validation';
+import { Mode } from '~shared/types';
+import { getModeClass } from '~utils/classes';
 
 export type P6CheckboxValue = string | undefined;
 
 @Component({
-  tag: "p6-checkbox",
-  styleUrl: "./p6-checkbox.scss",
+  tag: 'p6-checkbox',
+  styleUrl: './p6-checkbox.scss',
   shadow: true,
 })
-export class P6Checkbox
-  implements ComponentInterface, P6Control<P6CheckboxValue> {
+export class P6Checkbox implements ComponentInterface, P6Control<P6CheckboxValue> {
   @Element() host!: HTMLP6CheckboxElement;
 
   /**
@@ -39,7 +24,7 @@ export class P6Checkbox
   /**
    * Value
    */
-  @Prop() value = "on";
+  @Prop() value = 'on';
 
   /**
    * Disable
@@ -83,7 +68,7 @@ export class P6Checkbox
   private defaultValue: boolean | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.checkValidity.bind(this));
+    this.host.addEventListener('focusout', this.checkValidity.bind(this));
 
     if (this.defaultValue === undefined) {
       this.defaultValue = this.checked;
@@ -99,7 +84,7 @@ export class P6Checkbox
     };
 
     return (
-      <Host aria-disabled={disabled ? "true" : null}>
+      <Host aria-disabled={disabled ? 'true' : null}>
         <input
           checked={this.checked}
           disabled={disabled}
@@ -149,7 +134,7 @@ export class P6Checkbox
       p6Valid: this.p6Valid,
       p6Invalid: this.p6Invalid,
       validationMessage: this.validationMessage.bind(this),
-      errorHandler: (hasError) => {
+      errorHandler: hasError => {
         this.hasError = hasError;
       },
       getValue: () => {

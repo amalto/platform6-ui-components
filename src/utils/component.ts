@@ -3,5 +3,5 @@ export function isInSlot(name: string): (elmt: Element) => boolean {
 }
 
 export function isInDefaultSlot(elmt: Element): boolean {
-  return isInSlot("")(elmt);
+  return isInSlot('')(elmt);
 }

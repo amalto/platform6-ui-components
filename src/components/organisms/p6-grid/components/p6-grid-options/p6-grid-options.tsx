@@ -1,18 +1,10 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import { isHidden } from "../../core/column";
-import { Column, DataItem, ShowColumnDetail } from "../../core/entities";
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { isHidden } from '../../core/column';
+import { Column, DataItem, ShowColumnDetail } from '../../core/entities';
 
 @Component({
-  tag: "p6-grid-options",
-  styleUrl: "p6-grid-options.scss",
+  tag: 'p6-grid-options',
+  styleUrl: 'p6-grid-options.scss',
   shadow: true,
 })
 export class P6GridOptions {
@@ -39,10 +31,7 @@ export class P6GridOptions {
     );
   }
 
-  private renderHiddenTag = (
-    column: Column<DataItem>,
-    index: number
-  ): JSX.Element => {
+  private renderHiddenTag = (column: Column<DataItem>, index: number): JSX.Element => {
     return (
       <p6-tag
         data-id={column.id}

@@ -1,17 +1,10 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  h,
-  Host,
-  State,
-} from "@stencil/core";
-import { toArray } from "~utils/dom";
-import { addDropdownClass } from "./utils";
+import { Component, ComponentInterface, Element, h, Host, State } from '@stencil/core';
+import { toArray } from '~utils/dom';
+import { addDropdownClass } from './utils';
 
 @Component({
-  tag: "p6-dropdown",
-  styleUrl: "p6-dropdown.scss",
+  tag: 'p6-dropdown',
+  styleUrl: 'p6-dropdown.scss',
   shadow: true,
 })
 export class P6Dropdown implements ComponentInterface {
@@ -20,35 +13,30 @@ export class P6Dropdown implements ComponentInterface {
   @State() isActive = false;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.onFocusOut);
+    this.host.addEventListener('focusout', this.onFocusOut);
   }
 
   render(): JSX.Element {
     const containerClass = {
-      dropdown: true,
-      "is-active": this.isActive,
+      'dropdown': true,
+      'is-active': this.isActive,
     };
 
     const children = toArray(this.host.children)
-      .filter((c) => c.slot !== "label")
+      .filter(c => c.slot !== 'label')
       .map(addDropdownClass)
-      .map((c) => c.outerHTML);
+      .map(c => c.outerHTML);
 
     return (
       <Host>
         <div class={containerClass}>
           <div class="dropdown-trigger">
-            <p6-button
-              class="button"
-              aria-haspopup="true"
-              aria-controls="dropdown-menu"
-              onClick={this.toggleMenuHandler}
-            >
+            <p6-button class="button" aria-haspopup="true" aria-controls="dropdown-menu" onClick={this.toggleMenuHandler}>
               <slot name="label" />
             </p6-button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content" innerHTML={children.join("")} />
+            <div class="dropdown-content" innerHTML={children.join('')} />
           </div>
         </div>
       </Host>

@@ -1,6 +1,6 @@
-import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
-describe("p6-radio-group", () => {
+describe('p6-radio-group', () => {
   let page: E2EPage;
   let firstRadio: E2EElement;
   let secondRadio: E2EElement;
@@ -20,30 +20,30 @@ describe("p6-radio-group", () => {
       </p6-form>
     `,
     });
-    firstRadio = await page.find("#radio-first");
-    secondRadio = await page.find("#radio-second");
+    firstRadio = await page.find('#radio-first');
+    secondRadio = await page.find('#radio-second');
     resetButton = await page.find("p6-form p6-button[type='reset']");
   });
 
-  it("should select only one radio", async () => {
+  it('should select only one radio', async () => {
     await secondRadio.click();
-    expect(firstRadio).not.toHaveAttribute("checked");
-    expect(secondRadio).toHaveAttribute("checked");
+    expect(firstRadio).not.toHaveAttribute('checked');
+    expect(secondRadio).toHaveAttribute('checked');
 
     await firstRadio.click();
-    expect(firstRadio).toHaveAttribute("checked");
-    expect(secondRadio).not.toHaveAttribute("checked");
+    expect(firstRadio).toHaveAttribute('checked');
+    expect(secondRadio).not.toHaveAttribute('checked');
   });
 
-  it("should reset radios", async () => {
+  it('should reset radios', async () => {
     await secondRadio.click();
 
-    expect(firstRadio).not.toHaveAttribute("checked");
-    expect(secondRadio).toHaveAttribute("checked");
+    expect(firstRadio).not.toHaveAttribute('checked');
+    expect(secondRadio).toHaveAttribute('checked');
 
     await resetButton.click();
 
-    expect(firstRadio).toHaveAttribute("checked");
-    expect(secondRadio).not.toHaveAttribute("checked");
+    expect(firstRadio).toHaveAttribute('checked');
+    expect(secondRadio).not.toHaveAttribute('checked');
   });
 });

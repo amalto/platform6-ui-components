@@ -1,7 +1,7 @@
 $icon-dimensions: $size-normal !default;
 $icon-dimensions-small: $size-small !default;
 
-@import "@fortawesome/fontawesome-svg-core/styles";
+@import '@fortawesome/fontawesome-svg-core/styles';
 
 :host {
   display: inline-flex;

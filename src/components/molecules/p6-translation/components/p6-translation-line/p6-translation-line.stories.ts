@@ -1,31 +1,17 @@
-import { Components } from "../../../../../components";
-import {
-  ComponentProps,
-  getElement,
-  makeStory,
-  Props,
-} from "../../../../../shared/storybook";
+import { Components } from '../../../../../components';
+import { ComponentProps, getElement, makeStory, Props } from '../../../../../shared/storybook';
 
-const component = "p6-translation-line";
+const component = 'p6-translation-line';
 
 export default {
-  title: "Molecules/Translation Line",
+  title: 'Molecules/Translation Line',
   component,
 };
 
-const componentProps: ComponentProps = [
-  "name",
-  "excludes",
-  "language",
-  "translation",
-  "readOnly",
-  "disabled",
-];
+const componentProps: ComponentProps = ['name', 'excludes', 'language', 'translation', 'readOnly', 'disabled'];
 
-const getStoryField = (
-  props?: Props<Components.P6TranslationLine>
-): HTMLElement => {
-  return getElement(component, [], { name: "field", ...props });
+const getStoryField = (props?: Props<Components.P6TranslationLine>): HTMLElement => {
+  return getElement(component, [], { name: 'field', ...props });
 };
 
 export const Default = makeStory<{
@@ -37,9 +23,9 @@ export const Default = makeStory<{
 }>({
   componentProps,
   args: {
-    lang: "en",
-    language: "en",
-    translation: "English",
+    lang: 'en',
+    language: 'en',
+    translation: 'English',
     readOnly: false,
     disabled: false,
   },

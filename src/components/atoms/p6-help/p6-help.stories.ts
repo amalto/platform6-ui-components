@@ -1,25 +1,17 @@
-import { Components } from "../../../components";
-import {
-  ComponentProps,
-  getElement,
-  makeModeStory,
-  makePositionStory,
-  makeStory,
-  Props,
-} from "../../../shared/storybook";
-import { Mode, Position } from "../../../shared/types";
+import { Components } from '../../../components';
+import { ComponentProps, getElement, makeModeStory, makePositionStory, makeStory, Props } from '../../../shared/storybook';
+import { Mode, Position } from '../../../shared/types';
 
-const component = "p6-help";
+const component = 'p6-help';
 
 export default {
-  title: "Atoms/Help",
+  title: 'Atoms/Help',
   component,
 };
 
-const componentProps: ComponentProps = ["text", "position", "mode"];
+const componentProps: ComponentProps = ['text', 'position', 'mode'];
 
-const getStoryField = (props?: Props<Components.P6Help>): HTMLElement =>
-  getElement(component, [], props);
+const getStoryField = (props?: Props<Components.P6Help>): HTMLElement => getElement(component, [], props);
 
 export const Default = makeStory<{
   text: string;
@@ -28,7 +20,7 @@ export const Default = makeStory<{
 }>({
   componentProps,
   args: {
-    text: "Tooltip",
+    text: 'Tooltip',
     mode: Mode.default,
     position: Position.top,
   },

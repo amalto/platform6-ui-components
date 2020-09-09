@@ -1,8 +1,8 @@
-import { newSpecPage } from "@stencil/core/testing";
-import { P6Textarea } from "../p6-textarea";
+import { newSpecPage } from '@stencil/core/testing';
+import { P6Textarea } from '../p6-textarea';
 
-describe("p6-textarea", () => {
-  it("renders", async () => {
+describe('p6-textarea', () => {
+  it('renders', async () => {
     const page = await newSpecPage({
       components: [P6Textarea],
       html: `<p6-textarea></p6-textarea>`,
@@ -10,7 +10,7 @@ describe("p6-textarea", () => {
     expect(page.root).toMatchSnapshot();
   });
 
-  it("add the waiting class on the input container, not on the input", async () => {
+  it('add the waiting class on the input container, not on the input', async () => {
     const page = await newSpecPage({
       components: [P6Textarea],
       html: `<p6-textarea waiting></p6-input>`,

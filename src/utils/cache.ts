@@ -1,4 +1,4 @@
-const APP_VERSION_KEY = "appVersion";
+const APP_VERSION_KEY = 'appVersion';
 
 const storage = window.localStorage;
 

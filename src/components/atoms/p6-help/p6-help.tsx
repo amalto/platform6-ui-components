@@ -1,11 +1,11 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { Component, h, Prop } from "@stencil/core";
-import { Mode, Position } from "~shared/types";
-import { isDefaultMode, isDefaultPosition } from "~utils/attribute";
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { Component, h, Prop } from '@stencil/core';
+import { Mode, Position } from '~shared/types';
+import { isDefaultMode, isDefaultPosition } from '~utils/attribute';
 
 @Component({
-  tag: "p6-help",
-  styleUrl: "p6-help.scss",
+  tag: 'p6-help',
+  styleUrl: 'p6-help.scss',
   shadow: true,
 })
 export class P6Help {
@@ -25,16 +25,13 @@ export class P6Help {
   @Prop() mode: Mode = Mode.default;
 
   render(): JSX.Element | null {
-    const img = icon({ prefix: "fas", iconName: "question-circle" });
+    const img = icon({ prefix: 'fas', iconName: 'question-circle' });
 
     return (
       <div
         class={{
-          "has-tooltip-arrow": true,
-          [`has-tooltip-${Position[this.position]}`]: !isDefaultPosition(
-            this.position,
-            Position.top
-          ),
+          'has-tooltip-arrow': true,
+          [`has-tooltip-${Position[this.position]}`]: !isDefaultPosition(this.position, Position.top),
           [`has-tooltip-${Mode[this.mode]}`]: !isDefaultMode(this.mode),
         }}
         innerHTML={img.html[0]}

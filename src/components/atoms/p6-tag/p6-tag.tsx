@@ -1,10 +1,10 @@
-import { Component, ComponentInterface, h, JSX, Prop } from "@stencil/core";
-import { Mode } from "~shared/types";
-import { getModeClass } from "~utils/classes";
+import { Component, ComponentInterface, h, JSX, Prop } from '@stencil/core';
+import { Mode } from '~shared/types';
+import { getModeClass } from '~utils/classes';
 
 @Component({
-  tag: "p6-tag",
-  styleUrls: ["p6-tag.scss"],
+  tag: 'p6-tag',
+  styleUrls: ['p6-tag.scss'],
   shadow: true,
 })
 export class P6Tag implements ComponentInterface {

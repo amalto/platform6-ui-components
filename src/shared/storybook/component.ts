@@ -1,13 +1,9 @@
-import { htmlElementToArray } from "./utils";
+import { htmlElementToArray } from './utils';
 
-export function getElement<
-  K extends keyof HTMLElementTagNameMap,
-  T extends HTMLElementTagNameMap[K],
-  KK extends keyof T
->(
+export function getElement<K extends keyof HTMLElementTagNameMap, T extends HTMLElementTagNameMap[K], KK extends keyof T>(
   component: K,
   children: string | HTMLElement | HTMLElement[],
-  props?: Partial<T>
+  props?: Partial<T>,
 ): T {
   const element: T = (document.createElement(component) as unknown) as T;
 
@@ -19,14 +15,14 @@ export function getElement<
           value,
         };
       })
-      .forEach((kv) => {
+      .forEach(kv => {
         element[kv.key] = kv.value;
       });
   }
-  if (typeof children === "string") {
+  if (typeof children === 'string') {
     element.innerHTML = children;
   } else {
-    htmlElementToArray(children).forEach((child) => element.appendChild(child));
+    htmlElementToArray(children).forEach(child => element.appendChild(child));
   }
   return element;
 }

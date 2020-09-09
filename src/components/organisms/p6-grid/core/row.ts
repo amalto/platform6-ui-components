@@ -1,5 +1,5 @@
-import { SortOrder } from "~shared/types";
-import { Column, DataItem, Row, RowId } from "./entities";
+import { SortOrder } from '~shared/types';
+import { Column, DataItem, Row, RowId } from './entities';
 
 let rowIds = 0;
 export function fromData<T extends DataItem>(data: T): Row<T> {
@@ -11,9 +11,7 @@ export function fromData<T extends DataItem>(data: T): Row<T> {
   };
 }
 
-export function compareRow<T extends DataItem>(
-  column: Column<T> | undefined
-): (a: Row<T>, b: Row<T>) => number {
+export function compareRow<T extends DataItem>(column: Column<T> | undefined): (a: Row<T>, b: Row<T>) => number {
   const sortOrder = column?.sortOrder || SortOrder.none;
   const factor = sortOrder === SortOrder.desc ? -1 : 1;
 
@@ -29,22 +27,12 @@ export function compareRow<T extends DataItem>(
   };
 }
 
-export function filterBy<T extends DataItem>(
-  searchValue: string,
-  columns: Column<T>[]
-): (row: Row<T>) => boolean {
-  return (row) =>
-    columns.some((col) => col.getValue(row.data, col).includes(searchValue));
+export function filterBy<T extends DataItem>(searchValue: string, columns: Column<T>[]): (row: Row<T>) => boolean {
+  return row => columns.some(col => col.getValue(row.data, col).includes(searchValue));
 }
 
-export function rangeSelectRow<T extends DataItem>(
-  currentRowIdSelect: RowId,
-  selectedRows: Set<RowId>,
-  displayedRow: Row<T>[]
-): Set<RowId> {
-  const currentSelectedIndex = displayedRow.findIndex(
-    (row) => row.id === currentRowIdSelect
-  );
+export function rangeSelectRow<T extends DataItem>(currentRowIdSelect: RowId, selectedRows: Set<RowId>, displayedRow: Row<T>[]): Set<RowId> {
+  const currentSelectedIndex = displayedRow.findIndex(row => row.id === currentRowIdSelect);
 
   if (currentSelectedIndex === -1) {
     return selectedRows;
@@ -52,15 +40,13 @@ export function rangeSelectRow<T extends DataItem>(
 
   const previousRowIdSelected = Array.from(selectedRows)
     .reverse()
-    .find((rowId) => displayedRow.findIndex((row) => row.id === rowId) > -1);
+    .find(rowId => displayedRow.findIndex(row => row.id === rowId) > -1);
 
   if (previousRowIdSelected === undefined) {
     return new Set(selectedRows.add(currentRowIdSelect));
   }
 
-  const previousSelectedIndex = displayedRow.findIndex(
-    (row) => row.id === previousRowIdSelected
-  );
+  const previousSelectedIndex = displayedRow.findIndex(row => row.id === previousRowIdSelected);
 
   let [from, to] = [previousSelectedIndex, currentSelectedIndex];
   let excludedFromSlice = currentRowIdSelect;
@@ -77,9 +63,6 @@ export function rangeSelectRow<T extends DataItem>(
     .add(excludedFromSlice);
 }
 
-export function replaceRow<T extends DataItem>(
-  updatedRow: Row<T>,
-  allRows: Row<T>[]
-): Row<T>[] {
-  return allRows.map((row) => (row.id === updatedRow.id ? updatedRow : row));
+export function replaceRow<T extends DataItem>(updatedRow: Row<T>, allRows: Row<T>[]): Row<T>[] {
+  return allRows.map(row => (row.id === updatedRow.id ? updatedRow : row));
 }

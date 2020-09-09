@@ -24,7 +24,7 @@
     width: auto;
 
     &::before {
-      content: "";
+      content: '';
       background-color: transparent;
       border: 1px solid $input-border-color;
       border-radius: 50px;

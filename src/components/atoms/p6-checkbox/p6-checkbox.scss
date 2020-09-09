@@ -40,7 +40,7 @@
     position: relative;
 
     &::before {
-      content: "";
+      content: '';
       display: inline-block;
       vertical-align: top;
       border: 1px solid $input-border-color;
@@ -51,7 +51,7 @@
   }
 
   input:checked + label::after {
-    content: "";
+    content: '';
     position: absolute;
     display: inline-block;
     border-left: 1px solid $success;

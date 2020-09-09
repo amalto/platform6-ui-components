@@ -1,16 +1,12 @@
-import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
-import { Mode } from "~shared/types";
-import {
-  getLanguageCodes,
-  getLanguageName,
-  LanguageCode,
-} from "~utils/language";
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
+import { Mode } from '~shared/types';
+import { getLanguageCodes, getLanguageName, LanguageCode } from '~utils/language';
 
 export type P6LanguageValue = string;
 
 @Component({
-  tag: "p6-language",
-  styleUrl: "p6-language.scss",
+  tag: 'p6-language',
+  styleUrl: 'p6-language.scss',
   shadow: true,
 })
 export class P6Language implements ComponentInterface {
@@ -22,7 +18,7 @@ export class P6Language implements ComponentInterface {
   /**
    * The selected value
    */
-  @Prop() value: P6LanguageValue = "";
+  @Prop() value: P6LanguageValue = '';
 
   /**
    * Values to exclude from the language list
@@ -37,7 +33,7 @@ export class P6Language implements ComponentInterface {
   /**
    * The select should take the full width
    */
-  @Prop({ attribute: "fullWidth" }) fullWidth = false;
+  @Prop({ attribute: 'fullWidth' }) fullWidth = false;
 
   /**
    * The select is not available for interaction. The value will not be submitted with the form
@@ -52,17 +48,13 @@ export class P6Language implements ComponentInterface {
   /**
    * Marks as read only.
    */
-  @Prop({ attribute: "readOnly" }) public readOnly = false;
+  @Prop({ attribute: 'readOnly' }) public readOnly = false;
 
   private getLanguageOptions(): HTMLOptionElement[] {
     const languages = this.getAvailableLanguages();
-    return languages.map((language) => {
+    return languages.map(language => {
       return (
-        <option
-          key={`${this.name}--${language}--exclude-${this.excludes.join("-")}`}
-          value={language}
-          selected={language === this.value}
-        >
+        <option key={`${this.name}--${language}--exclude-${this.excludes.join('-')}`} value={language} selected={language === this.value}>
           {getLanguageName(language)}
         </option>
       );
@@ -71,18 +63,8 @@ export class P6Language implements ComponentInterface {
 
   render(): JSX.Element {
     return (
-      <Host
-        aria-disabled={this.disabled ? "true" : null}
-        required={this.required}
-      >
-        <p6-select-native
-          name={this.name}
-          disabled={this.disabled}
-          required={this.required}
-          readOnly={this.readOnly}
-          mode={this.mode}
-          fullWidth={this.fullWidth}
-        >
+      <Host aria-disabled={this.disabled ? 'true' : null} required={this.required}>
+        <p6-select-native name={this.name} disabled={this.disabled} required={this.required} readOnly={this.readOnly} mode={this.mode} fullWidth={this.fullWidth}>
           {this.getLanguageOptions()}
         </p6-select-native>
       </Host>
@@ -91,10 +73,7 @@ export class P6Language implements ComponentInterface {
 
   private getAvailableLanguages(): LanguageCode[] {
     return getLanguageCodes()
-      .filter(
-        (language) =>
-          language === this.value || !this.excludes.includes(language)
-      )
+      .filter(language => language === this.value || !this.excludes.includes(language))
       .sort((a, b) => getLanguageName(a).localeCompare(getLanguageName(b)));
   }
 }

@@ -1,12 +1,12 @@
-import { Component, h, Host, Prop } from "@stencil/core";
-import { isEmpty } from "~utils/attribute";
+import { Component, h, Host, Prop } from '@stencil/core';
+import { isEmpty } from '~utils/attribute';
 
 export type Href = string | undefined;
-export type Target = "_blank" | "_self" | "_parent" | "_top";
+export type Target = '_blank' | '_self' | '_parent' | '_top';
 
 @Component({
-  tag: "p6-link",
-  styleUrl: "p6-link.scss",
+  tag: 'p6-link',
+  styleUrl: 'p6-link.scss',
   shadow: true,
 })
 export class P6Link {
@@ -40,9 +40,9 @@ export class P6Link {
 
   render(): JSX.Element {
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const TagType = isEmpty(this.href) ? "button" : "a";
+    const TagType = isEmpty(this.href) ? 'button' : 'a';
     const attrs =
-      TagType === "button"
+      TagType === 'button'
         ? {}
         : {
             rel: this.rel,

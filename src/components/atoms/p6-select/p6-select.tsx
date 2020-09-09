@@ -1,25 +1,16 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-} from "@stencil/core";
-import Choices from "choices.js";
-import { defaultValidationMessage } from "~shared/form/validation";
-import { isEmpty } from "~utils/attribute";
-import { isHTMLOptionElement, toArray } from "~utils/dom";
-import { getL10n, L10n } from "~utils/translations";
+import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core';
+import Choices from 'choices.js';
+import { defaultValidationMessage } from '~shared/form/validation';
+import { isEmpty } from '~utils/attribute';
+import { isHTMLOptionElement, toArray } from '~utils/dom';
+import { getL10n, L10n } from '~utils/translations';
 
 type ChoiceEventDetail = { value: string };
 
 @Component({
-  tag: "p6-select",
-  styleUrl: "p6-select.scss",
-  assetsDirs: ["locales"],
+  tag: 'p6-select',
+  styleUrl: 'p6-select.scss',
+  assetsDirs: ['locales'],
 })
 export class P6Select implements ComponentInterface {
   /**
@@ -45,7 +36,7 @@ export class P6Select implements ComponentInterface {
   /**
    * Marks the select as read only.
    */
-  @Prop({ attribute: "readOnly" }) public readOnly = false;
+  @Prop({ attribute: 'readOnly' }) public readOnly = false;
 
   /**
    * The value of the placeholder to display on the search
@@ -55,12 +46,12 @@ export class P6Select implements ComponentInterface {
   /**
    * Sort the options by alphabetic order
    */
-  @Prop({ attribute: "shouldSort" }) public shouldSort = false;
+  @Prop({ attribute: 'shouldSort' }) public shouldSort = false;
 
   /**
    * Disable the search on the select
    */
-  @Prop({ attribute: "disableSearch" }) public disableSearch = false;
+  @Prop({ attribute: 'disableSearch' }) public disableSearch = false;
 
   @Element() private readonly host!: HTMLP6SelectElement;
 
@@ -97,12 +88,9 @@ export class P6Select implements ComponentInterface {
 
   async componentWillLoad(): Promise<void> {
     this.l10n = await getL10n(this.host);
-    this.host.addEventListener(
-      "focusout",
-      this.internalCheckValidity.bind(this)
-    );
+    this.host.addEventListener('focusout', this.internalCheckValidity.bind(this));
 
-    this.host.addEventListener("addItem", (event) => {
+    this.host.addEventListener('addItem', event => {
       const customEvent = event as CustomEvent<ChoiceEventDetail>;
       const { value } = customEvent.detail;
       if (this.getSelectedValueIndex(value) !== -1) {
@@ -112,7 +100,7 @@ export class P6Select implements ComponentInterface {
       this.internalCheckValidity();
     });
 
-    this.host.addEventListener("removeItem", (event) => {
+    this.host.addEventListener('removeItem', event => {
       const customEvent = event as CustomEvent<ChoiceEventDetail>;
       const idx = this.getSelectedValueIndex(customEvent.detail.value);
       if (idx !== -1) {
@@ -124,8 +112,8 @@ export class P6Select implements ComponentInterface {
     // Default values
     this.selectedValues = toArray(this.host.children)
       .filter(isHTMLOptionElement)
-      .filter((child) => child.selected)
-      .map((option) => option.value);
+      .filter(child => child.selected)
+      .map(option => option.value);
   }
 
   componentWillRender(): Promise<void> | void {
@@ -140,25 +128,25 @@ export class P6Select implements ComponentInterface {
 
   render(): JSX.Element {
     const visibleSelectAttributes = {
-      name: this.readOnly ? "" : this.name,
+      name: this.readOnly ? '' : this.name,
       disabled: this.disabled || this.readOnly,
       multiple: this.multiple,
       required: this.required,
-      class: { "is-danger": true },
+      class: { 'is-danger': true },
     };
 
     const hiddenSelectAttributes = {
-      name: this.readOnly ? this.name : "",
+      name: this.readOnly ? this.name : '',
       disabled: !this.readOnly,
       multiple: this.multiple,
-      style: { display: "none" },
+      style: { display: 'none' },
     };
 
     return (
       <Host
-        aria-disabled={this.disabled ? "true" : null}
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
-          "is-danger": this.hasError,
+          'is-danger': this.hasError,
         }}
         required={this.required}
       >
@@ -212,36 +200,36 @@ export class P6Select implements ComponentInterface {
       // Usage: The text that is shown when a user has selected all possible choices. Optionally pass a function returning a string.
       noChoicesText: this.l10n?.noChoicesText,
       // Usage: The text that is shown when a user hovers over a selectable choice.
-      itemSelectText: "",
+      itemSelectText: '',
       classNames: {
-        containerOuter: "choices",
-        containerInner: "choices__inner",
-        input: "choices__input",
-        inputCloned: "choices__input--cloned",
-        list: "choices__list",
-        listItems: "choices__list--multiple",
-        listSingle: "choices__list--single",
-        listDropdown: "choices__list--dropdown",
-        item: "choices__item",
-        itemSelectable: "choices__item--selectable",
-        itemDisabled: "choices__item--disabled",
-        itemChoice: "choices__item--choice",
-        placeholder: "choices__placeholder",
-        group: "choices__group",
-        groupHeading: "choices__heading",
-        button: "p6__choices__button",
-        activeState: "is-active",
-        focusState: "is-focused",
-        openState: "is-open",
-        disabledState: "is-disabled",
-        highlightedState: "is-highlighted",
-        selectedState: "is-selected",
-        flippedState: "is-flipped",
-        loadingState: "is-loading",
-        noResults: "has-no-results",
-        noChoices: "has-no-choices",
+        containerOuter: 'choices',
+        containerInner: 'choices__inner',
+        input: 'choices__input',
+        inputCloned: 'choices__input--cloned',
+        list: 'choices__list',
+        listItems: 'choices__list--multiple',
+        listSingle: 'choices__list--single',
+        listDropdown: 'choices__list--dropdown',
+        item: 'choices__item',
+        itemSelectable: 'choices__item--selectable',
+        itemDisabled: 'choices__item--disabled',
+        itemChoice: 'choices__item--choice',
+        placeholder: 'choices__placeholder',
+        group: 'choices__group',
+        groupHeading: 'choices__heading',
+        button: 'p6__choices__button',
+        activeState: 'is-active',
+        focusState: 'is-focused',
+        openState: 'is-open',
+        disabledState: 'is-disabled',
+        highlightedState: 'is-highlighted',
+        selectedState: 'is-selected',
+        flippedState: 'is-flipped',
+        loadingState: 'is-loading',
+        noResults: 'has-no-results',
+        noChoices: 'has-no-choices',
       },
-      choices: this.getOptionChildren().map((option) => {
+      choices: this.getOptionChildren().map(option => {
         return {
           value: option.value,
           label: option.label,
@@ -266,6 +254,6 @@ export class P6Select implements ComponentInterface {
   private async internalCheckValidity(): Promise<void> {
     await this.checkValidity();
     const msg = await this.validationMessage();
-    this.hasError = msg !== "";
+    this.hasError = msg !== '';
   }
 }

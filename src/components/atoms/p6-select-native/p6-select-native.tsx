@@ -1,34 +1,17 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Method,
-  Prop,
-} from "@stencil/core";
-import { P6Control } from "~shared/form/control";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import {
-  defaultCheckValidity,
-  defaultValidationMessage,
-} from "~shared/form/validation";
-import { Mode } from "~shared/types";
-import { getModeClass } from "~utils/classes";
-import {
-  isHTMLOptGroupElement,
-  isHTMLOptionElement,
-  toArray,
-} from "~utils/dom";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { P6Control } from '~shared/form/control';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { defaultCheckValidity, defaultValidationMessage } from '~shared/form/validation';
+import { Mode } from '~shared/types';
+import { getModeClass } from '~utils/classes';
+import { isHTMLOptGroupElement, isHTMLOptionElement, toArray } from '~utils/dom';
 
 export type P6SelectValue = string[] | string | undefined;
 export type P6SelectControl = P6Control<P6SelectValue>;
 
 @Component({
-  tag: "p6-select-native",
-  styleUrl: "p6-select-native.scss",
+  tag: 'p6-select-native',
+  styleUrl: 'p6-select-native.scss',
   shadow: true,
 })
 export class P6SelectNative implements ComponentInterface, P6SelectControl {
@@ -50,7 +33,7 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   /**
    * The select should take the full width
    */
-  @Prop({ attribute: "fullWidth" }) fullWidth = false;
+  @Prop({ attribute: 'fullWidth' }) fullWidth = false;
 
   /**
    * The select is not available for interaction. The value will not be submitted with the form
@@ -65,7 +48,7 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   /**
    * Marks as read only.
    */
-  @Prop({ attribute: "readOnly" }) readOnly = false;
+  @Prop({ attribute: 'readOnly' }) readOnly = false;
 
   /**
    * When the select is valid
@@ -133,7 +116,7 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
     const result = false;
 
     if (this.nativeInput !== undefined) {
-      this.getOptions(this.nativeInput).forEach((option) => {
+      this.getOptions(this.nativeInput).forEach(option => {
         // eslint-disable-next-line no-param-reassign
         option.selected = !!this.defaultValue?.includes(option.value);
       });
@@ -144,14 +127,11 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
 
   render(): JSX.Element {
     return (
-      <Host
-        aria-disabled={this.disabled ? "true" : null}
-        required={this.required}
-      >
+      <Host aria-disabled={this.disabled ? 'true' : null} required={this.required}>
         <div
           class={{
-            select: true,
-            "is-fullwidth": this.fullWidth,
+            'select': true,
+            'is-fullwidth': this.fullWidth,
             ...getModeClass(this.mode),
           }}
         >
@@ -174,9 +154,7 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
       return undefined;
     }
 
-    const value = toArray<HTMLOptionElement>(
-      this.nativeInput.selectedOptions
-    ).map((option) => option.value);
+    const value = toArray<HTMLOptionElement>(this.nativeInput.selectedOptions).map(option => option.value);
 
     return this.multiple ? value : value.shift();
   }
@@ -195,9 +173,7 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
   private getOptions(element: Element): HTMLOptionElement[] {
     const subItems = toArray(element.children);
     const options = subItems.filter(isHTMLOptionElement);
-    subItems
-      .filter(isHTMLOptGroupElement)
-      .forEach((subItem) => options.push(...this.getOptions(subItem)));
+    subItems.filter(isHTMLOptGroupElement).forEach(subItem => options.push(...this.getOptions(subItem)));
     return options;
   }
 
@@ -208,8 +184,8 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
       return;
     }
 
-    if (options.find((option) => option.selected) === undefined) {
-      const emptyOption = options.find((child) => child.value === "");
+    if (options.find(option => option.selected) === undefined) {
+      const emptyOption = options.find(child => child.value === '');
       if (emptyOption !== undefined) {
         emptyOption.selected = true;
       } else {
@@ -219,28 +195,22 @@ export class P6SelectNative implements ComponentInterface, P6SelectControl {
 
     if (this.readOnly) {
       options
-        .filter((option) => !option.selected)
-        .forEach((child) => {
-          child.setAttribute("disabled", "true");
+        .filter(option => !option.selected)
+        .forEach(child => {
+          child.setAttribute('disabled', 'true');
         });
     }
   }
 
   componentDidRender(): void {
-    toArray(this.host.children).forEach((child) =>
-      this.nativeInput?.appendChild(child)
-    );
+    toArray(this.host.children).forEach(child => this.nativeInput?.appendChild(child));
   }
 
   componentDidLoad(): void {
     if (this.defaultValue === undefined) {
       const selectedValues = this.inputValue;
       // eslint-disable-next-line no-nested-ternary
-      this.defaultValue = Array.isArray(selectedValues)
-        ? selectedValues
-        : selectedValues === undefined
-        ? []
-        : [selectedValues];
+      this.defaultValue = Array.isArray(selectedValues) ? selectedValues : selectedValues === undefined ? [] : [selectedValues];
     }
 
     this.p6FormRegister.emit(this);

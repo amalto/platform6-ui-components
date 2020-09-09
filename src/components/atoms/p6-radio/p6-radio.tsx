@@ -1,26 +1,13 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Method,
-  Prop,
-} from "@stencil/core";
-import { P6Control } from "~shared/form/control";
-import { InvalidEventDetail, ValidEventDetail } from "~shared/form/event";
-import {
-  defaultCheckValidity,
-  defaultValidationMessage,
-} from "~shared/form/validation";
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { P6Control } from '~shared/form/control';
+import { InvalidEventDetail, ValidEventDetail } from '~shared/form/event';
+import { defaultCheckValidity, defaultValidationMessage } from '~shared/form/validation';
 
 export type P6RadioValue = string | number | undefined;
 
 @Component({
-  tag: "p6-radio",
-  styleUrl: "./p6-radio.scss",
+  tag: 'p6-radio',
+  styleUrl: './p6-radio.scss',
   shadow: true,
 })
 export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
@@ -50,7 +37,7 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
   /**
    * Readonly
    */
-  @Prop({ attribute: "readOnly" }) readOnly = false;
+  @Prop({ attribute: 'readOnly' }) readOnly = false;
 
   /**
    * Registering the field in a p6-form
@@ -77,7 +64,7 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
   private defaultValue: boolean | undefined;
 
   componentWillLoad(): void {
-    this.host.addEventListener("focusout", this.checkValidity.bind(this));
+    this.host.addEventListener('focusout', this.checkValidity.bind(this));
   }
 
   render(): JSX.Element {
@@ -86,16 +73,7 @@ export class P6Radio implements ComponentInterface, P6Control<P6RadioValue> {
 
     return (
       <Host class={host?.className}>
-        <input
-          checked={checked}
-          id={inputId}
-          disabled={disabled}
-          name={name}
-          readOnly={readOnly}
-          type="radio"
-          value={value}
-          onClick={this.updateState}
-        />
+        <input checked={checked} id={inputId} disabled={disabled} name={name} readOnly={readOnly} type="radio" value={value} onClick={this.updateState} />
         <label htmlFor={inputId}>
           <slot />
         </label>

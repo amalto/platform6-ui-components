@@ -1,30 +1,15 @@
-import { IconName } from "@fortawesome/fontawesome-svg-core";
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from "@stencil/core";
-import { Mode } from "~shared/types";
-import { getL10n, L10n } from "~utils/translations";
-import { isHidden } from "../../core/column";
-import {
-  Column,
-  DataItem,
-  FilterRowsDetail,
-  ResetDefinitionsDetail,
-  ShowOptionsDetail,
-} from "../../core/entities";
-import { P6GridButtonItem } from "../p6-grid-button-item";
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Mode } from '~shared/types';
+import { getL10n, L10n } from '~utils/translations';
+import { isHidden } from '../../core/column';
+import { Column, DataItem, FilterRowsDetail, ResetDefinitionsDetail, ShowOptionsDetail } from '../../core/entities';
+import { P6GridButtonItem } from '../p6-grid-button-item';
 
 @Component({
-  tag: "p6-grid-actions",
-  styleUrl: "p6-grid-actions.scss",
-  assetsDirs: ["locales"],
+  tag: 'p6-grid-actions',
+  styleUrl: 'p6-grid-actions.scss',
+  assetsDirs: ['locales'],
   shadow: true,
 })
 export class P6GridActions implements ComponentInterface {
@@ -68,11 +53,11 @@ export class P6GridActions implements ComponentInterface {
 
   render(): JSX.Element {
     const hasHiddenColumns = this.columns.filter(isHidden).length > 0;
-    let toggleDisplayOptionsIcon: IconName = "eye";
+    let toggleDisplayOptionsIcon: IconName = 'eye';
     let toggleDisplayOptionsLabel = this.l10n?.showsHiddenColumns;
 
     if (!this.hideOptions) {
-      toggleDisplayOptionsIcon = "eye-slash";
+      toggleDisplayOptionsIcon = 'eye-slash';
       toggleDisplayOptionsLabel = this.l10n?.hidesHiddenColumns;
     }
 
@@ -80,40 +65,23 @@ export class P6GridActions implements ComponentInterface {
       <Host>
         <div class="level-left">
           {hasHiddenColumns ? (
-            <P6GridButtonItem
-              icon={toggleDisplayOptionsIcon}
-              clickHandler={this.toggleDisplayOptionsHandler(!this.hideOptions)}
-              tooltip={toggleDisplayOptionsLabel}
-            />
+            <P6GridButtonItem icon={toggleDisplayOptionsIcon} clickHandler={this.toggleDisplayOptionsHandler(!this.hideOptions)} tooltip={toggleDisplayOptionsLabel} />
           ) : undefined}
 
-          <P6GridButtonItem
-            icon="eraser"
-            mode={Mode.danger}
-            clickHandler={this.resetCustomDefinitionsHandler()}
-            tooltip={this.l10n?.reset}
-          />
+          <P6GridButtonItem icon="eraser" mode={Mode.danger} clickHandler={this.resetCustomDefinitionsHandler()} tooltip={this.l10n?.reset} />
           <slot />
         </div>
         <div class="level-right">
           <div class="level-item control has-icons-left">
             <p6-icon class="icon is-left" name="search" />
-            <input
-              class="input is-small"
-              onKeyUp={this.filterRowsHandler()}
-              placeholder={this.l10n?.search}
-              type="text"
-              value={this.searchValue}
-            />
+            <input class="input is-small" onKeyUp={this.filterRowsHandler()} placeholder={this.l10n?.search} type="text" value={this.searchValue} />
           </div>
         </div>
       </Host>
     );
   }
 
-  private toggleDisplayOptionsHandler(
-    isDisplayed: boolean
-  ): (event: Event) => void {
+  private toggleDisplayOptionsHandler(isDisplayed: boolean): (event: Event) => void {
     return (event: Event) => {
       event.preventDefault();
       event.stopImmediatePropagation();

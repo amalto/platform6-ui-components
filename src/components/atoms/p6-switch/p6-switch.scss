@@ -1,6 +1,6 @@
 //@import "src/global/_colors";
 //@import "src/global/_variable";
-@import "../../../styles/atoms/control";
+@import '../../../styles/atoms/control';
 
 $switch-background: $grey-light !default;
 $switch-border: 0.1rem solid $switch-background !default;
@@ -17,8 +17,7 @@ $switch-focus: none !default;
   $switch-width: $switch-height * 2;
   $paddle-height: $switch-height - ($switch-paddle-offset * 2);
   $paddle-width: $switch-height - ($switch-paddle-offset * 2);
-  $paddle-active-offset: $switch-width - $paddle-width -
-    ($switch-paddle-offset * 1.5);
+  $paddle-active-offset: $switch-width - $paddle-width - ($switch-paddle-offset * 1.5);
 
   + label {
     font-size: $size;
@@ -61,7 +60,7 @@ $switch-focus: none !default;
 :host {
   @include control;
 
-  .switch[type="checkbox"] {
+  .switch[type='checkbox'] {
     vertical-align: baseline;
     font-family: $body-family;
     outline: 0;
@@ -82,7 +81,7 @@ $switch-focus: none !default;
         display: block;
         top: 0;
         left: 0;
-        content: "";
+        content: '';
         outline: none;
       }
 
@@ -90,7 +89,7 @@ $switch-focus: none !default;
         display: block;
         position: absolute;
         transform: translate3d(0, 0, 0);
-        content: "";
+        content: '';
         outline: none;
       }
     }

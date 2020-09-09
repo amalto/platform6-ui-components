@@ -1,27 +1,12 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from "@stencil/core";
-import { Alignment } from "~shared/types";
-import { toWidth } from "~utils/css";
-import { DEFAULT_WIDTH } from "../../core/column";
-import {
-  Column,
-  DataItem,
-  EditingCellDetail,
-  EditingCellStatus,
-  Row,
-} from "../../core/entities";
+import { Component, ComponentInterface, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { Alignment } from '~shared/types';
+import { toWidth } from '~utils/css';
+import { DEFAULT_WIDTH } from '../../core/column';
+import { Column, DataItem, EditingCellDetail, EditingCellStatus, Row } from '../../core/entities';
 
 @Component({
-  tag: "p6-grid-cell",
-  styleUrl: "p6-grid-cell.scss",
+  tag: 'p6-grid-cell',
+  styleUrl: 'p6-grid-cell.scss',
   shadow: true,
 })
 export class P6GridCell implements ComponentInterface {
@@ -59,7 +44,7 @@ export class P6GridCell implements ComponentInterface {
 
   @State() isEditing = false;
 
-  @Listen("p6GridEditingCell")
+  @Listen('p6GridEditingCell')
   onP6GridEditingCell(event: CustomEvent<EditingCellDetail<DataItem>>): void {
     if (event.detail.status !== EditingCellStatus.Start) {
       this.isEditing = false;
@@ -67,7 +52,7 @@ export class P6GridCell implements ComponentInterface {
   }
 
   componentWillLoad(): void {
-    this.host.addEventListener("dblclick", () => {
+    this.host.addEventListener('dblclick', () => {
       if (this.editable) {
         this.isEditing = true;
       }
@@ -82,7 +67,7 @@ export class P6GridCell implements ComponentInterface {
       width: toWidth(width),
     };
     const classes = {
-      "is-editing": this.isEditing,
+      'is-editing': this.isEditing,
     };
 
     return (
@@ -97,11 +82,7 @@ export class P6GridCell implements ComponentInterface {
     return column.cellEditor !== undefined ? (
       column.cellEditor(row.data, column)
     ) : (
-      <p6-grid-textarea-cell-editor
-        row={row}
-        value={column.getValue(row.data, column)}
-        column={column}
-      />
+      <p6-grid-textarea-cell-editor row={row} value={column.getValue(row.data, column)} column={column} />
     );
   }
 }
