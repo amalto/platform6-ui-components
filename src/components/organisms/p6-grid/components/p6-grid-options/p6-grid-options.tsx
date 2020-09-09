@@ -7,7 +7,6 @@ import {
   Host,
   Prop,
 } from "@stencil/core";
-import { Size } from "~shared/types";
 import { isHidden } from "../../core/column";
 import { Column, DataItem, ShowColumnDetail } from "../../core/entities";
 
@@ -49,7 +48,6 @@ export class P6GridOptions {
         data-id={column.id}
         onMouseUp={this.showColumn(column)}
         role="button"
-        size={Size.small}
         tabIndex={index}
       >
         {column.label}

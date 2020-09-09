@@ -5,24 +5,36 @@ exports[`p6-tabs Should display the third tab 1`] = `
   <mock:shadow-root>
     <div class="tabs">
       <ul>
-        <li>
+        <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="What is Lorem Ipsum?">
           <a href="#first" id="first-tab">
-            What is Lorem Ipsum?
+            <span class="title">
+              What is Lorem Ipsum?
+            </span>
+            <span aria-hidden="true" class="delete"></span>
           </a>
         </li>
-        <li>
+        <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Where does it come from?">
           <a href="#second" id="second-tab">
-            Where does it come from?
+            <span class="title">
+              Where does it come from?
+            </span>
+            <span aria-hidden="true" class="delete"></span>
           </a>
         </li>
-        <li>
+        <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Why do we use it?">
           <a class="is-active" href="#third" id="third-tab">
-            Why do we use it?
+            <span class="title">
+              Why do we use it?
+            </span>
+            <span aria-hidden="true" class="delete"></span>
           </a>
         </li>
-        <li>
+        <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Where can I get some?">
           <a href="#fourth" id="fourth-tab">
-            Where can I get some?
+            <span class="title">
+              Where can I get some?
+            </span>
+            <span aria-hidden="true" class="delete"></span>
           </a>
         </li>
       </ul>
