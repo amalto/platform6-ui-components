@@ -1,13 +1,4 @@
 {
-  "extends": "./tsconfig.json",
-  "include": [
-    "stencil.config.ts",
-    "**/*.stories.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "loader",
-    "backup"
-  ]
+  "extends": "./tsconfig.base.json",
+  "exclude": ["node_modules", "dist", "loader", "backup"]
 }

@@ -1,5 +1,1 @@
-/dist
-/loader
-/node_modules
-
-/src/components.d.ts
+node_modules/
