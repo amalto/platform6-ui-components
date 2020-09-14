@@ -1,0 +1,26 @@
+{
+  "extends": ["../../.eslintrc.json", "plugin:@stencil/recommended", "plugin:jest/recommended", "plugin:jsx-a11y/recommended"],
+  "parserOptions": {
+    "project": ["./tsconfig.json", "./tsconfig.lint.json"],
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "plugins": ["jest"],
+
+  "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "assert": "either"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unknown-property": [2, { "ignore": ["class"] }]
+  },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  }
+}

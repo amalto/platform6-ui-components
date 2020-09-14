@@ -1,0 +1,11 @@
+0 silly argv {
+0 silly argv   _: [ 'list' ],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': '/home/vincent/workspaces/professional/amalto/p6-components/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath /home/vincent/workspaces/professional/amalto/p6-components
+3 info versioning independent
+4 error JSONError: Unexpected token } in JSON at position 678 while parsing near '...onents": "0.0.1",  },  "devDependencie...' in packages/docs/package.json
+4 error     at module.exports (/home/vincent/workspaces/professional/amalto/p6-components/node_modules/@lerna/project/node_modules/parse-json/index.js:26:19)
+4 error     at parse (/home/vincent/workspaces/professional/amalto/p6-components/node_modules/@lerna/project/node_modules/load-json-file/index.js:15:9)

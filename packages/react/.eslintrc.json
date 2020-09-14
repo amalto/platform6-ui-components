@@ -1,0 +1,19 @@
+{
+  "extends": ["../../.eslintrc.json", "plugin:jsx-a11y/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "plugins": [],
+  "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "assert": "either"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unknown-property": [2, { "ignore": ["class"] }]
+  }
+}
