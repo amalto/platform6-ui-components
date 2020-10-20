@@ -78,6 +78,7 @@ interface UserModel {
   userEmail?: string;
   realm?: string;
   enabled?: boolean;
+  oldPassword?: string;
   passwordIn?: string;
   emailVerified?: boolean;
   passwordReset?: boolean;
