@@ -6,6 +6,7 @@ export namespace Auth {
         uname: string;
         pw: string;
         realm?: string;
+        token?: string;
     }
     export interface AuthCodeData {
         code: string;
