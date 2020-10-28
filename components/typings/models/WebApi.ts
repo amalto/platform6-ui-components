@@ -45,7 +45,7 @@ export interface GETParameters {
 
 interface WebApi {
 
-    requestAuthorizationCode: (code: string, uname: string, pw: string, realm?: string, cctx?: string) => Promise<Auth.AuthCodeData>;
+    requestAuthorizationCode: (code: string, uname: string, pw: string, realm?: string, cctx?: string, captchaToken?: string) => Promise<Auth.AuthCodeData>;
     requestAccessToken: (authorizationCode: string) => Promise<Auth.TokenData>;
     requestClientAccessToken: () => Promise<Auth.TokenData>;
     refreshAccessToken: () => Promise<Auth.TokenData>;
