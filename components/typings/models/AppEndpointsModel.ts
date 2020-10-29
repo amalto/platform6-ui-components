@@ -13,6 +13,7 @@ export interface FeatureEndpoint {
         }
         weight?: number;
         version?: string;
+        url?: string;
     };
 }
 
