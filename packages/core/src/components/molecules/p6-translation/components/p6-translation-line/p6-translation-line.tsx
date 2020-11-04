@@ -1,5 +1,5 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
-import { isCustomEvent, ValidEventDetail } from '../../../../../shared/form/event';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import { isCustomEvent, isInvalidEvent, isValidEvent, ValidEventDetail } from '../../../../../shared/form/event';
 import { Mode, Size } from '../../../../../shared/types';
 import { isDefaultLanguage, LanguageCode } from '../../../../../utils/language';
 import { getL10n, L10n } from '../../../../../utils/translations';
@@ -99,7 +99,8 @@ export class P6TranslationLine implements ComponentInterface {
               readOnly={this.readOnly}
               disabled={this.disabled}
               required
-              onChange={this.translationChangeHandler}
+              onP6Valid={this.translationChangeHandler}
+              onP6Invalid={this.translationChangeHandler}
             />
           </div>
         </div>
@@ -123,10 +124,20 @@ export class P6TranslationLine implements ComponentInterface {
 
   private translationChangeHandler = (event: Event): void => {
     event.stopPropagation();
-    this.p6ValueChange.emit({
-      name: 'value',
-      value: (event.target as HTMLTextAreaElement).value,
-    });
+
+    if (isValidEvent(event)) {
+      this.p6ValueChange.emit({
+        name: 'value',
+        value: event.detail.value as string,
+      });
+    }
+
+    if (isInvalidEvent(event)) {
+      this.p6ValueChange.emit({
+        name: 'value',
+        value: '',
+      });
+    }
   };
 
   private deleteHandler = (event: Event): void => {
