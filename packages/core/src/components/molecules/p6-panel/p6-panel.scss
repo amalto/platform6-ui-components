@@ -1,0 +1,48 @@
+$panel-border-color: $border !default;
+$panel-border-width: $control-border-width !default;
+
+:host {
+  display: block;
+  width: 100%;
+
+  .panel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-color: $panel-border-color;
+    border-width: $panel-border-width;
+    border-bottom-style: solid;
+    padding: $gap-size * 2 * 1px;
+
+    ::slotted([slot='label']) {
+      flex-grow: 3;
+      font-family: $title-family;
+    }
+    ::slotted([slot='header-actions']) {
+      display: flex;
+      flex-direction: row;
+      gap: $column-gap;
+    }
+
+    .panel-action--toggle {
+      margin-left: $margin-gap * 2;
+    }
+  }
+
+  .panel-body {
+    visibility: visible;
+    transition: height 0.42ms ease-in-out;
+    padding: $gap-size * 2 * 1px;
+
+    &.collapsed {
+      height: 0;
+      visibility: collapse;
+    }
+  }
+
+  .panel-actions {
+    border-color: $panel-border-color;
+    border-width: $panel-border-width;
+    border-top-style: solid;
+  }
+}

@@ -485,6 +485,12 @@ export namespace Components {
      */
     target: Target | undefined;
   }
+  interface P6Panel {
+    /**
+     * Set the panel hideable
+     */
+    hideable: boolean;
+  }
   interface P6Radio {
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -890,6 +896,11 @@ declare global {
     prototype: HTMLP6LinkElement;
     new (): HTMLP6LinkElement;
   };
+  interface HTMLP6PanelElement extends Components.P6Panel, HTMLStencilElement {}
+  var HTMLP6PanelElement: {
+    prototype: HTMLP6PanelElement;
+    new (): HTMLP6PanelElement;
+  };
   interface HTMLP6RadioElement extends Components.P6Radio, HTMLStencilElement {}
   var HTMLP6RadioElement: {
     prototype: HTMLP6RadioElement;
@@ -977,6 +988,7 @@ declare global {
     'p6-label': HTMLP6LabelElement;
     'p6-language': HTMLP6LanguageElement;
     'p6-link': HTMLP6LinkElement;
+    'p6-panel': HTMLP6PanelElement;
     'p6-radio': HTMLP6RadioElement;
     'p6-radio-group': HTMLP6RadioGroupElement;
     'p6-select': HTMLP6SelectElement;
@@ -1477,6 +1489,12 @@ declare namespace LocalJSX {
      */
     target?: Target | undefined;
   }
+  interface P6Panel {
+    /**
+     * Set the panel hideable
+     */
+    hideable?: boolean;
+  }
   interface P6Radio {
     /**
      * Initial value
@@ -1812,6 +1830,7 @@ declare namespace LocalJSX {
     'p6-label': P6Label;
     'p6-language': P6Language;
     'p6-link': P6Link;
+    'p6-panel': P6Panel;
     'p6-radio': P6Radio;
     'p6-radio-group': P6RadioGroup;
     'p6-select': P6Select;
@@ -1856,6 +1875,7 @@ declare module '@stencil/core' {
       'p6-label': LocalJSX.P6Label & JSXBase.HTMLAttributes<HTMLP6LabelElement>;
       'p6-language': LocalJSX.P6Language & JSXBase.HTMLAttributes<HTMLP6LanguageElement>;
       'p6-link': LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
+      'p6-panel': LocalJSX.P6Panel & JSXBase.HTMLAttributes<HTMLP6PanelElement>;
       'p6-radio': LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
       'p6-radio-group': LocalJSX.P6RadioGroup & JSXBase.HTMLAttributes<HTMLP6RadioGroupElement>;
       'p6-select': LocalJSX.P6Select & JSXBase.HTMLAttributes<HTMLP6SelectElement>;
