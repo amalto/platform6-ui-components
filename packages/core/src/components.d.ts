@@ -37,6 +37,7 @@ import {
   ShowOptionsDetail,
   SortColumnDetail,
 } from './components/organisms/p6-grid/core/entities';
+import { ServiceStatus } from './components/templates/p6-service-panel/service-status.enum';
 import { P6Control } from './shared/form/control';
 import { InvalidEventDetail, ValidEventDetail } from './shared/form/event';
 import { Alignment, Mode, Position, Size, SortOrder } from './shared/types';
@@ -610,6 +611,20 @@ export namespace Components {
      */
     validationMessage: () => Promise<string>;
   }
+  interface P6ServicePanel {
+    /**
+     * Name of the service
+     */
+    name: string;
+    /**
+     * Status of the service
+     */
+    status: ServiceStatus | undefined;
+    /**
+     * Version of the service
+     */
+    version: string | undefined;
+  }
   interface P6Spinner {}
   interface P6Switch {
     /**
@@ -939,6 +954,11 @@ declare global {
     prototype: HTMLP6SelectNativeElement;
     new (): HTMLP6SelectNativeElement;
   };
+  interface HTMLP6ServicePanelElement extends Components.P6ServicePanel, HTMLStencilElement {}
+  var HTMLP6ServicePanelElement: {
+    prototype: HTMLP6ServicePanelElement;
+    new (): HTMLP6ServicePanelElement;
+  };
   interface HTMLP6SpinnerElement extends Components.P6Spinner, HTMLStencilElement {}
   var HTMLP6SpinnerElement: {
     prototype: HTMLP6SpinnerElement;
@@ -1016,6 +1036,7 @@ declare global {
     'p6-radio-group': HTMLP6RadioGroupElement;
     'p6-select': HTMLP6SelectElement;
     'p6-select-native': HTMLP6SelectNativeElement;
+    'p6-service-panel': HTMLP6ServicePanelElement;
     'p6-spinner': HTMLP6SpinnerElement;
     'p6-switch': HTMLP6SwitchElement;
     'p6-tab': HTMLP6TabElement;
@@ -1642,6 +1663,36 @@ declare namespace LocalJSX {
      */
     required?: boolean;
   }
+  interface P6ServicePanel {
+    /**
+     * Name of the service
+     */
+    name: string;
+    /**
+     * Fires when the user tries to refresh the service
+     */
+    onP6RefreshService?: (event: CustomEvent<void>) => void;
+    /**
+     * Fires when the user tries to reload the service
+     */
+    onP6ReloadService?: (event: CustomEvent<void>) => void;
+    /**
+     * Fires when the user tries to start the service
+     */
+    onP6StartService?: (event: CustomEvent<void>) => void;
+    /**
+     * Fires when the user tries to stop the service
+     */
+    onP6StopService?: (event: CustomEvent<void>) => void;
+    /**
+     * Status of the service
+     */
+    status?: ServiceStatus | undefined;
+    /**
+     * Version of the service
+     */
+    version?: string | undefined;
+  }
   interface P6Spinner {}
   interface P6Switch {
     /**
@@ -1877,6 +1928,7 @@ declare namespace LocalJSX {
     'p6-radio-group': P6RadioGroup;
     'p6-select': P6Select;
     'p6-select-native': P6SelectNative;
+    'p6-service-panel': P6ServicePanel;
     'p6-spinner': P6Spinner;
     'p6-switch': P6Switch;
     'p6-tab': P6Tab;
@@ -1923,6 +1975,7 @@ declare module '@stencil/core' {
       'p6-radio-group': LocalJSX.P6RadioGroup & JSXBase.HTMLAttributes<HTMLP6RadioGroupElement>;
       'p6-select': LocalJSX.P6Select & JSXBase.HTMLAttributes<HTMLP6SelectElement>;
       'p6-select-native': LocalJSX.P6SelectNative & JSXBase.HTMLAttributes<HTMLP6SelectNativeElement>;
+      'p6-service-panel': LocalJSX.P6ServicePanel & JSXBase.HTMLAttributes<HTMLP6ServicePanelElement>;
       'p6-spinner': LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
       'p6-switch': LocalJSX.P6Switch & JSXBase.HTMLAttributes<HTMLP6SwitchElement>;
       'p6-tab': LocalJSX.P6Tab & JSXBase.HTMLAttributes<HTMLP6TabElement>;

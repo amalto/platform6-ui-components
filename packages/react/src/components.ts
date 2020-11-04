@@ -38,6 +38,7 @@ export const P6Radio = /*@__PURE__*/createReactComponent<JSX.P6Radio, HTMLP6Radi
 export const P6RadioGroup = /*@__PURE__*/createReactComponent<JSX.P6RadioGroup, HTMLP6RadioGroupElement>('p6-radio-group');
 export const P6Select = /*@__PURE__*/createReactComponent<JSX.P6Select, HTMLP6SelectElement>('p6-select');
 export const P6SelectNative = /*@__PURE__*/createReactComponent<JSX.P6SelectNative, HTMLP6SelectNativeElement>('p6-select-native');
+export const P6ServicePanel = /*@__PURE__*/createReactComponent<JSX.P6ServicePanel, HTMLP6ServicePanelElement>('p6-service-panel');
 export const P6Spinner = /*@__PURE__*/createReactComponent<JSX.P6Spinner, HTMLP6SpinnerElement>('p6-spinner');
 export const P6Switch = /*@__PURE__*/createReactComponent<JSX.P6Switch, HTMLP6SwitchElement>('p6-switch');
 export const P6Tab = /*@__PURE__*/createReactComponent<JSX.P6Tab, HTMLP6TabElement>('p6-tab');

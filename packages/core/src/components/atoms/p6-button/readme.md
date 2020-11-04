@@ -19,6 +19,7 @@
 
 - [p6-dropdown](../../molecules/p6-dropdown)
 - [p6-grid-actions](../../organisms/p6-grid/components/p6-grid-actions)
+- [p6-service-panel](../../templates/p6-service-panel)
 
 ### Graph
 
@@ -26,6 +27,7 @@
 graph TD;
   p6-dropdown --> p6-button
   p6-grid-actions --> p6-button
+  p6-service-panel --> p6-button
   style p6-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

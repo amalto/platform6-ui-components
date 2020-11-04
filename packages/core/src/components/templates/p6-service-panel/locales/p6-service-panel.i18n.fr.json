@@ -1,0 +1,9 @@
+{
+  "serviceStatus": "État du service",
+  "serviceVersion": "Version du service : ${serviceVersion}",
+  "start": "démarrer",
+  "started": "démarré",
+  "stop": "arrêter",
+  "stopped": "Arrêté",
+  "restart": "Redémarre"
+}
