@@ -11,7 +11,6 @@ export interface P6Control<T> extends P6ControlValidation {
   readOnly?: boolean;
   disabled?: boolean;
   required?: boolean;
-  value?: T;
 
   p6FormRegister: EventEmitter<P6Control<T>>;
   p6FormUnregister: EventEmitter<P6Control<T>>;

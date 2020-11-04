@@ -10,6 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import { P6ButtonType } from './components/atoms/p6-button/p6-button';
 import { P6CalendarType } from './components/atoms/p6-calendar/p6-calendar';
 import { P6CheckboxValue } from './components/atoms/p6-checkbox/p6-checkbox';
+import { P6FileValue } from './components/atoms/p6-file/p6-file';
 import { P6InputValue } from './components/atoms/p6-input/p6-input';
 import { P6InputType } from './components/atoms/p6-input/types';
 import { Target } from './components/atoms/p6-link/p6-link';
@@ -184,6 +185,56 @@ export namespace Components {
   interface P6Dropdown {}
   interface P6Empty {}
   interface P6Field {}
+  interface P6File {
+    /**
+     * A string that defines the file types the file input should accept. This string is a comma-separated list of filename extension or MIME type example : ".jpg,.png,image/*"
+     */
+    accept: string | undefined;
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     */
+    checkValidity: () => Promise<boolean>;
+    /**
+     * the input is not available for interaction. The value will not be submitted with the form
+     */
+    disabled: boolean;
+    /**
+     * set the mode of the button
+     */
+    mode: Mode;
+    /**
+     * The name of the input.
+     */
+    name: string;
+    /**
+     * Outlined
+     */
+    outlined: boolean;
+    /**
+     * content to be appear in the form control when the form control is empty
+     */
+    placeholder: string;
+    /**
+     * marks an element that can't be submitted without a value.
+     */
+    required: boolean;
+    /**
+     * Restores the input's default value
+     */
+    reset: () => Promise<boolean>;
+    /**
+     * set the size of the button
+     */
+    size: Size;
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field".
+     */
+    validationMessage: () => Promise<string>;
+    /**
+     * the value of the input.
+     */
+    value: string | undefined;
+  }
   interface P6Form {
     /**
      * Sets or retrieves the name of the object.
@@ -854,6 +905,11 @@ declare global {
     prototype: HTMLP6FieldElement;
     new (): HTMLP6FieldElement;
   };
+  interface HTMLP6FileElement extends Components.P6File, HTMLStencilElement {}
+  var HTMLP6FileElement: {
+    prototype: HTMLP6FileElement;
+    new (): HTMLP6FileElement;
+  };
   interface HTMLP6FormElement extends Components.P6Form, HTMLStencilElement {}
   var HTMLP6FormElement: {
     prototype: HTMLP6FormElement;
@@ -1033,6 +1089,7 @@ declare global {
     'p6-dropdown': HTMLP6DropdownElement;
     'p6-empty': HTMLP6EmptyElement;
     'p6-field': HTMLP6FieldElement;
+    'p6-file': HTMLP6FileElement;
     'p6-form': HTMLP6FormElement;
     'p6-grid': HTMLP6GridElement;
     'p6-grid-actions': HTMLP6GridActionsElement;
@@ -1214,6 +1271,64 @@ declare namespace LocalJSX {
   interface P6Dropdown {}
   interface P6Empty {}
   interface P6Field {}
+  interface P6File {
+    /**
+     * A string that defines the file types the file input should accept. This string is a comma-separated list of filename extension or MIME type example : ".jpg,.png,image/*"
+     */
+    accept?: string | undefined;
+    /**
+     * the input is not available for interaction. The value will not be submitted with the form
+     */
+    disabled?: boolean;
+    /**
+     * set the mode of the button
+     */
+    mode?: Mode;
+    /**
+     * The name of the input.
+     */
+    name: string;
+    /**
+     * Fires after the selection of the files
+     */
+    onP6Change?: (event: CustomEvent<File[]>) => void;
+    /**
+     * Registering the field in a p6-form
+     */
+    onP6FormRegister?: (event: CustomEvent<P6Control<P6FileValue>>) => void;
+    /**
+     * Unregistering the field in a p6-form
+     */
+    onP6FormUnregister?: (event: CustomEvent<P6Control<P6FileValue>>) => void;
+    /**
+     * Fires when the field has been checked for validity and doesn't satisfy its constraints
+     */
+    onP6Invalid?: (event: CustomEvent<InvalidEventDetail>) => void;
+    /**
+     * Fires when the field has been checked for validity and satisfy its constraints
+     */
+    onP6Valid?: (event: CustomEvent<ValidEventDetail<File[] | undefined>>) => void;
+    /**
+     * Outlined
+     */
+    outlined?: boolean;
+    /**
+     * content to be appear in the form control when the form control is empty
+     */
+    placeholder: string;
+    /**
+     * marks an element that can't be submitted without a value.
+     */
+    required?: boolean;
+    /**
+     * set the size of the button
+     */
+    size?: Size;
+    /**
+     * the value of the input.
+     */
+    value?: string | undefined;
+  }
   interface P6Form {
     /**
      * Sets or retrieves the name of the object.
@@ -1968,6 +2083,7 @@ declare namespace LocalJSX {
     'p6-dropdown': P6Dropdown;
     'p6-empty': P6Empty;
     'p6-field': P6Field;
+    'p6-file': P6File;
     'p6-form': P6Form;
     'p6-grid': P6Grid;
     'p6-grid-actions': P6GridActions;
@@ -2016,6 +2132,7 @@ declare module '@stencil/core' {
       'p6-dropdown': LocalJSX.P6Dropdown & JSXBase.HTMLAttributes<HTMLP6DropdownElement>;
       'p6-empty': LocalJSX.P6Empty & JSXBase.HTMLAttributes<HTMLP6EmptyElement>;
       'p6-field': LocalJSX.P6Field & JSXBase.HTMLAttributes<HTMLP6FieldElement>;
+      'p6-file': LocalJSX.P6File & JSXBase.HTMLAttributes<HTMLP6FileElement>;
       'p6-form': LocalJSX.P6Form & JSXBase.HTMLAttributes<HTMLP6FormElement>;
       'p6-grid': LocalJSX.P6Grid & JSXBase.HTMLAttributes<HTMLP6GridElement>;
       'p6-grid-actions': LocalJSX.P6GridActions & JSXBase.HTMLAttributes<HTMLP6GridActionsElement>;

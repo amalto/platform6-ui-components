@@ -15,6 +15,7 @@ export const P6Container = /*@__PURE__*/createReactComponent<JSX.P6Container, HT
 export const P6Dropdown = /*@__PURE__*/createReactComponent<JSX.P6Dropdown, HTMLP6DropdownElement>('p6-dropdown');
 export const P6Empty = /*@__PURE__*/createReactComponent<JSX.P6Empty, HTMLP6EmptyElement>('p6-empty');
 export const P6Field = /*@__PURE__*/createReactComponent<JSX.P6Field, HTMLP6FieldElement>('p6-field');
+export const P6File = /*@__PURE__*/createReactComponent<JSX.P6File, HTMLP6FileElement>('p6-file');
 export const P6Form = /*@__PURE__*/createReactComponent<JSX.P6Form, HTMLP6FormElement>('p6-form');
 export const P6Grid = /*@__PURE__*/createReactComponent<JSX.P6Grid, HTMLP6GridElement>('p6-grid');
 export const P6GridActions = /*@__PURE__*/createReactComponent<JSX.P6GridActions, HTMLP6GridActionsElement>('p6-grid-actions');
