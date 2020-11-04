@@ -35,6 +35,7 @@ export class P6GridHeaderCell implements ComponentInterface {
     const { disabled, width } = this;
     const styles = {
       width: toWidth(width),
+      flex: width === DEFAULT_WIDTH ? 'initial' : 'none',
     };
 
     return (

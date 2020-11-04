@@ -10,6 +10,7 @@
 | `color`               | `color`    | Cell text color                                       | `string \| undefined`                                  | `undefined`       |
 | `column` _(required)_ | --         | Cell column                                           | `Column<Record<string, unknown>>`                      | `undefined`       |
 | `editable`            | `editable` | Set to true if this cell is editable, otherwise false | `boolean`                                              | `false`           |
+| `editing`             | `editing`  | Set to true if this cell is being edited              | `boolean`                                              | `false`           |
 | `row` _(required)_    | --         | Cell line                                             | `Row<Record<string, unknown>>`                         | `undefined`       |
 | `width`               | `width`    | Cell width                                            | `number \| string`                                     | `DEFAULT_WIDTH`   |
 

@@ -42,6 +42,12 @@ export class P6GridCell implements ComponentInterface {
    */
   @Prop() editable = false;
 
+  /**
+   * Set to true if this cell is being edited
+   */
+  // eslint-disable-next-line @stencil/strict-mutable
+  @Prop({ mutable: true }) editing = false;
+
   @State() isEditing = false;
 
   @Listen('p6GridEditingCell')

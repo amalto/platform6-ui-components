@@ -6,7 +6,7 @@ export const MIN_WIDTH = 75;
 export const DEFAULT_WIDTH = MIN_WIDTH;
 export const INC_WIDTH = 10;
 
-function defaultGetValue<T extends DataItem>(data: T, context: ColumnDefinition<T>): string {
+export function defaultGetValue<T extends DataItem>(data: T, context: ColumnDefinition<T>): string {
   if (context.field === undefined || data[context.field] === undefined) {
     return throwError(`field is undefined or doesn't exist, you should provide a 'getValue' function for ${JSON.stringify(context)}`);
   }
@@ -14,7 +14,7 @@ function defaultGetValue<T extends DataItem>(data: T, context: ColumnDefinition<
   return `${data[context.field as keyof T]}`;
 }
 
-function defaultSetValue<T extends DataItem>(value: string, data: T, context: ColumnDefinition<T>): T {
+export function defaultSetValue<T extends DataItem>(value: string, data: T, context: ColumnDefinition<T>): T {
   if (context.field === undefined || data[context.field] === undefined) {
     return throwError(`field is undefined or doesn't exist, you should provide a 'setValue' function for ${JSON.stringify(context)}`);
   }
