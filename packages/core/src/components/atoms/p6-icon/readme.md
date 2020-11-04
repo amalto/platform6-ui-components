@@ -18,6 +18,7 @@
 - [p6-grid-actions](../../organisms/p6-grid/components/p6-grid-actions)
 - [p6-grid-header-cell](../../organisms/p6-grid/components/p6-grid-header-cell)
 - [p6-grid-header-menu](../../organisms/p6-grid/components/p6-grid-header-menu)
+- [p6-grid-row-actions](../../templates/p6-grid-row-actions)
 - [p6-panel](../../molecules/p6-panel)
 - [p6-service-panel](../../templates/p6-service-panel)
 - [p6-translation](../../molecules/p6-translation)
@@ -30,6 +31,7 @@ graph TD;
   p6-grid-actions --> p6-icon
   p6-grid-header-cell --> p6-icon
   p6-grid-header-menu --> p6-icon
+  p6-grid-row-actions --> p6-icon
   p6-panel --> p6-icon
   p6-service-panel --> p6-icon
   p6-translation --> p6-icon

@@ -25,6 +25,7 @@ export const P6GridHeaderCell = /*@__PURE__*/createReactComponent<JSX.P6GridHead
 export const P6GridHeaderMenu = /*@__PURE__*/createReactComponent<JSX.P6GridHeaderMenu, HTMLP6GridHeaderMenuElement>('p6-grid-header-menu');
 export const P6GridOptions = /*@__PURE__*/createReactComponent<JSX.P6GridOptions, HTMLP6GridOptionsElement>('p6-grid-options');
 export const P6GridRow = /*@__PURE__*/createReactComponent<JSX.P6GridRow, HTMLP6GridRowElement>('p6-grid-row');
+export const P6GridRowActions = /*@__PURE__*/createReactComponent<JSX.P6GridRowActions, HTMLP6GridRowActionsElement>('p6-grid-row-actions');
 export const P6GridTextareaCellEditor = /*@__PURE__*/createReactComponent<JSX.P6GridTextareaCellEditor, HTMLP6GridTextareaCellEditorElement>('p6-grid-textarea-cell-editor');
 export const P6Help = /*@__PURE__*/createReactComponent<JSX.P6Help, HTMLP6HelpElement>('p6-help');
 export const P6Hint = /*@__PURE__*/createReactComponent<JSX.P6Hint, HTMLP6HintElement>('p6-hint');
