@@ -637,6 +637,24 @@ export namespace Components {
      */
     validationMessage: () => Promise<string>;
   }
+  interface P6Tab {
+    /**
+     * Set the tab active
+     */
+    active: boolean;
+    /**
+     * Closes the tab if closeable
+     */
+    close: () => Promise<void>;
+    /**
+     * Set the tab closeable
+     */
+    closeable: boolean;
+    /**
+     * Set the tab hidden
+     */
+    closed: boolean;
+  }
   interface P6Tabs {
     /**
      * Default tab selected.
@@ -931,6 +949,11 @@ declare global {
     prototype: HTMLP6SwitchElement;
     new (): HTMLP6SwitchElement;
   };
+  interface HTMLP6TabElement extends Components.P6Tab, HTMLStencilElement {}
+  var HTMLP6TabElement: {
+    prototype: HTMLP6TabElement;
+    new (): HTMLP6TabElement;
+  };
   interface HTMLP6TabsElement extends Components.P6Tabs, HTMLStencilElement {}
   var HTMLP6TabsElement: {
     prototype: HTMLP6TabsElement;
@@ -995,6 +1018,7 @@ declare global {
     'p6-select-native': HTMLP6SelectNativeElement;
     'p6-spinner': HTMLP6SpinnerElement;
     'p6-switch': HTMLP6SwitchElement;
+    'p6-tab': HTMLP6TabElement;
     'p6-tabs': HTMLP6TabsElement;
     'p6-tag': HTMLP6TagElement;
     'p6-textarea': HTMLP6TextareaElement;
@@ -1653,6 +1677,24 @@ declare namespace LocalJSX {
      */
     onP6Valid?: (event: CustomEvent<ValidEventDetail<P6SwitchValue>>) => void;
   }
+  interface P6Tab {
+    /**
+     * Set the tab active
+     */
+    active?: boolean;
+    /**
+     * Set the tab closeable
+     */
+    closeable?: boolean;
+    /**
+     * Set the tab hidden
+     */
+    closed?: boolean;
+    /**
+     * Fires when the tab has been closed
+     */
+    onP6Close?: (event: CustomEvent<boolean>) => void;
+  }
   interface P6Tabs {
     /**
      * Close tab event
@@ -1837,6 +1879,7 @@ declare namespace LocalJSX {
     'p6-select-native': P6SelectNative;
     'p6-spinner': P6Spinner;
     'p6-switch': P6Switch;
+    'p6-tab': P6Tab;
     'p6-tabs': P6Tabs;
     'p6-tag': P6Tag;
     'p6-textarea': P6Textarea;
@@ -1882,6 +1925,7 @@ declare module '@stencil/core' {
       'p6-select-native': LocalJSX.P6SelectNative & JSXBase.HTMLAttributes<HTMLP6SelectNativeElement>;
       'p6-spinner': LocalJSX.P6Spinner & JSXBase.HTMLAttributes<HTMLP6SpinnerElement>;
       'p6-switch': LocalJSX.P6Switch & JSXBase.HTMLAttributes<HTMLP6SwitchElement>;
+      'p6-tab': LocalJSX.P6Tab & JSXBase.HTMLAttributes<HTMLP6TabElement>;
       'p6-tabs': LocalJSX.P6Tabs & JSXBase.HTMLAttributes<HTMLP6TabsElement>;
       'p6-tag': LocalJSX.P6Tag & JSXBase.HTMLAttributes<HTMLP6TagElement>;
       'p6-textarea': LocalJSX.P6Textarea & JSXBase.HTMLAttributes<HTMLP6TextareaElement>;
