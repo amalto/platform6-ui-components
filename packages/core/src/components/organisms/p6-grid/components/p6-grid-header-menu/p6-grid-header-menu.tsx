@@ -72,7 +72,7 @@ export class P6GridHeaderMenu implements ComponentInterface {
     );
   }
 
-  private get nextSortOrder(): SortOrder {
+  private nextSortOrder(): SortOrder {
     if (this.sortOrder === SortOrder.none) {
       return SortOrder.asc;
     }
@@ -107,7 +107,7 @@ export class P6GridHeaderMenu implements ComponentInterface {
   private sortColumnHandler(): (event: Event) => void {
     return () => {
       this.p6SortColumn.emit({
-        column: { ...this.column, sortOrder: this.nextSortOrder },
+        column: { ...this.column, sortOrder: this.nextSortOrder() },
       });
     };
   }

@@ -24,6 +24,7 @@ import {
   CellValueChangedDetail,
   Column,
   ColumnDefinition,
+  ColumnId,
   DataItem,
   EditingCellDetail,
   FilterRowsDetail,
@@ -31,6 +32,7 @@ import {
   ResetDefinitionsDetail,
   ResizeColumnDetail,
   Row,
+  RowId,
   ShowColumnDetail,
   ShowOptionsDetail,
   SortColumnDetail,
@@ -188,6 +190,11 @@ export namespace Components {
   }
   interface P6Grid {
     /**
+     * clone a row
+     * @param rowId id of the row to be clone
+     */
+    cloneRow: (rowId: RowId) => Promise<RowId>;
+    /**
      * Display a context menu based on row data
      */
     customContextMenu?: (row: Row<DataItem>) => JSX.Element;
@@ -200,9 +207,30 @@ export namespace Components {
      */
     definitions: ColumnDefinition<DataItem>[];
     /**
+     * Get the columns of the grid
+     */
+    getColumns: () => Promise<Column<DataItem>[]>;
+    /**
      * Display spinner
      */
     loading: boolean;
+    /**
+     * Select a list of rows
+     * @param rowIds ids of the rows to be select
+     */
+    selectRows: (rowIds: RowId[] | 'all') => Promise<boolean>;
+    /**
+     * Start editing a cell
+     * @param rowId id of the row edited
+     * @param columnId id of the row edited
+     */
+    startEditingCell: (rowId: RowId, columnId: ColumnId) => Promise<void>;
+    /**
+     * Stop editing a cell
+     * @param rowId id of the row edited
+     * @param columnId id of the row edited
+     */
+    stopEditingCell: (rowId: RowId, columnId: ColumnId) => Promise<void>;
   }
   interface P6GridActions {
     /**
@@ -236,6 +264,10 @@ export namespace Components {
      * Set to true if this cell is editable, otherwise false
      */
     editable: boolean;
+    /**
+     * Set to true if this cell is being edited
+     */
+    editing: boolean;
     /**
      * Cell line
      */
@@ -1188,6 +1220,10 @@ declare namespace LocalJSX {
      * Set to true if this cell is editable, otherwise false
      */
     editable?: boolean;
+    /**
+     * Set to true if this cell is being edited
+     */
+    editing?: boolean;
     /**
      * Cell line
      */

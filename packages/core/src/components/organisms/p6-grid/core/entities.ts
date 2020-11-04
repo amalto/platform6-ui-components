@@ -10,6 +10,8 @@ export interface ColumnDefinition<T extends DataItem> {
   label: string;
   field?: string | keyof T;
   editable?: boolean;
+  filtreable?: boolean;
+  sortable?: boolean;
   hidden?: boolean;
   width?: number;
   align?: Alignment;
@@ -19,6 +21,7 @@ export interface ColumnDefinition<T extends DataItem> {
   getValue?: (data: T, context: ColumnDefinition<T>) => string;
   setValue?: (value: string, data: T, context: ColumnDefinition<T>) => T;
   cellEditor?: (data: T, context: ColumnDefinition<T>) => JSX.Element & CellEditor<T>;
+  cellRenderer?: (data: T, rowId: RowId, context: ColumnDefinition<T>) => string | HTMLElement;
 }
 
 export interface Column<T extends DataItem> extends ColumnDefinition<T> {
@@ -41,7 +44,6 @@ export interface CellEditor<T extends DataItem> {
   p6GridCellValueChanged: EventEmitter<CellValueChangedDetail<T>>;
   p6GridEditingCell: EventEmitter<EditingCellDetail<T>>;
 }
-
 export type RowId = string;
 
 export interface Row<T extends DataItem> {

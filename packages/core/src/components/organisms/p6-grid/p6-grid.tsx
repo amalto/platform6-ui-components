@@ -1,15 +1,15 @@
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { SortOrder } from '../../../shared/types';
 import { partitionWith } from '../../../utils/array';
 import { getL10n, L10n } from '../../../utils/translations';
 import { P6GridHeaderColumns } from './components/p6-grid-header-columns';
-import { P6GridRowCells } from './components/p6-grid-row-cells';
 import { fromDefinition, isHidden, move, replaceColumn } from './core/column';
 import {
   AlignColumnDetail,
   CellValueChangedDetail,
   Column,
   ColumnDefinition,
+  ColumnId,
   DataItem,
   FilterRowsDetail,
   MoveColumnDetail,
@@ -22,6 +22,10 @@ import {
   SortColumnDetail,
 } from './core/entities';
 import { compareRow, filterBy, fromData, rangeSelectRow, replaceRow } from './core/row';
+
+function createCellId(rowId: RowId, colId: ColumnId): string {
+  return `row-${rowId}:col-${colId}`;
+}
 
 @Component({
   tag: 'p6-grid',
@@ -79,6 +83,8 @@ export class P6Grid {
   @State() searchValue = '';
 
   @State() sortedBy: Column<DataItem> | undefined;
+
+  @State() editingCells: Set<string> = new Set();
 
   @Listen('p6AlignColumn')
   onP6AlignColumn(event: CustomEvent<AlignColumnDetail<DataItem>>): void {
@@ -147,11 +153,68 @@ export class P6Grid {
   rowsUpdateHandler(newData: DataItem[]): void {
     this.rows = newData.map(fromData);
     this.selectedRows = new Set();
+    this.editingCells = new Set();
   }
 
   @Watch('definitions')
   columnsUpdateHandler(newDefinitions: ColumnDefinition<DataItem>[]): void {
     this.columns = newDefinitions.map(fromDefinition);
+  }
+
+  /**
+   * Get the columns of the grid
+   */
+  @Method()
+  async getColumns(): Promise<Column<DataItem>[]> {
+    return Promise.resolve(this.columns);
+  }
+
+  /**
+   * Start editing a cell
+   * @param rowId id of the row edited
+   * @param columnId id of the row edited
+   */
+  @Method()
+  async startEditingCell(rowId: RowId, columnId: ColumnId): Promise<void> {
+    this.editingCells.add(createCellId(rowId, columnId));
+  }
+
+  /**
+   * Stop editing a cell
+   * @param rowId id of the row edited
+   * @param columnId id of the row edited
+   */
+  @Method()
+  async stopEditingCell(rowId: RowId, columnId: ColumnId): Promise<void> {
+    this.editingCells.delete(createCellId(rowId, columnId));
+  }
+
+  /**
+   * clone a row
+   * @param rowId id of the row to be clone
+   */
+  @Method()
+  async cloneRow(rowId: RowId): Promise<RowId> {
+    const sourceIndex = this.rows.findIndex(row => row.id === rowId);
+    if (sourceIndex > -1) {
+      const cloneRowId = `${rowId}-clone`;
+      const clone = { id: `${rowId}-clone`, data: { ...this.rows[sourceIndex] }.data };
+      this.rows.splice(sourceIndex + 1, 0, clone);
+      return Promise.resolve(cloneRowId);
+    }
+    return Promise.reject(new Error(`data not found for ${rowId}`));
+  }
+
+  /**
+   * Select a list of rows
+   * @param rowIds ids of the rows to be select
+   */
+  @Method()
+  async selectRows(rowIds: RowId[] | 'all'): Promise<boolean> {
+    const selectedIDs = rowIds === 'all' ? this.displayedRows.map(row => row.id) : rowIds;
+
+    this.selectedRows = new Set(selectedIDs);
+    return true;
   }
 
   private l10n: L10n | undefined;
@@ -185,7 +248,10 @@ export class P6Grid {
       <Host>
         {this.renderContextMenu()}
 
-        <p6-grid-actions columns={this.columns} hideOptions={!displayGridOptions} />
+        <p6-grid-actions columns={this.columns} hideOptions={!displayGridOptions}>
+          <slot name="actions" />
+        </p6-grid-actions>
+
         {displayGridOptions ? <p6-grid-options title={this.l10n?.hideColumn} columns={this.columns} /> : undefined}
         {hasHeadersToDisplay ? <P6GridHeaderColumns columnsToDisplay={columns[1]} /> : undefined}
 
@@ -224,7 +290,21 @@ export class P6Grid {
             selected={this.selectedRows.has(row.id)}
             onContextMenu={this.rowContextMenuHandler(row)}
           >
-            <P6GridRowCells row={row} columnsToDisplay={columnsToDisplay} />
+            {columnsToDisplay.map(column => {
+              const cellId = createCellId(row.id, column.id);
+              return (
+                <p6-grid-cell
+                  key={cellId}
+                  row={row}
+                  column={column}
+                  align={column.align}
+                  color={column.color}
+                  width={column.width}
+                  editable={column.editable}
+                  editing={this.editingCells.has(cellId)}
+                />
+              );
+            })}
           </p6-grid-row>
         ))}
       </p6-grid-body>

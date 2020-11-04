@@ -64,12 +64,12 @@ export class P6GridActions implements ComponentInterface {
     return (
       <Host>
         <div class="level-left">
+          <slot />
           {hasHiddenColumns ? (
             <P6GridButtonItem icon={toggleDisplayOptionsIcon} clickHandler={this.toggleDisplayOptionsHandler(!this.hideOptions)} tooltip={toggleDisplayOptionsLabel} />
           ) : undefined}
 
           <P6GridButtonItem icon="eraser" mode={Mode.danger} clickHandler={this.resetCustomDefinitionsHandler()} tooltip={this.l10n?.reset} />
-          <slot />
         </div>
         <div class="level-right">
           <div class="level-item control has-icons-left">
