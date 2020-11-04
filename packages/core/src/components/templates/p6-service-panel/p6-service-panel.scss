@@ -1,0 +1,53 @@
+@import '@creativebulma/bulma-tooltip/src/sass/index';
+
+:host {
+  display: block;
+
+  div[slot='label'] {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    h3 {
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  div[slot='header-actions'] {
+    .service-update_state {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $margin-gap;
+
+      .state {
+        text-transform: uppercase;
+
+        @each $name, $pair in $colors {
+          $color: nth($pair, 1);
+          $color-invert: nth($pair, 2);
+
+          &.is-#{$name} {
+            color: $color;
+
+            &:hover,
+            &.is-hovered {
+              color: bulmaDarken($color, 2.5%);
+            }
+          }
+        }
+      }
+    }
+
+    p6-button ::slotted(::first-letter) {
+      text-transform: uppercase;
+    }
+    ::slotted(p6-button::first-letter) {
+      text-transform: uppercase;
+    }
+
+    p6-button::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

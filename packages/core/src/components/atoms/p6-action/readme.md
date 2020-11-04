@@ -17,6 +17,7 @@
 
 - [p6-grid-header-menu](../../organisms/p6-grid/components/p6-grid-header-menu)
 - [p6-panel](../../molecules/p6-panel)
+- [p6-service-panel](../../templates/p6-service-panel)
 - [p6-translation](../../molecules/p6-translation)
 - [p6-translation-line](../../molecules/p6-translation/components/p6-translation-line)
 
@@ -26,6 +27,7 @@
 graph TD;
   p6-grid-header-menu --> p6-action
   p6-panel --> p6-action
+  p6-service-panel --> p6-action
   p6-translation --> p6-action
   p6-translation-line --> p6-action
   style p6-action fill:#f9f,stroke:#333,stroke-width:4px
