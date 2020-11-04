@@ -65,21 +65,24 @@ $button-static-border-color: $border !default;
       color: inherit;
     }
 
-    .icon {
-      &:first-child:not(:last-child) {
-        margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
-        margin-right: $button-padding-horizontal / 4;
-      }
+    ::slotted(.icon:first-child:not(:last-child)),
+    ::slotted(p6-icon:first-child:not(:last-child)) {
+      margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
+      margin-right: $button-padding-horizontal / 4;
+    }
 
-      &:last-child:not(:first-child) {
-        margin-left: $button-padding-horizontal / 4;
-        margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
-      }
+    ::slotted(.icon:last-child:not(:first-child)),
+    ::slotted(p6-icon:last-child:not(:first-child)) {
+      margin-left: $button-padding-horizontal / 4;
+      margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
+    }
 
-      &:first-child:last-child {
-        margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
-        margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
-      }
+    ::slotted(.icon:first-child:last-child),
+    ::slotted(p6-icon:first-child:last-child) {
+      $margin: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width});
+
+      margin-left: $margin;
+      margin-right: $margin;
     }
 
     // States

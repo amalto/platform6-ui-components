@@ -10,6 +10,8 @@ $icon-dimensions-small: $size-small !default;
     display: inline-flex;
     justify-content: center;
     height: $icon-dimensions;
+    min-height: $icon-dimensions-min;
+    min-width: $icon-dimensions-min;
 
     &.is-small {
       height: $icon-dimensions-small;

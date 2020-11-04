@@ -65,7 +65,7 @@ export const Icon = makeStory({
   builder: (): HTMLElement =>
     getElement('div', [
       getStoryField(
-        [getElement('p6-icon', [], { name: 'home', size: Size.small }), getElement('span', '')],
+        [getElement('p6-icon', [], { name: 'home', size: Size.small }), getElement('span', 'Home')],
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         { size: Size.small, style: 'margin-right: 5px;' as any },
       ),
