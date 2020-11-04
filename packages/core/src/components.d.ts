@@ -37,6 +37,7 @@ import {
   ShowOptionsDetail,
   SortColumnDetail,
 } from './components/organisms/p6-grid/core/entities';
+import { ActionsOptions } from './components/templates/p6-grid-row-actions/types';
 import { ServiceStatus } from './components/templates/p6-service-panel/service-status.enum';
 import { P6Control } from './shared/form/control';
 import { InvalidEventDetail, ValidEventDetail } from './shared/form/event';
@@ -322,6 +323,20 @@ export namespace Components {
      * Is row selected or not
      */
     selected: boolean;
+  }
+  interface P6GridRowActions {
+    /**
+     * Set to true if row is being edited
+     */
+    isRowEdited: boolean;
+    /**
+     * options for the actions
+     */
+    options?: ActionsOptions;
+    /**
+     * Id of the row
+     */
+    rowId: RowId;
   }
   interface P6GridTextareaCellEditor {
     /**
@@ -889,6 +904,11 @@ declare global {
     prototype: HTMLP6GridRowElement;
     new (): HTMLP6GridRowElement;
   };
+  interface HTMLP6GridRowActionsElement extends Components.P6GridRowActions, HTMLStencilElement {}
+  var HTMLP6GridRowActionsElement: {
+    prototype: HTMLP6GridRowActionsElement;
+    new (): HTMLP6GridRowActionsElement;
+  };
   interface HTMLP6GridTextareaCellEditorElement extends Components.P6GridTextareaCellEditor, HTMLStencilElement {}
   var HTMLP6GridTextareaCellEditorElement: {
     prototype: HTMLP6GridTextareaCellEditorElement;
@@ -1023,6 +1043,7 @@ declare global {
     'p6-grid-header-menu': HTMLP6GridHeaderMenuElement;
     'p6-grid-options': HTMLP6GridOptionsElement;
     'p6-grid-row': HTMLP6GridRowElement;
+    'p6-grid-row-actions': HTMLP6GridRowActionsElement;
     'p6-grid-textarea-cell-editor': HTMLP6GridTextareaCellEditorElement;
     'p6-help': HTMLP6HelpElement;
     'p6-hint': HTMLP6HintElement;
@@ -1358,6 +1379,48 @@ declare namespace LocalJSX {
      * Is row selected or not
      */
     selected?: boolean;
+  }
+  interface P6GridRowActions {
+    /**
+     * Set to true if row is being edited
+     */
+    isRowEdited?: boolean;
+    /**
+     * Fires when the user clicks on the cancel action
+     */
+    onP6Cancel?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * Fires when the user clicks on the clone action
+     */
+    onP6CloneRow?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * Fires when the user clicks on the delete action
+     */
+    onP6DeleteRow?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * Fires when the user clicks on the edit action
+     */
+    onP6EditRow?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * Fires when the user clicks on the export action
+     */
+    onP6ExportRow?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * Fires when the user clicks on the rename action
+     */
+    onP6RenameRow?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * Fires when the user clicks on the view action
+     */
+    onP6ViewRow?: (event: CustomEvent<{ rowId: RowId }>) => void;
+    /**
+     * options for the actions
+     */
+    options?: ActionsOptions;
+    /**
+     * Id of the row
+     */
+    rowId: RowId;
   }
   interface P6GridTextareaCellEditor {
     /**
@@ -1915,6 +1978,7 @@ declare namespace LocalJSX {
     'p6-grid-header-menu': P6GridHeaderMenu;
     'p6-grid-options': P6GridOptions;
     'p6-grid-row': P6GridRow;
+    'p6-grid-row-actions': P6GridRowActions;
     'p6-grid-textarea-cell-editor': P6GridTextareaCellEditor;
     'p6-help': P6Help;
     'p6-hint': P6Hint;
@@ -1962,6 +2026,7 @@ declare module '@stencil/core' {
       'p6-grid-header-menu': LocalJSX.P6GridHeaderMenu & JSXBase.HTMLAttributes<HTMLP6GridHeaderMenuElement>;
       'p6-grid-options': LocalJSX.P6GridOptions & JSXBase.HTMLAttributes<HTMLP6GridOptionsElement>;
       'p6-grid-row': LocalJSX.P6GridRow & JSXBase.HTMLAttributes<HTMLP6GridRowElement>;
+      'p6-grid-row-actions': LocalJSX.P6GridRowActions & JSXBase.HTMLAttributes<HTMLP6GridRowActionsElement>;
       'p6-grid-textarea-cell-editor': LocalJSX.P6GridTextareaCellEditor & JSXBase.HTMLAttributes<HTMLP6GridTextareaCellEditorElement>;
       'p6-help': LocalJSX.P6Help & JSXBase.HTMLAttributes<HTMLP6HelpElement>;
       'p6-hint': LocalJSX.P6Hint & JSXBase.HTMLAttributes<HTMLP6HintElement>;

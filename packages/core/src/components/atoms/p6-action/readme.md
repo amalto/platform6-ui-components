@@ -16,6 +16,7 @@
 ### Used by
 
 - [p6-grid-header-menu](../../organisms/p6-grid/components/p6-grid-header-menu)
+- [p6-grid-row-actions](../../templates/p6-grid-row-actions)
 - [p6-panel](../../molecules/p6-panel)
 - [p6-service-panel](../../templates/p6-service-panel)
 - [p6-translation](../../molecules/p6-translation)
@@ -26,6 +27,7 @@
 ```mermaid
 graph TD;
   p6-grid-header-menu --> p6-action
+  p6-grid-row-actions --> p6-action
   p6-panel --> p6-action
   p6-service-panel --> p6-action
   p6-translation --> p6-action
