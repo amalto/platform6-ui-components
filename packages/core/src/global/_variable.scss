@@ -6,6 +6,7 @@
 
 // bulma/sass/utilities/derived-variables.scss
 $family-primary: 'Open Sans', helvetica, arial, sans-serif;
+$family-secondary: 'Montserrat', sans-serif;
 
 // P6 Components Variables
 $gap-size: 5;
@@ -89,6 +90,8 @@ $radius-large: 6px !default;
 $radius-rounded: 290486px !default;
 
 // Typography
+$title-family: $family-secondary !default;
+
 $size-4: 1.25rem !default;
 $size-5: 1rem !default;
 $size-6: 0.875rem !default;
@@ -119,6 +122,9 @@ $body-line-height: 1.5 !default;
 // Controls
 $control-border-width: 1px !default;
 $control-height: 1.875rem !default;
+
+// Icon
+$icon-dimensions-min: 12px;
 
 // Input
 $input-color: $text-strong !default;

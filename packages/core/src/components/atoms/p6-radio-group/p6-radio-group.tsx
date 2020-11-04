@@ -19,11 +19,11 @@ function isHTMLP6RadioElement(value: HTMLElement | EventTarget): value is HTMLP6
 export class P6RadioGroup implements ComponentInterface {
   @Element() host!: HTMLP6RadioGroupElement;
 
-  private radioControls: P6Radio[] = [];
+  private controls: P6Radio[] = [];
 
   render(): void {
     return (
-      <Host onP6FormRegister={this.addRadioControl} onP6FormUnregister={this.removeRadioControl} onClick={this.updateRadioControls}>
+      <Host onP6FormRegister={this.addControl} onP6FormUnregister={this.removeControl} onClick={this.updateRadioControls}>
         <slot />
       </Host>
     );
@@ -33,7 +33,7 @@ export class P6RadioGroup implements ComponentInterface {
     if (event.target !== null && isHTMLP6RadioElement(event.target)) {
       const radioClicked = event.target;
 
-      this.radioControls.forEach(radio => {
+      this.controls.forEach(radio => {
         if (radio.name === radioClicked.name && radio.value !== radioClicked.value) {
           // eslint-disable-next-line no-param-reassign
           radio.checked = false;
@@ -42,13 +42,13 @@ export class P6RadioGroup implements ComponentInterface {
     }
   };
 
-  private addRadioControl = (event: CustomEvent<P6Control<unknown>>): void => {
+  private addControl = (event: CustomEvent<P6Control<unknown>>): void => {
     if (isP6Radio(event.detail)) {
-      this.radioControls.push(event.detail);
+      this.controls.push(event.detail);
     }
   };
 
-  private removeRadioControl = (event: CustomEvent<P6Control<unknown>>): void => {
-    this.radioControls = this.radioControls.filter(radio => radio === event.detail);
+  private removeControl = (event: CustomEvent<P6Control<unknown>>): void => {
+    this.controls = this.controls.filter(radio => radio === event.detail);
   };
 }
