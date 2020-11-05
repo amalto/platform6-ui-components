@@ -67,8 +67,8 @@ Before creating a component, you have to read more about `atomic design` ( https
 - Open storybook: `npm run storybook`
 
 ### Validating the code
-
-It is _important_ that your code is _consistant_, we use a _linter_ for that and have a few command lines.
+œ
+It is _important_ that your code is _consistent_, we use a _linter_ for that and have a few command lines.
 
 - Run the `npm run format` to format and try to fix as many lint issues as possible.
 - Run `npm run lint` to check your code
