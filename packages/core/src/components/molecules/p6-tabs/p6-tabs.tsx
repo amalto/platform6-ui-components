@@ -1,56 +1,74 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Method, State } from '@stencil/core';
 import { toArray } from '../../../utils/dom';
-import { getTabId, isTabValid } from './utils';
+import { isTabValid } from './utils';
 
 @Component({
   tag: 'p6-tabs',
   styleUrl: 'p6-tabs.scss',
   shadow: true,
 })
-export class P6Tabs {
+export class P6Tabs implements ComponentInterface {
   @Element() host!: HTMLP6TabsElement;
-
-  /**
-   * Default tab selected.
-   */
-  // eslint-disable-next-line @stencil/strict-mutable
-  @Prop({ mutable: true }) selected: string | undefined;
 
   /**
    * Close tab event
    */
-  @Event({ eventName: 'p6CloseTab' }) closeTab!: EventEmitter<{
-    tabId: string;
-  }>;
+  @Event({ eventName: 'p6CloseTab' }) closeTabEmitter?: EventEmitter<{ tabId: string }>;
 
-  private handleTabSelection = (event: MouseEvent): void => {
-    event.preventDefault();
-    const { id } = event.currentTarget as HTMLAnchorElement;
-    this.selected = id;
-  };
+  @State() selectedTabId: string | undefined;
 
-  private getTabs(): HTMLElement[] {
+  /**
+   * refresh the component
+   */
+  @Method()
+  async refresh(): Promise<void> {
+    forceUpdate(this.host);
+  }
+
+  /**
+   * close a tab
+   * @param tabId the id of the tab to be close
+   */
+  @Method()
+  async close(tabId: string): Promise<boolean> {
+    const tabToClose = this.host.querySelector<HTMLP6TabElement>(`#${tabId}`);
+
+    if (tabToClose !== null) {
+      this.closeTab(tabToClose);
+      return Promise.resolve(true);
+    }
+    return Promise.resolve(false);
+  }
+
+  private getTabs(): HTMLP6TabElement[] {
     return toArray(this.host.children).filter(isTabValid);
   }
 
-  private getContent(): JSX.Element {
-    const child = this.getTabs().find(tab => this.selected === getTabId(tab.id));
+  componentWillLoad(): void {
+    const tabs = this.getTabs();
+    const selectedTab = tabs.find(tab => tab.active);
 
-    return <div class="tab-content">{child?.innerHTML}</div>;
+    if (tabs.length === 0) {
+      return;
+    }
+
+    if (selectedTab === undefined) {
+      tabs[0].active = true;
+      this.selectedTabId = tabs[0].id;
+    } else {
+      this.selectedTabId = selectedTab.id;
+    }
   }
 
-  private closeTabHandler = (event: MouseEvent, tabId: string): void => {
-    event.preventDefault();
-    event.stopPropagation();
-    this.closeTab.emit({ tabId });
-  };
-
-  componentWillLoad(): void {
-    this.selected = getTabId(this.selected || this.getTabs()[0]?.id);
+  componentWillRender(): void {
+    this.getTabs().forEach(tab => {
+      if (tab.closed) {
+        this.host.removeChild(tab);
+      }
+    });
   }
 
   render(): JSX.Element | null {
-    const { selected } = this;
     const tabs = this.getTabs();
 
     if (tabs.length === 0) {
@@ -60,24 +78,60 @@ export class P6Tabs {
     return (
       <Host>
         <div class="tabs">
-          <ul>
-            {tabs.map(tab => (
-              <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip={tab.title}>
-                <a class={selected === getTabId(tab.id) ? 'is-active' : undefined} href={`#${tab.id}`} id={`${getTabId(tab.id)}`} onClick={this.handleTabSelection}>
-                  <span class="title">{tab.title}</span>
-                  <span
-                    aria-hidden="true"
-                    class={`${tab.className} delete`}
-                    // eslint-disable-next-line react/jsx-no-bind
-                    onClick={event => this.closeTabHandler(event, tab.id)}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ul>{tabs.map(tab => this.renderTab(tab))}</ul>
         </div>
-        {this.getContent()}
+        <div class="tab-content">
+          <slot />
+        </div>
       </Host>
     );
+  }
+
+  private renderTab(tab: HTMLP6TabElement): JSX.Element {
+    return (
+      <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip={tab.title}>
+        <a class={tab.active ? 'is-active' : undefined} href={`#${tab.id}`} onClick={this.selectTabHandler(tab)}>
+          <span class="title">{tab.title}</span>
+          <span aria-hidden="true" class={{ 'delete': true, 'disabled-close': !tab.closeable }} onClick={this.closeTabHandler(tab)} />
+        </a>
+      </li>
+    );
+  }
+
+  private selectTabHandler(selectedTab: HTMLP6TabElement): (event: MouseEvent) => void {
+    return (event: MouseEvent): void => {
+      event.preventDefault();
+
+      this.getTabs().forEach(tab => {
+        // eslint-disable-next-line no-param-reassign
+        tab.active = tab.id === selectedTab.id;
+      });
+      this.selectedTabId = selectedTab.id;
+    };
+  }
+
+  private closeTabHandler(closedTab: HTMLP6TabElement): (event: MouseEvent) => void {
+    return (event: MouseEvent): void => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.closeTab(closedTab);
+    };
+  }
+
+  private closeTab(tabToclose: HTMLP6TabElement): void {
+    tabToclose.close();
+
+    const tabs = this.getTabs();
+    const closedTabIndex = tabs.findIndex(tab => tab.id === tabToclose.id);
+
+    if (tabToclose.active && tabs[closedTabIndex - 1] !== undefined) {
+      tabs[closedTabIndex - 1].active = true;
+      this.selectedTabId = tabs[closedTabIndex - 1].id;
+    } else {
+      forceUpdate(this.host);
+    }
+
+    this.closeTabEmitter?.emit({ tabId: tabToclose.id });
   }
 }

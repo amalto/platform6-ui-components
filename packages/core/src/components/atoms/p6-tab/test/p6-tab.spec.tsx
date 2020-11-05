@@ -7,12 +7,6 @@ describe('p6-tab', () => {
       components: [P6Tab],
       html: `<p6-tab></p6-tab>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-tab>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </p6-tab>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });

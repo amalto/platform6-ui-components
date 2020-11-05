@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-service-panel renders 1`] = `
+<p6-service-panel>
+  <mock:shadow-root>
+    <p6-panel hideable="">
+      <div slot="label">
+        <h3 class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Service version: unknown"></h3>
+        <p6-action mode="5">
+          <p6-icon name="sync-alt"></p6-icon>
+        </p6-action>
+      </div>
+      <div slot="header-actions">
+        <div class="service-update_state">
+          <p6-action>
+            <p6-icon name="sync-alt"></p6-icon>
+          </p6-action>
+          <span>
+            Service status
+          </span>
+          :
+          <span class="is-info state">
+            unknown
+          </span>
+        </div>
+        <p6-button mode="5" outlined="" size="0">
+          <p6-icon name="play"></p6-icon>
+          <span>
+            start
+          </span>
+        </p6-button>
+        <p6-button mode="0" outlined="" size="0">
+          <p6-icon name="stop"></p6-icon>
+          <span>
+            stop
+          </span>
+        </p6-button>
+      </div>
+      <slot></slot>
+    </p6-panel>
+  </mock:shadow-root>
+</p6-service-panel>
+`;

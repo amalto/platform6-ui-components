@@ -105,7 +105,7 @@ describe('p6-grid', () => {
     const page = await newSpecPage({
       components: [P6Grid],
       template: () => {
-        return <p6-grid definitions={definitions} loading data={testItems} />;
+        return <p6-grid definitions={definitions} data={testItems} loading />;
       },
     });
     expect(page.body.childNodes[0]).toMatchSnapshot();

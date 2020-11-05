@@ -6,54 +6,54 @@ exports[`p6-tabs Should display the third tab 1`] = `
     <div class="tabs">
       <ul>
         <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="What is Lorem Ipsum?">
-          <a href="#first" id="first-tab">
+          <a class="is-active" href="#first">
             <span class="title">
               What is Lorem Ipsum?
             </span>
-            <span aria-hidden="true" class="delete"></span>
+            <span aria-hidden="true" class="delete disabled-close"></span>
           </a>
         </li>
         <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Where does it come from?">
-          <a href="#second" id="second-tab">
+          <a href="#second">
             <span class="title">
               Where does it come from?
             </span>
-            <span aria-hidden="true" class="delete"></span>
+            <span aria-hidden="true" class="delete disabled-close"></span>
           </a>
         </li>
         <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Why do we use it?">
-          <a class="is-active" href="#third" id="third-tab">
+          <a href="#third">
             <span class="title">
               Why do we use it?
             </span>
-            <span aria-hidden="true" class="delete"></span>
+            <span aria-hidden="true" class="delete disabled-close"></span>
           </a>
         </li>
         <li class="has-tooltip-arrow has-tooltip-bottom" data-tooltip="Where can I get some?">
-          <a href="#fourth" id="fourth-tab">
+          <a href="#fourth">
             <span class="title">
               Where can I get some?
             </span>
-            <span aria-hidden="true" class="delete"></span>
+            <span aria-hidden="true" class="delete disabled-close"></span>
           </a>
         </li>
       </ul>
     </div>
     <div class="tab-content">
-      3
+      <slot></slot>
     </div>
   </mock:shadow-root>
-  <div id="first" title="What is Lorem Ipsum?">
+  <p6-tab id="first" title="What is Lorem Ipsum?">
     1
-  </div>
-  <div id="second" title="Where does it come from?">
+  </p6-tab>
+  <p6-tab id="second" title="Where does it come from?">
     2
-  </div>
-  <div id="third" title="Why do we use it?">
+  </p6-tab>
+  <p6-tab id="third" title="Why do we use it?">
     3
-  </div>
-  <div id="fourth" title="Where can I get some?">
+  </p6-tab>
+  <p6-tab id="fourth" title="Where can I get some?">
     4
-  </div>
+  </p6-tab>
 </p6-tabs>
 `;

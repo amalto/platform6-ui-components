@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-panel renders 1`] = `
+<p6-panel>
+  <mock:shadow-root>
+    <div class="panel-header">
+      <slot name="label"></slot>
+      <slot name="header-actions"></slot>
+    </div>
+    <div class="panel-body">
+      <slot></slot>
+    </div>
+  </mock:shadow-root>
+</p6-panel>
+`;

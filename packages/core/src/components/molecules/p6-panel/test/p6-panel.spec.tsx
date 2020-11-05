@@ -7,12 +7,6 @@ describe('p6-panel', () => {
       components: [P6Panel],
       html: `<p6-panel></p6-panel>`,
     });
-    expect(page.root).toEqualHtml(`
-      <p6-panel>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </p6-panel>
-    `);
+    expect(page.root).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
-const tabIds = 0;
+let tabIds = 0;
 
 @Component({
   tag: 'p6-tab',
@@ -32,7 +32,8 @@ export class P6Tab implements ComponentInterface {
 
   componentWillLoad(): void {
     if (this.host.id === '') {
-      this.host.id = `tab-${tabIds + 1}`;
+      // eslint-disable-next-line no-plusplus
+      this.host.id = `tab-${tabIds++}`;
     }
   }
 

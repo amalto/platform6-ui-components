@@ -738,9 +738,14 @@ export namespace Components {
   }
   interface P6Tabs {
     /**
-     * Default tab selected.
+     * close a tab
+     * @param tabId the id of the tab to be close
      */
-    selected: string | undefined;
+    close: (tabId: string) => Promise<boolean>;
+    /**
+     * refresh the component
+     */
+    refresh: () => Promise<void>;
   }
   interface P6Tag {
     /**
@@ -1928,15 +1933,7 @@ declare namespace LocalJSX {
     /**
      * Close tab event
      */
-    onP6CloseTab?: (
-      event: CustomEvent<{
-        tabId: string;
-      }>,
-    ) => void;
-    /**
-     * Default tab selected.
-     */
-    selected?: string | undefined;
+    onP6CloseTab?: (event: CustomEvent<{ tabId: string }>) => void;
   }
   interface P6Tag {
     /**

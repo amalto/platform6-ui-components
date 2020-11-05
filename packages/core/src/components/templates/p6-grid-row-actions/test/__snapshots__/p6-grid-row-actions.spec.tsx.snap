@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-grid-row-actions renders 1`] = `
+<p6-grid-row-actions>
+  <mock:shadow-root>
+    <slot>
+      <p6-action title="view">
+        <p6-icon name="search-plus"></p6-icon>
+      </p6-action>
+      <p6-action mode="1" title="edit">
+        <p6-icon name="pencil-alt"></p6-icon>
+      </p6-action>
+      <p6-action mode="1" title="rename">
+        <p6-icon name="i-cursor"></p6-icon>
+      </p6-action>
+      <p6-action mode="5" title="copy">
+        <p6-icon iconprefix="far" name="copy"></p6-icon>
+      </p6-action>
+      <p6-action mode="3" title="export">
+        <p6-icon name="download"></p6-icon>
+      </p6-action>
+      <p6-action mode="0" title="delete">
+        <p6-icon name="trash-alt"></p6-icon>
+      </p6-action>
+    </slot>
+  </mock:shadow-root>
+</p6-grid-row-actions>
+`;
