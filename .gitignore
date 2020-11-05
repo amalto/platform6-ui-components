@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # cache
-.eslintcache/
-.sass-cache/
+.eslintcache
+.sass-cache
 
 # dependencies
 node_modules
