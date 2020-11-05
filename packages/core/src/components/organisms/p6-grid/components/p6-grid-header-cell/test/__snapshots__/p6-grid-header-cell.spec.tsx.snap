@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`p6-grid-header-cell should render a cell 1`] = `
-<p6-grid-header-cell style="width: 150px;">
+<p6-grid-header-cell style="width: 150px; flex: none;">
   <mock:shadow-root>
     <div class="wrapper">
       <div class="label">

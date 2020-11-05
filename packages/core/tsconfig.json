@@ -1,11 +1,11 @@
 {
-    "extends": "../../tsconfig.base.json",
-    "compilerOptions": {
-      "declaration": true,
-      "composite": true,
-      "jsx": "react",
-      "jsxFactory": "h"
-    },
-    "include": ["src", "package.json", "types/jsx.d.ts"],
-    "exclude": ["node_modules", "dist", "loader", "src/**/*.stories.ts", "src/**/*.stories.tsx"]
-  }
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "composite": true,
+    "jsx": "react",
+    "jsxFactory": "h"
+  },
+  "include": ["src", "package.json", "types/jsx.d.ts"],
+  "exclude": ["node_modules", "dist", "loader", "src/**/*.stories.ts", "src/**/*.stories.tsx", "src/shared/storybook/*.ts"]
+}

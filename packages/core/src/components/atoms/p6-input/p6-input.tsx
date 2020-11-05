@@ -131,8 +131,8 @@ export class P6Input implements ComponentInterface, P6Control<P6InputValue> {
             readOnly={this.readOnly}
             required={this.required}
             type={P6InputType[this.type]}
-            value={this.value}
             {...this.minMaxAttrs}
+            value={this.value}
           />
         </form>
       </Host>

@@ -3,8 +3,7 @@
 exports[`p6-textarea add the class "is-static" when the readonly props is true 1`] = `
 <p6-textarea readonly="">
   <mock:shadow-root>
-    <form class="control" novalidate="">
-      <textarea class="is-static textarea" readonly=""></textarea>
+    <form class="control" novalidate=""><textarea class="is-static textarea" readonly=""></textarea>
     </form>
   </mock:shadow-root>
 </p6-textarea>
@@ -13,8 +12,7 @@ exports[`p6-textarea add the class "is-static" when the readonly props is true 1
 exports[`p6-textarea add the waiting class on the input container, not on the input 1`] = `
 <p6-textarea waiting="">
   <mock:shadow-root>
-    <form class="control is-loading" novalidate="">
-      <textarea class="textarea"></textarea>
+    <form class="control is-loading" novalidate=""><textarea class="textarea"></textarea>
     </form>
   </mock:shadow-root>
 </p6-textarea>
@@ -23,8 +21,7 @@ exports[`p6-textarea add the waiting class on the input container, not on the in
 exports[`p6-textarea renders 1`] = `
 <p6-textarea>
   <mock:shadow-root>
-    <form class="control" novalidate="">
-      <textarea class="textarea"></textarea>
+    <form class="control" novalidate=""><textarea class="textarea"></textarea>
     </form>
   </mock:shadow-root>
 </p6-textarea>

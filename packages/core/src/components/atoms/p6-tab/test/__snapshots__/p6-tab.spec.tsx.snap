@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p6-tab renders 1`] = `
+<p6-tab id="tab-0">
+  <mock:shadow-root></mock:shadow-root>
+</p6-tab>
+`;

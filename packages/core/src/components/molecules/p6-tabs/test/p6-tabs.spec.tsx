@@ -21,10 +21,10 @@ describe('p6-tabs', () => {
       components: [P6Tabs],
       html: `
       <p6-tabs selected="third">
-        <div id="first" title="What is Lorem Ipsum?">1</div>
-        <div id="second" title="Where does it come from?">2</div>
-        <div id="third" title="Why do we use it?">3</div>
-        <div id="fourth" title="Where can I get some?">4</div>
+        <p6-tab id="first" title="What is Lorem Ipsum?">1</p6-tab>
+        <p6-tab id="second" title="Where does it come from?">2</p6-tab>
+        <p6-tab id="third" title="Why do we use it?">3</p6-tab>
+        <p6-tab id="fourth" title="Where can I get some?">4</p6-tab>
       </p6-tabs>
       `,
     });

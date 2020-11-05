@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import { Alignment } from '../../../../../shared/types';
 import { toWidth } from '../../../../../utils/css';
 import { DEFAULT_WIDTH } from '../../core/column';
@@ -7,7 +7,7 @@ import { Column, DataItem, EditingCellDetail, EditingCellStatus, Row } from '../
 @Component({
   tag: 'p6-grid-cell',
   styleUrl: 'p6-grid-cell.scss',
-  shadow: true,
+  scoped: true,
 })
 export class P6GridCell implements ComponentInterface {
   @Element() host!: HTMLP6GridCellElement;
@@ -48,19 +48,17 @@ export class P6GridCell implements ComponentInterface {
   // eslint-disable-next-line @stencil/strict-mutable
   @Prop({ mutable: true }) editing = false;
 
-  @State() isEditing = false;
-
   @Listen('p6GridEditingCell')
   onP6GridEditingCell(event: CustomEvent<EditingCellDetail<DataItem>>): void {
     if (event.detail.status !== EditingCellStatus.Start) {
-      this.isEditing = false;
+      this.editing = false;
     }
   }
 
   componentWillLoad(): void {
     this.host.addEventListener('dblclick', () => {
       if (this.editable) {
-        this.isEditing = true;
+        this.editing = true;
       }
     });
   }
@@ -71,24 +69,51 @@ export class P6GridCell implements ComponentInterface {
       color,
       justifyContent: Alignment[align],
       width: toWidth(width),
-    };
-    const classes = {
-      'is-editing': this.isEditing,
+      flex: width === DEFAULT_WIDTH ? 'initial' : 'none',
     };
 
-    return (
+    const classes = {
+      'is-editing': this.editing,
+    };
+
+    const content = this.cellContentRender(this.host);
+
+    return content !== null ? (
       <Host class={classes} style={styles}>
-        {this.isEditing ? this.getCellEditor(this.row, this.column) : <slot />}
+        {content}
       </Host>
+    ) : (
+      <Host class={classes} style={styles} />
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  private getCellEditor(row: Row<DataItem>, column: Column<DataItem>) {
-    return column.cellEditor !== undefined ? (
-      column.cellEditor(row.data, column)
-    ) : (
-      <p6-grid-textarea-cell-editor row={row} value={column.getValue(row.data, column)} column={column} />
-    );
+  private cellContentRender(parentNode: Element | null) {
+    if (this.editing) {
+      return this.column.cellEditor !== undefined ? (
+        this.column.cellEditor(this.row.data, this.column)
+      ) : (
+        <p6-grid-textarea-cell-editor row={this.row} value={this.column.getValue(this.row.data, this.column)} column={this.column} />
+      );
+    }
+
+    if (this.column.cellRenderer === undefined) {
+      return this.column.getValue(this.row.data, this.column);
+    }
+
+    const cellContent = this.column.cellRenderer(this.row.data, this.row.id, this.column);
+    if (typeof cellContent === 'string' || '$tag$' in cellContent) {
+      return cellContent;
+    }
+    if (parentNode !== null) {
+      const child = this.host.firstChild;
+
+      if (child === null) {
+        parentNode.appendChild(cellContent);
+      } else {
+        parentNode.replaceChild(cellContent, child);
+      }
+    }
+
+    return null;
   }
 }
