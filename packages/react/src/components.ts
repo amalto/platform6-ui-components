@@ -35,6 +35,7 @@ export const P6Input = /*@__PURE__*/createReactComponent<JSX.P6Input, HTMLP6Inpu
 export const P6Label = /*@__PURE__*/createReactComponent<JSX.P6Label, HTMLP6LabelElement>('p6-label');
 export const P6Language = /*@__PURE__*/createReactComponent<JSX.P6Language, HTMLP6LanguageElement>('p6-language');
 export const P6Link = /*@__PURE__*/createReactComponent<JSX.P6Link, HTMLP6LinkElement>('p6-link');
+export const P6Modal = /*@__PURE__*/createReactComponent<JSX.P6Modal, HTMLP6ModalElement>('p6-modal');
 export const P6Panel = /*@__PURE__*/createReactComponent<JSX.P6Panel, HTMLP6PanelElement>('p6-panel');
 export const P6Radio = /*@__PURE__*/createReactComponent<JSX.P6Radio, HTMLP6RadioElement>('p6-radio');
 export const P6RadioGroup = /*@__PURE__*/createReactComponent<JSX.P6RadioGroup, HTMLP6RadioGroupElement>('p6-radio-group');

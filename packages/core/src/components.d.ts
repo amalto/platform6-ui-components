@@ -552,6 +552,16 @@ export namespace Components {
      */
     target: Target | undefined;
   }
+  interface P6Modal {
+    /**
+     * Display a modal with a head, a body and a foot
+     */
+    hasCard: boolean;
+    /**
+     * Open the modal
+     */
+    open: boolean;
+  }
   interface P6Panel {
     /**
      * Set the panel hideable
@@ -1010,6 +1020,11 @@ declare global {
     prototype: HTMLP6LinkElement;
     new (): HTMLP6LinkElement;
   };
+  interface HTMLP6ModalElement extends Components.P6Modal, HTMLStencilElement {}
+  var HTMLP6ModalElement: {
+    prototype: HTMLP6ModalElement;
+    new (): HTMLP6ModalElement;
+  };
   interface HTMLP6PanelElement extends Components.P6Panel, HTMLStencilElement {}
   var HTMLP6PanelElement: {
     prototype: HTMLP6PanelElement;
@@ -1114,6 +1129,7 @@ declare global {
     'p6-label': HTMLP6LabelElement;
     'p6-language': HTMLP6LanguageElement;
     'p6-link': HTMLP6LinkElement;
+    'p6-modal': HTMLP6ModalElement;
     'p6-panel': HTMLP6PanelElement;
     'p6-radio': HTMLP6RadioElement;
     'p6-radio-group': HTMLP6RadioGroupElement;
@@ -1717,6 +1733,16 @@ declare namespace LocalJSX {
      */
     target?: Target | undefined;
   }
+  interface P6Modal {
+    /**
+     * Display a modal with a head, a body and a foot
+     */
+    hasCard?: boolean;
+    /**
+     * Open the modal
+     */
+    open?: boolean;
+  }
   interface P6Panel {
     /**
      * Set the panel hideable
@@ -2100,6 +2126,7 @@ declare namespace LocalJSX {
     'p6-label': P6Label;
     'p6-language': P6Language;
     'p6-link': P6Link;
+    'p6-modal': P6Modal;
     'p6-panel': P6Panel;
     'p6-radio': P6Radio;
     'p6-radio-group': P6RadioGroup;
@@ -2149,6 +2176,7 @@ declare module '@stencil/core' {
       'p6-label': LocalJSX.P6Label & JSXBase.HTMLAttributes<HTMLP6LabelElement>;
       'p6-language': LocalJSX.P6Language & JSXBase.HTMLAttributes<HTMLP6LanguageElement>;
       'p6-link': LocalJSX.P6Link & JSXBase.HTMLAttributes<HTMLP6LinkElement>;
+      'p6-modal': LocalJSX.P6Modal & JSXBase.HTMLAttributes<HTMLP6ModalElement>;
       'p6-panel': LocalJSX.P6Panel & JSXBase.HTMLAttributes<HTMLP6PanelElement>;
       'p6-radio': LocalJSX.P6Radio & JSXBase.HTMLAttributes<HTMLP6RadioElement>;
       'p6-radio-group': LocalJSX.P6RadioGroup & JSXBase.HTMLAttributes<HTMLP6RadioGroupElement>;
