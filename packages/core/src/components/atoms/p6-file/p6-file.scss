@@ -1,8 +1,13 @@
+@import '@fortawesome/fontawesome-svg-core/styles';
 @import 'src/styles/atoms/control';
+@import 'src/styles/atoms/button';
+
+$icon-dimensions: $size-normal !default;
+$icon-dimensions-small: $size-small !default;
 
 :host {
   box-sizing: border-box;
-  display: block;
+  display: inline-flex;
   position: relative;
 
   $file-border-color: $border !default;
@@ -52,31 +57,35 @@
     text-overflow: ellipsis;
   }
   .file-icon {
-    align-items: center;
-    display: flex;
-    height: 1em;
-    justify-content: center;
     @include ltr-property('margin', 0.5em);
 
-    width: 1em;
-    .fa {
-      font-size: 14px;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 0.875rem;
+    min-height: 12px;
+    min-width: 12px;
+
+    svg {
+      height: 100%;
+      width: 100%;
     }
   }
 
   .file-label,
   .file-cta {
+    height: 100%;
     width: 100%;
   }
 
   .file-input {
     height: 100%;
+    width: 100%;
     left: 0;
     opacity: 0;
     outline: none;
     position: absolute;
     top: 0;
-    width: 100%;
   }
 
   .file {
@@ -162,24 +171,14 @@
 
     // Sizes;
     &.is-small {
-      font-size: $size-small;
-    }
-    &.is-medium {
-      font-size: $size-medium;
-      .file-icon {
-        .fa {
-          font-size: 21px;
-        }
-      }
-    }
+      @include button-small;
 
-    &.is-large {
-      font-size: $size-large;
       .file-icon {
-        .fa {
-          font-size: 28px;
-        }
+        height: $icon-dimensions-small;
       }
+    }
+    &.is-normal {
+      @include button-normal;
     }
 
     .file-label {
