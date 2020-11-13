@@ -42,13 +42,7 @@ export const config: Config = {
   plugins: [
     sass({
       includePaths: ['./node_modules/'],
-      injectGlobalPaths: [
-        './src/global/_variable.scss',
-        './src/global/_functions.scss',
-        './src/global/_colors.scss',
-        // "./node_modules/bulma/sass/utilities/_all.sass",
-        './src/global/_global.scss',
-      ],
+      injectGlobalPaths: [['./src/global/_main.scss', '*']],
     }),
     postcss({
       plugins: [autoprefixer()],
