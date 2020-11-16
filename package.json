@@ -1,7 +1,4 @@
 {
-  "name": "@platform6/components",
-  "version": "0.0.1",
-  "description": "Platform 6 UI components",
   "scripts": {
   },
   "dependencies": {},
