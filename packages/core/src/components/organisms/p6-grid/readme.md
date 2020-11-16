@@ -17,6 +17,7 @@
 | --------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
 | `p6GridConfigurationChange` | Listen to change event to get updated p6-grid data | `CustomEvent<{ columns: Column<Record<string, unknown>>[]; }>` |
 | `p6GridRowDataChange`       | Listen to change event to get updated p6-grid data | `CustomEvent<{ row: Record<string, unknown>[]; }>`             |
+| `p6GridSelectedRowsChange`  | Listen to change event to get updated p6-grid data | `CustomEvent<{ rowIds: Set<string>; }>`                        |
 
 ## Methods
 
@@ -35,6 +36,14 @@ Get the columns of the grid
 #### Returns
 
 Type: `Promise<Column<Record<string, unknown>>[]>`
+
+### `getRows() => Promise<Row<DataItem>[]>`
+
+Get the row of the grid
+
+#### Returns
+
+Type: `Promise<Row<Record<string, unknown>>[]>`
 
 ### `selectRows(rowIds: RowId[] | 'all') => Promise<boolean>`
 

@@ -264,6 +264,10 @@ export namespace Components {
      */
     getColumns: () => Promise<Column<DataItem>[]>;
     /**
+     * Get the row of the grid
+     */
+    getRows: () => Promise<Row<DataItem>[]>;
+    /**
      * Display spinner
      */
     loading: boolean;
@@ -1389,6 +1393,10 @@ declare namespace LocalJSX {
      * Listen to change event to get updated p6-grid data
      */
     onP6GridRowDataChange?: (event: CustomEvent<{ row: DataItem[] }>) => void;
+    /**
+     * Listen to change event to get updated p6-grid data
+     */
+    onP6GridSelectedRowsChange?: (event: CustomEvent<{ rowIds: Set<RowId> }>) => void;
   }
   interface P6GridActions {
     /**

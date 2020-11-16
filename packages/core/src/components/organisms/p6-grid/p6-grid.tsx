@@ -68,6 +68,11 @@ export class P6Grid {
    */
   @Event() p6GridRowDataChange!: EventEmitter<{ row: DataItem[] }>;
 
+  /**
+   * Listen to change event to get updated p6-grid data
+   */
+  @Event() p6GridSelectedRowsChange!: EventEmitter<{ rowIds: Set<RowId> }>;
+
   @State() columns: Column<DataItem>[] = [];
 
   @State() rows: Row<DataItem>[] = [];
@@ -154,6 +159,8 @@ export class P6Grid {
     this.rows = newData.map(fromData);
     this.selectedRows = new Set();
     this.editingCells = new Set();
+
+    this.p6GridSelectedRowsChange.emit({ rowIds: this.selectedRows });
   }
 
   @Watch('definitions')
@@ -167,6 +174,14 @@ export class P6Grid {
   @Method()
   async getColumns(): Promise<Column<DataItem>[]> {
     return Promise.resolve(this.columns);
+  }
+
+  /**
+   * Get the row of the grid
+   */
+  @Method()
+  async getRows(): Promise<Row<DataItem>[]> {
+    return Promise.resolve(this.rows);
   }
 
   /**
@@ -214,6 +229,9 @@ export class P6Grid {
     const selectedIDs = rowIds === 'all' ? this.displayedRows.map(row => row.id) : rowIds;
 
     this.selectedRows = new Set(selectedIDs);
+
+    this.p6GridSelectedRowsChange.emit({ rowIds: this.selectedRows });
+
     return true;
   }
 
@@ -320,6 +338,8 @@ export class P6Grid {
       } else {
         this.selectedRows = new Set([row.id]);
       }
+
+      this.p6GridSelectedRowsChange.emit({ rowIds: this.selectedRows });
     };
   }
 
