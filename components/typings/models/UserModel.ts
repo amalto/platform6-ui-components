@@ -75,29 +75,30 @@ module UserModel {
 }
 
 interface UserModel {
-  userEmail?: string;
-  realm?: string;
-  enabled?: boolean;
-  oldpassword?: string;
-  passwordIn?: string;
-  emailVerified?: boolean;
-  passwordReset?: boolean;
-  firstName?: string;
-  lastName?: string;
   contentIndexAttributes?: string[];
+  emailVerified?: boolean;
+  enabled?: boolean;
+  firstName?: string;
   jsonContent?: string;
+  lastName?: string;
+  oldpassword?: string;
+  orgPositionDisplayNameLookup?: {
+    [instanceName: string]: string;
+  };
+  orgPositionIdMap?: {
+    [appIntanceName: string]: string[]
+  };
+  passwordIn?: string;
+  passwordReset?: boolean;
   policyDetails?: UserModel.Policy[];
   policyList?: UserModel.Policy[];
   propertiesMap?: {
     [key: string]: string
   };
-  orgPositionIdMap?: {
-    [appIntanceName: string]: string[]
-  };
-  orgPositionDisplayNameLookup?: {
-    [instanceName: string]: string;
-  };
   ssoConnectionId?: string;
+  readOnly?: boolean;
+  realm?: string;
+  userEmail?: string;
   userSignature?: string;
 }
 
