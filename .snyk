@@ -1,0 +1,194 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - redux > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - react-redux > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - redux-form > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkbox-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkboxes-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/code-editor-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/date-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-upload-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/radio-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/readonly-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/select-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/switch-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/text-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/textarea-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/time-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/typeahead-form-input > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkbox-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkboxes-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/code-editor-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/date-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-upload-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/radio-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/readonly-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/select-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/switch-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/text-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/textarea-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/time-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/typeahead-form-input > react-redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkbox-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkboxes-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/code-editor-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/date-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-upload-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/radio-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/readonly-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/select-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/switch-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/text-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/textarea-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/time-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/typeahead-form-input > redux-form > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - source-map-loader > async > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/code-editor > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/code-editor-input > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-line > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-input > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-upload-input > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/scope-helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/restricted > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/custom-form-dialog > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/buttons-bar > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/checkboxes-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/validated-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/cron-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-importer > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/file-upload-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/input-validation > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/key-value-editor > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/language-wrapper > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/paging-controls > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/pdf-viewer > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tabs > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/restricted > @amalto/scope-helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/restricted > @amalto/service-helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/service-helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/custom-form-dialog > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/custom-form-dialog > @amalto/file-input > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > @amalto/color-picker > webpack > async > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - babel-preset-react > babel-plugin-transform-react-jsx > babel-helper-builder-react-jsx > babel-types > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - emotion > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/buttons-bar > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/cron-input > @amalto/validated-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/time-input > @amalto/input-validation > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/key-value-editor > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/pdf-viewer > @amalto/paging-controls > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/restricted > @amalto/service-helpers > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/service-helpers > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/restricted > @amalto/service-helpers > @amalto/data-line > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/service-helpers > @amalto/data-line > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/custom-form-dialog > @amalto/file-input > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/data-grid > @amalto/buttons-bar > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - react-select > emotion > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/restricted > @amalto/service-helpers > @amalto/buttons-bar > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
+    - '@amalto/tree > @amalto/service-helpers > @amalto/buttons-bar > @amalto/helpers > @amalto/typings > redux > lodash':
+        patched: '2020-11-28T17:31:25.016Z'
