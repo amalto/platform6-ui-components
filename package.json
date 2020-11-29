@@ -146,7 +146,7 @@
         "moment": "2.20.1",
         "pdfjs-dist": "2.0.489",
         "pikaday": "1.7.0",
-        "popper.js": "1.12.9",
+        "popper.js": "1.16.1",
         "prop-types": "15.6.0",
         "radium": "^0.25.1",
         "react": "15.6.2",
