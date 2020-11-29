@@ -120,7 +120,7 @@
         "@amalto/switch": "^1.10.12",
         "@amalto/switch-input": "^1.10.12",
         "@amalto/tab": "^1.9.17",
-        "@amalto/tabs": "^1.9.58",
+        "@amalto/tabs": "^1.9.67",
         "@amalto/text-input": "^1.9.20",
         "@amalto/textarea-input": "^1.9.20",
         "@amalto/time-input": "^1.9.61",
