@@ -2,7 +2,7 @@
     "name": "@amalto/typings",
     "displayName": "Typings",
     "description": "Interfaces used in Platform 6 UI component.",
-    "version": "1.9.53",
+    "version": "1.9.54",
     "license": "MIT",
     "repository": {
         "type": "git",
