@@ -1,17 +1,18 @@
 interface AceSession {
+    cursorPosition?: AceAjax.Position;
+    firstChangeTime: number;
     id: string;
-    selection: AceAjax.Selection;
-    value: string;
     history: {
         undo: any[];
         redo: any[];
     };
-    scrollTop: number;
-    scrollLeft: number;
+    name?: string;
     options?: any;
-    cursorPosition?: AceAjax.Position;
     savable?: boolean;
-    firstChangeTime: number;
+    scrollLeft: number;
+    scrollTop: number;
+    selection: AceAjax.Selection;
+    value: string;
 }
 
 export default AceSession
