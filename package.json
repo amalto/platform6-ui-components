@@ -90,7 +90,7 @@
         "@amalto/action-button": "^1.9.17",
         "@amalto/buttons-bar": "^1.9.60",
         "@amalto/checkbox-input": "^1.9.20",
-        "@amalto/checkboxes-input": "^1.9.61",
+        "@amalto/checkboxes-input": "^1.9.71",
         "@amalto/code-editor": "^1.9.46",
         "@amalto/code-editor-input": "^1.9.48",
         "@amalto/color-picker": "^1.9.17",
