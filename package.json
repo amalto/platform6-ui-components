@@ -105,7 +105,7 @@
         "@amalto/file-upload-input": "^1.9.63",
         "@amalto/help": "^1.9.21",
         "@amalto/helpers": "^1.9.59",
-        "@amalto/input-validation": "^1.9.58",
+        "@amalto/input-validation": "^1.9.68",
         "@amalto/key-value-editor": "^1.9.59",
         "@amalto/language-wrapper": "^1.9.63",
         "@amalto/paging-controls": "^1.9.61",
