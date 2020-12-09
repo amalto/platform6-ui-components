@@ -109,7 +109,7 @@
         "@amalto/key-value-editor": "^1.9.59",
         "@amalto/language-wrapper": "^1.9.63",
         "@amalto/paging-controls": "^1.9.61",
-        "@amalto/pdf-viewer": "^1.9.61",
+        "@amalto/pdf-viewer": "^1.9.71",
         "@amalto/platform6-ui": "^2.9.6",
         "@amalto/radio-input": "^1.9.22",
         "@amalto/readonly-input": "^1.9.22",
