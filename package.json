@@ -123,7 +123,7 @@
         "@amalto/tabs": "^1.9.67",
         "@amalto/text-input": "^1.9.20",
         "@amalto/textarea-input": "^1.9.20",
-        "@amalto/time-input": "^1.9.61",
+        "@amalto/time-input": "^1.9.71",
         "@amalto/time-picker": "^1.9.20",
         "@amalto/toggle-panel": "^1.9.23",
         "@amalto/tree": "^1.9.61",
