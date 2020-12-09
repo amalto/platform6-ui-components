@@ -113,7 +113,7 @@
         "@amalto/platform6-ui": "^2.9.6",
         "@amalto/radio-input": "^1.9.22",
         "@amalto/readonly-input": "^1.9.22",
-        "@amalto/restricted": "^1.9.74",
+        "@amalto/restricted": "^1.9.84",
         "@amalto/scope-helpers": "^1.9.46",
         "@amalto/select-input": "^1.9.20",
         "@amalto/spinner": "^1.9.20",
