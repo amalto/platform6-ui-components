@@ -44,8 +44,8 @@ import {
  * @param {ServiceItemFacade | ServiceItem} item
  * @returns {Id}
  */
-export function getId( item: ServiceItemFacade | ServiceItem ): Id {
-    return { name: item.name, appKey: item.appKey }
+export function getId(item: ServiceItemFacade | ServiceItem): Id {
+    return { name: item.name, appKey: item.appKey, originalName: item.originalName }
 }
 
 /**
@@ -53,9 +53,9 @@ export function getId( item: ServiceItemFacade | ServiceItem ): Id {
  * @param { ItemFacade } item 
  * @param { Ids } ids 
  */
-export function getItemIdx( item: ServiceItemFacade, ids: Ids ): number {
-    for ( let i = 0; i < ids.length; i++ ) {
-        if ( ids[i].name === item.name && ids[i].appKey === item.appKey ) return i
+export function getItemIdx(item: ServiceItemFacade, ids: Ids): number {
+    for (let i = 0; i < ids.length; i++) {
+        if (ids[i].name === item.name && ids[i].appKey === item.appKey) return i
     }
     return -1
 }
@@ -65,12 +65,12 @@ export function getItemIdx( item: ServiceItemFacade, ids: Ids ): number {
  * @param { ItemFacades } items 
  * @param { Ids } ids 
  */
-export function getItemIndexes( items: ServiceItemFacades, ids: Ids ): number[] {
+export function getItemIndexes(items: ServiceItemFacades, ids: Ids): number[] {
     const indexes: number[] = []
 
-    items.forEach( ( item, idx ) => {
-        if ( getItemIdx( item, ids ) >= 0 ) indexes.push( idx )
-    } )
+    items.forEach((item, idx) => {
+        if (getItemIdx(item, ids) >= 0) indexes.push(idx)
+    })
 
     return indexes
 }
@@ -81,8 +81,8 @@ export function getItemIndexes( items: ServiceItemFacades, ids: Ids ): number[] 
  * @param {ServiceItemFacades} facades
  * @returns {Id[]}
  */
-export function toIds( facades: ServiceItemFacades ): Id[] {
-    return facades.map( f => getId( f ) )
+export function toIds(facades: ServiceItemFacades): Id[] {
+    return facades.map(f => getId(f))
 }
 
 /**
@@ -92,10 +92,10 @@ export function toIds( facades: ServiceItemFacades ): Id[] {
  * @param {Id} id
  * @returns {boolean}
  */
-export function isIdUnique( ids: Ids, id: Id ) {
+export function isIdUnique(ids: Ids, id: Id) {
     const { name } = id
 
-    return ids.every( i => i.name !== name || ( i.name === name && i.appKey !== id.appKey ) )
+    return ids.every(i => i.name !== name || (i.name === name && i.appKey !== id.appKey))
 }
 
 /**
@@ -104,10 +104,22 @@ export function isIdUnique( ids: Ids, id: Id ) {
  * @param {Id} id
  * @returns {string}
  */
-export function prettifyId( id: Id ): string {
+export function prettifyIdWithOriginalName(id: Id): string {
     const { appKey } = id
 
-    return `${ appKey && `[${ appKey }]` } ${ id.name }`
+    return `${appKey && `[${appKey}]`} ${id.originalName || id.name}`
+}
+
+/**
+ * Prettify an identifier
+ *
+ * @param {Id} id
+ * @returns {string}
+ */
+export function prettifyId(id: Id): string {
+    const { appKey } = id
+
+    return `${appKey && `[${appKey}]`} ${id.name}`
 }
 
 /**
@@ -116,10 +128,10 @@ export function prettifyId( id: Id ): string {
  * @param {Id} id
  * @returns {string}
  */
-export function stringifyId( id: Id ): string {
+export function stringifyId(id: Id): string {
     const { appKey } = id
 
-    return `${ appKey && `${ appKey }${ ID_SEPARATOR }` }${ id.name }`
+    return `${appKey && `${appKey}${ID_SEPARATOR}`}${id.name}`
 }
 
 /**
@@ -129,17 +141,17 @@ export function stringifyId( id: Id ): string {
  * @param {Id} id
  * @returns {string}
  */
-export function incrementName( facades: ServiceItemFacades, id: Id ): string {
+export function incrementName(facades: ServiceItemFacades, id: Id): string {
     const { name } = id
     let index = 1
 
-    const facadesWithSameAppKey = facades.filter( f => f.appKey === id.appKey )
+    const facadesWithSameAppKey = facades.filter(f => f.appKey === id.appKey)
 
-    if ( facadesWithSameAppKey.length === 0 ) return name
+    if (facadesWithSameAppKey.length === 0) return name
 
-    while ( !facadesWithSameAppKey.every( f => f.name !== `${ name }_${ index }` ) ) index++
+    while (!facadesWithSameAppKey.every(f => f.name !== `${name}_${index}`)) index++
 
-    return `${ name }_${ index }`
+    return `${name}_${index}`
 }
 
 /**
@@ -150,15 +162,15 @@ export function incrementName( facades: ServiceItemFacades, id: Id ): string {
  * @param {ServiceItemFacades} items
  * @returns {string}
  */
-export function validateName( value: string, id: Id, items: ServiceItemFacades, locale: string ): string {
-    const wordings: { [id: string]: string } = compileWordings( MULTILANGUAGE_WORDINGS, locale )
+export function validateName(value: string, id: Id, items: ServiceItemFacades, locale: string): string {
+    const wordings: { [id: string]: string } = compileWordings(MULTILANGUAGE_WORDINGS, locale)
 
-    if ( !isNotEmpty( value ) ) return wordings.fieldRequired
+    if (!isNotEmpty(value)) return wordings.fieldRequired
 
-    if ( value !== id.name && !isIdUnique( items, { name: value, appKey: id.appKey } ) )
+    if (value !== id.name && !isIdUnique(items, { name: value, appKey: id.appKey }))
         return wordings.nameAlreadyExist
 
-    if ( value.includes( '.' ) ) return wordings.nameNoDot
+    if (value.includes('.')) return wordings.nameNoDot
 }
 
 /**
@@ -168,10 +180,10 @@ export function validateName( value: string, id: Id, items: ServiceItemFacades, 
  * @param {Id} id
  * @returns {ServiceItemFacade | undefined}
  */
-export function getItem( items: ServiceItemFacades, id: Id ): ServiceItemFacade {
+export function getItem(items: ServiceItemFacades, id: Id): ServiceItemFacade {
     const { name } = id
 
-    return items.find( i => i.name === name && i.appKey === id.appKey )
+    return items.find(i => i.name === name && i.appKey === id.appKey)
 }
 
 /**
@@ -181,10 +193,10 @@ export function getItem( items: ServiceItemFacades, id: Id ): ServiceItemFacade 
  * @param {string} locale
  * @returns {string}
  */
-export function formatDate( timestamp: number, locale: string ): string {
-    const date = timestamp ? new Date( timestamp ) : new Date()
+export function formatDate(timestamp: number, locale: string): string {
+    const date = timestamp ? new Date(timestamp) : new Date()
 
-    return date.toLocaleString( locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' } )
+    return date.toLocaleString(locale, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
 }
 
 /**
@@ -193,9 +205,9 @@ export function formatDate( timestamp: number, locale: string ): string {
  * @param {ServiceItemFacade} item
  * @returns {string}
  */
-export function getViewId( item: ServiceItemFacade ): string {
-    const itemId = getId( item )
-    return `${ TAB_TYPE.VIEW }${ stringifyId( itemId ) }`
+export function getViewId(item: ServiceItemFacade): string {
+    const itemId = getId(item)
+    return `${TAB_TYPE.VIEW}${stringifyId(itemId)}`
 }
 /**
  * Get the EDIT identifier of an item (used in Tab component as ID).
@@ -203,16 +215,16 @@ export function getViewId( item: ServiceItemFacade ): string {
  * @param {ServiceItemFacade} item
  * @returns {string}
  */
-export function getEditId( item: ServiceItemFacade ): string {
-    const itemId = getId( item )
-    return `${ TAB_TYPE.EDIT }${ stringifyId( itemId ) }`
+export function getEditId(item: ServiceItemFacade): string {
+    const itemId = getId(item)
+    return `${TAB_TYPE.EDIT}${stringifyId(itemId)}`
 }
 
 /**
  * Get the ADD identifier (used in Tab component as ID).
  */
 export function getAddId(): string {
-    return `${ TAB_TYPE.ADD }new_item`
+    return `${TAB_TYPE.ADD}new_item`
 }
 
 /**
@@ -220,8 +232,8 @@ export function getAddId(): string {
  * @param { Id } id - Name to duplicate. 
  * @param { ServiceItemFacades } items - All items to compare the name to.
  */
-export function handleDuplicateServiceItemName( id: Id, items: ServiceItemFacades ): string {
-    return handleDuplicateNameFromArray( id.name, items.filter( i => i.appKey === id.appKey ).map( i => i.name ) )
+export function handleDuplicateServiceItemName(id: Id, items: ServiceItemFacades): string {
+    return handleDuplicateNameFromArray(id.name, items.filter(i => i.appKey === id.appKey).map(i => i.name))
 }
 
 /** Export */
