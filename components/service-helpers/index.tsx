@@ -104,22 +104,10 @@ export function isIdUnique(ids: Ids, id: Id) {
  * @param {Id} id
  * @returns {string}
  */
-export function prettifyIdWithOriginalName(id: Id): string {
-    const { appKey } = id
-
-    return `${appKey && `[${appKey}]`} ${id.originalName || id.name}`
-}
-
-/**
- * Prettify an identifier
- *
- * @param {Id} id
- * @returns {string}
- */
 export function prettifyId(id: Id): string {
     const { appKey } = id
 
-    return `${appKey && `[${appKey}]`} ${id.name}`
+    return `${appKey && `[${appKey}]`} ${id.originalName || id.name}`
 }
 
 /**
@@ -131,7 +119,7 @@ export function prettifyId(id: Id): string {
 export function stringifyId(id: Id): string {
     const { appKey } = id
 
-    return `${appKey && `${appKey}${ID_SEPARATOR}`}${id.name}`
+    return `${appKey && `${appKey}${ID_SEPARATOR}`}${id.originalName || id.name}`
 }
 
 /**
