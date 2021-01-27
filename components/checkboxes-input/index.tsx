@@ -54,92 +54,88 @@ namespace CheckboxesInput {
         /** redux-form props */
 
         /** @ignore */
-        component?: any,
+        component?: any;
         /** @ignore */
-        format?: any,
+        format?: any;
         /** @ignore */
-        normalize?: any,
+        normalize?: any;
         /** @ignore */
-        props?: any,
+        props?: any;
         /** @ignore */
-        parse?: any,
+        parse?: any;
         /** @ignore */
-        validate?: any,
+        validate?: any;
         /** @ignore */
-        warn?: any,
+        warn?: any;
         /** @ignore */
-        withRef?: any
-    }
-
-    export interface State {
-
+        withRef?: any;
     }
 }
 
 namespace Checkboxes {
-    export interface Props extends CheckboxesInput.Props, WrappedFieldProps<any> {
-    }
+    export interface Props extends CheckboxesInput.Props, WrappedFieldProps<any> { }
 }
 
-class Checkboxes extends React.Component<Checkboxes.Props, CheckboxesInput.State> {
+class Checkboxes extends React.PureComponent<Checkboxes.Props> {
 
-    constructor( props: Checkboxes.Props ) {
-        super( props )
+    constructor(props: Checkboxes.Props) {
+        super(props);
     }
 
     render() {
 
-        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, options, input, meta } = this.props
+        const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, options, input, meta } = this.props;
 
-        const inputId: string = uuid.v4()
+        const inputId: string = uuid.v4();
 
         return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
+            <div className={classNames('form-group', containerClass, {
+                'invalid': meta.touched && !!meta.error,
+                'hidden': !options || options.length === 0
+            })}>
 
                 {label ? <label>{label}{help && <Help text={help} />}</label> : null}
 
-                <div className={classNames( 'fieldset', {
+                <div className={classNames('fieldset', {
                     'invalid': meta.touched && !!meta.error
-                } )}>
+                })}>
                     {
-                        options.filter( opt => !!opt.value ).map( ( opt, idx ) => (
-                            <span className={classNames( 'form-checkbox-wrapper', inputClass )} key={idx}>
+                        options.filter(opt => !!opt.value).map((opt, idx) => (
+                            <span className={classNames('form-checkbox-wrapper', inputClass)} key={idx}>
                                 <input
                                     type="checkbox"
                                     className="form-checkbox"
                                     disabled={disabled}
-                                    id={`${ inputId }_${ input.name }_${ idx }`}
+                                    id={`${inputId}_${input.name}_${idx}`}
                                     value={opt.value}
-                                    onChange={( e ) => this.handleChange( e )}
-                                    checked={input.value.indexOf( opt.value ) !== -1} />
+                                    onChange={(e) => this.handleChange(e)}
+                                    checked={input.value.indexOf(opt.value) !== -1} />
 
-                                <label className="form-checkbox-label" htmlFor={`${ inputId }_${ input.name }_${ idx }`}>{opt.label || opt.value}</label>
+                                <label className="form-checkbox-label" htmlFor={`${inputId}_${input.name}_${idx}`}>{opt.label || opt.value}</label>
                             </span>
-                        ) )
+                        ))
                     }
                 </div>
 
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
+                {(meta.touched && !!meta.error) ? <p className="validation-error-message">{meta.error}</p> : (collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p>)}
 
                 <input type="hidden" {...input as any} />
 
             </div>
-        )
+        );
     }
 
-    private handleChange = ( event: any ) => {
+    private handleChange = (event: any) => {
 
-        const { input } = this.props
+        const { input } = this.props;
 
-        const selectedValues = input.value ? input.value.filter( ( item: string ) => !!item ) : []
+        const selectedValues = input.value ? input.value.filter((item: string) => !!item) : [];
 
-        if ( event.target.checked ) {
-            input.onChange( addValToArrayNoDup( selectedValues, event.target.value ), undefined, undefined )
+        if (event.target.checked) {
+            input.onChange(addValToArrayNoDup(selectedValues, event.target.value), undefined, undefined);
         }
         else {
-            input.onChange( removeValFromArrayNoDup( selectedValues, event.target.value ), undefined, undefined )
+            input.onChange(removeValFromArrayNoDup(selectedValues, event.target.value), undefined, undefined);
         }
     }
 
@@ -147,16 +143,13 @@ class Checkboxes extends React.Component<Checkboxes.Props, CheckboxesInput.State
 
 class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesInput.State> {
 
-    constructor( props: CheckboxesInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
+    constructor(props: CheckboxesInput.Props) {
+        super(props)
     }
 
     render() {
 
-        const { name, label, options, disabled, format, normalize, parse, validate, warn } = this.props
+        const { name, format, normalize, parse, validate, warn } = this.props;
 
         const baseFieldProps: BaseFieldProps = {
             name,
@@ -165,17 +158,13 @@ class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesI
             parse,
             validate,
             warn
-        }
+        };
 
-        return options && options.length ? (
-
-            <Field {...baseFieldProps} {...this.props as any} component={Checkboxes} />
-
-        ) : null
+        return <Field {...baseFieldProps} {...this.props as any} component={Checkboxes} />;
 
     }
 
 }
 
 
-export default CheckboxesInput
+export default CheckboxesInput;
