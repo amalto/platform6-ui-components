@@ -2,7 +2,7 @@
     "name": "@amalto/file-upload-input",
     "displayName": "FileUploadInput",
     "description": "Input allowing you to upload a file.",
-    "version": "1.9.74",
+    "version": "1.9.75",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,10 +25,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.21",
-        "@amalto/helpers": "1.9.70",
-        "@amalto/typings": "1.9.54",
-        "@amalto/wordings": "1.9.27",
+        "@amalto/help": "1.9.22",
+        "@amalto/helpers": "1.9.71",
+        "@amalto/typings": "1.9.55",
+        "@amalto/wordings": "1.9.28",
         "classnames": "^2.2.6",
         "jquery": "^3.4.1",
         "react": "15.6.2",

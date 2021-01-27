@@ -2,7 +2,7 @@
     "name": "@amalto/time-input",
     "displayName": "TimeInput",
     "description": "Time input used on platform6.",
-    "version": "1.9.72",
+    "version": "1.9.73",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,9 +25,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.21",
-        "@amalto/input-validation": "1.9.69",
-        "@amalto/time-picker": "1.9.20",
+        "@amalto/help": "1.9.22",
+        "@amalto/input-validation": "1.9.70",
+        "@amalto/time-picker": "1.9.21",
         "classnames": "^2.2.6",
         "react": "15.6.2",
         "react-dom": "15.6.2",
