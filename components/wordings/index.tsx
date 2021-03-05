@@ -1725,7 +1725,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     unexpectedErrorCheckUrl: {
-        'en-US': 'An unexpected error has occured. Please retry and check for the URL you requested or contact your system administrator.',
+        'en-US': 'An unexpected error has occurred. Please retry and check for the URL you requested or contact your system administrator.',
         'fr-FR': 'Une erreur est survenue. Merci de réessayer en vérifiant l\'URL ou contactez votre administrateur système.'
     },
 
@@ -2255,7 +2255,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     errorOccured: {
-        'en-US': 'An error occured',
+        'en-US': 'An error occurred',
         'fr-FR': 'Une erreur est survenue'
     },
 
@@ -2650,7 +2650,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     unexpectedError: {
-        'en-US': 'An unexpected error occured. Please try again.',
+        'en-US': 'An unexpected error occurred. Please try again.',
         'fr-FR': 'Une erreur est survenue. Merci de réessayer.'
     },
 
@@ -3191,7 +3191,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
     },
 
     batchOperationErrorsOccured: {
-        'en-US': 'Some errors occured during this operation.',
+        'en-US': 'Some errors occurred during this operation.',
         'fr-FR': 'Des erreurs sont survenues lors des traitements.'
     },
 
