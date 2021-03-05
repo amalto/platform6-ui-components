@@ -56,7 +56,7 @@
         "@amalto/key-value-editor": "1.9.71",
         "@amalto/service-helpers": "1.9.78",
         "@amalto/wordings": "1.9.28",
-        "jstree": "3.3.5",
+        "jstree": "3.3.7",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
