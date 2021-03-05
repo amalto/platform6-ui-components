@@ -30,7 +30,7 @@
         "@amalto/spinner": "1.9.21",
         "@amalto/wordings": "1.9.28",
         "classnames": "^2.2.6",
-        "pdfjs-dist": "2.0.489",
+        "pdfjs-dist": "2.0.943",
         "react": "15.6.2",
         "react-dom": "15.6.2"
     },
