@@ -1,0 +1,167 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - npx > npm > pacote > make-fetch-happen > http-proxy-agent > debug:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > pacote > make-fetch-happen > https-proxy-agent > debug:
+        patched: '2021-03-12T07:29:49.269Z'
+  'npm:extend:20180424':
+    - npx > npm > request > extend:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > extend:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > extend:
+        patched: '2021-03-12T07:29:49.269Z'
+  'npm:hoek:20180212':
+    - npx > npm > request > hawk > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > request > hawk > boom > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > request > hawk > sntp > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > hawk > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > hawk > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > request > hawk > cryptiles > boom > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > hawk > boom > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > hawk > boom > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > hawk > sntp > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > hawk > sntp > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > hawk > cryptiles > boom > hoek:
+        patched: '2021-03-12T07:29:49.269Z'
+  SNYK-JS-LODASH-567746:
+    - '@babel/core > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - css-loader > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - modernizr > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - node-sass > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-styleguidist > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - typedoc > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - extract-text-webpack-plugin > async > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-docgen > async > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @babel/core > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@babel/core > @babel/traverse > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - enzyme > cheerio > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-hot-loader > react-proxy > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-styleguidist > css-loader > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-styleguidist > webpack-merge > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @babel/core > @babel/traverse > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@babel/core > @babel/helpers > @babel/traverse > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - nyc > istanbul-lib-instrument > @babel/traverse > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/run > @lerna/command > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-styleguidist > react-dev-utils > inquirer > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - react-styleguidist > webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @ava/babel-preset-transform-test-files > babel-plugin-espower > @babel/generator > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @babel/core > @babel/helpers > @babel/traverse > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - nyc > istanbul-lib-instrument > @babel/traverse > @babel/generator > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/command > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - sinon > nise > @sinonjs/formatio > @sinonjs/samsam > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @ava/babel-preset-transform-test-files > babel-plugin-espower > @babel/generator > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - nyc > istanbul-lib-instrument > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - nyc > istanbul-lib-instrument > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > handlebars > async > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@ava/babel-preset-stage-4 > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > handlebars > async > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - '@ava/babel-preset-stage-4 > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @ava/babel-preset-stage-4 > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - ava > @ava/babel-preset-stage-4 > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/prompt > inquirer > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - nyc > istanbul-reports > handlebars > async > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/prompt > inquirer > lodash:
+        patched: '2021-03-12T07:29:49.269Z'
+  'npm:stringstream:20180511':
+    - npx > npm > request > stringstream:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > stringstream:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > stringstream:
+        patched: '2021-03-12T07:29:49.269Z'
+  'npm:tough-cookie:20170905':
+    - npx > npm > request > tough-cookie:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > node-gyp > request > tough-cookie:
+        patched: '2021-03-12T07:29:49.269Z'
+    - npx > npm > npm-registry-client > request > tough-cookie:
+        patched: '2021-03-12T07:29:49.269Z'
