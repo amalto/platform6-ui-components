@@ -227,6 +227,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 						components={{ Placeholder: PlaceholderWithTooltip }}
 						placeholder={wordings.selectLanguage}
 						isDisabled={isDefaultLang || readOnly}
+						required={true}
 						onChange={onKeyChange}
 					/>
 				</div>
