@@ -1,5 +1,4 @@
 import React, { TextareaHTMLAttributes } from 'react';
-import ReactDOM from 'react-dom';
 import { default as classNames } from 'classnames'
 import { Field } from './field.component';
 

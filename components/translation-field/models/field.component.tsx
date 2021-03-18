@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import ReactDOM from 'react-dom';
 import uuid from 'uuid/v4';
 import { css, cx } from 'emotion';
 
@@ -28,7 +27,6 @@ export abstract class Field<
 	S extends FieldState = {}
 	> extends PureComponent<P, S> {
 	protected ref: T | null = null;
-	protected hasReportedValidity = false;
 	private readonly randomId: string;
 
 	constructor(props: Readonly<P>) {
