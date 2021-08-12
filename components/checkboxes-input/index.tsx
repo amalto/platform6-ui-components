@@ -141,7 +141,7 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
 
 }
 
-class CheckboxesInput extends React.Component<CheckboxesInput.Props, CheckboxesInput.State> {
+class CheckboxesInput extends React.Component<CheckboxesInput.Props> {
 
     constructor(props: CheckboxesInput.Props) {
         super(props)
