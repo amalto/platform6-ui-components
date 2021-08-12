@@ -99,8 +99,8 @@ module.exports = {
         }
     },
 
-    showUsage: true,
-    showCode: true,
+    usageMode: 'expand',
+    exampleMode: 'expand',
 
     ignore: [
         '**/node_modules/**',

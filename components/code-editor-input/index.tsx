@@ -176,7 +176,7 @@ class CodeEditorInput extends React.Component<CodeEditorInput.Props, CodeEditorI
 
     render() {
 
-        const { format, normalize, parse, validate, warn } = this.props
+        const { format, name, normalize, parse, validate, warn } = this.props
 
         let baseFieldProps: BaseFieldProps = {
             name,
