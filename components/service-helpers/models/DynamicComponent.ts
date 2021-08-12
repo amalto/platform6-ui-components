@@ -136,8 +136,19 @@ export interface DynamicComponent extends ReduxProps {
      * @param { any } [cancelAction]
      * @param { string } [confirmLevel]
      * @param { any[] } [itemsList]
+     * @param { () => void } [modalReadyCallback]
+     * @param { boolean } [isLarge]
      */
-    showDialog: ( title: string, body: React.ReactElement<any> | string, confirmAction?: any, cancelAction?: any, confirmLevel?: string, itemsList?: any[] ) => void;
+    showDialog: (
+        title: string,
+        body: React.ReactElement<any> | string,
+        confirmAction?: any,
+        cancelAction?: any,
+        confirmLevel?: string,
+        itemsList?: any[],
+        modalReadyCallback?: () => void,
+        isLarge?: boolean
+    ) => void;
 
     /** Hide the confirmation modal. */
     hideDialog: () => void;
