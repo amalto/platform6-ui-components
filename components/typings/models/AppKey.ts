@@ -22,6 +22,8 @@ export interface AppKey {
     /** Publisher postal address */
     publisherAddress: string;
 
+    publisherId: string;
+
     /** Custom properties. */
     properties: {
         [key: string]: string;
