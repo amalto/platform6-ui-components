@@ -4,7 +4,7 @@
 
 import { DisplayTemplate } from './DisplayTemplate'
 import { DataGridTemplates } from './DataGrid'
-import { OrderDataset } from './Home'
+import { ConfigurationItems } from './Home'
 
 module UserModel {
 
@@ -44,7 +44,7 @@ module UserModel {
     // JSON string containing the order of Home modules
     homeSettings?: {
       [appInstanceName: string]: {
-        [id: string]: OrderDataset[]
+        [id: string]: ConfigurationItems | string;
       };
     };
     displayTemplates?: {
