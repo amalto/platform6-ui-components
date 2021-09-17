@@ -2,7 +2,7 @@
 	"name": "@amalto/translation-field-input",
 	"displayName": "TranslationFieldInput",
 	"description": "Translation field input used on platform6.",
-	"version": "1.0.63",
+	"version": "1.0.64",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 		"react-dom": "15.6.2"
 	},
 	"devDependencies": {
-		"@amalto/typings": "1.9.59",
+		"@amalto/typings": "1.9.60",
 		"@types/react": "15.6.10",
 		"@types/react-dom": "15.5.6",
 		"react": "15.6.2",
@@ -40,7 +40,7 @@
 		"webpack": "4.41.2"
 	},
 	"dependencies": {
-		"@amalto/translation-field": "1.0.61",
+		"@amalto/translation-field": "1.0.62",
 		"base-64": "0.1.0",
 		"react-redux": "5.0.6",
 		"redux": "3.7.2",
