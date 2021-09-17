@@ -1,4 +1,4 @@
-interface AceSession {
+export interface AceSession {
     cursorPosition?: AceAjax.Position;
     firstChangeTime: number;
     id: string;
@@ -14,5 +14,3 @@ interface AceSession {
     selection: AceAjax.Selection;
     value: string;
 }
-
-export default AceSession

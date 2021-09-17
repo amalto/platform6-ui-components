@@ -1,4 +1,4 @@
-interface FileWrapper {
+export interface FileWrapper {
   sourceFile: File;
   uploadStarted: boolean;
   uploadProgress: number;
@@ -9,5 +9,3 @@ interface FileWrapper {
   createdMessagesIds?: string;
   createdTransactionsIds?: string;
 }
-
-export default FileWrapper

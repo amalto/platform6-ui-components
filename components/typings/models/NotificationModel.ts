@@ -55,4 +55,4 @@ interface NotificationModel {
     onRemove?: () => void
 }
 
-export default NotificationModel
+export { NotificationModel }
