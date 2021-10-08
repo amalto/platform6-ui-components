@@ -21,6 +21,7 @@ export interface RunningJob {
 
 export interface Entity {
     id: string;
+    jobId: string;
     entityFile: {
         path: string;
         name: string;
