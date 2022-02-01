@@ -45,7 +45,7 @@ export interface Entity {
 
 export const JOB_STATUSES = {
     COMPLETE: 'COMPLETE',
-    CANCELED: 'CANCELED',
+    CANCELLED: 'CANCELLED',
     CANCELING: 'CANCELING',
     INERROR: 'INERROR',
     RUNNING: 'RUNNING',
