@@ -96,8 +96,8 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
 
         const files: FileWrapper[] = $.map( filesQueue, file => file )
 
-        const filesDisplay = files.map( ( file, idx ) => {
-            return (
+        const filesDisplay = files.filter((file) => file.sourceFile !== undefined)
+            .map((file, idx) => (
                 <FileWrapperDisplay key={idx} fileName={file.sourceFile.name}
                     fileSize={file.sourceFile.size}
                     deleteUploadedFile={this.deleteUploadedFile}
@@ -106,8 +106,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
                     processSuccess={file.processSuccess}
                     processState={file.processState}
                 />
-            )
-        } )
+            ));
 
         let dropzone = (
             <Dropzone className="col-xs-12 file-drop-zone" onDrop={this.onDrop}
