@@ -142,7 +142,7 @@
         "javascript-stringify": "^1.6.0",
         "jquery": "^3.4.1",
         "md5": "2.2.1",
-        "moment": "2.29.1",
+        "moment": "2.29.2",
         "pdfjs-dist": "2.0.489",
         "pikaday": "1.7.0",
         "popper.js": "1.16.1",
