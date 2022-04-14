@@ -11,7 +11,6 @@ export interface WebStorage {
   appEndpoints: Endpoints | null;
   appInstances: AppInstanceModel[];
   clearSSOConnection: () => void;
-  clearSignupAccessTokens: () => void;
   clearStoredData: () => void;
   clearTempLoginData: () => void;
   importStorage: (data: { session: Map<string, string>, local: Map<string, string> }) => void;
