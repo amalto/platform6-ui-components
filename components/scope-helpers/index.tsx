@@ -1,6 +1,6 @@
 
 // Models
-import { ScopeValue, PermissionDef, ScopesTree, WebStorage } from '@amalto/typings'
+import { ScopeValue, PermissionDef, WebStorage } from '@amalto/typings'
 
 // Constants
 const ASTERISK = '*'
