@@ -33,22 +33,22 @@ export const Styles = {
         wordBreak: 'break-all'
     },
     'option-item-disabled': {
-        color: '#5c606b !important',
+        color: '#5c606b',
         textDecoration: 'none',
-        backgroundColor: 'transparent !important',
+        backgroundColor: 'transparent',
         cursor: 'not-allowed',
         fontStyle: 'italic',
         'div': {
-            color: '#5c606b !important',
-            backgroundColor: 'transparent !important'
+            color: '#5c606b',
+            backgroundColor: 'transparent'
         }
     },
     'option-item-selected': {
-        backgroundColor: '#61A653 !important',
-        color: '#FFF !important',
+        backgroundColor: '#61A653',
+        color: '#FFF',
         'div': {
-            backgroundColor: '#61A653 !important',
-            color: '#FFF !important'
+            backgroundColor: '#61A653',
+            color: '#FFF'
         }
     }
 }
