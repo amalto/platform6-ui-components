@@ -85,7 +85,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         const opt = this.getOptionFromValue(props.defaultDisplayValue, options);
 
         this.state = {
-            selectOpen: true,
+            selectOpen: false,
             displayLabel: opt?.label ?? '',
             displayValue: opt?.value ?? '',
             currentLabel: opt?.label ?? '',
