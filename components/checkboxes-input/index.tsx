@@ -19,6 +19,7 @@ namespace CheckboxesInput {
         name: string;
         /** Input's list. */
         options: {
+            disabled?: boolean;
             value: string;
             label?: string | JSX.Element;
         }[];
@@ -105,7 +106,7 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
                                 <input
                                     type="checkbox"
                                     className="form-checkbox"
-                                    disabled={disabled}
+                                    disabled={opt.disabled ?? disabled}
                                     id={`${inputId}_${input.name}_${idx}`}
                                     value={opt.value}
                                     onChange={(e) => this.handleChange(e)}
