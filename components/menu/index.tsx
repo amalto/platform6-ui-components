@@ -11,7 +11,7 @@ import { Entry } from './models/Entry'
  */
 module Menu {
 
-    export interface Props extends React.Props<Menu> {
+    export interface Props extends React.ClassAttributes<Menu> {
 
         /** Title */
         title: string;

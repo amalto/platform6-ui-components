@@ -21,7 +21,10 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.webpack.js', '.ts', '.tsx', '.js', '.jsx', '.json']
+        extensions: ['.webpack.js', '.scss', '.css', '.js', '.ts', '.tsx']
+    },
+    node: {
+        fs: 'empty'
     },
 
     externals: {
@@ -34,7 +37,7 @@ module.exports = {
         rules: [
             {
                 test: /\.ts(x)?$/,
-                loader: [ 
+                loader: [
                     'source-map-loader',
                     'ts-loader'
                 ],
@@ -46,8 +49,5 @@ module.exports = {
             }
         ]
     },
-    devtool: 'source-map',
-    node: {
-        fs: 'empty'
-    }
+    devtool: 'source-map'
 };

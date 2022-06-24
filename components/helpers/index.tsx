@@ -250,7 +250,7 @@ export function downloadDataFile( base64DataString: string, contentType: string,
 }
 
 export function triggerDataDownload( data: Blob | string, fileName: string, dataUrl?: boolean ): void {
-    let url = dataUrl ? data as string : URL.createObjectURL( data )
+    let url = dataUrl ? data as string : URL.createObjectURL( data as Blob | MediaSource )
 
     //create a download link
     let link = document.createElement( 'a' )

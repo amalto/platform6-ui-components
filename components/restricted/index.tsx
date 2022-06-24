@@ -12,7 +12,7 @@ import {  hasAnyPermission, hasAccessToFeature, canPerformAnyAction } from '@ama
  */
 module Restricted {
 
-    export interface Props extends React.Props<Restricted> {
+    export interface Props extends React.ClassAttributes<Restricted> {
         /** Storage which contain instance and user informations. */
         webStorage: WebStorage;
         /** Actions which allow you to display children. */

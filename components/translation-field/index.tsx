@@ -1,7 +1,7 @@
 /** Modules */
 import React, { ChangeEvent, Component, CSSProperties } from 'react';
 import { css, cx } from 'emotion';
-import uuid from 'uuid';
+import * as uuid from 'uuid';
 
 /** Components */
 import ActionButton from '@amalto/action-button';
@@ -84,7 +84,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
 		let translations: TranslationType[] = Object.keys(props.value || {})
 			.map(lang => ({
-				id: uuid(),
+				id: uuid.v4(),
 				lang,
 				value: props.value[lang]
 			}));
@@ -94,7 +94,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 		if (!defaultLanguage) {
 			translations
 				.push({
-					id: uuid(),
+					id: uuid.v4(),
 					lang: defaultLang,
 					value: ''
 				})
@@ -255,7 +255,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
 	private addNewLine(): void {
 		this.setState({
-			translations: this.state.translations.concat({ id: uuid(), lang: '', value: '' })
+			translations: this.state.translations.concat({ id: uuid.v4(), lang: '', value: '' })
 		});
 	}
 

@@ -17,8 +17,6 @@ const collection = {
 
 initialState = { value: 'first', selectedCollectionType: '*' }
 
-const display = value => value;
-const datumTokenizer = datum => [datum];
 const setCollectionType = ( type ) => { setState({ selectedCollectionType: type }) }
 
 const ExampleTypeaheadFormInput = reduxForm({
@@ -28,8 +26,6 @@ const ExampleTypeaheadFormInput = reduxForm({
 
 <ExampleTypeaheadFormInput name='typeahead-form-input-example'
     collection={collection[state.selectedCollectionType]}
-    datumTokenizer={datumTokenizer}
-    display={display}
     label='TypeaheadFormInput example'
     placeholder='Value here'
     help='Helper text'

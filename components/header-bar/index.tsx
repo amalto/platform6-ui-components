@@ -9,7 +9,7 @@ import Burger from './components/Burger'
  */
 module HeaderBar {
 
-    export interface Props extends React.Props<HeaderBar> {
+    export interface Props extends React.ClassAttributes<HeaderBar> {
 
         /** HeaderBar css */
         mainCss?: string;

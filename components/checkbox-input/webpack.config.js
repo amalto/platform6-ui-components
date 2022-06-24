@@ -38,8 +38,5 @@ module.exports = {
             }
         ]
     },
-    devtool: 'source-map',
-    node: {
-        fs: 'empty'
-    }
+    devtool: 'source-map'
 };

@@ -12,7 +12,7 @@ import Help from '@amalto/help'
  * Simple select or input with a validation by regular expression or method check used on a [redux-form](#reduxform).
  */
 module ValidatedInput {
-    export interface Props extends React.Props<ValidatedInput> {
+    export interface Props extends React.ClassAttributes<ValidatedInput> {
         /** Input name in the DOM. */
         name: string;
         /** Input value. */

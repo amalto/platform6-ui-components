@@ -9,7 +9,7 @@ import { styles } from '../styles/burger'
  */
 module Burger {
 
-    export interface Props extends React.Props<Burger> {
+    export interface Props extends React.ClassAttributes<Burger> {
 
         /** Burger css */
         mainCss?: string;

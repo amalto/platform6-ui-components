@@ -6,7 +6,7 @@ import { default as classNames } from 'classnames'
  */
 module Sidebar {
 
-    export interface Props extends React.Props<Sidebar> {
+    export interface Props extends React.ClassAttributes<Sidebar> {
 
         /** Sidebar css */
         mainCss?: string;

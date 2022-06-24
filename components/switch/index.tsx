@@ -6,7 +6,7 @@ import { default as classNames } from 'classnames'
  * Switch input.
  */
 module Switch {
-    export interface Props extends React.Props<Switch> {
+    export interface Props extends React.ClassAttributes<Switch> {
         /** Input unique id. */
         id: string;
         /** Input value. */

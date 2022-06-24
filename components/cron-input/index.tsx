@@ -25,11 +25,11 @@ export const CRON_VALIDATION = {
 
 /**
  * Cron input scheduler used on a [redux-form](#reduxform).
- * 
+ *
  * CronInput uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */
 module CronInput {
-    export interface Props extends React.Props<CronInput> {
+    export interface Props extends React.ClassAttributes<CronInput> {
         /** Input's name. */
         name: string;
         /** Date value part. More details on [CronValue](#cronvalue). */

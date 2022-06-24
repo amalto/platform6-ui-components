@@ -8,7 +8,7 @@ import { spinner } from './images/spinner'
  * Loading spinner.
  */
 module Spinner {
-    export interface Props extends React.Props<Spinner> {
+    export interface Props extends React.ClassAttributes<Spinner> {
         /** Top position. */
         top?: string | number;
         /** Bottom position. */

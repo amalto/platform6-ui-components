@@ -15,7 +15,7 @@ import { locale } from 'moment';
 
 /**
  * Component allowing you to display a set of buttons as well as a search input if needed.
- * 
+ *
  * ButtonsBar uses [WebStorage](#webstorage)'s properties which are accessible at the root component of your service.
  */
 module ButtonsBar {
@@ -38,7 +38,7 @@ module ButtonsBar {
         type?: string;
     }
 
-    export interface Props extends React.Props<ButtonsBar> {
+    export interface Props extends React.ClassAttributes<ButtonsBar> {
         /** Handle search value. */
         handleSearch?: ( searchValue: string ) => void;
         /** Search value usually used with list beneath it. */

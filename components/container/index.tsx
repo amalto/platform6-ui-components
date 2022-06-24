@@ -6,7 +6,7 @@ import { default as classNames } from 'classnames'
  */
 module Container {
 
-    export interface Props extends React.Props<Container> {
+    export interface Props extends React.ClassAttributes<Container> {
 
         /** Container css */
         mainCss?: string;

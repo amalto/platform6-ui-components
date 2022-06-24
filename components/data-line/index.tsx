@@ -7,14 +7,14 @@ import * as React from 'react'
 import { default as classNames } from 'classnames'
 import { CellData, DisplayTemplate, DisplayTemplateItem, DisplayMode, ColumnHeader } from '@amalto/typings'
 
-// Components 
+// Components
 import DataItem from './components/DataItem'
 
 /**
  * DateLine shouldn't be used outside the DataGrid component else it won't be displayed correctly.
  */
 export module DataLine {
-    export interface Props extends React.Props<DataLine> {
+    export interface Props extends React.ClassAttributes<DataLine> {
         /** Cells to be displayed. More details on [CellData](#celldata). */
         cells: CellData[];
         /** Single click event handler. */

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import uuid from 'uuid/v4';
+import * as uuid from 'uuid';
 import { css, cx } from 'emotion';
 
 import Help from '@amalto/help';
@@ -32,7 +32,7 @@ export abstract class Field<
 	constructor(props: Readonly<P>) {
 		super(props);
 		this.state = { ...this.state, validationMessage: undefined };
-		this.randomId = uuid();
+		this.randomId = uuid.v4();
 	}
 
 	componentDidMount(): void {
