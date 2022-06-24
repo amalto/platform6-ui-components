@@ -11,12 +11,12 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
 
 /**
  * Page navigation toolbar.
- * 
+ *
  * PagingControls uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
 module PagingControls {
-    export interface Props extends React.Props<PagingControls> {
+    export interface Props extends React.ClassAttributes<PagingControls> {
         /** CSS class wrapping the component. */
         containerClass?: string;
         /** Current page selected. */
@@ -70,7 +70,7 @@ class PagingControls extends React.Component<PagingControls.Props, PagingControl
 
         const { containerClass, currentPage, totalPages, byContext } = this.props
 
-        //basic paging control by page number        
+        //basic paging control by page number
         let prevDisabled = currentPage === 1
         let nextDisabled = totalPages === 1 || ( currentPage === totalPages )
 

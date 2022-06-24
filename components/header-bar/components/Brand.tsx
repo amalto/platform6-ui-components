@@ -6,7 +6,7 @@ import { default as classNames } from 'classnames'
  */
 module Brand {
 
-    export interface Props extends React.Props<Brand> {
+    export interface Props extends React.ClassAttributes<Brand> {
 
         /** Brand css */
         mainCss?: string;

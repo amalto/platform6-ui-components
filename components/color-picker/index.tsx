@@ -6,7 +6,7 @@ import { default as classNames} from 'classnames'
  * Choose a color from a panel.
  */
 module ColorPicker {
-    export interface Props extends React.Props<ColorPicker> {
+    export interface Props extends React.ClassAttributes<ColorPicker> {
         /** Current hexadecimal string color. */
         color: string
         /** Callback function executed when the user selects a color. */

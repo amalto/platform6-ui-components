@@ -14,7 +14,7 @@ import Help from '@amalto/help'
 import { Option } from './models/Option'
 
 module MultiSelect {
-    export interface Props extends React.Props<MultiSelect> {
+    export interface Props extends React.ClassAttributes<MultiSelect> {
 
         /** Input label name. */
         name: string;

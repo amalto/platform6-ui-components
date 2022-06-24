@@ -20,12 +20,12 @@ import { TreeNodeModel, OrgModel, KeyValDef } from './models/tree'
 /**
  * Organize custom tree allowing you to manage nodes and attached data to it.
  * Attached data can be either texts or files.
- * 
+ *
  * Tree uses [KeyValDef](#keyvaldev) interface and PdfViewer uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
 module Tree {
-    export interface Props extends React.Props<Tree> {
+    export interface Props extends React.ClassAttributes<Tree> {
         /** Any unique DOM ID. */
         id: string;
         /** Data to render as a tree. More details on [TreeNodeModel](#treenodemodel). */
@@ -249,7 +249,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
         if ( prevState.selectedNode !== this.state.selectedNode || prevProps.children !== this.props.children ) {
 
-            // window height - tree action buttons container height - details container - header, paddings and nav tabs            
+            // window height - tree action buttons container height - details container - header, paddings and nav tabs
             let maxTreeHeight = window.innerHeight - $( '#' + this.props.id + ' .tree-controls-container' ).outerHeight() - $( '#' + this.props.id + ' .tree-details-container .toggle-form' ).outerHeight() - 212
 
             //if we have a user assign form, we reduce a bit more the tree height to fully display selected node details and user assign form (this.props.children)

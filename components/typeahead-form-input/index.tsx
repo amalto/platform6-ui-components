@@ -1,6 +1,6 @@
 // Modules
 import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, Field, BaseFieldProps, WrappedFieldMetaProps } from 'redux-form'
 import { default as classNames } from 'classnames'
 
 // Components
@@ -15,13 +15,7 @@ namespace TypeaheadFormInput {
         /** Input's name. */
         name: string;
         /** Collection of item to be display inside the dropdown list. */
-        collection: any[];
-        /** Search remotely from server. More details on [RemoteConfig](#remoteconfig). */
-        remote?: Typeahead.RemoteConfig;
-        /** Manage the dropdown list of choices when input value is updated by user. */
-        datumTokenizer?: ( datum: any ) => string[];
-        /** Manage input value to be displayed. */
-        display?: ( value: any ) => string;
+        collection: string[];
         /** Form input label. */
         label?: string | JSX.Element;
         /** Input's placeholder. */
@@ -72,33 +66,16 @@ namespace TypeaheadFormInput {
         /** @ignore */
         withRef?: any
     }
-
-    export interface State {
-
-    }
 }
 
-class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, TypeaheadFormInput.State> {
-
-    constructor( props: TypeaheadFormInput.Props ) {
-        super( props )
-        this.state = {
-
-        }
-    }
+class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props> {
 
     private renderInput = ( field: WrappedFieldProps<any> ) => {
 
         const {
             name,
-            label,
-            help,
             containerClass,
             collection,
-            remote,
-            collapseErrorSpace,
-            display,
-            datumTokenizer,
             placeholder,
             selectedCollectionType,
             collectionTypes,
@@ -111,33 +88,41 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
             <div className={classNames( 'form-group', containerClass, {
                 'invalid': meta.touched && !!meta.error
             } )}>
-
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
-
+                {this.renderLabel()}
                 <Typeahead id={name}
                     collection={collection}
-                    remote={remote}
-                    display={display}
                     value={input.value}
-                    handleInputChange={input.onChange as any}
-                    datumTokenizer={datumTokenizer}
+                    handleInputChange={input.onChange}
                     placeholder={placeholder}
                     selectedCollectionType={selectedCollectionType}
                     collectionTypes={collectionTypes}
                     setCollectionType={setCollectionType}
                 />
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-
+                {this.renderErrorMsg(meta)}
             </div>
         )
     }
 
+    private renderLabel = (): JSX.Element | null => {
+        const { help, label } = this.props;
+
+        return label ? <label>{label}{help && <Help text={help} />}</label> : null;
+    }
+
+    private renderErrorMsg = (meta: WrappedFieldMetaProps<any>): JSX.Element | null => {
+        const { collapseErrorSpace } = this.props;
+
+        if (meta.touched && !!meta.error) {
+            return <p className="validation-error-message">{meta.error}</p>;
+        }
+
+        return collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p>;
+    }
+
     render() {
 
-        const { name, label, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
+        const { name, format, normalize, parse, validate, warn } = this.props
+        const baseFieldProps: BaseFieldProps = {
             name,
             format,
             normalize,
@@ -146,12 +131,7 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props, Typea
             warn
         }
 
-        return name ? (
-
-            <Field {...baseFieldProps} component={this.renderInput} />
-
-        ) : null
-
+        return name ? <Field {...baseFieldProps} component={this.renderInput} /> : null
     }
 
 }

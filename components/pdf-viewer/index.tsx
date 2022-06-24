@@ -18,12 +18,12 @@ import pdfjs from 'pdfjs-dist'
 
 /**
  * Display pdf content.
- * 
+ *
  * PdfViewer uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
 namespace PdfViewer {
-    export interface Props extends React.Props<PdfViewer> {
+    export interface Props extends React.ClassAttributes<PdfViewer> {
         /** Pdf data. More details on [PDFSource](#pdfsource). */
         pdfSource: PDFSource;
         /** CSS class wrapping the component. */

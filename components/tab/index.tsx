@@ -11,7 +11,7 @@ import { default as classNames } from 'classnames'
  */
 namespace Tab {
 
-    export interface Props extends React.Props<Tab> {
+    export interface Props extends React.ClassAttributes<Tab> {
         /** Id will be used when selecting a tab from <span className='quote'>Tabs</span> compoenent. */
         id: string;
         /** Icon in front of the title. */

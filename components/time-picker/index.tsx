@@ -9,7 +9,7 @@ import Help from '@amalto/help'
  * Timepicker with few customizations like a minimum and a maximum time range of time available.
  */
 module TimePicker {
-    export interface Props extends React.Props<TimePicker> {
+    export interface Props extends React.ClassAttributes<TimePicker> {
         /** Input name in the DOM. */
         name: string;
         /** Time value. */
@@ -25,7 +25,7 @@ module TimePicker {
         label?: string | JSX.Element;
         /** Tooltip help displayed when hovering the <span className='quote'>?</span> icon next to label. */
         help?: string;
-        /** 
+        /**
          * Determined the interval in minute between each option from the select input.
          * @default 30
          */

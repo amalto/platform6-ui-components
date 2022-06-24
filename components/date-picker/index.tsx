@@ -18,7 +18,7 @@ module DatePicker {
         }
     }
 
-    export interface Props extends React.Props<DatePicker> {
+    export interface Props extends React.ClassAttributes<DatePicker> {
         /** Input name in the DOM. */
         name: string;
         /**

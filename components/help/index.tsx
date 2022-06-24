@@ -6,7 +6,7 @@ import { default as classNames } from 'classnames'
  * This component is generally used next to input's label. See [RadioInput](#radioinput)
  */
 namespace Help {
-    export interface Props extends React.Props<Help> {
+    export interface Props extends React.ClassAttributes<Help> {
         /** CSS class wrapping the component. */
         containerClass?: string;
         /** CSS properties. */

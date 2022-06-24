@@ -19,7 +19,7 @@ import { hideDialog } from './DialogActions'
 
 
 module Dialog {
-    export interface Props extends React.Props<Dialog>, DialogState {
+    export interface Props extends React.ClassAttributes<Dialog>, DialogState {
     }
 
     export interface State {

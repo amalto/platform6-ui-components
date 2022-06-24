@@ -6,7 +6,7 @@ import { default as classNames} from 'classnames'
  */
 module ActionButton {
 
-    export interface Props extends React.Props<ActionButton> {
+    export interface Props extends React.ClassAttributes<ActionButton> {
         /** Action triggered on click event. */
         clickAction?: React.EventHandler<React.MouseEvent<Element>>
         /** Any Font Awesome icon CSS class names like <span className='quote'>fa-info</span> or <span className='quote'>fa-info fa-lg</span>. */

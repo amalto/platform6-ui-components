@@ -19,7 +19,10 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.webpack.js', '.ts', '.tsx', '.js', '.jsx', '.json']
+        extensions: ['.webpack.js', '.scss', '.css', '.js', '.ts', '.tsx']
+    },
+    node: {
+        fs: 'empty'
     },
 
     externals: {
@@ -41,8 +44,5 @@ module.exports = {
             }
         ]
     },
-    devtool: 'source-map',
-    node: {
-        fs: 'empty'
-    }
+    devtool: 'source-map'
 };

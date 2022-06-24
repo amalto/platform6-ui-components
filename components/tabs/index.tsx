@@ -5,21 +5,14 @@
 // Modules
 import * as React from 'react'
 import { default as classNames } from 'classnames'
-import * as uuid from 'uuid'
 import * as PerfectScrollbar from 'react-perfect-scrollbar'
-
-// Utils
-import { compileWordings } from '@amalto/helpers'
-
-// Components
-import Tab from '@amalto/tab'
 
 /**
  * Tabs management component allowing you to display custom content.
  */
 module Tabs {
 
-    export interface Props extends React.Props<Tabs> {
+    export interface Props extends React.ClassAttributes<Tabs> {
         /** Close tab method. */
         closeTab: ( tabId: string ) => void;
         /** Select tab method. */

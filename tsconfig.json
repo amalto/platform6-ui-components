@@ -17,7 +17,7 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
-		"module": "commonjs",
+		"module": "esnext",
 		"moduleResolution": "node",
 		"jsx": "react",
 		"outDir": "./build",

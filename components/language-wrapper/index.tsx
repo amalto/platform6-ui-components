@@ -1,12 +1,11 @@
 // Modules
 import * as React from 'react'
-import { default as classNames } from 'classnames'
 
 // Constants
 import { languageIso, Language } from './constants/Data'
 
 // Utils
-import { addValToArrayNoDup, removeValFromArrayNoDup, compileWordings } from '@amalto/helpers'
+import { compileWordings } from '@amalto/helpers'
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings'
@@ -16,12 +15,12 @@ import TypeaheadInput from '@amalto/typeahead-input'
 
 /**
  * Language selector.
- * 
+ *
  * LanguageWrapper uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
 module LanguageWrapper {
-    export interface Props extends React.Props<LanguageWrapper> {
+    export interface Props extends React.ClassAttributes<LanguageWrapper> {
         /** Current selected language. */
         selectedLanguage: string;
         /** Array of language selected. */
@@ -131,9 +130,8 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
                 <TypeaheadInput id="languageWrapperSelector"
                     handleInputChange={this.handleLanguageSelection}
                     value={this.getSelectedLanguage()}
-                    collection={languageIso}
+                    collection={languageIso.map((iso) => iso.languageCode)}
                     display={( lang: Language ) => lang && lang.languageCode && `${ lang.languageCode } - ${ lang.languageName }`}
-                    datumTokenizer={( lang: Language ) => [lang.languageCode, lang.languageName]}
                     placeholder={wordings.searchLanguage}
                 />
             </span>
@@ -148,7 +146,7 @@ class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWra
     }
 
     private handleLanguageSelection = ( lang: Language ) => {
-        const { supportedLanguages, handleAddedLanguage } = this.props
+        const { handleAddedLanguage } = this.props
         const selectedLanguage = languageIso.filter( language => lang && language.languageCode === lang.languageCode )
 
         if ( selectedLanguage.length === 1 ) {

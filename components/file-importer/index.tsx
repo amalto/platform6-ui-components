@@ -14,12 +14,12 @@ import Spinner from '@amalto/spinner'
 
 /**
  * Modal used to confirm a file upload.
- * 
+ *
  * FileImporter uses [WebStorage](#webstorage)'s properties
  * which are accessible at the root component of your service.
  */
 module FileImporter {
-    export interface Props extends React.Props<FileImporter> {
+    export interface Props extends React.ClassAttributes<FileImporter> {
         /** File to be imported. */
         fileData: File;
         /** Close the modal. */

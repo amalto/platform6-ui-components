@@ -13,7 +13,7 @@ import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typin
 const STRING_MAX_LENGTH = 300
 
 module DataItem {
-    export interface Props extends React.Props<DataItem> {
+    export interface Props extends React.ClassAttributes<DataItem> {
         displayValue: JSX.Element | string | number;
         displayValueMaxLength?: number;
         columnId: string;
@@ -204,7 +204,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
     /**
  * This method allow you to get the columnId and the display value if the cell data.
  * You will be able to handle truncated long display value with a context menu.
- * 
+ *
  * e.g: Using copy to clipboard.
  */
     private displayContextMenu = ( e ) => {

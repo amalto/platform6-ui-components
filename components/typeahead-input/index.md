@@ -17,16 +17,12 @@ const handleInputChange = ( value ) => {
     // Handle input onchange event
     setState({ value })
 };
-const display = value => value;
-const datumTokenizer = datum => [datum];
 const setCollectionType = ( type ) => { setState({ selectedCollectionType: type }) }
 
 <TypeaheadInput id='typeahead-input-example'
     collection={collection[state.selectedCollectionType]}
     value={state.value}
     handleInputChange={handleInputChange}
-    display={display}
-    datumTokenizer={datumTokenizer}
     placeholder='TypeaheadInput test'
     selectedCollectionType={state.selectedCollectionType}
     collectionTypes={['*', 'dev', 'master']}
