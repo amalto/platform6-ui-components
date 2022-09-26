@@ -80,6 +80,7 @@ interface UserModel {
   enabled?: boolean;
   firstName?: string;
   jsonContent?: string;
+  language?: string;
   lastName?: string;
   oldpassword?: string;
   orgPositionDisplayNameLookup?: {
