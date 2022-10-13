@@ -80,7 +80,6 @@ interface UserModel {
   enabled?: boolean;
   firstName?: string;
   jsonContent?: string;
-  language?: string;
   lastName?: string;
   oldpassword?: string;
   orgPositionDisplayNameLookup?: {
@@ -93,6 +92,7 @@ interface UserModel {
   passwordReset?: boolean;
   policyDetails?: UserModel.Policy[];
   policyList?: UserModel.Policy[];
+  preferredLanguage?: string;
   propertiesMap?: {
     [key: string]: string
   };
