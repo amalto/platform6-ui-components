@@ -16,6 +16,7 @@
         "access": "public"
     },
     "scripts": {
+        "clean": "lerna clean --yes",
         "bootstrap": "lerna bootstrap --hoist",
         "build": "lerna run build -- --no-deprecation",
         "clean-install": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install",
