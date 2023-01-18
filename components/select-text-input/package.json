@@ -2,7 +2,7 @@
     "name": "@amalto/select-text-input",
     "displayName": "SelectTextInput",
     "description": "Select and text input used on platform6.",
-    "version": "1.9.72",
+    "version": "1.9.73",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -25,8 +25,8 @@
         "access": "public"
     },
     "dependencies": {
-        "@amalto/help": "1.9.25",
-        "@amalto/typings": "1.9.67",
+        "@amalto/help": "1.9.26",
+        "@amalto/typings": "1.9.68",
         "classnames": "^2.2.6",
         "radium": "^0.25.1",
         "react": "15.6.2",

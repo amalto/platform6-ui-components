@@ -2,7 +2,7 @@
     "name": "@amalto/buttons-bar",
     "displayName": "ButtonsBar",
     "description": "Buttons bar used in platform6.",
-    "version": "1.9.85",
+    "version": "1.9.86",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -50,8 +50,8 @@
         "webpack": "4.41.2"
     },
     "dependencies": {
-        "@amalto/helpers": "1.9.84",
-        "@amalto/wordings": "1.9.32",
+        "@amalto/helpers": "1.9.85",
+        "@amalto/wordings": "1.9.33",
         "classnames": "^2.2.6",
         "react": "15.6.2"
     },
