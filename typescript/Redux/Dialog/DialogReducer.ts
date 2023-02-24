@@ -48,7 +48,7 @@ const reducer = (initialState: DialogState): Reducer<DialogState> => {
         }
 
         case DialogActions.HIDE_DIALOG: {
-          return $.extend({}, state, { isShowing: false });
+          return { ...state, isShowing: false };
         }
       }
     } catch (e) {

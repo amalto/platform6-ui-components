@@ -4,7 +4,6 @@ import { MapStateToProps, connect } from 'react-redux';
 
 //utils & stores
 import { compileWordings } from '@amalto/helpers';
-import { ReduxProps } from '../Globals';
 import GlobalState from '../GlobalState';
 import DialogState from './DialogState';
 
@@ -17,22 +16,20 @@ import { default as classNames } from 'classnames';
 //actions
 import { hideDialog } from './DialogActions';
 
-module Dialog {
-  export interface Props extends React.ClassAttributes<Dialog>, DialogState {}
+export interface Props extends React.ClassAttributes<Dialog>, DialogState {}
 
-  export interface State {
-    wordings?: { [id: string]: string };
-  }
+export interface State {
+  wordings?: { [id: string]: string };
 }
 
-class Dialog extends React.Component<any, Dialog.State> {
+class Dialog extends React.Component<any, State> {
   public static select: MapStateToProps<any, any> = (
     state: GlobalState /*, ownProps?: any*/,
-  ): Dialog.Props => {
+  ): Props => {
     return state.dialog;
   };
 
-  constructor(props: Dialog.Props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       wordings: compileWordings(MULTILANGUAGE_WORDINGS, 'en-US'),
@@ -40,14 +37,21 @@ class Dialog extends React.Component<any, Dialog.State> {
   }
 
   render() {
+    const {
+      body,
+      confirmAction,
+      confirmButtonLevel,
+      isLarge,
+      itemsList,
+      title,
+    } = this.props;
     const { wordings } = this.state;
-    const props = this.props as Dialog.Props;
 
-    let confirmButtonClasses = props.confirmButtonLevel
-      ? 'btn btn-' + props.confirmButtonLevel
+    let confirmButtonClasses = confirmButtonLevel
+      ? 'btn btn-' + confirmButtonLevel
       : 'btn btn-danger';
 
-    let actionButtons = props.confirmAction ? (
+    let actionButtons = confirmAction ? (
       <div className="modal-footer">
         <button
           type="button"
@@ -68,9 +72,7 @@ class Dialog extends React.Component<any, Dialog.State> {
 
     return (
       <div className="modal fade">
-        <div
-          className={classNames('modal-dialog', { 'modal-lg': props.isLarge })}
-        >
+        <div className={classNames('modal-dialog', { 'modal-lg': isLarge })}>
           <div className="modal-content">
             <div className="modal-header">
               <button
@@ -80,13 +82,13 @@ class Dialog extends React.Component<any, Dialog.State> {
               >
                 <span>&times;</span>
               </button>
-              <h4 className="modal-title">{props.title || ''}</h4>
+              <h4 className="modal-title">{title || ''}</h4>
             </div>
             <div className="modal-body">
-              {props.body || ''}
-              {props.itemsList && props.itemsList.length ? (
+              {body || ''}
+              {itemsList && itemsList.length ? (
                 <ul className="basic-list top-margin no-bottom-margin">
-                  {props.itemsList.map((item, idx) => {
+                  {itemsList.map((item, idx) => {
                     return <li key={idx}>{item}</li>;
                   })}
                 </ul>
@@ -107,7 +109,7 @@ class Dialog extends React.Component<any, Dialog.State> {
     }
   }
 
-  componentWillReceiveProps(nextProps: Dialog.Props) {
+  componentWillReceiveProps(nextProps: Props) {
     if (nextProps.isShowing) {
       $(ReactDOM.findDOMNode(this)).modal('show');
     } else {
@@ -120,13 +122,13 @@ class Dialog extends React.Component<any, Dialog.State> {
 
   componentWillUnmount() {
     $(ReactDOM.findDOMNode(this)).on('shown.bs.modal', (e) =>
-      this.modalCallbackFunction(e, this.props),
+      this.modalCallbackFunction(e, this.props as Props),
     );
   }
 
-  private modalCallbackFunction = (event: any, props: Dialog.Props): void => {
+  private modalCallbackFunction = (event: any, props: Props): void => {
     event.stopPropagation();
-    props.modalReadyCallback && props.modalReadyCallback();
+    props?.modalReadyCallback();
   };
 
   private cancelFunction = (event: any): void => {

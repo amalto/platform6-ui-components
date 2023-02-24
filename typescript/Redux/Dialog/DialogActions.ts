@@ -3,7 +3,6 @@
  */
 
 import { ThunkAction } from 'redux-thunk';
-import { Dispatch } from 'redux';
 import { Action } from '../Globals';
 import GlobalState from '../GlobalState';
 

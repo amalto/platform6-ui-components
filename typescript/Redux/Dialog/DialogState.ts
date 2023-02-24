@@ -9,7 +9,7 @@ module DialogState {
   export function getInitialState(): DialogState {
     return {
       isShowing: false,
-    } as DialogState;
+    };
   }
 }
 
