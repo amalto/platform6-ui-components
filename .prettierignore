@@ -1,0 +1,16 @@
+.npmignore
+.nyc_output
+
+build
+build-typings
+caddy
+node_modules
+public
+typings
+test
+styleguide
+readme
+public
+index.md.*
+README.md
+LICENSE
