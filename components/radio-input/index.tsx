@@ -1,149 +1,158 @@
 // Modules
-import * as React from 'react'
-import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form'
-import { default as classNames } from 'classnames'
-import * as uuid from 'uuid'
-
+import * as React from 'react';
+import { WrappedFieldProps, Field, BaseFieldProps } from 'redux-form';
+import { default as classNames } from 'classnames';
+import * as uuid from 'uuid';
 
 // Components
-import Help from '@amalto/help'
+import Help from '@amalto/help';
 
 /**
  * Radio input used on a [redux-form](#reduxform).
  */
 namespace RadioInput {
-    export interface Props extends BaseFieldProps {
-        /** Input's name used when submitting form. */
-        name: string;
-        /** Input's label. */
-        label?: string | JSX.Element;
-        /** Input's list. */
-        options: {
-            value: string;
-            label?: string;
-        }[];
-        /**
-         * Whether or not the input is disabled.
-         * @default false
-         */
-        disabled?: boolean;
-        /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
-        help?: string;
-        /** CSS class wrapping the component. */
-        containerClass?: string;
-        /** CSS class applied to every input from the list. */
-        inputClass?: string;
-        /**
-         * Remove the bottom margin which is the default height of the error message
-         * displayed when input is invalid.
-         * @default false
-         */
-        collapseErrorSpace?: boolean;
+  export interface Props extends BaseFieldProps {
+    /** Input's name used when submitting form. */
+    name: string;
+    /** Input's label. */
+    label?: string | JSX.Element;
+    /** Input's list. */
+    options: {
+      value: string;
+      label?: string;
+    }[];
+    /**
+     * Whether or not the input is disabled.
+     * @default false
+     */
+    disabled?: boolean;
+    /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
+    help?: string;
+    /** CSS class wrapping the component. */
+    containerClass?: string;
+    /** CSS class applied to every input from the list. */
+    inputClass?: string;
+    /**
+     * Remove the bottom margin which is the default height of the error message
+     * displayed when input is invalid.
+     * @default false
+     */
+    collapseErrorSpace?: boolean;
 
-        /** Hide props from documentation */
+    /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<RadioInput>;
+    /** @ignore */
+    children?: React.ReactNode;
+    /** @ignore */
+    key?: React.ReactText;
+    /** @ignore */
+    ref?: React.Ref<RadioInput>;
 
-        /** redux-form props */
+    /** redux-form props */
 
-        /** @ignore */
-        component?: any,
-        /** @ignore */
-        format?: any,
-        /** @ignore */
-        normalize?: any,
-        /** @ignore */
-        props?: any,
-        /** @ignore */
-        parse?: any,
-        /** @ignore */
-        validate?: any,
-        /** @ignore */
-        warn?: any,
-        /** @ignore */
-        withRef?: any
-    }
+    /** @ignore */
+    component?: any;
+    /** @ignore */
+    format?: any;
+    /** @ignore */
+    normalize?: any;
+    /** @ignore */
+    props?: any;
+    /** @ignore */
+    parse?: any;
+    /** @ignore */
+    validate?: any;
+    /** @ignore */
+    warn?: any;
+    /** @ignore */
+    withRef?: any;
+  }
 
-    export interface State {
-
-    }
+  export interface State {}
 }
 
 class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
+  constructor(props: RadioInput.Props) {
+    super(props);
+    this.state = {};
+  }
 
-    constructor( props: RadioInput.Props ) {
-        super( props )
-        this.state = {
+  private renderRadio = (field: WrappedFieldProps<any>) => {
+    const {
+      label,
+      options,
+      disabled,
+      help,
+      containerClass,
+      inputClass,
+      collapseErrorSpace,
+    } = this.props;
 
-        }
-    }
+    const { input, meta } = field;
 
-    private renderRadio = ( field: WrappedFieldProps<any> ) => {
+    const inputId: string = uuid.v4();
 
-        const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props
+    return (
+      <div
+        className={classNames('form-group', containerClass, {
+          invalid: meta.touched && !!meta.error,
+        })}
+      >
+        {label ? (
+          <label>
+            {label}
+            {help && <Help text={help} />}
+          </label>
+        ) : null}
 
-        const { input, meta } = field
-        
-        const inputId: string = uuid.v4()
+        {options.map((opt, idx) => (
+          <span key={idx} className="form-radio-wrapper right-margin">
+            <input
+              {...(input as any)}
+              key={input.name}
+              disabled={disabled}
+              type="radio"
+              id={`${inputId}_${input.name}_${idx}`}
+              value={opt.value}
+              className={classNames('form-radio', inputClass)}
+              checked={input.value === opt.value}
+            />
 
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
+            <label
+              htmlFor={`${inputId}_${input.name}_${idx}`}
+              className="form-radio-label"
+            >
+              {opt.label || opt.value}
+            </label>
+          </span>
+        ))}
 
-                {
-                    options.map( ( opt, idx ) => (
-                        <span key={idx} className="form-radio-wrapper right-margin">
-                            <input {...input as any}
-                                key={input.name}
-                                disabled={disabled}
-                                type="radio"
-                                id={`${inputId}_${input.name}_${idx}`}
-                                value={opt.value}
-                                className={classNames( 'form-radio', inputClass )}
-                                checked={input.value === opt.value} />
+        {meta.touched && !!meta.error ? (
+          <p className="validation-error-message">{meta.error}</p>
+        ) : collapseErrorSpace ? null : (
+          <p className="validation-error-message">&nbsp;</p>
+        )}
+      </div>
+    );
+  };
 
-                            <label htmlFor={`${inputId}_${input.name}_${idx}`}
-                                className="form-radio-label">
-                                {opt.label || opt.value}
-                            </label>
-                        </span>
-                    ) )
-                }
+  render() {
+    const { options, name, format, normalize, parse, validate, warn } =
+      this.props;
 
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-            </div>
-        )
-    }
+    let baseFieldProps: BaseFieldProps = {
+      name,
+      format,
+      normalize,
+      parse,
+      validate,
+      warn,
+    };
 
-    render() {
-
-        const { options, name, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
-            name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
-
-        return options && options.length > 0 ? (
-
-            <Field {...baseFieldProps} component={this.renderRadio} />
-
-        ) : null
-
-    }
-
+    return options && options.length > 0 ? (
+      <Field {...baseFieldProps} component={this.renderRadio} />
+    ) : null;
+  }
 }
 
-
-export default RadioInput
+export default RadioInput;

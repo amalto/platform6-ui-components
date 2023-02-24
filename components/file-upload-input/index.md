@@ -3,23 +3,24 @@ See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) docum
 ### Usage
 
 ```typescript
-import FileUploadInput from '@amalto/file-upload-input'
+import FileUploadInput from '@amalto/file-upload-input';
 ```
 
 ```javascript
 const { reduxForm } = require('redux-form');
 const ExampleFileUploadInput = reduxForm({
-    form: 'form-file-upload-input-example',
-    enableReinitialize: true
+  form: 'form-file-upload-input-example',
+  enableReinitialize: true,
 })(FileUploadInput);
 
-<ExampleFileUploadInput locale='en-US'
-    name='file-upload-input-example-name'
-    label='FileUploadInput example'
-    disabled={false}
-    help='FileUploadInput help'
-    displayPreview={false}
-    collapseErrorSpace={true}
-    locale='en-US'
-/>
+<ExampleFileUploadInput
+  locale="en-US"
+  name="file-upload-input-example-name"
+  label="FileUploadInput example"
+  disabled={false}
+  help="FileUploadInput help"
+  displayPreview={false}
+  collapseErrorSpace={true}
+  locale="en-US"
+/>;
 ```

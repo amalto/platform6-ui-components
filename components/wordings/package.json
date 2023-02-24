@@ -1,46 +1,46 @@
 {
-    "name": "@amalto/wordings",
-    "displayName": "Wordings",
-    "description": "Wordings used on platform6.",
-    "version": "1.9.33",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/amalto/platform6-ui-components"
-    },
-    "keywords": [
-        "user-interface",
-        "react",
-        "typescript"
-    ],
-    "main": "./build/index.js",
-    "typings": "./build/index.d.ts",
-    "author": "Amalto Technologies",
-    "scripts": {
-        "setup": "npm install",
-        "build": "rm -rf ./build/; tsc"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "dependencies": {
-        "react": "15.6.2",
-        "react-dom": "15.6.2"
-    },
-    "devDependencies": {
-        "@ava/babel-preset-stage-4": "2.0.0",
-        "@ava/babel-preset-transform-test-files": "^4.0.1",
-        "@babel/core": "^7.2.2",
-        "@babel/plugin-syntax-jsx": "^7.2.0",
-        "@babel/preset-react": "^7.0.0",
-        "@babel/register": "^7.0.0",
-        "@types/react": "15.6.10",
-        "@types/react-dom": "15.5.6",
-        "ava": "1.2.1",
-        "nyc": "^15.1.0",
-        "ts-loader": "8.4.0",
-        "typescript": "4.7.4",
-        "webpack": "4.41.2"
-    },
-    "gitHead": "39cadc9ff85400adf942f591a4bd3d4fd8f39151"
+  "name": "@amalto/wordings",
+  "displayName": "Wordings",
+  "description": "Wordings used on platform6.",
+  "version": "1.9.33",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amalto/platform6-ui-components"
+  },
+  "keywords": [
+    "user-interface",
+    "react",
+    "typescript"
+  ],
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "author": "Amalto Technologies",
+  "scripts": {
+    "setup": "npm install",
+    "build": "rm -rf ./build/; tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
+  },
+  "devDependencies": {
+    "@ava/babel-preset-stage-4": "2.0.0",
+    "@ava/babel-preset-transform-test-files": "^4.0.1",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@types/react": "15.6.10",
+    "@types/react-dom": "15.5.6",
+    "ava": "1.2.1",
+    "nyc": "^15.1.0",
+    "ts-loader": "8.4.0",
+    "typescript": "4.7.4",
+    "webpack": "4.41.2"
+  },
+  "gitHead": "39cadc9ff85400adf942f591a4bd3d4fd8f39151"
 }

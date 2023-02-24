@@ -3,7 +3,7 @@ See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) docum
 ### Usage
 
 ```typescript
-import DateInput from '@amalto/date-input'
+import DateInput from '@amalto/date-input';
 ```
 
 ```javascript
@@ -16,17 +16,18 @@ const min = new moment(today).subtract(1, 'month').format('YYYY-MM-DD');
 const max = new moment(today).add(1, 'month').format('YYYY-MM-DD');
 
 const ExampleDateInput = reduxForm({
-    initialValues: {'date-input-example': today},
-    form: 'form-date-input-example',
-    enableReinitialize: true
+  initialValues: { 'date-input-example': today },
+  form: 'form-date-input-example',
+  enableReinitialize: true,
 })(DateInput);
 
-<ExampleDateInput name='date-input-example'
-    label='DateInput example'
-    minDate={min}
-    maxDate={max}
-    mandatory={true}
-    help='Helper text'
-    containerClass='col-lg-12 col-xs-12 padding-none'
-/>
+<ExampleDateInput
+  name="date-input-example"
+  label="DateInput example"
+  minDate={min}
+  maxDate={max}
+  mandatory={true}
+  help="Helper text"
+  containerClass="col-lg-12 col-xs-12 padding-none"
+/>;
 ```

@@ -12,106 +12,114 @@ import { default as classNames } from 'classnames';
  * Readonly input used on a [redux-form](#reduxform).
  */
 namespace ReadonlyInput {
-    export interface Props extends BaseFieldProps {
-        /** Input's name used when submitting form. */
-        name: string;
-        /** Input's label. */
-        label?: string | JSX.Element;
-        /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
-        help?: string;
-        /** CSS class wrapping the component. */
-        containerClass?: string;
-        /** CSS class applied to input. */
-        inputClass?: string;
-        /**
-         * Remove the bottom margin which is the default height of the error message
-         * displayed when input is invalid.
-         * @default false
-         */
-        collapseErrorSpace?: boolean;
+  export interface Props extends BaseFieldProps {
+    /** Input's name used when submitting form. */
+    name: string;
+    /** Input's label. */
+    label?: string | JSX.Element;
+    /** Tooltip text displayed when hovering <span className='quote'>?</span> icon. */
+    help?: string;
+    /** CSS class wrapping the component. */
+    containerClass?: string;
+    /** CSS class applied to input. */
+    inputClass?: string;
+    /**
+     * Remove the bottom margin which is the default height of the error message
+     * displayed when input is invalid.
+     * @default false
+     */
+    collapseErrorSpace?: boolean;
 
-        /** Hide props from documentation */
+    /** Hide props from documentation */
 
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<ReadonlyInput>;
+    /** @ignore */
+    children?: React.ReactNode;
+    /** @ignore */
+    key?: React.ReactText;
+    /** @ignore */
+    ref?: React.Ref<ReadonlyInput>;
 
-        /** redux-form props */
+    /** redux-form props */
 
-        /** @ignore */
-        component?: any;
-        /** @ignore */
-        format?: any;
-        /** @ignore */
-        normalize?: any;
-        /** @ignore */
-        props?: any;
-        /** @ignore */
-        parse?: any;
-        /** @ignore */
-        validate?: any;
-        /** @ignore */
-        warn?: any;
-        /** @ignore */
-        withRef?: any;
-    }
+    /** @ignore */
+    component?: any;
+    /** @ignore */
+    format?: any;
+    /** @ignore */
+    normalize?: any;
+    /** @ignore */
+    props?: any;
+    /** @ignore */
+    parse?: any;
+    /** @ignore */
+    validate?: any;
+    /** @ignore */
+    warn?: any;
+    /** @ignore */
+    withRef?: any;
+  }
 
-    export interface State {
-
-    }
+  export interface State {}
 }
 
-class ReadonlyInput extends React.Component<ReadonlyInput.Props, ReadonlyInput.State> {
+class ReadonlyInput extends React.Component<
+  ReadonlyInput.Props,
+  ReadonlyInput.State
+> {
+  constructor(props: ReadonlyInput.Props) {
+    super(props);
+    this.state = {};
+  }
 
-    constructor( props: ReadonlyInput.Props ) {
-        super( props )
-        this.state = {
+  private renderText = (field: WrappedFieldProps<any>) => {
+    const { label, help, containerClass, inputClass, collapseErrorSpace } =
+      this.props;
 
-        }
-    }
+    const { input, meta } = field;
 
-    private renderText = ( field: WrappedFieldProps<any> ) => {
+    return (
+      <div
+        className={classNames('form-group', containerClass, {
+          invalid: meta.touched && !!meta.error,
+        })}
+      >
+        {label ? (
+          <label>
+            {label}
+            {help && <Help text={help} />}
+          </label>
+        ) : null}
 
-        const { label, help, containerClass, inputClass, collapseErrorSpace } = this.props
+        <span
+          {...(input as any)}
+          className={classNames('form-static-input', inputClass)}
+        >
+          {input.value}
+        </span>
 
-        const { input, meta } = field
+        {meta.touched && !!meta.error ? (
+          <p className="validation-error-message">{meta.error}</p>
+        ) : collapseErrorSpace ? null : (
+          <p className="validation-error-message">&nbsp;</p>
+        )}
+      </div>
+    );
+  };
 
-        return (
-            <div className={classNames( 'form-group', containerClass, {
-                'invalid': meta.touched && !!meta.error
-            } )}>
+  render() {
+    const { name, format, normalize, parse, validate, warn } = this.props;
 
-                {label ? <label>{label}{help && <Help text={help} />}</label> : null}
+    let baseFieldProps: BaseFieldProps = {
+      name,
+      format,
+      normalize,
+      parse,
+      validate,
+      warn,
+    };
 
-                <span {...input as any} className={classNames( 'form-static-input', inputClass )}>{input.value}</span>
-
-                {( meta.touched && !!meta.error ) ? <p className="validation-error-message">{meta.error}</p> : ( collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p> )}
-
-            </div>
-        )
-    }
-
-    render() {
-
-        const { name, format, normalize, parse, validate, warn } = this.props
-
-        let baseFieldProps: BaseFieldProps = {
-            name,
-            format,
-            normalize,
-            parse,
-            validate,
-            warn
-        }
-
-        return <Field {...baseFieldProps} component={this.renderText} />
-
-    }
-
+    return <Field {...baseFieldProps} component={this.renderText} />;
+  }
 }
 
-
-export default ReadonlyInput
+export default ReadonlyInput;

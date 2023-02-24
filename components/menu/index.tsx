@@ -1,119 +1,137 @@
 // Modules
-import * as React from 'react'
-import { default as classNames } from 'classnames'
+import * as React from 'react';
+import { default as classNames } from 'classnames';
 
 // Models
-import { Entry } from './models/Entry'
+import { Entry } from './models/Entry';
 
 /**
  * Small button with an icon instead of text.
  * See [Internal Resources](#menu-1)
  */
 module Menu {
+  export interface Props extends React.ClassAttributes<Menu> {
+    /** Title */
+    title: string;
 
-    export interface Props extends React.ClassAttributes<Menu> {
+    /** Entries */
+    entries: JSX.Element[];
 
-        /** Title */
-        title: string;
+    itemStyle: React.CSSProperties;
 
-        /** Entries */
-        entries: JSX.Element[];
+    hideLabel?: boolean;
 
-        itemStyle: React.CSSProperties;
+    /** current menu entry selected */
+    selectedEntry: string;
 
-        hideLabel?: boolean;
+    /** Select entry */
+    selectEntry: (entry: number) => void;
 
-        /** current menu entry selected */
-        selectedEntry: string;
+    /** Main color */
+    mainColor: string;
 
-        /** Select entry */
-        selectEntry: ( entry: number ) => void;
+    /** Secondary color */
+    subColor: string;
 
-        /** Main color */
-        mainColor: string;
+    /** Text color */
+    textColor: string;
 
-        /** Secondary color */
-        subColor: string;
+    /** Hover text color */
+    hoverTextColor: string;
 
-        /** Text color */
-        textColor: string;
+    /** Menu width */
+    width?: number | string;
 
-        /** Hover text color */
-        hoverTextColor: string;
+    /** Menu height */
+    height?: number | string;
 
-        /** Menu width */
-        width?: number | string;
+    /** Hide props from documentation */
 
-        /** Menu height */
-        height?: number | string;
+    /** @ignore */
+    children?: React.ReactNode;
+    /** @ignore */
+    key?: React.ReactText;
+    /** @ignore */
+    ref?: React.Ref<Menu>;
+  }
 
-        /** Hide props from documentation */
-
-        /** @ignore */
-        children?: React.ReactNode;
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Menu>;
-    }
-
-    export interface State {
-    }
+  export interface State {}
 }
 
 class Menu extends React.Component<Menu.Props, any> {
-    constructor( props: Menu.Props ) {
-        super( props )
+  constructor(props: Menu.Props) {
+    super(props);
 
-        this.state = {}
-    }
+    this.state = {};
+  }
 
-    render() {
-        const { title, entries, hideLabel, selectedEntry, selectEntry, mainColor, textColor, subColor, hoverTextColor, width, height } = this.props
+  render() {
+    const {
+      title,
+      entries,
+      hideLabel,
+      selectedEntry,
+      selectEntry,
+      mainColor,
+      textColor,
+      subColor,
+      hoverTextColor,
+      width,
+      height,
+    } = this.props;
 
-        const activeStyle = {
-            color: subColor,
-            backgroundColor: mainColor
-        }
+    const activeStyle = {
+      color: subColor,
+      backgroundColor: mainColor,
+    };
 
-        const styles = {
-            'menu-link': {
-                color: textColor,
-                textAlign: hideLabel ? 'cetner' : undefined,
+    const styles = {
+      'menu-link': {
+        color: textColor,
+        textAlign: hideLabel ? 'cetner' : undefined,
 
-                ':hover': {
-                    color: hoverTextColor,
-                    backgroundColor: subColor
-                }
-            }
-        }
+        ':hover': {
+          color: hoverTextColor,
+          backgroundColor: subColor,
+        },
+      },
+    };
 
-        return (
-            <div style={!hideLabel ? {} : { paddingTop: 10 }}>
-                {
-                    !hideLabel ? (
-                        <h5 style={{
-                            color: mainColor,
-                            fontWeight: 400,
-                            fontSize: '1.25em',
-                            padding: '10px 10px 5px',
-                            textTransform: 'uppercase'
-                        }}>
-                            <span style={{ fontSize: '.813em' }}>{title}</span>
-                        </h5>
-                    ) : null
-                }
-                <ul style={{ padding: 0, margin: !hideLabel ? '0px 10px' : '0px 5px', paddingBottom: 10 }}>
-                    {
-                        entries.map( ( link, idx ) => (
-                            <li className='menu-line' style={{ ...this.props.itemStyle, ...styles['menu-link'] }} key={idx}>{link}</li>
-                        ) )
-                    }
-                </ul>
-            </div>
-        )
-    }
+    return (
+      <div style={!hideLabel ? {} : { paddingTop: 10 }}>
+        {!hideLabel ? (
+          <h5
+            style={{
+              color: mainColor,
+              fontWeight: 400,
+              fontSize: '1.25em',
+              padding: '10px 10px 5px',
+              textTransform: 'uppercase',
+            }}
+          >
+            <span style={{ fontSize: '.813em' }}>{title}</span>
+          </h5>
+        ) : null}
+        <ul
+          style={{
+            padding: 0,
+            margin: !hideLabel ? '0px 10px' : '0px 5px',
+            paddingBottom: 10,
+          }}
+        >
+          {entries.map((link, idx) => (
+            <li
+              className="menu-line"
+              style={{ ...this.props.itemStyle, ...styles['menu-link'] }}
+              key={idx}
+            >
+              {link}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
-
-export default Menu
+export default Menu;

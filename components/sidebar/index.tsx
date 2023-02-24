@@ -1,53 +1,60 @@
-import * as React from 'react'
-import { default as classNames } from 'classnames'
+import * as React from 'react';
+import { default as classNames } from 'classnames';
 
 /**
  * Customisable Sidebar.
  */
 module Sidebar {
+  export interface Props extends React.ClassAttributes<Sidebar> {
+    /** Sidebar css */
+    mainCss?: string;
 
-    export interface Props extends React.ClassAttributes<Sidebar> {
+    /** Sidebar style */
+    mainStyle?: React.CSSProperties;
 
-        /** Sidebar css */
-        mainCss?: string;
+    /** Background color */
+    backgroundColor: string;
 
-        /** Sidebar style */
-        mainStyle?: React.CSSProperties;
+    /** Dimension */
+    width?: number | string;
+    height?: number | string;
 
-        /** Background color */
-        backgroundColor: string;
+    /** Sibebar content */
+    children?: React.ReactNode;
 
-        /** Dimension */
-        width?: number | string;
-        height?: number | string;
+    /** Hide props from documentation */
 
-        /** Sibebar content */
-        children?: React.ReactNode;
-
-        /** Hide props from documentation */
-
-        /** @ignore */
-        key?: React.ReactText;
-        /** @ignore */
-        ref?: React.Ref<Sidebar>;
-    }
+    /** @ignore */
+    key?: React.ReactText;
+    /** @ignore */
+    ref?: React.Ref<Sidebar>;
+  }
 }
 
 class Sidebar extends React.Component<Sidebar.Props, any> {
-    constructor( props: Sidebar.Props ) {
-        super( props )
-    }
+  constructor(props: Sidebar.Props) {
+    super(props);
+  }
 
-    render() {
-        const { mainCss, mainStyle, backgroundColor, width, height, children } = this.props
+  render() {
+    const { mainCss, mainStyle, backgroundColor, width, height, children } =
+      this.props;
 
-        return (
-            <div className={mainCss} style={{ width, height, backgroundColor, overflow: 'auto', ...mainStyle }}>
-                {children}
-            </div>
-        )
-    }
+    return (
+      <div
+        className={mainCss}
+        style={{
+          width,
+          height,
+          backgroundColor,
+          overflow: 'auto',
+          ...mainStyle,
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
 }
 
-
-export default Sidebar
+export default Sidebar;
