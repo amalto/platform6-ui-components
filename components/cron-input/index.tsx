@@ -93,9 +93,8 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
     super(props);
     this.state = {
       wordings: compileWordings(MULTILANGUAGE_WORDINGS, props.locale),
+      ...props.value,
     };
-
-    $.extend(this.state, props.value);
   }
 
   render() {

@@ -71,11 +71,12 @@ function createNode(parentId, elementName, description, propertiesMap) {
 /** Recursively go throught all the tree and update the node */
 function updateNode(currentNode, nodeToEdit) {
   if (currentNode.id === nodeToEdit.id) {
-    nodeToEdit = $.extend({}, currentNode, {
+    nodeToEdit = {
+      ...currentNode,
       text: nodeToEdit.text,
       data: nodeToEdit.data,
       propertiesMap: nodeToEdit.propertiesMap,
-    });
+    };
     currentNode = JSON.parse(JSON.stringify(nodeToEdit));
   } else {
     let children = JSON.parse(JSON.stringify(currentNode.children));
@@ -117,9 +118,7 @@ function removeNode(currentNode, id, elementName, parentNodeId) {
      * In this exemple we won't allow you to remove the root node.
      * Instead we will remove all his children.
      */
-    return !currentNode.data.parentId
-      ? $.extend({}, currentNode, { children: [] })
-      : null;
+    return !currentNode.data.parentId ? { ...currentNode, children: [] } : null;
   } else {
     let children =
       (currentNode.children &&

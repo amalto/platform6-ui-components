@@ -1,10 +1,10 @@
-import { Dispatch } from 'redux'
+import { Dispatch } from 'redux';
 
 export interface Action {
-    type: string
-    value: any
+  type: string;
+  value: any;
 }
 
 export interface ReduxProps {
-    dispatch?: Dispatch<any>;
+  dispatch?: Dispatch<any>;
 }

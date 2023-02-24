@@ -1,7 +1,7 @@
-import DialogState from './Dialog/DialogState'
+import DialogState from './Dialog/DialogState';
 
 interface GlobalState {
-    dialog: DialogState;
+  dialog: DialogState;
 }
 
-export default GlobalState
+export default GlobalState;

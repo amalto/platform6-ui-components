@@ -1,14 +1,14 @@
 const initialState = {
-    templates: {
-        documentation: {
-            documentation: {
-                'props-data-grid-id-example': {}
-            }
-        }
+  templates: {
+    documentation: {
+      documentation: {
+        'props-data-grid-id-example': {},
+      },
     },
-    templatesChanged: false
+  },
+  templatesChanged: false,
 };
 
-export function datagridReducer( state = initialState, /** action */ ) {
-    return state
+export function datagridReducer(state = initialState /** action */) {
+  return state;
 }

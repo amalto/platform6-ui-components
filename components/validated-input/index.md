@@ -23,15 +23,16 @@ initialState = {
 
 function handleFieldChange(fieldValue, fieldName, isInvalid) {
   setState({
-    [fieldName]: $.extend({}, state[fieldName], {
+    [fieldName]: {
+      ...state[fieldName],
       value: fieldValue,
       isInvalid,
-    }),
+    },
   });
 }
 
 function atLeast5(fieldValue) {
-  return fieldValue && fieldValue.length >= 5;
+  return fieldValue?.length >= 5;
 }
 
 <div>

@@ -215,13 +215,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     this.resizeEditor();
     !this.props.readonly && this.focus(this.props.aceSession);
 
-    // this._clearTimeout = setInterval(() => {
-    //     if ( this._canUpdate ) {
-    //         this.props.saveSession && this.props.saveSession( $.extend( {}, this.getAceSession( this._editor ),{cursorPosition: this._cursorLastPosition} ) )
-    //         this._canUpdate = false
-    //     }
-    // }, 12000)
-
     // Needed to be able to access this from editor onblur event
     const self = this;
 
