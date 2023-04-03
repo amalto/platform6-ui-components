@@ -301,6 +301,20 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     );
   }
 
+  componentDidMount(): void {
+    const { data, defaultSelectedNodeId, id } = this.props;
+    const { treeInstance } = this.state;
+
+    if (data !== undefined && data !== null) {
+      this.initTreeInstance({
+        data,
+        defaultSelectedNodeId,
+        id,
+        treeInstance,
+      });
+    }
+  }
+
   componentDidUpdate(prevProps: Tree.Props, prevState: Tree.State) {
     const { children, id } = this.props;
     const { selectedNode } = this.state;
@@ -330,21 +344,12 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     const { treeInstance } = this.state;
 
     if (data !== nextProps.data) {
-      if (!treeInstance) {
-        this.setState({
-          treeInstance: this.setUpTree(
-            nextProps.id,
-            nextProps.data,
-            nextProps.defaultSelectedNodeId,
-          ),
-          selectedNode: null,
-          editedNode: null,
-          formOpened: null,
-        });
-      } else {
-        treeInstance.settings.core.data = nextProps.data;
-        treeInstance.refresh(true);
-      }
+      this.initTreeInstance({
+        data: nextProps.data,
+        defaultSelectedNodeId: nextProps.defaultSelectedNodeId,
+        id: nextProps.id,
+        treeInstance,
+      });
     }
   }
 
@@ -356,6 +361,31 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     const treeContainer = ReactDOM.findDOMNode(this._tree) as HTMLElement;
 
     $(treeContainer).off();
+  }
+
+  private initTreeInstance = (params: {
+    data: TreeNodeModel;
+    defaultSelectedNodeId: string;
+    id: string;
+    treeInstance: JSTree;
+  }): void => {
+    const { data, defaultSelectedNodeId, id, treeInstance } = params;
+
+    if (!treeInstance) {
+      this.setState({
+        treeInstance: this.setUpTree(
+          id,
+          data,
+          defaultSelectedNodeId,
+        ),
+        selectedNode: null,
+        editedNode: null,
+        formOpened: null,
+      });
+    } else {
+      treeInstance.settings.core.data = data;
+      treeInstance.refresh(true);
+    }
   }
 
   private renderTreeButtonsBar = (): JSX.Element => {
