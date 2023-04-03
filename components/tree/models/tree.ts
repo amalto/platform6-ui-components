@@ -6,6 +6,7 @@ export interface OrgModel {
     description?: string;
     propertiesMap?: KeyValDef;
     children?: OrgModel[];
+    childrenCount?: number;
 }
 
 export interface TreeNodeDataModel {
