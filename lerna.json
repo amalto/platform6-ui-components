@@ -4,6 +4,10 @@
         "components/*"
     ],
     "command": {
+        "publish": {
+            "ignoreChanges": ["package-lock.json"],
+            "registry": "https://registry.npmjs.org"
+        },
         "init": {
             "exact": true
         }
