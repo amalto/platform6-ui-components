@@ -2,7 +2,7 @@
   "name": "@amalto/file-input",
   "displayName": "FileInput",
   "description": "Input allowing you to select a file.",
-  "version": "1.9.88",
+  "version": "1.9.89",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,9 +25,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/helpers": "1.9.85",
-    "@amalto/typings": "1.9.68",
-    "@amalto/wordings": "1.9.33",
+    "@amalto/helpers": "1.9.86",
+    "@amalto/typings": "1.9.69",
+    "@amalto/wordings": "1.9.34",
     "classnames": "^2.2.6",
     "jquery": "^3.4.1",
     "react": "15.6.2",

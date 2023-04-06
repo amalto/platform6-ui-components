@@ -2,7 +2,7 @@
   "name": "@amalto/spinner",
   "displayName": "Spinner",
   "description": "Loading spinner.",
-  "version": "1.9.25",
+  "version": "1.9.26",
   "license": "MIT",
   "repository": {
     "type": "git",
