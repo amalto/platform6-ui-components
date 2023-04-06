@@ -2,7 +2,7 @@
   "name": "@amalto/tree",
   "displayName": "Tree",
   "description": "A tree component to display data like an organisation tree.",
-  "version": "1.9.88",
+  "version": "1.9.89",
   "license": "MIT",
   "repository": {
     "type": "git",
