@@ -84,7 +84,6 @@ module Tree {
     selectedNode?: TreeNodeModel;
     formOpened?: string;
     editedNode?: OrgModel;
-    maxTreeHeight?: number;
     wordings?: { [key: string]: string };
   }
 }
@@ -99,7 +98,6 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       selectedNode: null,
       formOpened: null,
       editedNode: null,
-      maxTreeHeight: 0,
       wordings: compileWordings(MULTILANGUAGE_WORDINGS, props.locale),
     };
   }
@@ -284,12 +282,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       <div id={id} className="text-medium">
         <div className="tree-controls-container">{editor}</div>
 
-        <div
-          style={{
-            maxHeight: this.state.maxTreeHeight || 'none',
-            overflow: 'auto',
-          }}
-        >
+        <div style={{ overflow: 'auto' }}>
           <div ref={(dom) => (this._tree = dom)} id={id} />
         </div>
 
@@ -312,30 +305,6 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
         id,
         treeInstance,
       });
-    }
-  }
-
-  componentDidUpdate(prevProps: Tree.Props, prevState: Tree.State) {
-    const { children, id } = this.props;
-    const { selectedNode } = this.state;
-
-    if (
-      prevState.selectedNode !== selectedNode ||
-      prevProps.children !== children
-    ) {
-      // window height - tree action buttons container height - details container - header, paddings and nav tabs
-      let maxTreeHeight =
-        window.innerHeight -
-        $('#' + id + ' .tree-controls-container').outerHeight() -
-        $('#' + id + ' .tree-details-container .toggle-form').outerHeight() -
-        212;
-
-      //if we have a user assign form, we reduce a bit more the tree height to fully display selected node details and user assign form (children)
-      if (children) {
-        maxTreeHeight -= 62;
-      }
-
-      this.setState({ maxTreeHeight });
     }
   }
 
