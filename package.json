@@ -28,7 +28,7 @@
         "prepublish": "npm run bootstrap",
         "release": "lerna publish --yes --exact --registry=https://registry.npmjs.org/ --no-git-reset patch -- --production --access public",
         "release:version": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact -- --production --access public",
-        "release:force": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact --force-publish=* -- --production --access public",
+        "release:force": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact --force-publish=@amalto/tree -- --production --access public",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build -- --no-deprecation"
