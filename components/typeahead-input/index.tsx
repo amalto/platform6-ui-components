@@ -7,67 +7,98 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 /**
  * Typeahead input displaying a filtered dropdown list from your input and your collection.
  */
-module TypeaheadInput {
-  export interface Props extends React.ClassAttributes<TypeaheadInput> {
-    /** Div id. */
-    id: string;
-    /** Collection of item to be display inside the dropdown list. */
-    collection: string[];
-    /** Input's value. */
-    value?: any;
-    /** Input's <span className='quote'>onChange</span> event. */
-    handleInputChange: (value: any) => void;
-    /** Input's placeholder. */
-    placeholder?: string;
-    /** Current collection type. */
-    selectedCollectionType?: string;
-    /** Define the collection type which will display different results on the dropdown list. */
-    collectionTypes?: string[];
-    /** Update collection type. */
-    setCollectionType?: (collectionType: string) => void;
+export interface Props extends React.ClassAttributes<TypeaheadInput> {
+  /** Div id. */
+  id: string;
+  /** Collection of item to be display inside the dropdown list. */
+  collection: string[];
+  /** Input's value. */
+  value?: any;
+  /** Input's <span className='quote'>onChange</span> event. */
+  handleInputChange: (value: any) => void;
+  /** Input's placeholder. */
+  placeholder?: string;
+  /** Current collection type. */
+  selectedCollectionType?: string;
+  /** Define the collection type which will display different results on the dropdown list. */
+  collectionTypes?: string[];
+  /** Update collection type. */
+  setCollectionType?: (collectionType: string) => void;
 
-    /** Hide props from documentation */
+  /** Hide props from documentation */
 
-    /** @ignore */
-    children?: React.ReactNode;
-    /** @ignore */
-    key?: React.ReactText;
-    /** @ignore */
-    ref?: React.Ref<TypeaheadInput>;
-  }
+  /** @ignore */
+  children?: React.ReactNode;
+  /** @ignore */
+  key?: React.ReactText;
+  /** @ignore */
+  ref?: React.Ref<TypeaheadInput>;
+}
 
-  export interface State {
-    shouldDisplayDropdown: boolean;
-  }
+export interface State {
+  shouldDisplayDropdown: boolean;
+}
 
-  export interface RemoteConfig {
-    url: string;
-    prepare?: (
-      query: string,
-      settings: JQueryAjaxSettings,
-    ) => JQueryAjaxSettings;
-    wildcard?: string;
-    rateLimitby?: string;
-    rateLimitWait?: number;
-    transform?: (response: any) => any;
-  }
+export interface RemoteConfig {
+  url: string;
+  prepare?: (
+    query: string,
+    settings: JQueryAjaxSettings,
+  ) => JQueryAjaxSettings;
+  wildcard?: string;
+  rateLimitby?: string;
+  rateLimitWait?: number;
+  transform?: (response: any) => any;
 }
 
 class TypeaheadInput extends React.Component<
-  TypeaheadInput.Props,
-  TypeaheadInput.State
+  Props,
+  State
 > {
   private root: HTMLDivElement | undefined;
 
-  constructor(props: TypeaheadInput.Props) {
+  constructor(props: Props) {
     super(props);
 
+    this.handleInputBlur = this.handleInputBlur.bind(this);
+    this.renderTypeahead = this.renderTypeahead.bind(this);
     this.state = {
       shouldDisplayDropdown:
         isNotEmpty(props.selectedCollectionType) &&
         !!props.collectionTypes &&
         !!props.setCollectionType,
     };
+  }
+
+  private handleInputBlur(event: any): void {
+    const { handleInputChange } = this.props;
+    const currentValue: string = event.target.value;
+
+    if (!currentValue || currentValue.length === 0) {
+      handleInputChange(null);
+    }
+  };
+
+  private renderTypeahead(): JSX.Element {
+    const {
+      id,
+      collection,
+      handleInputChange,
+      placeholder,
+      value,
+    } = this.props;
+
+    return (
+      <Typeahead
+        id={`${id}_typeahead`}
+        inputProps={{ name: id, style: { flex: 'auto' } }}
+        onBlur={this.handleInputBlur}
+        onInputChange={handleInputChange}
+        options={collection}
+        placeholder={placeholder}
+        selected={[value ?? '']}
+      />
+    );
   }
 
   componentDidMount(): void {
@@ -77,21 +108,15 @@ class TypeaheadInput extends React.Component<
     typeaheadWrapper?.setAttribute('style', 'position: relative; flex: auto;');
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       id,
-      collection,
       collectionTypes,
-      handleInputChange,
-      placeholder,
       selectedCollectionType,
       setCollectionType,
-      value,
     } = this.props;
 
     const { shouldDisplayDropdown } = this.state;
-
-    console.info(`value [${value}]`);
 
     return (
       <div
@@ -100,15 +125,7 @@ class TypeaheadInput extends React.Component<
         ref={(dom) => (this.root = dom)}
         style={{ display: 'flex' }}
       >
-        <Typeahead
-          id={`${id}_typeahead`}
-          inputProps={{ value, name: id, style: { flex: 'auto' } }}
-          onBlur={this.handleInputBlur}
-          onChange={(value) => handleInputChange(value?.[0])}
-          options={collection}
-          placeholder={placeholder}
-          selected={[value]}
-        />
+        {this.renderTypeahead()}
         {shouldDisplayDropdown ? (
           <div className="btn btn-group btn-group-sm mgt-0 mgl-0 padding-none input-suffix">
             <button
@@ -152,15 +169,6 @@ class TypeaheadInput extends React.Component<
       </div>
     );
   }
-
-  private handleInputBlur = (event: any) => {
-    const { handleInputChange } = this.props;
-    const currentValue: string = event.target.value;
-
-    if (!currentValue || currentValue.length === 0) {
-      handleInputChange(null);
-    }
-  };
 }
 
 export default TypeaheadInput;
