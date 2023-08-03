@@ -27,7 +27,7 @@
   "dependencies": {
     "@amalto/help": "1.9.27",
     "classnames": "^2.2.6",
-    "moment": "2.29.2",
+    "moment": "2.29.4",
     "react": "15.6.2",
     "react-dom": "15.6.2"
   },

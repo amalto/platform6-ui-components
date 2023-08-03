@@ -7,7 +7,7 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 /**
  * Typeahead input displaying a filtered dropdown list from your input and your collection.
  */
-export interface Props extends React.ClassAttributes<TypeaheadInput> {
+interface Props extends React.ClassAttributes<TypeaheadInput> {
   /** Div id. */
   id: string;
   /** Collection of item to be display inside the dropdown list. */
@@ -35,11 +35,11 @@ export interface Props extends React.ClassAttributes<TypeaheadInput> {
   ref?: React.Ref<TypeaheadInput>;
 }
 
-export interface State {
+interface State {
   shouldDisplayDropdown: boolean;
 }
 
-export interface RemoteConfig {
+interface RemoteConfig {
   url: string;
   prepare?: (
     query: string,
@@ -89,7 +89,7 @@ class TypeaheadInput extends React.Component<
     } = this.props;
 
     return (
-      <Typeahead
+      <Typeahead<string>
         id={`${id}_typeahead`}
         inputProps={{ name: id, style: { flex: 'auto' } }}
         onBlur={this.handleInputBlur}
