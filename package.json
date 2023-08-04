@@ -16,22 +16,30 @@
         "access": "public"
     },
     "scripts": {
-        "clean": "lerna clean --yes",
-        "bootstrap": "lerna bootstrap --hoist -- --legacy-peer-deps",
-        "build": "lerna run build -- --no-deprecation",
-        "clean-install": "rm -rf **/node_modules **/package-lock.json && npm cache clean --force && npm install",
+        "clean": "lerna clean --yes; rm -rf node_modules package-lock.json; npm cache clean --force",
+        "build": "lerna run build --no-sort",
+        "clean-install": "npm run clean && npm install --legacy-peer-deps",
         "format": "npx prettier --write components/**/* typescript/**/*",
         "check": "npx prettier --check components/**/* typescript/**/*",
         "test": "nyc ava --verbose",
         "update_p6_version": "node update_platform6_version.js",
-        "prepare": "npm run bootstrap",
-        "prepublish": "npm run bootstrap",
-        "release": "lerna publish --yes --exact --registry=https://registry.npmjs.org/ --no-git-reset patch -- --production --access public",
-        "release:version": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact -- --production --access public",
-        "release:force": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact --force-publish=* -- --production --access public",
+        "release": "lerna publish --yes --exact --registry=https://registry.npmjs.org/ --no-git-reset patch -- --production",
+        "release:version": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact -- --production",
+        "release:force": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact --force-publish=* -- --production",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build -- --no-deprecation"
+    },
+    "workspaces": [
+        "components/service-helpers",
+        "components/helpers",
+        "components/wordings",
+        "components/**"
+    ],
+    "peerDependencies": {
+        "fsevents": "~2.3.2",
+        "react": ">= 16.3.0 || ^17.0.1",
+        "webpack": "^5.72.1"
     },
     "devDependencies": {
         "@ava/babel-preset-stage-4": "2.0.0",
@@ -66,7 +74,7 @@
         "jsdom": "11.6.2",
         "json-loader": "0.5.7",
         "jstree": "3.3.12",
-        "lerna": "^4.0.0",
+        "lerna": "^7.1.4",
         "markdown-loader": "^6.0.0",
         "modernizr": "^3.8.0",
         "npx": "^10.2.2",

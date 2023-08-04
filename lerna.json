@@ -1,11 +1,14 @@
 {
-    "lerna": "3.11.0",
+    "lerna": "7.1.4",
     "packages": [
         "components/*"
     ],
     "command": {
         "init": {
             "exact": true
+        },
+        "publish": {
+            "directory": "{workspaceRoot}/{projectRoot}/dist"
         }
     },
     "private": false,

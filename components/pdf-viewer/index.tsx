@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as PDFJS from 'pdfjs-dist';
 
-PDFJS.workerSrc = require('pdfjs-dist/build/pdf.worker.entry.js');
+// PDFJS.workerSrc = require('pdfjs-dist/build/pdf.worker.entry.js');
 
 // Utils
 import { compileWordings } from '@amalto/helpers';
@@ -13,8 +13,6 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';
 // Components
 import Spinner from '@amalto/spinner';
 import PagingControls from '@amalto/paging-controls';
-
-import pdfjs from 'pdfjs-dist';
 
 /**
  * Display pdf content.
@@ -51,7 +49,7 @@ namespace PdfViewer {
 
   export interface State {
     wordings?: { [key: string]: string };
-    pdf?: PDFDocumentProxy;
+    pdf?: PDFJS.PDFDocumentProxy;
     loading?: boolean;
     loadingError?: boolean;
     currentPage?: number;
@@ -153,7 +151,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
     const { pdfSource } = this.props;
 
     try {
-      const pdf = await PDFJS.getDocument(pdfSource);
+      const pdf = await PDFJS.getDocument(pdfSource).promise;
 
       this.setState(
         {
@@ -183,7 +181,7 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
       try {
         const page = await pdf.getPage(pageNumber);
 
-        let viewport = page.getViewport(renderedScale);
+        let viewport = page.getViewport({ scale: renderedScale });
 
         let canvas = this.pdfCtn;
         let context = canvas.getContext('2d');

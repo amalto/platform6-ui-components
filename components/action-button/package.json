@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amalto/platform6-ui-components"
+    "url": "git+https://github.com/amalto/platform6-ui-components.git"
   },
   "keywords": [
     "user-interface",
@@ -78,5 +78,8 @@
       }
     }
   },
-  "gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e"
+  "bugs": {
+    "url": "https://github.com/amalto/platform6-ui-components/issues"
+  },
+  "homepage": "https://github.com/amalto/platform6-ui-components#readme"
 }
