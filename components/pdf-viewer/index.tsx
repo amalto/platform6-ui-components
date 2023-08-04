@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as PDFJS from 'pdfjs-dist';
 
-// PDFJS.workerSrc = require('pdfjs-dist/build/pdf.worker.entry.js');
+PDFJS.workerSrc = require('pdfjs-dist/build/pdf.worker.entry.js');
 
 // Utils
 import { compileWordings } from '@amalto/helpers';
