@@ -14,6 +14,10 @@
             "conventionalCommits": true
         },
         "publish": {
+            "assets": [
+                "package.json",
+                "README.md"
+            ],
             "directory": "{workspaceRoot}/{projectRoot}/build",
             "exact": true,
             "npmClientArgs": [
