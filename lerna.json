@@ -14,7 +14,13 @@
             "conventionalCommits": true
         },
         "publish": {
-            "directory": "{workspaceRoot}/{projectRoot}/dist"
+            "directory": "{workspaceRoot}/{projectRoot}/dist",
+            "exact": true,
+            "npmClientArgs": [
+                "--production"
+            ],
+            "registry": "https://registry.npmjs.org/",
+            "yes": true
         }
     },
     "private": false,
