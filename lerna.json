@@ -7,6 +7,12 @@
         "init": {
             "exact": true
         },
+        "version": {
+            "npmClientArgs": [
+                "--legacy-peer-deps"
+            ],
+            "conventionalCommits": true
+        },
         "publish": {
             "directory": "{workspaceRoot}/{projectRoot}/dist"
         }
