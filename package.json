@@ -23,9 +23,9 @@
         "check": "npx prettier --check components/**/* typescript/**/*",
         "test": "nyc ava --verbose",
         "update_p6_version": "node update_platform6_version.js",
-        "release": "lerna publish from-git --no-git-reset",
-        "release:version": "lerna publish from-git --no-git-reset",
-        "release:force": "lerna publish from-git --no-git-reset --force-publish=*",
+        "release": "lerna publish from-package --no-git-reset",
+        "release:version": "lerna publish from-package --no-git-reset",
+        "release:force": "lerna publish from-package --no-git-reset --force-publish=*",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build -- --no-deprecation"
