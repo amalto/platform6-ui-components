@@ -2,7 +2,7 @@
   "name": "@amalto/typeahead-form-input",
   "displayName": "TypeaheadFormInput",
   "description": "Typeahead form input used on platform6.",
-  "version": "1.9.30",
+  "version": "1.10.0",
   "license": "MIT",
   "repository": {
     "type": "git",
