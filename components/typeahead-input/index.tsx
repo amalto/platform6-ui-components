@@ -90,13 +90,13 @@ class TypeaheadInput extends React.Component<
 
     return (
       <Typeahead<string>
+        defaultSelected={[value ?? '']}
         id={`${id}_typeahead`}
         inputProps={{ name: id, style: { flex: 'auto' } }}
         onBlur={this.handleInputBlur}
         onInputChange={handleInputChange}
         options={collection}
         placeholder={placeholder}
-        selected={[value ?? '']}
       />
     );
   }
