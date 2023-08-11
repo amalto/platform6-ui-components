@@ -2,7 +2,9 @@
 import * as React from 'react';
 import * as PDFJS from 'pdfjs-dist';
 
-PDFJS.workerSrc = require('pdfjs-dist/build/pdf.worker.entry.js');
+const worker = require('pdfjs-dist/build/pdf.worker.entry.js');
+
+PDFJS.GlobalWorkerOptions.workerSrc = worker;
 
 // Utils
 import { compileWordings } from '@amalto/helpers';
@@ -109,21 +111,21 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
   }
 
   componentWillUnmount() {
-    if (this.state.pdf) {
-      this.state.pdf.destroy();
-    }
+    const { pdf } = this.state;
+
+    pdf?.destroy();
   }
 
   componentDidUpdate(prevProps: PdfViewer.Props) {
-    if (
-      prevProps.reloadTick !== this.props.reloadTick &&
-      this.props.pdfSource
-    ) {
+    const { pdfSource, reloadTick } = this.props;
+
+    if (prevProps.reloadTick !== reloadTick && pdfSource) {
       this.loadPDF();
     }
   }
 
   private getPagingControls = () => {
+    const { locale } = this.props;
     const { pdf, currentPage } = this.state;
 
     if (pdf) {
@@ -131,10 +133,10 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
         <div className="btn-toolbar-centered bottom-spaced">
           <PagingControls
             containerClass="btn-group btn-group-sm"
-            totalPages={pdf.numPages || 1}
+            totalPages={pdf?.numPages ?? 1}
             currentPage={currentPage}
             handlePageChange={this.renderPage}
-            locale={this.props.locale}
+            locale={locale}
           />
         </div>
       );
@@ -146,62 +148,51 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
   private loadPDF = async () => {
     this.setState({
       loading: true,
-    });
+    }, async () => {
+      const { pdfSource } = this.props;
 
-    const { pdfSource } = this.props;
+      try {
+        const pdf = await PDFJS.getDocument(pdfSource);
 
-    try {
-      const pdf = await PDFJS.getDocument(pdfSource).promise;
+        this.setState(
+          { pdf, loading: false },
+          () => this.renderPage(1),
+        );
+      } catch (e) {
+        console.error('Failed loading PDF', e);
 
-      this.setState(
-        {
-          pdf,
+        this.setState({
           loading: false,
-        },
-        () => {
-          this.renderPage(1);
-        },
-      );
-    } catch (e) {
-      console.error('Failed loading PDF', e);
-
-      this.setState({
-        loading: false,
-        loadingError: true,
-      });
-    }
+          loadingError: true,
+        });
+      }
+    });
   };
 
   private renderPage = async (pageNumber: number, scale?: number) => {
     const { pdf } = this.state;
-
-    const renderedScale = scale || 1.5;
+    const renderedScale = scale ?? 1.5;
 
     if (pdf) {
-      try {
-        const page = await pdf.getPage(pageNumber);
 
-        let viewport = page.getViewport({ scale: renderedScale });
+      pdf.getPage(pageNumber)
+        .then((page) => {
+          const viewport = page.getViewport(renderedScale);
+          const canvas = this.pdfCtn;
+          const context = canvas.getContext('2d');
 
-        let canvas = this.pdfCtn;
-        let context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
 
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
 
-        let renderContext = {
-          canvasContext: context,
-          viewport: viewport,
-        };
-
-        await page.render(renderContext);
-
-        this.setState({
-          currentPage: pageNumber,
-        });
-      } catch (e) {
-        console.error('Failed rendering PDF page', e);
-      }
+          return page.render(renderContext);
+        })
+        .then(() => this.setState({ currentPage: pageNumber }))
+        .catch((e) => console.error('Failed rendering page', e));
     }
   };
 }
