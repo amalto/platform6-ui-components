@@ -14,7 +14,7 @@
             "conventionalCommits": true
         },
         "publish": {
-            "directory": "{workspaceRoot}/{projectRoot}/dist",
+            "directory": "{workspaceRoot}/{projectRoot}/build",
             "exact": true,
             "npmClientArgs": [
                 "--production"
