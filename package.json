@@ -23,9 +23,9 @@
         "check": "npx prettier --check components/**/* typescript/**/*",
         "test": "nyc ava --verbose",
         "update_p6_version": "node update_platform6_version.js",
-        "release": "lerna publish --yes --exact --registry=https://registry.npmjs.org/ --no-git-reset patch -- --production",
-        "release:version": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact -- --production",
-        "release:force": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset patch --exact --force-publish=* -- --production",
+        "release": "lerna publish --yes --exact --registry=https://registry.npmjs.org/ --no-git-reset -- --production",
+        "release:version": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset --exact -- --production",
+        "release:force": "lerna publish --yes --registry=https://registry.npmjs.org/ --no-git-reset --exact --force-publish=* -- --production",
         "setup": "npm install",
         "styleguide": "npx styleguidist server --verbose",
         "styleguide:build": "styleguidist build -- --no-deprecation"
