@@ -76,5 +76,15 @@
       }
     }
   },
-  "gitHead": "91c68c25c2f08d64290de2f5dc33326bb423ca7e"
+  "gitHead": "33f7a6fae6e176a0592ab62c68682aef3e73a752",
+  "lerna": {
+    "command": {
+      "publish": {
+        "assets": [
+          "package.json",
+          "README.md"
+        ]
+      }
+    }
+  }
 }

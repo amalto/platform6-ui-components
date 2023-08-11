@@ -81,5 +81,16 @@
   "bugs": {
     "url": "https://github.com/amalto/platform6-ui-components/issues"
   },
-  "homepage": "https://github.com/amalto/platform6-ui-components#readme"
+  "homepage": "https://github.com/amalto/platform6-ui-components#readme",
+  "lerna": {
+    "command": {
+      "publish": {
+        "assets": [
+          "package.json",
+          "README.md"
+        ]
+      }
+    }
+  },
+  "gitHead": "33f7a6fae6e176a0592ab62c68682aef3e73a752"
 }
