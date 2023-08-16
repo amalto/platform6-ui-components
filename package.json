@@ -34,7 +34,7 @@
         "components/service-helpers",
         "components/helpers",
         "components/wordings",
-        "components/**"
+        "components/*"
     ],
     "optionalDependencies": {
         "fsevents": "~2.3.2"
