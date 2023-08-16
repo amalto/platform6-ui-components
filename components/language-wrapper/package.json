@@ -2,7 +2,7 @@
   "name": "@amalto/language-wrapper",
   "displayName": "LanguageWrapper",
   "description": "Used to select language.",
-  "version": "1.9.90",
+  "version": "1.10.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -81,5 +81,15 @@
       }
     }
   },
-  "gitHead": "cfaae955fad45a25eaa926595a2c7af85c212df4"
+  "gitHead": "33f7a6fae6e176a0592ab62c68682aef3e73a752",
+  "lerna": {
+    "command": {
+      "publish": {
+        "assets": [
+          "package.json",
+          "README.md"
+        ]
+      }
+    }
+  }
 }

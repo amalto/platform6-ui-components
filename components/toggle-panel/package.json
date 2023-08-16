@@ -2,7 +2,7 @@
   "name": "@amalto/toggle-panel",
   "displayName": "TogglePanel",
   "description": "Panel body which contain a header and a body.",
-  "version": "1.9.29",
+  "version": "1.10.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@amalto/action-button": "1.9.23",
+    "@amalto/action-button": "1.10.1",
     "@amalto/spinner": "1.9.26",
     "classnames": "^2.2.6",
     "react": "15.6.2",
@@ -78,5 +78,15 @@
       }
     }
   },
-  "gitHead": "39cadc9ff85400adf942f591a4bd3d4fd8f39151"
+  "gitHead": "33f7a6fae6e176a0592ab62c68682aef3e73a752",
+  "lerna": {
+    "command": {
+      "publish": {
+        "assets": [
+          "package.json",
+          "README.md"
+        ]
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 {
-    "lerna": "3.11.0",
+    "lerna": "7.1.4",
     "packages": [
         "components/*"
     ],
@@ -10,6 +10,25 @@
         },
         "init": {
             "exact": true
+        },
+        "version": {
+            "npmClientArgs": [
+                "--legacy-peer-deps"
+            ],
+            "conventionalCommits": true
+        },
+        "publish": {
+            "assets": [
+                "package.json",
+                "README.md"
+            ],
+            "directory": "{workspaceRoot}/{projectRoot}/build",
+            "exact": true,
+            "npmClientArgs": [
+                "--production"
+            ],
+            "registry": "https://registry.npmjs.org/",
+            "yes": true
         }
     },
     "private": false,
