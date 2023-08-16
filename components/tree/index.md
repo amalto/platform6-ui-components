@@ -148,9 +148,14 @@ function selectCallback(node) {
   node && setState({ defaultSelectedNodeId: node.id });
 }
 
+function closeNode(node) {
+  alert('closing node: ' + node);
+}
+
 <Tree
   id="tree-exemple"
   data={state.data}
+  closeNode={closeNode}
   createNode={createNode}
   editNode={editNode}
   deleteNode={deleteNode}

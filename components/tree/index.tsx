@@ -22,6 +22,8 @@ import { TreeNodeModel, OrgModel, KeyValDef } from './models/tree';
  */
 module Tree {
   export interface Props extends React.ClassAttributes<Tree> {
+    /** Closing node event function */
+    closeNode?: (id: string) => void;
     /**
      * Function to create a node.
      * Data update logic needs to be implemented based on the provided parameters.
@@ -357,7 +359,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     }
   }
 
-  private renderTreeButtonsBar = (): JSX.Element => {
+  private renderTreeButtonsBar = (): JSX.Element | null => {
     const { selectedNode, wordings } = this.state;
     const disabled = !selectedNode;
     const expandAllBtn: ButtonsBar.BtnGroupsProps = {
@@ -636,7 +638,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     data: TreeNodeModel,
     defaultSelectedNodeId?: string,
   ): JSTree => {
-    const { fetched, fetchNode, selectCallback } = this.props;
+    const { closeNode, fetched, fetchNode, selectCallback } = this.props;
     let treeContainer = ReactDOM.findDOMNode(this._tree) as HTMLElement;
 
     let tree = $.jstree.create(treeContainer, {
@@ -688,6 +690,10 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       if (selected.node.parent !== '#' && !fetched?.some((id) => id === selected.node.id)) {
         fetchNode?.(selected.node.id);
       }
+    });
+
+    $(treeContainer).on('close_node.jstree', (__event, selected) => {
+      closeNode?.(selected.node.id);
     });
 
     if (defaultSelectedNodeId) {
