@@ -2,7 +2,7 @@
   "name": "@amalto/translation-field",
   "displayName": "TranslationField",
   "description": "Translation field.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "webpack": "4.41.2"
   },
   "dependencies": {
-    "@amalto/action-button": "^1.10.0",
+    "@amalto/action-button": "1.10.1",
     "@amalto/help": "1.9.27",
     "@amalto/helpers": "1.9.86",
     "@amalto/typings": "1.9.69",
