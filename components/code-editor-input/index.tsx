@@ -93,6 +93,11 @@ namespace CodeEditorInput {
     /** CSS class applied to every input from the list. */
     inputClass?: string;
     /**
+     * Define maximum lines to display in the editor.
+     * @default 20
+    */
+    maxLines?: number | 'unlimited';
+    /**
      * Editor language mode.
      * @default ace/mode/javascript
      */
@@ -195,6 +200,7 @@ namespace CodeEditor {
     help?: string;
     containerClass?: string;
     inputClass?: string;
+    maxLines?: number | 'unlimited';
     mode?: string;
     height?: number | string;
     initSession?: AceSession;
@@ -227,7 +233,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
   render() {
     const {
       label,
-      readonly,
       help,
       containerClass,
       inputClass,
@@ -272,7 +277,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
         editorInstance: ace.edit(this.state.editorId),
       },
       () => {
-        const { mode, readonly, initSession, input, displaySettings } =
+        const { mode, readonly, initSession, input } =
           this.props;
 
         const editor = this.state.editorInstance;
@@ -339,25 +344,23 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
   }
 
   componentDidUpdate(prevProps: CodeEditor.Props) {
+    const { displaySettings, height, input, readonly, resetTick } = this.props;
     const { editorInstance } = this.state;
-
-    const { readonly, displaySettings, height } = this.props;
 
     if (editorInstance) {
       if (prevProps.readonly !== readonly) {
         editorInstance.setReadOnly(readonly);
       }
 
-      if (prevProps.displaySettings !== displaySettings) {
+      if (
+        prevProps.displaySettings !== displaySettings ||
+        prevProps.height !== height
+      ) {
         this.setEditorOptions(editorInstance);
       }
 
-      if (prevProps.height !== height) {
-        this.setEditorOptions(editorInstance);
-      }
-
-      if (prevProps.resetTick !== this.props.resetTick) {
-        editorInstance.setValue(this.props.input.value);
+      if (prevProps.resetTick !== resetTick) {
+        editorInstance.setValue(input.value);
         editorInstance.clearSelection();
       }
     }
@@ -379,14 +382,32 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
     }
   }
 
+  private getMaxLinesValue = (): number => {
+    const { maxLines } = this.props;
+
+    if (maxLines === undefined) {
+      return 20;
+    }
+
+    if (typeof maxLines === 'string' && maxLines === 'unlimited') {
+      return Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0,
+      );
+    }
+
+    return maxLines;
+  }
+
   private setEditorOptions = (editor: AceEditor) => {
-    const userJson = this.props.user ? getUserJson(this.props.user) : {};
+    const { height, user } = this.props;
+    const userJson = user ? getUserJson(user) : {};
 
     const userSettings: CodeEditorInput.Settings = userJson
       ? userJson.codeEditorSettings || {}
       : {};
 
-    const displaySettings = this.props.displaySettings || {};
+    const displaySettings = this.props.displaySettings ?? {};
 
     editor.setTheme(
       displaySettings.theme ||
@@ -438,7 +459,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
 
     (editor as any).setDisplayIndentGuides(showIndent);
 
-    if (this.props.height) {
+    if (height) {
       editor.setOptions({
         minLines: 1,
         maxLines: null,
@@ -446,18 +467,16 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
     } else {
       editor.setOptions({
         minLines: 1,
-        maxLines: 20,
+        maxLines: this.getMaxLinesValue(),
       });
     }
 
     editor.renderer.setScrollMargin(8, 8, 0, 0);
-
     editor.clearSelection();
   };
 
   getAceSession = (): AceSession => {
-    let session = this.state.editorInstance.session;
-
+    const session = this.state.editorInstance.session;
     const filterHistory = (deltas) => deltas.filter((d) => d.group !== 'fold');
 
     return {
