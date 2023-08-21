@@ -32,7 +32,7 @@ function handleFieldChange(fieldValue, fieldName, isInvalid) {
 }
 
 function atLeast5(fieldValue) {
-  return fieldValue?.length >= 5;
+  return fieldValue && fieldValue.length >= 5;
 }
 
 <div>
