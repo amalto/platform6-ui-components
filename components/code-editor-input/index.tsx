@@ -95,7 +95,7 @@ namespace CodeEditorInput {
     /**
      * Define maximum lines to display in the editor.
      * @default 20
-    */
+     */
     maxLines?: number | 'unlimited';
     /**
      * Editor language mode.
@@ -231,15 +231,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
   }
 
   render() {
-    const {
-      label,
-      help,
-      containerClass,
-      inputClass,
-      height,
-      input,
-      meta,
-    } = this.props;
+    const { label, help, containerClass, inputClass, height, input, meta } =
+      this.props;
 
     const { editorId } = this.state;
 
@@ -277,8 +270,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
         editorInstance: ace.edit(this.state.editorId),
       },
       () => {
-        const { mode, readonly, initSession, input } =
-          this.props;
+        const { mode, readonly, initSession, input } = this.props;
 
         const editor = this.state.editorInstance;
 
@@ -397,7 +389,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
     }
 
     return maxLines;
-  }
+  };
 
   private setEditorOptions = (editor: AceEditor) => {
     const { height, user } = this.props;

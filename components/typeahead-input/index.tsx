@@ -41,20 +41,14 @@ interface State {
 
 interface RemoteConfig {
   url: string;
-  prepare?: (
-    query: string,
-    settings: JQueryAjaxSettings,
-  ) => JQueryAjaxSettings;
+  prepare?: (query: string, settings: JQueryAjaxSettings) => JQueryAjaxSettings;
   wildcard?: string;
   rateLimitby?: string;
   rateLimitWait?: number;
   transform?: (response: any) => any;
 }
 
-class TypeaheadInput extends React.Component<
-  Props,
-  State
-> {
+class TypeaheadInput extends React.Component<Props, State> {
   private root: HTMLDivElement | undefined;
 
   constructor(props: Props) {
@@ -77,16 +71,11 @@ class TypeaheadInput extends React.Component<
     if (!currentValue || currentValue.length === 0) {
       handleInputChange(null);
     }
-  };
+  }
 
   private renderTypeahead(): JSX.Element {
-    const {
-      id,
-      collection,
-      handleInputChange,
-      placeholder,
-      value,
-    } = this.props;
+    const { id, collection, handleInputChange, placeholder, value } =
+      this.props;
 
     return (
       <Typeahead<string>
@@ -109,12 +98,8 @@ class TypeaheadInput extends React.Component<
   }
 
   render(): JSX.Element {
-    const {
-      id,
-      collectionTypes,
-      selectedCollectionType,
-      setCollectionType,
-    } = this.props;
+    const { id, collectionTypes, selectedCollectionType, setCollectionType } =
+      this.props;
 
     const { shouldDisplayDropdown } = this.state;
 

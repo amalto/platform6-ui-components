@@ -34,7 +34,7 @@ const value = `function initializeProperties(target, members) {
   if (properties) {
     Object.defineProperties(target, properties);
   }
-}`
+}`;
 const ExampleCodeEditorInput = reduxForm({
   initialValues: { 'code-editor-input-example': value },
   form: 'code-editor-input-example',
