@@ -84,6 +84,11 @@ module CodeEditor {
     /** Initial content of the editor. */
     value: string;
     /**
+     * Define maximum lines to display in the editor.
+     * @default 20
+    */
+    maxLines?: number | 'unlimited';
+    /**
      * Editor language mode.
      * @default javascript
      */
@@ -241,8 +246,6 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         }),
       );
 
-    // clearInterval( this._clearTimeout )
-
     //destroy the editor
     this._editor && this._editor.destroy();
   }
@@ -261,22 +264,20 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
       this.props.saveSession(this.getAceSession(this._editor));
     }
 
-    // const displaySettingsChanged: boolean = this.props.displaySettings !== nextProps.displaySettings
     const doUpdate = newDoc || nextProps.loadTime > this._firstChangeTime;
 
     this._editor.setReadOnly(nextProps.readonly);
     if (doUpdate) {
-      if (this.props.height) {
-        $(this._editorPanel).height(this.props.height);
+      const { height } = this.props;
+
+      if (height) {
+        $(this._editorPanel).height(height);
         this._editor.setOptions({
           minLines: 1,
           maxLines: null,
         });
       } else {
-        this._editor.setOptions({
-          minLines: 1,
-          maxLines: 20,
-        });
+        this.setEditorDefaultLines();
       }
 
       this._editor.resize(true);
@@ -313,19 +314,37 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     this._editor.focus();
   }
 
-  private resizeEditor = (): void => {
-    let h = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0,
-    );
+  private getMaxLinesValue = (): number => {
+    const { maxLines } = this.props;
 
-    if (this.props.height) {
-      $(this._editorPanel).height(this.props.height);
+    if (maxLines === undefined) {
+      return 20;
+    }
+
+    if (typeof maxLines === 'string' && maxLines === 'unlimited') {
+      return Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0,
+      );
+    }
+
+    return maxLines;
+  }
+
+  private setEditorDefaultLines = (): void => {
+    this._editor.setOptions({
+      minLines: 1,
+      maxLines: this.getMaxLinesValue(),
+    });
+  }
+
+  private resizeEditor = (): void => {
+    const { height } = this.props;
+
+    if (height) {
+      $(this._editorPanel).height(height);
     } else {
-      this._editor.setOptions({
-        minLines: 2,
-        maxLines: 20,
-      });
+      this.setEditorDefaultLines();
     }
 
     this._editor.resize(true);
