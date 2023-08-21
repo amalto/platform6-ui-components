@@ -344,11 +344,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
     if (!treeInstance) {
       this.setState({
-        treeInstance: this.setUpTree(
-          id,
-          data,
-          defaultSelectedNodeId,
-        ),
+        treeInstance: this.setUpTree(id, data, defaultSelectedNodeId),
         selectedNode: null,
         editedNode: null,
         formOpened: null,
@@ -357,7 +353,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       treeInstance.settings.core.data = data;
       treeInstance.refresh(true);
     }
-  }
+  };
 
   private renderTreeButtonsBar = (): JSX.Element | null => {
     const { selectedNode, wordings } = this.state;
@@ -687,7 +683,10 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     });
 
     $(treeContainer).on('open_node.jstree', (__event, selected) => {
-      if (selected.node.parent !== '#' && !fetched?.some((id) => id === selected.node.id)) {
+      if (
+        selected.node.parent !== '#' &&
+        !fetched?.some((id) => id === selected.node.id)
+      ) {
         fetchNode?.(selected.node.id);
       }
     });

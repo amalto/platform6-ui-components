@@ -1,11 +1,11 @@
 export interface OrgModel {
-    id?: string;
-    parentId?: string;
-    elementName?: string;
-    description?: string;
-    propertiesMap?: KeyValDef;
-    children?: OrgModel[];
-    childrenCount?: number;
+  id?: string;
+  parentId?: string;
+  elementName?: string;
+  description?: string;
+  propertiesMap?: KeyValDef;
+  children?: OrgModel[];
+  childrenCount?: number;
 }
 
 export interface TreeNodeDataModel {

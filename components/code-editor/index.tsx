@@ -86,7 +86,7 @@ module CodeEditor {
     /**
      * Define maximum lines to display in the editor.
      * @default 20
-    */
+     */
     maxLines?: number | 'unlimited';
     /**
      * Editor language mode.
@@ -329,14 +329,14 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     return maxLines;
-  }
+  };
 
   private setEditorDefaultLines = (): void => {
     this._editor.setOptions({
       minLines: 1,
       maxLines: this.getMaxLinesValue(),
     });
-  }
+  };
 
   private resizeEditor = (): void => {
     const { height } = this.props;

@@ -146,27 +146,27 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
   };
 
   private loadPDF = async () => {
-    this.setState({
-      loading: true,
-    }, async () => {
-      const { pdfSource } = this.props;
+    this.setState(
+      {
+        loading: true,
+      },
+      async () => {
+        const { pdfSource } = this.props;
 
-      try {
-        const pdf = await PDFJS.getDocument(pdfSource);
+        try {
+          const pdf = await PDFJS.getDocument(pdfSource);
 
-        this.setState(
-          { pdf, loading: false },
-          () => this.renderPage(1),
-        );
-      } catch (e) {
-        console.error('Failed loading PDF', e);
+          this.setState({ pdf, loading: false }, () => this.renderPage(1));
+        } catch (e) {
+          console.error('Failed loading PDF', e);
 
-        this.setState({
-          loading: false,
-          loadingError: true,
-        });
-      }
-    });
+          this.setState({
+            loading: false,
+            loadingError: true,
+          });
+        }
+      },
+    );
   };
 
   private renderPage = async (pageNumber: number, scale?: number) => {
@@ -174,8 +174,8 @@ class PdfViewer extends React.Component<PdfViewer.Props, PdfViewer.State> {
     const renderedScale = scale ?? 1.5;
 
     if (pdf) {
-
-      pdf.getPage(pageNumber)
+      pdf
+        .getPage(pageNumber)
         .then((page) => {
           const viewport = page.getViewport(renderedScale);
           const canvas = this.pdfCtn;
