@@ -2,7 +2,7 @@
   "name": "@amalto/file-upload-input",
   "displayName": "FileUploadInput",
   "description": "Input allowing you to upload a file.",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "license": "MIT",
   "repository": {
     "type": "git",
