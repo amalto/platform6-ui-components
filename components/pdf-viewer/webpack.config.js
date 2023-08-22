@@ -2,9 +2,6 @@ const { resolve } = require('path');
 
 module.exports = {
   entry: {
-    // has to set the pdf.worker path else you won't be able to use the pdf framework
-    'pdfjs.worker': 'pdfjs-dist/build/pdf.worker.js',
-
     // the entry points of our app
     main: './index.tsx',
   },
@@ -29,7 +26,7 @@ module.exports = {
     pikaday: 'Pikaday',
     moment: 'moment',
   },
-
+  mode: 'production',
   module: {
     rules: [
       {
@@ -43,5 +40,7 @@ module.exports = {
       },
     ],
   },
-  devtool: 'source-map',
+  optimization: {
+    minimize: true,
+  },
 };
