@@ -1,36 +1,27 @@
 {
-    "lerna": "7.1.4",
-    "packages": [
-        "components/*"
-    ],
-    "command": {
-        "publish": {
-            "ignoreChanges": ["package-lock.json"],
-            "registry": "https://registry.npmjs.org"
-        },
-        "init": {
-            "exact": true
-        },
-        "version": {
-            "npmClientArgs": [
-                "--legacy-peer-deps"
-            ],
-            "conventionalCommits": true
-        },
-        "publish": {
-            "assets": [
-                "package.json",
-                "README.md"
-            ],
-            "directory": "{workspaceRoot}/{projectRoot}/build",
-            "exact": true,
-            "npmClientArgs": [
-                "--production"
-            ],
-            "registry": "https://registry.npmjs.org/",
-            "yes": true
-        }
+  "lerna": "7.1.4",
+  "packages": ["components/*"],
+  "command": {
+    "run": {
+      "npmClientArgs": ["--mode=production"]
     },
-    "private": false,
-    "version": "independent"
+    "init": {
+      "exact": true
+    },
+    "version": {
+      "npmClientArgs": ["--legacy-peer-deps"],
+      "conventionalCommits": true
+    },
+    "publish": {
+      "assets": ["package.json", "README.md"],
+      "directory": "{workspaceRoot}/{projectRoot}/build",
+      "exact": true,
+      "ignoreChanges": ["package-lock.json"],
+      "npmClientArgs": ["--production"],
+      "registry": "https://registry.npmjs.org/",
+      "yes": true
+    }
+  },
+  "private": false,
+  "version": "independent"
 }

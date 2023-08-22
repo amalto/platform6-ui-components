@@ -5,16 +5,15 @@ import PdfViewer from '@amalto/pdf-viewer';
 ```
 
 ```javascript
-const { IntlProvider } = require('react-intl');
 const data = require('./pdf.ts');
 
-<IntlProvider locale="en-US">
+<div>
+  <PdfViewer data={data.PDF_DATA} name="pdf-viewer-base64" width="100%" />
   <PdfViewer
-    pdfSource={{
-      data: atob(data.PDF_DATA),
-    }}
-    spinnerSrc="images/spinner.gif"
-    locale="en-US"
+    url="https://www.africau.edu/images/default/sample.pdf"
+    name="pdf-viewer-base64"
+    width="100%"
+    height={1145}
   />
-</IntlProvider>;
+</div>;
 ```

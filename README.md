@@ -47,6 +47,14 @@ npm run styleguide:build
 
 You will be able to see the documentation at the url [http://localhost:6060](http://localhost:6060)
 
+## Versionning
+
+You can chose the version you want to assign to each component by using:
+
+```terminal
+lerna version --no-private
+```
+
 ## License
 
-MIT © 2018 [Amalto Technologies](https://www.amalto.com/)
+MIT © 2023 [Sidetrade](https://www.sidetrade.com)
