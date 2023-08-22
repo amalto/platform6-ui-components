@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/amalto/platform6-ui-components/compare/@amalto/pdf-viewer@1.10.2...@amalto/pdf-viewer@2.0.0) (2023-08-22)
+
+**Note:** Version bump only for package @amalto/pdf-viewer
+
 ## [1.10.2](https://github.com/amalto/platform6-ui-components/compare/@amalto/pdf-viewer@1.10.1...@amalto/pdf-viewer@1.10.2) (2023-08-21)
 
 **Note:** Version bump only for package @amalto/pdf-viewer
