@@ -19,6 +19,7 @@ namespace CheckboxesInput {
     name: string;
     /** Input's list. */
     options: {
+      classNames?: string;
       disabled?: boolean;
       hidden?: boolean;
       label?: string | JSX.Element;
@@ -123,7 +124,7 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
             .filter((opt) => !!opt.value)
             .map((opt, idx) => (
               <span
-                className={classNames('form-checkbox-wrapper', inputClass, {
+                className={classNames('form-checkbox-wrapper', inputClass, opt.classNames, {
                   'hidden': opt.hidden,
                 })}
                 key={idx}
