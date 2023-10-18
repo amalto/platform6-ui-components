@@ -498,7 +498,7 @@ export function getJSTreeData(
  * @returns { void }
  */
 export function loadTooltips(element: Element): void {
-  if (!Modernizr.touchevents && element !== undefined) {
+  if (!Modernizr.touchevents && element && $(element)) {
     let $elementTooltips = $(element)?.find('[data-toggle="tooltip"]');
     $elementTooltips?.tooltip({
       container: 'body',
@@ -517,7 +517,7 @@ export function loadTooltips(element: Element): void {
  * @returns { void }
  */
 export function unloadTooltips(element: Element): void {
-  if (!Modernizr.touchevents && element !== undefined) {
+  if (!Modernizr.touchevents && element && $(element)) {
     let $elementTooltips = $(element)?.find('[data-toggle="tooltip"]');
     $elementTooltips?.tooltip('hide');
     $elementTooltips?.tooltip('destroy');
