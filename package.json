@@ -23,6 +23,7 @@
         "check": "npx prettier --check components/**/* typescript/**/*",
         "test": "nyc ava --verbose",
         "update_p6_version": "node update_platform6_version.js",
+        "versionning": "lerna version --no-private --conventional-commits",
         "patch": "lerna version patch --no-private",
         "minor": "lerna version minor --no-private",
         "major": "lerna version major --no-private",
