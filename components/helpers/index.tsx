@@ -498,14 +498,14 @@ export function getJSTreeData(
  * @returns { void }
  */
 export function loadTooltips(element: Element): void {
-  if (!Modernizr.touchevents) {
-    let $elementTooltips = $(element).find('[data-toggle="tooltip"]');
-    $elementTooltips.tooltip({
+  if (!Modernizr.touchevents && element !== undefined) {
+    let $elementTooltips = $(element)?.find('[data-toggle="tooltip"]');
+    $elementTooltips?.tooltip({
       container: 'body',
       placement: 'auto top',
     });
 
-    $elementTooltips.on('click', function () {
+    $elementTooltips?.on('click', function () {
       $elementTooltips.tooltip('hide');
     });
   }
@@ -517,11 +517,11 @@ export function loadTooltips(element: Element): void {
  * @returns { void }
  */
 export function unloadTooltips(element: Element): void {
-  if (!Modernizr.touchevents) {
-    let $elementTooltips = $(element).find('[data-toggle="tooltip"]');
-    $elementTooltips.tooltip('hide');
-    $elementTooltips.tooltip('destroy');
-    $('div.tooltip').remove();
+  if (!Modernizr.touchevents && element !== undefined) {
+    let $elementTooltips = $(element)?.find('[data-toggle="tooltip"]');
+    $elementTooltips?.tooltip('hide');
+    $elementTooltips?.tooltip('destroy');
+    $('div.tooltip')?.remove();
   }
 }
 
