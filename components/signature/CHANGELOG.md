@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.5](https://github.com/amalto/platform6-ui-components/compare/@amalto/signature@1.10.4...@amalto/signature@1.10.5) (2023-11-08)
+
+**Note:** Version bump only for package @amalto/signature
+
 ## [1.10.4](https://github.com/amalto/platform6-ui-components/compare/@amalto/signature@1.10.3...@amalto/signature@1.10.4) (2023-10-18)
 
 **Note:** Version bump only for package @amalto/signature

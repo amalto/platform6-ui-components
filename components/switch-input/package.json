@@ -2,7 +2,7 @@
   "name": "@amalto/switch-input",
   "displayName": "SwitchInput",
   "description": "Switch input used on platform6.",
-  "version": "1.10.18",
+  "version": "1.10.19",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@amalto/help": "1.9.27",
-    "@amalto/switch": "1.10.18",
+    "@amalto/switch": "1.10.19",
     "classnames": "^2.2.6",
     "react": "15.6.2",
     "react-dom": "15.6.2",
