@@ -12,7 +12,7 @@ module Switch {
     /** Input value. */
     value: boolean;
     /** Method triggered when Switch is used. */
-    changeHandler: (value: boolean, name?: string) => void;
+    changeHandler?: (value: boolean, name?: string) => void;
     /** CSS class of <span className='quote'>Switch</span> component. */
     cssClass?: string;
     /** Whether the switch input should be align left or not. */
@@ -71,7 +71,7 @@ class Switch extends React.Component<Switch.Props, any> {
   }
 
   private handleChange = (event: any): void => {
-    this.props.changeHandler(event.target.checked, event.target.name);
+    this.props.changeHandler?.(event.target.checked, event.target.name);
   };
 }
 
