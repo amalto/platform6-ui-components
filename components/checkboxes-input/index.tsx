@@ -124,9 +124,14 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
             .filter((opt) => !!opt.value)
             .map((opt, idx) => (
               <span
-                className={classNames('form-checkbox-wrapper', inputClass, opt.classNames, {
-                  'hidden': opt.hidden,
-                })}
+                className={classNames(
+                  'form-checkbox-wrapper',
+                  inputClass,
+                  opt.classNames,
+                  {
+                    hidden: opt.hidden,
+                  },
+                )}
                 key={idx}
               >
                 <input

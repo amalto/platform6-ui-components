@@ -21,14 +21,15 @@ import { locale } from 'moment';
 module ButtonsBar {
   export interface BtnGroupsProps {
     btns: ButtonProps[];
-    style?: React.CSSProperties;
     cssClass?: string;
+    style?: React.CSSProperties;
   }
 
   export interface ButtonProps {
     clickAction?: (event?: any) => void;
     cssClass?: string;
     iconClass?: string;
+    id?: string;
     text?: string;
     disabled?: boolean;
     tooltipText?: string;
@@ -38,6 +39,8 @@ module ButtonsBar {
   }
 
   export interface Props extends React.ClassAttributes<ButtonsBar> {
+    /** Component id */
+    id?: string;
     /** Handle search value. */
     handleSearch?: (searchValue: string) => void;
     /** Search value usually used with list beneath it. */
@@ -93,11 +96,11 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
   }
 
   render() {
-    const { handleSearch, btnGroups } = this.props;
+    const { btnGroups, handleSearch, id } = this.props;
     const { searchValue, wordings } = this.state;
 
     return (btnGroups && btnGroups.length) || handleSearch ? (
-      <div className="btn-toolbar">
+      <div id={id} className="btn-toolbar">
         {btnGroups.map((btnGroup, idx) => {
           return (
             <div
@@ -111,6 +114,7 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
                 ? btnGroup.btns.map((btn, idx) => {
                     const Button: JSX.Element = !btn.btnContent ? (
                       <button
+                        id={btn.id}
                         key={idx}
                         onClick={btn.clickAction}
                         className={classNames('btn', btn.cssClass)}
@@ -141,6 +145,7 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
                       </button>
                     ) : (
                       <div
+                        id={btn.id}
                         key={idx}
                         onClick={btn.clickAction}
                         className={classNames('btn', btn.cssClass, {
