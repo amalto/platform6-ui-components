@@ -17,21 +17,21 @@ interface ColumnHeader {
 }
 
 interface CellData {
-    displayValue: JSX.Element | string | number;
-    displayValueMaxLength?: boolean;
+    allowDisplayAsTextAreaOnReadonly?: boolean;
     columnId: string;
     cssClass?: string;
     display?: boolean;
-    readOnly?: boolean;
+    displayValue: JSX.Element | string | number;
+    displayValueMaxLength?: boolean;
     isEdited?: boolean;
     lastEditable?: boolean;
-    allowDisplayAsTextAreaOnReadonly?: boolean;
     options?: {
         value: string | number;
         label?: string;
         disabled?: boolean;
     }[];
-    validate?: ( value: string ) => any;
+    readOnly?: boolean;
+    validate?: (value: string) => any;
 }
 
 interface DataGridTemplates {

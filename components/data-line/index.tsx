@@ -98,8 +98,7 @@ export class DataLine extends React.Component<DataLine.Props, any> {
       filteredAndSortedCells = cells
         .filter((cellData) => {
           if (
-            displayTemplate[cellData.columnId] &&
-            displayTemplate[cellData.columnId][displayMode]
+            displayTemplate[cellData.columnId]?.[displayMode]
           ) {
             return (
               displayTemplate[cellData.columnId][displayMode].display !== false
@@ -110,10 +109,8 @@ export class DataLine extends React.Component<DataLine.Props, any> {
         })
         .sort((cellA, cellB) => {
           if (
-            displayTemplate[cellA.columnId] &&
-            displayTemplate[cellA.columnId][displayMode] &&
-            displayTemplate[cellB.columnId] &&
-            displayTemplate[cellB.columnId][displayMode]
+            displayTemplate[cellA.columnId]?.[displayMode] &&
+            displayTemplate[cellB.columnId]?.[displayMode]
           ) {
             return (
               displayTemplate[cellA.columnId][displayMode].order -
@@ -128,7 +125,7 @@ export class DataLine extends React.Component<DataLine.Props, any> {
     let cellsDisplay = filteredAndSortedCells.map((cellData, idx) => {
       let label = undefined;
 
-      if (columnHeaders && columnHeaders.length) {
+      if (columnHeaders?.length > 0) {
         for (let i = 0; i < columnHeaders.length; i++) {
           const colHeader = columnHeaders[i];
           if (colHeader.id === cellData.columnId) {

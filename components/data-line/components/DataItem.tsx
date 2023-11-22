@@ -210,6 +210,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
 
     return (
       <div
+        id={`grid-cell-${columnId}`}
         className={classNames(cssClass, {
           'card-item-value inline-item-value': displayMode !== 'mobile',
           'inline-block mgb-10 mgr-20 align-top break-word':
@@ -244,16 +245,16 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
   };
 
   private handleEdit = (event: any) => {
+    const { columnId, editCallback, validate } = this.props;
     const value: string = event.target.value;
-    const invalidMsg: string =
-      (this.props.validate && this.props.validate(value)) || undefined;
+    const invalidMsg: string = validate?.(value) || undefined;
 
     if (invalidMsg !== this.state.invalidMsg) {
       this.setState({ invalidMsg } as DataItem.State, () =>
-        this.props.editCallback(this.props.columnId, value),
+        editCallback(columnId, value),
       );
     } else {
-      this.props.editCallback(this.props.columnId, value);
+      editCallback(columnId, value);
     }
   };
 
