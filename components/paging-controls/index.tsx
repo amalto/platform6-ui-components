@@ -85,6 +85,7 @@ class PagingControls extends React.Component<
       <div className={containerClass}>
         {byContext ? null : (
           <button
+            data-paging-type="first"
             type="button"
             disabled={prevDisabled}
             className="btn btn-primary btn-trans"
@@ -95,6 +96,7 @@ class PagingControls extends React.Component<
         )}
 
         <button
+          data-paging-type="previous"
           type="button"
           disabled={prevDisabled}
           className="btn btn-primary btn-trans"
@@ -110,6 +112,7 @@ class PagingControls extends React.Component<
               <FormattedNumber value={currentPage} />
             ) : (
               <input
+                data-paging-type="page-current"
                 type="text"
                 size={totalPages.toString().length}
                 value={currentPage}
@@ -122,12 +125,13 @@ class PagingControls extends React.Component<
             )}
           </strong>
           <span className="right-spaced">{wordings.of}</span>
-          <span>
+          <span data-paging-type="page-count">
             <FormattedNumber value={totalPages} />
           </span>
         </span>
 
         <button
+          data-paging-type="next"
           type="button"
           disabled={nextDisabled}
           className="btn btn-primary btn-trans"
@@ -138,6 +142,7 @@ class PagingControls extends React.Component<
 
         {byContext ? null : (
           <button
+            data-paging-type="last"
             type="button"
             disabled={nextDisabled}
             className="btn btn-primary btn-trans"
