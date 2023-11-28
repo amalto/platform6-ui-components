@@ -210,7 +210,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
 
     return (
       <div
-        id={`grid-cell-${columnId}`}
+        data-testId={`grid-cell-${columnId}`}
         className={classNames(cssClass, {
           'card-item-value inline-item-value': displayMode !== 'mobile',
           'inline-block mgb-10 mgr-20 align-top break-word':
