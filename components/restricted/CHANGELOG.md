@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.8](https://github.com/amalto/platform6-ui-components/compare/@amalto/restricted@1.10.7...@amalto/restricted@1.10.8) (2023-11-29)
+
+**Note:** Version bump only for package @amalto/restricted
+
 ## [1.10.7](https://github.com/amalto/platform6-ui-components/compare/@amalto/restricted@1.10.6...@amalto/restricted@1.10.7) (2023-11-22)
 
 **Note:** Version bump only for package @amalto/restricted
