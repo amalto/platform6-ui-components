@@ -72,6 +72,7 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
         >
           <a
             href="#"
+            data-tab-id={tab.props.id}
             id={`${tab.props.id}_tab_anchor`}
             onClick={(e) => {
               e.preventDefault();
