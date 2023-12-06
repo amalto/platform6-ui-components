@@ -2,7 +2,7 @@
   "name": "@amalto/tabs",
   "displayName": "Tabs",
   "description": "Tabs component used in platform6.",
-  "version": "1.9.85",
+  "version": "1.9.86",
   "license": "MIT",
   "repository": {
     "type": "git",

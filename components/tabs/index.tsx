@@ -122,6 +122,7 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
             return (
               <div
                 key={tab.props.id}
+                data-tab-content-id={tab.props.id}
                 id={tab.props.id}
                 className={classNames('tab-pane', tab.props.tabClassNames, {
                   active: tab.props.id === selectedTabId,
