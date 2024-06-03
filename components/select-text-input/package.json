@@ -34,7 +34,7 @@
     "react-redux": "5.0.6",
     "redux": "3.7.2",
     "redux-form": "6.6.1",
-    "uuid": "8.3.2"
+    "uuid": "9.0.1"
   },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "2.0.0",

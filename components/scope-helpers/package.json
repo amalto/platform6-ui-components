@@ -28,7 +28,7 @@
     "@amalto/tab": "1.9.23",
     "@amalto/typings": "1.9.70",
     "react": "15.6.2",
-    "uuid": "8.3.2"
+    "uuid": "9.0.1"
   },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "2.0.0",

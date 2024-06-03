@@ -32,7 +32,7 @@
     "radium": "^0.25.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
-    "uuid": "8.3.2"
+    "uuid": "9.0.1"
   },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "2.0.0",
