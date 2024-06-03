@@ -1,7 +1,6 @@
 // Modules
 import * as React from 'react';
 import { FormattedNumber } from 'react-intl';
-import { default as classNames } from 'classnames';
 
 // Utils
 import { compileWordings } from '@amalto/helpers';
@@ -17,6 +16,8 @@ import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';
  */
 module PagingControls {
   export interface Props extends React.ClassAttributes<PagingControls> {
+    /** Components id */
+    id: string;
     /** CSS class wrapping the component. */
     containerClass?: string;
     /** Current page selected. */
@@ -69,20 +70,14 @@ class PagingControls extends React.Component<
   render() {
     const { wordings } = this.state;
 
-    const { containerClass, currentPage, totalPages, byContext } = this.props;
+    const { containerClass, currentPage, id, totalPages, byContext } = this.props;
 
-    //basic paging control by page number
-    let prevDisabled = currentPage === 1;
-    let nextDisabled = totalPages === 1 || currentPage === totalPages;
-
-    //paging control by context tokens
-    if (byContext) {
-      prevDisabled = !byContext.prevContextToken;
-      nextDisabled = !byContext.nextContextToken;
-    }
+    //basic paging control by page number or tokens
+    const prevDisabled = byContext ? !byContext.prevContextToken : currentPage === 1;
+    const nextDisabled = byContext ? !byContext.nextContextToken : totalPages === 1 || currentPage === totalPages;
 
     return totalPages !== 1 ? (
-      <div className={containerClass}>
+      <div id={id} className={containerClass}>
         {byContext ? null : (
           <button
             data-paging-type="first"
