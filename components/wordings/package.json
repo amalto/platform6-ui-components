@@ -39,7 +39,7 @@
     "ava": "1.2.1",
     "nyc": "^15.1.0",
     "ts-loader": "8.4.0",
-    "typescript": "4.7.4",
+    "typescript": "5.4.5",
     "webpack": "4.41.2"
   },
   "gitHead": "39cadc9ff85400adf942f591a4bd3d4fd8f39151"
