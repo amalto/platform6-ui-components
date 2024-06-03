@@ -115,7 +115,6 @@
         "@amalto/color-picker": "^1.9.23",
         "@amalto/cron-input": "^1.10.74",
         "@amalto/custom-form-dialog": "^1.4.138",
-        "@amalto/data-grid": "^1.6.94",
         "@amalto/data-line": "^1.9.71",
         "@amalto/date-input": "^1.10.2",
         "@amalto/date-picker": "^1.10.2",
