@@ -5,12 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 // Modules
-import {
-  WrappedFieldInputProps,
-  WrappedFieldProps,
-  Field,
-  BaseFieldProps,
-} from 'redux-form';
+import { WrappedFieldInputProps, WrappedFieldProps, Field, BaseFieldProps } from 'redux-form';
 
 // Components
 import Help from '@amalto/help';
@@ -85,9 +80,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
       wordings: compileWordings(MULTILANGUAGE_WORDINGS, props.locale),
       loadingError: false,
       fileContent:
-        props.displayPreview && props.input && props.input.value
-          ? props.input.value
-          : null,
+        props.displayPreview && props.input && props.input.value ? props.input.value : null,
       filename: props.filename || null,
       filesize: props.filesize || null,
     };
@@ -135,10 +128,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
             name={name}
             type="file"
             disabled={disabled}
-            className={classNames(
-              'pos-absolute upload-input default-pointer',
-              inputClass,
-            )}
+            className={classNames('pos-absolute upload-input default-pointer', inputClass)}
             onChange={(e) => {
               this.setValue(e, { input, meta });
             }}
@@ -147,8 +137,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
           {!!filename && !!filesize ? (
             <span className="italic">
               <span>
-                <span className="black-color bold">{wordings.name}:</span>{' '}
-                {filename}
+                <span className="black-color bold">{wordings.name}:</span> {filename}
               </span>
               ,{' '}
               <span>
@@ -188,9 +177,7 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         ) : null}
 
         {this.state.loadingError ? (
-          <p className="validation-error-message">
-            {wordings.fileUploadFailed}
-          </p>
+          <p className="validation-error-message">{wordings.fileUploadFailed}</p>
         ) : null}
       </div>
     );
@@ -222,16 +209,13 @@ class FileInput extends React.Component<FileInput.Props, FileInput.State> {
         reader.readAsText(file);
       }
 
-      this.setState(
-        { filename: file.name, filesize: file.size } as FileUploadInput.State,
-        () => {
-          if (!getAsDataUrl) {
-            input.onChange(file, undefined, undefined);
-          }
-          this.props.onFileLoaded &&
-            this.props.onFileLoaded(this.state.filename, this.state.filesize);
-        },
-      );
+      this.setState({ filename: file.name, filesize: file.size } as FileUploadInput.State, () => {
+        if (!getAsDataUrl) {
+          input.onChange(file, undefined, undefined);
+        }
+        this.props.onFileLoaded &&
+          this.props.onFileLoaded(this.state.filename, this.state.filesize);
+      });
     }
   };
 }
@@ -311,18 +295,14 @@ namespace FileUploadInput {
   export interface State {}
 }
 
-class FileUploadInput extends React.Component<
-  FileUploadInput.Props,
-  FileUploadInput.State
-> {
+class FileUploadInput extends React.Component<FileUploadInput.Props, FileUploadInput.State> {
   constructor(props: FileUploadInput.Props) {
     super(props);
     this.state = {};
   }
 
   render() {
-    const { name, label, format, normalize, parse, validate, warn } =
-      this.props;
+    const { name, label, format, normalize, parse, validate, warn } = this.props;
     const baseFieldProps: BaseFieldProps = {
       name,
       format,

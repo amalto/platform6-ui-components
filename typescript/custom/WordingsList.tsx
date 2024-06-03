@@ -24,10 +24,7 @@ module WordingsList {
   }
 }
 
-class WordingsList extends React.Component<
-  WordingsList.Props,
-  WordingsList.State
-> {
+class WordingsList extends React.Component<WordingsList.Props, WordingsList.State> {
   constructor(props: WordingsList.Props) {
     super(props);
     this.state = {
@@ -56,23 +53,17 @@ class WordingsList extends React.Component<
     const list = [];
 
     keys.forEach((k1) => {
-      list.push(
-        [k1].concat(Object.keys(wordings[k1]).map((k2) => wordings[k1][k2])),
-      );
+      list.push([k1].concat(Object.keys(wordings[k1]).map((k2) => wordings[k1][k2])));
     });
 
-    this.setState({ list, filteredList: list } as WordingsList.State, () =>
-      this.handleSearch(''),
-    );
+    this.setState({ list, filteredList: list } as WordingsList.State, () => this.handleSearch(''));
   };
 
   private generateBtnBar = (): JSX.Element => {
     const totalBtn: ButtonsBar.BtnGroupsProps = {
       btns: [
         {
-          content: (
-            <div className="bold font-color">{`${this.state.list.length} wordings`}</div>
-          ),
+          content: <div className="bold font-color">{`${this.state.list.length} wordings`}</div>,
         },
       ],
     };
@@ -108,9 +99,7 @@ class WordingsList extends React.Component<
     );
   };
 
-  private renderTab = (wordings: {
-    [id: string]: { [id: string]: string };
-  }): JSX.Element => {
+  private renderTab = (wordings: { [id: string]: { [id: string]: string } }): JSX.Element => {
     const keys: string[] = Object.keys(wordings);
     const locales: string[] = Object.keys(wordings[keys[0]]);
 
@@ -127,9 +116,7 @@ class WordingsList extends React.Component<
           ))}
         </div>
         <div className="cards-container row inline-items text-medium">
-          <div>
-            {this.state.filteredList.map((l, idx) => this.renderLine(idx, l))}
-          </div>
+          <div>{this.state.filteredList.map((l, idx) => this.renderLine(idx, l))}</div>
         </div>
       </div>
     );

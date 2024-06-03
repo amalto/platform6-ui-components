@@ -5,15 +5,11 @@ import LanguageWrapper from '@amalto/language-wrapper';
 ```
 
 ```javascript
-const {
-  addValToArrayNoDup,
-  removeValFromArrayNoDup,
-} = require('@amalto/helpers');
+const { addValToArrayNoDup, removeValFromArrayNoDup } = require('@amalto/helpers');
 
 initialState = { selectedLanguage: 'EN', supportedLanguages: ['EN'] };
 
-const handleLanguageChange = (language) =>
-  setState({ selectedLanguage: language });
+const handleLanguageChange = (language) => setState({ selectedLanguage: language });
 const handleAddedLanguage = (language) => {
   setState({
     supportedLanguages: addValToArrayNoDup(state.supportedLanguages, language),
@@ -22,10 +18,7 @@ const handleAddedLanguage = (language) => {
 };
 const handleRemovedLanguage = (language) => {
   setState({
-    supportedLanguages: removeValFromArrayNoDup(
-      state.supportedLanguages,
-      language,
-    ),
+    supportedLanguages: removeValFromArrayNoDup(state.supportedLanguages, language),
     selectedLanguage: state.selectedLanguage !== language || 'EN',
   });
 };

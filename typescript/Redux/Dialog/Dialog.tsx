@@ -37,14 +37,7 @@ class Dialog extends React.Component<any, State> {
   }
 
   render() {
-    const {
-      body,
-      confirmAction,
-      confirmButtonLevel,
-      isLarge,
-      itemsList,
-      title,
-    } = this.props;
+    const { body, confirmAction, confirmButtonLevel, isLarge, itemsList, title } = this.props;
     const { wordings } = this.state;
 
     let confirmButtonClasses = confirmButtonLevel
@@ -53,18 +46,10 @@ class Dialog extends React.Component<any, State> {
 
     let actionButtons = confirmAction ? (
       <div className="modal-footer">
-        <button
-          type="button"
-          className="btn btn-font btn-trans"
-          onClick={this.cancelFunction}
-        >
+        <button type="button" className="btn btn-font btn-trans" onClick={this.cancelFunction}>
           {wordings.cancel}
         </button>
-        <button
-          type="button"
-          className={confirmButtonClasses}
-          onClick={this.confirmFunction}
-        >
+        <button type="button" className={confirmButtonClasses} onClick={this.confirmFunction}>
           {wordings.ok}
         </button>
       </div>
@@ -75,11 +60,7 @@ class Dialog extends React.Component<any, State> {
         <div className={classNames('modal-dialog', { 'modal-lg': isLarge })}>
           <div className="modal-content">
             <div className="modal-header">
-              <button
-                type="button"
-                className="close"
-                onClick={this.cancelFunction}
-              >
+              <button type="button" className="close" onClick={this.cancelFunction}>
                 <span>&times;</span>
               </button>
               <h4 className="modal-title">{title || ''}</h4>

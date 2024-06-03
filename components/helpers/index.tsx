@@ -5,11 +5,7 @@ import * as base64 from 'base-64';
 import { default as classNames } from 'classnames';
 
 // Wordings
-import {
-  MULTILANGUAGE_WORDINGS,
-  CompiledWordings,
-  Wordings,
-} from '@amalto/wordings';
+import { MULTILANGUAGE_WORDINGS, CompiledWordings, Wordings } from '@amalto/wordings';
 
 // Models
 import { Endpoints } from '@amalto/typings';
@@ -27,10 +23,7 @@ export const XML_TAG_REGEX = /^[a-zA-Z_:][a-zA-Z0-9_:\-\.]*$/;
 export const HTTPS_URL_REGEX =
   /https:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/;
 
-export function getWordings(
-  wordings: { [key: string]: any },
-  locale: string,
-): CompiledWordings {
+export function getWordings(wordings: { [key: string]: any }, locale: string): CompiledWordings {
   const combinedWordings: Wordings = { ...MULTILANGUAGE_WORDINGS, ...wordings };
 
   var res = Object.keys(combinedWordings).reduce((dic, key) => {
@@ -142,9 +135,7 @@ export function utf8JSON_to_b64URI(json) {
 export function URIb64_to_utf8JSON(str) {
   try {
     return JSON.parse(
-      decodeURIComponent(
-        encodeURIComponent(base64.decode(decodeURIComponent(str))),
-      ),
+      decodeURIComponent(encodeURIComponent(base64.decode(decodeURIComponent(str)))),
     );
   } catch (error) {
     console.log('JSON parsing error: ', error);
@@ -203,20 +194,14 @@ export function getQueryParams(searchString: string): any {
  * Adds a query parameter to a URI (string)
  * returns an HTMLAnchorElement
  */
-export function addQueryParam(
-  uri: string,
-  key: string,
-  value: any,
-): HTMLAnchorElement {
+export function addQueryParam(uri: string, key: string, value: any): HTMLAnchorElement {
   let link = document.createElement('a');
   link.href = uri;
 
   if (link.search) {
-    link.search +=
-      '&' + encodeURIComponent(key) + '=' + encodeURIComponent(value);
+    link.search += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(value);
   } else {
-    link.search =
-      '?' + encodeURIComponent(key) + '=' + encodeURIComponent(value);
+    link.search = '?' + encodeURIComponent(key) + '=' + encodeURIComponent(value);
   }
 
   return link;
@@ -249,11 +234,7 @@ export function orderDesc(object: Object): Object {
   return result;
 }
 
-export function saveDataAsJSONFile(
-  data: any,
-  fileName: string,
-  extension?: string,
-): void {
+export function saveDataAsJSONFile(data: any, fileName: string, extension?: string): void {
   let json = JSON.stringify(data, null, '\t');
 
   let blob = new Blob([json], {
@@ -262,9 +243,7 @@ export function saveDataAsJSONFile(
 
   triggerDataDownload(
     blob,
-    `${fileName}_${new Date().toISOString().substr(0, 19)}${
-      extension || '.json'
-    }`,
+    `${fileName}_${new Date().toISOString().substr(0, 19)}${extension || '.json'}`,
   );
 }
 
@@ -282,9 +261,7 @@ export function triggerDataDownload(
   fileName: string,
   dataUrl?: boolean,
 ): void {
-  let url = dataUrl
-    ? (data as string)
-    : URL.createObjectURL(data as Blob | MediaSource);
+  let url = dataUrl ? (data as string) : URL.createObjectURL(data as Blob | MediaSource);
 
   //create a download link
   let link = document.createElement('a');
@@ -315,19 +292,13 @@ export function hasRequiredResource(
   return false;
 }
 
-export function replaceTemplateViewName(
-  templatedHtml: string,
-  viewName: string,
-): string {
+export function replaceTemplateViewName(templatedHtml: string, viewName: string): string {
   return templatedHtml.replace(/{{VIEWNAME}}/g, viewName);
 }
 
 //SPECIAL TRANSFORMERS/ADPATERS HELPERS
 
-export function replaceTemplateFlags(
-  templatedHtml: string,
-  locale: string,
-): string {
+export function replaceTemplateFlags(templatedHtml: string, locale: string): string {
   let flagsRegex = /{{FLAGS\=(.*)}}/g;
 
   let matchRes = flagsRegex.exec(templatedHtml);
@@ -393,11 +364,7 @@ export function getAcceptLanguageHeader(locale: string): string {
     return language.locale !== locale && idx < 3;
   }).map((language, idx) => {
     //decreasing priority for each not selected language
-    return (
-      language.locale.substr(0, 2).toLowerCase() +
-      ';q=' +
-      (0.8 - idx / 10).toString()
-    );
+    return language.locale.substr(0, 2).toLowerCase() + ';q=' + (0.8 - idx / 10).toString();
   });
 
   return locale.substr(0, 2).toLowerCase() + ',' + notSelected.join(',');
@@ -456,10 +423,7 @@ export function getI18nLabel(
  * @param { [string[]] } openedNodes
  * @returns { TreeNodeModel }
  */
-export function getJSTreeData(
-  orgTreeData: OrgModel,
-  openedNodes?: string[],
-): TreeNodeModel {
+export function getJSTreeData(orgTreeData: OrgModel, openedNodes?: string[]): TreeNodeModel {
   return orgTreeData
     ? {
         id: orgTreeData.id,
@@ -482,9 +446,7 @@ export function getJSTreeData(
           'fa-terminal black-color': orgTreeData.id === '0',
         }),
         state: {
-          opened: openedNodes
-            ? openedNodes.indexOf(orgTreeData.id) !== -1
-            : false,
+          opened: openedNodes ? openedNodes.indexOf(orgTreeData.id) !== -1 : false,
           //fake root node created when the user has multiple positions at the same level should be disabled
           disabled: orgTreeData.id === '-1',
         },
@@ -531,10 +493,7 @@ export function unloadTooltips(element: Element): void {
  * @param propertyName value of the property to get in every object of the list.
  * @param { { [propValue: string]: any[] } }
  */
-export function groupByProperty(
-  list: any[],
-  propertyName: string,
-): { [propValue: string]: any[] } {
+export function groupByProperty(list: any[], propertyName: string): { [propValue: string]: any[] } {
   return list.reduce((grouped, item) => {
     let key = item[propertyName];
     grouped[key] = grouped[key] || [];
@@ -562,10 +521,7 @@ export function addValToArrayNoDup(array: string[], value: string): string[] {
  * @param value Value to exclude
  * @returns { string[] }
  */
-export function removeValFromArrayNoDup(
-  array: string[],
-  value: string,
-): string[] {
+export function removeValFromArrayNoDup(array: string[], value: string): string[] {
   return array.filter((element) => element !== value);
 }
 
@@ -616,9 +572,7 @@ export function filterCollection(
           .join()
           .toLowerCase();
 
-        const matches = searchElements.map(
-          (search) => data.indexOf(search) !== -1,
-        );
+        const matches = searchElements.map((search) => data.indexOf(search) !== -1);
 
         return matches.filter((matched) => !matched).length === 0;
       })
@@ -652,10 +606,7 @@ export function deepCopy(data: any, extensions?: any): any {
  * @param { string[] } container String to compared to
  * @returns { string }
  */
-export function handleDuplicateNameFromArray(
-  name: string,
-  container: string[],
-): string {
+export function handleDuplicateNameFromArray(name: string, container: string[]): string {
   let firstTime: boolean = true;
   let res: string = name;
   let idx: number = 1;
@@ -700,10 +651,7 @@ export function dateByLocalToString(
  * @param indexes index of the item to return.
  * @returns { Array<T> }
  */
-export function getItemsByIdx<T>(
-  collection: Array<T>,
-  indexes: number[],
-): Array<T> {
+export function getItemsByIdx<T>(collection: Array<T>, indexes: number[]): Array<T> {
   return indexes.map((idx) => collection[idx]);
 }
 
@@ -724,11 +672,7 @@ export function escapeRegExp(text: string): string {
  * @returns { string }
  */
 export function displayString(value: string, defaultValue?: string): string {
-  return isNotEmpty(value)
-    ? value
-    : isNotEmpty(defaultValue)
-    ? defaultValue
-    : '-';
+  return isNotEmpty(value) ? value : isNotEmpty(defaultValue) ? defaultValue : '-';
 }
 
 /**
@@ -742,8 +686,7 @@ export function areJsonEqual(first: {}, second: {}): boolean {
     return false;
   }
 
-  const differentLength: boolean =
-    Object.keys(first).length !== Object.keys(second).length;
+  const differentLength: boolean = Object.keys(first).length !== Object.keys(second).length;
   const areSameKeys: boolean = Object.keys(first)
     .map((key) => second[key] === first[key])
     .reduce((acc, cur) => acc && cur, true);
@@ -760,17 +703,9 @@ export function areJsonEqual(first: {}, second: {}): boolean {
  * @param { Object } collection To check from
  * @param { string[] } attributes path to be checked
  */
-export function nestedPathAttributesExist(
-  collection: Object,
-  attributes: string[],
-): boolean {
+export function nestedPathAttributesExist(collection: Object, attributes: string[]): boolean {
   /** No point testing if there is nothing to be tested in the first place. */
-  if (
-    !collection ||
-    $.isEmptyObject(collection) ||
-    !attributes ||
-    attributes.length === 0
-  ) {
+  if (!collection || $.isEmptyObject(collection) || !attributes || attributes.length === 0) {
     return false;
   }
 

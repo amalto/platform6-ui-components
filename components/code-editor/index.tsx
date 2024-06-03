@@ -193,13 +193,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
       style.height = height;
     }
 
-    return (
-      <div
-        style={style}
-        id={this.props.docId}
-        ref={(dom) => (this._editorPanel = dom)}
-      ></div>
-    );
+    return <div style={style} id={this.props.docId} ref={(dom) => (this._editorPanel = dom)}></div>;
   }
 
   componentWillMount() {
@@ -254,9 +248,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     const newDoc = nextProps.docId !== this.props.docId;
 
     if (this.props.mode !== nextProps.mode && nextProps.mode) {
-      this._editor
-        .getSession()
-        .setMode(nextProps.mode && `ace/mode/${nextProps.mode}`);
+      this._editor.getSession().setMode(nextProps.mode && `ace/mode/${nextProps.mode}`);
     }
 
     if (this.props.saveSession && newDoc) {
@@ -290,11 +282,8 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
     if (nextProps.moveToEndOfFile) {
       this._editor.getSelection().moveCursorFileEnd();
-      this._editor.scrollToLine(
-        this._editor.getSession().getLength(),
-        false,
-        true,
-        () => this._editor.scrollPageDown(),
+      this._editor.scrollToLine(this._editor.getSession().getLength(), false, true, () =>
+        this._editor.scrollPageDown(),
       );
     }
 
@@ -322,10 +311,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     }
 
     if (typeof maxLines === 'string' && maxLines === 'unlimited') {
-      return Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0,
-      );
+      return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     }
 
     return maxLines;
@@ -364,11 +350,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
       props.saveSession && props.saveSession(this.getAceSession(editor));
     }
 
-    editor
-      .getSession()
-      .setMode(
-        (props.mode && `ace/mode/${props.mode}`) || 'ace/mode/javascript',
-      );
+    editor.getSession().setMode((props.mode && `ace/mode/${props.mode}`) || 'ace/mode/javascript');
 
     editor.getSession().on('change', (e) => {
       if (this._firstChangeTime <= props.loadTime) {
@@ -438,9 +420,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
   private setEditorOptions = (editor: AceEditor, props: CodeEditor.Props) => {
     const userJson = props.userJson || {};
 
-    const userSettings: CodeEditor.Settings = userJson
-      ? userJson.codeEditorSettings || {}
-      : {};
+    const userSettings: CodeEditor.Settings = userJson ? userJson.codeEditorSettings || {} : {};
 
     const displaySettings = props.displaySettings || {};
 
@@ -450,9 +430,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
         'ace/theme/tomorrow_night_eighties',
     );
 
-    editor.setFontSize(
-      displaySettings.fontSize || userSettings.fontSize || '12px',
-    );
+    editor.setFontSize(displaySettings.fontSize || userSettings.fontSize || '12px');
 
     let showInvisibles = false;
 
@@ -496,16 +474,13 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
 
     // Not save in user settings
     editor.setHighlightActiveLine(displaySettings.highlight || true);
-    displaySettings.fontFamily &&
-      editor.setOption('fontFamily', displaySettings.fontFamily);
+    displaySettings.fontFamily && editor.setOption('fontFamily', displaySettings.fontFamily);
 
     editor.renderer.setScrollMargin(8, 8, 0, 0);
   };
 
   private isSessionSavable = (editor: AceAjax.Editor): boolean => {
-    const annotations: AceAjax.Annotation[] = editor
-      .getSession()
-      .getAnnotations();
+    const annotations: AceAjax.Annotation[] = editor.getSession().getAnnotations();
     let isSavable: boolean = true;
 
     if (annotations.length === 0) {
@@ -519,10 +494,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, any> {
     return isSavable;
   };
 
-  private setKeyboardShortcuts = (
-    editor: AceEditor,
-    props: CodeEditor.Props,
-  ): void => {
+  private setKeyboardShortcuts = (editor: AceEditor, props: CodeEditor.Props): void => {
     // Shortcut to save current ace session.
     editor.commands.addCommand({
       name: 'save',

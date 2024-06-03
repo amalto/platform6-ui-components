@@ -1,11 +1,6 @@
 // Modules
 import * as React from 'react';
-import {
-  WrappedFieldProps,
-  Field,
-  BaseFieldProps,
-  WrappedFieldMetaProps,
-} from 'redux-form';
+import { WrappedFieldProps, Field, BaseFieldProps, WrappedFieldMetaProps } from 'redux-form';
 import { default as classNames } from 'classnames';
 
 // Components
@@ -120,18 +115,14 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props> {
     ) : null;
   };
 
-  private renderErrorMsg = (
-    meta: WrappedFieldMetaProps<any>,
-  ): JSX.Element | null => {
+  private renderErrorMsg = (meta: WrappedFieldMetaProps<any>): JSX.Element | null => {
     const { collapseErrorSpace } = this.props;
 
     if (meta.touched && !!meta.error) {
       return <p className="validation-error-message">{meta.error}</p>;
     }
 
-    return collapseErrorSpace ? null : (
-      <p className="validation-error-message">&nbsp;</p>
-    );
+    return collapseErrorSpace ? null : <p className="validation-error-message">&nbsp;</p>;
   };
 
   render() {
@@ -145,9 +136,7 @@ class TypeaheadFormInput extends React.Component<TypeaheadFormInput.Props> {
       warn,
     };
 
-    return name ? (
-      <Field {...baseFieldProps} component={this.renderInput} />
-    ) : null;
+    return name ? <Field {...baseFieldProps} component={this.renderInput} /> : null;
   }
 }
 

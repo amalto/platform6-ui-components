@@ -167,10 +167,7 @@ namespace CodeEditorInput {
   export interface State {}
 }
 
-class CodeEditorInput extends React.Component<
-  CodeEditorInput.Props,
-  CodeEditorInput.State
-> {
+class CodeEditorInput extends React.Component<CodeEditorInput.Props, CodeEditorInput.State> {
   constructor(props: CodeEditorInput.Props) {
     super(props);
     this.state = {};
@@ -231,8 +228,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
   }
 
   render() {
-    const { label, help, containerClass, inputClass, height, input, meta } =
-      this.props;
+    const { label, help, containerClass, inputClass, height, input, meta } = this.props;
 
     const { editorId } = this.state;
 
@@ -257,9 +253,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
           style={height ? { height: height } : null}
         />
 
-        {meta.touched && !!meta.error && (
-          <p className="validation-error-message">{meta.error}</p>
-        )}
+        {meta.touched && !!meta.error && <p className="validation-error-message">{meta.error}</p>}
       </div>
     );
   }
@@ -344,10 +338,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
         editorInstance.setReadOnly(readonly);
       }
 
-      if (
-        prevProps.displaySettings !== displaySettings ||
-        prevProps.height !== height
-      ) {
+      if (prevProps.displaySettings !== displaySettings || prevProps.height !== height) {
         this.setEditorOptions(editorInstance);
       }
 
@@ -382,10 +373,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
     }
 
     if (typeof maxLines === 'string' && maxLines === 'unlimited') {
-      return Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0,
-      );
+      return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     }
 
     return maxLines;
@@ -402,14 +390,10 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
     const displaySettings = this.props.displaySettings ?? {};
 
     editor.setTheme(
-      displaySettings.theme ||
-        userSettings.theme ||
-        'ace/theme/tomorrow_night_eighties',
+      displaySettings.theme || userSettings.theme || 'ace/theme/tomorrow_night_eighties',
     );
 
-    editor.setFontSize(
-      displaySettings.fontSize || userSettings.fontSize || '12px',
-    );
+    editor.setFontSize(displaySettings.fontSize || userSettings.fontSize || '12px');
 
     let showInvisibles = false;
 
@@ -505,9 +489,7 @@ class CodeEditor extends React.Component<CodeEditor.Props, CodeEditor.State> {
   };
 
   private isSessionSavable = (editor: AceEditor): boolean => {
-    const annotations: AceAjax.Annotation[] = editor
-      .getSession()
-      .getAnnotations();
+    const annotations: AceAjax.Annotation[] = editor.getSession().getAnnotations();
     let isSavable: boolean = true;
 
     if (annotations.length === 0) {

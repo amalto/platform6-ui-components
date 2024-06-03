@@ -99,17 +99,8 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
 
   render() {
     const { name, invalid, containerClass, forceValidation } = this.props;
-    const {
-      wordings,
-      enabled,
-      second,
-      minute,
-      hour,
-      dayOfMonth,
-      month,
-      dayOfWeek,
-      year,
-    } = this.state;
+    const { wordings, enabled, second, minute, hour, dayOfMonth, month, dayOfWeek, year } =
+      this.state;
 
     return (
       <div className={classNames('fieldset', containerClass)}>
@@ -162,9 +153,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
               value={dayOfMonth}
               handleFieldChange={this.handleFieldChange}
               help="1-31 W L / ? * - ,"
-              validate={(value: string) =>
-                !CRON_VALIDATION.DAY_OF_MONTH.test(value)
-              }
+              validate={(value: string) => !CRON_VALIDATION.DAY_OF_MONTH.test(value)}
               formSubmitted={forceValidation}
               disabled={!enabled}
             />
@@ -190,9 +179,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
               value={dayOfWeek}
               handleFieldChange={this.handleFieldChange}
               help="1-7 SUN-SAT # L / ? * - ,"
-              validate={(value: string) =>
-                !CRON_VALIDATION.DAY_OF_WEEK.test(value)
-              }
+              validate={(value: string) => !CRON_VALIDATION.DAY_OF_WEEK.test(value)}
               formSubmitted={forceValidation}
               disabled={!enabled}
             />
@@ -225,9 +212,7 @@ class CronInput extends React.Component<CronInput.Props, CronInput.State> {
           </div>
         </div>
 
-        {invalid && (
-          <p className="validation-error-message">{wordings.inputInvalid}</p>
-        )}
+        {invalid && <p className="validation-error-message">{wordings.inputInvalid}</p>}
       </div>
     );
   }

@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [2.0.3](https://github.com/amalto/platform6-ui-components/compare/@amalto/pdf-viewer@2.0.2...@amalto/pdf-viewer@2.0.3) (2023-11-08)
 
@@ -31,4 +31,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- pdfjs is now displayed ([102b174](https://github.com/amalto/platform6-ui-components/commit/102b1745dcec599df29f1bd4b4856c70d7002de7))
+- pdfjs is now displayed
+  ([102b174](https://github.com/amalto/platform6-ui-components/commit/102b1745dcec599df29f1bd4b4856c70d7002de7))

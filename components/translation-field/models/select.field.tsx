@@ -11,10 +11,7 @@ export interface SelectProps<T> extends ReactSelectProps<T> {
   label?: string | JSX.Element;
 }
 
-export class Select<T extends {}> extends Field<
-  HTMLInputElement,
-  SelectProps<T>
-> {
+export class Select<T extends {}> extends Field<HTMLInputElement, SelectProps<T>> {
   private styles: Styles = {
     container: (base: CSSProperties): CSSProperties => {
       return {
@@ -25,15 +22,11 @@ export class Select<T extends {}> extends Field<
     control: (base: CSSProperties): CSSProperties => {
       return {
         ...base,
-        borderWidth: '2px',
-        boxShadow: 'none',
-        borderColor:
-          this.isInvalid && !this.props.readOnly ? '#e25d5d' : base.borderColor,
+        'borderWidth': '2px',
+        'boxShadow': 'none',
+        'borderColor': this.isInvalid && !this.props.readOnly ? '#e25d5d' : base.borderColor,
         '&:hover': {
-          borderColor:
-            this.isInvalid && !this.props.readOnly
-              ? '#e25d5d'
-              : base.borderColor,
+          borderColor: this.isInvalid && !this.props.readOnly ? '#e25d5d' : base.borderColor,
         },
       };
     },
@@ -51,9 +44,7 @@ export class Select<T extends {}> extends Field<
   ): JSX.Element | null | false {
     return (
       <ReactSelect<T>
-        className={
-          !!className ? className.replace('form-control', '') : className
-        }
+        className={!!className ? className.replace('form-control', '') : className}
         id={id}
         styles={this.styles}
         theme={this.theme}
@@ -83,9 +74,7 @@ export class Select<T extends {}> extends Field<
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export function PlaceholderWithTooltip(
-  props: PlaceholderProps<any>,
-): JSX.Element {
+export function PlaceholderWithTooltip(props: PlaceholderProps<any>): JSX.Element {
   const { children, className, getStyles, innerProps } = props;
   const styles = css(getStyles('placeholder', props));
   const isPlaceholderCss = {

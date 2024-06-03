@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.9.78](https://github.com/amalto/platform6-ui-components/compare/@amalto/validated-input@1.9.77...@amalto/validated-input@1.9.78) (2023-11-22)
 

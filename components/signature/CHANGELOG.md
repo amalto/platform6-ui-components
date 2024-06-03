@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.10.8](https://github.com/amalto/platform6-ui-components/compare/@amalto/signature@1.10.7...@amalto/signature@1.10.8) (2023-11-29)
 

@@ -25,8 +25,7 @@ export function hasAnyPermission(
   permissions: string[] | PermissionDef[],
   global?: boolean,
 ) {
-  const appInstance =
-    webStorage.selectedAppInstance && webStorage.selectedAppInstance.name;
+  const appInstance = webStorage.selectedAppInstance && webStorage.selectedAppInstance.name;
 
   if (!permissions || !permissions.length || !appInstance) {
     return false;
@@ -194,9 +193,7 @@ function hasAccessToAction(
   }
 
   if (hasAccessToFeature(webStorage, appInstance, feature)) {
-    return (
-      getScopeValues(webStorage, appInstance, feature, action) !== undefined
-    );
+    return getScopeValues(webStorage, appInstance, feature, action) !== undefined;
   } else {
     return false;
   }
@@ -211,26 +208,19 @@ export function hasFilterOn(
   viewFilter: string,
   filterKey: string,
 ): boolean {
-  const appInstance =
-    webStorage.selectedAppInstance && webStorage.selectedAppInstance.name;
+  const appInstance = webStorage.selectedAppInstance && webStorage.selectedAppInstance.name;
 
   //filter by key value are made via the keyword 'allow'
 
   const appInstanceValues = appInstance
     ? (getScopeValues(webStorage, appInstance, feature, 'allow') as ScopeValue)
     : undefined;
-  const asteriskValues = getScopeValues(
-    webStorage,
-    ASTERISK,
-    feature,
-    'allow',
-  ) as ScopeValue;
+  const asteriskValues = getScopeValues(webStorage, ASTERISK, feature, 'allow') as ScopeValue;
 
   if (appInstanceValues && appInstanceValues[viewFilter]) {
     if (
-      appInstanceValues[viewFilter].filter(
-        (scopeFilter) => scopeFilter.searchable === filterKey,
-      ).length > 0
+      appInstanceValues[viewFilter].filter((scopeFilter) => scopeFilter.searchable === filterKey)
+        .length > 0
     ) {
       return true;
     }
@@ -238,9 +228,8 @@ export function hasFilterOn(
 
   if (asteriskValues && asteriskValues[viewFilter]) {
     if (
-      asteriskValues[viewFilter].filter(
-        (scopeFilter) => scopeFilter.searchable === filterKey,
-      ).length > 0
+      asteriskValues[viewFilter].filter((scopeFilter) => scopeFilter.searchable === filterKey)
+        .length > 0
     ) {
       return true;
     }

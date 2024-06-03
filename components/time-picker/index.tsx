@@ -110,13 +110,8 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
     const parsedTime = value && value.split(':');
 
     const hours =
-      parsedTime && parsedTime.length === 2
-        ? parsedTime[0]
-        : minHour
-        ? this.pad(minHour)
-        : '00';
-    const minutes =
-      parsedTime && parsedTime.length === 2 ? parsedTime[1] : '00';
+      parsedTime && parsedTime.length === 2 ? parsedTime[0] : minHour ? this.pad(minHour) : '00';
+    const minutes = parsedTime && parsedTime.length === 2 ? parsedTime[1] : '00';
 
     return (
       <div className="combined-inputs">
@@ -135,10 +130,7 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
           })}
         </select>
 
-        <span
-          className="form-control input-center"
-          style={{ fontWeight: 'bold' }}
-        >
+        <span className="form-control input-center" style={{ fontWeight: 'bold' }}>
           :
         </span>
 
@@ -161,10 +153,7 @@ class TimePicker extends React.Component<TimePicker.Props, TimePicker.State> {
   };
 
   private handleHoursChange = (event: any) => {
-    this.props.handleFieldChange(
-      this.getUpdatedTime(event.target.value),
-      this.props.name,
-    );
+    this.props.handleFieldChange(this.getUpdatedTime(event.target.value), this.props.name);
   };
 
   private handleMinutesChange = (event: any) => {

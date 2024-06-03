@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.11.2](https://github.com/amalto/platform6-ui-components/compare/@amalto/typeahead-input@1.11.1...@amalto/typeahead-input@1.11.2) (2023-08-21)
 
@@ -15,5 +15,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- typeahead input ([f60b948](https://github.com/amalto/platform6-ui-components/commit/f60b94835b530cd9dc718caeba57b90be184ef26))
-- typeahead-input display ([92c6c7a](https://github.com/amalto/platform6-ui-components/commit/92c6c7af49d68b7508cd396608b44433d21846e3))
+- typeahead input
+  ([f60b948](https://github.com/amalto/platform6-ui-components/commit/f60b94835b530cd9dc718caeba57b90be184ef26))
+- typeahead-input display
+  ([92c6c7a](https://github.com/amalto/platform6-ui-components/commit/92c6c7af49d68b7508cd396608b44433d21846e3))

@@ -81,17 +81,13 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
     const defaultLang: string = props.defaultLanguage || this.defaultLang;
 
-    let translations: TranslationType[] = Object.keys(props.value || {}).map(
-      (lang) => ({
-        id: uuid.v4(),
-        lang,
-        value: props.value[lang],
-      }),
-    );
+    let translations: TranslationType[] = Object.keys(props.value || {}).map((lang) => ({
+      id: uuid.v4(),
+      lang,
+      value: props.value[lang],
+    }));
 
-    const defaultLanguage: boolean = translations.some(
-      (value) => value.lang === defaultLang,
-    );
+    const defaultLanguage: boolean = translations.some((value) => value.lang === defaultLang);
 
     if (!defaultLanguage) {
       translations.push({
@@ -120,11 +116,8 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
   }
 
   render(): JSX.Element | null | false {
-    const { disableMultilanguage, readOnly, label, help, collapseErrorSpace } =
-      this.props;
-    const lines = this.state.translations.map((t) =>
-      this.lineRender(t.lang, t.value, t.id),
-    );
+    const { disableMultilanguage, readOnly, label, help, collapseErrorSpace } = this.props;
+    const lines = this.state.translations.map((t) => this.lineRender(t.lang, t.value, t.id));
 
     return (
       <div
@@ -140,8 +133,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
           {label}
           <div
             style={{
-              display:
-                disableMultilanguage || readOnly ? 'none' : 'inline-block',
+              display: disableMultilanguage || readOnly ? 'none' : 'inline-block',
             }}
           >
             <ActionButton
@@ -168,11 +160,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
   }
 
   protected emptyContent(): JSX.Element {
-    return (
-      <div className="validation-error-message">
-        {this.state.wordings.translationEmpty}
-      </div>
-    );
+    return <div className="validation-error-message">{this.state.wordings.translationEmpty}</div>;
   }
 
   private lineRender(lang: string, value: string, key: string): JSX.Element {
@@ -225,10 +213,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
         className="form-group mandatory inline-block full-width"
         style={{ marginLeft: 0, marginRight: 0, position: 'relative' }}
       >
-        <div
-          className="col-xs-12 col-sm-6 col-md-6 mgb-5 flex"
-          style={{ paddingLeft: 0 }}
-        >
+        <div className="col-xs-12 col-sm-6 col-md-6 mgb-5 flex" style={{ paddingLeft: 0 }}>
           <div className="flex align-self-center padr-5" style={trashStyle}>
             <ActionButton
               iconClass={ICON_TYPE.DELETE}
@@ -269,11 +254,7 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
   }
 
   private renderInput(props): JSX.Element {
-    return this.props.useTextarea ? (
-      <Textarea {...props} />
-    ) : (
-      <Input {...props} />
-    );
+    return this.props.useTextarea ? <Textarea {...props} /> : <Input {...props} />;
   }
 
   private addNewLine(): void {
@@ -288,25 +269,18 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
 
   private removeLine(id: string): void {
     const translations = this.state.translations.filter((t) => t.id !== id);
-    const data = translations.reduce(
-      (a, b) => ({ ...a, [b.lang]: b.value }),
-      {},
-    );
+    const data = translations.reduce((a, b) => ({ ...a, [b.lang]: b.value }), {});
     this.props.onChange(data);
     this.setState({ translations });
   }
 
-  private onKeyChangeHandler(
-    id: string,
-  ): (lang: LanguageCode | undefined | null) => void {
+  private onKeyChangeHandler(id: string): (lang: LanguageCode | undefined | null) => void {
     return (lang: LanguageCode | undefined | null): void => {
       if (lang === undefined || lang === null) {
         return;
       }
 
-      const translations = this.state.translations.map((t) =>
-        t.id === id ? { ...t, lang } : t,
-      );
+      const translations = this.state.translations.map((t) => (t.id === id ? { ...t, lang } : t));
       this.props.onChange(this.convertTranslationTypeToLangMap(translations));
 
       this.setState({
@@ -315,14 +289,10 @@ class TranslationField extends Component<TranslationProps, TranslationState> {
     };
   }
 
-  private onValueChangeHandler(
-    id: string,
-  ): (event: ChangeEvent<HTMLInputElement>) => void {
+  private onValueChangeHandler(id: string): (event: ChangeEvent<HTMLInputElement>) => void {
     return (event: ChangeEvent<HTMLInputElement>): void => {
       const value: string = event.target.value;
-      const translations = this.state.translations.map((t) =>
-        t.id === id ? { ...t, value } : t,
-      );
+      const translations = this.state.translations.map((t) => (t.id === id ? { ...t, value } : t));
       this.props.onChange(this.convertTranslationTypeToLangMap(translations));
 
       this.setState({

@@ -71,10 +71,7 @@ module TogglePanel {
   }
 }
 
-class TogglePanel extends React.Component<
-  TogglePanel.Props,
-  TogglePanel.State
-> {
+class TogglePanel extends React.Component<TogglePanel.Props, TogglePanel.State> {
   constructor(props: TogglePanel.Props) {
     super(props);
 
@@ -91,9 +88,7 @@ class TogglePanel extends React.Component<
     ) : null;
 
     let lCustomControls = this.props.leftCustomControls ? (
-      <div className="panel-heading-controls">
-        {this.props.leftCustomControls}
-      </div>
+      <div className="panel-heading-controls">{this.props.leftCustomControls}</div>
     ) : null;
 
     let rCustomControls = this.props.rightCustomControls ? (
@@ -103,9 +98,7 @@ class TogglePanel extends React.Component<
     ) : null;
 
     const cancelBtn =
-      this.props.cancelBtn &&
-      this.props.cancelBtn.label &&
-      this.props.cancelBtn.action ? (
+      this.props.cancelBtn && this.props.cancelBtn.label && this.props.cancelBtn.action ? (
         <button
           type="button"
           className={classNames('btn', this.props.cancelBtn.cssClass, {
@@ -118,18 +111,12 @@ class TogglePanel extends React.Component<
       ) : null;
 
     const submitBtn =
-      this.props.submitBtn &&
-      this.props.submitBtn.label &&
-      this.props.submitBtn.action ? (
+      this.props.submitBtn && this.props.submitBtn.label && this.props.submitBtn.action ? (
         <button
           type="button"
-          className={classNames(
-            'btn pull-right',
-            this.props.submitBtn.cssClass,
-            {
-              'btn-success': !this.props.submitBtn.cssClass,
-            },
-          )}
+          className={classNames('btn pull-right', this.props.submitBtn.cssClass, {
+            'btn-success': !this.props.submitBtn.cssClass,
+          })}
           onClick={this.props.submitBtn.action}
         >
           {this.props.submitBtn.label}
@@ -149,7 +136,7 @@ class TogglePanel extends React.Component<
         <div
           className={classNames(`panel-heading ${this.props.headerCustomCSS}`, {
             'click-pointer': this.props.togglable !== false,
-            hidden: !!this.props.hideTitle,
+            'hidden': !!this.props.hideTitle,
           })}
           onClick={this.togglePanelContent}
         >

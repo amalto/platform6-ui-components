@@ -74,8 +74,7 @@ class TypeaheadInput extends React.Component<Props, State> {
   }
 
   private renderTypeahead(): JSX.Element {
-    const { id, collection, handleInputChange, placeholder, value } =
-      this.props;
+    const { id, collection, handleInputChange, placeholder, value } = this.props;
 
     return (
       <Typeahead<string>
@@ -91,15 +90,13 @@ class TypeaheadInput extends React.Component<Props, State> {
   }
 
   componentDidMount(): void {
-    const typeaheadWrapper =
-      this.root.getElementsByClassName('rbt clearfix open')[0];
+    const typeaheadWrapper = this.root.getElementsByClassName('rbt clearfix open')[0];
 
     typeaheadWrapper?.setAttribute('style', 'position: relative; flex: auto;');
   }
 
   render(): JSX.Element {
-    const { id, collectionTypes, selectedCollectionType, setCollectionType } =
-      this.props;
+    const { id, collectionTypes, selectedCollectionType, setCollectionType } = this.props;
 
     const { shouldDisplayDropdown } = this.state;
 

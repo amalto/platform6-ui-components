@@ -86,10 +86,7 @@ namespace SelectTextInput {
   }
 }
 
-class SelectTextInput extends React.Component<
-  SelectTextInput.Props,
-  SelectTextInput.State
-> {
+class SelectTextInput extends React.Component<SelectTextInput.Props, SelectTextInput.State> {
   constructor(props: SelectTextInput.Props) {
     super(props);
     this.state = {
@@ -120,23 +117,14 @@ class SelectTextInput extends React.Component<
           invalid: meta.touched && !!meta.error,
         })}
       >
-        <Radium.Style
-          scopeSelector=".select-text-input"
-          rules={Styles.selectTextInput}
-        />
+        <Radium.Style scopeSelector=".select-text-input" rules={Styles.selectTextInput} />
         <Radium.Style
           scopeSelector=".select-text-input.btn-prefix"
           rules={Styles.selectTextInputBtnPreffix}
         />
         <Radium.Style scopeSelector=".selector" rules={Styles.caret} />
-        <Radium.Style
-          scopeSelector=".options-list"
-          rules={Styles['options-list']}
-        />
-        <Radium.Style
-          scopeSelector=".option-item"
-          rules={Styles['option-item']}
-        />
+        <Radium.Style scopeSelector=".options-list" rules={Styles['options-list']} />
+        <Radium.Style scopeSelector=".option-item" rules={Styles['option-item']} />
 
         {label ? (
           <label>
@@ -165,26 +153,22 @@ class SelectTextInput extends React.Component<
           />
           {this.state.selectOpen && this.state.options ? (
             <div className="options-list text-medium">
-              {this.state.options.map(
-                ({ leftIcon, rightIcon, iconAlignment, value, label }) => (
+              {this.state.options.map(({ leftIcon, rightIcon, iconAlignment, value, label }) => (
+                <div
+                  key={value}
+                  className="option-item"
+                  onClick={() => this.selectOption(label, field)}
+                >
                   <div
-                    key={value}
-                    className="option-item"
-                    onClick={() => this.selectOption(label, field)}
+                    className="flex flex-row"
+                    style={{ alignItems: iconAlignment || 'baseline' }}
                   >
-                    <div
-                      className="flex flex-row"
-                      style={{ alignItems: iconAlignment || 'baseline' }}
-                    >
-                      {leftIcon ? <i className={`${leftIcon} mgr-10`} /> : null}
-                      <div className="flex-1">{label}</div>
-                      {rightIcon ? (
-                        <i className={`${rightIcon} mgl-10`} />
-                      ) : null}
-                    </div>
+                    {leftIcon ? <i className={`${leftIcon} mgr-10`} /> : null}
+                    <div className="flex-1">{label}</div>
+                    {rightIcon ? <i className={`${rightIcon} mgl-10`} /> : null}
                   </div>
-                ),
-              )}
+                </div>
+              ))}
             </div>
           ) : null}
         </div>
@@ -199,8 +183,7 @@ class SelectTextInput extends React.Component<
   };
 
   render() {
-    const { name, label, format, normalize, parse, validate, warn } =
-      this.props;
+    const { name, label, format, normalize, parse, validate, warn } = this.props;
     const autocompleteInput = (value: string) => {
       this.setState({
         options: this.autocompleteOptions(value),
@@ -230,16 +213,12 @@ class SelectTextInput extends React.Component<
     const value = field.input.value;
 
     field.input.onChange(uuid.v1(), undefined, undefined);
-    this.setState(
-      { selectOpen: !this.state.selectOpen } as SelectTextInput.State,
-      () => field.input.onChange(value, undefined, undefined),
+    this.setState({ selectOpen: !this.state.selectOpen } as SelectTextInput.State, () =>
+      field.input.onChange(value, undefined, undefined),
     );
   };
 
-  private selectOption = (
-    value: React.ReactText,
-    field: WrappedFieldProps<any>,
-  ): void => {
+  private selectOption = (value: React.ReactText, field: WrappedFieldProps<any>): void => {
     this.setState({ selectOpen: false } as SelectTextInput.State, () =>
       field.input.onChange(value, undefined, undefined),
     );

@@ -20,9 +20,5 @@ function handleChange(keyValues) {
   setState({ keyValues });
 }
 
-<KeyValueEditor
-  handleChange={handleChange}
-  keyValues={state.keyValues}
-  locale="en-US"
-/>;
+<KeyValueEditor handleChange={handleChange} keyValues={state.keyValues} locale="en-US" />;
 ```

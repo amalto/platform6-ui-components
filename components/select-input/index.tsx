@@ -76,10 +76,7 @@ namespace SelectInput {
   export interface State {}
 }
 
-class SelectInput extends React.Component<
-  SelectInput.Props,
-  SelectInput.State
-> {
+class SelectInput extends React.Component<SelectInput.Props, SelectInput.State> {
   constructor(props: SelectInput.Props) {
     super(props);
     this.state = {};
@@ -169,10 +166,7 @@ class SelectInput extends React.Component<
             {help && <Help text={help} />}
           </label>
         ) : null}
-        <select
-          className={classNames('form-control', inputClass)}
-          disabled={true}
-        ></select>
+        <select className={classNames('form-control', inputClass)} disabled={true}></select>
       </div>
     );
   }

@@ -77,18 +77,12 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
 
     this.state = {
       searchValue: (props.handleSearch && props.searchValue) || '',
-      wordings: compileWordings(
-        MULTILANGUAGE_WORDINGS,
-        props.locale || 'en-US',
-      ),
+      wordings: compileWordings(MULTILANGUAGE_WORDINGS, props.locale || 'en-US'),
     };
   }
 
   componentDidUpdate(prevProps: ButtonsBar.Props) {
-    if (
-      prevProps.searchValue !== this.props.searchValue &&
-      this.props.handleSearch
-    ) {
+    if (prevProps.searchValue !== this.props.searchValue && this.props.handleSearch) {
       this.setState({
         searchValue: this.props.searchValue,
       } as ButtonsBar.State);
@@ -128,19 +122,12 @@ class ButtonsBar extends React.Component<ButtonsBar.Props, ButtonsBar.State> {
                         ) : btn.text ? (
                           <span>
                             {btn.iconClass ? (
-                              <span
-                                className={classNames(
-                                  'fa-fw right-spaced',
-                                  btn.iconClass,
-                                )}
-                              />
+                              <span className={classNames('fa-fw right-spaced', btn.iconClass)} />
                             ) : null}
                             <span>{btn.text}</span>
                           </span>
                         ) : (
-                          <span
-                            className={classNames('fa-fw', btn.iconClass)}
-                          />
+                          <span className={classNames('fa-fw', btn.iconClass)} />
                         )}
                       </button>
                     ) : (

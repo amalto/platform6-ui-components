@@ -16,11 +16,7 @@ import Argument from 'react-styleguidist/lib/rsg-components/Argument';
 import Arguments from 'react-styleguidist/lib/rsg-components/Arguments';
 
 // Utils
-import {
-  unquote,
-  getType,
-  showSpaces,
-} from 'react-styleguidist/lib/rsg-components/Props/util';
+import { unquote, getType, showSpaces } from 'react-styleguidist/lib/rsg-components/Props/util';
 
 module PropsRenderer {
   export interface Props extends React.ClassAttributes<PropsRenderer> {
@@ -51,13 +47,7 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
       },
     ];
 
-    return (
-      <Table
-        columns={columns}
-        rows={this.props.props}
-        getRowKey={this.getRowKey}
-      />
-    );
+    return <Table columns={columns} rows={this.props.props} getRowKey={this.getRowKey} />;
   }
 
   /** Data */
@@ -106,12 +96,7 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
             // local scope. To avoid any breakage we fall back to rendering the
             // prop without any formatting
             return (
-              <Text
-                size="small"
-                color="light"
-                underlined
-                title={prop.defaultValue.value}
-              >
+              <Text size="small" color="light" underlined title={prop.defaultValue.value}>
                 Shape
               </Text>
             );
@@ -134,11 +119,7 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
   private renderDescription = (prop): JSX.Element => {
     const { description, tags = {} } = prop;
     const extra = this.renderExtra(prop);
-    const args = [
-      ...(tags.arg || []),
-      ...(tags.argument || []),
-      ...(tags.param || []),
-    ];
+    const args = [...(tags.arg || []), ...(tags.argument || []), ...(tags.param || [])];
     const returnDocumentation =
       (tags.return && tags.return[0]) || (tags.returns && tags.returns[0]);
 
@@ -292,11 +273,7 @@ class PropsRenderer extends React.Component<PropsRenderer.Props, any> {
 
     return (
       <Name deprecated={!!tags.deprecated}>
-        {prop.required ? (
-          <div className="props-name mandatory">{name}</div>
-        ) : (
-          name
-        )}
+        {prop.required ? <div className="props-name mandatory">{name}</div> : name}
       </Name>
     );
   };

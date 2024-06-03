@@ -126,10 +126,7 @@ class DatePicker extends React.Component<DatePicker.Props, DatePicker.State> {
           </label>
         ) : null}
 
-        <div
-          style={{ paddingTop: 1, paddingBottom: 1 }}
-          className="input-group input-group-sm"
-        >
+        <div style={{ paddingTop: 1, paddingBottom: 1 }} className="input-group input-group-sm">
           <input
             type="text"
             className="form-control datepicker"

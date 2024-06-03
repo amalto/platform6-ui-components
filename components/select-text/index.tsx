@@ -118,8 +118,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     }
 
     if (prevState.selectOpen !== selectOpen) {
-      if (selectOpen)
-        document.addEventListener('keydown', this.handleKeyboardShortcut);
+      if (selectOpen) document.addEventListener('keydown', this.handleKeyboardShortcut);
       else document.removeEventListener('keydown', this.handleKeyboardShortcut);
     }
 
@@ -161,23 +160,14 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         onFocus={this.onFocusWrapper}
         onBlur={this.onBlur}
       >
-        <Radium.Style
-          scopeSelector=".select-text-input"
-          rules={Styles.selectTextInput}
-        />
+        <Radium.Style scopeSelector=".select-text-input" rules={Styles.selectTextInput} />
         <Radium.Style
           scopeSelector=".select-text-input.btn-prefix"
           rules={Styles.selectTextInputBtnPreffix}
         />
         <Radium.Style scopeSelector=".selector" rules={Styles.caret} />
-        <Radium.Style
-          scopeSelector=".options-list"
-          rules={Styles['options-list']}
-        />
-        <Radium.Style
-          scopeSelector=".option-item"
-          rules={Styles['option-item']}
-        />
+        <Radium.Style scopeSelector=".options-list" rules={Styles['options-list']} />
+        <Radium.Style scopeSelector=".option-item" rules={Styles['option-item']} />
         <Radium.Style
           scopeSelector=".option-item-selected"
           rules={Styles['option-item-selected']}
@@ -200,9 +190,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
             name={name}
             onFocus={this.onFocusInput}
             ref={(dom) => (this._input = dom)}
-            onChange={(e) =>
-              autocompleteInput(e.currentTarget.value.toString())
-            }
+            onChange={(e) => autocompleteInput(e.currentTarget.value.toString())}
             type={type || 'text'}
             placeholder={placeholder}
             disabled={inputDisabled}
@@ -229,8 +217,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
   }
 
   private renderOptions = (): JSX.Element | null => {
-    const { currentValue, displayValue, hasLeftIcon, hasRightIcon, options } =
-      this.state;
+    const { currentValue, displayValue, hasLeftIcon, hasRightIcon, options } = this.state;
 
     if (!options) {
       return null;
@@ -259,15 +246,10 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
                 'option-item-disabled': disabled,
               })}
               onClick={
-                disabled
-                  ? null
-                  : () => this.selectOption(value.toString(), label.toString())
+                disabled ? null : () => this.selectOption(value.toString(), label.toString())
               }
             >
-              <div
-                className="flex flex-row"
-                style={{ alignItems: iconAlignment || 'baseline' }}
-              >
+              <div className="flex flex-row" style={{ alignItems: iconAlignment || 'baseline' }}>
                 <i
                   className={`${leftIcon} mgr-10`}
                   style={{ paddingRight: leftIcon || !hasLeftIcon ? 0 : 13 }}
@@ -347,19 +329,14 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
     // Escape special charaters from instance name.
     return this.props.options.filter((o) => {
       return !value ||
-        o.label
-          .toString()
-          .toLocaleLowerCase()
-          .indexOf(value.toLocaleLowerCase()) === 0
+        o.label.toString().toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) === 0
         ? o
         : null;
     });
   };
 
   private toggleSelectList = (): void => {
-    this._input.value = this.state.selectOpen
-      ? this.state.displayLabel.toString()
-      : '';
+    this._input.value = this.state.selectOpen ? this.state.displayLabel.toString() : '';
     this.setState({
       selectOpen: !this.state.selectOpen,
       options: this.autocompleteOptions(this._input.value),
@@ -382,9 +359,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         lockFocus: false,
         options: this.autocompleteOptions(value as string),
       } as SelectText.State,
-      () =>
-        this.props.handleOnChange &&
-        this.props.handleOnChange(this.state.displayValue),
+      () => this.props.handleOnChange && this.props.handleOnChange(this.state.displayValue),
     );
   };
 
@@ -412,10 +387,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
       // Enter
       case 13: {
         // Select option
-        this.selectOption(
-          this.state.displayValue.toString(),
-          this.state.displayLabel.toString(),
-        );
+        this.selectOption(this.state.displayValue.toString(), this.state.displayLabel.toString());
         break;
       }
 
@@ -433,12 +405,8 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
 
         this.setState(
           {
-            displayValue: options[prevOption]
-              ? options[prevOption].value.toString()
-              : displayValue,
-            displayLabel: options[prevOption]
-              ? options[prevOption].label.toString()
-              : displayLabel,
+            displayValue: options[prevOption] ? options[prevOption].value.toString() : displayValue,
+            displayLabel: options[prevOption] ? options[prevOption].label.toString() : displayLabel,
           },
           () => this.scrollToOption(this.state.displayValue.toString()),
         );
@@ -453,11 +421,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
         );
         let nextOption: number = selectedOption;
 
-        for (
-          let i = nextOption;
-          nextOption === selectedOption && i < options.length;
-          ++i
-        ) {
+        for (let i = nextOption; nextOption === selectedOption && i < options.length; ++i) {
           nextOption = options[i] && !options[i].disabled ? i : nextOption;
         }
 
@@ -476,9 +440,7 @@ class SelectText extends React.Component<SelectText.Props, SelectText.State> {
   };
 
   private scrollToTop = () => {
-    const el = ReactDOM.findDOMNode(
-      document.getElementById(`input-${this.props.name}`),
-    );
+    const el = ReactDOM.findDOMNode(document.getElementById(`input-${this.props.name}`));
 
     el.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };

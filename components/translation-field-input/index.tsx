@@ -1,11 +1,6 @@
 /** Modules */
 import React, { Component } from 'react';
-import {
-  WrappedFieldProps,
-  WrappedFieldInputProps,
-  Field,
-  BaseFieldProps,
-} from 'redux-form';
+import { WrappedFieldProps, WrappedFieldInputProps, Field, BaseFieldProps } from 'redux-form';
 
 /** Components */
 import TransactionField from '@amalto/translation-field';
@@ -72,10 +67,7 @@ export interface TranslationProps extends BaseFieldProps {
 
 interface TranslationState {}
 
-class TranslationFieldInput extends Component<
-  TranslationProps,
-  TranslationState
-> {
+class TranslationFieldInput extends Component<TranslationProps, TranslationState> {
   constructor(props: Readonly<TranslationProps>) {
     super(props);
 
@@ -98,10 +90,7 @@ class TranslationFieldInput extends Component<
     );
   };
 
-  private onChange = (
-    value: { [key: string]: string },
-    input: WrappedFieldInputProps,
-  ): void => {
+  private onChange = (value: { [key: string]: string }, input: WrappedFieldInputProps): void => {
     input.onChange(value, this.props.name, null);
   };
 }

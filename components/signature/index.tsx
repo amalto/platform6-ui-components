@@ -104,8 +104,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
   }
 
   render() {
-    const { label, backgroundColor, containerCss, height, width, readonly } =
-      this.props;
+    const { label, backgroundColor, containerCss, height, width, readonly } = this.props;
 
     const { imgData } = this.state;
 
@@ -118,10 +117,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
 
     return (
       <div className={containerCss}>
-        <Radium.Style
-          scopeSelector=".canvas-wrapper"
-          rules={Styles.canvas_wrapper}
-        />
+        <Radium.Style scopeSelector=".canvas-wrapper" rules={Styles.canvas_wrapper} />
 
         <div className="form-group">
           {label ? <label>{label}</label> : null}
@@ -191,9 +187,7 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
       style: { float: 'right' },
     };
 
-    return (
-      <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={this.props.locale} />
-    );
+    return <ButtonsBar btnGroups={[leftBtn, rightBtn]} locale={this.props.locale} />;
   };
 
   private clear = (): void => {
@@ -221,12 +215,9 @@ class Signature extends React.Component<Signature.Props, Signature.State> {
   };
 
   private onEnd = (): void => {
-    this.setState(
-      { dirty: true, imgData: this.signaturePad.toDataURL() },
-      () => {
-        this.props.onChange && this.props.onChange(this.state.imgData);
-      },
-    );
+    this.setState({ dirty: true, imgData: this.signaturePad.toDataURL() }, () => {
+      this.props.onChange && this.props.onChange(this.state.imgData);
+    });
   };
 
   private handleResize = (): void => {

@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.10.74](https://github.com/amalto/platform6-ui-components/compare/@amalto/cron-input@1.10.73...@amalto/cron-input@1.10.74) (2023-11-22)
 

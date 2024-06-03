@@ -58,9 +58,7 @@ class ColorPicker extends React.Component<ColorPicker.Props, any> {
   }
 
   private handleColorClick = (event: any): void => {
-    this.props.handleColorChange(
-      event.currentTarget.getAttribute('data-color-hex'),
-    );
+    this.props.handleColorChange(event.currentTarget.getAttribute('data-color-hex'));
   };
 
   private colors = (): string[] => {

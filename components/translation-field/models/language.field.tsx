@@ -42,9 +42,7 @@ export class SelectLanguage extends Component<SelectLanguageProps> {
     }
   }
 
-  private getValue(
-    value: ValueType<LanguageCode>,
-  ): ValueType<Language> | undefined {
+  private getValue(value: ValueType<LanguageCode>): ValueType<Language> | undefined {
     if (!value) {
       return undefined;
     } else if (isReadonlyArray(value)) {
@@ -55,8 +53,6 @@ export class SelectLanguage extends Component<SelectLanguageProps> {
   }
 }
 
-function isReadonlyArray<T>(
-  value: ReadonlyArray<T> | T,
-): value is ReadonlyArray<T> {
+function isReadonlyArray<T>(value: ReadonlyArray<T> | T): value is ReadonlyArray<T> {
   return Array.isArray(value);
 }

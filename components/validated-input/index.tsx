@@ -18,11 +18,7 @@ module ValidatedInput {
     /** Input value. */
     value: string;
     /** Callback function executed on user input. */
-    handleFieldChange: (
-      fieldValue: string,
-      fieldName: string,
-      isInvalid: boolean,
-    ) => void;
+    handleFieldChange: (fieldValue: string, fieldName: string, isInvalid: boolean) => void;
     /** If given, ValidatedInput will be a select balise instead of an input balise. */
     choices?: {
       value: string;
@@ -91,10 +87,7 @@ module ValidatedInput {
   }
 }
 
-class ValidatedInput extends React.Component<
-  ValidatedInput.Props,
-  ValidatedInput.State
-> {
+class ValidatedInput extends React.Component<ValidatedInput.Props, ValidatedInput.State> {
   constructor(props: ValidatedInput.Props) {
     super(props);
     this.state = {
@@ -146,8 +139,7 @@ class ValidatedInput extends React.Component<
       autoComplete: autoComplete,
     };
 
-    const inputDisplay =
-      !choices && !multiline ? <input type="text" {...textProps} /> : null;
+    const inputDisplay = !choices && !multiline ? <input type="text" {...textProps} /> : null;
 
     const textareaDisplay = multiline ? <textarea {...textProps} /> : null;
 
@@ -185,10 +177,7 @@ class ValidatedInput extends React.Component<
   }
 
   componentWillReceiveProps(nextProps: ValidatedInput.Props) {
-    if (
-      this.props.formSubmitted !== nextProps.formSubmitted &&
-      nextProps.formSubmitted === true
-    ) {
+    if (this.props.formSubmitted !== nextProps.formSubmitted && nextProps.formSubmitted === true) {
       this.validateField(nextProps.value, nextProps);
     }
   }

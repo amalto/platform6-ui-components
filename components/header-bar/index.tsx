@@ -47,15 +47,7 @@ class HeaderBar extends React.Component<HeaderBar.Props, any> {
   }
 
   render() {
-    const {
-      mainCss,
-      mainStyle,
-      backgroundColor,
-      height,
-      imgSrc,
-      url,
-      burgerAction,
-    } = this.props;
+    const { mainCss, mainStyle, backgroundColor, height, imgSrc, url, burgerAction } = this.props;
 
     return (
       <header

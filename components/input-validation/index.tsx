@@ -1,10 +1,5 @@
 // Utils
-import {
-  isValidEmail,
-  isNotEmpty,
-  isValidHttpsUrl,
-  compileWordings,
-} from '@amalto/helpers';
+import { isValidEmail, isNotEmpty, isValidHttpsUrl, compileWordings } from '@amalto/helpers';
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';

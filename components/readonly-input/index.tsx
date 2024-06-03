@@ -62,18 +62,14 @@ namespace ReadonlyInput {
   export interface State {}
 }
 
-class ReadonlyInput extends React.Component<
-  ReadonlyInput.Props,
-  ReadonlyInput.State
-> {
+class ReadonlyInput extends React.Component<ReadonlyInput.Props, ReadonlyInput.State> {
   constructor(props: ReadonlyInput.Props) {
     super(props);
     this.state = {};
   }
 
   private renderText = (field: WrappedFieldProps<any>) => {
-    const { label, help, containerClass, inputClass, collapseErrorSpace } =
-      this.props;
+    const { label, help, containerClass, inputClass, collapseErrorSpace } = this.props;
 
     const { input, meta } = field;
 
@@ -90,10 +86,7 @@ class ReadonlyInput extends React.Component<
           </label>
         ) : null}
 
-        <span
-          {...(input as any)}
-          className={classNames('form-static-input', inputClass)}
-        >
+        <span {...(input as any)} className={classNames('form-static-input', inputClass)}>
           {input.value}
         </span>
 

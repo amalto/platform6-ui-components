@@ -116,11 +116,7 @@ class TimeInput extends React.Component<TimeInput.Props, TimeInput.State> {
       : {};
 
     return name ? (
-      <Field
-        name={name}
-        component={this.renderTimeInput}
-        {...additionalProps}
-      />
+      <Field name={name} component={this.renderTimeInput} {...additionalProps} />
     ) : null;
   }
 }

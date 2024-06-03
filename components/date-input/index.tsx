@@ -83,9 +83,7 @@ class DateInput extends React.Component<DateInput.Props, DateInput.State> {
   render() {
     const { name } = this.props;
 
-    return name ? (
-      <Field name={name} component={this.renderDatePicker} />
-    ) : null;
+    return name ? <Field name={name} component={this.renderDatePicker} /> : null;
   }
 }
 

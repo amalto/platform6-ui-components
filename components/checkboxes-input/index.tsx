@@ -76,9 +76,7 @@ namespace CheckboxesInput {
 }
 
 namespace Checkboxes {
-  export interface Props
-    extends CheckboxesInput.Props,
-      WrappedFieldProps<any> {}
+  export interface Props extends CheckboxesInput.Props, WrappedFieldProps<any> {}
 }
 
 class Checkboxes extends React.PureComponent<Checkboxes.Props> {
@@ -124,14 +122,9 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
             .filter((opt) => !!opt.value)
             .map((opt, idx) => (
               <span
-                className={classNames(
-                  'form-checkbox-wrapper',
-                  inputClass,
-                  opt.classNames,
-                  {
-                    hidden: opt.hidden,
-                  },
-                )}
+                className={classNames('form-checkbox-wrapper', inputClass, opt.classNames, {
+                  hidden: opt.hidden,
+                })}
                 key={idx}
               >
                 <input
@@ -144,10 +137,7 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
                   checked={input.value.indexOf(opt.value) !== -1}
                 />
 
-                <label
-                  className="form-checkbox-label"
-                  htmlFor={`${inputId}_${input.name}_${idx}`}
-                >
+                <label className="form-checkbox-label" htmlFor={`${inputId}_${input.name}_${idx}`}>
                   {opt.label || opt.value}
                 </label>
               </span>
@@ -168,16 +158,10 @@ class Checkboxes extends React.PureComponent<Checkboxes.Props> {
   private handleChange = (event: any) => {
     const { input } = this.props;
 
-    const selectedValues = input.value
-      ? input.value.filter((item: string) => !!item)
-      : [];
+    const selectedValues = input.value ? input.value.filter((item: string) => !!item) : [];
 
     if (event.target.checked) {
-      input.onChange(
-        addValToArrayNoDup(selectedValues, event.target.value),
-        undefined,
-        undefined,
-      );
+      input.onChange(addValToArrayNoDup(selectedValues, event.target.value), undefined, undefined);
     } else {
       input.onChange(
         removeValFromArrayNoDup(selectedValues, event.target.value),
@@ -205,13 +189,7 @@ class CheckboxesInput extends React.Component<CheckboxesInput.Props> {
       warn,
     };
 
-    return (
-      <Field
-        {...baseFieldProps}
-        {...(this.props as any)}
-        component={Checkboxes}
-      />
-    );
+    return <Field {...baseFieldProps} {...(this.props as any)} component={Checkboxes} />;
   }
 }
 

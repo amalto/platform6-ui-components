@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.9.98](https://github.com/amalto/platform6-ui-components/compare/@amalto/checkboxes-input@1.9.97...@amalto/checkboxes-input@1.9.98) (2023-11-22)
 

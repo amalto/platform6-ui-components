@@ -16,10 +16,7 @@ module TableRenderer {
   export interface State {}
 }
 
-class TableRenderer extends React.Component<
-  TableRenderer.Props,
-  TableRenderer.State
-> {
+class TableRenderer extends React.Component<TableRenderer.Props, TableRenderer.State> {
   constructor(props: TableRenderer.Props) {
     super(props);
     this.state = {};
@@ -44,10 +41,7 @@ class TableRenderer extends React.Component<
           ))}
         </div>
         {rows.map((row) => (
-          <div
-            key={uuid.v4()}
-            className="flex flex-wrap text-medium props-line"
-          >
+          <div key={uuid.v4()} className="flex flex-wrap text-medium props-line">
             {columns.map(({ render }, idx) => (
               <div
                 key={idx}

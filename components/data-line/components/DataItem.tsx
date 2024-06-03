@@ -7,11 +7,7 @@ import * as React from 'react';
 import { default as classNames } from 'classnames';
 
 // Models
-import {
-  DisplayTemplate,
-  DisplayTemplateItem,
-  DisplayMode,
-} from '@amalto/typings';
+import { DisplayTemplate, DisplayTemplateItem, DisplayMode } from '@amalto/typings';
 
 // constants
 const STRING_MAX_LENGTH = 300;
@@ -25,12 +21,7 @@ module DataItem {
     editCallback?: (key: string, value: string) => void;
     enterPressCallback?: () => void;
     tabOnLastCellCallback?: () => void;
-    displayContextMenu?: (
-      columnId: string,
-      value: string,
-      posX: number,
-      posY: number,
-    ) => void;
+    displayContextMenu?: (columnId: string, value: string, posX: number, posY: number) => void;
     editMode?: boolean;
     readOnly?: boolean;
     isEdited?: boolean;
@@ -67,8 +58,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
   }
 
   componentDidMount() {
-    const displayValueLimit: number =
-      this.props.displayValueMaxLength || STRING_MAX_LENGTH;
+    const displayValueLimit: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH;
 
     if (
       typeof this.props.displayValue === 'string' &&
@@ -83,8 +73,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
       prevProps.displayValueMaxLength !== this.props.displayValueMaxLength ||
       prevProps.displayValue !== this.props.displayValue
     ) {
-      const valueMaxLength: number =
-        this.props.displayValueMaxLength || STRING_MAX_LENGTH;
+      const valueMaxLength: number = this.props.displayValueMaxLength || STRING_MAX_LENGTH;
 
       this.setState({
         contentTooLong:
@@ -145,10 +134,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
     let _displayValue = editable ? (
       options && options.length ? (
         <div className="form-inline">
-          <select
-            className="form-control form-control-sm"
-            onChange={this.handleEdit}
-          >
+          <select className="form-control form-control-sm" onChange={this.handleEdit}>
             {options.map((opt, idx) => (
               <option key={idx} value={opt.value} disabled={opt.disabled}>
                 {opt.label || opt.value}
@@ -170,9 +156,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
             />
           </div>
           {!this.state.invalidMsg ? null : (
-            <span className="danger-color text-xsmall">
-              {this.state.invalidMsg}
-            </span>
+            <span className="danger-color text-xsmall">{this.state.invalidMsg}</span>
           )}
         </div>
       )
@@ -182,11 +166,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
       </div>
     );
 
-    if (
-      allowDisplayAsTextAreaOnReadonly &&
-      readOnly &&
-      typeof displayValue === 'string'
-    ) {
+    if (allowDisplayAsTextAreaOnReadonly && readOnly && typeof displayValue === 'string') {
       additionalProps.onDoubleClick = this.toggleTextareaDisplay;
 
       if (this.state.showAsTextarea) {
@@ -250,9 +230,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
     const invalidMsg: string = validate?.(value) || undefined;
 
     if (invalidMsg !== this.state.invalidMsg) {
-      this.setState({ invalidMsg } as DataItem.State, () =>
-        editCallback(columnId, value),
-      );
+      this.setState({ invalidMsg } as DataItem.State, () => editCallback(columnId, value));
     } else {
       editCallback(columnId, value);
     }
@@ -262,11 +240,7 @@ class DataItem extends React.Component<DataItem.Props, DataItem.State> {
     if (event.charCode === 13) {
       event.preventDefault();
 
-      if (
-        !this.state.invalidMsg &&
-        this.props.enterPressCallback &&
-        this.props.isEdited
-      ) {
+      if (!this.state.invalidMsg && this.props.enterPressCallback && this.props.isEdited) {
         this.props.enterPressCallback();
       }
     }

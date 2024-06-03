@@ -34,12 +34,7 @@ export module DataLine {
     /** Triggered when user press <span className='quote'>tab</span> key on the last cell of the line in edit mode. */
     tabOnLastCellCallback?: () => void;
     /** Triggered when right clicking on a cell. */
-    displayContextMenu?: (
-      columnId: string,
-      value: string,
-      posX: number,
-      posY: number,
-    ) => void;
+    displayContextMenu?: (columnId: string, value: string, posX: number, posY: number) => void;
     /**
      * If true, all cell will be turned into input and would be editable.
      * @default false
@@ -97,12 +92,8 @@ export class DataLine extends React.Component<DataLine.Props, any> {
     if (displayTemplate && displayMode !== 'mobile') {
       filteredAndSortedCells = cells
         .filter((cellData) => {
-          if (
-            displayTemplate[cellData.columnId]?.[displayMode]
-          ) {
-            return (
-              displayTemplate[cellData.columnId][displayMode].display !== false
-            );
+          if (displayTemplate[cellData.columnId]?.[displayMode]) {
+            return displayTemplate[cellData.columnId][displayMode].display !== false;
           }
 
           return true;
@@ -146,9 +137,7 @@ export class DataLine extends React.Component<DataLine.Props, any> {
           enterPressCallback={enterPressHandler}
           editMode={editMode}
           readOnly={cellData.readOnly}
-          allowDisplayAsTextAreaOnReadonly={
-            cellData.allowDisplayAsTextAreaOnReadonly
-          }
+          allowDisplayAsTextAreaOnReadonly={cellData.allowDisplayAsTextAreaOnReadonly}
           isEdited={cellData.isEdited}
           lastEditable={cellData.lastEditable}
           options={cellData.options}

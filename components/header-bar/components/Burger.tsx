@@ -47,9 +47,7 @@ class Burger extends React.Component<Burger.Props, any> {
           ...mainStyle,
         }}
       >
-        <Radium.StyleRoot
-          style={{ display: 'table-cell', verticalAlign: 'middle' }}
-        >
+        <Radium.StyleRoot style={{ display: 'table-cell', verticalAlign: 'middle' }}>
           <button
             style={{
               padding: 20,

@@ -5,11 +5,7 @@ import * as React from 'react';
 import { PermissionDef, ScopesTree, WebStorage } from '@amalto/typings';
 
 // Utils
-import {
-  hasAnyPermission,
-  hasAccessToFeature,
-  canPerformAnyAction,
-} from '@amalto/scope-helpers';
+import { hasAnyPermission, hasAccessToFeature, canPerformAnyAction } from '@amalto/scope-helpers';
 
 /**
  * Display or hide component depending of user access.
@@ -60,9 +56,7 @@ class Restricted extends React.Component<Restricted.Props, any> {
     } = this.props;
 
     const appInstance: string =
-      webStorage &&
-      webStorage.selectedAppInstance &&
-      webStorage.selectedAppInstance.name;
+      webStorage && webStorage.selectedAppInstance && webStorage.selectedAppInstance.name;
     const scopesTree: ScopesTree = webStorage && webStorage.scopesTree;
 
     if (appInstance && scopesTree) {
@@ -79,14 +73,7 @@ class Restricted extends React.Component<Restricted.Props, any> {
           return children as React.ReactElement<any>;
         }
       } else if (featureId) {
-        if (
-          hasAccessToFeature(
-            webStorage,
-            appInstance,
-            featureId,
-            needsGlobalPermission,
-          )
-        ) {
+        if (hasAccessToFeature(webStorage, appInstance, featureId, needsGlobalPermission)) {
           return children as React.ReactElement<any>;
         }
       }

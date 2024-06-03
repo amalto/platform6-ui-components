@@ -52,10 +52,7 @@ module PagingControls {
   }
 }
 
-class PagingControls extends React.Component<
-  PagingControls.Props,
-  PagingControls.State
-> {
+class PagingControls extends React.Component<PagingControls.Props, PagingControls.State> {
   private goToPageInput: HTMLInputElement;
 
   constructor(props: PagingControls.Props) {
@@ -155,9 +152,7 @@ class PagingControls extends React.Component<
     ) : null;
   }
 
-  private handleGoToPageInput = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  private handleGoToPageInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { totalPages, handlePageChange } = this.props;
     if (
       /^\d+$/.test(event.target.value) &&

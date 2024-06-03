@@ -61,10 +61,7 @@ module LanguageWrapper {
   }
 }
 
-class LanguageWrapper extends React.Component<
-  LanguageWrapper.Props,
-  LanguageWrapper.State
-> {
+class LanguageWrapper extends React.Component<LanguageWrapper.Props, LanguageWrapper.State> {
   constructor(props: LanguageWrapper.Props) {
     super(props);
     this.state = {

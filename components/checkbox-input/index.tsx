@@ -65,24 +65,14 @@ namespace CheckboxInput {
   export interface State {}
 }
 
-class CheckboxInput extends React.Component<
-  CheckboxInput.Props,
-  CheckboxInput.State
-> {
+class CheckboxInput extends React.Component<CheckboxInput.Props, CheckboxInput.State> {
   constructor(props: CheckboxInput.Props) {
     super(props);
     this.state = {};
   }
 
   private renderCheckbox = (field: WrappedFieldProps<any>) => {
-    const {
-      label,
-      disabled,
-      help,
-      containerClass,
-      inputClass,
-      collapseErrorSpace,
-    } = this.props;
+    const { label, disabled, help, containerClass, inputClass, collapseErrorSpace } = this.props;
 
     const { input, meta } = field;
 
@@ -105,10 +95,7 @@ class CheckboxInput extends React.Component<
             checked={input.value}
           />
 
-          <label
-            className="form-checkbox-label"
-            htmlFor={`${inputId}_${input.name}`}
-          >
+          <label className="form-checkbox-label" htmlFor={`${inputId}_${input.name}`}>
             {label}
           </label>
 
@@ -125,8 +112,7 @@ class CheckboxInput extends React.Component<
   };
 
   render() {
-    const { name, label, format, normalize, parse, validate, warn } =
-      this.props;
+    const { name, label, format, normalize, parse, validate, warn } = this.props;
 
     let baseFieldProps: BaseFieldProps = {
       name,
@@ -137,9 +123,7 @@ class CheckboxInput extends React.Component<
       warn,
     };
 
-    return label ? (
-      <Field {...baseFieldProps} component={this.renderCheckbox} />
-    ) : null;
+    return label ? <Field {...baseFieldProps} component={this.renderCheckbox} /> : null;
   }
 }
 

@@ -1,12 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { default as classNames } from 'classnames';
-import {
-  compileWordings,
-  isNotEmpty,
-  downloadDataFile,
-  base64Decode,
-} from '@amalto/helpers';
+import { compileWordings, isNotEmpty, downloadDataFile, base64Decode } from '@amalto/helpers';
 import { ICON_TYPE, BUTTON_TYPE } from '@amalto/service-helpers';
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';
 import KeyValueEditor from '@amalto/key-value-editor';
@@ -41,11 +36,7 @@ module Tree {
     /** Set default selected node. */
     defaultSelectedNodeId?: string;
     /** Manage node deletion. */
-    deleteNode?: (
-      id: string,
-      elementName: string,
-      parentNodeId?: string,
-    ) => void;
+    deleteNode?: (id: string, elementName: string, parentNodeId?: string) => void;
     /** Manage errors display. */
     displayEmptyValsError?: (emptyVals: string[]) => void;
     /** Manage node edition. */
@@ -105,41 +96,25 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
   }
 
   render() {
-    const {
-      children,
-      createNode,
-      deleteNode,
-      displayEmptyValsError,
-      editNode,
-      id,
-      locale,
-    } = this.props;
+    const { children, createNode, deleteNode, displayEmptyValsError, editNode, id, locale } =
+      this.props;
     const { editedNode, formOpened, selectedNode, wordings } = this.state;
 
     const editButton =
       formOpened === 'EDIT' ? (
-        <button
-          type="button"
-          className="btn btn-block btn-warning"
-          onClick={this.editNode}
-        >
+        <button type="button" className="btn btn-block btn-warning" onClick={this.editNode}>
           {wordings.treeUpdate}
         </button>
       ) : null;
 
     const createButton =
       formOpened === 'CREATE' ? (
-        <button
-          type="button"
-          className="btn btn-block btn-success"
-          onClick={this.createNode}
-        >
+        <button type="button" className="btn btn-block btn-success" onClick={this.createNode}>
           {wordings.validate}
         </button>
       ) : null;
 
-    const canModifyTree =
-      createNode && editNode && deleteNode && displayEmptyValsError;
+    const canModifyTree = createNode && editNode && deleteNode && displayEmptyValsError;
 
     const cannotModifyNodeName =
       (formOpened !== 'CREATE' && selectedNode?.data?.parentId === '0') ||
@@ -197,18 +172,14 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     const editor = (
       <div>
         <div className="row text-xs-center">
-          <div className="col-xs-12">
-            {canModifyTree ? this.renderTreeButtonsBar() : null}
-          </div>
+          <div className="col-xs-12">{canModifyTree ? this.renderTreeButtonsBar() : null}</div>
         </div>
 
         {nodeForm}
       </div>
     );
 
-    const selectedNodeProperties = !$.isEmptyObject(
-      selectedNode?.data?.propertiesMap,
-    )
+    const selectedNodeProperties = !$.isEmptyObject(selectedNode?.data?.propertiesMap)
       ? Object.keys(selectedNode.data.propertiesMap).map((key) => {
           const nodeData = selectedNode.data as OrgModel;
           const { contentBytes, contentType } = nodeData.propertiesMap[key];
@@ -240,9 +211,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       <div className="top-margin toggle-form">
         <div className="row">
           <div className="col-xs-12">
-            <h4 className="upper bottom-spaced">
-              {wordings.selectedNodeDetails}
-            </h4>
+            <h4 className="upper bottom-spaced">{wordings.selectedNodeDetails}</h4>
           </div>
 
           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -258,20 +227,14 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
           </div>
 
           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <div className="text-small font-color-lighter">
-              {wordings.description}
-            </div>
+            <div className="text-small font-color-lighter">{wordings.description}</div>
             <div>{selectedNode.data.description}</div>
           </div>
 
           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <div className="text-small font-color-lighter">
-              {wordings.properties}
-            </div>
+            <div className="text-small font-color-lighter">{wordings.properties}</div>
             {selectedNodeProperties ? (
-              <ul className="basic-list margin-none">
-                {selectedNodeProperties}
-              </ul>
+              <ul className="basic-list margin-none">{selectedNodeProperties}</ul>
             ) : (
               <span>-</span>
             )}
@@ -416,12 +379,9 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     const clearBtn: ButtonsBar.BtnGroupsProps = {
       btns: [
         {
-          cssClass: classNames(
-            `${BUTTON_TYPE.GREY} right-margin bottom-margin`,
-            {
-              hidden: !this.state.formOpened,
-            },
-          ),
+          cssClass: classNames(`${BUTTON_TYPE.GREY} right-margin bottom-margin`, {
+            hidden: !this.state.formOpened,
+          }),
           iconClass: ICON_TYPE.UNDO,
           text: wordings.cancel,
           clickAction: this.clearForm,
@@ -432,14 +392,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
 
     return (
       <ButtonsBar
-        btnGroups={[
-          expandAllBtn,
-          collapeAllBtn,
-          createBtn,
-          editBtn,
-          deleteBtn,
-          clearBtn,
-        ]}
+        btnGroups={[expandAllBtn, collapeAllBtn, createBtn, editBtn, deleteBtn, clearBtn]}
       />
     );
   };
@@ -451,11 +404,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       const keyValues: KeyValDef = selectedNode.data.propertiesMap;
       const key: string = event.currentTarget.getAttribute('data-key');
 
-      downloadDataFile(
-        keyValues[key].contentBytes,
-        keyValues[key].contentType,
-        key,
-      );
+      downloadDataFile(keyValues[key].contentBytes, keyValues[key].contentType, key);
     }
   };
 
@@ -594,9 +543,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
   };
 
   private handleElementNameChange = (event: any) => {
-    const editedNodeUpdate: OrgModel = JSON.parse(
-      JSON.stringify(this.state.editedNode),
-    );
+    const editedNodeUpdate: OrgModel = JSON.parse(JSON.stringify(this.state.editedNode));
 
     editedNodeUpdate.elementName = event.target.value;
 
@@ -606,9 +553,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
   };
 
   private handleDescriptionChange = (event: any) => {
-    const editedNodeUpdate: OrgModel = JSON.parse(
-      JSON.stringify(this.state.editedNode),
-    );
+    const editedNodeUpdate: OrgModel = JSON.parse(JSON.stringify(this.state.editedNode));
 
     editedNodeUpdate.description = event.target.value;
 
@@ -618,9 +563,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
   };
 
   private handlePropertiesChange = (keyValues?: KeyValDef) => {
-    const editedNodeUpdate: OrgModel = JSON.parse(
-      JSON.stringify(this.state.editedNode),
-    );
+    const editedNodeUpdate: OrgModel = JSON.parse(JSON.stringify(this.state.editedNode));
 
     editedNodeUpdate.propertiesMap = keyValues;
 
@@ -640,9 +583,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     let tree = $.jstree.create(treeContainer, {
       core: {
         data: data,
-        check_callback: function (
-          operation /**  node, node_parent, node_position, more */,
-        ) {
+        check_callback: function (operation /**  node, node_parent, node_position, more */) {
           return operation !== 'move_node';
         },
         multiple: false,
@@ -650,9 +591,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
       },
       plugins: ['sort'],
       sort: function (a: any, b: any) {
-        return this.get_node(a).text.localeCompare(this.get_node(b).text) < 0
-          ? -1
-          : 1;
+        return this.get_node(a).text.localeCompare(this.get_node(b).text) < 0 ? -1 : 1;
       },
     } as JSTreeStaticDefaults);
 
@@ -683,10 +622,7 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     });
 
     $(treeContainer).on('open_node.jstree', (__event, selected) => {
-      if (
-        selected.node.parent !== '#' &&
-        !fetched?.some((id) => id === selected.node.id)
-      ) {
+      if (selected.node.parent !== '#' && !fetched?.some((id) => id === selected.node.id)) {
         fetchNode?.(selected.node.id);
       }
     });
@@ -709,15 +645,11 @@ class Tree extends React.Component<Tree.Props, Tree.State> {
     let convertedNode = JSON.parse(JSON.stringify(node)) as TreeNodeModel;
 
     if (!$.isEmptyObject(convertedNode?.data?.propertiesMap)) {
-      let nodeKeyValues = JSON.parse(
-        JSON.stringify(convertedNode.data.propertiesMap),
-      ) as KeyValDef;
+      let nodeKeyValues = JSON.parse(JSON.stringify(convertedNode.data.propertiesMap)) as KeyValDef;
 
       for (const key in nodeKeyValues) {
         if (nodeKeyValues[key].contentType === 'text/plain') {
-          nodeKeyValues[key].contentBytes = base64Decode(
-            nodeKeyValues[key].contentBytes,
-          );
+          nodeKeyValues[key].contentBytes = base64Decode(nodeKeyValues[key].contentBytes);
         }
       }
 

@@ -1,4 +1,5 @@
-In this exemple most of the props are randomly set in order to show most of the component functionality.
+In this exemple most of the props are randomly set in order to show most of the component
+functionality.
 
 ### Usage
 

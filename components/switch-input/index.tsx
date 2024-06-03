@@ -69,10 +69,7 @@ namespace SwitchInput {
   export interface State {}
 }
 
-class SwitchInput extends React.Component<
-  SwitchInput.Props,
-  SwitchInput.State
-> {
+class SwitchInput extends React.Component<SwitchInput.Props, SwitchInput.State> {
   constructor(props: SwitchInput.Props) {
     super(props);
     this.state = {};

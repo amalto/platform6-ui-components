@@ -76,10 +76,7 @@ module MultiSelect {
   }
 }
 
-class MultiSelect extends React.Component<
-  MultiSelect.Props,
-  MultiSelect.State
-> {
+class MultiSelect extends React.Component<MultiSelect.Props, MultiSelect.State> {
   private dropdownCtn: HTMLDivElement;
 
   constructor(props: MultiSelect.Props) {
@@ -116,15 +113,8 @@ class MultiSelect extends React.Component<
     value?: string | string[],
     optionsLabel?: string[],
   ) => {
-    const {
-      multiple,
-      fieldLineHeight,
-      options,
-      label,
-      help,
-      inputClass,
-      containerClass,
-    } = this.props;
+    const { multiple, fieldLineHeight, options, label, help, inputClass, containerClass } =
+      this.props;
 
     // get the selected values as an array if it's a multi-select field
     if (multiple) {
@@ -133,20 +123,12 @@ class MultiSelect extends React.Component<
         let option = choice.trim();
 
         return (
-          <li
-            key={idx}
-            className={classNames({ active: value.indexOf(option) !== -1 })}
-          >
+          <li key={idx} className={classNames({ active: value.indexOf(option) !== -1 })}>
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                this.handleChoiceSelect(
-                  selectValue,
-                  option,
-                  multiple,
-                  e.ctrlKey || e.metaKey,
-                );
+                this.handleChoiceSelect(selectValue, option, multiple, e.ctrlKey || e.metaKey);
               }}
             >
               {option}
@@ -185,13 +167,9 @@ class MultiSelect extends React.Component<
 
           <button
             type="button"
-            className={classNames(
-              'btn form-control dropdown-toggle rel',
-              inputClass,
-              {
-                'multi-select-input': multiple,
-              },
-            )}
+            className={classNames('btn form-control dropdown-toggle rel', inputClass, {
+              'multi-select-input': multiple,
+            })}
             data-toggle="dropdown"
             style={extendedStyle}
           >
@@ -202,9 +180,7 @@ class MultiSelect extends React.Component<
                     <span
                       key={value + idx}
                       className="tag"
-                      onClick={() =>
-                        this.handleChoiceSelect(selectValue, value, multiple)
-                      }
+                      onClick={() => this.handleChoiceSelect(selectValue, value, multiple)}
                     >
                       <span>{value}</span>
                       <span className="close-tag-btn">

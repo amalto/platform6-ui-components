@@ -642,8 +642,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   itemsReadonly: {
     'en-US': 'These items are only readable. They can not be deleted.',
-    'fr-FR':
-      'Ces éléments ne sont pas modifiables. Ils ne peuvent pas être supprimés.',
+    'fr-FR': 'Ces éléments ne sont pas modifiables. Ils ne peuvent pas être supprimés.',
   },
 
   registration: {
@@ -705,17 +704,13 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   renameDisabled: {
-    'en-US':
-      'Please close any view or edit tab concerning this item if you want to rename it',
-    'fr-FR':
-      'Merci de fermer tout onglet concernant cet élément si vous souhaitez le renommer',
+    'en-US': 'Please close any view or edit tab concerning this item if you want to rename it',
+    'fr-FR': 'Merci de fermer tout onglet concernant cet élément si vous souhaitez le renommer',
   },
 
   deleteDisabled: {
-    'en-US':
-      'Please close any view or edit tab concerning this item if you want to delete it',
-    'fr-FR':
-      'Merci de fermer tout onglet concernant cet élément si vous souhaitez le supprimer',
+    'en-US': 'Please close any view or edit tab concerning this item if you want to delete it',
+    'fr-FR': 'Merci de fermer tout onglet concernant cet élément si vous souhaitez le supprimer',
   },
 
   result: {
@@ -777,10 +772,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   CHEVRON_registrationPidxidHelp: {
-    'en-US':
-      'The Chevron PIDX ID is found in the invitation email sent by Chevron',
-    'fr-FR':
-      'Le "PIDX ID" Chevron se trouve dans l\'email d\'invitation envoyé par Chevron',
+    'en-US': 'The Chevron PIDX ID is found in the invitation email sent by Chevron',
+    'fr-FR': 'Le "PIDX ID" Chevron se trouve dans l\'email d\'invitation envoyé par Chevron',
   },
 
   CHEVRON_registrationPidxidError: {
@@ -794,10 +787,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   CHEVRON_registrationVendoridHelp: {
-    'en-US':
-      'The Chevron ERP Vendor ID is found in the invitation email sent to you by Chevron',
-    'fr-FR':
-      'Le "ERP Vendor ID" Chevron se trouve dans l\'email d\'invitation envoyé par Chevron',
+    'en-US': 'The Chevron ERP Vendor ID is found in the invitation email sent to you by Chevron',
+    'fr-FR': 'Le "ERP Vendor ID" Chevron se trouve dans l\'email d\'invitation envoyé par Chevron',
   },
 
   CHEVRON_registrationVendoridError: {
@@ -823,8 +814,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   CHEVRON_registrationAgreementLabel: {
-    'en-US':
-      'I have read and I accept the Terms and Conditions of this Agreement',
+    'en-US': 'I have read and I accept the Terms and Conditions of this Agreement',
     'fr-FR': "J'ai lu et accepte les Conditions Générales de ce contrat",
   },
 
@@ -846,10 +836,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   CHEVRON_registrationPasswordHelp: {
-    'en-US':
-      'The Chevron password is found in the invitation email sent by Chevron',
-    'fr-FR':
-      "Le mot de passe Chevron se trouve dans l'email d'invitation envoyé par Chevron",
+    'en-US': 'The Chevron password is found in the invitation email sent by Chevron',
+    'fr-FR': "Le mot de passe Chevron se trouve dans l'email d'invitation envoyé par Chevron",
   },
 
   CHEVRON_registrationPasswordError: {
@@ -858,8 +846,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   CHEVRON_registrationCapitalProjectIntro: {
-    'en-US':
-      'You are creating this account for a Chevron Major Capital Project.',
+    'en-US': 'You are creating this account for a Chevron Major Capital Project.',
     'fr-FR': 'Vous créez ce compte pour un "Chevron Major Capital Project".',
   },
 
@@ -891,8 +878,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   permissionSetTooltipClone: {
     'en-US': 'Create a new permission set with prefilled data from this one',
-    'fr-FR':
-      'Créer un nouveau groupe de permissions avec les données de celui-ci',
+    'fr-FR': 'Créer un nouveau groupe de permissions avec les données de celui-ci',
   },
 
   permissionSetTooltipCrossInstances: {
@@ -967,8 +953,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   permissionSetRequired: {
     'en-US': 'At least one permission set must be selected',
-    'fr-FR':
-      "Au moins un groupe de permissions doît être assigné à l'utilisateur",
+    'fr-FR': "Au moins un groupe de permissions doît être assigné à l'utilisateur",
   },
 
   orgPosition: {
@@ -987,8 +972,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   tooltipAddUser: {
-    'en-US':
-      'Type the email address of the new user you want to associate to this instance',
+    'en-US': 'Type the email address of the new user you want to associate to this instance',
     'fr-FR':
       "Entrer l'adresse email du nouvel utilisateur que vous souhaitez associer à cette instance",
   },
@@ -1024,10 +1008,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   userDisassociateConfirm: {
-    'en-US':
-      'Are you sure you want to disassociate this user from the current instance?',
-    'fr-FR':
-      "Êtes-vous sûr(e) de vouloir désassocier cet utilisateur de l'instance ?",
+    'en-US': 'Are you sure you want to disassociate this user from the current instance?',
+    'fr-FR': "Êtes-vous sûr(e) de vouloir désassocier cet utilisateur de l'instance ?",
   },
 
   showAllUsers: {
@@ -1236,14 +1218,12 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   confirmMultipleTransactionsDelete: {
     'en-US': 'Are you sure you want to delete the selected transactions?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir supprimer les transactions sélectionnées ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer les transactions sélectionnées ?',
   },
 
   confirmMultipleTransactionsReprocess: {
     'en-US': 'Are you sure you want to reprocess the selected transactions?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir relancer les transactions sélectionnéss ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir relancer les transactions sélectionnéss ?',
   },
 
   multipleTransactionsReprocessSuccess: {
@@ -1258,8 +1238,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   confirmCloseTransactionSubmit: {
     'en-US': 'Are you sure you want to close this message submission session?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir terminer cette session de création de message ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir terminer cette session de création de message ?',
   },
 
   confirmTransactionDefaultView: {
@@ -1750,8 +1729,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   displaySettingsResetConfirm: {
     'en-US': 'Are you sure you want to reset all your display settings?',
-    'fr-FR':
-      "Êtes-vous sûr(e) de vouloir réinitialiser vos préférences d'affichage ?",
+    'fr-FR': "Êtes-vous sûr(e) de vouloir réinitialiser vos préférences d'affichage ?",
   },
 
   displayMode: {
@@ -2105,8 +2083,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   confirmUsersDelete: {
     'en-US': 'Are you sure you want to delete the selected user(s)?',
-    'fr-FR':
-      "Êtes-vous sûr(e) de vouloir supprimer l'(les) utilisateur(s) sélectionné(s) ?",
+    'fr-FR': "Êtes-vous sûr(e) de vouloir supprimer l'(les) utilisateur(s) sélectionné(s) ?",
   },
 
   confirmPermsetsDelete: {
@@ -2202,8 +2179,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   tableInvalidValues: {
     'en-US': 'Invalid value(s) supplied for the table structure',
-    'fr-FR':
-      'Valeur(s) invalide(s) fournie(s) pour définir la structure de la table',
+    'fr-FR': 'Valeur(s) invalide(s) fournie(s) pour définir la structure de la table',
   },
 
   nothingToSave: {
@@ -2218,8 +2194,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   confirmAllRecordsDelete: {
     'en-US': 'Are you sure you want to delete all records in this table?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir supprimer toutes les données de cette table ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer toutes les données de cette table ?',
   },
 
   confirmDeleteTable: {
@@ -2255,10 +2230,8 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   confirmReloadWithoutSaving: {
-    'en-US':
-      'There are unsaved changes. Are you sure you want to reload this item?',
-    'fr-FR':
-      'Le contenu a été changé. Êtes-vous sûr(e) de vouloir recharger cet élément ?',
+    'en-US': 'There are unsaved changes. Are you sure you want to reload this item?',
+    'fr-FR': 'Le contenu a été changé. Êtes-vous sûr(e) de vouloir recharger cet élément ?',
   },
 
   confirmReprocess: {
@@ -2267,8 +2240,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   confirmSaveAndReprocess: {
-    'en-US':
-      'You have made some changes. Are you sure you want to save AND reprocess this item?',
+    'en-US': 'You have made some changes. Are you sure you want to save AND reprocess this item?',
     'fr-FR':
       'Le contenu a été changé. Êtes-vous sûr(e) de vouloir sauvegarder ET relancer cet élément ?',
   },
@@ -2732,8 +2704,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   },
 
   forgotPasswordMessageSuccess: {
-    'en-US':
-      "We've sent you an email. Click the link in the email to reset your password.",
+    'en-US': "We've sent you an email. Click the link in the email to reset your password.",
     'fr-FR':
       "Nous vous avons envoyé un email. Cliquez sur le lien dans l'email pour réinitialiser votre mot de passe.",
   },
@@ -2890,8 +2861,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   envError: {
     'en-US': 'Please select the registration environment',
-    'fr-FR':
-      'Merci de sélectionner sur quel environnement vous souhaitez vous enregistrer',
+    'fr-FR': 'Merci de sélectionner sur quel environnement vous souhaitez vous enregistrer',
   },
 
   logoutMessage: {
@@ -2940,20 +2910,17 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   unsubscribeFailed: {
     'en-US': 'Could not unsubscribe this account from this instance/community.',
-    'fr-FR':
-      'Problème lors de la désassociation de ce compte sur cette instance/communauté.',
+    'fr-FR': 'Problème lors de la désassociation de ce compte sur cette instance/communauté.',
   },
 
   unsubscribeFailedB2auth: {
-    'en-US':
-      ' Impossible unsubscription: there is no subscription on instance (*).',
+    'en-US': ' Impossible unsubscription: there is no subscription on instance (*).',
     'fr-FR':
       " Impossible de se désinscrire: il n'y a pas d'inscription possible sur l'instance (*).",
   },
 
   unsubscribeFailedInstanceNotFound: {
-    'en-US':
-      ' Could not find selected instance definition. Please reload the page and retry.',
+    'en-US': ' Could not find selected instance definition. Please reload the page and retry.',
     'fr-FR':
       " Impossible de trouver les propriétés de l'instance sélectionnée. Merci de recharger la page et de réessayer.",
   },
@@ -3089,8 +3056,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   userUnsubscribeConfirm: {
     'en-US': 'Are you sure you want to unsubscribe from this community?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir supprimer votre compte inscription à cette communauté ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer votre compte inscription à cette communauté ?',
   },
 
   setpasswordTitle: {
@@ -3120,8 +3086,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   confirmMultipleMessagesDelete: {
     'en-US': 'Are you sure you want to delete the selected messages?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir supprimer les messages sélectionnés ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir supprimer les messages sélectionnés ?',
   },
 
   confirmMultipleReprocess: {
@@ -3176,8 +3141,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
 
   confirmCloseMessageSubmit: {
     'en-US': 'Are you sure you want to close this message submission session?',
-    'fr-FR':
-      'Êtes-vous sûr(e) de vouloir terminer cette session de création de message ?',
+    'fr-FR': 'Êtes-vous sûr(e) de vouloir terminer cette session de création de message ?',
   },
 
   noViewAccess: {
@@ -3341,8 +3305,7 @@ export const MULTILANGUAGE_WORDINGS: Wordings = {
   restartServiceForChanges: {
     'en-US':
       'The configuration of this service has been modified. A restart of this service may be required.',
-    'fr-FR':
-      'La configuration de ce service a été modifiée. Il est conseillé de le redémarrer.',
+    'fr-FR': 'La configuration de ce service a été modifiée. Il est conseillé de le redémarrer.',
   },
 
   serviceStatus: {

@@ -40,8 +40,7 @@ function addNodeNoDup(currentNode, newNode) {
 
 function createNode(parentId, elementName, description, propertiesMap) {
   const data = JSON.parse(JSON.stringify(state.data));
-  const encodedProppertiesMap =
-    (propertiesMap && JSON.parse(JSON.stringify(propertiesMap))) || {};
+  const encodedProppertiesMap = (propertiesMap && JSON.parse(JSON.stringify(propertiesMap))) || {};
 
   Object.keys(encodedProppertiesMap).forEach((key) => {
     encodedProppertiesMap[key].contentBytes = base64.encode(
@@ -120,10 +119,7 @@ function removeNode(currentNode, id, elementName, parentNodeId) {
      */
     return !currentNode.data.parentId ? { ...currentNode, children: [] } : null;
   } else {
-    let children =
-      (currentNode.children &&
-        JSON.parse(JSON.stringify(currentNode.children))) ||
-      [];
+    let children = (currentNode.children && JSON.parse(JSON.stringify(currentNode.children))) || [];
 
     for (idx in children) {
       children[idx] = removeNode(children[idx], id, elementName, parentNodeId);

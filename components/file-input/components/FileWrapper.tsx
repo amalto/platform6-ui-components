@@ -21,20 +21,14 @@ module FileWrapper {
   export interface State {}
 }
 
-class FileWrapper extends React.Component<
-  FileWrapper.Props,
-  FileWrapper.State
-> {
+class FileWrapper extends React.Component<FileWrapper.Props, FileWrapper.State> {
   constructor(props: FileWrapper.Props) {
     super(props);
   }
 
   render() {
     let progressDisplay = this.props.progress ? (
-      <div
-        className="file-upload-progress"
-        style={{ width: this.props.progress + '%' }}
-      ></div>
+      <div className="file-upload-progress" style={{ width: this.props.progress + '%' }}></div>
     ) : !this.props.uploaded ? (
       <div className="bar-load" />
     ) : null;
@@ -88,9 +82,7 @@ class FileWrapper extends React.Component<
           >
             {this.props.fileName}
           </span>
-          <span className="file-size">
-            {formatFileSize(this.props.fileSize)}
-          </span>
+          <span className="file-size">{formatFileSize(this.props.fileSize)}</span>
         </div>
         {deleteBtn}
         {successIcon}

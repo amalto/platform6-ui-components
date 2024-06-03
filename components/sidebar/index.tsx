@@ -37,8 +37,7 @@ class Sidebar extends React.Component<Sidebar.Props, any> {
   }
 
   render() {
-    const { mainCss, mainStyle, backgroundColor, width, height, children } =
-      this.props;
+    const { mainCss, mainStyle, backgroundColor, width, height, children } = this.props;
 
     return (
       <div

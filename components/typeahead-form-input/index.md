@@ -1,4 +1,5 @@
-See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for reduxForm options.
+See [redux-form](https://redux-form.com/6.0.0-rc.1/docs/api/reduxform.md/) documentation for
+reduxForm options.
 
 ### Usage
 
@@ -11,8 +12,8 @@ const { reduxForm } = require('redux-form');
 
 const collection = {
   '*': ['first', 'second', 'third'],
-  dev: ['fourth', 'fifth', 'sixth'],
-  master: ['seventh', 'eighth', 'nineth'],
+  'dev': ['fourth', 'fifth', 'sixth'],
+  'master': ['seventh', 'eighth', 'nineth'],
 };
 
 initialState = { value: 'first', selectedCollectionType: '*' };

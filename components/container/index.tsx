@@ -35,14 +35,10 @@ class Container extends React.Component<Container.Props, any> {
   }
 
   render() {
-    const { mainCss, mainStyle, backgroundColor, height, children } =
-      this.props;
+    const { mainCss, mainStyle, backgroundColor, height, children } = this.props;
 
     return (
-      <section
-        className={mainCss}
-        style={{ backgroundColor, height, ...mainStyle }}
-      >
+      <section className={mainCss} style={{ backgroundColor, height, ...mainStyle }}>
         {children}
       </section>
     );

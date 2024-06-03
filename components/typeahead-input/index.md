@@ -7,8 +7,8 @@ import TypeaheadInput from '@amalto/typeahead-input';
 ```javascript
 const collection = {
   '*': ['first', 'second', 'third'],
-  dev: ['fourth', 'fifth', 'sixth'],
-  master: ['seventh', 'eighth', 'nineth'],
+  'dev': ['fourth', 'fifth', 'sixth'],
+  'master': ['seventh', 'eighth', 'nineth'],
 };
 
 initialState = { value: 'first', selectedCollectionType: '*' };

@@ -70,25 +70,15 @@ namespace TextareaInput {
   export interface State {}
 }
 
-class TextareaInput extends React.Component<
-  TextareaInput.Props,
-  TextareaInput.State
-> {
+class TextareaInput extends React.Component<TextareaInput.Props, TextareaInput.State> {
   constructor(props: TextareaInput.Props) {
     super(props);
     this.state = {};
   }
 
   private renderTextarea = (field: WrappedFieldProps<any>) => {
-    const {
-      label,
-      disabled,
-      help,
-      containerClass,
-      inputClass,
-      collapseErrorSpace,
-      rows,
-    } = this.props;
+    const { label, disabled, help, containerClass, inputClass, collapseErrorSpace, rows } =
+      this.props;
 
     const { input, meta } = field;
 
@@ -123,8 +113,7 @@ class TextareaInput extends React.Component<
   };
 
   render() {
-    const { name, label, format, normalize, parse, validate, warn } =
-      this.props;
+    const { name, label, format, normalize, parse, validate, warn } = this.props;
 
     let baseFieldProps: BaseFieldProps = {
       name,

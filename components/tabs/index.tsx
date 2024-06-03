@@ -51,14 +51,8 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
   }
 
   render() {
-    const {
-      tabs,
-      closeTab,
-      tabWrapperStyle,
-      tabLinkStyle,
-      selectedTabId,
-      editedTabIds,
-    } = this.props;
+    const { tabs, closeTab, tabWrapperStyle, tabLinkStyle, selectedTabId, editedTabIds } =
+      this.props;
 
     const tabsContent: JSX.Element[] = tabs.map((tab) => {
       return (
@@ -87,17 +81,12 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
             style={tab.props.tabLinkUniqueStyle}
           >
             {tab.props.iconClass ? (
-              <i
-                className={classNames(`${tab.props.iconClass} right-spaced`)}
-              ></i>
+              <i className={classNames(`${tab.props.iconClass} right-spaced`)}></i>
             ) : null}
             {tab.props.title}
           </a>
           {tab.props.closable ? (
-            <button
-              className="close"
-              onClick={() => this.closeTab(tab.props.id)}
-            >
+            <button className="close" onClick={() => this.closeTab(tab.props.id)}>
               &times;
             </button>
           ) : null}
@@ -108,9 +97,7 @@ class Tabs extends React.Component<Tabs.Props, Tabs.State> {
     return tabs.length ? (
       <div className="tab-wrapper" style={tabWrapperStyle}>
         {this.props.allowHorizontalScrolling ? (
-          <PerfectScrollbar
-            option={{ useBothWheelAxes: true, suppressScrollY: true }}
-          >
+          <PerfectScrollbar option={{ useBothWheelAxes: true, suppressScrollY: true }}>
             <ul className="nav nav-tabs">{tabsContent}</ul>
           </PerfectScrollbar>
         ) : (

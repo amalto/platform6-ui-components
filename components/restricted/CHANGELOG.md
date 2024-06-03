@@ -1,7 +1,7 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.10.8](https://github.com/amalto/platform6-ui-components/compare/@amalto/restricted@1.10.7...@amalto/restricted@1.10.8) (2023-11-29)
 
@@ -39,4 +39,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- typeahead input ([f60b948](https://github.com/amalto/platform6-ui-components/commit/f60b94835b530cd9dc718caeba57b90be184ef26))
+- typeahead input
+  ([f60b948](https://github.com/amalto/platform6-ui-components/commit/f60b94835b530cd9dc718caeba57b90be184ef26))

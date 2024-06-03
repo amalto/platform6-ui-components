@@ -75,18 +75,12 @@ module FileImporter {
   }
 }
 
-class FileImporter extends React.Component<
-  FileImporter.Props,
-  FileImporter.State
-> {
+class FileImporter extends React.Component<FileImporter.Props, FileImporter.State> {
   constructor(props: FileImporter.Props) {
     super(props);
     this.state = {
       wordings: compileWordings(MULTILANGUAGE_WORDINGS, props.locale),
-      impFileType:
-        this.props.fileData.name.toLowerCase().indexOf('.csv') !== -1
-          ? 'CSV'
-          : 'EXCEL',
+      impFileType: this.props.fileData.name.toLowerCase().indexOf('.csv') !== -1 ? 'CSV' : 'EXCEL',
       impFileHasHeaders: true,
       impFileOverwrite: false,
       impFileEncoding: 'utf-8',
@@ -121,9 +115,7 @@ class FileImporter extends React.Component<
             <div className="panel-body">
               <div className="row bottom-margin">
                 <div className="col-xs-12 text-center toggle-form">
-                  <h5 className="upper bottom-margin">
-                    {wordings.selectedFile}
-                  </h5>
+                  <h5 className="upper bottom-margin">{wordings.selectedFile}</h5>
 
                   <p className="bottom-spaced">
                     <span className="label label-success text-small">
@@ -165,9 +157,7 @@ class FileImporter extends React.Component<
 
                 <div
                   className={classNames('col-xs-12 col-sm-6', {
-                    hidden:
-                      impFileType === 'EXCEL' ||
-                      hideControls.separator === true,
+                    hidden: impFileType === 'EXCEL' || hideControls.separator === true,
                   })}
                 >
                   <div className="form-group">
@@ -187,9 +177,7 @@ class FileImporter extends React.Component<
 
                 <div
                   className={classNames('col-xs-12 col-sm-6', {
-                    hidden:
-                      impFileType === 'EXCEL' ||
-                      hideControls.quoteChar === true,
+                    hidden: impFileType === 'EXCEL' || hideControls.quoteChar === true,
                   })}
                 >
                   <div className="form-group">
@@ -210,8 +198,7 @@ class FileImporter extends React.Component<
 
                 <div
                   className={classNames('col-xs-12 col-sm-6', {
-                    hidden:
-                      impFileType === 'EXCEL' || hideControls.encoding === true,
+                    hidden: impFileType === 'EXCEL' || hideControls.encoding === true,
                   })}
                 >
                   <div className="form-group">
@@ -308,10 +295,7 @@ class FileImporter extends React.Component<
     this.setState(stateUpdate);
   };
 
-  private handleConfigSwitchChange = (
-    switchValue: boolean,
-    configKey: string,
-  ) => {
+  private handleConfigSwitchChange = (switchValue: boolean, configKey: string) => {
     let stateUpdate: FileImporter.State = {};
     stateUpdate[configKey] = switchValue;
     this.setState(stateUpdate);

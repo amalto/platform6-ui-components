@@ -50,10 +50,7 @@ class Brand extends React.Component<Brand.Props, any> {
           textAlign: 'center',
         }}
       >
-        <a
-          href={url}
-          style={{ display: 'table-cell', verticalAlign: 'middle' }}
-        >
+        <a href={url} style={{ display: 'table-cell', verticalAlign: 'middle' }}>
           <img src={imgSrc} />
         </a>
       </header>

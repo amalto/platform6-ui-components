@@ -87,8 +87,8 @@ class Menu extends React.Component<Menu.Props, any> {
 
     const styles = {
       'menu-link': {
-        color: textColor,
-        textAlign: hideLabel ? 'cetner' : undefined,
+        'color': textColor,
+        'textAlign': hideLabel ? 'cetner' : undefined,
 
         ':hover': {
           color: hoverTextColor,

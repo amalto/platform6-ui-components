@@ -2,11 +2,7 @@
 import * as React from 'react';
 
 // Utils
-import {
-  compileWordings,
-  isValidKeyChar,
-  downloadDataFile,
-} from '@amalto/helpers';
+import { compileWordings, isValidKeyChar, downloadDataFile } from '@amalto/helpers';
 
 // Wordings
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';
@@ -65,10 +61,7 @@ namespace KeyValueEditor {
 declare type KeyValDef = KeyValueEditor.KeyValDef;
 declare type KeyValStoreDef = KeyValueEditor.KeyValStoreDef;
 
-class KeyValueEditor extends React.Component<
-  KeyValueEditor.Props,
-  KeyValueEditor.State
-> {
+class KeyValueEditor extends React.Component<KeyValueEditor.Props, KeyValueEditor.State> {
   constructor(props: KeyValueEditor.Props) {
     super(props);
     this.state = {
@@ -89,10 +82,7 @@ class KeyValueEditor extends React.Component<
       return (
         <div className="row" key={idx}>
           {!readonly ? (
-            <div
-              className="form-group col-xs-2 text-center"
-              style={{ paddingRight: 0 }}
-            >
+            <div className="form-group col-xs-2 text-center" style={{ paddingRight: 0 }}>
               <span
                 className="fas fa-minus-circle danger-color control-align click-pointer"
                 data-key={keyVal.key}
@@ -113,9 +103,7 @@ class KeyValueEditor extends React.Component<
                 placeholder={wordings.key}
               />
             ) : (
-              <span className="control-align">
-                {keyVal.key || wordings.selectFile}
-              </span>
+              <span className="control-align">{keyVal.key || wordings.selectFile}</span>
             )}
           </div>
 
@@ -211,9 +199,7 @@ class KeyValueEditor extends React.Component<
   };
 
   private removeKeyValue = (event: any) => {
-    let keyValuesUpdate: KeyValDef = JSON.parse(
-      JSON.stringify(this.props.keyValues),
-    );
+    let keyValuesUpdate: KeyValDef = JSON.parse(JSON.stringify(this.props.keyValues));
     const key: string = event.currentTarget.getAttribute('data-key');
 
     delete keyValuesUpdate[key];
@@ -237,9 +223,7 @@ class KeyValueEditor extends React.Component<
   };
 
   private handleValueChange = (event: any) => {
-    let keyValuesUpdate: KeyValDef = JSON.parse(
-      JSON.stringify(this.props.keyValues),
-    );
+    let keyValuesUpdate: KeyValDef = JSON.parse(JSON.stringify(this.props.keyValues));
     const key: string = event.currentTarget.getAttribute('data-key');
 
     keyValuesUpdate[key].contentBytes = event.target.value;

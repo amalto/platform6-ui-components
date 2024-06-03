@@ -65,11 +65,7 @@ export interface DynamicComponent extends ReduxProps {
    * @param { number } [positionX]
    * @param { number } [positionY]
    */
-  displayContextMenu: (
-    content: any,
-    positionX?: number,
-    positionY?: number,
-  ) => void;
+  displayContextMenu: (content: any, positionX?: number, positionY?: number) => void;
 
   /**
    * Hide context menu.
@@ -185,9 +181,7 @@ export interface DynamicComponent extends ReduxProps {
    *
    * @param { ( started: boolean, serviceStatus: string ) => void } [callback]
    */
-  refreshServiceStatus?: (
-    callback?: (started: boolean, serviceStatus: string) => void,
-  ) => void;
+  refreshServiceStatus?: (callback?: (started: boolean, serviceStatus: string) => void) => void;
 
   /**
    * Lock the service

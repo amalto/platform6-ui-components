@@ -1,8 +1,4 @@
-import {
-  compileWordings,
-  isNotEmpty,
-  handleDuplicateNameFromArray,
-} from '@amalto/helpers';
+import { compileWordings, isNotEmpty, handleDuplicateNameFromArray } from '@amalto/helpers';
 import { MULTILANGUAGE_WORDINGS } from '@amalto/wordings';
 import {
   ServiceItemFacade,
@@ -71,9 +67,7 @@ export function toIds(facades: ServiceItemFacades): Id[] {
 export function isIdUnique(ids: Ids, id: Id) {
   const { name } = id;
 
-  return ids.every(
-    (i) => i.name !== name || (i.name === name && i.appKey !== id.appKey),
-  );
+  return ids.every((i) => i.name !== name || (i.name === name && i.appKey !== id.appKey));
 }
 
 /**
@@ -115,8 +109,7 @@ export function incrementName(facades: ServiceItemFacades, id: Id): string {
 
   if (facadesWithSameAppKey.length === 0) return name;
 
-  while (!facadesWithSameAppKey.every((f) => f.name !== `${name}_${index}`))
-    index++;
+  while (!facadesWithSameAppKey.every((f) => f.name !== `${name}_${index}`)) index++;
 
   return `${name}_${index}`;
 }
@@ -135,17 +128,11 @@ export function validateName(
   items: ServiceItemFacades,
   locale: string,
 ): string {
-  const wordings: { [id: string]: string } = compileWordings(
-    MULTILANGUAGE_WORDINGS,
-    locale,
-  );
+  const wordings: { [id: string]: string } = compileWordings(MULTILANGUAGE_WORDINGS, locale);
 
   if (!isNotEmpty(value)) return wordings.fieldRequired;
 
-  if (
-    value !== id.name &&
-    !isIdUnique(items, { name: value, appKey: id.appKey })
-  )
+  if (value !== id.name && !isIdUnique(items, { name: value, appKey: id.appKey }))
     return wordings.nameAlreadyExist;
 
   if (value.includes('.')) return wordings.nameNoDot;
@@ -216,10 +203,7 @@ export function getAddId(): string {
  * @param { Id } id - Name to duplicate.
  * @param { ServiceItemFacades } items - All items to compare the name to.
  */
-export function handleDuplicateServiceItemName(
-  id: Id,
-  items: ServiceItemFacades,
-): string {
+export function handleDuplicateServiceItemName(id: Id, items: ServiceItemFacades): string {
   return handleDuplicateNameFromArray(
     id.name,
     items.filter((i) => i.appKey === id.appKey).map((i) => i.name),

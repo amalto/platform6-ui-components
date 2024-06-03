@@ -13,10 +13,7 @@ module CustomPathline {
   export interface State {}
 }
 
-class CustomPathline extends React.Component<
-  CustomPathline.Props,
-  CustomPathline.State
-> {
+class CustomPathline extends React.Component<CustomPathline.Props, CustomPathline.State> {
   constructor(props: CustomPathline.Props) {
     super(props);
     this.state = {};
@@ -36,10 +33,7 @@ class CustomPathline extends React.Component<
               </td>
               <td>
                 <span className="text-small">
-                  <Pathline
-                    classes={{}}
-                    children={`npm install --save ${name}`}
-                  />
+                  <Pathline classes={{}} children={`npm install --save ${name}`} />
                 </span>
               </td>
             </tr>
@@ -49,11 +43,7 @@ class CustomPathline extends React.Component<
               </td>
               <td>
                 <span className="text-small">
-                  <Link
-                    classes={{}}
-                    href={`https://www.npmjs.com/package/${name}`}
-                    target="_blank"
-                  >
+                  <Link classes={{}} href={`https://www.npmjs.com/package/${name}`} target="_blank">
                     {name}
                   </Link>
                 </span>

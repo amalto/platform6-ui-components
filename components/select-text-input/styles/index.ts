@@ -1,29 +1,29 @@
 export const Styles = {
-  selectTextInput: {
+  'selectTextInput': {
     position: 'relative',
   },
-  selectTextInputBtnPreffix: {
+  'selectTextInputBtnPreffix': {
     width: '77%',
     marginRight: '3%',
     float: 'left',
   },
-  caret: {
+  'caret': {
     position: 'absolute',
     cursor: 'pointer',
     top: 8,
     right: 8,
   },
   'options-list': {
-    borderBottom: '1px solid #e8ebed',
-    borderRight: '1px solid #e8ebed',
-    borderLeft: '1px solid #e8ebed',
-    userSelect: 'none',
-    position: 'absolute',
-    width: '100%',
-    zIndex: 100,
-    backgroundColor: '#FFF',
-    overflowX: 'hidden',
-    overflowY: 'auto',
+    'borderBottom': '1px solid #e8ebed',
+    'borderRight': '1px solid #e8ebed',
+    'borderLeft': '1px solid #e8ebed',
+    'userSelect': 'none',
+    'position': 'absolute',
+    'width': '100%',
+    'zIndex': 100,
+    'backgroundColor': '#FFF',
+    'overflowX': 'hidden',
+    'overflowY': 'auto',
     'div:hover': {
       backgroundColor: '#89BC55',
       color: '#FFF',

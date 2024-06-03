@@ -40,10 +40,7 @@ class Switch extends React.Component<Switch.Props, any> {
 
   render() {
     return (
-      <div
-        style={{ paddingTop: 2, paddingBottom: 2, height: 32 }}
-        className={this.props.cssClass}
-      >
+      <div style={{ paddingTop: 2, paddingBottom: 2, height: 32 }} className={this.props.cssClass}>
         <div
           className={classNames('onoffswitch', {
             'left-align': this.props.alignLeft,

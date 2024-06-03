@@ -44,9 +44,7 @@ export abstract class Field<
   }
 
   render(): JSX.Element | null | false {
-    return this.props.label === undefined
-      ? this.single(this.props)
-      : this.group(this.props);
+    return this.props.label === undefined ? this.single(this.props) : this.group(this.props);
   }
 
   protected abstract renderField(
@@ -60,9 +58,7 @@ export abstract class Field<
   }
 
   private get validationMessage(): string | undefined {
-    return this.state.validationMessage === ''
-      ? undefined
-      : this.state.validationMessage;
+    return this.state.validationMessage === '' ? undefined : this.state.validationMessage;
   }
 
   private single(props: P): JSX.Element {

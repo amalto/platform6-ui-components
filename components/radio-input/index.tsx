@@ -78,15 +78,8 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
   }
 
   private renderRadio = (field: WrappedFieldProps<any>) => {
-    const {
-      label,
-      options,
-      disabled,
-      help,
-      containerClass,
-      inputClass,
-      collapseErrorSpace,
-    } = this.props;
+    const { label, options, disabled, help, containerClass, inputClass, collapseErrorSpace } =
+      this.props;
 
     const { input, meta } = field;
 
@@ -118,10 +111,7 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
               checked={input.value === opt.value}
             />
 
-            <label
-              htmlFor={`${inputId}_${input.name}_${idx}`}
-              className="form-radio-label"
-            >
+            <label htmlFor={`${inputId}_${input.name}_${idx}`} className="form-radio-label">
               {opt.label || opt.value}
             </label>
           </span>
@@ -137,8 +127,7 @@ class RadioInput extends React.Component<RadioInput.Props, RadioInput.State> {
   };
 
   render() {
-    const { options, name, format, normalize, parse, validate, warn } =
-      this.props;
+    const { options, name, format, normalize, parse, validate, warn } = this.props;
 
     let baseFieldProps: BaseFieldProps = {
       name,
