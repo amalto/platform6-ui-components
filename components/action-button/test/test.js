@@ -3,7 +3,6 @@ import * as sinon from 'sinon';
 import test from 'ava';
 import Adapter from 'enzyme-adapter-react-15';
 
-import { unloadTooltips, loadTooltips } from '@amalto/helpers'
 import ActionButton from '../build/index.js';
 import {
     shallow,
