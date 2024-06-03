@@ -1,46 +1,46 @@
 {
-    "name": "@amalto/typings",
-    "displayName": "Typings",
-    "description": "Interfaces used in Platform 6 UI component.",
-    "version": "1.9.70",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/amalto/platform6-ui-components"
-    },
-    "keywords": [
-        "user-interface",
-        "react",
-        "typescript"
-    ],
-    "main": "./build/index.js",
-    "typings": "./build/index.d.ts",
-    "author": "Amalto Technologies",
-    "scripts": {
-        "setup": "npm install",
-        "build": "rm -rf ./build/; tsc",
-        "test": "nyc ava ./test/test.js --verbose"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "devDependencies": {
-        "@ava/babel-preset-stage-4": "2.0.0",
-        "@ava/babel-preset-transform-test-files": "^4.0.1",
-        "@babel/core": "^7.2.2",
-        "@babel/plugin-syntax-jsx": "^7.2.0",
-        "@babel/preset-react": "^7.0.0",
-        "@babel/register": "^7.0.0",
-        "@types/react": "15.6.10",
-        "ava": "1.2.1",
-        "nyc": "^15.1.0",
-        "ts-loader": "8.4.0",
-        "typescript": "4.7.4",
-        "webpack": "4.41.2"
-    },
-    "dependencies": {
-        "react": "15.6.2",
-        "redux": "3.7.2"
-    },
-    "gitHead": "cfaae955fad45a25eaa926595a2c7af85c212df4"
+  "name": "@amalto/typings",
+  "displayName": "Typings",
+  "description": "Interfaces used in Platform 6 UI component.",
+  "version": "1.9.70",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amalto/platform6-ui-components"
+  },
+  "keywords": [
+    "user-interface",
+    "react",
+    "typescript"
+  ],
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "author": "Amalto Technologies",
+  "scripts": {
+    "setup": "npm install",
+    "build": "rm -rf ./build/; tsc",
+    "test": "nyc ava ./test/test.js --verbose"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@ava/babel-preset-stage-4": "2.0.0",
+    "@ava/babel-preset-transform-test-files": "^4.0.1",
+    "@babel/core": "^7.24.6",
+    "@babel/plugin-syntax-jsx": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "@babel/register": "^7.0.0",
+    "@types/react": "15.6.10",
+    "ava": "1.2.1",
+    "nyc": "^15.1.0",
+    "ts-loader": "8.4.0",
+    "typescript": "4.7.4",
+    "webpack": "4.41.2"
+  },
+  "dependencies": {
+    "react": "15.6.2",
+    "redux": "3.7.2"
+  },
+  "gitHead": "cfaae955fad45a25eaa926595a2c7af85c212df4"
 }
