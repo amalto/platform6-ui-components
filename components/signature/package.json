@@ -33,7 +33,7 @@
     "radium": "^0.25.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
-    "react-signature-pad-wrapper": "^1.2.6"
+    "react-signature-pad-wrapper": "1.2.6"
   },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "2.0.0",
