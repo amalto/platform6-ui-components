@@ -10,6 +10,8 @@ module ActionButton {
     clickAction?: React.EventHandler<React.MouseEvent<Element>>;
     /** Any Font Awesome icon CSS class names like <span className='quote'>fa-info</span> or <span className='quote'>fa-info fa-lg</span>. */
     iconClass?: string;
+    /** Components id */
+    id?: string;
     /** Set the icon color class. Do not use if you don't need it, otherwise, <span className='quote'>btnClass</span> will have trouble handling hover color. */
     colorClass?: string;
     /** Whether or not the input is disabled.
@@ -52,6 +54,7 @@ class ActionButton extends React.Component<ActionButton.Props, any> {
 
     return (
       <span
+        id={this.props.id}
         className={classNames('action-icon-button', this.props.btnClass, {
           disabled: this.props.disabled,
         })}
