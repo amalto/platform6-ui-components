@@ -2,9 +2,7 @@ import React from 'react';
 
 var md5 = require('md5');
 
-import * as sinon from 'sinon';
 import test from 'ava';
-import base64 from 'base-64';
 import Adapter from 'enzyme-adapter-react-15';
 import { shallow, configure } from 'enzyme';
 import {
@@ -29,9 +27,6 @@ import {
     addQueryParam,
     orderAsc,
     orderDesc,
-    saveDataAsJSONFile,
-    downloadDataFile,
-    triggerDataDownload,
     hasRequiredResource,
     replaceTemplateViewName,
     replaceTemplateFlags,
@@ -39,14 +34,11 @@ import {
     getAcceptLanguageHeader,
     getI18nLabel,
     getJSTreeData,
-    loadTooltips,
-    unloadTooltips,
     groupByProperty,
     addValToArrayNoDup,
     removeValFromArrayNoDup,
     getNestedValue,
     filterCollection,
-    base64Decode,
     deepCopy,
     handleDuplicateNameFromArray,
     handleDuplicateServiceItemName,

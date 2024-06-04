@@ -44,7 +44,6 @@
     "@amalto/help": "1.9.27",
     "@amalto/helpers": "1.9.90",
     "@amalto/typings": "1.9.70",
-    "base-64": "0.1.0",
     "emotion": "^10.0.27",
     "fp-ts": "^2.2.0",
     "react-grid-layout": "0.17.1",

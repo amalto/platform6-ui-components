@@ -41,7 +41,6 @@
   },
   "dependencies": {
     "@amalto/translation-field": "1.1.6",
-    "base-64": "0.1.0",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
     "redux-form": "6.6.1"
