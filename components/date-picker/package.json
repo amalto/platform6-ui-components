@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@amalto/help": "1.9.27",
-    "classnames": "^2.2.6",
+    "classnames": "^2.5.1",
     "moment": "2.29.4",
     "pikaday": "1.7.0",
     "react": "15.6.2",

@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@amalto/typings": "1.9.70",
-    "classnames": "^2.2.6",
+    "classnames": "^2.5.1",
     "react": "15.6.2",
     "react-dom": "15.6.2"
   },

@@ -26,14 +26,14 @@
   },
   "dependencies": {
     "@amalto/help": "1.9.27",
-    "classnames": "^2.2.6",
+    "classnames": "^2.5.1",
     "jquery": "^3.4.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
     "redux-form": "6.6.1",
-    "uuid": "9.0.1"
+    "uuid": "10.0.0"
   },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "2.0.0",

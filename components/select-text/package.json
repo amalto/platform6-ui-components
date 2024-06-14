@@ -28,11 +28,11 @@
     "@amalto/help": "1.9.27",
     "@amalto/helpers": "1.9.90",
     "@amalto/typings": "1.9.70",
-    "classnames": "^2.2.6",
+    "classnames": "^2.5.1",
     "radium": "^0.25.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
-    "uuid": "9.0.1"
+    "uuid": "10.0.0"
   },
   "devDependencies": {
     "@ava/babel-preset-stage-4": "2.0.0",

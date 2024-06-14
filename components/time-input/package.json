@@ -28,7 +28,7 @@
     "@amalto/help": "1.9.27",
     "@amalto/input-validation": "1.9.89",
     "@amalto/time-picker": "1.10.2",
-    "classnames": "^2.2.6",
+    "classnames": "^2.5.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-redux": "5.0.6",

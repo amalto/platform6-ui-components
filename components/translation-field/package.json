@@ -49,7 +49,7 @@
     "react-grid-layout": "0.17.1",
     "react-select": "2.4.4",
     "rxjs": "6.5.3",
-    "uuid": "9.0.1"
+    "uuid": "10.0.0"
   },
   "ava": {
     "concurrency": 5,

@@ -29,7 +29,7 @@
     "@amalto/switch": "1.10.19",
     "@amalto/validated-input": "1.9.78",
     "@amalto/wordings": "1.9.34",
-    "classnames": "^2.2.6",
+    "classnames": "^2.5.1",
     "jquery": "^3.4.1",
     "react": "15.6.2",
     "react-dom": "15.6.2"
