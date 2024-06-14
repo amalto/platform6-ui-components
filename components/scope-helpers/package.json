@@ -31,11 +31,11 @@
     "uuid": "10.0.0"
   },
   "devDependencies": {
-    "@ava/babel-preset-stage-4": "2.0.0",
+    "@ava/babel-preset-stage-4": "4.0.0",
     "@ava/babel-preset-transform-test-files": "^4.0.1",
-    "@babel/core": "^7.24.6",
-    "@babel/plugin-syntax-jsx": "^7.24.6",
-    "@babel/preset-react": "^7.24.6",
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-syntax-jsx": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "@babel/register": "^7.0.0",
     "@types/react": "15.6.10",
     "ava": "^6.1.3",

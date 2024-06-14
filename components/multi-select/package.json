@@ -33,11 +33,11 @@
     "redux-form": "6.6.1"
   },
   "devDependencies": {
-    "@ava/babel-preset-stage-4": "2.0.0",
+    "@ava/babel-preset-stage-4": "4.0.0",
     "@ava/babel-preset-transform-test-files": "^4.0.1",
-    "@babel/core": "^7.24.6",
-    "@babel/plugin-syntax-jsx": "^7.24.6",
-    "@babel/preset-react": "^7.24.6",
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-syntax-jsx": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "@babel/register": "^7.0.0",
     "@types/bootstrap": "3.3.36",
     "@types/classnames": "^2.2.3",
