@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -43,8 +42,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.webpack.js', '.scss', '.css', '.js', '.ts', '.tsx'],
-  },
-  node: {
-    fs: 'empty',
+    fallback: {
+      "fs": false,
+    }
   },
 };

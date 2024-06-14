@@ -35,9 +35,9 @@
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "source-map-loader": "4.0.0",
-    "ts-loader": "8.4.0",
+    "ts-loader": "9.5.1",
     "typescript": "5.4.5",
-    "webpack": "4.41.2"
+    "webpack": "5.92.0"
   },
   "dependencies": {
     "@amalto/action-button": "1.10.2",

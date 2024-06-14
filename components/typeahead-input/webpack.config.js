@@ -15,9 +15,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.webpack.js', '.scss', '.css', '.js', '.ts', '.tsx'],
-  },
-  node: {
-    fs: 'empty',
+    fallback: {
+      "fs": false,
+    }
   },
   externals: {
     jquery: 'jQuery',

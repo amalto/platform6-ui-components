@@ -16,11 +16,10 @@ module.exports = {
 
   resolve: {
     extensions: ['.webpack.js', '.scss', '.css', '.js', '.ts', '.tsx'],
+    fallback: {
+      "fs": false,
+    }
   },
-  node: {
-    fs: 'empty',
-  },
-
   externals: {
     jquery: 'jQuery',
     pikaday: 'Pikaday',

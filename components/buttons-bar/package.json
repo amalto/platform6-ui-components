@@ -44,9 +44,9 @@
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "15.6.2",
     "sinon": "4.5.0",
-    "ts-loader": "8.4.0",
+    "ts-loader": "9.5.1",
     "typescript": "5.4.5",
-    "webpack": "4.41.2"
+    "webpack": "5.92.0"
   },
   "dependencies": {
     "@amalto/helpers": "1.9.90",
