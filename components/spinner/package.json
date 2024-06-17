@@ -46,7 +46,7 @@
     "enzyme-adapter-react-15": "1.4.4",
     "jquery": "^3.4.1",
     "jsdom": "^24.1.0",
-    "nyc": "^15.1.0",
+    "nyc": "^17.0.0",
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "15.6.2",
     "sinon": "4.5.0",

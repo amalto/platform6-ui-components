@@ -1,4 +1,5 @@
 const path = require('path');
+const FixMessageFormatterPlugin = require('./FixMessageFormatterPlugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -46,4 +47,5 @@ module.exports = {
       "fs": false,
     }
   },
+  plugins: [new FixMessageFormatterPlugin()],
 };
